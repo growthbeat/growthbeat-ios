@@ -10,6 +10,9 @@
 		B2E7002A19967C2100799D78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E7002919967C2100799D78 /* Foundation.framework */; };
 		B2E7003019967C2100799D78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2E7002E19967C2100799D78 /* InfoPlist.strings */; };
 		B2E7003419967C2100799D78 /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E7003319967C2100799D78 /* Growthbeat.m */; };
+		B2E7003B19967D4700799D78 /* GrowthbeatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E7003A19967D4700799D78 /* GrowthbeatCore.framework */; };
+		B2E7003D19967D6200799D78 /* GrowthPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E7003C19967D6200799D78 /* GrowthPush.framework */; };
+		B2E7003E19967F6600799D78 /* Growthbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E7003219967C2100799D78 /* Growthbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,8 @@
 		B2E7003119967C2100799D78 /* Growthbeat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growthbeat-Prefix.pch"; sourceTree = "<group>"; };
 		B2E7003219967C2100799D78 /* Growthbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
 		B2E7003319967C2100799D78 /* Growthbeat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
+		B2E7003A19967D4700799D78 /* GrowthbeatCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GrowthbeatCore.framework; path = "../submodules/growthbeat-core-ios/GrowthbeatCore.framework"; sourceTree = "<group>"; };
+		B2E7003C19967D6200799D78 /* GrowthPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GrowthPush.framework; path = "../submodules/growthpush-ios/GrowthPush.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2E7003D19967D6200799D78 /* GrowthPush.framework in Frameworks */,
+				B2E7003B19967D4700799D78 /* GrowthbeatCore.framework in Frameworks */,
 				B2E7002A19967C2100799D78 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +61,8 @@
 		B2E7002819967C2100799D78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2E7003C19967D6200799D78 /* GrowthPush.framework */,
+				B2E7003A19967D4700799D78 /* GrowthbeatCore.framework */,
 				B2E7002919967C2100799D78 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -86,6 +95,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2E7003E19967F6600799D78 /* Growthbeat.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +275,11 @@
 				);
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kataoka/growthbeat-ios/submodules/growthbeat-core-ios",
+					"/Users/kataoka/growthbeat-ios/submodules/growthpush-ios",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Growthbeat/Growthbeat-Prefix.pch";
@@ -284,6 +299,11 @@
 				);
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kataoka/growthbeat-ios/submodules/growthbeat-core-ios",
+					"/Users/kataoka/growthbeat-ios/submodules/growthpush-ios",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Growthbeat/Growthbeat-Prefix.pch";
@@ -313,6 +333,7 @@
 				B2E7003919967C2100799D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
