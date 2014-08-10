@@ -14,8 +14,10 @@
 {
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"dy6VlRMnN3juhW9L" credentialId:@"NuvkVhQtRDG2nrNeDzHXzZO5c6j0Xu5t"];
     [[Growthbeat sharedInstance] initializeGrowthPushWithEnvironment:kGrowthPushEnvironment];
+    [[Growthbeat sharedInstance] initializeGrowthReplay];
     [GrowthPush setDeviceTags];
     [GrowthPush trackEvent:@"Launch"];
+    [GrowthReplay start];
     return YES;
 }
 							

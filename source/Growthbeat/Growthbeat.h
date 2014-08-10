@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GrowthbeatCore.h"
 #import "GrowthPush.h"
+#import "GrowthReplay.h"
 
 @interface Growthbeat : NSObject
 
@@ -16,5 +17,6 @@
 
 - (void) initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
 - (void) initializeGrowthPushWithEnvironment:(GPEnvironment)environment;
+- (void) initializeGrowthReplay;
 
 @end

@@ -55,4 +55,8 @@ static Growthbeat *sharedInstance = nil;
     [GrowthPush initializeWithApplicationId:applicationId credentialId:credentialId environment:environment];
 }
 
+- (void) initializeGrowthReplay {
+    [GrowthReplay initializeWithApplicationId:applicationId credentialId:credentialId];
+}
+
 @end

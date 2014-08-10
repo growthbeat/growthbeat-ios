@@ -22,6 +22,7 @@
 		B2421F071997952D00E91C23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2421F051997952D00E91C23 /* InfoPlist.strings */; };
 		B2421F091997952D00E91C23 /* GrowthbeatSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421F081997952D00E91C23 /* GrowthbeatSampleTests.m */; };
 		B2421F131997954800E91C23 /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421F121997954800E91C23 /* Growthbeat.framework */; };
+		B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25341811997B301004C8EDB /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B2421F061997952D00E91C23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B2421F081997952D00E91C23 /* GrowthbeatSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthbeatSampleTests.m; sourceTree = "<group>"; };
 		B2421F121997954800E91C23 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../Growthbeat.framework; sourceTree = "<group>"; };
+		B25341811997B301004C8EDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */,
 				B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */,
 				B2421EE21997952D00E91C23 /* UIKit.framework in Frameworks */,
 				B2421EDE1997952D00E91C23 /* Foundation.framework in Frameworks */,
@@ -104,6 +107,7 @@
 		B2421EDC1997952D00E91C23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B25341811997B301004C8EDB /* SystemConfiguration.framework */,
 				B2421F121997954800E91C23 /* Growthbeat.framework */,
 				B2421EDD1997952D00E91C23 /* Foundation.framework */,
 				B2421EDF1997952D00E91C23 /* CoreGraphics.framework */,

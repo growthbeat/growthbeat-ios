@@ -16,5 +16,10 @@
 + (NSString *)timeZone;
 + (NSString *)version;
 + (NSString *)build;
++ (BOOL)connectedToWiFi;
++ (float)getCurrentDeviceVersion;
++ (unsigned int)getAvailableMemory;
++ (uint64_t)getCPUUsage;
++ (NSString *)getPlatformString;
 
 @end
