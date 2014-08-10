@@ -51,9 +51,8 @@ static Growthbeat *sharedInstance = nil;
     [GrowthbeatCore initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
-- (void) initializeGrowthPushWithEnvironment:(GPEnvironment)environment debug:(BOOL)debug {
-    // TODO migrate to new API
-    [GrowthPush setApplicationId:0 secret:credentialId environment:environment debug:debug];
+- (void) initializeGrowthPushWithEnvironment:(GPEnvironment)environment {
+    [GrowthPush initializeWithApplicationId:applicationId credentialId:credentialId environment:environment];
 }
 
 @end

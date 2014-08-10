@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GrowthbeatCore/GrowthbeatCore.h>
-#import <GrowthPush/GrowthPush.h>
+#import "GrowthbeatCore.h"
+#import "GrowthPush.h"
 
 @interface Growthbeat : NSObject
 
 + (instancetype)sharedInstance;
 
 - (void) initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
-- (void) initializeGrowthPushWithEnvironment:(GPEnvironment)environment debug:(BOOL)debug;
+- (void) initializeGrowthPushWithEnvironment:(GPEnvironment)environment;
 
 @end
