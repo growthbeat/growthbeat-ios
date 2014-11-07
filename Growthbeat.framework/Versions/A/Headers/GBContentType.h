@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM (NSUInteger, GBContentType) {
-    GRContentTypeUnknown = 0,
-    GRContentTypeFormUrlEncoded,
-    GRContentTypeMultipart,
-    GRContentTypeJson
+    GBContentTypeUnknown = 0,
+    GBContentTypeFormUrlEncoded,
+    GBContentTypeMultipart,
+    GBContentTypeJson
 };
 
 NSString *NSStringFromContnetType(GBContentType contentType);

@@ -7,7 +7,6 @@
 //
 
 #import "GPDomain.h"
-#import "GrowthbeatCore.h"
 #import "GPOS.h"
 #import "GPEnvironment.h"
 

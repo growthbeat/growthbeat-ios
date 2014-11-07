@@ -1,5 +1,5 @@
 //
-//  GPPreference.h
+//  GBPreference.h
 //  pickaxe
 //
 //  Created by Kataoka Naoyuki on 2013/07/17.

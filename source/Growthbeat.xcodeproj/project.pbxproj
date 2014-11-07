@@ -6,387 +6,422 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B275A7031A0C45A50050510A /* GrowthbeatFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B275A7041A0C45A50050510A /* Build configuration list for PBXAggregateTarget "GrowthbeatFramework" */;
+			buildPhases = (
+				B275A7091A0C45B50050510A /* ShellScript */,
+			);
+			dependencies = (
+				B275A7081A0C45AC0050510A /* PBXTargetDependency */,
+			);
+			name = GrowthbeatFramework;
+			productName = GrowthbeatFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		B2421EBD1997944900E91C23 /* GPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EA91997944900E91C23 /* GPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421EBE1997944900E91C23 /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EAA1997944900E91C23 /* GPClient.m */; };
-		B2421EBF1997944900E91C23 /* GPClientService.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EAB1997944900E91C23 /* GPClientService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421EC01997944900E91C23 /* GPClientService.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EAC1997944900E91C23 /* GPClientService.m */; };
-		B2421EC11997944900E91C23 /* GPDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EAD1997944900E91C23 /* GPDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421EC21997944900E91C23 /* GPDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EAE1997944900E91C23 /* GPDomain.m */; };
-		B2421EC31997944900E91C23 /* GPEnvironment.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EAF1997944900E91C23 /* GPEnvironment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421EC41997944900E91C23 /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EB01997944900E91C23 /* GPEnvironmentUtils.m */; };
-		B2421EC51997944900E91C23 /* GPEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EB11997944900E91C23 /* GPEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421EC61997944900E91C23 /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EB21997944900E91C23 /* GPEvent.m */; };
-		B2421EC71997944900E91C23 /* GPEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EB31997944900E91C23 /* GPEventService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421EC81997944900E91C23 /* GPEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EB41997944900E91C23 /* GPEventService.m */; };
-		B2421EC91997944900E91C23 /* GPOS.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EB51997944900E91C23 /* GPOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421ECA1997944900E91C23 /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EB61997944900E91C23 /* GPOS.m */; };
-		B2421ECB1997944900E91C23 /* GPService.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EB71997944900E91C23 /* GPService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421ECC1997944900E91C23 /* GPService.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EB81997944900E91C23 /* GPService.m */; };
-		B2421ECD1997944900E91C23 /* GPTagService.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EB91997944900E91C23 /* GPTagService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421ECE1997944900E91C23 /* GPTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EBA1997944900E91C23 /* GPTagService.m */; };
-		B2421ECF1997944900E91C23 /* GrowthPush.h in Headers */ = {isa = PBXBuildFile; fileRef = B2421EBB1997944900E91C23 /* GrowthPush.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2421ED01997944900E91C23 /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EBC1997944900E91C23 /* GrowthPush.m */; };
-		B25341291997B108004C8EDB /* GRClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341151997B108004C8EDB /* GRClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253412A1997B108004C8EDB /* GRClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341161997B108004C8EDB /* GRClient.m */; };
-		B253412B1997B108004C8EDB /* GRClientService.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341171997B108004C8EDB /* GRClientService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253412C1997B108004C8EDB /* GRClientService.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341181997B108004C8EDB /* GRClientService.m */; };
-		B253412D1997B108004C8EDB /* GRConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341191997B108004C8EDB /* GRConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253412E1997B108004C8EDB /* GRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B253411A1997B108004C8EDB /* GRConfiguration.m */; };
-		B253412F1997B108004C8EDB /* GRDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = B253411B1997B108004C8EDB /* GRDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341301997B108004C8EDB /* GRDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B253411C1997B108004C8EDB /* GRDomain.m */; };
-		B25341311997B108004C8EDB /* GrowthReplay.h in Headers */ = {isa = PBXBuildFile; fileRef = B253411D1997B108004C8EDB /* GrowthReplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341321997B108004C8EDB /* GrowthReplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B253411E1997B108004C8EDB /* GrowthReplay.m */; };
-		B25341331997B108004C8EDB /* GRPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = B253411F1997B108004C8EDB /* GRPicture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341341997B108004C8EDB /* GRPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341201997B108004C8EDB /* GRPicture.m */; };
-		B25341351997B108004C8EDB /* GRRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341211997B108004C8EDB /* GRRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341361997B108004C8EDB /* GRRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341221997B108004C8EDB /* GRRecorder.m */; };
-		B25341371997B108004C8EDB /* GRRecordStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341231997B108004C8EDB /* GRRecordStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341381997B108004C8EDB /* GRRecordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341241997B108004C8EDB /* GRRecordStatus.m */; };
-		B25341391997B108004C8EDB /* GRService.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341251997B108004C8EDB /* GRService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253413A1997B108004C8EDB /* GRService.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341261997B108004C8EDB /* GRService.m */; };
-		B253413B1997B108004C8EDB /* GRTagService.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341271997B108004C8EDB /* GRTagService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253413C1997B108004C8EDB /* GRTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341281997B108004C8EDB /* GRTagService.m */; };
-		B253415F1997B206004C8EDB /* GBAppDelegateWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = B253413D1997B206004C8EDB /* GBAppDelegateWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341601997B206004C8EDB /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B253413E1997B206004C8EDB /* GBAppDelegateWrapper.m */; };
-		B25341611997B206004C8EDB /* GBAppDelegateWrapperDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B253413F1997B206004C8EDB /* GBAppDelegateWrapperDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341621997B206004C8EDB /* GBApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341401997B206004C8EDB /* GBApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341631997B206004C8EDB /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341411997B206004C8EDB /* GBApplication.m */; };
-		B25341641997B206004C8EDB /* GBClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341421997B206004C8EDB /* GBClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341651997B206004C8EDB /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341431997B206004C8EDB /* GBClient.m */; };
-		B25341661997B206004C8EDB /* GBContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341441997B206004C8EDB /* GBContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341671997B206004C8EDB /* GBContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341451997B206004C8EDB /* GBContentType.m */; };
-		B25341681997B206004C8EDB /* GBDateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341461997B206004C8EDB /* GBDateUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341691997B206004C8EDB /* GBDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341471997B206004C8EDB /* GBDateUtils.m */; };
-		B253416A1997B206004C8EDB /* GBDeviceUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341481997B206004C8EDB /* GBDeviceUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253416B1997B206004C8EDB /* GBDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341491997B206004C8EDB /* GBDeviceUtils.m */; };
-		B253416C1997B206004C8EDB /* GBDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = B253414A1997B206004C8EDB /* GBDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253416D1997B206004C8EDB /* GBDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B253414B1997B206004C8EDB /* GBDomain.m */; };
-		B253416E1997B206004C8EDB /* GBHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B253414C1997B206004C8EDB /* GBHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253416F1997B206004C8EDB /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B253414D1997B206004C8EDB /* GBHttpClient.m */; };
-		B25341701997B206004C8EDB /* GBHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B253414E1997B206004C8EDB /* GBHttpRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341711997B206004C8EDB /* GBHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B253414F1997B206004C8EDB /* GBHttpRequest.m */; };
-		B25341721997B206004C8EDB /* GBHttpResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341501997B206004C8EDB /* GBHttpResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341731997B206004C8EDB /* GBHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341511997B206004C8EDB /* GBHttpResponse.m */; };
-		B25341741997B206004C8EDB /* GBHttpUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341521997B206004C8EDB /* GBHttpUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341751997B206004C8EDB /* GBHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341531997B206004C8EDB /* GBHttpUtils.m */; };
-		B25341761997B206004C8EDB /* GBLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341541997B206004C8EDB /* GBLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341771997B206004C8EDB /* GBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341551997B206004C8EDB /* GBLogger.m */; };
-		B25341781997B206004C8EDB /* GBMultipartFile.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341561997B206004C8EDB /* GBMultipartFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341791997B206004C8EDB /* GBMultipartFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341571997B206004C8EDB /* GBMultipartFile.m */; };
-		B253417A1997B206004C8EDB /* GBPreference.h in Headers */ = {isa = PBXBuildFile; fileRef = B25341581997B206004C8EDB /* GBPreference.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253417B1997B206004C8EDB /* GBPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = B25341591997B206004C8EDB /* GBPreference.m */; };
-		B253417C1997B206004C8EDB /* GBRequestMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = B253415A1997B206004C8EDB /* GBRequestMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253417D1997B206004C8EDB /* GBRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B253415B1997B206004C8EDB /* GBRequestMethod.m */; };
-		B253417E1997B206004C8EDB /* GBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B253415C1997B206004C8EDB /* GBUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B253417F1997B206004C8EDB /* GrowthbeatCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B253415D1997B206004C8EDB /* GrowthbeatCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B25341801997B206004C8EDB /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B253415E1997B206004C8EDB /* GrowthbeatCore.m */; };
-		B2E7002A19967C2100799D78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E7002919967C2100799D78 /* Foundation.framework */; };
-		B2E7003019967C2100799D78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2E7002E19967C2100799D78 /* InfoPlist.strings */; };
-		B2E7003419967C2100799D78 /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E7003319967C2100799D78 /* Growthbeat.m */; };
-		B2E7003E19967F6600799D78 /* Growthbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E7003219967C2100799D78 /* Growthbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
+		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
+		B275A72F1A0C46530050510A /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A70E1A0C46530050510A /* GBAppDelegateWrapper.m */; };
+		B275A7301A0C46530050510A /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7111A0C46530050510A /* GBApplication.m */; };
+		B275A7311A0C46530050510A /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7131A0C46530050510A /* GBClient.m */; };
+		B275A7321A0C46530050510A /* GBContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7151A0C46530050510A /* GBContentType.m */; };
+		B275A7331A0C46530050510A /* GBDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7171A0C46530050510A /* GBDateUtils.m */; };
+		B275A7341A0C46530050510A /* GBDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7191A0C46530050510A /* GBDeviceUtils.m */; };
+		B275A7351A0C46530050510A /* GBDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A71B1A0C46530050510A /* GBDomain.m */; };
+		B275A7361A0C46530050510A /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A71D1A0C46530050510A /* GBHttpClient.m */; };
+		B275A7371A0C46530050510A /* GBHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A71F1A0C46530050510A /* GBHttpRequest.m */; };
+		B275A7381A0C46530050510A /* GBHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7211A0C46530050510A /* GBHttpResponse.m */; };
+		B275A7391A0C46530050510A /* GBHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7231A0C46530050510A /* GBHttpUtils.m */; };
+		B275A73A1A0C46530050510A /* GBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7251A0C46530050510A /* GBLogger.m */; };
+		B275A73B1A0C46530050510A /* GBMultipartFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7271A0C46530050510A /* GBMultipartFile.m */; };
+		B275A73C1A0C46530050510A /* GBPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7291A0C46530050510A /* GBPreference.m */; };
+		B275A73D1A0C46530050510A /* GBRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A72B1A0C46530050510A /* GBRequestMethod.m */; };
+		B275A73E1A0C46530050510A /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A72E1A0C46530050510A /* GrowthbeatCore.m */; };
+		B275A7551A0C466A0050510A /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7421A0C466A0050510A /* GPClient.m */; };
+		B275A7561A0C466A0050510A /* GPClientService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7441A0C466A0050510A /* GPClientService.m */; };
+		B275A7571A0C466A0050510A /* GPDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7461A0C466A0050510A /* GPDomain.m */; };
+		B275A7581A0C466A0050510A /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7481A0C466A0050510A /* GPEnvironmentUtils.m */; };
+		B275A7591A0C466A0050510A /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A74A1A0C466A0050510A /* GPEvent.m */; };
+		B275A75A1A0C466A0050510A /* GPEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A74C1A0C466A0050510A /* GPEventService.m */; };
+		B275A75B1A0C466A0050510A /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A74E1A0C466A0050510A /* GPOS.m */; };
+		B275A75C1A0C466A0050510A /* GPService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7501A0C466A0050510A /* GPService.m */; };
+		B275A75D1A0C466A0050510A /* GPTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7521A0C466A0050510A /* GPTagService.m */; };
+		B275A75E1A0C466A0050510A /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7541A0C466A0050510A /* GrowthPush.m */; };
+		B275A7731A0C46770050510A /* GRClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7601A0C46770050510A /* GRClient.m */; };
+		B275A7741A0C46770050510A /* GRClientService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7621A0C46770050510A /* GRClientService.m */; };
+		B275A7751A0C46770050510A /* GRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7641A0C46770050510A /* GRConfiguration.m */; };
+		B275A7761A0C46770050510A /* GRDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7661A0C46770050510A /* GRDomain.m */; };
+		B275A7771A0C46770050510A /* GrowthReplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7681A0C46770050510A /* GrowthReplay.m */; };
+		B275A7781A0C46770050510A /* GRPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A76A1A0C46770050510A /* GRPicture.m */; };
+		B275A7791A0C46770050510A /* GRRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A76C1A0C46770050510A /* GRRecorder.m */; };
+		B275A77A1A0C46770050510A /* GRRecordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A76E1A0C46770050510A /* GRRecordStatus.m */; };
+		B275A77B1A0C46770050510A /* GRService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7701A0C46770050510A /* GRService.m */; };
+		B275A77C1A0C46770050510A /* GRTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7721A0C46770050510A /* GRTagService.m */; };
+		B275A77D1A0C46AB0050510A /* GBAppDelegateWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A70D1A0C46530050510A /* GBAppDelegateWrapper.h */; };
+		B275A77E1A0C46AB0050510A /* GBAppDelegateWrapperDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A70F1A0C46530050510A /* GBAppDelegateWrapperDelegate.h */; };
+		B275A77F1A0C46AB0050510A /* GBApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7101A0C46530050510A /* GBApplication.h */; };
+		B275A7801A0C46AB0050510A /* GBClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7121A0C46530050510A /* GBClient.h */; };
+		B275A7811A0C46AB0050510A /* GBContentType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7141A0C46530050510A /* GBContentType.h */; };
+		B275A7821A0C46AB0050510A /* GBDateUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7161A0C46530050510A /* GBDateUtils.h */; };
+		B275A7831A0C46AB0050510A /* GBDeviceUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7181A0C46530050510A /* GBDeviceUtils.h */; };
+		B275A7841A0C46AB0050510A /* GBDomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A71A1A0C46530050510A /* GBDomain.h */; };
+		B275A7851A0C46AB0050510A /* GBHttpClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A71C1A0C46530050510A /* GBHttpClient.h */; };
+		B275A7861A0C46AB0050510A /* GBHttpRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A71E1A0C46530050510A /* GBHttpRequest.h */; };
+		B275A7871A0C46AB0050510A /* GBHttpResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7201A0C46530050510A /* GBHttpResponse.h */; };
+		B275A7881A0C46AB0050510A /* GBHttpUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7221A0C46530050510A /* GBHttpUtils.h */; };
+		B275A7891A0C46AB0050510A /* GBLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7241A0C46530050510A /* GBLogger.h */; };
+		B275A78A1A0C46AB0050510A /* GBMultipartFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7261A0C46530050510A /* GBMultipartFile.h */; };
+		B275A78B1A0C46AB0050510A /* GBPreference.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7281A0C46530050510A /* GBPreference.h */; };
+		B275A78C1A0C46AB0050510A /* GBRequestMethod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A72A1A0C46530050510A /* GBRequestMethod.h */; };
+		B275A78D1A0C46AB0050510A /* GBUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A72C1A0C46530050510A /* GBUtils.h */; };
+		B275A78E1A0C46AB0050510A /* GrowthbeatCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A72D1A0C46530050510A /* GrowthbeatCore.h */; };
+		B275A78F1A0C46B20050510A /* GRClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A75F1A0C46770050510A /* GRClient.h */; };
+		B275A7901A0C46B20050510A /* GRClientService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7611A0C46770050510A /* GRClientService.h */; };
+		B275A7911A0C46B20050510A /* GRConfiguration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7631A0C46770050510A /* GRConfiguration.h */; };
+		B275A7921A0C46B20050510A /* GRDomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7651A0C46770050510A /* GRDomain.h */; };
+		B275A7931A0C46B20050510A /* GrowthReplay.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7671A0C46770050510A /* GrowthReplay.h */; };
+		B275A7941A0C46B20050510A /* GRPicture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7691A0C46770050510A /* GRPicture.h */; };
+		B275A7951A0C46B20050510A /* GRRecorder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A76B1A0C46770050510A /* GRRecorder.h */; };
+		B275A7961A0C46B20050510A /* GRRecordStatus.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A76D1A0C46770050510A /* GRRecordStatus.h */; };
+		B275A7971A0C46B20050510A /* GRService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A76F1A0C46770050510A /* GRService.h */; };
+		B275A7981A0C46B20050510A /* GRTagService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7711A0C46770050510A /* GRTagService.h */; };
+		B275A7991A0C46B80050510A /* GPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7411A0C466A0050510A /* GPClient.h */; };
+		B275A79A1A0C46B80050510A /* GPClientService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7431A0C466A0050510A /* GPClientService.h */; };
+		B275A79B1A0C46B80050510A /* GPDomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7451A0C466A0050510A /* GPDomain.h */; };
+		B275A79C1A0C46B80050510A /* GPEnvironment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7471A0C466A0050510A /* GPEnvironment.h */; };
+		B275A79D1A0C46B80050510A /* GPEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7491A0C466A0050510A /* GPEvent.h */; };
+		B275A79E1A0C46B80050510A /* GPEventService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A74B1A0C466A0050510A /* GPEventService.h */; };
+		B275A79F1A0C46B80050510A /* GPOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A74D1A0C466A0050510A /* GPOS.h */; };
+		B275A7A01A0C46B80050510A /* GPService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A74F1A0C466A0050510A /* GPService.h */; };
+		B275A7A11A0C46B80050510A /* GPTagService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7511A0C466A0050510A /* GPTagService.h */; };
+		B275A7A21A0C46B80050510A /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7531A0C466A0050510A /* GrowthPush.h */; };
+		B2ED14231A0C451E0078F6BC /* libGrowthbeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B275A7071A0C45AC0050510A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2ED140F1A0C451E0078F6BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2ED14161A0C451E0078F6BC;
+			remoteInfo = Growthbeat;
+		};
+		B2ED14241A0C451E0078F6BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2ED140F1A0C451E0078F6BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2ED14161A0C451E0078F6BC;
+			remoteInfo = Growthbeat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2ED14151A0C451E0078F6BC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				B275A7991A0C46B80050510A /* GPClient.h in CopyFiles */,
+				B275A79A1A0C46B80050510A /* GPClientService.h in CopyFiles */,
+				B275A79B1A0C46B80050510A /* GPDomain.h in CopyFiles */,
+				B275A79C1A0C46B80050510A /* GPEnvironment.h in CopyFiles */,
+				B275A79D1A0C46B80050510A /* GPEvent.h in CopyFiles */,
+				B275A79E1A0C46B80050510A /* GPEventService.h in CopyFiles */,
+				B275A79F1A0C46B80050510A /* GPOS.h in CopyFiles */,
+				B275A7A01A0C46B80050510A /* GPService.h in CopyFiles */,
+				B275A7A11A0C46B80050510A /* GPTagService.h in CopyFiles */,
+				B275A7A21A0C46B80050510A /* GrowthPush.h in CopyFiles */,
+				B275A78F1A0C46B20050510A /* GRClient.h in CopyFiles */,
+				B275A7901A0C46B20050510A /* GRClientService.h in CopyFiles */,
+				B275A7911A0C46B20050510A /* GRConfiguration.h in CopyFiles */,
+				B275A7921A0C46B20050510A /* GRDomain.h in CopyFiles */,
+				B275A7931A0C46B20050510A /* GrowthReplay.h in CopyFiles */,
+				B275A7941A0C46B20050510A /* GRPicture.h in CopyFiles */,
+				B275A7951A0C46B20050510A /* GRRecorder.h in CopyFiles */,
+				B275A7961A0C46B20050510A /* GRRecordStatus.h in CopyFiles */,
+				B275A7971A0C46B20050510A /* GRService.h in CopyFiles */,
+				B275A7981A0C46B20050510A /* GRTagService.h in CopyFiles */,
+				B275A77D1A0C46AB0050510A /* GBAppDelegateWrapper.h in CopyFiles */,
+				B275A77E1A0C46AB0050510A /* GBAppDelegateWrapperDelegate.h in CopyFiles */,
+				B275A77F1A0C46AB0050510A /* GBApplication.h in CopyFiles */,
+				B275A7801A0C46AB0050510A /* GBClient.h in CopyFiles */,
+				B275A7811A0C46AB0050510A /* GBContentType.h in CopyFiles */,
+				B275A7821A0C46AB0050510A /* GBDateUtils.h in CopyFiles */,
+				B275A7831A0C46AB0050510A /* GBDeviceUtils.h in CopyFiles */,
+				B275A7841A0C46AB0050510A /* GBDomain.h in CopyFiles */,
+				B275A7851A0C46AB0050510A /* GBHttpClient.h in CopyFiles */,
+				B275A7861A0C46AB0050510A /* GBHttpRequest.h in CopyFiles */,
+				B275A7871A0C46AB0050510A /* GBHttpResponse.h in CopyFiles */,
+				B275A7881A0C46AB0050510A /* GBHttpUtils.h in CopyFiles */,
+				B275A7891A0C46AB0050510A /* GBLogger.h in CopyFiles */,
+				B275A78A1A0C46AB0050510A /* GBMultipartFile.h in CopyFiles */,
+				B275A78B1A0C46AB0050510A /* GBPreference.h in CopyFiles */,
+				B275A78C1A0C46AB0050510A /* GBRequestMethod.h in CopyFiles */,
+				B275A78D1A0C46AB0050510A /* GBUtils.h in CopyFiles */,
+				B275A78E1A0C46AB0050510A /* GrowthbeatCore.h in CopyFiles */,
+				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		B2421EA91997944900E91C23 /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPClient.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPClient.h"; sourceTree = "<group>"; };
-		B2421EAA1997944900E91C23 /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPClient.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPClient.m"; sourceTree = "<group>"; };
-		B2421EAB1997944900E91C23 /* GPClientService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPClientService.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPClientService.h"; sourceTree = "<group>"; };
-		B2421EAC1997944900E91C23 /* GPClientService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPClientService.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPClientService.m"; sourceTree = "<group>"; };
-		B2421EAD1997944900E91C23 /* GPDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPDomain.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPDomain.h"; sourceTree = "<group>"; };
-		B2421EAE1997944900E91C23 /* GPDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPDomain.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPDomain.m"; sourceTree = "<group>"; };
-		B2421EAF1997944900E91C23 /* GPEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPEnvironment.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPEnvironment.h"; sourceTree = "<group>"; };
-		B2421EB01997944900E91C23 /* GPEnvironmentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPEnvironmentUtils.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPEnvironmentUtils.m"; sourceTree = "<group>"; };
-		B2421EB11997944900E91C23 /* GPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPEvent.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPEvent.h"; sourceTree = "<group>"; };
-		B2421EB21997944900E91C23 /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPEvent.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPEvent.m"; sourceTree = "<group>"; };
-		B2421EB31997944900E91C23 /* GPEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPEventService.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPEventService.h"; sourceTree = "<group>"; };
-		B2421EB41997944900E91C23 /* GPEventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPEventService.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPEventService.m"; sourceTree = "<group>"; };
-		B2421EB51997944900E91C23 /* GPOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPOS.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPOS.h"; sourceTree = "<group>"; };
-		B2421EB61997944900E91C23 /* GPOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPOS.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPOS.m"; sourceTree = "<group>"; };
-		B2421EB71997944900E91C23 /* GPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPService.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPService.h"; sourceTree = "<group>"; };
-		B2421EB81997944900E91C23 /* GPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPService.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPService.m"; sourceTree = "<group>"; };
-		B2421EB91997944900E91C23 /* GPTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPTagService.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GPTagService.h"; sourceTree = "<group>"; };
-		B2421EBA1997944900E91C23 /* GPTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPTagService.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GPTagService.m"; sourceTree = "<group>"; };
-		B2421EBB1997944900E91C23 /* GrowthPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthPush.h; path = "../../submodules/growthpush-ios/source/GrowthPush/GrowthPush.h"; sourceTree = "<group>"; };
-		B2421EBC1997944900E91C23 /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthPush.m; path = "../../submodules/growthpush-ios/source/GrowthPush/GrowthPush.m"; sourceTree = "<group>"; };
-		B25341151997B108004C8EDB /* GRClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRClient.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRClient.h"; sourceTree = "<group>"; };
-		B25341161997B108004C8EDB /* GRClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRClient.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRClient.m"; sourceTree = "<group>"; };
-		B25341171997B108004C8EDB /* GRClientService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRClientService.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRClientService.h"; sourceTree = "<group>"; };
-		B25341181997B108004C8EDB /* GRClientService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRClientService.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRClientService.m"; sourceTree = "<group>"; };
-		B25341191997B108004C8EDB /* GRConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRConfiguration.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRConfiguration.h"; sourceTree = "<group>"; };
-		B253411A1997B108004C8EDB /* GRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRConfiguration.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRConfiguration.m"; sourceTree = "<group>"; };
-		B253411B1997B108004C8EDB /* GRDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRDomain.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRDomain.h"; sourceTree = "<group>"; };
-		B253411C1997B108004C8EDB /* GRDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRDomain.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRDomain.m"; sourceTree = "<group>"; };
-		B253411D1997B108004C8EDB /* GrowthReplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthReplay.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GrowthReplay.h"; sourceTree = "<group>"; };
-		B253411E1997B108004C8EDB /* GrowthReplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthReplay.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GrowthReplay.m"; sourceTree = "<group>"; };
-		B253411F1997B108004C8EDB /* GRPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRPicture.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRPicture.h"; sourceTree = "<group>"; };
-		B25341201997B108004C8EDB /* GRPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRPicture.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRPicture.m"; sourceTree = "<group>"; };
-		B25341211997B108004C8EDB /* GRRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRRecorder.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRRecorder.h"; sourceTree = "<group>"; };
-		B25341221997B108004C8EDB /* GRRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRRecorder.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRRecorder.m"; sourceTree = "<group>"; };
-		B25341231997B108004C8EDB /* GRRecordStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRRecordStatus.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRRecordStatus.h"; sourceTree = "<group>"; };
-		B25341241997B108004C8EDB /* GRRecordStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRRecordStatus.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRRecordStatus.m"; sourceTree = "<group>"; };
-		B25341251997B108004C8EDB /* GRService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRService.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRService.h"; sourceTree = "<group>"; };
-		B25341261997B108004C8EDB /* GRService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRService.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRService.m"; sourceTree = "<group>"; };
-		B25341271997B108004C8EDB /* GRTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRTagService.h; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRTagService.h"; sourceTree = "<group>"; };
-		B25341281997B108004C8EDB /* GRTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRTagService.m; path = "../../submodules/growthreplay-ios/source/GrowthReplay/GRTagService.m"; sourceTree = "<group>"; };
-		B253413D1997B206004C8EDB /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapper.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.h"; sourceTree = "<group>"; };
-		B253413E1997B206004C8EDB /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBAppDelegateWrapper.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.m"; sourceTree = "<group>"; };
-		B253413F1997B206004C8EDB /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapperDelegate.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapperDelegate.h"; sourceTree = "<group>"; };
-		B25341401997B206004C8EDB /* GBApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBApplication.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBApplication.h"; sourceTree = "<group>"; };
-		B25341411997B206004C8EDB /* GBApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBApplication.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBApplication.m"; sourceTree = "<group>"; };
-		B25341421997B206004C8EDB /* GBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBClient.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBClient.h"; sourceTree = "<group>"; };
-		B25341431997B206004C8EDB /* GBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBClient.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBClient.m"; sourceTree = "<group>"; };
-		B25341441997B206004C8EDB /* GBContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBContentType.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBContentType.h"; sourceTree = "<group>"; };
-		B25341451997B206004C8EDB /* GBContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBContentType.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBContentType.m"; sourceTree = "<group>"; };
-		B25341461997B206004C8EDB /* GBDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDateUtils.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDateUtils.h"; sourceTree = "<group>"; };
-		B25341471997B206004C8EDB /* GBDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDateUtils.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDateUtils.m"; sourceTree = "<group>"; };
-		B25341481997B206004C8EDB /* GBDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDeviceUtils.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDeviceUtils.h"; sourceTree = "<group>"; };
-		B25341491997B206004C8EDB /* GBDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDeviceUtils.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDeviceUtils.m"; sourceTree = "<group>"; };
-		B253414A1997B206004C8EDB /* GBDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDomain.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDomain.h"; sourceTree = "<group>"; };
-		B253414B1997B206004C8EDB /* GBDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDomain.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDomain.m"; sourceTree = "<group>"; };
-		B253414C1997B206004C8EDB /* GBHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpClient.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpClient.h"; sourceTree = "<group>"; };
-		B253414D1997B206004C8EDB /* GBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpClient.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpClient.m"; sourceTree = "<group>"; };
-		B253414E1997B206004C8EDB /* GBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpRequest.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpRequest.h"; sourceTree = "<group>"; };
-		B253414F1997B206004C8EDB /* GBHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpRequest.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpRequest.m"; sourceTree = "<group>"; };
-		B25341501997B206004C8EDB /* GBHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpResponse.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpResponse.h"; sourceTree = "<group>"; };
-		B25341511997B206004C8EDB /* GBHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpResponse.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpResponse.m"; sourceTree = "<group>"; };
-		B25341521997B206004C8EDB /* GBHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpUtils.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpUtils.h"; sourceTree = "<group>"; };
-		B25341531997B206004C8EDB /* GBHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpUtils.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpUtils.m"; sourceTree = "<group>"; };
-		B25341541997B206004C8EDB /* GBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBLogger.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBLogger.h"; sourceTree = "<group>"; };
-		B25341551997B206004C8EDB /* GBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBLogger.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBLogger.m"; sourceTree = "<group>"; };
-		B25341561997B206004C8EDB /* GBMultipartFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBMultipartFile.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBMultipartFile.h"; sourceTree = "<group>"; };
-		B25341571997B206004C8EDB /* GBMultipartFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBMultipartFile.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBMultipartFile.m"; sourceTree = "<group>"; };
-		B25341581997B206004C8EDB /* GBPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBPreference.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBPreference.h"; sourceTree = "<group>"; };
-		B25341591997B206004C8EDB /* GBPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBPreference.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBPreference.m"; sourceTree = "<group>"; };
-		B253415A1997B206004C8EDB /* GBRequestMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBRequestMethod.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBRequestMethod.h"; sourceTree = "<group>"; };
-		B253415B1997B206004C8EDB /* GBRequestMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBRequestMethod.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBRequestMethod.m"; sourceTree = "<group>"; };
-		B253415C1997B206004C8EDB /* GBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBUtils.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBUtils.h"; sourceTree = "<group>"; };
-		B253415D1997B206004C8EDB /* GrowthbeatCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthbeatCore.h; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.h"; sourceTree = "<group>"; };
-		B253415E1997B206004C8EDB /* GrowthbeatCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthbeatCore.m; path = "../../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.m"; sourceTree = "<group>"; };
-		B2E7002619967C2100799D78 /* Growthbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = Growthbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2E7002919967C2100799D78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B2E7002D19967C2100799D78 /* Growthbeat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Growthbeat-Info.plist"; sourceTree = "<group>"; };
-		B2E7002F19967C2100799D78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B2E7003119967C2100799D78 /* Growthbeat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Growthbeat-Prefix.pch"; sourceTree = "<group>"; };
-		B2E7003219967C2100799D78 /* Growthbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
-		B2E7003319967C2100799D78 /* Growthbeat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
+		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
+		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
+		B275A70D1A0C46530050510A /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapper.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.h"; sourceTree = "<group>"; };
+		B275A70E1A0C46530050510A /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBAppDelegateWrapper.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.m"; sourceTree = "<group>"; };
+		B275A70F1A0C46530050510A /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapperDelegate.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapperDelegate.h"; sourceTree = "<group>"; };
+		B275A7101A0C46530050510A /* GBApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBApplication.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBApplication.h"; sourceTree = "<group>"; };
+		B275A7111A0C46530050510A /* GBApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBApplication.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBApplication.m"; sourceTree = "<group>"; };
+		B275A7121A0C46530050510A /* GBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBClient.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBClient.h"; sourceTree = "<group>"; };
+		B275A7131A0C46530050510A /* GBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBClient.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBClient.m"; sourceTree = "<group>"; };
+		B275A7141A0C46530050510A /* GBContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBContentType.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBContentType.h"; sourceTree = "<group>"; };
+		B275A7151A0C46530050510A /* GBContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBContentType.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBContentType.m"; sourceTree = "<group>"; };
+		B275A7161A0C46530050510A /* GBDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDateUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDateUtils.h"; sourceTree = "<group>"; };
+		B275A7171A0C46530050510A /* GBDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDateUtils.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDateUtils.m"; sourceTree = "<group>"; };
+		B275A7181A0C46530050510A /* GBDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDeviceUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDeviceUtils.h"; sourceTree = "<group>"; };
+		B275A7191A0C46530050510A /* GBDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDeviceUtils.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDeviceUtils.m"; sourceTree = "<group>"; };
+		B275A71A1A0C46530050510A /* GBDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDomain.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDomain.h"; sourceTree = "<group>"; };
+		B275A71B1A0C46530050510A /* GBDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDomain.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDomain.m"; sourceTree = "<group>"; };
+		B275A71C1A0C46530050510A /* GBHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpClient.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpClient.h"; sourceTree = "<group>"; };
+		B275A71D1A0C46530050510A /* GBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpClient.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpClient.m"; sourceTree = "<group>"; };
+		B275A71E1A0C46530050510A /* GBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpRequest.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpRequest.h"; sourceTree = "<group>"; };
+		B275A71F1A0C46530050510A /* GBHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpRequest.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpRequest.m"; sourceTree = "<group>"; };
+		B275A7201A0C46530050510A /* GBHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpResponse.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpResponse.h"; sourceTree = "<group>"; };
+		B275A7211A0C46530050510A /* GBHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpResponse.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpResponse.m"; sourceTree = "<group>"; };
+		B275A7221A0C46530050510A /* GBHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpUtils.h"; sourceTree = "<group>"; };
+		B275A7231A0C46530050510A /* GBHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpUtils.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpUtils.m"; sourceTree = "<group>"; };
+		B275A7241A0C46530050510A /* GBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBLogger.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBLogger.h"; sourceTree = "<group>"; };
+		B275A7251A0C46530050510A /* GBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBLogger.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBLogger.m"; sourceTree = "<group>"; };
+		B275A7261A0C46530050510A /* GBMultipartFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBMultipartFile.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBMultipartFile.h"; sourceTree = "<group>"; };
+		B275A7271A0C46530050510A /* GBMultipartFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBMultipartFile.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBMultipartFile.m"; sourceTree = "<group>"; };
+		B275A7281A0C46530050510A /* GBPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBPreference.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBPreference.h"; sourceTree = "<group>"; };
+		B275A7291A0C46530050510A /* GBPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBPreference.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBPreference.m"; sourceTree = "<group>"; };
+		B275A72A1A0C46530050510A /* GBRequestMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBRequestMethod.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBRequestMethod.h"; sourceTree = "<group>"; };
+		B275A72B1A0C46530050510A /* GBRequestMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBRequestMethod.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBRequestMethod.m"; sourceTree = "<group>"; };
+		B275A72C1A0C46530050510A /* GBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBUtils.h"; sourceTree = "<group>"; };
+		B275A72D1A0C46530050510A /* GrowthbeatCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthbeatCore.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.h"; sourceTree = "<group>"; };
+		B275A72E1A0C46530050510A /* GrowthbeatCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthbeatCore.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.m"; sourceTree = "<group>"; };
+		B275A7411A0C466A0050510A /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPClient.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPClient.h"; sourceTree = "<group>"; };
+		B275A7421A0C466A0050510A /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPClient.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPClient.m"; sourceTree = "<group>"; };
+		B275A7431A0C466A0050510A /* GPClientService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPClientService.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPClientService.h"; sourceTree = "<group>"; };
+		B275A7441A0C466A0050510A /* GPClientService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPClientService.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPClientService.m"; sourceTree = "<group>"; };
+		B275A7451A0C466A0050510A /* GPDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPDomain.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPDomain.h"; sourceTree = "<group>"; };
+		B275A7461A0C466A0050510A /* GPDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPDomain.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPDomain.m"; sourceTree = "<group>"; };
+		B275A7471A0C466A0050510A /* GPEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPEnvironment.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPEnvironment.h"; sourceTree = "<group>"; };
+		B275A7481A0C466A0050510A /* GPEnvironmentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPEnvironmentUtils.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPEnvironmentUtils.m"; sourceTree = "<group>"; };
+		B275A7491A0C466A0050510A /* GPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPEvent.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPEvent.h"; sourceTree = "<group>"; };
+		B275A74A1A0C466A0050510A /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPEvent.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPEvent.m"; sourceTree = "<group>"; };
+		B275A74B1A0C466A0050510A /* GPEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPEventService.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPEventService.h"; sourceTree = "<group>"; };
+		B275A74C1A0C466A0050510A /* GPEventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPEventService.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPEventService.m"; sourceTree = "<group>"; };
+		B275A74D1A0C466A0050510A /* GPOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPOS.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPOS.h"; sourceTree = "<group>"; };
+		B275A74E1A0C466A0050510A /* GPOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPOS.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPOS.m"; sourceTree = "<group>"; };
+		B275A74F1A0C466A0050510A /* GPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPService.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPService.h"; sourceTree = "<group>"; };
+		B275A7501A0C466A0050510A /* GPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPService.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPService.m"; sourceTree = "<group>"; };
+		B275A7511A0C466A0050510A /* GPTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPTagService.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPTagService.h"; sourceTree = "<group>"; };
+		B275A7521A0C466A0050510A /* GPTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPTagService.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPTagService.m"; sourceTree = "<group>"; };
+		B275A7531A0C466A0050510A /* GrowthPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthPush.h; path = "../submodules/growthpush-ios/source/GrowthPush/GrowthPush.h"; sourceTree = "<group>"; };
+		B275A7541A0C466A0050510A /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthPush.m; path = "../submodules/growthpush-ios/source/GrowthPush/GrowthPush.m"; sourceTree = "<group>"; };
+		B275A75F1A0C46770050510A /* GRClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRClient.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRClient.h"; sourceTree = "<group>"; };
+		B275A7601A0C46770050510A /* GRClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRClient.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRClient.m"; sourceTree = "<group>"; };
+		B275A7611A0C46770050510A /* GRClientService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRClientService.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRClientService.h"; sourceTree = "<group>"; };
+		B275A7621A0C46770050510A /* GRClientService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRClientService.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRClientService.m"; sourceTree = "<group>"; };
+		B275A7631A0C46770050510A /* GRConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRConfiguration.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRConfiguration.h"; sourceTree = "<group>"; };
+		B275A7641A0C46770050510A /* GRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRConfiguration.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRConfiguration.m"; sourceTree = "<group>"; };
+		B275A7651A0C46770050510A /* GRDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRDomain.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRDomain.h"; sourceTree = "<group>"; };
+		B275A7661A0C46770050510A /* GRDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRDomain.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRDomain.m"; sourceTree = "<group>"; };
+		B275A7671A0C46770050510A /* GrowthReplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthReplay.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GrowthReplay.h"; sourceTree = "<group>"; };
+		B275A7681A0C46770050510A /* GrowthReplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthReplay.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GrowthReplay.m"; sourceTree = "<group>"; };
+		B275A7691A0C46770050510A /* GRPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRPicture.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRPicture.h"; sourceTree = "<group>"; };
+		B275A76A1A0C46770050510A /* GRPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRPicture.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRPicture.m"; sourceTree = "<group>"; };
+		B275A76B1A0C46770050510A /* GRRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRRecorder.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecorder.h"; sourceTree = "<group>"; };
+		B275A76C1A0C46770050510A /* GRRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRRecorder.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecorder.m"; sourceTree = "<group>"; };
+		B275A76D1A0C46770050510A /* GRRecordStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRRecordStatus.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecordStatus.h"; sourceTree = "<group>"; };
+		B275A76E1A0C46770050510A /* GRRecordStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRRecordStatus.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecordStatus.m"; sourceTree = "<group>"; };
+		B275A76F1A0C46770050510A /* GRService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRService.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRService.h"; sourceTree = "<group>"; };
+		B275A7701A0C46770050510A /* GRService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRService.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRService.m"; sourceTree = "<group>"; };
+		B275A7711A0C46770050510A /* GRTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRTagService.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRTagService.h"; sourceTree = "<group>"; };
+		B275A7721A0C46770050510A /* GRTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRTagService.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRTagService.m"; sourceTree = "<group>"; };
+		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2ED14221A0C451E0078F6BC /* GrowthbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrowthbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2ED14281A0C451E0078F6BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B2E7002119967C2100799D78 /* Frameworks */ = {
+		B2ED14141A0C451E0078F6BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2E7002A19967C2100799D78 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2ED141F1A0C451E0078F6BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2ED14231A0C451E0078F6BC /* libGrowthbeat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B25341141997B0E6004C8EDB /* GrowthReplay */ = {
+		B275A70C1A0C460F0050510A /* GrowthbeatCore */ = {
 			isa = PBXGroup;
 			children = (
-				B25341151997B108004C8EDB /* GRClient.h */,
-				B25341161997B108004C8EDB /* GRClient.m */,
-				B25341171997B108004C8EDB /* GRClientService.h */,
-				B25341181997B108004C8EDB /* GRClientService.m */,
-				B25341191997B108004C8EDB /* GRConfiguration.h */,
-				B253411A1997B108004C8EDB /* GRConfiguration.m */,
-				B253411B1997B108004C8EDB /* GRDomain.h */,
-				B253411C1997B108004C8EDB /* GRDomain.m */,
-				B253411D1997B108004C8EDB /* GrowthReplay.h */,
-				B253411E1997B108004C8EDB /* GrowthReplay.m */,
-				B253411F1997B108004C8EDB /* GRPicture.h */,
-				B25341201997B108004C8EDB /* GRPicture.m */,
-				B25341211997B108004C8EDB /* GRRecorder.h */,
-				B25341221997B108004C8EDB /* GRRecorder.m */,
-				B25341231997B108004C8EDB /* GRRecordStatus.h */,
-				B25341241997B108004C8EDB /* GRRecordStatus.m */,
-				B25341251997B108004C8EDB /* GRService.h */,
-				B25341261997B108004C8EDB /* GRService.m */,
-				B25341271997B108004C8EDB /* GRTagService.h */,
-				B25341281997B108004C8EDB /* GRTagService.m */,
-			);
-			name = GrowthReplay;
-			sourceTree = "<group>";
-		};
-		B25A64191997904A00E26665 /* GrowthPush */ = {
-			isa = PBXGroup;
-			children = (
-				B2421EA91997944900E91C23 /* GPClient.h */,
-				B2421EAA1997944900E91C23 /* GPClient.m */,
-				B2421EAB1997944900E91C23 /* GPClientService.h */,
-				B2421EAC1997944900E91C23 /* GPClientService.m */,
-				B2421EAD1997944900E91C23 /* GPDomain.h */,
-				B2421EAE1997944900E91C23 /* GPDomain.m */,
-				B2421EAF1997944900E91C23 /* GPEnvironment.h */,
-				B2421EB01997944900E91C23 /* GPEnvironmentUtils.m */,
-				B2421EB11997944900E91C23 /* GPEvent.h */,
-				B2421EB21997944900E91C23 /* GPEvent.m */,
-				B2421EB31997944900E91C23 /* GPEventService.h */,
-				B2421EB41997944900E91C23 /* GPEventService.m */,
-				B2421EB51997944900E91C23 /* GPOS.h */,
-				B2421EB61997944900E91C23 /* GPOS.m */,
-				B2421EB71997944900E91C23 /* GPService.h */,
-				B2421EB81997944900E91C23 /* GPService.m */,
-				B2421EB91997944900E91C23 /* GPTagService.h */,
-				B2421EBA1997944900E91C23 /* GPTagService.m */,
-				B2421EBB1997944900E91C23 /* GrowthPush.h */,
-				B2421EBC1997944900E91C23 /* GrowthPush.m */,
-			);
-			name = GrowthPush;
-			sourceTree = "<group>";
-		};
-		B25A64421997906B00E26665 /* GrowthbeatCore */ = {
-			isa = PBXGroup;
-			children = (
-				B253413D1997B206004C8EDB /* GBAppDelegateWrapper.h */,
-				B253413E1997B206004C8EDB /* GBAppDelegateWrapper.m */,
-				B253413F1997B206004C8EDB /* GBAppDelegateWrapperDelegate.h */,
-				B25341401997B206004C8EDB /* GBApplication.h */,
-				B25341411997B206004C8EDB /* GBApplication.m */,
-				B25341421997B206004C8EDB /* GBClient.h */,
-				B25341431997B206004C8EDB /* GBClient.m */,
-				B25341441997B206004C8EDB /* GBContentType.h */,
-				B25341451997B206004C8EDB /* GBContentType.m */,
-				B25341461997B206004C8EDB /* GBDateUtils.h */,
-				B25341471997B206004C8EDB /* GBDateUtils.m */,
-				B25341481997B206004C8EDB /* GBDeviceUtils.h */,
-				B25341491997B206004C8EDB /* GBDeviceUtils.m */,
-				B253414A1997B206004C8EDB /* GBDomain.h */,
-				B253414B1997B206004C8EDB /* GBDomain.m */,
-				B253414C1997B206004C8EDB /* GBHttpClient.h */,
-				B253414D1997B206004C8EDB /* GBHttpClient.m */,
-				B253414E1997B206004C8EDB /* GBHttpRequest.h */,
-				B253414F1997B206004C8EDB /* GBHttpRequest.m */,
-				B25341501997B206004C8EDB /* GBHttpResponse.h */,
-				B25341511997B206004C8EDB /* GBHttpResponse.m */,
-				B25341521997B206004C8EDB /* GBHttpUtils.h */,
-				B25341531997B206004C8EDB /* GBHttpUtils.m */,
-				B25341541997B206004C8EDB /* GBLogger.h */,
-				B25341551997B206004C8EDB /* GBLogger.m */,
-				B25341561997B206004C8EDB /* GBMultipartFile.h */,
-				B25341571997B206004C8EDB /* GBMultipartFile.m */,
-				B25341581997B206004C8EDB /* GBPreference.h */,
-				B25341591997B206004C8EDB /* GBPreference.m */,
-				B253415A1997B206004C8EDB /* GBRequestMethod.h */,
-				B253415B1997B206004C8EDB /* GBRequestMethod.m */,
-				B253415C1997B206004C8EDB /* GBUtils.h */,
-				B253415D1997B206004C8EDB /* GrowthbeatCore.h */,
-				B253415E1997B206004C8EDB /* GrowthbeatCore.m */,
+				B275A70D1A0C46530050510A /* GBAppDelegateWrapper.h */,
+				B275A70E1A0C46530050510A /* GBAppDelegateWrapper.m */,
+				B275A70F1A0C46530050510A /* GBAppDelegateWrapperDelegate.h */,
+				B275A7101A0C46530050510A /* GBApplication.h */,
+				B275A7111A0C46530050510A /* GBApplication.m */,
+				B275A7121A0C46530050510A /* GBClient.h */,
+				B275A7131A0C46530050510A /* GBClient.m */,
+				B275A7141A0C46530050510A /* GBContentType.h */,
+				B275A7151A0C46530050510A /* GBContentType.m */,
+				B275A7161A0C46530050510A /* GBDateUtils.h */,
+				B275A7171A0C46530050510A /* GBDateUtils.m */,
+				B275A7181A0C46530050510A /* GBDeviceUtils.h */,
+				B275A7191A0C46530050510A /* GBDeviceUtils.m */,
+				B275A71A1A0C46530050510A /* GBDomain.h */,
+				B275A71B1A0C46530050510A /* GBDomain.m */,
+				B275A71C1A0C46530050510A /* GBHttpClient.h */,
+				B275A71D1A0C46530050510A /* GBHttpClient.m */,
+				B275A71E1A0C46530050510A /* GBHttpRequest.h */,
+				B275A71F1A0C46530050510A /* GBHttpRequest.m */,
+				B275A7201A0C46530050510A /* GBHttpResponse.h */,
+				B275A7211A0C46530050510A /* GBHttpResponse.m */,
+				B275A7221A0C46530050510A /* GBHttpUtils.h */,
+				B275A7231A0C46530050510A /* GBHttpUtils.m */,
+				B275A7241A0C46530050510A /* GBLogger.h */,
+				B275A7251A0C46530050510A /* GBLogger.m */,
+				B275A7261A0C46530050510A /* GBMultipartFile.h */,
+				B275A7271A0C46530050510A /* GBMultipartFile.m */,
+				B275A7281A0C46530050510A /* GBPreference.h */,
+				B275A7291A0C46530050510A /* GBPreference.m */,
+				B275A72A1A0C46530050510A /* GBRequestMethod.h */,
+				B275A72B1A0C46530050510A /* GBRequestMethod.m */,
+				B275A72C1A0C46530050510A /* GBUtils.h */,
+				B275A72D1A0C46530050510A /* GrowthbeatCore.h */,
+				B275A72E1A0C46530050510A /* GrowthbeatCore.m */,
 			);
 			name = GrowthbeatCore;
 			sourceTree = "<group>";
 		};
-		B2E7001B19967C2100799D78 = {
+		B275A73F1A0C46550050510A /* GrowthPush */ = {
 			isa = PBXGroup;
 			children = (
-				B2E7002B19967C2100799D78 /* Growthbeat */,
-				B2E7002819967C2100799D78 /* Frameworks */,
-				B2E7002719967C2100799D78 /* Products */,
+				B275A7411A0C466A0050510A /* GPClient.h */,
+				B275A7421A0C466A0050510A /* GPClient.m */,
+				B275A7431A0C466A0050510A /* GPClientService.h */,
+				B275A7441A0C466A0050510A /* GPClientService.m */,
+				B275A7451A0C466A0050510A /* GPDomain.h */,
+				B275A7461A0C466A0050510A /* GPDomain.m */,
+				B275A7471A0C466A0050510A /* GPEnvironment.h */,
+				B275A7481A0C466A0050510A /* GPEnvironmentUtils.m */,
+				B275A7491A0C466A0050510A /* GPEvent.h */,
+				B275A74A1A0C466A0050510A /* GPEvent.m */,
+				B275A74B1A0C466A0050510A /* GPEventService.h */,
+				B275A74C1A0C466A0050510A /* GPEventService.m */,
+				B275A74D1A0C466A0050510A /* GPOS.h */,
+				B275A74E1A0C466A0050510A /* GPOS.m */,
+				B275A74F1A0C466A0050510A /* GPService.h */,
+				B275A7501A0C466A0050510A /* GPService.m */,
+				B275A7511A0C466A0050510A /* GPTagService.h */,
+				B275A7521A0C466A0050510A /* GPTagService.m */,
+				B275A7531A0C466A0050510A /* GrowthPush.h */,
+				B275A7541A0C466A0050510A /* GrowthPush.m */,
+			);
+			name = GrowthPush;
+			sourceTree = "<group>";
+		};
+		B275A7401A0C465B0050510A /* GrowthReplay */ = {
+			isa = PBXGroup;
+			children = (
+				B275A75F1A0C46770050510A /* GRClient.h */,
+				B275A7601A0C46770050510A /* GRClient.m */,
+				B275A7611A0C46770050510A /* GRClientService.h */,
+				B275A7621A0C46770050510A /* GRClientService.m */,
+				B275A7631A0C46770050510A /* GRConfiguration.h */,
+				B275A7641A0C46770050510A /* GRConfiguration.m */,
+				B275A7651A0C46770050510A /* GRDomain.h */,
+				B275A7661A0C46770050510A /* GRDomain.m */,
+				B275A7671A0C46770050510A /* GrowthReplay.h */,
+				B275A7681A0C46770050510A /* GrowthReplay.m */,
+				B275A7691A0C46770050510A /* GRPicture.h */,
+				B275A76A1A0C46770050510A /* GRPicture.m */,
+				B275A76B1A0C46770050510A /* GRRecorder.h */,
+				B275A76C1A0C46770050510A /* GRRecorder.m */,
+				B275A76D1A0C46770050510A /* GRRecordStatus.h */,
+				B275A76E1A0C46770050510A /* GRRecordStatus.m */,
+				B275A76F1A0C46770050510A /* GRService.h */,
+				B275A7701A0C46770050510A /* GRService.m */,
+				B275A7711A0C46770050510A /* GRTagService.h */,
+				B275A7721A0C46770050510A /* GRTagService.m */,
+			);
+			name = GrowthReplay;
+			sourceTree = "<group>";
+		};
+		B2ED140E1A0C451E0078F6BC = {
+			isa = PBXGroup;
+			children = (
+				B275A7401A0C465B0050510A /* GrowthReplay */,
+				B275A73F1A0C46550050510A /* GrowthPush */,
+				B275A70C1A0C460F0050510A /* GrowthbeatCore */,
+				B2ED14191A0C451E0078F6BC /* Growthbeat */,
+				B2ED14261A0C451E0078F6BC /* GrowthbeatTests */,
+				B2ED14181A0C451E0078F6BC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B2E7002719967C2100799D78 /* Products */ = {
+		B2ED14181A0C451E0078F6BC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2E7002619967C2100799D78 /* Growthbeat.framework */,
+				B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */,
+				B2ED14221A0C451E0078F6BC /* GrowthbeatTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B2E7002819967C2100799D78 /* Frameworks */ = {
+		B2ED14191A0C451E0078F6BC /* Growthbeat */ = {
 			isa = PBXGroup;
 			children = (
-				B2E7002919967C2100799D78 /* Foundation.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B2E7002B19967C2100799D78 /* Growthbeat */ = {
-			isa = PBXGroup;
-			children = (
-				B25A64421997906B00E26665 /* GrowthbeatCore */,
-				B25A64191997904A00E26665 /* GrowthPush */,
-				B25341141997B0E6004C8EDB /* GrowthReplay */,
-				B2E7003219967C2100799D78 /* Growthbeat.h */,
-				B2E7003319967C2100799D78 /* Growthbeat.m */,
-				B2E7002C19967C2100799D78 /* Supporting Files */,
+				B275A6FE1A0C455D0050510A /* Growthbeat.h */,
+				B275A6FF1A0C455D0050510A /* Growthbeat.m */,
 			);
 			path = Growthbeat;
 			sourceTree = "<group>";
 		};
-		B2E7002C19967C2100799D78 /* Supporting Files */ = {
+		B2ED14261A0C451E0078F6BC /* GrowthbeatTests */ = {
 			isa = PBXGroup;
 			children = (
-				B2E7002D19967C2100799D78 /* Growthbeat-Info.plist */,
-				B2E7002E19967C2100799D78 /* InfoPlist.strings */,
-				B2E7003119967C2100799D78 /* Growthbeat-Prefix.pch */,
+				B2ED14271A0C451E0078F6BC /* Supporting Files */,
+			);
+			path = GrowthbeatTests;
+			sourceTree = "<group>";
+		};
+		B2ED14271A0C451E0078F6BC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B2ED14281A0C451E0078F6BC /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		B2E7002219967C2100799D78 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2421ECF1997944900E91C23 /* GrowthPush.h in Headers */,
-				B2421ECD1997944900E91C23 /* GPTagService.h in Headers */,
-				B2421EBF1997944900E91C23 /* GPClientService.h in Headers */,
-				B2421EC11997944900E91C23 /* GPDomain.h in Headers */,
-				B2421ECB1997944900E91C23 /* GPService.h in Headers */,
-				B2421EBD1997944900E91C23 /* GPClient.h in Headers */,
-				B2E7003E19967F6600799D78 /* Growthbeat.h in Headers */,
-				B2421EC71997944900E91C23 /* GPEventService.h in Headers */,
-				B253412B1997B108004C8EDB /* GRClientService.h in Headers */,
-				B25341311997B108004C8EDB /* GrowthReplay.h in Headers */,
-				B253416E1997B206004C8EDB /* GBHttpClient.h in Headers */,
-				B25341781997B206004C8EDB /* GBMultipartFile.h in Headers */,
-				B25341641997B206004C8EDB /* GBClient.h in Headers */,
-				B25341701997B206004C8EDB /* GBHttpRequest.h in Headers */,
-				B253416A1997B206004C8EDB /* GBDeviceUtils.h in Headers */,
-				B25341621997B206004C8EDB /* GBApplication.h in Headers */,
-				B253416C1997B206004C8EDB /* GBDomain.h in Headers */,
-				B25341681997B206004C8EDB /* GBDateUtils.h in Headers */,
-				B25341761997B206004C8EDB /* GBLogger.h in Headers */,
-				B253417F1997B206004C8EDB /* GrowthbeatCore.h in Headers */,
-				B25341661997B206004C8EDB /* GBContentType.h in Headers */,
-				B253417E1997B206004C8EDB /* GBUtils.h in Headers */,
-				B25341611997B206004C8EDB /* GBAppDelegateWrapperDelegate.h in Headers */,
-				B253417C1997B206004C8EDB /* GBRequestMethod.h in Headers */,
-				B253415F1997B206004C8EDB /* GBAppDelegateWrapper.h in Headers */,
-				B253417A1997B206004C8EDB /* GBPreference.h in Headers */,
-				B25341721997B206004C8EDB /* GBHttpResponse.h in Headers */,
-				B25341741997B206004C8EDB /* GBHttpUtils.h in Headers */,
-				B253412D1997B108004C8EDB /* GRConfiguration.h in Headers */,
-				B25341351997B108004C8EDB /* GRRecorder.h in Headers */,
-				B253413B1997B108004C8EDB /* GRTagService.h in Headers */,
-				B25341291997B108004C8EDB /* GRClient.h in Headers */,
-				B25341391997B108004C8EDB /* GRService.h in Headers */,
-				B25341331997B108004C8EDB /* GRPicture.h in Headers */,
-				B253412F1997B108004C8EDB /* GRDomain.h in Headers */,
-				B25341371997B108004C8EDB /* GRRecordStatus.h in Headers */,
-				B2421EC91997944900E91C23 /* GPOS.h in Headers */,
-				B2421EC31997944900E91C23 /* GPEnvironment.h in Headers */,
-				B2421EC51997944900E91C23 /* GPEvent.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		B2E7002519967C2100799D78 /* Growthbeat */ = {
+		B2ED14161A0C451E0078F6BC /* Growthbeat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2E7003719967C2100799D78 /* Build configuration list for PBXNativeTarget "Growthbeat" */;
+			buildConfigurationList = B2ED142B1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "Growthbeat" */;
 			buildPhases = (
-				B2E7002019967C2100799D78 /* Sources */,
-				B2E7002119967C2100799D78 /* Frameworks */,
-				B2E7002219967C2100799D78 /* Headers */,
-				B2E7002319967C2100799D78 /* Resources */,
-				B2E7002419967C2100799D78 /* ShellScript */,
+				B2ED14131A0C451E0078F6BC /* Sources */,
+				B2ED14141A0C451E0078F6BC /* Frameworks */,
+				B2ED14151A0C451E0078F6BC /* CopyFiles */,
+				B275A7021A0C45870050510A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -394,48 +429,78 @@
 			);
 			name = Growthbeat;
 			productName = Growthbeat;
-			productReference = B2E7002619967C2100799D78 /* Growthbeat.framework */;
-			productType = "com.apple.product-type.framework.static";
+			productReference = B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B2ED14211A0C451E0078F6BC /* GrowthbeatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2ED142E1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "GrowthbeatTests" */;
+			buildPhases = (
+				B2ED141E1A0C451E0078F6BC /* Sources */,
+				B2ED141F1A0C451E0078F6BC /* Frameworks */,
+				B2ED14201A0C451E0078F6BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2ED14251A0C451E0078F6BC /* PBXTargetDependency */,
+			);
+			name = GrowthbeatTests;
+			productName = GrowthbeatTests;
+			productReference = B2ED14221A0C451E0078F6BC /* GrowthbeatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B2E7001C19967C2100799D78 /* Project object */ = {
+		B2ED140F1A0C451E0078F6BC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "SIROK, Inc.";
+				TargetAttributes = {
+					B275A7031A0C45A50050510A = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					B2ED14161A0C451E0078F6BC = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					B2ED14211A0C451E0078F6BC = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
 			};
-			buildConfigurationList = B2E7001F19967C2100799D78 /* Build configuration list for PBXProject "Growthbeat" */;
+			buildConfigurationList = B2ED14121A0C451E0078F6BC /* Build configuration list for PBXProject "Growthbeat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = B2E7001B19967C2100799D78;
-			productRefGroup = B2E7002719967C2100799D78 /* Products */;
+			mainGroup = B2ED140E1A0C451E0078F6BC;
+			productRefGroup = B2ED14181A0C451E0078F6BC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B2E7002519967C2100799D78 /* Growthbeat */,
+				B2ED14161A0C451E0078F6BC /* Growthbeat */,
+				B2ED14211A0C451E0078F6BC /* GrowthbeatTests */,
+				B275A7031A0C45A50050510A /* GrowthbeatFramework */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B2E7002319967C2100799D78 /* Resources */ = {
+		B2ED14201A0C451E0078F6BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2E7003019967C2100799D78 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B2E7002419967C2100799D78 /* ShellScript */ = {
+		B275A7021A0C45870050510A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -445,72 +510,107 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/python;
-			shellScript = "# TAG: BUILD SCRIPT (do not remove this comment)\n# Build script generated using https://github.com/kstenerud/iOS-Universal-Framework Mk 8 (beta 2012-06-16)\nimport logging\n\n\n##############################################################################\n#\n# Configuration\n#\n##############################################################################\n\n# Select which kind of framework to build.\n#\n# Note: Due to issues with Xcode's build process, if you select\n#       'embeddedframework', it will still show the regular framework\n#       (as a symlink) along side of the embedded framework. Be sure to\n#       instruct your users to copy/move the embedded framework in this case!\n#\n# If your framework contains resources such as images, nibs, momds, plists,\n# zipfiles and such, choose 'embeddedframework'.\n#\n# If your framework contains no resources, choose 'framework'.\n#\nconfig_framework_type = 'framework'\n#config_framework_type = 'embeddedframework'\n\n# Open the build directory in Finder when the universal framework is\n# successfully built.\n#\n# This value can be overridden by setting the UFW_OPEN_BUILD_DIR env variable\n# to True or False.\n#\n# Recommended setting: True\n#\nconfig_open_build_dir = True\n\n# If true, ensures that all public headers are stored in the framework under\n# the same directory hierarchy as they were in the source tree.\n#\n# Xcode by default places all headers at the same top level, but every other\n# build tool in the known universe preserves directory structure. For simple\n# libraries it doesn't really matter much, but for ports of existing software\n# packages or for bigger libraries, it makes sense to have more structure.\n#\n# The default is set to \"False\" since that's what most Xcode users are used to.\n#\n# Recommended setting: True for deep hierarchy projects, False otherwise.\n#\nconfig_deep_header_hierarchy = False\n\n# Specify where the top of the public header hierarchy is. This path is\n# relative to the project's dir (PROJECT_DIR). You can reference environment\n# variables using templating syntax (e.g. \"${TARGET_NAME}/Some/Subdir\")\n#\n# NOTE: Only used if config_deep_header_hierarchy is True.\n#\n# If this is set to None, the script will attempt to figure out for itself\n# where the top of the header hierarchy is by looking for common path prefixes\n# in the public header files. This process can fail if:\n# - You only have one public header file.\n# - Your source header files don't all have a common root.\n#\n# A common approach is to use \"${TARGET_NAME}\", working under the assumption\n# that all of your header files share the common root of a directory under\n# your project with the same name as your target (which is the Xcode default).\n#\n# Recommended setting: \"${TARGET_NAME}\"\n#\nconfig_deep_header_top = \"${TARGET_NAME}\"\n\n# Warn when \"DerivedData\" is detected in any of the header, library, or\n# framework search paths. In almost all cases, references to directories under\n# DerivedData are added as a result of an Xcode bug and must be manually\n# removed.\n#\n# Recommended setting: True\n#\nconfig_warn_derived_data = True\n\n# Warn if no headers were marked public in this framework.\n#\n# Recommended setting: True\n#\nconfig_warn_no_public_headers = True\n\n# Cause the build to fail if any warnings are issued.\n#\n# Recommended setting: True\n#\nconfig_fail_on_warnings = True\n\n# Minimum log level\n#\n# Recommended setting: logging.INFO\n#\nconfig_log_level = logging.INFO\n\n\n##############################################################################\n#\n# Don't touch anything below here unless you know what you're doing.\n#\n##############################################################################\n\nimport collections\nimport json\nimport os\nimport re\nimport shlex\nimport shutil\nimport string\nimport subprocess\nimport sys\nimport time\nimport traceback\n\n\n##############################################################################\n#\n# Globals\n#\n##############################################################################\n\nlog = logging.getLogger('UFW')\n\nissued_warnings = False\n\n\n##############################################################################\n#\n# Classes\n#\n##############################################################################\n\n# Allows the slave build to communicate with the master build.\n#\nclass BuildState:\n\n    def __init__(self):\n        self.reload()\n\n    def reset(self):\n        self.slave_platform = None\n        self.slave_architectures = []\n        self.slave_linked_archive_paths = []\n        self.slave_built_fw_path = None\n        self.slave_built_embedded_fw_path = None\n\n    def set_slave_properties(self, architectures,\n                             linked_archive_paths,\n                             built_fw_path,\n                             built_embedded_fw_path):\n        self.slave_platform = os.environ['PLATFORM_NAME']\n        self.slave_architectures = architectures\n        self.slave_linked_archive_paths = linked_archive_paths\n        self.slave_built_fw_path = built_fw_path\n        self.slave_built_embedded_fw_path = built_embedded_fw_path\n\n    def get_save_path(self):\n        return os.path.join(os.environ['PROJECT_TEMP_DIR'], \"ufw_build_state.json\")\n\n    def persist(self):\n        filename = self.get_save_path()\n        parent = os.path.dirname(filename)\n        if not os.path.isdir(parent):\n            os.makedirs(parent)\n        with open(filename, \"w\") as f:\n            f.write(json.dumps(self.__dict__))\n\n    def reload(self):\n        self.reset()\n        filename = self.get_save_path()\n        if os.path.exists(filename):\n            with open(filename, \"r\") as f:\n                new_dict = json.loads(f.read())\n                if new_dict is not None:\n                    self.__dict__ = dict(self.__dict__.items() + new_dict.items())\n\n\n# Holds information about the current project and build environment.\n#\nclass Project:\n\n    def __init__(self, filename):\n        sourcecode_types = ['sourcecode.c.c',\n                            'sourcecode.c.objc',\n                            'sourcecode.cpp.cpp',\n                            'sourcecode.cpp.objcpp',\n                            'sourcecode.asm.asm',\n                            'sourcecode.asm.llvm',\n                            'sourcecode.nasm']\n\n        self.build_state = BuildState()\n        self.project_data = self.load_from_file(filename)\n        self.target = filter(lambda x: x['name'] == os.environ['TARGET_NAME'], self.project_data['targets'])[0]\n        self.public_headers = self.get_build_phase_files('PBXHeadersBuildPhase', lambda x: x.get('settings', False) and x['settings'].get('ATTRIBUTES', False) and 'Public' in x['settings']['ATTRIBUTES'])\n        self.static_libraries = self.get_build_phase_files('PBXFrameworksBuildPhase', lambda x: x['fileRef']['fileType'] == 'archive.ar' and x['fileRef']['sourceTree'] not in ['DEVELOPER_DIR', 'SDKROOT'])\n        self.static_frameworks = self.get_build_phase_files('PBXFrameworksBuildPhase', lambda x: x['fileRef']['fileType'] == 'wrapper.framework' and x['fileRef']['sourceTree'] not in ['DEVELOPER_DIR', 'SDKROOT'])\n        self.compilable_sources = self.get_build_phase_files('PBXSourcesBuildPhase', lambda x: x['fileRef']['fileType'] in sourcecode_types)\n        self.header_paths = [os.path.join(*x['pathComponents']) for x in self.public_headers]\n\n        self.headers_dir = os.path.join(os.environ['TARGET_BUILD_DIR'], os.environ['CONTENTS_FOLDER_PATH'], 'Headers')\n        self.libtool_path = os.path.join(os.environ['DT_TOOLCHAIN_DIR'], 'usr', 'bin', 'libtool')\n        self.project_filename = os.path.join(os.environ['PROJECT_FILE_PATH'], \"project.pbxproj\")\n        self.local_exe_path = os.path.join(os.environ['TARGET_BUILD_DIR'], os.environ['EXECUTABLE_PATH'])\n        self.local_architectures = os.environ['ARCHS'].split(' ')\n        self.local_built_fw_path = os.path.join(os.environ['TARGET_BUILD_DIR'], os.environ['WRAPPER_NAME'])\n        self.local_built_embedded_fw_path = os.path.splitext(self.local_built_fw_path)[0] + \".embeddedframework\"\n        self.local_linked_archive_paths = [self.get_linked_ufw_archive_path(arch) for arch in self.local_architectures]\n        self.local_platform = os.environ['PLATFORM_NAME']\n        other_platforms = os.environ['SUPPORTED_PLATFORMS'].split(' ')\n        other_platforms.remove(self.local_platform)\n        self.other_platform = other_platforms[0]\n\n        sdk_name = os.environ['SDK_NAME']\n        if not sdk_name.startswith(self.local_platform):\n            raise Exception(\"%s didn't start with %s\" % (sdk_name, self.local_platform))\n        self.sdk_version = sdk_name[len(self.local_platform):]\n\n    # Load an Xcode project file.\n    #\n    def load_from_file(self, filename):\n        project_file = json.loads(subprocess.check_output([\"plutil\", \"-convert\", \"json\", \"-o\", \"-\", filename]))\n        all_objects = project_file['objects']\n        del project_file['objects']\n        for obj in all_objects.values():\n            self.fix_keys(obj)\n        self.unpack_objects(self.build_dereference_list(all_objects, None, None, project_file))\n        self.unpack_objects(self.build_dereference_list(all_objects, None, None, all_objects.values()))\n        project_data = project_file['rootObject']\n        self.build_full_paths(project_data, splitpath(os.environ['SOURCE_ROOT']))\n        return project_data\n\n    def is_key(self, obj):        \n        return isinstance(obj, basestring) and len(obj) == 24 and re.search('^[0-9a-fA-F]+$', obj) is not None\n    \n    def build_dereference_list(self, all_objects, parent, key, obj):\n        deref_list = []\n        if self.is_key(obj):\n            dereferenced = all_objects.get(obj, obj)\n            if dereferenced is not obj:\n                deref_list.append((parent, key, obj, dereferenced))\n        elif isinstance(obj, collections.Mapping):\n            for k, v in obj.iteritems():\n                deref_list += self.build_dereference_list(all_objects, obj, k, v)\n        elif isinstance(obj, collections.Iterable) and not isinstance(obj, basestring):\n            for item in obj:\n                deref_list += self.build_dereference_list(all_objects, obj, None, item)\n        return deref_list\n    \n    def unpack_objects(self, deref_list):\n        for parent, key, orig, obj in deref_list:\n            if key is None:\n                parent.remove(orig)\n                parent.append(obj)\n            else:\n                parent[key] = obj\n\n    # Store the full path, separated into components, to a node inside the node\n    # as \"pathComponents\". Also recurse into that node if it's a group.\n    #\n    def build_full_paths(self, node, base_path):\n        # Some nodes are relative to a different source tree, specified as an\n        # env variable.\n        if node.get('sourceTree', '<group>') != '<group>':\n            new_base_path = os.environ.get(node['sourceTree'], None)\n            if new_base_path:\n                base_path = splitpath(new_base_path)\n        # Add the current node's path, if any.\n        if node.get('path', False):\n            base_path = base_path + splitpath(node['path'])\n        node['pathComponents'] = base_path\n        # Recurse if this is a group.\n        if node['isa'] == 'PBXGroup':\n            for child in node['children']:\n                self.build_full_paths(child, base_path)\n        elif node['isa'] == 'PBXProject':\n            self.build_full_paths(node['mainGroup'], base_path)\n            self.build_full_paths(node['productRefGroup'], base_path)\n            for child in node['targets']:\n                self.build_full_paths(child, base_path)\n            projectRefs = node.get('projectReferences', None)\n            if projectRefs is not None:\n                for child in projectRefs[0].values():\n                    self.build_full_paths(child, base_path)\n\n    # Fix up any inconvenient keys.\n    #\n    def fix_keys(self, obj):\n        key_remappings = {'lastKnownFileType': 'fileType', 'explicitFileType': 'fileType'}\n        for key in list(set(key_remappings.keys()) & set(obj.keys())):\n            obj[key_remappings[key]] = obj[key]\n            del obj[key]\n\n    # Get the files from a build phase.\n    #\n    def get_build_phase_files(self, build_phase_name, filter_func):\n        build_phase = filter(lambda x: x['isa'] == build_phase_name, self.target['buildPhases'])[0]\n        build_files = filter(filter_func, build_phase['files'])\n        return [x['fileRef'] for x in build_files]\n\n    # Get the truncated paths of all headers that start with the specified\n    # relative path. Paths are read and returned as fully separated lists.\n    # e.g. ['Some', 'Path', 'To', 'A', 'Header'] with relative_path of\n    # ['Some', 'Path'] gets truncated to ['To', 'A', 'Header']\n    #\n    def movable_headers_relative_to(self, relative_path):\n        rel_path_length = len(relative_path)\n        result = filter(lambda path: len(path) >= rel_path_length and\n                                     path[:rel_path_length] == relative_path, self.header_paths)\n        return [path[rel_path_length:] for path in result]\n\n    # Get the full path to where a linkable archive (library or framework)\n    # is supposed to be.\n    #\n    def get_linked_archive_path(self, architecture):\n        return os.path.join(os.environ['OBJECT_FILE_DIR_%s' % os.environ['CURRENT_VARIANT']],\n                            architecture,\n                            os.environ['EXECUTABLE_NAME'])\n\n    # Get the full path to our custom linked archive of the project.\n    #\n    def get_linked_ufw_archive_path(self, architecture):\n        return self.get_linked_archive_path(architecture) + \".ufwbuild\"\n\n    # Get the full path to the executable of an archive.\n    #\n    def get_exe_path(self, node):\n        path = os.path.join(*node['pathComponents'])\n        if node['fileType'] == 'wrapper.framework':\n            # Frameworks are directories, so go one deeper\n            path = os.path.join(path, os.path.splitext(node['pathComponents'][-1])[0])\n        return path\n\n    # Get the path to the directory containing the archive.\n    #\n    def get_containing_path(self, node):\n        return os.path.join(*node['pathComponents'])\n    \n    def get_archive_search_paths(self):\n        log.info(\"Search paths = %s\" % set([self.get_containing_path(fw) for fw in self.static_frameworks] + [self.get_containing_path(fw) for fw in self.static_libraries]))\n        return set([self.get_containing_path(fw) for fw in self.static_frameworks] + [self.get_containing_path(fw) for fw in self.static_libraries])\n\n    # Command to link all objects of a single architecture.\n    #\n    def get_single_arch_link_command(self, architecture):\n        cmd = [self.libtool_path,\n               \"-static\",\n               \"-arch_only\", architecture,\n               \"-syslibroot\", os.environ['SDKROOT'],\n               \"-L%s\" % os.environ['TARGET_BUILD_DIR'],\n               \"-filelist\", os.environ['LINK_FILE_LIST_%s_%s' % (os.environ['CURRENT_VARIANT'], architecture)]]\n        if os.environ.get('OTHER_LDFLAGS', False):\n            cmd += [os.environ['OTHER_LDFLAGS']]\n        if os.environ.get('WARNING_LDFLAGS', False):\n            cmd += [os.environ['WARNING_LDFLAGS']]\n#        cmd += [\"-L%s\" % libpath for libpath in self.get_archive_search_paths()]\n        cmd += [self.get_exe_path(fw) for fw in self.static_frameworks]\n        cmd += [self.get_exe_path(lib) for lib in self.static_libraries]\n        cmd += [\"-o\", self.get_linked_ufw_archive_path(architecture)]\n        return cmd\n\n    # Command to link all local architectures for the current configuration\n    # into an archive. This reads all libraries + the UFW-built archives and\n    # overwrites the final product.\n    #\n    def get_local_archs_link_command(self):\n        cmd = [self.libtool_path,\n               \"-static\"]\n        cmd += self.local_linked_archive_paths\n        cmd += [self.get_exe_path(fw) for fw in self.static_frameworks]\n        cmd += [self.get_exe_path(lib) for lib in self.static_libraries]\n        cmd += [\"-o\", os.path.join(os.environ['TARGET_BUILD_DIR'], os.environ['EXECUTABLE_PATH'])]\n        return cmd\n\n    # Command to link all architectures into a universal archive.\n    # This reads all UFW-built archives and overwrites the final product.\n    #\n    def get_all_archs_link_command(self):\n        cmd = [self.libtool_path,\n               \"-static\"]\n        cmd += self.local_linked_archive_paths + self.build_state.slave_linked_archive_paths\n        cmd += [\"-o\", os.path.join(os.environ['TARGET_BUILD_DIR'], os.environ['EXECUTABLE_PATH'])]\n        return cmd\n\n    # Build up an environment for the slave process. This uses BUILD_ROOT\n    # and TEMP_ROOT to convert all environment variables to values suitable\n    # for the slave build environment so that xcodebuild doesn't try to build\n    # in the project directory under \"build\".\n    #\n    def get_slave_environment(self):\n        ignored = ['LD_MAP_FILE_PATH',\n        'HEADER_SEARCH_PATHS',\n        'LIBRARY_SEARCH_PATHS',\n        'FRAMEWORK_SEARCH_PATHS']\n        build_root = os.environ['BUILD_ROOT']\n        temp_root = os.environ['TEMP_ROOT']\n        newenv = {}\n        for key, value in os.environ.items():\n            if key not in ignored and not key.startswith('LINK_FILE_LIST_') and not key.startswith('LD_DEPENDENCY_'):\n                if build_root in value or temp_root in value:\n                    newenv[key] = value.replace(self.local_platform, self.other_platform)\n        return newenv\n\n    # Command to invoke xcodebuild on the slave platform.\n    #\n    def get_slave_project_build_command(self):\n        cmd = [\"xcodebuild\",\n               \"-project\",\n               os.environ['PROJECT_FILE_PATH'],\n               \"-target\",\n               os.environ['TARGET_NAME'],\n               \"-configuration\",\n               os.environ['CONFIGURATION'],\n               \"-sdk\",\n               self.other_platform + self.sdk_version]\n        cmd += [\"%s=%s\" % (key, value) for key, value in self.get_slave_environment().items()]\n        cmd += [\"UFW_MASTER_PLATFORM=\" + os.environ['PLATFORM_NAME']]\n        cmd += [os.environ['ACTION']]\n        return cmd\n\n\n\n##############################################################################\n#\n# Utility Functions\n#\n##############################################################################\n\n# Split a path into a list of path components.\n#\ndef splitpath(path, maxdepth=20):\n     (head, tail) = os.path.split(path)\n     return splitpath(head, maxdepth - 1) + [tail] if maxdepth and head and head != path else [ head or tail ]\n\n# Remove all subdirectories under a path.\n#\ndef remove_subdirs(path, ignore_files):\n    if os.path.exists(path):\n        for filename in filter(lambda x: x not in ignore_files, os.listdir(path)):\n            fullpath = os.path.join(path, filename)\n            if os.path.isdir(fullpath):\n                log.info(\"Remove %s\" % fullpath)\n                shutil.rmtree(fullpath)\n\n# Make whatever parent paths are necessary for a path to exist.\n#\ndef ensure_path_exists(path):\n    if not os.path.isdir(path):\n        os.makedirs(path)\n\n# Make whatever parent paths are necessary for a path's parent to exist.\n#\ndef ensure_parent_exists(path):\n    parent = os.path.dirname(path)\n    if not os.path.isdir(parent):\n        os.makedirs(parent)\n\n# Remove a file or dir if it exists.\n#\ndef remove_path(path):\n    if os.path.exists(path):\n        if os.path.isdir(path) and not os.path.islink(path):\n            shutil.rmtree(path)\n        else:\n            os.remove(path)\n\n# Move a file or dir, replacing the destination if it exists.\n#\ndef move_file(src, dst):\n    if src == dst or not os.path.isfile(src):\n        return\n    log.info(\"Move %s to %s\" % (src, dst))\n    ensure_parent_exists(dst)\n    remove_path(dst)\n    shutil.move(src, dst)\n\n# Copy a file or dir, replacing the destination if it exists already.\n#\ndef copy_overwrite(src, dst):\n    if src != dst:\n        remove_path(dst)\n        ensure_parent_exists(dst)\n        shutil.copytree(src, dst, symlinks=True)\n\n# Attempt to symlink link_path -> link_to.\n# link_to must be a path relative to link_path's parent and must exist.\n# If link_path already exists, do nothing.\n#\ndef attempt_symlink(link_path, link_to):\n    # Only allow linking to an existing file\n    os.stat(os.path.abspath(os.path.join(link_path, \"..\", link_to)))\n\n    # Only make the link if it hasn't already been made\n    if not os.path.exists(link_path):\n        log.info(\"Symlink %s -> %s\" % (link_path, link_to))\n        os.symlink(link_to, link_path)\n\n# Takes the last entry in an array-based path and returns a normal path\n# relative to base_path.\n#\ndef top_level_file_path(base_path, path_list):\n    return os.path.join(base_path, os.path.split(path_list[-1])[-1])\n\n# Takes all entries in an array-based path and returns a normal path\n# relative to base_path.\n#\ndef full_file_path(base_path, path_list):\n    return os.path.join(*([base_path] + path_list))\n\n# Print a command before executing it.\n# Also print out all output from the command to STDOUT.\n#\ndef print_and_call(cmd):\n    log.info(\"Cmd \" + \" \".join(cmd))\n    p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)\n    result = p.communicate()[0]\n    if len(result) > 0:\n        log.info(result)\n    if p.returncode != 0:\n        raise subprocess.CalledProcessError(p.returncode, cmd)\n\n# Special print-and-call command for the slave build that strips out\n# xcodebuild's spammy list of environment variables.\n#\ndef print_and_call_slave_build(cmd, other_platform):\n    separator = '=== BUILD NATIVE TARGET '\n    p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)\n    result = p.communicate()[0].split(separator)\n    if len(result) == 1:\n        result = result[0]\n    else:\n        result = separator + result[1]\n    log.info(\"Cmd \" + \" \".join(cmd) + \"\\n\" + result)\n    if p.returncode != 0:\n        raise subprocess.CalledProcessError(p.returncode, cmd)\n\n# Issue a warning and record that a warning has been issued.\n#\ndef issue_warning(msg, *args, **kwargs):\n    global issued_warnings\n    issued_warnings = True\n    log.warn(msg, *args, **kwargs)\n\n\n\n##############################################################################\n#\n# Main Application\n#\n##############################################################################\n\n# Check if we are running as master.\n#\ndef is_master():\n    return os.environ.get('UFW_MASTER_PLATFORM', os.environ['PLATFORM_NAME']) == os.environ['PLATFORM_NAME']\n\n# DerivedData should almost never appear in any framework, library, or header\n# search paths. However, Xcode will sometimes add them in, so we check to make\n# sure.\n#\ndef check_for_derived_data_in_search_paths(project):\n    search_path_keys = [\"FRAMEWORK_SEARCH_PATHS\", \"LIBRARY_SEARCH_PATHS\", \"HEADER_SEARCH_PATHS\"]\n    build_configs = project.target['buildConfigurationList']['buildConfigurations']\n    build_settings = filter(lambda x: x['name'] == os.environ['CONFIGURATION'], build_configs)[0]['buildSettings']\n    \n    found_something = False\n    for path_key in filter(lambda x: x in build_settings, search_path_keys):\n        path = build_settings[path_key]\n        if \"DerivedData\" in path:\n            found_something = True\n            log.warn(\"Derived data in %s\" % path)\n            issue_warning(\"'%s' contains reference to 'DerivedData'.\" % path_key)\n    if found_something:\n        log.warn(\"Check your build settings and remove any entries that contain paths inside the DerivedData folder.\")\n        log.warn(\"Otherwise you can disable this warning by changing 'config_warn_derived_data' in this script.\")\n\n# Link local architectures into their respective archives.\n#\ndef link_local_archs(project):\n    for arch in project.local_architectures:\n        print_and_call(project.get_single_arch_link_command(arch))\n\n# Link only the local architectures into the final product, not the slave\n# architectures. For iphoneos, this will be armv6, armv7. For simulator, this\n# will be i386.\n#\ndef link_combine_local_archs(project):\n    print_and_call(project.get_local_archs_link_command())\n\n# Link all architectures into the final product.\n#\ndef link_combine_all_archs(project):\n    print_and_call(project.get_all_archs_link_command())\n\n# Check if we should open the build directory after a successful build.\n#\ndef should_open_build_dir():\n    env_setting = os.environ.get('UFW_OPEN_BUILD_DIR', None)\n    if env_setting is not None:\n        return env_setting\n\n    return config_open_build_dir\n\n# Open the build dir in Finder.\n#\ndef open_build_dir():\n    print_and_call(['open', os.environ['TARGET_BUILD_DIR']])\n\n# Check if the build was started by selecting \"Archive\" under \"Product\" in\n# Xcode.\n#\ndef is_archive_build():\n    # ACTION is always 'build', but perhaps Apple will fix this someday?\n    archive_build = os.environ['ACTION'] == 'archive'\n\n    if not archive_build:\n        # This can be passed in as an env variable when building from command line.\n        archive_build = os.environ.get('UFW_ACTION', None) == 'archive'\n\n    build_dir = splitpath(os.environ['BUILD_DIR'])\n    if not archive_build:\n        # This partial path is used when you select \"archive\" from within Xcode.\n        archive_build = 'ArchiveIntermediates' in build_dir\n\n    # It only counts as a full archive build if this target is being built into\n    # its own build dir (not being built as a dependency of another target)\n    if archive_build:\n        archive_build = os.environ['TARGET_NAME'] in build_dir\n    \n    return archive_build\n\n# Xcode by default throws all public headers into the top level directory.\n# This function moves them to their expected deep hierarchy.\n#\ndef build_deep_header_hierarchy(project):\n    header_path_top = config_deep_header_top\n    if not header_path_top:\n        header_path_top = os.path.commonprefix(project.header_paths)\n    else:\n        header_path_top = splitpath(header_path_top)\n\n    built_headers_path = os.path.join(os.environ['TARGET_BUILD_DIR'], os.environ['PUBLIC_HEADERS_FOLDER_PATH'])\n    movable_headers = project.movable_headers_relative_to(header_path_top)\n\n    # Remove subdirs if they only contain files that have been rebuilt\n    ignore_headers = filter(lambda x: not os.path.isfile(top_level_file_path(built_headers_path, x)), movable_headers)\n    remove_subdirs(built_headers_path, [file[0] for file in ignore_headers])\n\n    # Move rebuilt headers into their proper subdirs\n    for header in movable_headers:\n        move_file(top_level_file_path(built_headers_path, header), full_file_path(built_headers_path, header))\n\n# Add all symlinks needed to make a full framework structure:\n#\n# MyFramework.framework\n# |-- MyFramework -> Versions/Current/MyFramework\n# |-- Headers -> Versions/Current/Headers\n# |-- Resources -> Versions/Current/Resources\n# `-- Versions\n#     |-- A\n#     |   |-- MyFramework\n#     |   |-- Headers\n#     |   |   `-- MyFramework.h\n#     |   `-- Resources\n#     |       |-- Info.plist\n#     |       |-- MyViewController.nib\n#     |       `-- en.lproj\n#     |           `-- InfoPlist.strings\n#     `-- Current -> A\n#\ndef add_symlinks_to_framework(project):\n    base_dir = project.local_built_fw_path\n    attempt_symlink(os.path.join(base_dir, \"Versions\", \"Current\"), os.environ['FRAMEWORK_VERSION'])\n    if os.path.isdir(os.path.join(base_dir, \"Versions\", \"Current\", \"Headers\")):\n        attempt_symlink(os.path.join(base_dir, \"Headers\"), os.path.join(\"Versions\", \"Current\", \"Headers\"))\n    if os.path.isdir(os.path.join(base_dir, \"Versions\", \"Current\", \"Resources\")):\n        attempt_symlink(os.path.join(base_dir, \"Resources\"), os.path.join(\"Versions\", \"Current\", \"Resources\"))\n    attempt_symlink(os.path.join(base_dir, os.environ['EXECUTABLE_NAME']), os.path.join(\"Versions\", \"Current\", os.environ['EXECUTABLE_NAME']))\n\n# Build an embedded framework structure.\n# An embedded framework contains the actual framework, plus a \"Resources\"\n# directory containing symlinks to all resources found in the actual framework,\n# with the exception of \"Info.plist\" and anything ending in \".lproj\":\n#\n# MyFramework.embeddedframework\n# |-- MyFramework.framework\n# |   |-- MyFramework -> Versions/Current/MyFramework\n# |   |-- Headers -> Versions/Current/Headers\n# |   |-- Resources -> Versions/Current/Resources\n# |   `-- Versions\n# |       |-- A\n# |       |   |-- MyFramework\n# |       |   |-- Headers\n# |       |   |   `-- MyFramework.h\n# |       |   `-- Resources\n# |       |       |-- Info.plist\n# |       |       |-- MyViewController.nib\n# |       |       `-- en.lproj\n# |       |           `-- InfoPlist.strings\n# |       `-- Current -> A\n# `-- Resources\n#     `-- MyViewController.nib -> ../MyFramework.framework/Resources/MyViewController.nib\n#\ndef build_embedded_framework(project):\n    fw_path = project.local_built_fw_path\n    embedded_path = project.local_built_embedded_fw_path\n    fw_name = os.environ['WRAPPER_NAME']\n\n    if (os.path.islink(fw_path)):\n        # If the framework path is a link, the build result already in embeddedframework.\n        # Just recreate embeddedframework's Resources\n        remove_path(os.path.join(embedded_path, \"Resources\"))\n    else:\n        remove_path(embedded_path)\n        ensure_path_exists(embedded_path)\n        copy_overwrite(fw_path, os.path.join(embedded_path, fw_name))\n\n    # Create embeddedframework's Resources        \n    ensure_path_exists(os.path.join(embedded_path, \"Resources\"))\n    symlink_source = os.path.join(\"..\", fw_name, \"Resources\")\n    symlink_path = os.path.join(embedded_path, \"Resources\")\n    if os.path.isdir(os.path.join(fw_path, \"Resources\")):\n        for file in filter(lambda x: x != \"Info.plist\" and not x.endswith(\".lproj\"), os.listdir(os.path.join(fw_path, \"Resources\"))):\n            attempt_symlink(os.path.join(symlink_path, file), os.path.join(symlink_source, file))\n\n    # Remove the normal framework and replace it with a symlink to the copy\n    # in the embedded framework. This is needed because Xcode runs its strip\n    # phase AFTER the script runs.\n    embed_fw_wrapper = os.path.splitext(os.environ['WRAPPER_NAME'])[0] + \".embeddedframework\"\n    remove_path(fw_path)\n    attempt_symlink(fw_path, os.path.join(embed_fw_wrapper, os.environ['WRAPPER_NAME']))\n\n\n# Run the build process in slave mode to build the other configuration\n# (device/simulator).\n#\ndef run_slave_build(project):\n    print_and_call_slave_build(project.get_slave_project_build_command(), project.other_platform)\n\n# Run the build process.\n#\ndef run_build():\n    project = Project(os.path.join(os.environ['PROJECT_FILE_PATH'], \"project.pbxproj\"))\n\n    # Issue warnings only if we're master.\n    if is_master():\n        if len(project.compilable_sources) == 0:\n            raise Exception(\"No compilable sources found. Please add at least one source file to build target %s.\" % os.environ['TARGET_NAME'])\n\n        if config_warn_derived_data:\n            check_for_derived_data_in_search_paths(project)\n        if config_warn_no_public_headers and len(project.public_headers) == 0:\n            issue_warning('No headers in build target %s were marked public. Please move at least one header to \"Public\" in the \"Copy Headers\" build phase.' % os.environ['TARGET_NAME'])\n\n    # Only build slave if this is an archive build.\n    if is_archive_build():\n        if is_master():\n            log.debug(\"Building as MASTER\")\n            # The slave-side linker tries to include this (nonexistent) path as\n            # a library path.\n            ensure_path_exists(project.get_slave_environment()['BUILT_PRODUCTS_DIR'])\n            project.build_state.persist()\n            run_slave_build(project)\n            project.build_state.reload()\n        else:\n            log.debug(\"Building as SLAVE\")\n            project.build_state.reload()\n            project.build_state.set_slave_properties(project.local_architectures,\n                                                     project.local_linked_archive_paths,\n                                                     project.local_built_fw_path,\n                                                     project.local_built_embedded_fw_path)\n            project.build_state.persist()\n\n    link_local_archs(project)\n    \n    # Only do a universal binary when building an archive.\n    if is_archive_build() and is_master():\n        link_combine_all_archs(project)\n    else:\n        link_combine_local_archs(project)\n\n    if config_deep_header_hierarchy:\n        build_deep_header_hierarchy(project)\n\n    add_symlinks_to_framework(project)\n    \n    if is_master():\n        if config_framework_type == 'embeddedframework':\n            build_embedded_framework(project)\n        elif config_framework_type != 'framework':\n            raise Exception(\"%s: Unknown framework type for config_framework_type\" % config_framework_type)\n\n\nif __name__ == \"__main__\":\n    log_handler = logging.StreamHandler()\n    log_handler.setFormatter(logging.Formatter(\"%(name)s (\" + os.environ['PLATFORM_NAME'] + \"): %(levelname)s: %(message)s\"))\n    log.addHandler(log_handler)\n    log.setLevel(config_log_level)\n\n    error_code = 0\n    prefix = \"M\" if is_master() else \"S\"\n    log_handler.setFormatter(logging.Formatter(\"%(name)s (\" + prefix + \" \" + os.environ['PLATFORM_NAME'] + \"): %(levelname)s: %(message)s\"))\n\n    log.debug(\"Begin build process\")\n\n    if config_deep_header_top:\n        config_deep_header_top = string.Template(config_deep_header_top).substitute(os.environ)\n\n    try:\n        run_build()\n        if issued_warnings:\n            if config_fail_on_warnings:\n                error_code = 1\n            log.warn(\"Build completed with warnings\")\n        else:\n            log.info(\"Build completed\")\n        if not is_archive_build():\n            log.info(\"Note: This is *NOT* a universal framework build. To build as a universal framework, do an archive build.\")\n            log.info(\"To do an archive build from command line, use \\\"xcodebuild -configuration Release UFW_ACTION=archive clean build\\\"\")\n    except Exception:\n        traceback.print_exc(file=sys.stdout)\n        error_code = 1\n        log.error(\"Build failed\")\n    finally:\n        if error_code == 0 and is_archive_build() and is_master():\n            log.info(\"Built framework is in \" + os.environ['TARGET_BUILD_DIR'])\n            if should_open_build_dir():\n                open_build_dir()\n        sys.exit(error_code)\n";
-			showEnvVarsInLog = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		B275A7091A0C45B50050510A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Open products directory\nopen \"${BUILT_PRODUCTS_DIR}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B2E7002019967C2100799D78 /* Sources */ = {
+		B2ED14131A0C451E0078F6BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2421EC01997944900E91C23 /* GPClientService.m in Sources */,
-				B2421EC61997944900E91C23 /* GPEvent.m in Sources */,
-				B25341751997B206004C8EDB /* GBHttpUtils.m in Sources */,
-				B253417D1997B206004C8EDB /* GBRequestMethod.m in Sources */,
-				B2421ECC1997944900E91C23 /* GPService.m in Sources */,
-				B253412C1997B108004C8EDB /* GRClientService.m in Sources */,
-				B2421ED01997944900E91C23 /* GrowthPush.m in Sources */,
-				B25341651997B206004C8EDB /* GBClient.m in Sources */,
-				B25341791997B206004C8EDB /* GBMultipartFile.m in Sources */,
-				B253416D1997B206004C8EDB /* GBDomain.m in Sources */,
-				B25341691997B206004C8EDB /* GBDateUtils.m in Sources */,
-				B2421ECE1997944900E91C23 /* GPTagService.m in Sources */,
-				B253413A1997B108004C8EDB /* GRService.m in Sources */,
-				B25341711997B206004C8EDB /* GBHttpRequest.m in Sources */,
-				B253416F1997B206004C8EDB /* GBHttpClient.m in Sources */,
-				B25341631997B206004C8EDB /* GBApplication.m in Sources */,
-				B25341771997B206004C8EDB /* GBLogger.m in Sources */,
-				B25341321997B108004C8EDB /* GrowthReplay.m in Sources */,
-				B253412E1997B108004C8EDB /* GRConfiguration.m in Sources */,
-				B2421EC21997944900E91C23 /* GPDomain.m in Sources */,
-				B25341301997B108004C8EDB /* GRDomain.m in Sources */,
-				B2E7003419967C2100799D78 /* Growthbeat.m in Sources */,
-				B2421EBE1997944900E91C23 /* GPClient.m in Sources */,
-				B253417B1997B206004C8EDB /* GBPreference.m in Sources */,
-				B253413C1997B108004C8EDB /* GRTagService.m in Sources */,
-				B25341361997B108004C8EDB /* GRRecorder.m in Sources */,
-				B25341341997B108004C8EDB /* GRPicture.m in Sources */,
-				B2421ECA1997944900E91C23 /* GPOS.m in Sources */,
-				B25341381997B108004C8EDB /* GRRecordStatus.m in Sources */,
-				B25341731997B206004C8EDB /* GBHttpResponse.m in Sources */,
-				B2421EC41997944900E91C23 /* GPEnvironmentUtils.m in Sources */,
-				B25341671997B206004C8EDB /* GBContentType.m in Sources */,
-				B25341801997B206004C8EDB /* GrowthbeatCore.m in Sources */,
-				B25341601997B206004C8EDB /* GBAppDelegateWrapper.m in Sources */,
-				B253412A1997B108004C8EDB /* GRClient.m in Sources */,
-				B253416B1997B206004C8EDB /* GBDeviceUtils.m in Sources */,
-				B2421EC81997944900E91C23 /* GPEventService.m in Sources */,
+				B275A7561A0C466A0050510A /* GPClientService.m in Sources */,
+				B275A7741A0C46770050510A /* GRClientService.m in Sources */,
+				B275A7371A0C46530050510A /* GBHttpRequest.m in Sources */,
+				B275A7761A0C46770050510A /* GRDomain.m in Sources */,
+				B275A75B1A0C466A0050510A /* GPOS.m in Sources */,
+				B275A75C1A0C466A0050510A /* GPService.m in Sources */,
+				B275A7551A0C466A0050510A /* GPClient.m in Sources */,
+				B275A7781A0C46770050510A /* GRPicture.m in Sources */,
+				B275A77B1A0C46770050510A /* GRService.m in Sources */,
+				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
+				B275A7581A0C466A0050510A /* GPEnvironmentUtils.m in Sources */,
+				B275A7391A0C46530050510A /* GBHttpUtils.m in Sources */,
+				B275A73E1A0C46530050510A /* GrowthbeatCore.m in Sources */,
+				B275A7361A0C46530050510A /* GBHttpClient.m in Sources */,
+				B275A7321A0C46530050510A /* GBContentType.m in Sources */,
+				B275A77A1A0C46770050510A /* GRRecordStatus.m in Sources */,
+				B275A73B1A0C46530050510A /* GBMultipartFile.m in Sources */,
+				B275A7311A0C46530050510A /* GBClient.m in Sources */,
+				B275A7591A0C466A0050510A /* GPEvent.m in Sources */,
+				B275A7381A0C46530050510A /* GBHttpResponse.m in Sources */,
+				B275A7771A0C46770050510A /* GrowthReplay.m in Sources */,
+				B275A72F1A0C46530050510A /* GBAppDelegateWrapper.m in Sources */,
+				B275A7571A0C466A0050510A /* GPDomain.m in Sources */,
+				B275A77C1A0C46770050510A /* GRTagService.m in Sources */,
+				B275A7731A0C46770050510A /* GRClient.m in Sources */,
+				B275A7331A0C46530050510A /* GBDateUtils.m in Sources */,
+				B275A75A1A0C466A0050510A /* GPEventService.m in Sources */,
+				B275A75E1A0C466A0050510A /* GrowthPush.m in Sources */,
+				B275A7301A0C46530050510A /* GBApplication.m in Sources */,
+				B275A7351A0C46530050510A /* GBDomain.m in Sources */,
+				B275A73C1A0C46530050510A /* GBPreference.m in Sources */,
+				B275A73A1A0C46530050510A /* GBLogger.m in Sources */,
+				B275A7341A0C46530050510A /* GBDeviceUtils.m in Sources */,
+				B275A7751A0C46770050510A /* GRConfiguration.m in Sources */,
+				B275A73D1A0C46530050510A /* GBRequestMethod.m in Sources */,
+				B275A7791A0C46770050510A /* GRRecorder.m in Sources */,
+				B275A75D1A0C466A0050510A /* GPTagService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2ED141E1A0C451E0078F6BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		B2E7002E19967C2100799D78 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2E7002F19967C2100799D78 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		B275A7081A0C45AC0050510A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2ED14161A0C451E0078F6BC /* Growthbeat */;
+			targetProxy = B275A7071A0C45AC0050510A /* PBXContainerItemProxy */;
 		};
-/* End PBXVariantGroup section */
+		B2ED14251A0C451E0078F6BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2ED14161A0C451E0078F6BC /* Growthbeat */;
+			targetProxy = B2ED14241A0C451E0078F6BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		B2E7003519967C2100799D78 /* Debug */ = {
+		B275A7051A0C45A50050510A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B275A7061A0C45A50050510A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B2ED14291A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -525,8 +625,10 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -541,13 +643,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
 		};
-		B2E7003619967C2100799D78 /* Release */ = {
+		B2ED142A1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -562,9 +666,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -572,74 +678,104 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Release;
 		};
-		B2E7003819967C2100799D78 /* Debug */ = {
+		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Growthbeat/Growthbeat-Prefix.pch";
-				INFOPLIST_FILE = "Growthbeat/Growthbeat-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
-		B2E7003919967C2100799D78 /* Release */ = {
+		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Growthbeat/Growthbeat-Prefix.pch";
-				INFOPLIST_FILE = "Growthbeat/Growthbeat-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		B2ED142F1A0C451E0078F6BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GrowthbeatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B2ED14301A0C451E0078F6BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GrowthbeatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B2E7001F19967C2100799D78 /* Build configuration list for PBXProject "Growthbeat" */ = {
+		B275A7041A0C45A50050510A /* Build configuration list for PBXAggregateTarget "GrowthbeatFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2E7003519967C2100799D78 /* Debug */,
-				B2E7003619967C2100799D78 /* Release */,
+				B275A7051A0C45A50050510A /* Debug */,
+				B275A7061A0C45A50050510A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B2ED14121A0C451E0078F6BC /* Build configuration list for PBXProject "Growthbeat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2ED14291A0C451E0078F6BC /* Debug */,
+				B2ED142A1A0C451E0078F6BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2E7003719967C2100799D78 /* Build configuration list for PBXNativeTarget "Growthbeat" */ = {
+		B2ED142B1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "Growthbeat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2E7003819967C2100799D78 /* Debug */,
-				B2E7003919967C2100799D78 /* Release */,
+				B2ED142C1A0C451E0078F6BC /* Debug */,
+				B2ED142D1A0C451E0078F6BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2ED142E1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "GrowthbeatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2ED142F1A0C451E0078F6BC /* Debug */,
+				B2ED14301A0C451E0078F6BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B2E7001C19967C2100799D78 /* Project object */;
+	rootObject = B2ED140F1A0C451E0078F6BC /* Project object */;
 }

@@ -1,5 +1,5 @@
 //
-//  GPHttpRequest.h
+//  GBHttpRequest.h
 //  pickaxe
 //
 //  Created by Kataoka Naoyuki on 2013/07/03.

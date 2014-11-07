@@ -11,6 +11,7 @@
 @interface GRTagService : GRService
 
 + (GRTagService *)sharedInstance;
-- (void)setTag:(long long)clientId token:(NSString *)token name:(NSString *)name value:(NSString *)value success:(void(^) (void)) success fail:(void(^) (NSInteger, NSError *))fail;
+
+- (void) setTag:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value success:(void (^)(void))success fail:(void (^)(NSInteger, NSError *))fail;
 
 @end
