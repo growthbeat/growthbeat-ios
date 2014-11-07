@@ -7,3 +7,6 @@
 [submodule "submodules/growthreplay-ios"]
 	path = submodules/growthreplay-ios
 	url = https://github.com/SIROK/growthreplay-ios.git
+[submodule "submodules/growthanalytics-ios"]
+	path = submodules/growthanalytics-ios
+	url = https://github.com/SIROK/growthanalytics-ios.git

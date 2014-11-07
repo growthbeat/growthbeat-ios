@@ -98,6 +98,20 @@
 		B275A7A01A0C46B80050510A /* GPService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A74F1A0C466A0050510A /* GPService.h */; };
 		B275A7A11A0C46B80050510A /* GPTagService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7511A0C466A0050510A /* GPTagService.h */; };
 		B275A7A21A0C46B80050510A /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7531A0C466A0050510A /* GrowthPush.h */; };
+		B275A7B21A0C47CB0050510A /* GAClientEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7A51A0C47CB0050510A /* GAClientEvent.m */; };
+		B275A7B31A0C47CB0050510A /* GAClientEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7A71A0C47CB0050510A /* GAClientEventService.m */; };
+		B275A7B41A0C47CB0050510A /* GAClientTag.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7A91A0C47CB0050510A /* GAClientTag.m */; };
+		B275A7B51A0C47CB0050510A /* GAClientTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7AB1A0C47CB0050510A /* GAClientTagService.m */; };
+		B275A7B61A0C47CB0050510A /* GADomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7AD1A0C47CB0050510A /* GADomain.m */; };
+		B275A7B71A0C47CB0050510A /* GAService.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7AF1A0C47CB0050510A /* GAService.m */; };
+		B275A7B81A0C47CB0050510A /* GrowthAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A7B11A0C47CB0050510A /* GrowthAnalytics.m */; };
+		B275A7B91A0C47DA0050510A /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7A41A0C47CB0050510A /* GAClientEvent.h */; };
+		B275A7BA1A0C47DA0050510A /* GAClientEventService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7A61A0C47CB0050510A /* GAClientEventService.h */; };
+		B275A7BB1A0C47DA0050510A /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7A81A0C47CB0050510A /* GAClientTag.h */; };
+		B275A7BC1A0C47DA0050510A /* GAClientTagService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7AA1A0C47CB0050510A /* GAClientTagService.h */; };
+		B275A7BD1A0C47DA0050510A /* GADomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7AC1A0C47CB0050510A /* GADomain.h */; };
+		B275A7BE1A0C47DA0050510A /* GAService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7AE1A0C47CB0050510A /* GAService.h */; };
+		B275A7BF1A0C47DA0050510A /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A7B01A0C47CB0050510A /* GrowthAnalytics.h */; };
 		B2ED14231A0C451E0078F6BC /* libGrowthbeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +139,13 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B275A7B91A0C47DA0050510A /* GAClientEvent.h in CopyFiles */,
+				B275A7BA1A0C47DA0050510A /* GAClientEventService.h in CopyFiles */,
+				B275A7BB1A0C47DA0050510A /* GAClientTag.h in CopyFiles */,
+				B275A7BC1A0C47DA0050510A /* GAClientTagService.h in CopyFiles */,
+				B275A7BD1A0C47DA0050510A /* GADomain.h in CopyFiles */,
+				B275A7BE1A0C47DA0050510A /* GAService.h in CopyFiles */,
+				B275A7BF1A0C47DA0050510A /* GrowthAnalytics.h in CopyFiles */,
 				B275A7991A0C46B80050510A /* GPClient.h in CopyFiles */,
 				B275A79A1A0C46B80050510A /* GPClientService.h in CopyFiles */,
 				B275A79B1A0C46B80050510A /* GPDomain.h in CopyFiles */,
@@ -246,6 +267,20 @@
 		B275A7701A0C46770050510A /* GRService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRService.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRService.m"; sourceTree = "<group>"; };
 		B275A7711A0C46770050510A /* GRTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRTagService.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRTagService.h"; sourceTree = "<group>"; };
 		B275A7721A0C46770050510A /* GRTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRTagService.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRTagService.m"; sourceTree = "<group>"; };
+		B275A7A41A0C47CB0050510A /* GAClientEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAClientEvent.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientEvent.h"; sourceTree = "<group>"; };
+		B275A7A51A0C47CB0050510A /* GAClientEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAClientEvent.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientEvent.m"; sourceTree = "<group>"; };
+		B275A7A61A0C47CB0050510A /* GAClientEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAClientEventService.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientEventService.h"; sourceTree = "<group>"; };
+		B275A7A71A0C47CB0050510A /* GAClientEventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAClientEventService.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientEventService.m"; sourceTree = "<group>"; };
+		B275A7A81A0C47CB0050510A /* GAClientTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAClientTag.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientTag.h"; sourceTree = "<group>"; };
+		B275A7A91A0C47CB0050510A /* GAClientTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAClientTag.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientTag.m"; sourceTree = "<group>"; };
+		B275A7AA1A0C47CB0050510A /* GAClientTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAClientTagService.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientTagService.h"; sourceTree = "<group>"; };
+		B275A7AB1A0C47CB0050510A /* GAClientTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAClientTagService.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientTagService.m"; sourceTree = "<group>"; };
+		B275A7AC1A0C47CB0050510A /* GADomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADomain.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GADomain.h"; sourceTree = "<group>"; };
+		B275A7AD1A0C47CB0050510A /* GADomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GADomain.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GADomain.m"; sourceTree = "<group>"; };
+		B275A7AE1A0C47CB0050510A /* GAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAService.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAService.h"; sourceTree = "<group>"; };
+		B275A7AF1A0C47CB0050510A /* GAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAService.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAService.m"; sourceTree = "<group>"; };
+		B275A7B01A0C47CB0050510A /* GrowthAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthAnalytics.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.h"; sourceTree = "<group>"; };
+		B275A7B11A0C47CB0050510A /* GrowthAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthAnalytics.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.m"; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2ED14221A0C451E0078F6BC /* GrowthbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrowthbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2ED14281A0C451E0078F6BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -365,9 +400,31 @@
 			name = GrowthReplay;
 			sourceTree = "<group>";
 		};
+		B275A7A31A0C47A40050510A /* GrowthAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				B275A7A41A0C47CB0050510A /* GAClientEvent.h */,
+				B275A7A51A0C47CB0050510A /* GAClientEvent.m */,
+				B275A7A61A0C47CB0050510A /* GAClientEventService.h */,
+				B275A7A71A0C47CB0050510A /* GAClientEventService.m */,
+				B275A7A81A0C47CB0050510A /* GAClientTag.h */,
+				B275A7A91A0C47CB0050510A /* GAClientTag.m */,
+				B275A7AA1A0C47CB0050510A /* GAClientTagService.h */,
+				B275A7AB1A0C47CB0050510A /* GAClientTagService.m */,
+				B275A7AC1A0C47CB0050510A /* GADomain.h */,
+				B275A7AD1A0C47CB0050510A /* GADomain.m */,
+				B275A7AE1A0C47CB0050510A /* GAService.h */,
+				B275A7AF1A0C47CB0050510A /* GAService.m */,
+				B275A7B01A0C47CB0050510A /* GrowthAnalytics.h */,
+				B275A7B11A0C47CB0050510A /* GrowthAnalytics.m */,
+			);
+			name = GrowthAnalytics;
+			sourceTree = "<group>";
+		};
 		B2ED140E1A0C451E0078F6BC = {
 			isa = PBXGroup;
 			children = (
+				B275A7A31A0C47A40050510A /* GrowthAnalytics */,
 				B275A7401A0C465B0050510A /* GrowthReplay */,
 				B275A73F1A0C46550050510A /* GrowthPush */,
 				B275A70C1A0C460F0050510A /* GrowthbeatCore */,
@@ -533,6 +590,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B275A7B51A0C47CB0050510A /* GAClientTagService.m in Sources */,
 				B275A7561A0C466A0050510A /* GPClientService.m in Sources */,
 				B275A7741A0C46770050510A /* GRClientService.m in Sources */,
 				B275A7371A0C46530050510A /* GBHttpRequest.m in Sources */,
@@ -547,7 +605,9 @@
 				B275A7391A0C46530050510A /* GBHttpUtils.m in Sources */,
 				B275A73E1A0C46530050510A /* GrowthbeatCore.m in Sources */,
 				B275A7361A0C46530050510A /* GBHttpClient.m in Sources */,
+				B275A7B61A0C47CB0050510A /* GADomain.m in Sources */,
 				B275A7321A0C46530050510A /* GBContentType.m in Sources */,
+				B275A7B71A0C47CB0050510A /* GAService.m in Sources */,
 				B275A77A1A0C46770050510A /* GRRecordStatus.m in Sources */,
 				B275A73B1A0C46530050510A /* GBMultipartFile.m in Sources */,
 				B275A7311A0C46530050510A /* GBClient.m in Sources */,
@@ -560,12 +620,16 @@
 				B275A7731A0C46770050510A /* GRClient.m in Sources */,
 				B275A7331A0C46530050510A /* GBDateUtils.m in Sources */,
 				B275A75A1A0C466A0050510A /* GPEventService.m in Sources */,
+				B275A7B41A0C47CB0050510A /* GAClientTag.m in Sources */,
+				B275A7B21A0C47CB0050510A /* GAClientEvent.m in Sources */,
+				B275A7B31A0C47CB0050510A /* GAClientEventService.m in Sources */,
 				B275A75E1A0C466A0050510A /* GrowthPush.m in Sources */,
 				B275A7301A0C46530050510A /* GBApplication.m in Sources */,
 				B275A7351A0C46530050510A /* GBDomain.m in Sources */,
 				B275A73C1A0C46530050510A /* GBPreference.m in Sources */,
 				B275A73A1A0C46530050510A /* GBLogger.m in Sources */,
 				B275A7341A0C46530050510A /* GBDeviceUtils.m in Sources */,
+				B275A7B81A0C47CB0050510A /* GrowthAnalytics.m in Sources */,
 				B275A7751A0C46770050510A /* GRConfiguration.m in Sources */,
 				B275A73D1A0C46530050510A /* GBRequestMethod.m in Sources */,
 				B275A7791A0C46770050510A /* GRRecorder.m in Sources */,
