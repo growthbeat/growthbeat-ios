@@ -48,15 +48,15 @@ static Growthbeat *sharedInstance = nil;
 - (void) initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId {
     self.applicationId = initialApplicationId;
     self.credentialId = initialCredentialId;
-    [GrowthbeatCore initializeWithApplicationId:applicationId credentialId:credentialId];
+    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
 - (void) initializeGrowthPushWithEnvironment:(GPEnvironment)environment {
-    [GrowthPush initializeWithApplicationId:applicationId credentialId:credentialId environment:environment];
+    [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId environment:environment];
 }
 
 - (void) initializeGrowthReplay {
-    [GrowthReplay initializeWithApplicationId:applicationId credentialId:credentialId];
+    [[GrowthReplay sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
 - (void) initializeGrowthAnalytics {
