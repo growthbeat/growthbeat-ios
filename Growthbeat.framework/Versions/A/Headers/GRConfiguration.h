@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SIROK. All rights reserved.
 //
 
-#import "GRDomain.h"
+#import "GBDomain.h"
 
-@interface GRConfiguration : GRDomain<NSCoding> {
+@interface GRConfiguration : GBDomain<NSCoding> {
 
     float recordTerm;
     NSInteger compressibility;

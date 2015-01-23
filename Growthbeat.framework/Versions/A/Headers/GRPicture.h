@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SIROK. All rights reserved.
 //
 
-#import "GRDomain.h"
+#import "GBDomain.h"
 
-@interface GRPicture : GRDomain<NSCoding> {
+@interface GRPicture : GBDomain<NSCoding> {
 
     BOOL continuation;
     BOOL status;
@@ -18,5 +18,7 @@
 @property (nonatomic) BOOL continuation;
 @property (nonatomic) BOOL status;
 @property (nonatomic) BOOL recordedClient;
+
++ (GRPicture *) sendPicture:(NSString *)clientId credentialId:(NSString *)credentialId recordScheduleToken:(NSString *)recordScheduleToken recordedCheck:(BOOL)recordedCheck file:(NSData *)file timestamp:(long long)timestamp;
 
 @end

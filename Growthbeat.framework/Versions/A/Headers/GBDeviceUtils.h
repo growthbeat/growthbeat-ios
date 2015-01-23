@@ -14,6 +14,9 @@
 + (NSString *)os;
 + (NSString *)language;
 + (NSString *)timeZone;
++ (NSString *)timeZoneOffset;
++ (NSString *)locale;
++ (NSString *)country;
 + (NSString *)version;
 + (NSString *)build;
 + (BOOL)connectedToWiFi;

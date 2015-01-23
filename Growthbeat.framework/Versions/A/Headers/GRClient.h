@@ -6,11 +6,11 @@
 //  Copyright (c) 2014年 SIROK. All rights reserved.
 //
 
-#import "GRDomain.h"
+#import "GBDomain.h"
 #import "GRRecordStatus.h"
 #import "GRConfiguration.h"
 
-@interface GRClient : GRDomain<NSCoding> {
+@interface GRClient : GBDomain<NSCoding> {
 
     long long id;
     NSString *growthbeatClientId;
@@ -31,5 +31,7 @@
 @property (nonatomic) NSString *recordScheduleToken;
 @property (nonatomic) GRRecordStatus status;
 @property (nonatomic) GRConfiguration *configuration;
+
++ (GRClient *) authorizeWithClientId:(NSString *)clientId credentialId:(NSString *)credentialId client:(GRClient *)client;
 
 @end

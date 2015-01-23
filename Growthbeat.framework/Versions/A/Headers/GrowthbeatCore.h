@@ -17,10 +17,8 @@
 @interface GrowthbeatCore : NSObject
 
 + (GrowthbeatCore *) sharedInstance;
-+ (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
-+ (void)setPreferenceFileName:(NSString *)fileName;
-+ (void)setHttpClientBaseUrl:(NSURL *)url;
-+ (void)setLoggerSilent:(BOOL)silent;
+
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;

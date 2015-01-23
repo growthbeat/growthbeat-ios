@@ -54,6 +54,37 @@
 		B2AF4C901A1116A700DFDAD6 /* GBRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C7E1A1116A700DFDAD6 /* GBRequestMethod.m */; };
 		B2AF4C911A1116A700DFDAD6 /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C811A1116A700DFDAD6 /* GrowthbeatCore.m */; };
 		B2ED14231A0C451E0078F6BC /* libGrowthbeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */; };
+		B2F71C181A71E5D000FC3ED0 /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C391A11165800DFDAD6 /* GAClientEvent.h */; };
+		B2F71C191A71E5D000FC3ED0 /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3B1A11165800DFDAD6 /* GAClientTag.h */; };
+		B2F71C1A1A71E5D000FC3ED0 /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3D1A11165800DFDAD6 /* GrowthAnalytics.h */; };
+		B2F71C1B1A71E5D000FC3ED0 /* GRClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C421A11166E00DFDAD6 /* GRClient.h */; };
+		B2F71C1C1A71E5D000FC3ED0 /* GRConfiguration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C441A11166E00DFDAD6 /* GRConfiguration.h */; };
+		B2F71C1D1A71E5D000FC3ED0 /* GrowthReplay.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C461A11166E00DFDAD6 /* GrowthReplay.h */; };
+		B2F71C1E1A71E5D000FC3ED0 /* GRPicture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C481A11166E00DFDAD6 /* GRPicture.h */; };
+		B2F71C1F1A71E5D000FC3ED0 /* GRRecorder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C4A1A11166E00DFDAD6 /* GRRecorder.h */; };
+		B2F71C201A71E5D000FC3ED0 /* GRRecordStatus.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C4C1A11166E00DFDAD6 /* GRRecordStatus.h */; };
+		B2F71C211A71E5D000FC3ED0 /* GPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C541A11168A00DFDAD6 /* GPClient.h */; };
+		B2F71C221A71E5D000FC3ED0 /* GPEnvironment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C561A11168A00DFDAD6 /* GPEnvironment.h */; };
+		B2F71C231A71E5D000FC3ED0 /* GPOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C581A11168A00DFDAD6 /* GPOS.h */; };
+		B2F71C241A71E5D000FC3ED0 /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C5A1A11168A00DFDAD6 /* GrowthPush.h */; };
+		B2F71C251A71E5D000FC3ED0 /* GBAppDelegateWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C601A1116A700DFDAD6 /* GBAppDelegateWrapper.h */; };
+		B2F71C261A71E5D000FC3ED0 /* GBAppDelegateWrapperDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C621A1116A700DFDAD6 /* GBAppDelegateWrapperDelegate.h */; };
+		B2F71C271A71E5D000FC3ED0 /* GBApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C631A1116A700DFDAD6 /* GBApplication.h */; };
+		B2F71C281A71E5D000FC3ED0 /* GBClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C651A1116A700DFDAD6 /* GBClient.h */; };
+		B2F71C291A71E5D000FC3ED0 /* GBContentType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C671A1116A700DFDAD6 /* GBContentType.h */; };
+		B2F71C2A1A71E5D000FC3ED0 /* GBDateUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C691A1116A700DFDAD6 /* GBDateUtils.h */; };
+		B2F71C2B1A71E5D000FC3ED0 /* GBDeviceUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C6B1A1116A700DFDAD6 /* GBDeviceUtils.h */; };
+		B2F71C2C1A71E5D000FC3ED0 /* GBDomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C6D1A1116A700DFDAD6 /* GBDomain.h */; };
+		B2F71C2D1A71E5D000FC3ED0 /* GBHttpClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C6F1A1116A700DFDAD6 /* GBHttpClient.h */; };
+		B2F71C2E1A71E5D000FC3ED0 /* GBHttpRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C711A1116A700DFDAD6 /* GBHttpRequest.h */; };
+		B2F71C2F1A71E5D000FC3ED0 /* GBHttpResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C731A1116A700DFDAD6 /* GBHttpResponse.h */; };
+		B2F71C301A71E5D000FC3ED0 /* GBHttpUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C751A1116A700DFDAD6 /* GBHttpUtils.h */; };
+		B2F71C311A71E5D000FC3ED0 /* GBLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C771A1116A700DFDAD6 /* GBLogger.h */; };
+		B2F71C321A71E5D000FC3ED0 /* GBMultipartFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C791A1116A700DFDAD6 /* GBMultipartFile.h */; };
+		B2F71C331A71E5D000FC3ED0 /* GBPreference.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C7B1A1116A700DFDAD6 /* GBPreference.h */; };
+		B2F71C341A71E5D000FC3ED0 /* GBRequestMethod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C7D1A1116A700DFDAD6 /* GBRequestMethod.h */; };
+		B2F71C351A71E5D000FC3ED0 /* GBUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C7F1A1116A700DFDAD6 /* GBUtils.h */; };
+		B2F71C361A71E5D000FC3ED0 /* GrowthbeatCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C801A1116A700DFDAD6 /* GrowthbeatCore.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +111,37 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B2F71C181A71E5D000FC3ED0 /* GAClientEvent.h in CopyFiles */,
+				B2F71C191A71E5D000FC3ED0 /* GAClientTag.h in CopyFiles */,
+				B2F71C1A1A71E5D000FC3ED0 /* GrowthAnalytics.h in CopyFiles */,
+				B2F71C1B1A71E5D000FC3ED0 /* GRClient.h in CopyFiles */,
+				B2F71C1C1A71E5D000FC3ED0 /* GRConfiguration.h in CopyFiles */,
+				B2F71C1D1A71E5D000FC3ED0 /* GrowthReplay.h in CopyFiles */,
+				B2F71C1E1A71E5D000FC3ED0 /* GRPicture.h in CopyFiles */,
+				B2F71C1F1A71E5D000FC3ED0 /* GRRecorder.h in CopyFiles */,
+				B2F71C201A71E5D000FC3ED0 /* GRRecordStatus.h in CopyFiles */,
+				B2F71C211A71E5D000FC3ED0 /* GPClient.h in CopyFiles */,
+				B2F71C221A71E5D000FC3ED0 /* GPEnvironment.h in CopyFiles */,
+				B2F71C231A71E5D000FC3ED0 /* GPOS.h in CopyFiles */,
+				B2F71C241A71E5D000FC3ED0 /* GrowthPush.h in CopyFiles */,
+				B2F71C251A71E5D000FC3ED0 /* GBAppDelegateWrapper.h in CopyFiles */,
+				B2F71C261A71E5D000FC3ED0 /* GBAppDelegateWrapperDelegate.h in CopyFiles */,
+				B2F71C271A71E5D000FC3ED0 /* GBApplication.h in CopyFiles */,
+				B2F71C281A71E5D000FC3ED0 /* GBClient.h in CopyFiles */,
+				B2F71C291A71E5D000FC3ED0 /* GBContentType.h in CopyFiles */,
+				B2F71C2A1A71E5D000FC3ED0 /* GBDateUtils.h in CopyFiles */,
+				B2F71C2B1A71E5D000FC3ED0 /* GBDeviceUtils.h in CopyFiles */,
+				B2F71C2C1A71E5D000FC3ED0 /* GBDomain.h in CopyFiles */,
+				B2F71C2D1A71E5D000FC3ED0 /* GBHttpClient.h in CopyFiles */,
+				B2F71C2E1A71E5D000FC3ED0 /* GBHttpRequest.h in CopyFiles */,
+				B2F71C2F1A71E5D000FC3ED0 /* GBHttpResponse.h in CopyFiles */,
+				B2F71C301A71E5D000FC3ED0 /* GBHttpUtils.h in CopyFiles */,
+				B2F71C311A71E5D000FC3ED0 /* GBLogger.h in CopyFiles */,
+				B2F71C321A71E5D000FC3ED0 /* GBMultipartFile.h in CopyFiles */,
+				B2F71C331A71E5D000FC3ED0 /* GBPreference.h in CopyFiles */,
+				B2F71C341A71E5D000FC3ED0 /* GBRequestMethod.h in CopyFiles */,
+				B2F71C351A71E5D000FC3ED0 /* GBUtils.h in CopyFiles */,
+				B2F71C361A71E5D000FC3ED0 /* GrowthbeatCore.h in CopyFiles */,
 				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

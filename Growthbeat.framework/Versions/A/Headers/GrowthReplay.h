@@ -13,17 +13,13 @@
 
 + (GrowthReplay *) sharedInstance;
 
-+ (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
-+ (void)setTag:(NSString *)name value:(NSString *)value;
+- (void)start;
 
-+ (void)setDeviceTags;
+- (void)stop;
 
-+ (void)start;
-
-+ (void)stop;
-
-+ (void) setSpot:(NSString *)spot;
+- (void)setSpot:(NSString *)spot;
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;
