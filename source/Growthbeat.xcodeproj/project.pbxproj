@@ -27,16 +27,6 @@
 		B2AF4C3F1A11165800DFDAD6 /* GAClientEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C3A1A11165800DFDAD6 /* GAClientEvent.m */; };
 		B2AF4C401A11165800DFDAD6 /* GAClientTag.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C3C1A11165800DFDAD6 /* GAClientTag.m */; };
 		B2AF4C411A11165800DFDAD6 /* GrowthAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C3E1A11165800DFDAD6 /* GrowthAnalytics.m */; };
-		B2AF4C4E1A11166E00DFDAD6 /* GRClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C431A11166E00DFDAD6 /* GRClient.m */; };
-		B2AF4C4F1A11166E00DFDAD6 /* GRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C451A11166E00DFDAD6 /* GRConfiguration.m */; };
-		B2AF4C501A11166E00DFDAD6 /* GrowthReplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C471A11166E00DFDAD6 /* GrowthReplay.m */; };
-		B2AF4C511A11166E00DFDAD6 /* GRPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C491A11166E00DFDAD6 /* GRPicture.m */; };
-		B2AF4C521A11166E00DFDAD6 /* GRRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C4B1A11166E00DFDAD6 /* GRRecorder.m */; };
-		B2AF4C531A11166E00DFDAD6 /* GRRecordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C4D1A11166E00DFDAD6 /* GRRecordStatus.m */; };
-		B2AF4C5C1A11168A00DFDAD6 /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C551A11168A00DFDAD6 /* GPClient.m */; };
-		B2AF4C5D1A11168A00DFDAD6 /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C571A11168A00DFDAD6 /* GPEnvironmentUtils.m */; };
-		B2AF4C5E1A11168A00DFDAD6 /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C591A11168A00DFDAD6 /* GPOS.m */; };
-		B2AF4C5F1A11168A00DFDAD6 /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C5B1A11168A00DFDAD6 /* GrowthPush.m */; };
 		B2AF4C821A1116A700DFDAD6 /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C611A1116A700DFDAD6 /* GBAppDelegateWrapper.m */; };
 		B2AF4C831A1116A700DFDAD6 /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C641A1116A700DFDAD6 /* GBApplication.m */; };
 		B2AF4C841A1116A700DFDAD6 /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C661A1116A700DFDAD6 /* GBClient.m */; };
@@ -57,16 +47,6 @@
 		B2F71C181A71E5D000FC3ED0 /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C391A11165800DFDAD6 /* GAClientEvent.h */; };
 		B2F71C191A71E5D000FC3ED0 /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3B1A11165800DFDAD6 /* GAClientTag.h */; };
 		B2F71C1A1A71E5D000FC3ED0 /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3D1A11165800DFDAD6 /* GrowthAnalytics.h */; };
-		B2F71C1B1A71E5D000FC3ED0 /* GRClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C421A11166E00DFDAD6 /* GRClient.h */; };
-		B2F71C1C1A71E5D000FC3ED0 /* GRConfiguration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C441A11166E00DFDAD6 /* GRConfiguration.h */; };
-		B2F71C1D1A71E5D000FC3ED0 /* GrowthReplay.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C461A11166E00DFDAD6 /* GrowthReplay.h */; };
-		B2F71C1E1A71E5D000FC3ED0 /* GRPicture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C481A11166E00DFDAD6 /* GRPicture.h */; };
-		B2F71C1F1A71E5D000FC3ED0 /* GRRecorder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C4A1A11166E00DFDAD6 /* GRRecorder.h */; };
-		B2F71C201A71E5D000FC3ED0 /* GRRecordStatus.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C4C1A11166E00DFDAD6 /* GRRecordStatus.h */; };
-		B2F71C211A71E5D000FC3ED0 /* GPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C541A11168A00DFDAD6 /* GPClient.h */; };
-		B2F71C221A71E5D000FC3ED0 /* GPEnvironment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C561A11168A00DFDAD6 /* GPEnvironment.h */; };
-		B2F71C231A71E5D000FC3ED0 /* GPOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C581A11168A00DFDAD6 /* GPOS.h */; };
-		B2F71C241A71E5D000FC3ED0 /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C5A1A11168A00DFDAD6 /* GrowthPush.h */; };
 		B2F71C251A71E5D000FC3ED0 /* GBAppDelegateWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C601A1116A700DFDAD6 /* GBAppDelegateWrapper.h */; };
 		B2F71C261A71E5D000FC3ED0 /* GBAppDelegateWrapperDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C621A1116A700DFDAD6 /* GBAppDelegateWrapperDelegate.h */; };
 		B2F71C271A71E5D000FC3ED0 /* GBApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C631A1116A700DFDAD6 /* GBApplication.h */; };
@@ -114,16 +94,6 @@
 				B2F71C181A71E5D000FC3ED0 /* GAClientEvent.h in CopyFiles */,
 				B2F71C191A71E5D000FC3ED0 /* GAClientTag.h in CopyFiles */,
 				B2F71C1A1A71E5D000FC3ED0 /* GrowthAnalytics.h in CopyFiles */,
-				B2F71C1B1A71E5D000FC3ED0 /* GRClient.h in CopyFiles */,
-				B2F71C1C1A71E5D000FC3ED0 /* GRConfiguration.h in CopyFiles */,
-				B2F71C1D1A71E5D000FC3ED0 /* GrowthReplay.h in CopyFiles */,
-				B2F71C1E1A71E5D000FC3ED0 /* GRPicture.h in CopyFiles */,
-				B2F71C1F1A71E5D000FC3ED0 /* GRRecorder.h in CopyFiles */,
-				B2F71C201A71E5D000FC3ED0 /* GRRecordStatus.h in CopyFiles */,
-				B2F71C211A71E5D000FC3ED0 /* GPClient.h in CopyFiles */,
-				B2F71C221A71E5D000FC3ED0 /* GPEnvironment.h in CopyFiles */,
-				B2F71C231A71E5D000FC3ED0 /* GPOS.h in CopyFiles */,
-				B2F71C241A71E5D000FC3ED0 /* GrowthPush.h in CopyFiles */,
 				B2F71C251A71E5D000FC3ED0 /* GBAppDelegateWrapper.h in CopyFiles */,
 				B2F71C261A71E5D000FC3ED0 /* GBAppDelegateWrapperDelegate.h in CopyFiles */,
 				B2F71C271A71E5D000FC3ED0 /* GBApplication.h in CopyFiles */,
@@ -157,26 +127,6 @@
 		B2AF4C3C1A11165800DFDAD6 /* GAClientTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAClientTag.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientTag.m"; sourceTree = "<group>"; };
 		B2AF4C3D1A11165800DFDAD6 /* GrowthAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthAnalytics.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.h"; sourceTree = "<group>"; };
 		B2AF4C3E1A11165800DFDAD6 /* GrowthAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthAnalytics.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.m"; sourceTree = "<group>"; };
-		B2AF4C421A11166E00DFDAD6 /* GRClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRClient.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRClient.h"; sourceTree = "<group>"; };
-		B2AF4C431A11166E00DFDAD6 /* GRClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRClient.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRClient.m"; sourceTree = "<group>"; };
-		B2AF4C441A11166E00DFDAD6 /* GRConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRConfiguration.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRConfiguration.h"; sourceTree = "<group>"; };
-		B2AF4C451A11166E00DFDAD6 /* GRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRConfiguration.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRConfiguration.m"; sourceTree = "<group>"; };
-		B2AF4C461A11166E00DFDAD6 /* GrowthReplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthReplay.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GrowthReplay.h"; sourceTree = "<group>"; };
-		B2AF4C471A11166E00DFDAD6 /* GrowthReplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthReplay.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GrowthReplay.m"; sourceTree = "<group>"; };
-		B2AF4C481A11166E00DFDAD6 /* GRPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRPicture.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRPicture.h"; sourceTree = "<group>"; };
-		B2AF4C491A11166E00DFDAD6 /* GRPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRPicture.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRPicture.m"; sourceTree = "<group>"; };
-		B2AF4C4A1A11166E00DFDAD6 /* GRRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRRecorder.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecorder.h"; sourceTree = "<group>"; };
-		B2AF4C4B1A11166E00DFDAD6 /* GRRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRRecorder.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecorder.m"; sourceTree = "<group>"; };
-		B2AF4C4C1A11166E00DFDAD6 /* GRRecordStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRRecordStatus.h; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecordStatus.h"; sourceTree = "<group>"; };
-		B2AF4C4D1A11166E00DFDAD6 /* GRRecordStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRRecordStatus.m; path = "../submodules/growthreplay-ios/source/GrowthReplay/GRRecordStatus.m"; sourceTree = "<group>"; };
-		B2AF4C541A11168A00DFDAD6 /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPClient.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPClient.h"; sourceTree = "<group>"; };
-		B2AF4C551A11168A00DFDAD6 /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPClient.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPClient.m"; sourceTree = "<group>"; };
-		B2AF4C561A11168A00DFDAD6 /* GPEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPEnvironment.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPEnvironment.h"; sourceTree = "<group>"; };
-		B2AF4C571A11168A00DFDAD6 /* GPEnvironmentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPEnvironmentUtils.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPEnvironmentUtils.m"; sourceTree = "<group>"; };
-		B2AF4C581A11168A00DFDAD6 /* GPOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPOS.h; path = "../submodules/growthpush-ios/source/GrowthPush/GPOS.h"; sourceTree = "<group>"; };
-		B2AF4C591A11168A00DFDAD6 /* GPOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPOS.m; path = "../submodules/growthpush-ios/source/GrowthPush/GPOS.m"; sourceTree = "<group>"; };
-		B2AF4C5A1A11168A00DFDAD6 /* GrowthPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthPush.h; path = "../submodules/growthpush-ios/source/GrowthPush/GrowthPush.h"; sourceTree = "<group>"; };
-		B2AF4C5B1A11168A00DFDAD6 /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthPush.m; path = "../submodules/growthpush-ios/source/GrowthPush/GrowthPush.m"; sourceTree = "<group>"; };
 		B2AF4C601A1116A700DFDAD6 /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapper.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.h"; sourceTree = "<group>"; };
 		B2AF4C611A1116A700DFDAD6 /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBAppDelegateWrapper.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.m"; sourceTree = "<group>"; };
 		B2AF4C621A1116A700DFDAD6 /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapperDelegate.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapperDelegate.h"; sourceTree = "<group>"; };
@@ -276,40 +226,6 @@
 			name = GrowthbeatCore;
 			sourceTree = "<group>";
 		};
-		B275A73F1A0C46550050510A /* GrowthPush */ = {
-			isa = PBXGroup;
-			children = (
-				B2AF4C541A11168A00DFDAD6 /* GPClient.h */,
-				B2AF4C551A11168A00DFDAD6 /* GPClient.m */,
-				B2AF4C561A11168A00DFDAD6 /* GPEnvironment.h */,
-				B2AF4C571A11168A00DFDAD6 /* GPEnvironmentUtils.m */,
-				B2AF4C581A11168A00DFDAD6 /* GPOS.h */,
-				B2AF4C591A11168A00DFDAD6 /* GPOS.m */,
-				B2AF4C5A1A11168A00DFDAD6 /* GrowthPush.h */,
-				B2AF4C5B1A11168A00DFDAD6 /* GrowthPush.m */,
-			);
-			name = GrowthPush;
-			sourceTree = "<group>";
-		};
-		B275A7401A0C465B0050510A /* GrowthReplay */ = {
-			isa = PBXGroup;
-			children = (
-				B2AF4C421A11166E00DFDAD6 /* GRClient.h */,
-				B2AF4C431A11166E00DFDAD6 /* GRClient.m */,
-				B2AF4C441A11166E00DFDAD6 /* GRConfiguration.h */,
-				B2AF4C451A11166E00DFDAD6 /* GRConfiguration.m */,
-				B2AF4C461A11166E00DFDAD6 /* GrowthReplay.h */,
-				B2AF4C471A11166E00DFDAD6 /* GrowthReplay.m */,
-				B2AF4C481A11166E00DFDAD6 /* GRPicture.h */,
-				B2AF4C491A11166E00DFDAD6 /* GRPicture.m */,
-				B2AF4C4A1A11166E00DFDAD6 /* GRRecorder.h */,
-				B2AF4C4B1A11166E00DFDAD6 /* GRRecorder.m */,
-				B2AF4C4C1A11166E00DFDAD6 /* GRRecordStatus.h */,
-				B2AF4C4D1A11166E00DFDAD6 /* GRRecordStatus.m */,
-			);
-			name = GrowthReplay;
-			sourceTree = "<group>";
-		};
 		B275A7A31A0C47A40050510A /* GrowthAnalytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,8 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				B275A7A31A0C47A40050510A /* GrowthAnalytics */,
-				B275A7401A0C465B0050510A /* GrowthReplay */,
-				B275A73F1A0C46550050510A /* GrowthPush */,
 				B275A70C1A0C460F0050510A /* GrowthbeatCore */,
 				B2ED14191A0C451E0078F6BC /* Growthbeat */,
 				B2ED14261A0C451E0078F6BC /* GrowthbeatTests */,
@@ -492,34 +406,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2AF4C5C1A11168A00DFDAD6 /* GPClient.m in Sources */,
 				B2AF4C8F1A1116A700DFDAD6 /* GBPreference.m in Sources */,
 				B2AF4C8E1A1116A700DFDAD6 /* GBMultipartFile.m in Sources */,
-				B2AF4C501A11166E00DFDAD6 /* GrowthReplay.m in Sources */,
 				B2AF4C401A11165800DFDAD6 /* GAClientTag.m in Sources */,
 				B2AF4C891A1116A700DFDAD6 /* GBHttpClient.m in Sources */,
-				B2AF4C5D1A11168A00DFDAD6 /* GPEnvironmentUtils.m in Sources */,
 				B2AF4C851A1116A700DFDAD6 /* GBContentType.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
-				B2AF4C5F1A11168A00DFDAD6 /* GrowthPush.m in Sources */,
-				B2AF4C521A11166E00DFDAD6 /* GRRecorder.m in Sources */,
 				B2AF4C911A1116A700DFDAD6 /* GrowthbeatCore.m in Sources */,
 				B2AF4C831A1116A700DFDAD6 /* GBApplication.m in Sources */,
 				B2AF4C3F1A11165800DFDAD6 /* GAClientEvent.m in Sources */,
-				B2AF4C5E1A11168A00DFDAD6 /* GPOS.m in Sources */,
 				B2AF4C821A1116A700DFDAD6 /* GBAppDelegateWrapper.m in Sources */,
 				B2AF4C871A1116A700DFDAD6 /* GBDeviceUtils.m in Sources */,
 				B2AF4C901A1116A700DFDAD6 /* GBRequestMethod.m in Sources */,
 				B2AF4C411A11165800DFDAD6 /* GrowthAnalytics.m in Sources */,
 				B2AF4C861A1116A700DFDAD6 /* GBDateUtils.m in Sources */,
-				B2AF4C511A11166E00DFDAD6 /* GRPicture.m in Sources */,
-				B2AF4C4F1A11166E00DFDAD6 /* GRConfiguration.m in Sources */,
-				B2AF4C4E1A11166E00DFDAD6 /* GRClient.m in Sources */,
 				B2AF4C8C1A1116A700DFDAD6 /* GBHttpUtils.m in Sources */,
 				B2AF4C8B1A1116A700DFDAD6 /* GBHttpResponse.m in Sources */,
 				B2AF4C841A1116A700DFDAD6 /* GBClient.m in Sources */,
 				B2AF4C8A1A1116A700DFDAD6 /* GBHttpRequest.m in Sources */,
-				B2AF4C531A11166E00DFDAD6 /* GRRecordStatus.m in Sources */,
 				B2AF4C8D1A1116A700DFDAD6 /* GBLogger.m in Sources */,
 				B2AF4C881A1116A700DFDAD6 /* GBDomain.m in Sources */,
 			);

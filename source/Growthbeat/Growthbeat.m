@@ -51,14 +51,6 @@ static Growthbeat *sharedInstance = nil;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
-- (void) initializeGrowthPushWithEnvironment:(GPEnvironment)environment {
-    [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId environment:environment];
-}
-
-- (void) initializeGrowthReplay {
-    [[GrowthReplay sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-}
-
 - (void) initializeGrowthAnalytics {
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
