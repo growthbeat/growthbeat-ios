@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Growthbeat/Growthbeat.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
