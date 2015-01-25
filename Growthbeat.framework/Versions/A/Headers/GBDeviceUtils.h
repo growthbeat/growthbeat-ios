@@ -14,7 +14,7 @@
 + (NSString *)os;
 + (NSString *)language;
 + (NSString *)timeZone;
-+ (NSString *)timeZoneOffset;
++ (NSInteger)timeZoneOffset;
 + (NSString *)locale;
 + (NSString *)country;
 + (NSString *)version;
