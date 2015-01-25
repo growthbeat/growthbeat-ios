@@ -16,13 +16,13 @@
     [[GrowthAnalytics sharedInstance] setBasicTags];
     return YES;
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application {
-    [[GrowthAnalytics sharedInstance] close];
-}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [[GrowthAnalytics sharedInstance] open];
+}
+							
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[GrowthAnalytics sharedInstance] close];
 }
 
 @end

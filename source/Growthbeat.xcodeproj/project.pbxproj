@@ -43,7 +43,6 @@
 		B2AF4C8F1A1116A700DFDAD6 /* GBPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C7C1A1116A700DFDAD6 /* GBPreference.m */; };
 		B2AF4C901A1116A700DFDAD6 /* GBRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C7E1A1116A700DFDAD6 /* GBRequestMethod.m */; };
 		B2AF4C911A1116A700DFDAD6 /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C811A1116A700DFDAD6 /* GrowthbeatCore.m */; };
-		B2ED14231A0C451E0078F6BC /* libGrowthbeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */; };
 		B2F71C181A71E5D000FC3ED0 /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C391A11165800DFDAD6 /* GAClientEvent.h */; };
 		B2F71C191A71E5D000FC3ED0 /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3B1A11165800DFDAD6 /* GAClientTag.h */; };
 		B2F71C1A1A71E5D000FC3ED0 /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3D1A11165800DFDAD6 /* GrowthAnalytics.h */; };
@@ -69,13 +68,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		B275A7071A0C45AC0050510A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2ED140F1A0C451E0078F6BC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2ED14161A0C451E0078F6BC;
-			remoteInfo = Growthbeat;
-		};
-		B2ED14241A0C451E0078F6BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2ED140F1A0C451E0078F6BC /* Project object */;
 			proxyType = 1;
@@ -162,8 +154,6 @@
 		B2AF4C801A1116A700DFDAD6 /* GrowthbeatCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthbeatCore.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.h"; sourceTree = "<group>"; };
 		B2AF4C811A1116A700DFDAD6 /* GrowthbeatCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthbeatCore.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.m"; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2ED14221A0C451E0078F6BC /* GrowthbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrowthbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2ED14281A0C451E0078F6BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,14 +161,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2ED141F1A0C451E0078F6BC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2ED14231A0C451E0078F6BC /* libGrowthbeat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +227,6 @@
 				B275A7A31A0C47A40050510A /* GrowthAnalytics */,
 				B275A70C1A0C460F0050510A /* GrowthbeatCore */,
 				B2ED14191A0C451E0078F6BC /* Growthbeat */,
-				B2ED14261A0C451E0078F6BC /* GrowthbeatTests */,
 				B2ED14181A0C451E0078F6BC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -254,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */,
-				B2ED14221A0C451E0078F6BC /* GrowthbeatTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -266,22 +246,6 @@
 				B275A6FF1A0C455D0050510A /* Growthbeat.m */,
 			);
 			path = Growthbeat;
-			sourceTree = "<group>";
-		};
-		B2ED14261A0C451E0078F6BC /* GrowthbeatTests */ = {
-			isa = PBXGroup;
-			children = (
-				B2ED14271A0C451E0078F6BC /* Supporting Files */,
-			);
-			path = GrowthbeatTests;
-			sourceTree = "<group>";
-		};
-		B2ED14271A0C451E0078F6BC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B2ED14281A0C451E0078F6BC /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,24 +269,6 @@
 			productReference = B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		B2ED14211A0C451E0078F6BC /* GrowthbeatTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2ED142E1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "GrowthbeatTests" */;
-			buildPhases = (
-				B2ED141E1A0C451E0078F6BC /* Sources */,
-				B2ED141F1A0C451E0078F6BC /* Frameworks */,
-				B2ED14201A0C451E0078F6BC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B2ED14251A0C451E0078F6BC /* PBXTargetDependency */,
-			);
-			name = GrowthbeatTests;
-			productName = GrowthbeatTests;
-			productReference = B2ED14221A0C451E0078F6BC /* GrowthbeatTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -336,9 +282,6 @@
 						CreatedOnToolsVersion = 6.1;
 					};
 					B2ED14161A0C451E0078F6BC = {
-						CreatedOnToolsVersion = 6.1;
-					};
-					B2ED14211A0C451E0078F6BC = {
 						CreatedOnToolsVersion = 6.1;
 					};
 				};
@@ -356,21 +299,10 @@
 			projectRoot = "";
 			targets = (
 				B2ED14161A0C451E0078F6BC /* Growthbeat */,
-				B2ED14211A0C451E0078F6BC /* GrowthbeatTests */,
 				B275A7031A0C45A50050510A /* GrowthbeatFramework */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		B2ED14201A0C451E0078F6BC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		B275A7021A0C45870050510A /* ShellScript */ = {
@@ -429,13 +361,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2ED141E1A0C451E0078F6BC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -443,11 +368,6 @@
 			isa = PBXTargetDependency;
 			target = B2ED14161A0C451E0078F6BC /* Growthbeat */;
 			targetProxy = B275A7071A0C45AC0050510A /* PBXContainerItemProxy */;
-		};
-		B2ED14251A0C451E0078F6BC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2ED14161A0C451E0078F6BC /* Growthbeat */;
-			targetProxy = B2ED14241A0C451E0078F6BC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -565,36 +485,6 @@
 			};
 			name = Release;
 		};
-		B2ED142F1A0C451E0078F6BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GrowthbeatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B2ED14301A0C451E0078F6BC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GrowthbeatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -621,15 +511,6 @@
 			buildConfigurations = (
 				B2ED142C1A0C451E0078F6BC /* Debug */,
 				B2ED142D1A0C451E0078F6BC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B2ED142E1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "GrowthbeatTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2ED142F1A0C451E0078F6BC /* Debug */,
-				B2ED14301A0C451E0078F6BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
