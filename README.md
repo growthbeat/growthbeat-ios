@@ -20,24 +20,22 @@ Growthbeat SDK for iOS
 
 	You can get the APPLICATION_ID and CREDENTIAL_ID on web site of Growthbeat. 
 
-1. Use Growth Push.
+1. Initialize Growth Analytics.
+
+	```objc
+	[[Growthbeat sharedInstance] initializeGrowthAnalytics];
+	```
+
+1. Initialize Growth Push. (Under development)
 
 	```objc
 	[[Growthbeat sharedInstance] initializeGrowthPushWithEnvironment:kGrowthPushEnvironment];
 	```
 
-1. Use Growth Replay.
+1. Initialize Growth Replay. (Under development)
 
 	```objc
 	[[Growthbeat sharedInstance] initializeGrowthReplay];
-	[GrowthReplay start];
-	```
-
-1. Track events and set tags.
-
-	```objc
-	[GrowthPush setTag:@"NAME" value:@"VALUE"];
-	[GrowthPush trackEvent:@"NAME" value:@"VALUE"];
 	```
 
 ## Included SDKs
@@ -50,13 +48,19 @@ Growthbeat Core SDK is core functions for Growthbeat integrated services.
 
 * [Growthbeat Core SDK for iOS](https://github.com/SIROK/growthbeat-core-ios/)
 
-### Growth Push
+### Growth Analytics
+
+[Growth Analytics](https://analytics.growthbeat.com/) is analytics service for mobile apps.
+
+* [Growth Analytics SDK for iOS](https://github.com/SIROK/growthanalytics-ios)
+
+### Growth Push (Under development)
 
 [Growth Push](https://growthpush.com/) is push notification and analysis platform for mobile apps.
 
 * [Growth Push SDK for iOS](https://github.com/SIROK/growthpush-ios)
 
-### Growth Replay
+### Growth Replay (Under development)
 
 [Growth Replay](https://growthreplay.com/) is usability testing tool for mobile apps.
 
@@ -64,13 +68,8 @@ Growthbeat Core SDK is core functions for Growthbeat integrated services.
 
 # Building framework
 
-[iOS-Universal-Framework](https://github.com/kstenerud/iOS-Universal-Framework) is required.
-
-```bash
-git clone https://github.com/kstenerud/iOS-Universal-Framework.git
-cd ./iOS-Universal-Framework/Real\ Framework/
-./install.sh
-```
+1. Set build target to GrowthAnalyticsFramework and iOS Device.
+1. Run.
 
 Archive the project on Xcode and you will get framework package.
 
