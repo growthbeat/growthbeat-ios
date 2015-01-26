@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		B275A7031A0C45A50050510A /* GrowthbeatFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B275A7041A0C45A50050510A /* Build configuration list for PBXAggregateTarget "GrowthbeatFramework" */;
+			buildPhases = (
+				B275A7091A0C45B50050510A /* ShellScript */,
+			);
+			dependencies = (
+				B275A7081A0C45AC0050510A /* PBXTargetDependency */,
+			);
+			name = GrowthbeatFramework;
+			productName = GrowthbeatFramework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
+		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
+		B2AF4C3F1A11165800DFDAD6 /* GAClientEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C3A1A11165800DFDAD6 /* GAClientEvent.m */; };
+		B2AF4C401A11165800DFDAD6 /* GAClientTag.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C3C1A11165800DFDAD6 /* GAClientTag.m */; };
+		B2AF4C411A11165800DFDAD6 /* GrowthAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C3E1A11165800DFDAD6 /* GrowthAnalytics.m */; };
+		B2AF4C821A1116A700DFDAD6 /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C611A1116A700DFDAD6 /* GBAppDelegateWrapper.m */; };
+		B2AF4C831A1116A700DFDAD6 /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C641A1116A700DFDAD6 /* GBApplication.m */; };
+		B2AF4C841A1116A700DFDAD6 /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C661A1116A700DFDAD6 /* GBClient.m */; };
+		B2AF4C851A1116A700DFDAD6 /* GBContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C681A1116A700DFDAD6 /* GBContentType.m */; };
+		B2AF4C861A1116A700DFDAD6 /* GBDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C6A1A1116A700DFDAD6 /* GBDateUtils.m */; };
+		B2AF4C871A1116A700DFDAD6 /* GBDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C6C1A1116A700DFDAD6 /* GBDeviceUtils.m */; };
+		B2AF4C881A1116A700DFDAD6 /* GBDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C6E1A1116A700DFDAD6 /* GBDomain.m */; };
+		B2AF4C891A1116A700DFDAD6 /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C701A1116A700DFDAD6 /* GBHttpClient.m */; };
+		B2AF4C8A1A1116A700DFDAD6 /* GBHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C721A1116A700DFDAD6 /* GBHttpRequest.m */; };
+		B2AF4C8B1A1116A700DFDAD6 /* GBHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C741A1116A700DFDAD6 /* GBHttpResponse.m */; };
+		B2AF4C8C1A1116A700DFDAD6 /* GBHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C761A1116A700DFDAD6 /* GBHttpUtils.m */; };
+		B2AF4C8D1A1116A700DFDAD6 /* GBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C781A1116A700DFDAD6 /* GBLogger.m */; };
+		B2AF4C8E1A1116A700DFDAD6 /* GBMultipartFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C7A1A1116A700DFDAD6 /* GBMultipartFile.m */; };
+		B2AF4C8F1A1116A700DFDAD6 /* GBPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C7C1A1116A700DFDAD6 /* GBPreference.m */; };
+		B2AF4C901A1116A700DFDAD6 /* GBRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C7E1A1116A700DFDAD6 /* GBRequestMethod.m */; };
+		B2AF4C911A1116A700DFDAD6 /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AF4C811A1116A700DFDAD6 /* GrowthbeatCore.m */; };
+		B2F71C181A71E5D000FC3ED0 /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C391A11165800DFDAD6 /* GAClientEvent.h */; };
+		B2F71C191A71E5D000FC3ED0 /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3B1A11165800DFDAD6 /* GAClientTag.h */; };
+		B2F71C1A1A71E5D000FC3ED0 /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C3D1A11165800DFDAD6 /* GrowthAnalytics.h */; };
+		B2F71C251A71E5D000FC3ED0 /* GBAppDelegateWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C601A1116A700DFDAD6 /* GBAppDelegateWrapper.h */; };
+		B2F71C261A71E5D000FC3ED0 /* GBAppDelegateWrapperDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C621A1116A700DFDAD6 /* GBAppDelegateWrapperDelegate.h */; };
+		B2F71C271A71E5D000FC3ED0 /* GBApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C631A1116A700DFDAD6 /* GBApplication.h */; };
+		B2F71C281A71E5D000FC3ED0 /* GBClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C651A1116A700DFDAD6 /* GBClient.h */; };
+		B2F71C291A71E5D000FC3ED0 /* GBContentType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C671A1116A700DFDAD6 /* GBContentType.h */; };
+		B2F71C2A1A71E5D000FC3ED0 /* GBDateUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C691A1116A700DFDAD6 /* GBDateUtils.h */; };
+		B2F71C2B1A71E5D000FC3ED0 /* GBDeviceUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C6B1A1116A700DFDAD6 /* GBDeviceUtils.h */; };
+		B2F71C2C1A71E5D000FC3ED0 /* GBDomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C6D1A1116A700DFDAD6 /* GBDomain.h */; };
+		B2F71C2D1A71E5D000FC3ED0 /* GBHttpClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C6F1A1116A700DFDAD6 /* GBHttpClient.h */; };
+		B2F71C2E1A71E5D000FC3ED0 /* GBHttpRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C711A1116A700DFDAD6 /* GBHttpRequest.h */; };
+		B2F71C2F1A71E5D000FC3ED0 /* GBHttpResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C731A1116A700DFDAD6 /* GBHttpResponse.h */; };
+		B2F71C301A71E5D000FC3ED0 /* GBHttpUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C751A1116A700DFDAD6 /* GBHttpUtils.h */; };
+		B2F71C311A71E5D000FC3ED0 /* GBLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C771A1116A700DFDAD6 /* GBLogger.h */; };
+		B2F71C321A71E5D000FC3ED0 /* GBMultipartFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C791A1116A700DFDAD6 /* GBMultipartFile.h */; };
+		B2F71C331A71E5D000FC3ED0 /* GBPreference.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C7B1A1116A700DFDAD6 /* GBPreference.h */; };
+		B2F71C341A71E5D000FC3ED0 /* GBRequestMethod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C7D1A1116A700DFDAD6 /* GBRequestMethod.h */; };
+		B2F71C351A71E5D000FC3ED0 /* GBUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C7F1A1116A700DFDAD6 /* GBUtils.h */; };
+		B2F71C361A71E5D000FC3ED0 /* GrowthbeatCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AF4C801A1116A700DFDAD6 /* GrowthbeatCore.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B275A7071A0C45AC0050510A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2ED140F1A0C451E0078F6BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2ED14161A0C451E0078F6BC;
+			remoteInfo = Growthbeat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2ED14151A0C451E0078F6BC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				B2F71C181A71E5D000FC3ED0 /* GAClientEvent.h in CopyFiles */,
+				B2F71C191A71E5D000FC3ED0 /* GAClientTag.h in CopyFiles */,
+				B2F71C1A1A71E5D000FC3ED0 /* GrowthAnalytics.h in CopyFiles */,
+				B2F71C251A71E5D000FC3ED0 /* GBAppDelegateWrapper.h in CopyFiles */,
+				B2F71C261A71E5D000FC3ED0 /* GBAppDelegateWrapperDelegate.h in CopyFiles */,
+				B2F71C271A71E5D000FC3ED0 /* GBApplication.h in CopyFiles */,
+				B2F71C281A71E5D000FC3ED0 /* GBClient.h in CopyFiles */,
+				B2F71C291A71E5D000FC3ED0 /* GBContentType.h in CopyFiles */,
+				B2F71C2A1A71E5D000FC3ED0 /* GBDateUtils.h in CopyFiles */,
+				B2F71C2B1A71E5D000FC3ED0 /* GBDeviceUtils.h in CopyFiles */,
+				B2F71C2C1A71E5D000FC3ED0 /* GBDomain.h in CopyFiles */,
+				B2F71C2D1A71E5D000FC3ED0 /* GBHttpClient.h in CopyFiles */,
+				B2F71C2E1A71E5D000FC3ED0 /* GBHttpRequest.h in CopyFiles */,
+				B2F71C2F1A71E5D000FC3ED0 /* GBHttpResponse.h in CopyFiles */,
+				B2F71C301A71E5D000FC3ED0 /* GBHttpUtils.h in CopyFiles */,
+				B2F71C311A71E5D000FC3ED0 /* GBLogger.h in CopyFiles */,
+				B2F71C321A71E5D000FC3ED0 /* GBMultipartFile.h in CopyFiles */,
+				B2F71C331A71E5D000FC3ED0 /* GBPreference.h in CopyFiles */,
+				B2F71C341A71E5D000FC3ED0 /* GBRequestMethod.h in CopyFiles */,
+				B2F71C351A71E5D000FC3ED0 /* GBUtils.h in CopyFiles */,
+				B2F71C361A71E5D000FC3ED0 /* GrowthbeatCore.h in CopyFiles */,
+				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
+		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
+		B2AF4C391A11165800DFDAD6 /* GAClientEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAClientEvent.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientEvent.h"; sourceTree = "<group>"; };
+		B2AF4C3A1A11165800DFDAD6 /* GAClientEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAClientEvent.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientEvent.m"; sourceTree = "<group>"; };
+		B2AF4C3B1A11165800DFDAD6 /* GAClientTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAClientTag.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientTag.h"; sourceTree = "<group>"; };
+		B2AF4C3C1A11165800DFDAD6 /* GAClientTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAClientTag.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GAClientTag.m"; sourceTree = "<group>"; };
+		B2AF4C3D1A11165800DFDAD6 /* GrowthAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthAnalytics.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.h"; sourceTree = "<group>"; };
+		B2AF4C3E1A11165800DFDAD6 /* GrowthAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthAnalytics.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.m"; sourceTree = "<group>"; };
+		B2AF4C601A1116A700DFDAD6 /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapper.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.h"; sourceTree = "<group>"; };
+		B2AF4C611A1116A700DFDAD6 /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBAppDelegateWrapper.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapper.m"; sourceTree = "<group>"; };
+		B2AF4C621A1116A700DFDAD6 /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapperDelegate.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBAppDelegateWrapperDelegate.h"; sourceTree = "<group>"; };
+		B2AF4C631A1116A700DFDAD6 /* GBApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBApplication.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBApplication.h"; sourceTree = "<group>"; };
+		B2AF4C641A1116A700DFDAD6 /* GBApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBApplication.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBApplication.m"; sourceTree = "<group>"; };
+		B2AF4C651A1116A700DFDAD6 /* GBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBClient.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBClient.h"; sourceTree = "<group>"; };
+		B2AF4C661A1116A700DFDAD6 /* GBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBClient.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBClient.m"; sourceTree = "<group>"; };
+		B2AF4C671A1116A700DFDAD6 /* GBContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBContentType.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBContentType.h"; sourceTree = "<group>"; };
+		B2AF4C681A1116A700DFDAD6 /* GBContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBContentType.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBContentType.m"; sourceTree = "<group>"; };
+		B2AF4C691A1116A700DFDAD6 /* GBDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDateUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDateUtils.h"; sourceTree = "<group>"; };
+		B2AF4C6A1A1116A700DFDAD6 /* GBDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDateUtils.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDateUtils.m"; sourceTree = "<group>"; };
+		B2AF4C6B1A1116A700DFDAD6 /* GBDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDeviceUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDeviceUtils.h"; sourceTree = "<group>"; };
+		B2AF4C6C1A1116A700DFDAD6 /* GBDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDeviceUtils.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDeviceUtils.m"; sourceTree = "<group>"; };
+		B2AF4C6D1A1116A700DFDAD6 /* GBDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDomain.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDomain.h"; sourceTree = "<group>"; };
+		B2AF4C6E1A1116A700DFDAD6 /* GBDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDomain.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBDomain.m"; sourceTree = "<group>"; };
+		B2AF4C6F1A1116A700DFDAD6 /* GBHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpClient.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpClient.h"; sourceTree = "<group>"; };
+		B2AF4C701A1116A700DFDAD6 /* GBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpClient.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpClient.m"; sourceTree = "<group>"; };
+		B2AF4C711A1116A700DFDAD6 /* GBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpRequest.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpRequest.h"; sourceTree = "<group>"; };
+		B2AF4C721A1116A700DFDAD6 /* GBHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpRequest.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpRequest.m"; sourceTree = "<group>"; };
+		B2AF4C731A1116A700DFDAD6 /* GBHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpResponse.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpResponse.h"; sourceTree = "<group>"; };
+		B2AF4C741A1116A700DFDAD6 /* GBHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpResponse.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpResponse.m"; sourceTree = "<group>"; };
+		B2AF4C751A1116A700DFDAD6 /* GBHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpUtils.h"; sourceTree = "<group>"; };
+		B2AF4C761A1116A700DFDAD6 /* GBHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpUtils.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBHttpUtils.m"; sourceTree = "<group>"; };
+		B2AF4C771A1116A700DFDAD6 /* GBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBLogger.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBLogger.h"; sourceTree = "<group>"; };
+		B2AF4C781A1116A700DFDAD6 /* GBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBLogger.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBLogger.m"; sourceTree = "<group>"; };
+		B2AF4C791A1116A700DFDAD6 /* GBMultipartFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBMultipartFile.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBMultipartFile.h"; sourceTree = "<group>"; };
+		B2AF4C7A1A1116A700DFDAD6 /* GBMultipartFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBMultipartFile.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBMultipartFile.m"; sourceTree = "<group>"; };
+		B2AF4C7B1A1116A700DFDAD6 /* GBPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBPreference.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBPreference.h"; sourceTree = "<group>"; };
+		B2AF4C7C1A1116A700DFDAD6 /* GBPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBPreference.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBPreference.m"; sourceTree = "<group>"; };
+		B2AF4C7D1A1116A700DFDAD6 /* GBRequestMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBRequestMethod.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBRequestMethod.h"; sourceTree = "<group>"; };
+		B2AF4C7E1A1116A700DFDAD6 /* GBRequestMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBRequestMethod.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBRequestMethod.m"; sourceTree = "<group>"; };
+		B2AF4C7F1A1116A700DFDAD6 /* GBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBUtils.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBUtils.h"; sourceTree = "<group>"; };
+		B2AF4C801A1116A700DFDAD6 /* GrowthbeatCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthbeatCore.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.h"; sourceTree = "<group>"; };
+		B2AF4C811A1116A700DFDAD6 /* GrowthbeatCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthbeatCore.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GrowthbeatCore.m"; sourceTree = "<group>"; };
+		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2ED14141A0C451E0078F6BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B275A70C1A0C460F0050510A /* GrowthbeatCore */ = {
+			isa = PBXGroup;
+			children = (
+				B2AF4C601A1116A700DFDAD6 /* GBAppDelegateWrapper.h */,
+				B2AF4C611A1116A700DFDAD6 /* GBAppDelegateWrapper.m */,
+				B2AF4C621A1116A700DFDAD6 /* GBAppDelegateWrapperDelegate.h */,
+				B2AF4C631A1116A700DFDAD6 /* GBApplication.h */,
+				B2AF4C641A1116A700DFDAD6 /* GBApplication.m */,
+				B2AF4C651A1116A700DFDAD6 /* GBClient.h */,
+				B2AF4C661A1116A700DFDAD6 /* GBClient.m */,
+				B2AF4C671A1116A700DFDAD6 /* GBContentType.h */,
+				B2AF4C681A1116A700DFDAD6 /* GBContentType.m */,
+				B2AF4C691A1116A700DFDAD6 /* GBDateUtils.h */,
+				B2AF4C6A1A1116A700DFDAD6 /* GBDateUtils.m */,
+				B2AF4C6B1A1116A700DFDAD6 /* GBDeviceUtils.h */,
+				B2AF4C6C1A1116A700DFDAD6 /* GBDeviceUtils.m */,
+				B2AF4C6D1A1116A700DFDAD6 /* GBDomain.h */,
+				B2AF4C6E1A1116A700DFDAD6 /* GBDomain.m */,
+				B2AF4C6F1A1116A700DFDAD6 /* GBHttpClient.h */,
+				B2AF4C701A1116A700DFDAD6 /* GBHttpClient.m */,
+				B2AF4C711A1116A700DFDAD6 /* GBHttpRequest.h */,
+				B2AF4C721A1116A700DFDAD6 /* GBHttpRequest.m */,
+				B2AF4C731A1116A700DFDAD6 /* GBHttpResponse.h */,
+				B2AF4C741A1116A700DFDAD6 /* GBHttpResponse.m */,
+				B2AF4C751A1116A700DFDAD6 /* GBHttpUtils.h */,
+				B2AF4C761A1116A700DFDAD6 /* GBHttpUtils.m */,
+				B2AF4C771A1116A700DFDAD6 /* GBLogger.h */,
+				B2AF4C781A1116A700DFDAD6 /* GBLogger.m */,
+				B2AF4C791A1116A700DFDAD6 /* GBMultipartFile.h */,
+				B2AF4C7A1A1116A700DFDAD6 /* GBMultipartFile.m */,
+				B2AF4C7B1A1116A700DFDAD6 /* GBPreference.h */,
+				B2AF4C7C1A1116A700DFDAD6 /* GBPreference.m */,
+				B2AF4C7D1A1116A700DFDAD6 /* GBRequestMethod.h */,
+				B2AF4C7E1A1116A700DFDAD6 /* GBRequestMethod.m */,
+				B2AF4C7F1A1116A700DFDAD6 /* GBUtils.h */,
+				B2AF4C801A1116A700DFDAD6 /* GrowthbeatCore.h */,
+				B2AF4C811A1116A700DFDAD6 /* GrowthbeatCore.m */,
+			);
+			name = GrowthbeatCore;
+			sourceTree = "<group>";
+		};
+		B275A7A31A0C47A40050510A /* GrowthAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				B2AF4C391A11165800DFDAD6 /* GAClientEvent.h */,
+				B2AF4C3A1A11165800DFDAD6 /* GAClientEvent.m */,
+				B2AF4C3B1A11165800DFDAD6 /* GAClientTag.h */,
+				B2AF4C3C1A11165800DFDAD6 /* GAClientTag.m */,
+				B2AF4C3D1A11165800DFDAD6 /* GrowthAnalytics.h */,
+				B2AF4C3E1A11165800DFDAD6 /* GrowthAnalytics.m */,
+			);
+			name = GrowthAnalytics;
+			sourceTree = "<group>";
+		};
+		B2ED140E1A0C451E0078F6BC = {
+			isa = PBXGroup;
+			children = (
+				B275A7A31A0C47A40050510A /* GrowthAnalytics */,
+				B275A70C1A0C460F0050510A /* GrowthbeatCore */,
+				B2ED14191A0C451E0078F6BC /* Growthbeat */,
+				B2ED14181A0C451E0078F6BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B2ED14181A0C451E0078F6BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2ED14191A0C451E0078F6BC /* Growthbeat */ = {
+			isa = PBXGroup;
+			children = (
+				B275A6FE1A0C455D0050510A /* Growthbeat.h */,
+				B275A6FF1A0C455D0050510A /* Growthbeat.m */,
+			);
+			path = Growthbeat;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B2ED14161A0C451E0078F6BC /* Growthbeat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2ED142B1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "Growthbeat" */;
+			buildPhases = (
+				B2ED14131A0C451E0078F6BC /* Sources */,
+				B2ED14141A0C451E0078F6BC /* Frameworks */,
+				B2ED14151A0C451E0078F6BC /* CopyFiles */,
+				B275A7021A0C45870050510A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Growthbeat;
+			productName = Growthbeat;
+			productReference = B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2ED140F1A0C451E0078F6BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "SIROK, Inc.";
+				TargetAttributes = {
+					B275A7031A0C45A50050510A = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					B2ED14161A0C451E0078F6BC = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = B2ED14121A0C451E0078F6BC /* Build configuration list for PBXProject "Growthbeat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B2ED140E1A0C451E0078F6BC;
+			productRefGroup = B2ED14181A0C451E0078F6BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B2ED14161A0C451E0078F6BC /* Growthbeat */,
+				B275A7031A0C45A50050510A /* GrowthbeatFramework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B275A7021A0C45870050510A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\n\n# Link the \"Current\" version to \"${FRAMEWORK_VERSION}\"\n/bin/ln -sfh \"${FRAMEWORK_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"";
+		};
+		B275A7091A0C45B50050510A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n\n# Open products directory\nopen \"${BUILT_PRODUCTS_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2ED14131A0C451E0078F6BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2AF4C8F1A1116A700DFDAD6 /* GBPreference.m in Sources */,
+				B2AF4C8E1A1116A700DFDAD6 /* GBMultipartFile.m in Sources */,
+				B2AF4C401A11165800DFDAD6 /* GAClientTag.m in Sources */,
+				B2AF4C891A1116A700DFDAD6 /* GBHttpClient.m in Sources */,
+				B2AF4C851A1116A700DFDAD6 /* GBContentType.m in Sources */,
+				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
+				B2AF4C911A1116A700DFDAD6 /* GrowthbeatCore.m in Sources */,
+				B2AF4C831A1116A700DFDAD6 /* GBApplication.m in Sources */,
+				B2AF4C3F1A11165800DFDAD6 /* GAClientEvent.m in Sources */,
+				B2AF4C821A1116A700DFDAD6 /* GBAppDelegateWrapper.m in Sources */,
+				B2AF4C871A1116A700DFDAD6 /* GBDeviceUtils.m in Sources */,
+				B2AF4C901A1116A700DFDAD6 /* GBRequestMethod.m in Sources */,
+				B2AF4C411A11165800DFDAD6 /* GrowthAnalytics.m in Sources */,
+				B2AF4C861A1116A700DFDAD6 /* GBDateUtils.m in Sources */,
+				B2AF4C8C1A1116A700DFDAD6 /* GBHttpUtils.m in Sources */,
+				B2AF4C8B1A1116A700DFDAD6 /* GBHttpResponse.m in Sources */,
+				B2AF4C841A1116A700DFDAD6 /* GBClient.m in Sources */,
+				B2AF4C8A1A1116A700DFDAD6 /* GBHttpRequest.m in Sources */,
+				B2AF4C8D1A1116A700DFDAD6 /* GBLogger.m in Sources */,
+				B2AF4C881A1116A700DFDAD6 /* GBDomain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B275A7081A0C45AC0050510A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2ED14161A0C451E0078F6BC /* Growthbeat */;
+			targetProxy = B275A7071A0C45AC0050510A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B275A7051A0C45A50050510A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B275A7061A0C45A50050510A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B2ED14291A0C451E0078F6BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = 0.1.0;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
+			};
+			name = Debug;
+		};
+		B2ED142A1A0C451E0078F6BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = 0.1.0;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
+			};
+			name = Release;
+		};
+		B2ED142C1A0C451E0078F6BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B2ED142D1A0C451E0078F6BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B275A7041A0C45A50050510A /* Build configuration list for PBXAggregateTarget "GrowthbeatFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B275A7051A0C45A50050510A /* Debug */,
+				B275A7061A0C45A50050510A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2ED14121A0C451E0078F6BC /* Build configuration list for PBXProject "Growthbeat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2ED14291A0C451E0078F6BC /* Debug */,
+				B2ED142A1A0C451E0078F6BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2ED142B1A0C451E0078F6BC /* Build configuration list for PBXNativeTarget "Growthbeat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2ED142C1A0C451E0078F6BC /* Debug */,
+				B2ED142D1A0C451E0078F6BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2ED140F1A0C451E0078F6BC /* Project object */;
+}
