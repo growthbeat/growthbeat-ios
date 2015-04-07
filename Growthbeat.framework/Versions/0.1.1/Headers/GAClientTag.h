@@ -9,12 +9,12 @@
 #import "GBDomain.h"
 
 @interface GAClientTag : GBDomain <NSCoding> {
-    
+
     NSString *clientId;
     NSString *tagId;
     NSString *value;
     NSDate *created;
-    
+
 }
 
 @property (nonatomic, strong) NSString *clientId;
@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSDate *created;
 
 + (GAClientTag *)createWithClientId:(NSString *)clientId tagId:(NSString *)tagId value:(NSString *)value credentialId:(NSString *)credentialId;
-+ (void) save:(GAClientTag *)clientTag;
-+ (GAClientTag *) load:(NSString *)tagId;
++ (void)save:(GAClientTag *)clientTag;
++ (GAClientTag *)load:(NSString *)tagId;
 
 @end

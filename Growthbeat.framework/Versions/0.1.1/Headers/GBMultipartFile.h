@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface GBMultipartFile : NSObject {
-    
+
     NSString *fileName;
     NSString *contentType;
     NSData *body;
-    
+
 }
 
 @property (nonatomic) NSString *fileName;

@@ -7,22 +7,31 @@
 //
 
 #import "AppDelegate.h"
+#import <AdSupport/AdSupport.h>
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[Growthbeat sharedInstance] initializeWithApplicationId:@"OyTg8vZd4KTNQDJ5" credentialId:@"3EKydeJ0imxJ5WqS22FJfdVamFLgu7XA"];
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[Growthbeat sharedInstance] initializeWithApplicationId:@"P5C3vzoLOEijnlVj" credentialId:@"btFlFAitBJ1CBdL3IR3ROnhLYbeqmLlY"];
     [[Growthbeat sharedInstance] initializeGrowthAnalytics];
-    [[GrowthAnalytics sharedInstance] setBasicTags];
+    [[Growthbeat sharedInstance] initializeGrowthMessage];
+
+    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
+    if ([identifierManager isAdvertisingTrackingEnabled]) {
+        [[GrowthAnalytics sharedInstance] setAdvertisingId:identifierManager.advertisingIdentifier.UUIDString];
+    }
+
     return YES;
+
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[GrowthAnalytics sharedInstance] open];
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] start];
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application {
-    [[GrowthAnalytics sharedInstance] close];
+
+- (void) applicationWillResignActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] stop];
 }
 
 @end

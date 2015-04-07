@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface GBLogger : NSObject {
-    
+
     NSString *tag;
     BOOL silent;
-    
+
 }
 
 @property (nonatomic, retain) NSString *tag;
@@ -20,9 +20,9 @@
 
 - (instancetype)initWithTag:(NSString *)tag;
 
-- (void) error:(NSString *)format, ...;
-- (void) warn:(NSString *)format, ...;
-- (void) info:(NSString *)format, ...;
-- (void) debug:(NSString *)format, ...;
+- (void)error:(NSString *)format, ...;
+- (void)warn:(NSString *)format, ...;
+- (void)info:(NSString *)format, ...;
+- (void)debug:(NSString *)format, ...;
 
 @end

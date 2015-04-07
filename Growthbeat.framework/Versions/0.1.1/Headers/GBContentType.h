@@ -15,6 +15,5 @@ typedef NS_ENUM (NSUInteger, GBContentType) {
     GBContentTypeJson
 };
 
-NSString *NSStringFromContnetType(GBContentType contentType);
-GBContentType
-ContentTypeFromNSString(NSString *contentTypeString);
+NSString *NSStringFromGBContentType(GBContentType contentType);
+GBContentType GBContentTypeFromNSString(NSString *contentTypeString);

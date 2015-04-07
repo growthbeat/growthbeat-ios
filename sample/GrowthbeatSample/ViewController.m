@@ -7,23 +7,29 @@
 //
 
 #import "ViewController.h"
-
-@interface ViewController ()
-
-@end
+#import <Growthbeat/Growthbeat.h>
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+@synthesize developmentTagSwitch;
+@synthesize levelTextField;
+@synthesize itemTextField;
+@synthesize priceTextField;
+
+- (IBAction) tapRandomTagButton:(id)sender {
+    [[GrowthAnalytics sharedInstance] setRandom];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction) changeDevelopmentTagSwitch:(id)sender {
+    [[GrowthAnalytics sharedInstance] setDevelopment:developmentTagSwitch.on];
+}
+
+- (IBAction) tapLevelTagButton:(id)sender {
+    [[GrowthAnalytics sharedInstance] setLevel:[levelTextField.text intValue]];
+}
+
+- (IBAction) tapPurchaseEventButton:(id)sender {
+    [[GrowthAnalytics sharedInstance] purchase:[priceTextField.text intValue] setCategory:@"item" setProduct:itemTextField.text];
 }
 
 @end

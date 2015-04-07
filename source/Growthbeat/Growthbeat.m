@@ -11,10 +11,10 @@
 static Growthbeat *sharedInstance = nil;
 
 @interface Growthbeat () {
-    
+
     NSString *applicationId;
     NSString *credentialId;
-    
+
 }
 
 @property (nonatomic, strong) NSString *applicationId;
@@ -53,6 +53,24 @@ static Growthbeat *sharedInstance = nil;
 
 - (void) initializeGrowthAnalytics {
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
+}
+
+- (void) initializeGrowthMessage {
+    [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
+}
+
+- (void) start {
+    [[GrowthAnalytics sharedInstance] open];
+}
+
+- (void) stop {
+    [[GrowthAnalytics sharedInstance] close];
+}
+
+- (void) setLoggerSilent:(BOOL)silent {
+    [[[GrowthbeatCore sharedInstance] logger] setSilent:silent];
+    [[[GrowthAnalytics sharedInstance] logger] setSilent:silent];
+    [[[GrowthMessage sharedInstance] logger] setSilent:silent];
 }
 
 @end

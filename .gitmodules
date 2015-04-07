@@ -4,3 +4,6 @@
 [submodule "submodules/growthanalytics-ios"]
 	path = submodules/growthanalytics-ios
 	url = https://github.com/SIROK/growthanalytics-ios.git
+[submodule "submodules/growthmessage-ios"]
+	path = submodules/growthmessage-ios
+	url = https://github.com/SIROK/growthmessage-ios.git

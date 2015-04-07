@@ -9,12 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "GrowthbeatCore.h"
 #import "GrowthAnalytics.h"
+#import "GrowthMessage.h"
 
 @interface Growthbeat : NSObject
 
 + (instancetype)sharedInstance;
 
-- (void) initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
-- (void) initializeGrowthAnalytics;
+- (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
+- (void)initializeGrowthAnalytics;
+- (void)initializeGrowthMessage;
+
+- (void)start;
+- (void)stop;
+- (void)setLoggerSilent:(BOOL)silent;
 
 @end

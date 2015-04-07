@@ -10,6 +10,8 @@
 
 @interface GBDomain : NSObject
 
-+ (id)domainWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)domainWithDictionary:(NSDictionary *)dictionary;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

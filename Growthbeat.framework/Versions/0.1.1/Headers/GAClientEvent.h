@@ -9,13 +9,13 @@
 #import "GBDomain.h"
 
 @interface GAClientEvent : GBDomain <NSCoding> {
-    
+
     NSString *id;
     NSString *clientId;
     NSString *eventId;
     NSDictionary *properties;
     NSDate *created;
-    
+
 }
 
 @property (nonatomic, strong) NSString *id;
@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSDate *created;
 
 + (GAClientEvent *)createWithClientId:(NSString *)clientId eventId:(NSString *)eventId properties:(NSDictionary *)properties credentialId:(NSString *)credentialId;
-+ (void) save:(GAClientEvent *)clientEvent;
-+ (GAClientEvent *) load:(NSString *)eventId;
++ (void)save:(GAClientEvent *)clientEvent;
++ (GAClientEvent *)load:(NSString *)eventId;
 
 @end
