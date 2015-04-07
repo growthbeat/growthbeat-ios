@@ -59,13 +59,18 @@ static Growthbeat *sharedInstance = nil;
     [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
-
 - (void) start {
     [[GrowthAnalytics sharedInstance] open];
 }
 
 - (void) stop {
     [[GrowthAnalytics sharedInstance] close];
+}
+
+- (void) setLoggerSilent:(BOOL)silent {
+    [[[GrowthbeatCore sharedInstance] logger] setSilent:silent];
+    [[[GrowthAnalytics sharedInstance] logger] setSilent:silent];
+    [[[GrowthMessage sharedInstance] logger] setSilent:silent];
 }
 
 @end

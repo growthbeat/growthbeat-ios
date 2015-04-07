@@ -23,7 +23,7 @@
 
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
-- (void)didSelectButton:(GMButton *)button message:(GMMessage *)message;
+- (void)selectButton:(GMButton *)button message:(GMMessage *)message;
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;

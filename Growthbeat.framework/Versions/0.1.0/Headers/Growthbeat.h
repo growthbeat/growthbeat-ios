@@ -21,5 +21,6 @@
 
 - (void) start;
 - (void) stop;
+- (void) setLoggerSilent:(BOOL)silent;
 
 @end
