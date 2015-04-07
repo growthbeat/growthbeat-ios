@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AdSupport/AdSupport.h>
 
 @implementation AppDelegate
 
@@ -15,6 +16,11 @@
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"P5C3vzoLOEijnlVj" credentialId:@"btFlFAitBJ1CBdL3IR3ROnhLYbeqmLlY"];
     [[Growthbeat sharedInstance] initializeGrowthAnalytics];
     [[Growthbeat sharedInstance] initializeGrowthMessage];
+    
+    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
+    if ([identifierManager isAdvertisingTrackingEnabled]) {
+        [[GrowthAnalytics sharedInstance] setAdvertisingId:identifierManager.advertisingIdentifier.UUIDString];
+    }
     
     return YES;
     
