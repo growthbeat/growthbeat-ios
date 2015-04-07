@@ -25,6 +25,12 @@ Growthbeat SDK for iOS
 	```objc
 	[[Growthbeat sharedInstance] initializeGrowthAnalytics];
 	```
+	
+1. Initialize Growth Message.
+
+	```objc
+	[[Growthbeat sharedInstance] initializeGrowthMessage];
+	```
 
 1. Initialize Growth Push. (Under development)
 
@@ -36,6 +42,19 @@ Growthbeat SDK for iOS
 
 	```objc
 	[[Growthbeat sharedInstance] initializeGrowthReplay];
+	```
+	
+1. Call Growthbeat's start method on applicationDidBecomeActive:
+
+	```objc
+	[[Growthbeat sharedInstance] start];
+	}
+	```
+	
+1. Call Growthbeat's stop method on applicationWillResignActive:
+
+	```objc
+	[[Growthbeat sharedInstance] stop];
 	```
 
 ## Included SDKs
@@ -53,6 +72,12 @@ Growthbeat Core SDK is core functions for Growthbeat integrated services.
 [Growth Analytics](https://analytics.growthbeat.com/) is analytics service for mobile apps.
 
 * [Growth Analytics SDK for iOS](https://github.com/SIROK/growthanalytics-ios)
+
+### Growth Message
+
+[Growth Message](https://message.growthbeat.com/) is in-app message tool for mobile apps.
+
+* [Growth Message SDK for iOS](https://github.com/SIROK/growthmessage-ios)
 
 ### Growth Push (Under development)
 
