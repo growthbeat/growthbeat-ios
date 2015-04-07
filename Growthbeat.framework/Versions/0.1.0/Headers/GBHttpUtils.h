@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kMultipartBoundary (@"----------V2ymHFg03ehbqgZCaKO6jy")
+#define kMultipartBoundary (@ "----------V2ymHFg03ehbqgZCaKO6jy")
 
 @interface GBHttpUtils : NSObject
 

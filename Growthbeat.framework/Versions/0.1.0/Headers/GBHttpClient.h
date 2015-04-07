@@ -11,14 +11,14 @@
 #import "GBHttpResponse.h"
 
 @interface GBHttpClient : NSObject {
-    
+
     NSURL *baseUrl;
-    
+
 }
 
 @property (nonatomic, strong) NSURL *baseUrl;
 
 - (instancetype)initWithBaseUrl:(NSURL *)initialBaseUrl;
-- (GBHttpResponse *) httpRequest:(GBHttpRequest *)httpRequest;
+- (GBHttpResponse *)httpRequest:(GBHttpRequest *)httpRequest;
 
 @end

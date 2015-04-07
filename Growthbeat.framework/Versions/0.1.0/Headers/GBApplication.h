@@ -9,11 +9,11 @@
 #import "GBDomain.h"
 
 @interface GBApplication : GBDomain <NSCoding> {
-    
+
     NSString *id;
     NSString *name;
     NSDate *created;
-    
+
 }
 
 @property (nonatomic, strong) NSString *id;

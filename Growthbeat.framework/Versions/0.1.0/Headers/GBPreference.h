@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface GBPreference : NSObject {
-    
+
     NSString *fileName;
-    
+
 }
 
 @property (nonatomic, strong) NSString *fileName;
 
-- (instancetype) initWithFileName:(NSString *)initialFileName;
+- (instancetype)initWithFileName:(NSString *)initialFileName;
 - (id)objectForKey:(id <NSCopying>)key;
 - (void)setObject:(id)object forKey:(id <NSCopying>)key;
 - (void)removeObjectForKey:(id <NSCopying>)key;
