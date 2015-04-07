@@ -14,16 +14,25 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+@synthesize developmentTagSwitch;
+@synthesize levelTextField;
+@synthesize itemTextField;
+@synthesize priceTextField;
+
+- (IBAction)tapRandomTagButton:(id)sender {
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)changeDevelopmentTagSwitch:(id)sender {
+    
+}
+
+- (IBAction)tapLevelTagButton:(id)sender {
+    
+}
+
+- (IBAction)tapPurchaseEventButton:(id)sender {
+    
 }
 
 @end
