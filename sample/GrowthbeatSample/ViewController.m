@@ -21,7 +21,7 @@
 }
 
 - (IBAction) changeDevelopmentTagSwitch:(id)sender {
-    [[GrowthAnalytics sharedInstance] setDevelopment:developmentTagSwitch.selected];
+    [[GrowthAnalytics sharedInstance] setDevelopment:developmentTagSwitch.on];
 }
 
 - (IBAction) tapLevelTagButton:(id)sender {
