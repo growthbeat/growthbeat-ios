@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GrowthbeatCore.h"
 #import "GrowthAnalytics.h"
+#import "GrowthMessage.h"
 
 @interface Growthbeat : NSObject
 
@@ -16,5 +17,9 @@
 
 - (void) initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
 - (void) initializeGrowthAnalytics;
+- (void) initializeGrowthMessage;
+
+- (void) start;
+- (void) stop;
 
 @end

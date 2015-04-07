@@ -55,4 +55,17 @@ static Growthbeat *sharedInstance = nil;
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
+- (void) initializeGrowthMessage {
+    [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
+}
+
+
+- (void) start {
+    [[GrowthAnalytics sharedInstance] open];
+}
+
+- (void) stop {
+    [[GrowthAnalytics sharedInstance] close];
+}
+
 @end

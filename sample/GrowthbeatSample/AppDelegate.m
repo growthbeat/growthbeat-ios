@@ -11,18 +11,21 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[Growthbeat sharedInstance] initializeWithApplicationId:@"OyTg8vZd4KTNQDJ5" credentialId:@"3EKydeJ0imxJ5WqS22FJfdVamFLgu7XA"];
+    
+    [[Growthbeat sharedInstance] initializeWithApplicationId:@"P5C3vzoLOEijnlVj" credentialId:@"btFlFAitBJ1CBdL3IR3ROnhLYbeqmLlY"];
     [[Growthbeat sharedInstance] initializeGrowthAnalytics];
-    [[GrowthAnalytics sharedInstance] setBasicTags];
+    [[Growthbeat sharedInstance] initializeGrowthMessage];
+    
     return YES;
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[GrowthAnalytics sharedInstance] open];
+    [[Growthbeat sharedInstance] start];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application {
-    [[GrowthAnalytics sharedInstance] close];
+    [[Growthbeat sharedInstance] stop];
 }
 
 @end
