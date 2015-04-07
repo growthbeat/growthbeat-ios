@@ -100,6 +100,10 @@
 		B2942BFE1AD4367F005D6D3A /* GBUrlIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BB31AD4364C005D6D3A /* GBUrlIntentHandler.h */; };
 		B2942BFF1AD4367F005D6D3A /* GBUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BB51AD4364C005D6D3A /* GBUtils.h */; };
 		B2942C001AD4367F005D6D3A /* GrowthbeatCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BB61AD4364C005D6D3A /* GrowthbeatCore.h */; };
+		B2942C011AD43E56005D6D3A /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BCF1AD43657005D6D3A /* GAClientEvent.h */; };
+		B2942C021AD43E56005D6D3A /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BD11AD43657005D6D3A /* GAClientTag.h */; };
+		B2942C031AD43E56005D6D3A /* GAEventHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BD31AD43657005D6D3A /* GAEventHandler.h */; };
+		B2942C041AD43E56005D6D3A /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BD51AD43657005D6D3A /* GrowthAnalytics.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +123,10 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B2942C011AD43E56005D6D3A /* GAClientEvent.h in CopyFiles */,
+				B2942C021AD43E56005D6D3A /* GAClientTag.h in CopyFiles */,
+				B2942C031AD43E56005D6D3A /* GAEventHandler.h in CopyFiles */,
+				B2942C041AD43E56005D6D3A /* GrowthAnalytics.h in CopyFiles */,
 				B2942BE71AD4367F005D6D3A /* GBAppDelegateWrapper.h in CopyFiles */,
 				B2942BE81AD4367F005D6D3A /* GBAppDelegateWrapperDelegate.h in CopyFiles */,
 				B2942BE91AD4367F005D6D3A /* GBApplication.h in CopyFiles */,
