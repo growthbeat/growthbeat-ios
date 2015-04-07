@@ -11,26 +11,26 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"P5C3vzoLOEijnlVj" credentialId:@"btFlFAitBJ1CBdL3IR3ROnhLYbeqmLlY"];
     [[Growthbeat sharedInstance] initializeGrowthAnalytics];
     [[Growthbeat sharedInstance] initializeGrowthMessage];
-    
+
     ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
     if ([identifierManager isAdvertisingTrackingEnabled]) {
         [[GrowthAnalytics sharedInstance] setAdvertisingId:identifierManager.advertisingIdentifier.UUIDString];
     }
-    
+
     return YES;
-    
+
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
+- (void) applicationDidBecomeActive:(UIApplication *)application {
     [[Growthbeat sharedInstance] start];
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application {
+
+- (void) applicationWillResignActive:(UIApplication *)application {
     [[Growthbeat sharedInstance] stop];
 }
 

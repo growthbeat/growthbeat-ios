@@ -15,12 +15,12 @@
 
 + (instancetype)sharedInstance;
 
-- (void) initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
-- (void) initializeGrowthAnalytics;
-- (void) initializeGrowthMessage;
+- (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
+- (void)initializeGrowthAnalytics;
+- (void)initializeGrowthMessage;
 
-- (void) start;
-- (void) stop;
-- (void) setLoggerSilent:(BOOL)silent;
+- (void)start;
+- (void)stop;
+- (void)setLoggerSilent:(BOOL)silent;
 
 @end

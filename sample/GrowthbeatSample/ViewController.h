@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController {
-    
+
     IBOutlet UISwitch *developmentTagSwitch;
     IBOutlet UITextField *levelTextField;
     IBOutlet UITextField *itemTextField;
     IBOutlet UITextField *priceTextField;
-    
+
 }
 
 @property (nonatomic, strong) IBOutlet UISwitch *developmentTagSwitch;
