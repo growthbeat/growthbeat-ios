@@ -7,13 +7,14 @@
 //
 
 #import "GMMessage.h"
+#import "GMPicture.h"
 
 @interface GMImageMessage : GMMessage {
 
-    NSString *url;
+    GMPicture *picture;
 
 }
 
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) GMPicture *picture;
 
 @end
