@@ -6,6 +6,8 @@ Growthbeat SDK for iOS
 
 1. Add Growthbeat.framework into your project. 
 
+1. Link SystemConfiguration.framework and AdSupport.framework. 
+
 1. Import the framework header.
 
 	```objc
@@ -16,45 +18,26 @@ Growthbeat SDK for iOS
 
 	```objc
 	[[Growthbeat sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
-	```
-
-	You can get the APPLICATION_ID and CREDENTIAL_ID on web site of Growthbeat. 
-
-1. Initialize Growth Analytics.
-
-	```objc
 	[[Growthbeat sharedInstance] initializeGrowthAnalytics];
-	```
-	
-1. Initialize Growth Message.
-
-	```objc
 	[[Growthbeat sharedInstance] initializeGrowthMessage];
-	```
-
-1. Initialize Growth Push. (Under development)
-
-	```objc
-	[[Growthbeat sharedInstance] initializeGrowthPushWithEnvironment:kGrowthPushEnvironment];
-	```
-
-1. Initialize Growth Replay. (Under development)
-
-	```objc
-	[[Growthbeat sharedInstance] initializeGrowthReplay];
 	```
 	
 1. Call Growthbeat's start method on applicationDidBecomeActive:
 
 	```objc
 	[[Growthbeat sharedInstance] start];
-	}
 	```
 	
 1. Call Growthbeat's stop method on applicationWillResignActive:
 
 	```objc
 	[[Growthbeat sharedInstance] stop];
+	```
+
+1. Write following code in the place to track custom event with Growth Analytics or display a message with Growth Message.
+
+	```objc
+    [[GrowthAnalytics sharedInstance] track:@"EVENT_ID"];
 	```
 
 ## Included SDKs
