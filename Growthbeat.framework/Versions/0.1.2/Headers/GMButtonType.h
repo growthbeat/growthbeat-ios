@@ -11,7 +11,9 @@
 typedef NS_ENUM (NSUInteger, GMButtonType) {
     GMButtonTypeUnknown = 0,
     GMButtonTypePlain,
-    GMButtonTypeImage
+    GMButtonTypeImage,
+    GMButtonTypeClose,
+    GMButtonTypeScreen
 };
 
 NSString *NSStringFromGMButtonType(GMButtonType buttonType);

@@ -7,7 +7,14 @@
 //
 
 #import "GMButton.h"
+#import "GMPicture.h"
 
-@interface GMImageButton : GMButton <NSCoding>
+@interface GMImageButton : GMButton {
+
+    GMPicture *picture;
+
+}
+
+@property (nonatomic, strong) GMPicture *picture;
 
 @end
