@@ -688,6 +688,7 @@
 		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
@@ -698,6 +699,7 @@
 		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
