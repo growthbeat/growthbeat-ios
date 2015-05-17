@@ -76,7 +76,7 @@ Growthbeat Core SDK is core functions for Growthbeat integrated services.
 
 # Building framework
 
-1. Set build target to GrowthAnalyticsFramework and iOS Device.
+1. Set build target to GrowthbeatFramework and iOS Device.
 1. Run.
 
 Archive the project on Xcode and you will get framework package.
