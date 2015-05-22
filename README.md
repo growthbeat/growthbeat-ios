@@ -1,6 +1,6 @@
 # Growthbeat SDK for iOS
 
-Growthbeat SDK for iOS
+[Growthbeat](https://growthbeat.com/) is growth hack platform for smart devices.
 
 ## Usage
 
@@ -18,8 +18,6 @@ Growthbeat SDK for iOS
 
 	```objc
 	[[Growthbeat sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
-	[[Growthbeat sharedInstance] initializeGrowthAnalytics];
-	[[Growthbeat sharedInstance] initializeGrowthMessage];
 	```
 	
 1. Call Growthbeat's start method on applicationDidBecomeActive:
@@ -37,7 +35,7 @@ Growthbeat SDK for iOS
 1. Write following code in the place to track custom event with Growth Analytics or display a message with Growth Message.
 
 	```objc
-    [[GrowthAnalytics sharedInstance] track:@"EVENT_ID"];
+    [[GrowthAnalytics sharedInstance] track:@"EVENT_NAME"];
 	```
 
 ## Included SDKs
