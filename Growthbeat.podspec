@@ -7,18 +7,25 @@ Pod::Spec.new do |s|
   https://growthbeat.com/
   DESC
   s.homepage = "https://github.com/SIROK/growthbeat-ios"
-  s.license = {:type => 'Apache License, Version 2.0', :file => 'LICENSE'}
+  s.license = {:type => "Apache License, Version 2.0", :file => "LICENSE"}
   s.author = {"SIROK, Inc." => "support@growthbeat.com"}
 
   s.source = {:git => "https://github.com/SIROK/growthbeat-ios.git", :tag => "#{s.version}"}
   s.source_files = [
-      'submodules/growthbeat-core-ios/source/GrowthbeatCore/*.{h,m}',
-      'submodules/growthanalytics-ios/source/GrowthAnalytics/*.{h,m}',
-      'submodules/growthmessage-ios/source/GrowthMessage/*.{h,m}',
-      'source/Growthbeat/*.{h,m}'
+      "source/Growthbeat/*.h"
   ]
+  s.frameworks = [
+      "Growthbeat",
+      "AdSupport",
+      "SystemConfiguration",
+      "CoreGraphics",
+      "CFNetwork",
+      "UIKit",
+      "Foundation"
+  ]
+  s.vendored_frameworks = "Growthbeat.framework"
   s.preserve_paths = "README.*"
 
-  s.platform = :ios, '5.0'
+  s.platform = :ios, "5.1"
   s.requires_arc = true
 end
