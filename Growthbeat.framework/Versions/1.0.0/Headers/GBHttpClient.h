@@ -13,12 +13,14 @@
 @interface GBHttpClient : NSObject {
 
     NSURL *baseUrl;
+    NSTimeInterval timeout;
 
 }
 
 @property (nonatomic, strong) NSURL *baseUrl;
+@property (nonatomic, assign) NSTimeInterval timeout;
 
-- (instancetype)initWithBaseUrl:(NSURL *)initialBaseUrl;
+- (instancetype)initWithBaseUrl:(NSURL *)initialBaseUrl timeout:(NSTimeInterval)timeout;
 - (GBHttpResponse *)httpRequest:(GBHttpRequest *)httpRequest;
 
 @end

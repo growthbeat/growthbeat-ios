@@ -16,8 +16,6 @@
 + (instancetype)sharedInstance;
 
 - (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
-- (void)initializeGrowthAnalytics;
-- (void)initializeGrowthMessage;
 
 - (void)start;
 - (void)stop;

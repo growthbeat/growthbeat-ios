@@ -11,13 +11,8 @@
 @implementation AppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"P5C3vzoLOEijnlVj" credentialId:@"btFlFAitBJ1CBdL3IR3ROnhLYbeqmLlY"];
-    [[Growthbeat sharedInstance] initializeGrowthAnalytics];
-    [[Growthbeat sharedInstance] initializeGrowthMessage];
-
     return YES;
-
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {

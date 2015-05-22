@@ -49,13 +49,7 @@ static Growthbeat *sharedInstance = nil;
     self.applicationId = initialApplicationId;
     self.credentialId = initialCredentialId;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-}
-
-- (void) initializeGrowthAnalytics {
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-}
-
-- (void) initializeGrowthMessage {
     [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
