@@ -117,6 +117,14 @@
 		B2942C021AD43E56005D6D3A /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BD11AD43657005D6D3A /* GAClientTag.h */; };
 		B2942C031AD43E56005D6D3A /* GAEventHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BD31AD43657005D6D3A /* GAEventHandler.h */; };
 		B2942C041AD43E56005D6D3A /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2942BD51AD43657005D6D3A /* GrowthAnalytics.h */; };
+		CE0626AC1B13654D009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0626A51B13654D009263FA /* GPClient.m */; };
+		CE0626AD1B13654D009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0626A71B13654D009263FA /* GPEnvironmentUtils.m */; };
+		CE0626AE1B13654D009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0626A91B13654D009263FA /* GPOS.m */; };
+		CE0626AF1B13654D009263FA /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0626AB1B13654D009263FA /* GrowthPush.m */; };
+		CE0626B01B136CC4009263FA /* GPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0626A41B13654D009263FA /* GPClient.h */; };
+		CE0626B11B136CC4009263FA /* GPEnvironment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0626A61B13654D009263FA /* GPEnvironment.h */; };
+		CE0626B21B136CC4009263FA /* GPOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0626A81B13654D009263FA /* GPOS.h */; };
+		CE0626B31B136CC4009263FA /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0626AA1B13654D009263FA /* GrowthPush.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +144,10 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				CE0626B01B136CC4009263FA /* GPClient.h in CopyFiles */,
+				CE0626B11B136CC4009263FA /* GPEnvironment.h in CopyFiles */,
+				CE0626B21B136CC4009263FA /* GPOS.h in CopyFiles */,
+				CE0626B31B136CC4009263FA /* GrowthPush.h in CopyFiles */,
 				B24FF0871AEDAB7B004FEE7B /* GMButton.h in CopyFiles */,
 				B24FF0881AEDAB7B004FEE7B /* GMButtonType.h in CopyFiles */,
 				B24FF0891AEDAB7B004FEE7B /* GMCloseButton.h in CopyFiles */,
@@ -288,6 +300,14 @@
 		B2942BD51AD43657005D6D3A /* GrowthAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthAnalytics.h; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.h"; sourceTree = "<group>"; };
 		B2942BD61AD43657005D6D3A /* GrowthAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthAnalytics.m; path = "../submodules/growthanalytics-ios/source/GrowthAnalytics/GrowthAnalytics.m"; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0626A41B13654D009263FA /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPClient.h; sourceTree = "<group>"; };
+		CE0626A51B13654D009263FA /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
+		CE0626A61B13654D009263FA /* GPEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEnvironment.h; sourceTree = "<group>"; };
+		CE0626A71B13654D009263FA /* GPEnvironmentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEnvironmentUtils.m; sourceTree = "<group>"; };
+		CE0626A81B13654D009263FA /* GPOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPOS.h; sourceTree = "<group>"; };
+		CE0626A91B13654D009263FA /* GPOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
+		CE0626AA1B13654D009263FA /* GrowthPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowthPush.h; sourceTree = "<group>"; };
+		CE0626AB1B13654D009263FA /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +438,7 @@
 		B2ED140E1A0C451E0078F6BC = {
 			isa = PBXGroup;
 			children = (
+				CE0626A31B13654D009263FA /* GrowthPush */,
 				B2942B421AD4346C005D6D3A /* GrowthMessage */,
 				B275A7A31A0C47A40050510A /* GrowthAnalytics */,
 				B275A70C1A0C460F0050510A /* GrowthbeatCore */,
@@ -441,6 +462,22 @@
 				B275A6FF1A0C455D0050510A /* Growthbeat.m */,
 			);
 			path = Growthbeat;
+			sourceTree = "<group>";
+		};
+		CE0626A31B13654D009263FA /* GrowthPush */ = {
+			isa = PBXGroup;
+			children = (
+				CE0626A41B13654D009263FA /* GPClient.h */,
+				CE0626A51B13654D009263FA /* GPClient.m */,
+				CE0626A61B13654D009263FA /* GPEnvironment.h */,
+				CE0626A71B13654D009263FA /* GPEnvironmentUtils.m */,
+				CE0626A81B13654D009263FA /* GPOS.h */,
+				CE0626A91B13654D009263FA /* GPOS.m */,
+				CE0626AA1B13654D009263FA /* GrowthPush.h */,
+				CE0626AB1B13654D009263FA /* GrowthPush.m */,
+			);
+			name = GrowthPush;
+			path = "../submodules/growthpush-ios/source/GrowthPush";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -544,6 +581,7 @@
 				B24FF07E1AEDAACF004FEE7B /* GMMessageType.m in Sources */,
 				B24FF0841AEDAACF004FEE7B /* GMScreenButton.m in Sources */,
 				B2942BDA1AD43657005D6D3A /* GrowthAnalytics.m in Sources */,
+				CE0626AC1B13654D009263FA /* GPClient.m in Sources */,
 				B2942BC01AD4364C005D6D3A /* GBHttpClient.m in Sources */,
 				B2942BB81AD4364C005D6D3A /* GBAppDelegateWrapper.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
@@ -552,11 +590,14 @@
 				B2942BCD1AD4364C005D6D3A /* GBUrlIntentHandler.m in Sources */,
 				B24FF0771AEDAACF004FEE7B /* GMButtonType.m in Sources */,
 				B24FF07C1AEDAACF004FEE7B /* GMImageMessageRenderer.m in Sources */,
+				CE0626AD1B13654D009263FA /* GPEnvironmentUtils.m in Sources */,
 				B24FF0761AEDAACF004FEE7B /* GMButton.m in Sources */,
 				B2942BD81AD43657005D6D3A /* GAClientTag.m in Sources */,
 				B24FF0781AEDAACF004FEE7B /* GMCloseButton.m in Sources */,
+				CE0626AF1B13654D009263FA /* GrowthPush.m in Sources */,
 				B2942BBF1AD4364C005D6D3A /* GBDomain.m in Sources */,
 				B2942BB91AD4364C005D6D3A /* GBApplication.m in Sources */,
+				CE0626AE1B13654D009263FA /* GPOS.m in Sources */,
 				B24FF0861AEDAACF004FEE7B /* GrowthMessage.m in Sources */,
 				B24FF0801AEDAACF004FEE7B /* GMPictureExtension.m in Sources */,
 				B2942BC61AD4364C005D6D3A /* GBLogger.m in Sources */,
