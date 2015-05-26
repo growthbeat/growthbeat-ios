@@ -125,6 +125,7 @@
 		CE0626B11B136CC4009263FA /* GPEnvironment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0626A61B13654D009263FA /* GPEnvironment.h */; };
 		CE0626B21B136CC4009263FA /* GPOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0626A81B13654D009263FA /* GPOS.h */; };
 		CE0626B31B136CC4009263FA /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0626AA1B13654D009263FA /* GrowthPush.h */; };
+		CE0626B61B137799009263FA /* GBGPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0626B51B137799009263FA /* GBGPClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,6 +309,8 @@
 		CE0626A91B13654D009263FA /* GPOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
 		CE0626AA1B13654D009263FA /* GrowthPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowthPush.h; sourceTree = "<group>"; };
 		CE0626AB1B13654D009263FA /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
+		CE0626B41B137799009263FA /* GBGPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBGPClient.h; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBGPClient.h"; sourceTree = "<group>"; };
+		CE0626B51B137799009263FA /* GBGPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBGPClient.m; path = "../submodules/growthbeat-core-ios/source/GrowthbeatCore/GBGPClient.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +342,8 @@
 				B2942B931AD4364C005D6D3A /* GBDateUtils.m */,
 				B2942B941AD4364C005D6D3A /* GBDeviceUtils.h */,
 				B2942B951AD4364C005D6D3A /* GBDeviceUtils.m */,
+				CE0626B41B137799009263FA /* GBGPClient.h */,
+				CE0626B51B137799009263FA /* GBGPClient.m */,
 				B2942B961AD4364C005D6D3A /* GBDomain.h */,
 				B2942B971AD4364C005D6D3A /* GBDomain.m */,
 				B2942B981AD4364C005D6D3A /* GBHttpClient.h */,
@@ -586,6 +591,7 @@
 				B2942BB81AD4364C005D6D3A /* GBAppDelegateWrapper.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
 				B2942BCC1AD4364C005D6D3A /* GBUrlIntent.m in Sources */,
+				CE0626B61B137799009263FA /* GBGPClient.m in Sources */,
 				B2942BC11AD4364C005D6D3A /* GBHttpRequest.m in Sources */,
 				B2942BCD1AD4364C005D6D3A /* GBUrlIntentHandler.m in Sources */,
 				B24FF0771AEDAACF004FEE7B /* GMButtonType.m in Sources */,
