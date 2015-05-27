@@ -22,6 +22,7 @@
 @property (nonatomic, strong) GBApplication *application;
 
 + (GBClient *)createWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
++ (GBClient *)findWithId:(NSString *)id credentialId:(NSString *)credentialId;
 + (void)save:(GBClient *)client;
 + (GBClient *)load;
 
