@@ -84,21 +84,28 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     self.client = [GBClient load];
     
     if (gpClient) {
+        if (client && [client.id isEqualToString:gpClient.growthbeatClientId] &&
+            [client.application.id isEqualToString:gpClient.growthbeatApplicationId] &&
+            [gpClient.growthbeatApplicationId isEqualToString:applicationId]) {
+            [logger info:@"Client already exists. (id:%@)", client.id];
+            return;
+        }
+    } else {
+        if (client && [client.application.id isEqualToString:applicationId]) {
+            [logger info:@"Client already exists. (id:%@)", client.id];
+            return;
+        }
+    }
+    
+    [preference removeAll];
+    self.client = nil;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            
-            if (!gpClient.growthbeatClientId || !gpClient.growthbeatApplicationId)
-                gpClient = [GBGPClient findWithGPClientId:gpClient.id code:gpClient.code];
-            
-            if (client && [client.id isEqualToString:gpClient.growthbeatClientId] && [gpClient.growthbeatApplicationId isEqualToString:applicationId]) {
-                [logger info:@"Client already exists. (id:%@)", client.id];
-                return;
-            }
-            
-            [preference removeAll];
-            self.client = nil;
-            
+        if (gpClient) {
             [logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gpClient.id, gpClient.growthbeatClientId];
+            
+            gpClient = [GBGPClient findWithGPClientId:gpClient.id code:gpClient.code];
             self.client = [GBClient findWithId:gpClient.growthbeatClientId credentialId:credentialId];
             if (!client || ![client.application.id isEqualToString:applicationId]) {
                 [logger error:@"Failed to convert client."];
@@ -110,19 +117,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
             [GBClient save:client];
             [logger info:@"Client converted. (id:%@)", client.id];
             
-        });
-    } else {
-
-        if (client && [client.application.id isEqualToString:applicationId]) {
-            [logger info:@"Client already exists. (id:%@)", client.id];
-            return;
-        }
-        
-        [preference removeAll];
-        self.client = nil;
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            
+        } else {
             [logger info:@"Creating client... (applicationId:%@)", applicationId];
             self.client = [GBClient createWithApplicationId:applicationId credentialId:credentialId];
             if (!client) {
@@ -133,8 +128,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
             [GBClient save:client];
             [logger info:@"Client created. (id:%@)", client.id];
             
-        });
-    }
+        }
+        
+    });
     
 }
 
