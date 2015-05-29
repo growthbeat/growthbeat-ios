@@ -24,6 +24,8 @@
 /* Begin PBXBuildFile section */
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
+		B29945C01B181578000ED06B /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B29945BF1B181578000ED06B /* GrowthLink.m */; };
+		B29945C11B181610000ED06B /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B29945BE1B181578000ED06B /* GrowthLink.h */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
 		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
 		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
@@ -146,6 +148,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B29945C11B181610000ED06B /* GrowthLink.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
 				CE0628771B16F22E009263FA /* GPEnvironment.h in CopyFiles */,
 				CE0628781B16F22E009263FA /* GPOS.h in CopyFiles */,
@@ -209,6 +212,8 @@
 /* Begin PBXFileReference section */
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
 		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
+		B29945BE1B181578000ED06B /* GrowthLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthLink.h; path = GrowthLink/GrowthLink/GrowthLink.h; sourceTree = "<group>"; };
+		B29945BF1B181578000ED06B /* GrowthLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthLink.m; path = GrowthLink/GrowthLink/GrowthLink.m; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
 		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
@@ -327,9 +332,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B29945BD1B181564000ED06B /* GrowthLink */ = {
+			isa = PBXGroup;
+			children = (
+				B29945BE1B181578000ED06B /* GrowthLink.h */,
+				B29945BF1B181578000ED06B /* GrowthLink.m */,
+			);
+			name = GrowthLink;
+			sourceTree = "<group>";
+		};
 		B2ED140E1A0C451E0078F6BC = {
 			isa = PBXGroup;
 			children = (
+				B29945BD1B181564000ED06B /* GrowthLink */,
 				CE0628281B15B6BF009263FA /* GrowthPush */,
 				CE0628031B15B6B8009263FA /* GrowthMessage */,
 				CE0627CF1B15B6A1009263FA /* GrowthbeatCore */,
@@ -608,6 +623,7 @@
 				CE0628611B16F1E2009263FA /* GBMultipartFile.m in Sources */,
 				CE06283E1B16F1A1009263FA /* GPOS.m in Sources */,
 				CE06285A1B16F1E2009263FA /* GBHttpClient.m in Sources */,
+				B29945C01B181578000ED06B /* GrowthLink.m in Sources */,
 				CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */,
 				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
