@@ -76,14 +76,43 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
     [activityIndicatorView startAnimating];
     [baseView addSubview:activityIndicatorView];
 
-    CGFloat availableWidth = MIN(imageMessage.picture.width, window.frame.size.width * 0.85);
-    CGFloat availableHeight = MIN(imageMessage.picture.height, window.frame.size.height * 0.85);
+    CGFloat screenWidth = window.frame.size.width;
+    CGFloat screenHeight = window.frame.size.height;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
+        ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
+            
+            screenWidth = window.frame.size.height;
+            screenHeight = window.frame.size.width;
+            
+            baseView.autoresizingMask = UIViewAutoresizingNone;
+            
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationLandscapeLeft:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                    break;
+                case UIDeviceOrientationPortraitUpsideDown:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
+                    break;
+                default:
+                    break;
+            }
+            
+            [baseView.layer setAnchorPoint:CGPointMake(0.75, 0.32)];
+        }
+    
+    CGFloat availableWidth = MIN(imageMessage.picture.width, screenWidth * 0.85);
+    CGFloat availableHeight = MIN(imageMessage.picture.height, screenHeight * 0.85);
     CGFloat ratio = MIN(availableWidth / imageMessage.picture.width, availableHeight / imageMessage.picture.height);
 
     CGFloat width = imageMessage.picture.width * ratio;
     CGFloat height = imageMessage.picture.height * ratio;
-    CGFloat left = (window.frame.size.width - width) / 2;
-    CGFloat top = (window.frame.size.height - height) / 2;
+    CGFloat left = (screenWidth - width) / 2;
+    CGFloat top = (screenHeight - height) / 2;
 
     CGRect rect = CGRectMake(left, top, width, height);
 
