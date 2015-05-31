@@ -80,7 +80,8 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
     CGFloat screenHeight = window.frame.size.height;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
         ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
-         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight)) {
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
             
             screenWidth = window.frame.size.height;
             screenHeight = window.frame.size.width;
@@ -94,16 +95,15 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
                 case UIDeviceOrientationLandscapeRight:
                     baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
                     break;
-                case UIDeviceOrientationPortrait:
-                    baseView.transform = CGAffineTransformMakeRotation(0);
-                    break;
                 case UIDeviceOrientationPortraitUpsideDown:
                     baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
                     break;
                 default:
                     break;
             }
-    }
+            
+            [baseView.layer setAnchorPoint:CGPointMake(0.75, 0.32)];
+        }
     
     CGFloat availableWidth = MIN(imageMessage.picture.width, screenWidth * 0.85);
     CGFloat availableHeight = MIN(imageMessage.picture.height, screenHeight * 0.85);
