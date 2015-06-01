@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		B2C148241AA4581900006EC3 /* GrowthMessageFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B2C148251AA4581900006EC3 /* Build configuration list for PBXAggregateTarget "GrowthMessageFramework" */;
+			buildPhases = (
+				B2C1482A1AA4589300006EC3 /* ShellScript */,
+			);
+			dependencies = (
+				B2C148291AA4582600006EC3 /* PBXTargetDependency */,
+			);
+			name = GrowthMessageFramework;
+			productName = GrowthMessageFramework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		B24FF04B1AEDA768004FEE7B /* GMCloseButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D4991AE40F89004B043B /* GMCloseButton.h */; };
+		B24FF04C1AEDA768004FEE7B /* GMImageMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D48D1AE4076F004B043B /* GMImageMessageHandler.h */; };
+		B24FF04D1AEDA768004FEE7B /* GMImageMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B27CB2361AE5A037001B38DB /* GMImageMessageRenderer.h */; };
+		B24FF04E1AEDA768004FEE7B /* GMImageMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B27CB2391AE5AD9A001B38DB /* GMImageMessageRendererDelegate.h */; };
+		B24FF04F1AEDA768004FEE7B /* GMPicture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D4901AE4094A004B043B /* GMPicture.h */; };
+		B24FF0501AEDA768004FEE7B /* GMPictureExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D4931AE40AD6004B043B /* GMPictureExtension.h */; };
+		B24FF0511AEDA768004FEE7B /* GMScreenButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D49C1AE45B80004B043B /* GMScreenButton.h */; };
+		B27CB2381AE5A037001B38DB /* GMImageMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B27CB2371AE5A037001B38DB /* GMImageMessageRenderer.m */; };
+		B2A6D48F1AE4076F004B043B /* GMImageMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A6D48E1AE4076F004B043B /* GMImageMessageHandler.m */; };
+		B2A6D4921AE4094A004B043B /* GMPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A6D4911AE4094A004B043B /* GMPicture.m */; };
+		B2A6D4951AE40AD6004B043B /* GMPictureExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A6D4941AE40AD6004B043B /* GMPictureExtension.m */; };
+		B2A6D49B1AE40F89004B043B /* GMCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A6D49A1AE40F89004B043B /* GMCloseButton.m */; };
+		B2A6D49E1AE45B80004B043B /* GMScreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A6D49D1AE45B80004B043B /* GMScreenButton.m */; };
+		B2AC252C1AB594AF008ED20B /* GMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC252B1AB594AF008ED20B /* GMTask.m */; };
+		B2C1480D1AA456F300006EC3 /* GrowthMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C1480C1AA456F300006EC3 /* GrowthMessage.h */; };
+		B2C1480F1AA456F300006EC3 /* GrowthMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C1480E1AA456F300006EC3 /* GrowthMessage.m */; };
+		B2C148321AA45D8100006EC3 /* GMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C148311AA45D8100006EC3 /* GMMessage.m */; };
+		B2C4A0611AB7933700015D16 /* GMButtonType.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C4A0601AB7933700015D16 /* GMButtonType.m */; };
+		B2C4A0641AB7C64F00015D16 /* GMPlainButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C4A0631AB7C64F00015D16 /* GMPlainButton.m */; };
+		B2C4A0671AB7C6B400015D16 /* GMImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C4A0661AB7C6B400015D16 /* GMImageButton.m */; };
+		B2C4A06A1AB7C81500015D16 /* GMPlainMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C4A0691AB7C81500015D16 /* GMPlainMessage.m */; };
+		B2C4A06D1AB7C89300015D16 /* GMImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C4A06C1AB7C89300015D16 /* GMImageMessage.m */; };
+		B2C4A06E1AB7CB4400015D16 /* GMButtonType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C4A05F1AB7933700015D16 /* GMButtonType.h */; };
+		B2C4A06F1AB7CB4400015D16 /* GMImageButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C4A0651AB7C6B400015D16 /* GMImageButton.h */; };
+		B2C4A0701AB7CB4400015D16 /* GMImageMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C4A06B1AB7C89300015D16 /* GMImageMessage.h */; };
+		B2C4A0711AB7CB4400015D16 /* GMPlainButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C4A0621AB7C64F00015D16 /* GMPlainButton.h */; };
+		B2C4A0721AB7CB4400015D16 /* GMPlainMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C4A0681AB7C81500015D16 /* GMPlainMessage.h */; };
+		B2EA120F1AB62BB500445389 /* GMMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA120E1AB62BB500445389 /* GMMessageType.m */; };
+		B2EA12101AB67C3100445389 /* GMMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2EA120D1AB62BB500445389 /* GMMessageType.h */; };
+		B2EA12111AB67C3100445389 /* GMTask.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2AC252A1AB594AF008ED20B /* GMTask.h */; };
+		EBB971121AA588D0008ABE6C /* GMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB971111AA588D0008ABE6C /* GMButton.m */; };
+		EBB971171AA5910C008ABE6C /* GMPlainMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB971161AA5910C008ABE6C /* GMPlainMessageHandler.m */; };
+		EBB971181AA593C3008ABE6C /* GMButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBB971101AA588D0008ABE6C /* GMButton.h */; };
+		EBB971191AA593C3008ABE6C /* GMMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C148301AA45D8100006EC3 /* GMMessage.h */; };
+		EBB9711A1AA593C3008ABE6C /* GMMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBB971131AA58B9F008ABE6C /* GMMessageHandler.h */; };
+		EBB9711C1AA593C3008ABE6C /* GMPlainMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EBB971151AA5910C008ABE6C /* GMPlainMessageHandler.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B2C148281AA4582600006EC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2C148011AA456F300006EC3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2C148081AA456F300006EC3;
+			remoteInfo = GrowthMessage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2C148071AA456F300006EC3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Headers;
+			dstSubfolderSpec = 16;
+			files = (
+				B24FF04B1AEDA768004FEE7B /* GMCloseButton.h in CopyFiles */,
+				B24FF04C1AEDA768004FEE7B /* GMImageMessageHandler.h in CopyFiles */,
+				B24FF04D1AEDA768004FEE7B /* GMImageMessageRenderer.h in CopyFiles */,
+				B24FF04E1AEDA768004FEE7B /* GMImageMessageRendererDelegate.h in CopyFiles */,
+				B24FF04F1AEDA768004FEE7B /* GMPicture.h in CopyFiles */,
+				B24FF0501AEDA768004FEE7B /* GMPictureExtension.h in CopyFiles */,
+				B24FF0511AEDA768004FEE7B /* GMScreenButton.h in CopyFiles */,
+				B2C4A06E1AB7CB4400015D16 /* GMButtonType.h in CopyFiles */,
+				B2C4A06F1AB7CB4400015D16 /* GMImageButton.h in CopyFiles */,
+				B2C4A0701AB7CB4400015D16 /* GMImageMessage.h in CopyFiles */,
+				B2C4A0711AB7CB4400015D16 /* GMPlainButton.h in CopyFiles */,
+				B2C4A0721AB7CB4400015D16 /* GMPlainMessage.h in CopyFiles */,
+				B2EA12101AB67C3100445389 /* GMMessageType.h in CopyFiles */,
+				B2EA12111AB67C3100445389 /* GMTask.h in CopyFiles */,
+				EBB971181AA593C3008ABE6C /* GMButton.h in CopyFiles */,
+				EBB971191AA593C3008ABE6C /* GMMessage.h in CopyFiles */,
+				EBB9711A1AA593C3008ABE6C /* GMMessageHandler.h in CopyFiles */,
+				EBB9711C1AA593C3008ABE6C /* GMPlainMessageHandler.h in CopyFiles */,
+				B2C1480D1AA456F300006EC3 /* GrowthMessage.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B27CB2361AE5A037001B38DB /* GMImageMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageRenderer.h; sourceTree = "<group>"; };
+		B27CB2371AE5A037001B38DB /* GMImageMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageRenderer.m; sourceTree = "<group>"; };
+		B27CB2391AE5AD9A001B38DB /* GMImageMessageRendererDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageRendererDelegate.h; sourceTree = "<group>"; };
+		B2A6D48D1AE4076F004B043B /* GMImageMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageHandler.h; sourceTree = "<group>"; };
+		B2A6D48E1AE4076F004B043B /* GMImageMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageHandler.m; sourceTree = "<group>"; };
+		B2A6D4901AE4094A004B043B /* GMPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPicture.h; sourceTree = "<group>"; };
+		B2A6D4911AE4094A004B043B /* GMPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPicture.m; sourceTree = "<group>"; };
+		B2A6D4931AE40AD6004B043B /* GMPictureExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPictureExtension.h; sourceTree = "<group>"; };
+		B2A6D4941AE40AD6004B043B /* GMPictureExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPictureExtension.m; sourceTree = "<group>"; };
+		B2A6D4991AE40F89004B043B /* GMCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMCloseButton.h; sourceTree = "<group>"; };
+		B2A6D49A1AE40F89004B043B /* GMCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMCloseButton.m; sourceTree = "<group>"; };
+		B2A6D49C1AE45B80004B043B /* GMScreenButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMScreenButton.h; sourceTree = "<group>"; };
+		B2A6D49D1AE45B80004B043B /* GMScreenButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMScreenButton.m; sourceTree = "<group>"; };
+		B2AC252A1AB594AF008ED20B /* GMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMTask.h; sourceTree = "<group>"; };
+		B2AC252B1AB594AF008ED20B /* GMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMTask.m; sourceTree = "<group>"; };
+		B2C148091AA456F300006EC3 /* libGrowthMessage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthMessage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2C1480C1AA456F300006EC3 /* GrowthMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthMessage.h; sourceTree = "<group>"; };
+		B2C1480E1AA456F300006EC3 /* GrowthMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthMessage.m; sourceTree = "<group>"; };
+		B2C148301AA45D8100006EC3 /* GMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMessage.h; sourceTree = "<group>"; };
+		B2C148311AA45D8100006EC3 /* GMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMMessage.m; sourceTree = "<group>"; };
+		B2C4A05F1AB7933700015D16 /* GMButtonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMButtonType.h; sourceTree = "<group>"; };
+		B2C4A0601AB7933700015D16 /* GMButtonType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMButtonType.m; sourceTree = "<group>"; };
+		B2C4A0621AB7C64F00015D16 /* GMPlainButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlainButton.h; sourceTree = "<group>"; };
+		B2C4A0631AB7C64F00015D16 /* GMPlainButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlainButton.m; sourceTree = "<group>"; };
+		B2C4A0651AB7C6B400015D16 /* GMImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageButton.h; sourceTree = "<group>"; };
+		B2C4A0661AB7C6B400015D16 /* GMImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageButton.m; sourceTree = "<group>"; };
+		B2C4A0681AB7C81500015D16 /* GMPlainMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlainMessage.h; sourceTree = "<group>"; };
+		B2C4A0691AB7C81500015D16 /* GMPlainMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlainMessage.m; sourceTree = "<group>"; };
+		B2C4A06B1AB7C89300015D16 /* GMImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessage.h; sourceTree = "<group>"; };
+		B2C4A06C1AB7C89300015D16 /* GMImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessage.m; sourceTree = "<group>"; };
+		B2EA120D1AB62BB500445389 /* GMMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMessageType.h; sourceTree = "<group>"; };
+		B2EA120E1AB62BB500445389 /* GMMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMMessageType.m; sourceTree = "<group>"; };
+		CE0627351B15B600009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
+		CE0627361B15B600009263FA /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
+		CE0627371B15B600009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
+		CE0627381B15B600009263FA /* GBApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBApplication.h; sourceTree = "<group>"; };
+		CE0627391B15B600009263FA /* GBApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBApplication.m; sourceTree = "<group>"; };
+		CE06273A1B15B600009263FA /* GBClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBClient.h; sourceTree = "<group>"; };
+		CE06273B1B15B600009263FA /* GBClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBClient.m; sourceTree = "<group>"; };
+		CE06273C1B15B600009263FA /* GBContentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBContentType.h; sourceTree = "<group>"; };
+		CE06273D1B15B600009263FA /* GBContentType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBContentType.m; sourceTree = "<group>"; };
+		CE06273E1B15B600009263FA /* GBCustomIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBCustomIntent.h; sourceTree = "<group>"; };
+		CE06273F1B15B600009263FA /* GBCustomIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBCustomIntent.m; sourceTree = "<group>"; };
+		CE0627401B15B600009263FA /* GBDateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDateUtils.h; sourceTree = "<group>"; };
+		CE0627411B15B600009263FA /* GBDateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBDateUtils.m; sourceTree = "<group>"; };
+		CE0627421B15B600009263FA /* GBDeviceUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDeviceUtils.h; sourceTree = "<group>"; };
+		CE0627431B15B600009263FA /* GBDeviceUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBDeviceUtils.m; sourceTree = "<group>"; };
+		CE0627441B15B600009263FA /* GBDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDomain.h; sourceTree = "<group>"; };
+		CE0627451B15B600009263FA /* GBDomain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBDomain.m; sourceTree = "<group>"; };
+		CE0627461B15B600009263FA /* GBGPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBGPClient.h; sourceTree = "<group>"; };
+		CE0627471B15B600009263FA /* GBGPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBGPClient.m; sourceTree = "<group>"; };
+		CE0627481B15B600009263FA /* GBHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpClient.h; sourceTree = "<group>"; };
+		CE0627491B15B600009263FA /* GBHttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpClient.m; sourceTree = "<group>"; };
+		CE06274A1B15B600009263FA /* GBHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpRequest.h; sourceTree = "<group>"; };
+		CE06274B1B15B600009263FA /* GBHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpRequest.m; sourceTree = "<group>"; };
+		CE06274C1B15B600009263FA /* GBHttpResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpResponse.h; sourceTree = "<group>"; };
+		CE06274D1B15B600009263FA /* GBHttpResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpResponse.m; sourceTree = "<group>"; };
+		CE06274E1B15B600009263FA /* GBHttpUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpUtils.h; sourceTree = "<group>"; };
+		CE06274F1B15B600009263FA /* GBHttpUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpUtils.m; sourceTree = "<group>"; };
+		CE0627501B15B600009263FA /* GBIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntent.h; sourceTree = "<group>"; };
+		CE0627511B15B600009263FA /* GBIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBIntent.m; sourceTree = "<group>"; };
+		CE0627521B15B600009263FA /* GBIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntentHandler.h; sourceTree = "<group>"; };
+		CE0627531B15B600009263FA /* GBIntentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntentType.h; sourceTree = "<group>"; };
+		CE0627541B15B600009263FA /* GBIntentType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBIntentType.m; sourceTree = "<group>"; };
+		CE0627551B15B600009263FA /* GBLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBLogger.h; sourceTree = "<group>"; };
+		CE0627561B15B600009263FA /* GBLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBLogger.m; sourceTree = "<group>"; };
+		CE0627571B15B600009263FA /* GBMultipartFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBMultipartFile.h; sourceTree = "<group>"; };
+		CE0627581B15B600009263FA /* GBMultipartFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBMultipartFile.m; sourceTree = "<group>"; };
+		CE0627591B15B600009263FA /* GBNoopIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBNoopIntent.h; sourceTree = "<group>"; };
+		CE06275A1B15B600009263FA /* GBNoopIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBNoopIntent.m; sourceTree = "<group>"; };
+		CE06275B1B15B600009263FA /* GBNoopIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBNoopIntentHandler.h; sourceTree = "<group>"; };
+		CE06275C1B15B600009263FA /* GBNoopIntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBNoopIntentHandler.m; sourceTree = "<group>"; };
+		CE06275D1B15B600009263FA /* GBPreference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBPreference.h; sourceTree = "<group>"; };
+		CE06275E1B15B600009263FA /* GBPreference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBPreference.m; sourceTree = "<group>"; };
+		CE06275F1B15B600009263FA /* GBRequestMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBRequestMethod.h; sourceTree = "<group>"; };
+		CE0627601B15B600009263FA /* GBRequestMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBRequestMethod.m; sourceTree = "<group>"; };
+		CE0627611B15B600009263FA /* GBUrlIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUrlIntent.h; sourceTree = "<group>"; };
+		CE0627621B15B600009263FA /* GBUrlIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBUrlIntent.m; sourceTree = "<group>"; };
+		CE0627631B15B600009263FA /* GBUrlIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUrlIntentHandler.h; sourceTree = "<group>"; };
+		CE0627641B15B600009263FA /* GBUrlIntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBUrlIntentHandler.m; sourceTree = "<group>"; };
+		CE0627651B15B600009263FA /* GBUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUtils.h; sourceTree = "<group>"; };
+		CE0627661B15B600009263FA /* GrowthbeatCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthbeatCore.h; sourceTree = "<group>"; };
+		CE0627671B15B600009263FA /* GrowthbeatCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthbeatCore.m; sourceTree = "<group>"; };
+		CE0627691B15B60E009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
+		CE06276A1B15B60E009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
+		CE06276B1B15B60E009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
+		CE06276C1B15B60E009263FA /* GAClientTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientTag.m; sourceTree = "<group>"; };
+		CE06276D1B15B60E009263FA /* GAEventHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAEventHandler.h; sourceTree = "<group>"; };
+		CE06276E1B15B60E009263FA /* GAEventHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAEventHandler.m; sourceTree = "<group>"; };
+		CE06276F1B15B60E009263FA /* GrowthAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthAnalytics.h; sourceTree = "<group>"; };
+		CE0627701B15B60E009263FA /* GrowthAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthAnalytics.m; sourceTree = "<group>"; };
+		EBB971101AA588D0008ABE6C /* GMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMButton.h; sourceTree = "<group>"; };
+		EBB971111AA588D0008ABE6C /* GMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMButton.m; sourceTree = "<group>"; };
+		EBB971131AA58B9F008ABE6C /* GMMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMessageHandler.h; sourceTree = "<group>"; };
+		EBB971151AA5910C008ABE6C /* GMPlainMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlainMessageHandler.h; sourceTree = "<group>"; };
+		EBB971161AA5910C008ABE6C /* GMPlainMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlainMessageHandler.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2C148061AA456F300006EC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B2C148001AA456F300006EC3 = {
+			isa = PBXGroup;
+			children = (
+				CE0627681B15B60E009263FA /* GrowthAnalytics */,
+				CE0627341B15B600009263FA /* GrowthbeatCore */,
+				B2C1480B1AA456F300006EC3 /* GrowthMessage */,
+				B2C1482D1AA45D1C00006EC3 /* Framework */,
+				B2C1480A1AA456F300006EC3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B2C1480A1AA456F300006EC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2C148091AA456F300006EC3 /* libGrowthMessage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2C1480B1AA456F300006EC3 /* GrowthMessage */ = {
+			isa = PBXGroup;
+			children = (
+				B2C1482B1AA45CFB00006EC3 /* Headers */,
+				B2C1482C1AA45D0600006EC3 /* Sources */,
+			);
+			path = GrowthMessage;
+			sourceTree = "<group>";
+		};
+		B2C1482B1AA45CFB00006EC3 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				EBB971101AA588D0008ABE6C /* GMButton.h */,
+				B2C4A05F1AB7933700015D16 /* GMButtonType.h */,
+				B2A6D4991AE40F89004B043B /* GMCloseButton.h */,
+				B2C4A0651AB7C6B400015D16 /* GMImageButton.h */,
+				B2C4A06B1AB7C89300015D16 /* GMImageMessage.h */,
+				B2A6D48D1AE4076F004B043B /* GMImageMessageHandler.h */,
+				B27CB2361AE5A037001B38DB /* GMImageMessageRenderer.h */,
+				B27CB2391AE5AD9A001B38DB /* GMImageMessageRendererDelegate.h */,
+				B2C148301AA45D8100006EC3 /* GMMessage.h */,
+				EBB971131AA58B9F008ABE6C /* GMMessageHandler.h */,
+				B2EA120D1AB62BB500445389 /* GMMessageType.h */,
+				B2A6D4901AE4094A004B043B /* GMPicture.h */,
+				B2A6D4931AE40AD6004B043B /* GMPictureExtension.h */,
+				B2C4A0621AB7C64F00015D16 /* GMPlainButton.h */,
+				B2C4A0681AB7C81500015D16 /* GMPlainMessage.h */,
+				EBB971151AA5910C008ABE6C /* GMPlainMessageHandler.h */,
+				B2A6D49C1AE45B80004B043B /* GMScreenButton.h */,
+				B2AC252A1AB594AF008ED20B /* GMTask.h */,
+				B2C1480C1AA456F300006EC3 /* GrowthMessage.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		B2C1482C1AA45D0600006EC3 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EBB971111AA588D0008ABE6C /* GMButton.m */,
+				B2C4A0601AB7933700015D16 /* GMButtonType.m */,
+				B2A6D49A1AE40F89004B043B /* GMCloseButton.m */,
+				B2C4A0661AB7C6B400015D16 /* GMImageButton.m */,
+				B2C4A06C1AB7C89300015D16 /* GMImageMessage.m */,
+				B2A6D48E1AE4076F004B043B /* GMImageMessageHandler.m */,
+				B27CB2371AE5A037001B38DB /* GMImageMessageRenderer.m */,
+				B2C148311AA45D8100006EC3 /* GMMessage.m */,
+				B2EA120E1AB62BB500445389 /* GMMessageType.m */,
+				B2A6D4911AE4094A004B043B /* GMPicture.m */,
+				B2A6D4941AE40AD6004B043B /* GMPictureExtension.m */,
+				B2C4A0631AB7C64F00015D16 /* GMPlainButton.m */,
+				B2C4A0691AB7C81500015D16 /* GMPlainMessage.m */,
+				EBB971161AA5910C008ABE6C /* GMPlainMessageHandler.m */,
+				B2A6D49D1AE45B80004B043B /* GMScreenButton.m */,
+				B2AC252B1AB594AF008ED20B /* GMTask.m */,
+				B2C1480E1AA456F300006EC3 /* GrowthMessage.m */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		B2C1482D1AA45D1C00006EC3 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		CE0627341B15B600009263FA /* GrowthbeatCore */ = {
+			isa = PBXGroup;
+			children = (
+				CE0627351B15B600009263FA /* GBAppDelegateWrapper.h */,
+				CE0627361B15B600009263FA /* GBAppDelegateWrapper.m */,
+				CE0627371B15B600009263FA /* GBAppDelegateWrapperDelegate.h */,
+				CE0627381B15B600009263FA /* GBApplication.h */,
+				CE0627391B15B600009263FA /* GBApplication.m */,
+				CE06273A1B15B600009263FA /* GBClient.h */,
+				CE06273B1B15B600009263FA /* GBClient.m */,
+				CE06273C1B15B600009263FA /* GBContentType.h */,
+				CE06273D1B15B600009263FA /* GBContentType.m */,
+				CE06273E1B15B600009263FA /* GBCustomIntent.h */,
+				CE06273F1B15B600009263FA /* GBCustomIntent.m */,
+				CE0627401B15B600009263FA /* GBDateUtils.h */,
+				CE0627411B15B600009263FA /* GBDateUtils.m */,
+				CE0627421B15B600009263FA /* GBDeviceUtils.h */,
+				CE0627431B15B600009263FA /* GBDeviceUtils.m */,
+				CE0627441B15B600009263FA /* GBDomain.h */,
+				CE0627451B15B600009263FA /* GBDomain.m */,
+				CE0627461B15B600009263FA /* GBGPClient.h */,
+				CE0627471B15B600009263FA /* GBGPClient.m */,
+				CE0627481B15B600009263FA /* GBHttpClient.h */,
+				CE0627491B15B600009263FA /* GBHttpClient.m */,
+				CE06274A1B15B600009263FA /* GBHttpRequest.h */,
+				CE06274B1B15B600009263FA /* GBHttpRequest.m */,
+				CE06274C1B15B600009263FA /* GBHttpResponse.h */,
+				CE06274D1B15B600009263FA /* GBHttpResponse.m */,
+				CE06274E1B15B600009263FA /* GBHttpUtils.h */,
+				CE06274F1B15B600009263FA /* GBHttpUtils.m */,
+				CE0627501B15B600009263FA /* GBIntent.h */,
+				CE0627511B15B600009263FA /* GBIntent.m */,
+				CE0627521B15B600009263FA /* GBIntentHandler.h */,
+				CE0627531B15B600009263FA /* GBIntentType.h */,
+				CE0627541B15B600009263FA /* GBIntentType.m */,
+				CE0627551B15B600009263FA /* GBLogger.h */,
+				CE0627561B15B600009263FA /* GBLogger.m */,
+				CE0627571B15B600009263FA /* GBMultipartFile.h */,
+				CE0627581B15B600009263FA /* GBMultipartFile.m */,
+				CE0627591B15B600009263FA /* GBNoopIntent.h */,
+				CE06275A1B15B600009263FA /* GBNoopIntent.m */,
+				CE06275B1B15B600009263FA /* GBNoopIntentHandler.h */,
+				CE06275C1B15B600009263FA /* GBNoopIntentHandler.m */,
+				CE06275D1B15B600009263FA /* GBPreference.h */,
+				CE06275E1B15B600009263FA /* GBPreference.m */,
+				CE06275F1B15B600009263FA /* GBRequestMethod.h */,
+				CE0627601B15B600009263FA /* GBRequestMethod.m */,
+				CE0627611B15B600009263FA /* GBUrlIntent.h */,
+				CE0627621B15B600009263FA /* GBUrlIntent.m */,
+				CE0627631B15B600009263FA /* GBUrlIntentHandler.h */,
+				CE0627641B15B600009263FA /* GBUrlIntentHandler.m */,
+				CE0627651B15B600009263FA /* GBUtils.h */,
+				CE0627661B15B600009263FA /* GrowthbeatCore.h */,
+				CE0627671B15B600009263FA /* GrowthbeatCore.m */,
+			);
+			name = GrowthbeatCore;
+			path = ../GrowthbeatCore/GrowthbeatCore;
+			sourceTree = "<group>";
+		};
+		CE0627681B15B60E009263FA /* GrowthAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				CE0627691B15B60E009263FA /* GAClientEvent.h */,
+				CE06276A1B15B60E009263FA /* GAClientEvent.m */,
+				CE06276B1B15B60E009263FA /* GAClientTag.h */,
+				CE06276C1B15B60E009263FA /* GAClientTag.m */,
+				CE06276D1B15B60E009263FA /* GAEventHandler.h */,
+				CE06276E1B15B60E009263FA /* GAEventHandler.m */,
+				CE06276F1B15B60E009263FA /* GrowthAnalytics.h */,
+				CE0627701B15B60E009263FA /* GrowthAnalytics.m */,
+			);
+			name = GrowthAnalytics;
+			path = ../GrowthAnalytics/GrowthAnalytics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B2C148081AA456F300006EC3 /* GrowthMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2C1481D1AA456F300006EC3 /* Build configuration list for PBXNativeTarget "GrowthMessage" */;
+			buildPhases = (
+				B2C148051AA456F300006EC3 /* Sources */,
+				B2C148061AA456F300006EC3 /* Frameworks */,
+				B2C148071AA456F300006EC3 /* CopyFiles */,
+				B2C148231AA457B400006EC3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GrowthMessage;
+			productName = GrowthMessage;
+			productReference = B2C148091AA456F300006EC3 /* libGrowthMessage.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2C148011AA456F300006EC3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "SIROK, Inc.";
+				TargetAttributes = {
+					B2C148081AA456F300006EC3 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					B2C148241AA4581900006EC3 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = B2C148041AA456F300006EC3 /* Build configuration list for PBXProject "GrowthMessage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B2C148001AA456F300006EC3;
+			productRefGroup = B2C1480A1AA456F300006EC3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B2C148081AA456F300006EC3 /* GrowthMessage */,
+				B2C148241AA4581900006EC3 /* GrowthMessageFramework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B2C148231AA457B400006EC3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\n\n# Link the \"Current\" version to \"${FRAMEWORK_VERSION}\"\n/bin/ln -sfh \"${FRAMEWORK_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"";
+		};
+		B2C1482A1AA4589300006EC3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/${FRAMEWORK_VERSION}/${SF_TARGET_NAME}\"\n\n# Open products directory\nopen \"${BUILT_PRODUCTS_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2C148051AA456F300006EC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C1480F1AA456F300006EC3 /* GrowthMessage.m in Sources */,
+				B2C4A0611AB7933700015D16 /* GMButtonType.m in Sources */,
+				B2C148321AA45D8100006EC3 /* GMMessage.m in Sources */,
+				B2C4A0671AB7C6B400015D16 /* GMImageButton.m in Sources */,
+				B2C4A06D1AB7C89300015D16 /* GMImageMessage.m in Sources */,
+				B27CB2381AE5A037001B38DB /* GMImageMessageRenderer.m in Sources */,
+				B2C4A06A1AB7C81500015D16 /* GMPlainMessage.m in Sources */,
+				B2A6D4921AE4094A004B043B /* GMPicture.m in Sources */,
+				B2AC252C1AB594AF008ED20B /* GMTask.m in Sources */,
+				B2A6D49B1AE40F89004B043B /* GMCloseButton.m in Sources */,
+				EBB971121AA588D0008ABE6C /* GMButton.m in Sources */,
+				B2A6D48F1AE4076F004B043B /* GMImageMessageHandler.m in Sources */,
+				B2A6D49E1AE45B80004B043B /* GMScreenButton.m in Sources */,
+				B2A6D4951AE40AD6004B043B /* GMPictureExtension.m in Sources */,
+				EBB971171AA5910C008ABE6C /* GMPlainMessageHandler.m in Sources */,
+				B2C4A0641AB7C64F00015D16 /* GMPlainButton.m in Sources */,
+				B2EA120F1AB62BB500445389 /* GMMessageType.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2C148291AA4582600006EC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2C148081AA456F300006EC3 /* GrowthMessage */;
+			targetProxy = B2C148281AA4582600006EC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B2C1481B1AA456F300006EC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = 1.0.0;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Debug;
+		};
+		B2C1481C1AA456F300006EC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = 1.0.0;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+			};
+			name = Release;
+		};
+		B2C1481E1AA456F300006EC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../submodules/growthbeat-core-ios",
+					"$(SRCROOT)/../submodules/growthanalytics-ios",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../submodules/growthbeat-core-ios/source/GrowthbeatCore",
+					"$(SRCROOT)/../submodules/growthanalytics-ios/source/GrowthAnalytics",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = Headers;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B2C1481F1AA456F300006EC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../submodules/growthbeat-core-ios",
+					"$(SRCROOT)/../submodules/growthanalytics-ios",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../submodules/growthbeat-core-ios/source/GrowthbeatCore",
+					"$(SRCROOT)/../submodules/growthanalytics-ios/source/GrowthAnalytics",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = Headers;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B2C148261AA4581900006EC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B2C148271AA4581900006EC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B2C148041AA456F300006EC3 /* Build configuration list for PBXProject "GrowthMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C1481B1AA456F300006EC3 /* Debug */,
+				B2C1481C1AA456F300006EC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B2C1481D1AA456F300006EC3 /* Build configuration list for PBXNativeTarget "GrowthMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C1481E1AA456F300006EC3 /* Debug */,
+				B2C1481F1AA456F300006EC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B2C148251AA4581900006EC3 /* Build configuration list for PBXAggregateTarget "GrowthMessageFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C148261AA4581900006EC3 /* Debug */,
+				B2C148271AA4581900006EC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2C148011AA456F300006EC3 /* Project object */;
+}
