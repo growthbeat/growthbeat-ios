@@ -86,7 +86,14 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
             screenWidth = window.frame.size.height;
             screenHeight = window.frame.size.width;
             
-            baseView.autoresizingMask = UIViewAutoresizingNone;
+            CGRect frame = [UIScreen mainScreen].applicationFrame;
+            baseView.center = CGPointMake(CGRectGetWidth(frame) * 0.5f, CGRectGetHeight(frame) * 0.5f);
+            
+            CGRect bounds;
+            bounds.origin = CGPointZero;
+            bounds.size.width = CGRectGetHeight(frame);
+            bounds.size.height = CGRectGetWidth(frame);
+            baseView.bounds = bounds;
             
             switch ([UIApplication sharedApplication].statusBarOrientation) {
                 case UIDeviceOrientationLandscapeLeft:
@@ -101,8 +108,6 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
                 default:
                     break;
             }
-            
-            [baseView.layer setAnchorPoint:CGPointMake(0.75, 0.32)];
         }
     
     CGFloat availableWidth = MIN(imageMessage.picture.width, screenWidth * 0.85);
