@@ -121,7 +121,7 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
     CGRect rect = CGRectMake(left, top, width, height);
 
-    [self cacheImages:^{
+    [self cacheImages:^ {
 
         [self showImageWithView:baseView rect:rect ratio:ratio];
         [self showScreenButtonWithView:baseView rect:rect ratio:ratio];
