@@ -17,14 +17,14 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
-    UIView *backgroundView;
+    UIView *baseView;
     UIActivityIndicatorView *activityIndicatorView;
     
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
 @property (nonatomic, strong) NSMutableDictionary *cachedImages;
-@property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong) UIView *baseView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
@@ -35,7 +35,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 @synthesize delegate;
 @synthesize boundButtons;
 @synthesize cachedImages;
-@synthesize backgroundView;
+@synthesize baseView;
 @synthesize activityIndicatorView;
 
 - (instancetype) initWithBannerMessage:(GMBannerMessage *)newBannerMessage {
@@ -46,7 +46,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
         self.cachedImages = [NSMutableDictionary dictionary];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     
     return self;
@@ -56,19 +56,32 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
-    if (!self.backgroundView) {
-        self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
-        backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-        backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [window addSubview:backgroundView];
+    if (!self.baseView) {
+        baseView = [[UIView alloc] init];
+        [window addSubview:baseView];
+    } else {
+        for (UIView *subview in baseView.subviews) {
+            [subview removeFromSuperview];
+        }
     }
     
-    for (UIView *subview in backgroundView.subviews) {
-        [subview removeFromSuperview];
+    CGFloat screenWidth = window.frame.size.width;
+    CGFloat screenHeight = window.frame.size.height;
+    CGFloat availableWidth = screenWidth;
+    CGFloat availableHeight = screenHeight / 6;
+    
+    if (bannerMessage.bannerType == GMBannerTypeOnlyImage) {
+        availableWidth = MIN(bannerMessage.picture.width, MIN(screenWidth, screenHeight));
+        CGFloat ratio = MIN(screenWidth, screenHeight) / bannerMessage.picture.width;
+        availableHeight = bannerMessage.picture.height * ratio;
     }
-    UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
-    baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [backgroundView addSubview:baseView];
+    
+    baseView.frame = CGRectMake(0.0, 0.0, availableWidth, availableHeight);
+    
+    if (bannerMessage.position == GMBannerPositionTop)
+        baseView.center = CGPointMake(screenWidth / 2, baseView.center.y);
+    else
+        baseView.center = CGPointMake(screenWidth / 2, screenHeight - (bannerMessage.picture.height / 2));
     
     self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicatorView.frame = baseView.frame;
@@ -76,57 +89,11 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     [activityIndicatorView startAnimating];
     [baseView addSubview:activityIndicatorView];
     
-    CGFloat screenWidth = window.frame.size.width;
-    CGFloat screenHeight = window.frame.size.height;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
-        ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
-         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
-         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
-            
-            screenWidth = window.frame.size.height;
-            screenHeight = window.frame.size.width;
-            
-            CGRect frame = [UIScreen mainScreen].applicationFrame;
-            baseView.center = CGPointMake(CGRectGetWidth(frame) * 0.5f, CGRectGetHeight(frame) * 0.5f);
-            
-            CGRect bounds;
-            bounds.origin = CGPointZero;
-            bounds.size.width = CGRectGetHeight(frame);
-            bounds.size.height = CGRectGetWidth(frame);
-            baseView.bounds = bounds;
-            
-            switch ([UIApplication sharedApplication].statusBarOrientation) {
-                case UIDeviceOrientationLandscapeLeft:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                    break;
-                case UIDeviceOrientationLandscapeRight:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
-                    break;
-                case UIDeviceOrientationPortraitUpsideDown:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
-                    break;
-                default:
-                    break;
-            }
-        }
-    
-    CGFloat availableWidth = MIN(bannerMessage.picture.width, screenWidth * 0.85);
-    CGFloat availableHeight = MIN(bannerMessage.picture.height, screenHeight * 0.85);
-    CGFloat ratio = MIN(availableWidth / bannerMessage.picture.width, availableHeight / bannerMessage.picture.height);
-    
-    CGFloat width = bannerMessage.picture.width * ratio;
-    CGFloat height = bannerMessage.picture.height * ratio;
-    CGFloat left = (screenWidth - width) / 2;
-    CGFloat top = (screenHeight - height) / 2;
-    
-    CGRect rect = CGRectMake(left, top, width, height);
-    
     [self cacheImages:^ {
         
-        [self showImageWithView:baseView rect:rect ratio:ratio];
-        [self showScreenButtonWithView:baseView rect:rect ratio:ratio];
-        [self showImageButtonsWithView:baseView rect:rect ratio:ratio];
-        [self showCloseButtonWithView:baseView rect:rect ratio:ratio];
+        [self showOnlyImageWithView:baseView rect:baseView.frame];
+//        [self showImageTextWithView:baseView rect:rect ratio:ratio];
+        [self showCloseButtonWithView:baseView rect:baseView.frame];
         
         self.activityIndicatorView.hidden = YES;
         
@@ -134,22 +101,11 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showImageWithView:view rect:(CGRect)rect ratio:(CGFloat)ratio {
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
-    
-    imageView.image = [cachedImages objectForKey:bannerMessage.picture.url];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.userInteractionEnabled = YES;
-    [view addSubview:imageView];
-    
-}
-
-- (void) showScreenButtonWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showOnlyImageWithView:view rect:(CGRect)rect{
     
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
     
-    if (!screenButton) {
+    if ( bannerMessage.bannerType != GMBannerTypeOnlyImage && !screenButton) {
         return;
     }
     
@@ -157,6 +113,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
     button.frame = rect;
+    button.center = CGPointMake(rect.size.width / 2, rect.size.height / 2);
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];
     
@@ -164,33 +121,33 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showImageButtonsWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
-    
-    NSArray *imageButtons = [self extractButtonsWithType:GMButtonTypeImage];
-    
-    CGFloat top = rect.origin.y + rect.size.height;
-    
-    for (GMImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
-        
-        CGFloat width = imageButton.picture.width * ratio;
-        CGFloat height = imageButton.picture.height * ratio;
-        CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
-        top -= height;
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
-        button.contentMode = UIViewContentModeScaleAspectFit;
-        button.frame = CGRectMake(left, top, width, height);
-        [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:button];
-        
-        [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
-        
-    }
-    
-}
-
-- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+//- (void) showImageTextWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+//    
+//    if (bannerMessage.bannerType != GMBannerTypeImageText)
+//        return;
+//    
+//    NSLog(@"In ImageText");
+//    
+//    GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
+//    
+//    if (!screenButton) {
+//        return;
+//    }
+//    
+//    NSLog(bannerMessage.picture.url);
+//    
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
+//    button.contentMode = UIViewContentModeScaleAspectFit;
+//    button.frame = rect;
+//    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
+//    [view addSubview:button];
+//    
+//    [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:button]];
+//    
+//}
+//
+- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect {
     
     GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
     
@@ -198,15 +155,11 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
         return;
     }
     
-    CGFloat width = closeButton.picture.width * ratio;
-    CGFloat height = closeButton.picture.height * ratio;
-    CGFloat left = rect.origin.x + rect.size.width - width / 2;
-    CGFloat top = rect.origin.y - height / 2;
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
-    button.frame = CGRectMake(left, top, width, height);
+    button.frame = CGRectMake(0.0, 0.0, 20.0, 20.0);
+    button.center = CGPointMake(rect.size.width - 20, rect.size.height / 2);
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];
     
@@ -258,8 +211,8 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
             
             [urlStrings removeObject:urlString];
             if(![cachedImages objectForKey:urlString]) {
-                [self.backgroundView removeFromSuperview];
-                self.backgroundView = nil;
+                [self.baseView removeFromSuperview];
+                self.baseView = nil;
             }
             
             if([urlStrings count] == 0 && callback) {
@@ -308,8 +261,8 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     
     GMButton *button = [boundButtons objectForKey:[NSValue valueWithNonretainedObject:sender]];
     
-    [self.backgroundView removeFromSuperview];
-    self.backgroundView = nil;
+    [self.baseView removeFromSuperview];
+    self.baseView = nil;
     self.boundButtons = nil;
     
     [delegate clickedButton:button message:bannerMessage];
