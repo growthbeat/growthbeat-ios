@@ -8,7 +8,7 @@
 
 #import "GBDomain.h"
 
-@interface GLSynchronize : GBDomain {
+@interface GLSynchronize : GBDomain <NSCoding> {
     
     NSDictionary *configuration;
     NSDictionary *click;

@@ -66,4 +66,25 @@ static NSString *const kGLPreferenceSynchronizeKey = @"synchronize";
     
 }
 
+#pragma mark --
+#pragma mark NSCoding
+
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        if ([aDecoder containsValueForKey:@"configuration"]) {
+            self.configuration = [aDecoder decodeObjectForKey:@"configuration"];
+        }
+        if ([aDecoder containsValueForKey:@"click"]) {
+            self.click = [aDecoder decodeObjectForKey:@"click"];
+        }
+    }
+    return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:configuration forKey:@"configuration"];
+    [aCoder encodeObject:click forKey:@"click"];
+}
+
 @end

@@ -21,5 +21,6 @@
 - (GBHttpClient *)httpClient;
 - (GBPreference *)preference;
 
+- (void) handleOpenUrl:(NSURL *)url;
 
 @end

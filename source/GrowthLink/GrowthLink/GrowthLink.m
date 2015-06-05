@@ -136,7 +136,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Get synchronize..."];
         
-        GLSynchronize *synchronize = [GLSynchronize getWithApplicationId:[[[GrowthbeatCore sharedInstance] waitClient] id] os:1 version:[GBDeviceUtils version]  credentialId:credentialId];
+        GLSynchronize *synchronize = [GLSynchronize getWithApplicationId:applicationId os:1 version:[GBDeviceUtils version]  credentialId:credentialId];
         if (!synchronize) {
             [logger error:@"Failed to get synchronize."];
         }
