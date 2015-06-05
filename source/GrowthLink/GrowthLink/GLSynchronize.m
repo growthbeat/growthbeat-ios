@@ -21,19 +21,19 @@ static NSString *const kGAPreferenceTagsKey = @"synchronize";
 + (instancetype) createWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId {
     
     NSString *path = [NSString stringWithFormat:@"/1/synchronize/%@", applicationId];
-    NSMutableDictionary *body = [NSMutableDictionary dictionary];
+    NSMutableDictionary *query = [NSMutableDictionary dictionary];
     
     if (os) {
-        [body setObject:[NSString stringWithFormat:@"%ld", os] forKey:@"os"];
+        [query setObject:[NSString stringWithFormat:@"%ld", (long)os] forKey:@"os"];
     }
     if (version) {
-        [body setObject:version forKey:@"version"];
+        [query setObject:version forKey:@"version"];
     }
     if (credentialId) {
-        [body setObject:credentialId forKey:@"credentialId"];
+        [query setObject:credentialId forKey:@"credentialId"];
     }
     
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query];
     GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthLink sharedInstance] logger] error:@"Failed to get synchronize. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];

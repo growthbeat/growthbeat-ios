@@ -25,6 +25,7 @@
 		B2C1480D1AA456F300006EC3 /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C1480C1AA456F300006EC3 /* GrowthLink.h */; };
 		B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C1480E1AA456F300006EC3 /* GrowthLink.m */; };
 		B2CDC6241B21525E00DD23FF /* GLSynchronize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC6231B21525E00DD23FF /* GLSynchronize.m */; };
+		B2CDC6271B21588E00DD23FF /* GLIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC6261B21588E00DD23FF /* GLIntent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		B2C1480E1AA456F300006EC3 /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
 		B2CDC6221B21525E00DD23FF /* GLSynchronize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSynchronize.h; sourceTree = "<group>"; };
 		B2CDC6231B21525E00DD23FF /* GLSynchronize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSynchronize.m; sourceTree = "<group>"; };
+		B2CDC6251B21588E00DD23FF /* GLIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLIntent.h; sourceTree = "<group>"; };
+		B2CDC6261B21588E00DD23FF /* GLIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLIntent.m; sourceTree = "<group>"; };
 		CE0627351B15B600009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
 		CE0627361B15B600009263FA /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
 		CE0627371B15B600009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 		B2C1482B1AA45CFB00006EC3 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				B2CDC6251B21588E00DD23FF /* GLIntent.h */,
 				B2CDC6221B21525E00DD23FF /* GLSynchronize.h */,
 				B2C1480C1AA456F300006EC3 /* GrowthLink.h */,
 			);
@@ -168,6 +172,7 @@
 		B2C1482C1AA45D0600006EC3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B2CDC6261B21588E00DD23FF /* GLIntent.m */,
 				B2CDC6231B21525E00DD23FF /* GLSynchronize.m */,
 				B2C1480E1AA456F300006EC3 /* GrowthLink.m */,
 			);
@@ -348,6 +353,7 @@
 			files = (
 				B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */,
 				B2CDC6241B21525E00DD23FF /* GLSynchronize.m in Sources */,
+				B2CDC6271B21588E00DD23FF /* GLIntent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
