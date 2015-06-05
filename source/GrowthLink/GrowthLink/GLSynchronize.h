@@ -10,13 +10,13 @@
 
 @interface GLSynchronize : GBDomain <NSCoding> {
     
-    NSDictionary *configuration;
-    NSDictionary *click;
+    NSInteger browser;
+    NSString *token;
     
 }
 
-@property (nonatomic, strong) NSDictionary *configuration;
-@property (nonatomic, strong) NSDictionary *click;
+@property (nonatomic, assign) NSInteger browser;
+@property (nonatomic, strong) NSString *token;
 
 + (instancetype) getWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId;
 + (void) save:(GLSynchronize *)synchronize;

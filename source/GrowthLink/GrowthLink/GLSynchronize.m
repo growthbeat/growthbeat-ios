@@ -13,8 +13,8 @@
 
 @implementation GLSynchronize
 
-@synthesize configuration;
-@synthesize click;
+@synthesize browser;
+@synthesize token;
 
 static NSString *const kGLPreferenceSynchronizeKey = @"synchronize";
 
@@ -55,11 +55,11 @@ static NSString *const kGLPreferenceSynchronizeKey = @"synchronize";
     
     self = [super init];
     if (self) {
-        if ([dictionary objectForKey:@"configuration"] && [dictionary objectForKey:@"configuration"] != [NSNull null]) {
-            self.configuration = [dictionary objectForKey:@"configuration"];
+        if ([dictionary objectForKey:@"browser"] && [dictionary objectForKey:@"browser"] != [NSNull null]) {
+            self.browser = [[dictionary objectForKey:@"browser"] integerValue];
         }
-        if ([dictionary objectForKey:@"click"] && [dictionary objectForKey:@"click"] != [NSNull null]) {
-            self.click = [dictionary objectForKey:@"click"];
+        if ([dictionary objectForKey:@"token"] && [dictionary objectForKey:@"token"] != [NSNull null]) {
+            self.token = [dictionary objectForKey:@"token"];
         }
     }
     return self;
@@ -72,19 +72,19 @@ static NSString *const kGLPreferenceSynchronizeKey = @"synchronize";
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        if ([aDecoder containsValueForKey:@"configuration"]) {
-            self.configuration = [aDecoder decodeObjectForKey:@"configuration"];
+        if ([aDecoder containsValueForKey:@"browser"]) {
+            self.browser = [aDecoder decodeIntegerForKey:@"browser"];
         }
-        if ([aDecoder containsValueForKey:@"click"]) {
-            self.click = [aDecoder decodeObjectForKey:@"click"];
+        if ([aDecoder containsValueForKey:@"token"]) {
+            self.token = [aDecoder decodeObjectForKey:@"token"];
         }
     }
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:configuration forKey:@"configuration"];
-    [aCoder encodeObject:click forKey:@"click"];
+    [aCoder encodeInteger:browser forKey:@"browser"];
+    [aCoder encodeObject:token forKey:@"token"];
 }
 
 @end

@@ -142,11 +142,11 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         }
         
         [GLSynchronize save:synchronize];
-        [logger info:@"Get synchronize success. (configuration.browser: %d)", [synchronize.configuration objectForKey:@"browser"]];
+        [logger info:@"Get synchronize success. (configuration.browser: %d)", synchronize.browser];
         
-        if([[synchronize.configuration objectForKey:@"browser"] integerValue] == 1){
+        if(synchronize.browser == 1){
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stg.link.growthbeat.com/1/synchronize/%@?os=2&version=%@&credentialId=%@", applicationId, [GBDeviceUtils version], credentialId]]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://stg.link.growthbeat.com/l/synchronize"]];
             });
         }
         
