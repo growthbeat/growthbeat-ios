@@ -89,7 +89,22 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     }
     
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
+    
+    [self synchronize];
+    
+}
 
+- (void) synchronize {
+    
+    [logger info:@"Check initialization..."];
+    if([preference objectForKey:@"initialized"]) {
+        [logger info:@"Already initialized"];
+        return;
+    }
+    
+    [preference setObject:[NSDate date] forKey:@"initialized"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stg.link.growthbeat.com/1/synchronize/%@?os=2&version=%@&credentialId=%@", applicationId, [GBDeviceUtils version], credentialId]]];
+    
 }
 
 @end
