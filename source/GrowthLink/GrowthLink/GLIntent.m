@@ -17,7 +17,6 @@
 @synthesize pattern;
 @synthesize intent;
 
-
 + (instancetype) createWithClientId:(NSString *)clientId token:(NSString *)token install:(NSInteger)install {
     
     NSString *path = @"/1/intent";

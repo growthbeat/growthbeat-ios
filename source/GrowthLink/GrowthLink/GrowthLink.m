@@ -8,6 +8,8 @@
 
 #import "GrowthLink.h"
 #import "GrowthAnalytics.h"
+#import "GLSynchronize.h"
+#import "GLIntent.h"
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
@@ -97,13 +99,28 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 - (void) synchronize {
     
     [logger info:@"Check initialization..."];
-    if([preference objectForKey:@"initialized"]) {
+    if([GLSynchronize load]) {
         [logger info:@"Already initialized"];
         return;
     }
     
-    [preference setObject:[NSDate date] forKey:@"initialized"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stg.link.growthbeat.com/1/synchronize/%@?os=2&version=%@&credentialId=%@", applicationId, [GBDeviceUtils version], credentialId]]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [logger info:@"Get synchronize..."];
+        
+        GLSynchronize *synchronize = [GLSynchronize getWithApplicationId:[[[GrowthbeatCore sharedInstance] waitClient] id] os:1 version:[GBDeviceUtils version]  credentialId:credentialId];
+        if (!synchronize) {
+            [logger error:@"Failed to get synchronize"];
+        }
+        
+        [GLSynchronize save:synchronize];
+        [logger info:@"Get synchronize success. (configuration.browser: %d)", [synchronize.configuration objectForKey:@"browser"]];
+        
+        if([[synchronize.configuration objectForKey:@"browser"] integerValue] == 1){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stg.link.growthbeat.com/1/synchronize/%@?os=2&version=%@&credentialId=%@", applicationId, [GBDeviceUtils version], credentialId]]];
+        }
+        
+    });
     
 }
 

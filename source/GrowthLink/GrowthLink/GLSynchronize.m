@@ -16,9 +16,9 @@
 @synthesize configuration;
 @synthesize click;
 
-static NSString *const kGAPreferenceTagsKey = @"synchronize";
+static NSString *const kGLPreferenceSynchronizeKey = @"synchronize";
 
-+ (instancetype) createWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId {
++ (instancetype) getWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId {
     
     NSString *path = [NSString stringWithFormat:@"/1/synchronize/%@", applicationId];
     NSMutableDictionary *query = [NSMutableDictionary dictionary];
@@ -41,6 +41,14 @@ static NSString *const kGAPreferenceTagsKey = @"synchronize";
     }
     
     return [self domainWithDictionary:httpResponse.body];
+}
+
++ (void) save:(GLSynchronize *)synchronize {
+    [[[GrowthLink sharedInstance] preference] setObject:synchronize forKey:kGLPreferenceSynchronizeKey];
+}
+
++ (GLSynchronize *) load {
+    return [[[GrowthLink sharedInstance] preference] objectForKey:kGLPreferenceSynchronizeKey];
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
