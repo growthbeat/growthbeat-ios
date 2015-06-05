@@ -96,11 +96,39 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
 }
 
+- (void) handleOpenUrl:(NSURL *)url {
+    
+    NSString *token = url.host;
+    if(!token) {
+        [logger error:@"Unabled to get token from url."];
+        return;
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [logger info:@"Get synchronize..."];
+        
+        // TODO determine install
+        GLIntent *intent = [GLIntent createWithClientId:[[[GrowthbeatCore sharedInstance] client] id] token:token install:0 credentialId:credentialId];
+        if (!intent) {
+            [logger error:@"Failed to get intent."];
+        }
+        
+        [logger info:@"Get intent success. (intent.intent.id: %@)", intent.intent.id];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[GrowthbeatCore sharedInstance] handleIntent:intent.intent];
+        });
+        
+    });
+    
+}
+
 - (void) synchronize {
     
     [logger info:@"Check initialization..."];
     if([GLSynchronize load]) {
-        [logger info:@"Already initialized"];
+        [logger info:@"Already initialized."];
         return;
     }
     
@@ -110,14 +138,16 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         GLSynchronize *synchronize = [GLSynchronize getWithApplicationId:[[[GrowthbeatCore sharedInstance] waitClient] id] os:1 version:[GBDeviceUtils version]  credentialId:credentialId];
         if (!synchronize) {
-            [logger error:@"Failed to get synchronize"];
+            [logger error:@"Failed to get synchronize."];
         }
         
         [GLSynchronize save:synchronize];
         [logger info:@"Get synchronize success. (configuration.browser: %d)", [synchronize.configuration objectForKey:@"browser"]];
         
         if([[synchronize.configuration objectForKey:@"browser"] integerValue] == 1){
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stg.link.growthbeat.com/1/synchronize/%@?os=2&version=%@&credentialId=%@", applicationId, [GBDeviceUtils version], credentialId]]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stg.link.growthbeat.com/1/synchronize/%@?os=2&version=%@&credentialId=%@", applicationId, [GBDeviceUtils version], credentialId]]];
+            });
         }
         
     });

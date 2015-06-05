@@ -26,6 +26,8 @@
 		B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C1480E1AA456F300006EC3 /* GrowthLink.m */; };
 		B2CDC6241B21525E00DD23FF /* GLSynchronize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC6231B21525E00DD23FF /* GLSynchronize.m */; };
 		B2CDC6271B21588E00DD23FF /* GLIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC6261B21588E00DD23FF /* GLIntent.m */; };
+		B2CDC6281B21615600DD23FF /* GLIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC6251B21588E00DD23FF /* GLIntent.h */; };
+		B2CDC6291B21615600DD23FF /* GLSynchronize.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC6221B21525E00DD23FF /* GLSynchronize.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 			dstPath = Headers;
 			dstSubfolderSpec = 16;
 			files = (
+				B2CDC6281B21615600DD23FF /* GLIntent.h in CopyFiles */,
+				B2CDC6291B21615600DD23FF /* GLSynchronize.h in CopyFiles */,
 				B2C1480D1AA456F300006EC3 /* GrowthLink.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

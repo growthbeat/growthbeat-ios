@@ -17,7 +17,7 @@
 @synthesize pattern;
 @synthesize intent;
 
-+ (instancetype) createWithClientId:(NSString *)clientId token:(NSString *)token install:(NSInteger)install {
++ (instancetype) createWithClientId:(NSString *)clientId token:(NSString *)token install:(NSInteger)install credentialId:(NSString *)credentialId {
     
     NSString *path = @"/1/intent";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
@@ -30,6 +30,9 @@
     }
     if (install) {
         [body setObject:[NSString stringWithFormat:@"%ld", (long)install] forKey:@"install"];
+    }
+    if (credentialId) {
+        [body setObject:credentialId forKey:@"credentialId"];
     }
     
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];

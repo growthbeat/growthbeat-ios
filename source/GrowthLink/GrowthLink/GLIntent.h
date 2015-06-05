@@ -21,4 +21,6 @@
 @property (nonatomic, strong) NSDictionary *pattern;
 @property (nonatomic, strong) GBIntent *intent;
 
++ (instancetype) createWithClientId:(NSString *)clientId token:(NSString *)token install:(NSInteger)install credentialId:(NSString *)credentialId;
+
 @end
