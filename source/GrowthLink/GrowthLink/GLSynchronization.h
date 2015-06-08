@@ -10,15 +10,17 @@
 
 @interface GLSynchronization : GBDomain <NSCoding> {
     
-    NSInteger browser;
-    NSString *token;
+    NSString *scheme;
+    BOOL browser;
+    NSString *clickId;
     
 }
 
-@property (nonatomic, assign) NSInteger browser;
-@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *scheme;
+@property (nonatomic, assign) BOOL browser;
+@property (nonatomic, strong) NSString *clickId;
 
-+ (instancetype) getWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId;
++ (instancetype) getWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId;
 + (void) save:(GLSynchronization *)synchronization;
 + (GLSynchronization *) load;
 

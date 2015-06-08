@@ -160,15 +160,15 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Get synchronization..."];
         
-        GLSynchronization *synchronization = [GLSynchronization getWithApplicationId:applicationId os:1 version:[GBDeviceUtils version]  credentialId:credentialId];
+        GLSynchronization *synchronization = [GLSynchronization getWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId];
         if (!synchronization) {
             [logger error:@"Failed to get synchronization."];
         }
         
         [GLSynchronization save:synchronization];
-        [logger info:@"Get synchronization success. (configuration.browser: %d)", synchronization.browser];
+        [logger info:@"Get synchronization success. (configuration.browser: %@)", synchronization.browser?@"YES":@"NO"];
         
-        if(synchronization.browser == 1){
+        if(synchronization.browser){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://stg.link.growthbeat.com/l/synchronize"]];
             });

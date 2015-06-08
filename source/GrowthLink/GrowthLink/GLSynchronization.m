@@ -13,27 +13,29 @@
 
 @implementation GLSynchronization
 
+@synthesize scheme;
 @synthesize browser;
-@synthesize token;
+@synthesize clickId;
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
-+ (instancetype) getWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId {
++ (instancetype) getWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId {
+
+    NSString *path = @"/1/synchronize";
+    NSMutableDictionary *body = [NSMutableDictionary dictionary];
     
-    NSString *path = [NSString stringWithFormat:@"/1/synchronize/%@", applicationId];
-    NSMutableDictionary *query = [NSMutableDictionary dictionary];
-    
-    if (os) {
-        [query setObject:[NSString stringWithFormat:@"%ld", (long)os] forKey:@"os"];
+    if (applicationId) {
+        [body setObject:applicationId forKey:@"version"];
     }
+    [body setObject:@"ios" forKey:@"os"];
     if (version) {
-        [query setObject:version forKey:@"version"];
+        [body setObject:version forKey:@"version"];
     }
     if (credentialId) {
-        [query setObject:credentialId forKey:@"credentialId"];
+        [body setObject:credentialId forKey:@"credentialId"];
     }
     
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query];
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthLink sharedInstance] logger] error:@"Failed to get synchronization. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
@@ -55,11 +57,14 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     
     self = [super init];
     if (self) {
-        if ([dictionary objectForKey:@"browser"] && [dictionary objectForKey:@"browser"] != [NSNull null]) {
-            self.browser = [[dictionary objectForKey:@"browser"] integerValue];
+        if ([dictionary objectForKey:@"scheme"] && [dictionary objectForKey:@"scheme"] != [NSNull null]) {
+            self.scheme = [dictionary objectForKey:@"scheme"];
         }
-        if ([dictionary objectForKey:@"token"] && [dictionary objectForKey:@"token"] != [NSNull null]) {
-            self.token = [dictionary objectForKey:@"token"];
+        if ([dictionary objectForKey:@"browser"] && [dictionary objectForKey:@"browser"] != [NSNull null]) {
+            self.browser = [[dictionary objectForKey:@"browser"] boolValue];
+        }
+        if ([dictionary objectForKey:@"clickId"] && [dictionary objectForKey:@"clickId"] != [NSNull null]) {
+            self.clickId = [dictionary objectForKey:@"clickId"];
         }
     }
     return self;
@@ -72,19 +77,23 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        if ([aDecoder containsValueForKey:@"browser"]) {
-            self.browser = [aDecoder decodeIntegerForKey:@"browser"];
+        if ([aDecoder containsValueForKey:@"scheme"]) {
+            self.scheme = [aDecoder decodeObjectForKey:@"scheme"];
         }
-        if ([aDecoder containsValueForKey:@"token"]) {
-            self.token = [aDecoder decodeObjectForKey:@"token"];
+        if ([aDecoder containsValueForKey:@"browser"]) {
+            self.browser = [aDecoder decodeBoolForKey:@"browser"];
+        }
+        if ([aDecoder containsValueForKey:@"clickId"]) {
+            self.clickId = [aDecoder decodeObjectForKey:@"clickId"];
         }
     }
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeInteger:browser forKey:@"browser"];
-    [aCoder encodeObject:token forKey:@"token"];
+    [aCoder encodeObject:scheme forKey:@"scheme"];
+    [aCoder encodeBool:browser forKey:@"browser"];
+    [aCoder encodeObject:clickId forKey:@"clickId"];
 }
 
 @end
