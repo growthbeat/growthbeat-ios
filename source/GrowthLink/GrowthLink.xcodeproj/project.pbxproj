@@ -68,7 +68,7 @@
 		B2F7B9FF1B2599AB001C66A3 /* GLLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLink.h; sourceTree = "<group>"; };
 		B2F7BA001B2599AB001C66A3 /* GLLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLink.m; sourceTree = "<group>"; };
 		B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSynchronization.h; sourceTree = "<group>"; };
-		B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSynchronization.m; sourceTree = "<group>"; };
+		B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSynchronization.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2F7BA101B259F69001C66A3 /* GLPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPattern.m; sourceTree = "<group>"; };
 		B2F7BA111B259F69001C66A3 /* GLClick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLClick.m; sourceTree = "<group>"; };
 		B2F7BA121B259F69001C66A3 /* GLClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLClick.h; sourceTree = "<group>"; };

@@ -31,7 +31,7 @@
         if ([dictionary objectForKey:@"link"] && [dictionary objectForKey:@"link"] != [NSNull null]) {
             self.link = [GLLink domainWithDictionary:[dictionary objectForKey:@"link"]];
         }
-        if ([dictionary objectForKey:@"open"] && [dictionary objectForKey:@"intent"] != [NSNull null]) {
+        if ([dictionary objectForKey:@"intent"] && [dictionary objectForKey:@"intent"] != [NSNull null]) {
             self.intent = [GBIntent domainWithDictionary:[dictionary objectForKey:@"intent"]];
         }
         if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {

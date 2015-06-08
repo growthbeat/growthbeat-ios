@@ -25,7 +25,7 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     
     if (applicationId) {
-        [body setObject:applicationId forKey:@"version"];
+        [body setObject:applicationId forKey:@"applicationId"];
     }
     [body setObject:@"ios" forKey:@"os"];
     if (version) {

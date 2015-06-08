@@ -110,14 +110,14 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        [logger info:@"Get synchronization..."];
+        [logger info:@"Deeplinking..."];
         
         GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] client] id] clickId:clickId install:isFirstSession credentialId:credentialId];
         if (!click) {
-            [logger error:@"Failed to get click."];
+            [logger error:@"Failed to deeplink."];
         }
         
-        [logger info:@"Get click success. (clickId: %@, intentId: %@)", click.id, click.pattern.intent.id];
+        [logger info:@"Deeplink success. (clickId: %@, intentId: %@)", click.id, click.pattern.intent.id];
         
         NSMutableDictionary *properties = [NSMutableDictionary dictionary];
         if (click.pattern.link.id) {
@@ -158,15 +158,15 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        [logger info:@"Get synchronization..."];
+        [logger info:@"Synchronizing ..."];
         
         GLSynchronization *synchronization = [GLSynchronization getWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId];
         if (!synchronization) {
-            [logger error:@"Failed to get synchronization."];
+            [logger error:@"Failed to Synchronize."];
         }
         
         [GLSynchronization save:synchronization];
-        [logger info:@"Get synchronization success. (configuration.browser: %@)", synchronization.browser?@"YES":@"NO"];
+        [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];
         
         if(synchronization.browser){
             dispatch_async(dispatch_get_main_queue(), ^{
