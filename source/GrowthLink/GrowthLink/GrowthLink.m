@@ -119,6 +119,25 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Get intent success. (intent.intent.id: %@)", intent.intent.id];
         
+        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+        if ([intent.link objectForKey:@"id"]) {
+            [properties setObject:[intent.link objectForKey:@"id"] forKey:@"linkId"];
+        }
+        if ([intent.pattern objectForKey:@"id"]) {
+            [properties setObject:[intent.pattern objectForKey:@"id"] forKey:@"patternId"];
+        }
+        if (intent.intent.id) {
+            [properties setObject:intent.intent.id forKey:@"intentId"];
+        }
+        
+        if(isFirstSession) {
+            [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Install" properties:properties option:GATrackOptionDefault completion:nil];
+        }
+        
+        [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Open" properties:properties option:GATrackOptionDefault completion:nil];
+        
+        isFirstSession = NO;
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [[GrowthbeatCore sharedInstance] handleIntent:intent.intent];
         });
@@ -135,7 +154,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         return;
     }
     
-    self.isFirstSession = YES;
+    isFirstSession = YES;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
