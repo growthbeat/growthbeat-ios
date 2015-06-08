@@ -8,7 +8,7 @@
 
 #import "GrowthLink.h"
 #import "GrowthAnalytics.h"
-#import "GLSynchronize.h"
+#import "GLSynchronization.h"
 #import "GLIntent.h"
 
 static GrowthLink *sharedInstance = nil;
@@ -110,7 +110,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        [logger info:@"Get synchronize..."];
+        [logger info:@"Get synchronization..."];
         
         GLIntent *intent = [GLIntent createWithClientId:[[[GrowthbeatCore sharedInstance] client] id] token:token install:(isFirstSession?1:0) credentialId:credentialId];
         if (!intent) {
@@ -149,7 +149,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 - (void) synchronize {
     
     [logger info:@"Check initialization..."];
-    if([GLSynchronize load]) {
+    if([GLSynchronization load]) {
         [logger info:@"Already initialized."];
         return;
     }
@@ -158,17 +158,17 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        [logger info:@"Get synchronize..."];
+        [logger info:@"Get synchronization..."];
         
-        GLSynchronize *synchronize = [GLSynchronize getWithApplicationId:applicationId os:1 version:[GBDeviceUtils version]  credentialId:credentialId];
-        if (!synchronize) {
-            [logger error:@"Failed to get synchronize."];
+        GLSynchronization *synchronization = [GLSynchronization getWithApplicationId:applicationId os:1 version:[GBDeviceUtils version]  credentialId:credentialId];
+        if (!synchronization) {
+            [logger error:@"Failed to get synchronization."];
         }
         
-        [GLSynchronize save:synchronize];
-        [logger info:@"Get synchronize success. (configuration.browser: %d)", synchronize.browser];
+        [GLSynchronization save:synchronization];
+        [logger info:@"Get synchronization success. (configuration.browser: %d)", synchronization.browser];
         
-        if(synchronize.browser == 1){
+        if(synchronization.browser == 1){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://stg.link.growthbeat.com/l/synchronize"]];
             });

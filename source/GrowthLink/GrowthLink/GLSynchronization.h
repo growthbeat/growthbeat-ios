@@ -1,5 +1,5 @@
 //
-//  GLSynchronize.h
+//  GLSynchronization.h
 //  GrowthLink
 //
 //  Created by Naoyuki Kataoka on 2015/06/05.
@@ -8,7 +8,7 @@
 
 #import "GBDomain.h"
 
-@interface GLSynchronize : GBDomain <NSCoding> {
+@interface GLSynchronization : GBDomain <NSCoding> {
     
     NSInteger browser;
     NSString *token;
@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString *token;
 
 + (instancetype) getWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId;
-+ (void) save:(GLSynchronize *)synchronize;
-+ (GLSynchronize *) load;
++ (void) save:(GLSynchronization *)synchronization;
++ (GLSynchronization *) load;
 
 @end

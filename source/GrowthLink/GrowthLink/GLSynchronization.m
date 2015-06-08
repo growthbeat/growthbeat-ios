@@ -1,22 +1,22 @@
 //
-//  GLSynchronize.m
+//  GLSynchronization.m
 //  GrowthLink
 //
 //  Created by Naoyuki Kataoka on 2015/06/05.
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GLSynchronize.h"
+#import "GLSynchronization.h"
 #import "GBUtils.h"
 #import "GBHttpClient.h"
 #import "GrowthLink.h"
 
-@implementation GLSynchronize
+@implementation GLSynchronization
 
 @synthesize browser;
 @synthesize token;
 
-static NSString *const kGLPreferenceSynchronizeKey = @"synchronize";
+static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
 + (instancetype) getWithApplicationId:(NSString *)applicationId os:(NSInteger)os version:(NSString *)version credentialId:(NSString *)credentialId {
     
@@ -36,19 +36,19 @@ static NSString *const kGLPreferenceSynchronizeKey = @"synchronize";
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query];
     GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthLink sharedInstance] logger] error:@"Failed to get synchronize. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
+        [[[GrowthLink sharedInstance] logger] error:@"Failed to get synchronization. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
     
     return [self domainWithDictionary:httpResponse.body];
 }
 
-+ (void) save:(GLSynchronize *)synchronize {
-    [[[GrowthLink sharedInstance] preference] setObject:synchronize forKey:kGLPreferenceSynchronizeKey];
++ (void) save:(GLSynchronization *)synchronization {
+    [[[GrowthLink sharedInstance] preference] setObject:synchronization forKey:kGLPreferenceSynchronizationKey];
 }
 
-+ (GLSynchronize *) load {
-    return [[[GrowthLink sharedInstance] preference] objectForKey:kGLPreferenceSynchronizeKey];
++ (GLSynchronization *) load {
+    return [[[GrowthLink sharedInstance] preference] objectForKey:kGLPreferenceSynchronizationKey];
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {

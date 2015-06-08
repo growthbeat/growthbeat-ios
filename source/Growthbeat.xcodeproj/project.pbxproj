@@ -27,7 +27,7 @@
 		B29945C01B181578000ED06B /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B29945BF1B181578000ED06B /* GrowthLink.m */; };
 		B29945C11B181610000ED06B /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B29945BE1B181578000ED06B /* GrowthLink.h */; };
 		B2CDC62E1B2161BA00DD23FF /* GLIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC62B1B2161BA00DD23FF /* GLIntent.m */; };
-		B2CDC62F1B2161BA00DD23FF /* GLSynchronize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC62D1B2161BA00DD23FF /* GLSynchronize.m */; };
+		B2CDC62F1B2161BA00DD23FF /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
 		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
 		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
@@ -213,13 +213,13 @@
 
 /* Begin PBXFileReference section */
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
-		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
+		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Growthbeat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B29945BE1B181578000ED06B /* GrowthLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthLink.h; path = GrowthLink/GrowthLink/GrowthLink.h; sourceTree = "<group>"; };
-		B29945BF1B181578000ED06B /* GrowthLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthLink.m; path = GrowthLink/GrowthLink/GrowthLink.m; sourceTree = "<group>"; };
+		B29945BF1B181578000ED06B /* GrowthLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GrowthLink.m; path = GrowthLink/GrowthLink/GrowthLink.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2CDC62A1B2161BA00DD23FF /* GLIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLIntent.h; path = GrowthLink/GrowthLink/GLIntent.h; sourceTree = "<group>"; };
-		B2CDC62B1B2161BA00DD23FF /* GLIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLIntent.m; path = GrowthLink/GrowthLink/GLIntent.m; sourceTree = "<group>"; };
-		B2CDC62C1B2161BA00DD23FF /* GLSynchronize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLSynchronize.h; path = GrowthLink/GrowthLink/GLSynchronize.h; sourceTree = "<group>"; };
-		B2CDC62D1B2161BA00DD23FF /* GLSynchronize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLSynchronize.m; path = GrowthLink/GrowthLink/GLSynchronize.m; sourceTree = "<group>"; };
+		B2CDC62B1B2161BA00DD23FF /* GLIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GLIntent.m; path = GrowthLink/GrowthLink/GLIntent.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = GLSynchronization.h; path = GrowthLink/GrowthLink/GLSynchronization.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GLSynchronization.m; path = GrowthLink/GrowthLink/GLSynchronization.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
 		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		CE0627CB1B15B692009263FA /* GAEventHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAEventHandler.h; sourceTree = "<group>"; };
 		CE0627CC1B15B692009263FA /* GAEventHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAEventHandler.m; sourceTree = "<group>"; };
 		CE0627CD1B15B692009263FA /* GrowthAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthAnalytics.h; sourceTree = "<group>"; };
-		CE0627CE1B15B692009263FA /* GrowthAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthAnalytics.m; sourceTree = "<group>"; };
+		CE0627CE1B15B692009263FA /* GrowthAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GrowthAnalytics.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE0627D01B15B6A1009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
 		CE0627D11B15B6A1009263FA /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
 		CE0627D21B15B6A1009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 		CE0627DF1B15B6A1009263FA /* GBDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDomain.h; sourceTree = "<group>"; };
 		CE0627E01B15B6A1009263FA /* GBDomain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBDomain.m; sourceTree = "<group>"; };
 		CE0627E11B15B6A1009263FA /* GBGPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBGPClient.h; sourceTree = "<group>"; };
-		CE0627E21B15B6A1009263FA /* GBGPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBGPClient.m; sourceTree = "<group>"; };
+		CE0627E21B15B6A1009263FA /* GBGPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GBGPClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE0627E31B15B6A1009263FA /* GBHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpClient.h; sourceTree = "<group>"; };
 		CE0627E41B15B6A1009263FA /* GBHttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpClient.m; sourceTree = "<group>"; };
 		CE0627E51B15B6A1009263FA /* GBHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpRequest.h; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 		CE0627FF1B15B6A1009263FA /* GBUrlIntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBUrlIntentHandler.m; sourceTree = "<group>"; };
 		CE0628001B15B6A1009263FA /* GBUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUtils.h; sourceTree = "<group>"; };
 		CE0628011B15B6A1009263FA /* GrowthbeatCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthbeatCore.h; sourceTree = "<group>"; };
-		CE0628021B15B6A1009263FA /* GrowthbeatCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthbeatCore.m; sourceTree = "<group>"; };
+		CE0628021B15B6A1009263FA /* GrowthbeatCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GrowthbeatCore.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE0628041B15B6B8009263FA /* GMButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMButton.h; sourceTree = "<group>"; };
 		CE0628051B15B6B8009263FA /* GMButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMButton.m; sourceTree = "<group>"; };
 		CE0628061B15B6B8009263FA /* GMButtonType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMButtonType.h; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 		CE0628241B15B6B8009263FA /* GMTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMTask.h; sourceTree = "<group>"; };
 		CE0628251B15B6B8009263FA /* GMTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMTask.m; sourceTree = "<group>"; };
 		CE0628261B15B6B8009263FA /* GrowthMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthMessage.h; sourceTree = "<group>"; };
-		CE0628271B15B6B8009263FA /* GrowthMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthMessage.m; sourceTree = "<group>"; };
+		CE0628271B15B6B8009263FA /* GrowthMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GrowthMessage.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE0628291B15B6BF009263FA /* GPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPClient.h; sourceTree = "<group>"; };
 		CE06282A1B15B6BF009263FA /* GPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
 		CE06282B1B15B6BF009263FA /* GPEnvironment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPEnvironment.h; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 		CE06282D1B15B6BF009263FA /* GPOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPOS.h; sourceTree = "<group>"; };
 		CE06282E1B15B6BF009263FA /* GPOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
 		CE06282F1B15B6BF009263FA /* GrowthPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthPush.h; sourceTree = "<group>"; };
-		CE0628301B15B6BF009263FA /* GrowthPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
+		CE0628301B15B6BF009263FA /* GrowthPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GrowthPush.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,8 +342,8 @@
 			children = (
 				B2CDC62A1B2161BA00DD23FF /* GLIntent.h */,
 				B2CDC62B1B2161BA00DD23FF /* GLIntent.m */,
-				B2CDC62C1B2161BA00DD23FF /* GLSynchronize.h */,
-				B2CDC62D1B2161BA00DD23FF /* GLSynchronize.m */,
+				B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */,
+				B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */,
 				B29945BE1B181578000ED06B /* GrowthLink.h */,
 				B29945BF1B181578000ED06B /* GrowthLink.m */,
 			);
@@ -610,7 +610,7 @@
 				CE06284F1B16F1B8009263FA /* GMTask.m in Sources */,
 				CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */,
 				CE06283F1B16F1A1009263FA /* GrowthPush.m in Sources */,
-				B2CDC62F1B2161BA00DD23FF /* GLSynchronize.m in Sources */,
+				B2CDC62F1B2161BA00DD23FF /* GLSynchronization.m in Sources */,
 				CE06284D1B16F1B8009263FA /* GMPlainMessageHandler.m in Sources */,
 				CE0628411B16F1B8009263FA /* GMButtonType.m in Sources */,
 				CE0628441B16F1B8009263FA /* GMImageMessage.m in Sources */,
