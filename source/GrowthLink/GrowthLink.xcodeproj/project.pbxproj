@@ -24,10 +24,12 @@
 /* Begin PBXBuildFile section */
 		B2C1480D1AA456F300006EC3 /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C1480C1AA456F300006EC3 /* GrowthLink.h */; };
 		B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C1480E1AA456F300006EC3 /* GrowthLink.m */; };
-		B2CDC6241B21525E00DD23FF /* GLSynchronize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC6231B21525E00DD23FF /* GLSynchronize.m */; };
 		B2CDC6271B21588E00DD23FF /* GLIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC6261B21588E00DD23FF /* GLIntent.m */; };
 		B2CDC6281B21615600DD23FF /* GLIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC6251B21588E00DD23FF /* GLIntent.h */; };
-		B2CDC6291B21615600DD23FF /* GLSynchronize.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC6221B21525E00DD23FF /* GLSynchronize.h */; };
+		B2F7BA031B2599AB001C66A3 /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA001B2599AB001C66A3 /* GLLink.m */; };
+		B2F7BA041B2599AB001C66A3 /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */; };
+		B2F7BA051B259AEC001C66A3 /* GLLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7B9FF1B2599AB001C66A3 /* GLLink.h */; };
+		B2F7BA061B259AEC001C66A3 /* GLSynchronization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +49,9 @@
 			dstPath = Headers;
 			dstSubfolderSpec = 16;
 			files = (
+				B2F7BA051B259AEC001C66A3 /* GLLink.h in CopyFiles */,
+				B2F7BA061B259AEC001C66A3 /* GLSynchronization.h in CopyFiles */,
 				B2CDC6281B21615600DD23FF /* GLIntent.h in CopyFiles */,
-				B2CDC6291B21615600DD23FF /* GLSynchronize.h in CopyFiles */,
 				B2C1480D1AA456F300006EC3 /* GrowthLink.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,10 +62,12 @@
 		B2C148091AA456F300006EC3 /* libGrowthLink.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthLink.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C1480C1AA456F300006EC3 /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
 		B2C1480E1AA456F300006EC3 /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
-		B2CDC6221B21525E00DD23FF /* GLSynchronize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSynchronize.h; sourceTree = "<group>"; };
-		B2CDC6231B21525E00DD23FF /* GLSynchronize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSynchronize.m; sourceTree = "<group>"; };
 		B2CDC6251B21588E00DD23FF /* GLIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLIntent.h; sourceTree = "<group>"; };
 		B2CDC6261B21588E00DD23FF /* GLIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLIntent.m; sourceTree = "<group>"; };
+		B2F7B9FF1B2599AB001C66A3 /* GLLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLink.h; sourceTree = "<group>"; };
+		B2F7BA001B2599AB001C66A3 /* GLLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLink.m; sourceTree = "<group>"; };
+		B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSynchronization.h; sourceTree = "<group>"; };
+		B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSynchronization.m; sourceTree = "<group>"; };
 		CE0627351B15B600009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
 		CE0627361B15B600009263FA /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
 		CE0627371B15B600009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
@@ -167,7 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				B2CDC6251B21588E00DD23FF /* GLIntent.h */,
-				B2CDC6221B21525E00DD23FF /* GLSynchronize.h */,
+				B2F7B9FF1B2599AB001C66A3 /* GLLink.h */,
+				B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */,
 				B2C1480C1AA456F300006EC3 /* GrowthLink.h */,
 			);
 			name = Headers;
@@ -177,7 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				B2CDC6261B21588E00DD23FF /* GLIntent.m */,
-				B2CDC6231B21525E00DD23FF /* GLSynchronize.m */,
+				B2F7BA001B2599AB001C66A3 /* GLLink.m */,
+				B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */,
 				B2C1480E1AA456F300006EC3 /* GrowthLink.m */,
 			);
 			name = Sources;
@@ -356,8 +363,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */,
-				B2CDC6241B21525E00DD23FF /* GLSynchronize.m in Sources */,
 				B2CDC6271B21588E00DD23FF /* GLIntent.m in Sources */,
+				B2F7BA031B2599AB001C66A3 /* GLLink.m in Sources */,
+				B2F7BA041B2599AB001C66A3 /* GLSynchronization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

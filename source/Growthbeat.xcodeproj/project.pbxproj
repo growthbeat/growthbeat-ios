@@ -28,6 +28,10 @@
 		B29945C11B181610000ED06B /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B29945BE1B181578000ED06B /* GrowthLink.h */; };
 		B2CDC62E1B2161BA00DD23FF /* GLIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC62B1B2161BA00DD23FF /* GLIntent.m */; };
 		B2CDC62F1B2161BA00DD23FF /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */; };
+		B2F7B9FE1B259987001C66A3 /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7B9FD1B259987001C66A3 /* GLLink.m */; };
+		B2F7BA071B259B0A001C66A3 /* GLIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC62A1B2161BA00DD23FF /* GLIntent.h */; };
+		B2F7BA081B259B0A001C66A3 /* GLLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7B9FC1B259987001C66A3 /* GLLink.h */; };
+		B2F7BA091B259B0A001C66A3 /* GLSynchronization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
 		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
 		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
@@ -150,6 +154,9 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B2F7BA071B259B0A001C66A3 /* GLIntent.h in CopyFiles */,
+				B2F7BA081B259B0A001C66A3 /* GLLink.h in CopyFiles */,
+				B2F7BA091B259B0A001C66A3 /* GLSynchronization.h in CopyFiles */,
 				B29945C11B181610000ED06B /* GrowthLink.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
 				CE0628771B16F22E009263FA /* GPEnvironment.h in CopyFiles */,
@@ -221,6 +228,8 @@
 		B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = GLSynchronization.h; path = GrowthLink/GrowthLink/GLSynchronization.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GLSynchronization.m; path = GrowthLink/GrowthLink/GLSynchronization.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2F7B9FC1B259987001C66A3 /* GLLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLLink.h; path = GrowthLink/GrowthLink/GLLink.h; sourceTree = "<group>"; };
+		B2F7B9FD1B259987001C66A3 /* GLLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLLink.m; path = GrowthLink/GrowthLink/GLLink.m; sourceTree = "<group>"; };
 		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
 		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
 		CE0627C91B15B692009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
@@ -342,6 +351,8 @@
 			children = (
 				B2CDC62A1B2161BA00DD23FF /* GLIntent.h */,
 				B2CDC62B1B2161BA00DD23FF /* GLIntent.m */,
+				B2F7B9FC1B259987001C66A3 /* GLLink.h */,
+				B2F7B9FD1B259987001C66A3 /* GLLink.m */,
 				B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */,
 				B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */,
 				B29945BE1B181578000ED06B /* GrowthLink.h */,
@@ -619,6 +630,7 @@
 				CE06285D1B16F1E2009263FA /* GBHttpUtils.m in Sources */,
 				CE0628541B16F1E2009263FA /* GBContentType.m in Sources */,
 				CE0628481B16F1B8009263FA /* GMMessageType.m in Sources */,
+				B2F7B9FE1B259987001C66A3 /* GLLink.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
 				CE0628461B16F1B8009263FA /* GMImageMessageRenderer.m in Sources */,
 				CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */,
