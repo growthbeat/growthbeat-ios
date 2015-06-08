@@ -9,7 +9,7 @@
 #import "GrowthLink.h"
 #import "GrowthAnalytics.h"
 #import "GLSynchronization.h"
-#import "GLIntent.h"
+#import "GLClick.h"
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
@@ -102,9 +102,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 - (void) handleOpenUrl:(NSURL *)url {
     
-    NSString *token = url.host;
-    if(!token) {
-        [logger error:@"Unabled to get token from url."];
+    NSString *clickId = url.host;
+    if(!clickId) {
+        [logger error:@"Unabled to get clickId from url."];
         return;
     }
     
@@ -112,22 +112,22 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Get synchronization..."];
         
-        GLIntent *intent = [GLIntent createWithClientId:[[[GrowthbeatCore sharedInstance] client] id] token:token install:(isFirstSession?1:0) credentialId:credentialId];
-        if (!intent) {
-            [logger error:@"Failed to get intent."];
+        GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] client] id] clickId:clickId install:isFirstSession credentialId:credentialId];
+        if (!click) {
+            [logger error:@"Failed to get click."];
         }
         
-        [logger info:@"Get intent success. (intent.intent.id: %@)", intent.intent.id];
+        [logger info:@"Get click success. (clickId: %@, intentId: %@)", click.id, click.pattern.intent.id];
         
         NSMutableDictionary *properties = [NSMutableDictionary dictionary];
-        if ([intent.link objectForKey:@"id"]) {
-            [properties setObject:[intent.link objectForKey:@"id"] forKey:@"linkId"];
+        if (click.pattern.link.id) {
+            [properties setObject:click.pattern.link.id forKey:@"linkId"];
         }
-        if ([intent.pattern objectForKey:@"id"]) {
-            [properties setObject:[intent.pattern objectForKey:@"id"] forKey:@"patternId"];
+        if (click.pattern.id) {
+            [properties setObject:click.pattern.id forKey:@"patternId"];
         }
-        if (intent.intent.id) {
-            [properties setObject:intent.intent.id forKey:@"intentId"];
+        if (click.pattern.intent.id) {
+            [properties setObject:click.pattern.intent.id forKey:@"intentId"];
         }
         
         if(isFirstSession) {
@@ -139,7 +139,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         isFirstSession = NO;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[GrowthbeatCore sharedInstance] handleIntent:intent.intent];
+            [[GrowthbeatCore sharedInstance] handleIntent:click.pattern.intent];
         });
         
     });

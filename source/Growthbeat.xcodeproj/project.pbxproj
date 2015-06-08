@@ -26,10 +26,8 @@
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		B29945C01B181578000ED06B /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B29945BF1B181578000ED06B /* GrowthLink.m */; };
 		B29945C11B181610000ED06B /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B29945BE1B181578000ED06B /* GrowthLink.h */; };
-		B2CDC62E1B2161BA00DD23FF /* GLIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC62B1B2161BA00DD23FF /* GLIntent.m */; };
 		B2CDC62F1B2161BA00DD23FF /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */; };
 		B2F7B9FE1B259987001C66A3 /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7B9FD1B259987001C66A3 /* GLLink.m */; };
-		B2F7BA071B259B0A001C66A3 /* GLIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC62A1B2161BA00DD23FF /* GLIntent.h */; };
 		B2F7BA081B259B0A001C66A3 /* GLLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7B9FC1B259987001C66A3 /* GLLink.h */; };
 		B2F7BA091B259B0A001C66A3 /* GLSynchronization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */; };
 		B2F7BA0C1B259C6B001C66A3 /* GLPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA0B1B259C6B001C66A3 /* GLPattern.m */; };
@@ -156,7 +154,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				B2F7BA071B259B0A001C66A3 /* GLIntent.h in CopyFiles */,
 				B2F7BA081B259B0A001C66A3 /* GLLink.h in CopyFiles */,
 				B2F7BA091B259B0A001C66A3 /* GLSynchronization.h in CopyFiles */,
 				B29945C11B181610000ED06B /* GrowthLink.h in CopyFiles */,
@@ -225,8 +222,6 @@
 		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Growthbeat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B29945BE1B181578000ED06B /* GrowthLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthLink.h; path = GrowthLink/GrowthLink/GrowthLink.h; sourceTree = "<group>"; };
 		B29945BF1B181578000ED06B /* GrowthLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GrowthLink.m; path = GrowthLink/GrowthLink/GrowthLink.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		B2CDC62A1B2161BA00DD23FF /* GLIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLIntent.h; path = GrowthLink/GrowthLink/GLIntent.h; sourceTree = "<group>"; };
-		B2CDC62B1B2161BA00DD23FF /* GLIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GLIntent.m; path = GrowthLink/GrowthLink/GLIntent.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = GLSynchronization.h; path = GrowthLink/GrowthLink/GLSynchronization.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GLSynchronization.m; path = GrowthLink/GrowthLink/GLSynchronization.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,8 +352,6 @@
 			children = (
 				B2F7BA0D1B259C78001C66A3 /* GLClick.h */,
 				B2F7BA0E1B259C78001C66A3 /* GLClick.m */,
-				B2CDC62A1B2161BA00DD23FF /* GLIntent.h */,
-				B2CDC62B1B2161BA00DD23FF /* GLIntent.m */,
 				B2F7B9FC1B259987001C66A3 /* GLLink.h */,
 				B2F7B9FD1B259987001C66A3 /* GLLink.m */,
 				B2F7BA0A1B259C6B001C66A3 /* GLPattern.h */,
@@ -667,7 +660,6 @@
 				CE06284A1B16F1B8009263FA /* GMPictureExtension.m in Sources */,
 				CE06284E1B16F1B8009263FA /* GMScreenButton.m in Sources */,
 				CE0628491B16F1B8009263FA /* GMPicture.m in Sources */,
-				B2CDC62E1B2161BA00DD23FF /* GLIntent.m in Sources */,
 				CE06283C1B16F1A1009263FA /* GPClient.m in Sources */,
 				CE0628621B16F1E2009263FA /* GBNoopIntent.m in Sources */,
 				CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */,

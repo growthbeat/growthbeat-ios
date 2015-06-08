@@ -8,6 +8,8 @@
 
 #import "GLClick.h"
 #import "GBUtils.h"
+#import "GBHttpClient.h"
+#import "GrowthLink.h"
 
 @implementation GLClick
 
@@ -18,6 +20,32 @@
 @synthesize install;
 @synthesize created;
 @synthesize accessed;
+
++ (instancetype) deeplinkWithClientId:(NSString *)clientId clickId:(NSString *)clickId install:(BOOL)install credentialId:(NSString *)credentialId {
+    
+    NSString *path = @"/1/deeplink";
+    NSMutableDictionary *body = [NSMutableDictionary dictionary];
+    
+    if (clientId) {
+        [body setObject:clientId forKey:@"clientId"];
+    }
+    if (clickId) {
+        [body setObject:clickId forKey:@"clickId"];
+    }
+    [body setObject:install?@"true":@"false" forKey:@"install"];
+    if (credentialId) {
+        [body setObject:credentialId forKey:@"credentialId"];
+    }
+    
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
+    GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
+    if (!httpResponse.success) {
+        [[[GrowthLink sharedInstance] logger] error:@"Failed to get click. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
+        return nil;
+    }
+    
+    return [self domainWithDictionary:httpResponse.body];
+}
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
     

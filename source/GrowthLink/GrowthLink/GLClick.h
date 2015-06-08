@@ -29,4 +29,6 @@
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, strong) NSDate *accessed;
 
++ (instancetype) deeplinkWithClientId:(NSString *)clientId clickId:(NSString *)clickId install:(BOOL)install credentialId:(NSString *)credentialId;
+
 @end
