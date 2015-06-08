@@ -27,6 +27,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     NSString *credentialId;
 
     BOOL initialized;
+    BOOL isFirstSession;
 
 }
 
@@ -38,6 +39,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, assign) BOOL initialized;
+@property (nonatomic, assign) BOOL isFirstSession;
 
 @end
 
@@ -51,6 +53,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @synthesize credentialId;
 
 @synthesize initialized;
+@synthesize isFirstSession;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -71,6 +74,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
+        self.isFirstSession = NO;
     }
     return self;
 }
@@ -108,8 +112,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Get synchronize..."];
         
-        // TODO determine install
-        GLIntent *intent = [GLIntent createWithClientId:[[[GrowthbeatCore sharedInstance] client] id] token:token install:0 credentialId:credentialId];
+        GLIntent *intent = [GLIntent createWithClientId:[[[GrowthbeatCore sharedInstance] client] id] token:token install:(isFirstSession?1:0) credentialId:credentialId];
         if (!intent) {
             [logger error:@"Failed to get intent."];
         }
@@ -131,6 +134,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [logger info:@"Already initialized."];
         return;
     }
+    
+    self.isFirstSession = YES;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
