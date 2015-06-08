@@ -77,13 +77,6 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
         availableHeight = bannerMessage.picture.height * ratio;
     }
     
-    baseView.frame = CGRectMake(0.0, 0.0, availableWidth, availableHeight);
-    
-    if (bannerMessage.position == GMBannerPositionTop)
-        baseView.center = CGPointMake(screenWidth / 2, baseView.center.y);
-    else
-        baseView.center = CGPointMake(screenWidth / 2, screenHeight - (availableHeight / 2));
-    
     self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicatorView.frame = baseView.frame;
     activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
@@ -99,6 +92,41 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
         self.activityIndicatorView.hidden = YES;
         
     }];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f ) {
+        
+        switch ([UIApplication sharedApplication].statusBarOrientation) {
+            case UIDeviceOrientationLandscapeLeft:
+                NSLog(@"1");
+                baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                break;
+            case UIDeviceOrientationLandscapeRight:
+                NSLog(@"2");
+                baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                break;
+            case UIDeviceOrientationPortraitUpsideDown:
+                NSLog(@"3");
+                baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
+                break;
+            default:
+                NSLog(@"4");
+                baseView.transform = CGAffineTransformMakeRotation(0);
+                break;
+        }
+    }
+    
+    CGRect baseRect = CGRectMake(0.0, 0.0, availableWidth, availableHeight);
+    
+    if ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortrait) {
+        baseRect.origin.y = 20;
+    }
+    
+    baseView.frame = baseRect;
+    
+    if (bannerMessage.position == GMBannerPositionTop)
+        baseView.center = CGPointMake(screenWidth / 2, baseView.center.y);
+    else
+        baseView.center = CGPointMake(screenWidth / 2, screenHeight - (availableHeight / 2));
     
 }
 
