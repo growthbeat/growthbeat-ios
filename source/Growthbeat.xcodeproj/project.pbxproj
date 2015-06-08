@@ -32,6 +32,8 @@
 		B2F7BA071B259B0A001C66A3 /* GLIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC62A1B2161BA00DD23FF /* GLIntent.h */; };
 		B2F7BA081B259B0A001C66A3 /* GLLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7B9FC1B259987001C66A3 /* GLLink.h */; };
 		B2F7BA091B259B0A001C66A3 /* GLSynchronization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */; };
+		B2F7BA0C1B259C6B001C66A3 /* GLPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA0B1B259C6B001C66A3 /* GLPattern.m */; };
+		B2F7BA0F1B259C78001C66A3 /* GLClick.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA0E1B259C78001C66A3 /* GLClick.m */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
 		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
 		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
@@ -230,6 +232,10 @@
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F7B9FC1B259987001C66A3 /* GLLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLLink.h; path = GrowthLink/GrowthLink/GLLink.h; sourceTree = "<group>"; };
 		B2F7B9FD1B259987001C66A3 /* GLLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLLink.m; path = GrowthLink/GrowthLink/GLLink.m; sourceTree = "<group>"; };
+		B2F7BA0A1B259C6B001C66A3 /* GLPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLPattern.h; path = GrowthLink/GrowthLink/GLPattern.h; sourceTree = "<group>"; };
+		B2F7BA0B1B259C6B001C66A3 /* GLPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLPattern.m; path = GrowthLink/GrowthLink/GLPattern.m; sourceTree = "<group>"; };
+		B2F7BA0D1B259C78001C66A3 /* GLClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLClick.h; path = GrowthLink/GrowthLink/GLClick.h; sourceTree = "<group>"; };
+		B2F7BA0E1B259C78001C66A3 /* GLClick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLClick.m; path = GrowthLink/GrowthLink/GLClick.m; sourceTree = "<group>"; };
 		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
 		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
 		CE0627C91B15B692009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
@@ -349,10 +355,14 @@
 		B29945BD1B181564000ED06B /* GrowthLink */ = {
 			isa = PBXGroup;
 			children = (
+				B2F7BA0D1B259C78001C66A3 /* GLClick.h */,
+				B2F7BA0E1B259C78001C66A3 /* GLClick.m */,
 				B2CDC62A1B2161BA00DD23FF /* GLIntent.h */,
 				B2CDC62B1B2161BA00DD23FF /* GLIntent.m */,
 				B2F7B9FC1B259987001C66A3 /* GLLink.h */,
 				B2F7B9FD1B259987001C66A3 /* GLLink.m */,
+				B2F7BA0A1B259C6B001C66A3 /* GLPattern.h */,
+				B2F7BA0B1B259C6B001C66A3 /* GLPattern.m */,
 				B2CDC62C1B2161BA00DD23FF /* GLSynchronization.h */,
 				B2CDC62D1B2161BA00DD23FF /* GLSynchronization.m */,
 				B29945BE1B181578000ED06B /* GrowthLink.h */,
@@ -632,6 +642,7 @@
 				CE0628481B16F1B8009263FA /* GMMessageType.m in Sources */,
 				B2F7B9FE1B259987001C66A3 /* GLLink.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
+				B2F7BA0C1B259C6B001C66A3 /* GLPattern.m in Sources */,
 				CE0628461B16F1B8009263FA /* GMImageMessageRenderer.m in Sources */,
 				CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */,
 				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
@@ -668,6 +679,7 @@
 				CE0628651B16F1E2009263FA /* GBRequestMethod.m in Sources */,
 				CE0628401B16F1B8009263FA /* GMButton.m in Sources */,
 				CE0628571B16F1E2009263FA /* GBDeviceUtils.m in Sources */,
+				B2F7BA0F1B259C78001C66A3 /* GLClick.m in Sources */,
 				CE0628661B16F1E2009263FA /* GBUrlIntent.m in Sources */,
 				CE0628521B16F1E2009263FA /* GBApplication.m in Sources */,
 			);

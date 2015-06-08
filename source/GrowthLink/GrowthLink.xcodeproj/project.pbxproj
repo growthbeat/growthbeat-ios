@@ -30,6 +30,10 @@
 		B2F7BA041B2599AB001C66A3 /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */; };
 		B2F7BA051B259AEC001C66A3 /* GLLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7B9FF1B2599AB001C66A3 /* GLLink.h */; };
 		B2F7BA061B259AEC001C66A3 /* GLSynchronization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */; };
+		B2F7BA141B259F69001C66A3 /* GLPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA101B259F69001C66A3 /* GLPattern.m */; };
+		B2F7BA151B259F69001C66A3 /* GLClick.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA111B259F69001C66A3 /* GLClick.m */; };
+		B2F7BA161B259F79001C66A3 /* GLClick.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7BA121B259F69001C66A3 /* GLClick.h */; };
+		B2F7BA171B259F79001C66A3 /* GLPattern.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2F7BA131B259F69001C66A3 /* GLPattern.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,8 @@
 			dstPath = Headers;
 			dstSubfolderSpec = 16;
 			files = (
+				B2F7BA161B259F79001C66A3 /* GLClick.h in CopyFiles */,
+				B2F7BA171B259F79001C66A3 /* GLPattern.h in CopyFiles */,
 				B2F7BA051B259AEC001C66A3 /* GLLink.h in CopyFiles */,
 				B2F7BA061B259AEC001C66A3 /* GLSynchronization.h in CopyFiles */,
 				B2CDC6281B21615600DD23FF /* GLIntent.h in CopyFiles */,
@@ -68,6 +74,10 @@
 		B2F7BA001B2599AB001C66A3 /* GLLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLink.m; sourceTree = "<group>"; };
 		B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSynchronization.h; sourceTree = "<group>"; };
 		B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSynchronization.m; sourceTree = "<group>"; };
+		B2F7BA101B259F69001C66A3 /* GLPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPattern.m; sourceTree = "<group>"; };
+		B2F7BA111B259F69001C66A3 /* GLClick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLClick.m; sourceTree = "<group>"; };
+		B2F7BA121B259F69001C66A3 /* GLClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLClick.h; sourceTree = "<group>"; };
+		B2F7BA131B259F69001C66A3 /* GLPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPattern.h; sourceTree = "<group>"; };
 		CE0627351B15B600009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
 		CE0627361B15B600009263FA /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
 		CE0627371B15B600009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
@@ -171,8 +181,10 @@
 		B2C1482B1AA45CFB00006EC3 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				B2F7BA121B259F69001C66A3 /* GLClick.h */,
 				B2CDC6251B21588E00DD23FF /* GLIntent.h */,
 				B2F7B9FF1B2599AB001C66A3 /* GLLink.h */,
+				B2F7BA131B259F69001C66A3 /* GLPattern.h */,
 				B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */,
 				B2C1480C1AA456F300006EC3 /* GrowthLink.h */,
 			);
@@ -182,8 +194,10 @@
 		B2C1482C1AA45D0600006EC3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B2F7BA111B259F69001C66A3 /* GLClick.m */,
 				B2CDC6261B21588E00DD23FF /* GLIntent.m */,
 				B2F7BA001B2599AB001C66A3 /* GLLink.m */,
+				B2F7BA101B259F69001C66A3 /* GLPattern.m */,
 				B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */,
 				B2C1480E1AA456F300006EC3 /* GrowthLink.m */,
 			);
@@ -363,7 +377,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */,
+				B2F7BA141B259F69001C66A3 /* GLPattern.m in Sources */,
 				B2CDC6271B21588E00DD23FF /* GLIntent.m in Sources */,
+				B2F7BA151B259F69001C66A3 /* GLClick.m in Sources */,
 				B2F7BA031B2599AB001C66A3 /* GLLink.m in Sources */,
 				B2F7BA041B2599AB001C66A3 /* GLSynchronization.m in Sources */,
 			);
