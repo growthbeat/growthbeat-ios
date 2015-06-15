@@ -113,11 +113,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [logger info:@"Deeplinking..."];
         
         GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] client] id] clickId:clickId install:isFirstSession credentialId:credentialId];
-        if (!click) {
+        if (!click || !click.pattern || !click.pattern.link) {
             [logger error:@"Failed to deeplink."];
+            return;
         }
         
-        [logger info:@"Deeplink success. (clickId: %@, intentId: %@)", click.id, click.pattern.intent.id];
+        [logger info:@"Deeplink success. (clickId: %@)", click.id];
         
         NSMutableDictionary *properties = [NSMutableDictionary dictionary];
         if (click.pattern.link.id) {
@@ -138,9 +139,11 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         isFirstSession = NO;
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[GrowthbeatCore sharedInstance] handleIntent:click.pattern.intent];
-        });
+        if(click.pattern.intent) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[GrowthbeatCore sharedInstance] handleIntent:click.pattern.intent];
+            });
+        }
         
     });
     
@@ -158,11 +161,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        [logger info:@"Synchronizing ..."];
+        [logger info:@"Synchronizing..."];
         
         GLSynchronization *synchronization = [GLSynchronization getWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId];
         if (!synchronization) {
             [logger error:@"Failed to Synchronize."];
+            return;
         }
         
         [GLSynchronization save:synchronization];

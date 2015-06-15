@@ -19,7 +19,7 @@
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
-+ (instancetype) getWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId {
++ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId {
 
     NSString *path = @"/1/synchronize";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
