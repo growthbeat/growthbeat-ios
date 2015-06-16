@@ -55,45 +55,45 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 - (void) show {
     
     if (!self.baseView) {
-        [self createBaseView];
+        
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        self.baseView = [[UIView alloc] init];
+        baseView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
+        
+        [self cacheImages:^ {
+            [window addSubview:baseView];
+            
+            CGFloat width = 0;
+            CGFloat height = 0;
+            switch (bannerMessage.bannerType) {
+                case GMBannerMessageTypeOnlyImage:
+                    width = MIN(window.frame.size.width, window.frame.size.height);
+                    height = width / bannerMessage.picture.width * bannerMessage.picture.height;
+                    [self adjustPositionWithSize:CGSizeMake(width, height)];
+                    [self showScreenButton];
+                    [self showCloseButton];
+                    break;
+                case GMBannerMessageTypeImageText:
+                    width = MIN(window.frame.size.width, window.frame.size.height);
+                    height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
+                    [self adjustPositionWithSize:CGSizeMake(width, height)];
+                    [self showImage];
+                    [self showText];
+                    [self showCloseButton];
+                    break;
+                default:
+                    break;
+            }
+            
+        }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            [self close];
+        });
+        
     }
     
     [self adjustPositionWithSize:baseView.frame.size];
-    
-}
-
-- (void) createBaseView {
-    
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    self.baseView = [[UIView alloc] init];
-    baseView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
-    
-    [self cacheImages:^ {
-        [window addSubview:baseView];
-        
-        CGFloat width = 0;
-        CGFloat height = 0;
-        switch (bannerMessage.bannerType) {
-            case GMBannerMessageTypeOnlyImage:
-                width = MIN(window.frame.size.width, window.frame.size.height);
-                height = width / bannerMessage.picture.width * bannerMessage.picture.height;
-                [self adjustPositionWithSize:CGSizeMake(width, height)];
-                [self showScreenButton];
-                [self showCloseButton];
-                break;
-            case GMBannerMessageTypeImageText:
-                width = MIN(window.frame.size.width, window.frame.size.height);
-                height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
-                [self adjustPositionWithSize:CGSizeMake(width, height)];
-                [self showImage];
-                [self showText];
-                [self showCloseButton];
-                break;
-            default:
-                break;
-        }
-        
-    }];
     
 }
 
@@ -107,7 +107,7 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
-    button.frame = baseView.frame;
+    button.frame = CGRectMake(0, 0, baseView.frame.size.width, baseView.frame.size.height);
     button.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
@@ -302,12 +302,17 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 - (void) tapButton:(id)sender {
     
     GMButton *button = [boundButtons objectForKey:[NSValue valueWithNonretainedObject:sender]];
+    [delegate clickedButton:button message:bannerMessage];
+    
+    [self close];
+    
+}
+
+- (void) close {
     
     [self.baseView removeFromSuperview];
     self.baseView = nil;
     self.boundButtons = nil;
-    
-    [delegate clickedButton:button message:bannerMessage];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     

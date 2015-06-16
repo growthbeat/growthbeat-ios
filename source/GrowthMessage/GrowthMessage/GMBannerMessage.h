@@ -18,7 +18,7 @@
     NSString *text;
     GMBannerMessageType bannerType;
     GMBannerMessagePosition position;
-    NSInteger duration;
+    long long duration;
     
 }
 
@@ -27,6 +27,6 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, assign) GMBannerMessageType bannerType;
 @property (nonatomic, assign) GMBannerMessagePosition position;
-@property (nonatomic, assign) NSInteger duration;
+@property (nonatomic, assign) long long duration;
 
 @end

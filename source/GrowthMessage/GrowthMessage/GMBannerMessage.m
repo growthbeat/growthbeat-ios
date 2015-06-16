@@ -37,7 +37,7 @@
             self.position = GMBannerMessagePositionFromNSString([dictionary objectForKey:@"position"]);
         }
         if ([dictionary objectForKey:@"duration"] && [dictionary objectForKey:@"duration"] != [NSNull null]) {
-            self.duration = [[dictionary objectForKey:@"duration"] integerValue];
+            self.duration = [[dictionary objectForKey:@"duration"] longLongValue];
         }
     }
     return self;
@@ -66,7 +66,7 @@
             self.position = GMBannerMessagePositionFromNSString([aDecoder decodeObjectForKey:@"position"]);
         }
         if ([aDecoder containsValueForKey:@"duration"]) {
-            self.duration = [aDecoder decodeIntegerForKey:@"duration"];
+            self.duration = [aDecoder decodeInt64ForKey:@"duration"];
         }
     }
     return self;
@@ -79,7 +79,7 @@
     [aCoder encodeObject:text forKey:@"text"];
     [aCoder encodeObject:NSStringFromGMBannerMessageType(bannerType) forKey:@"bannerType"];
     [aCoder encodeObject:NSStringFromGMBannerMessagePosition(position) forKey:@"position"];
-    [aCoder encodeInteger:duration forKey:@"duration"];
+    [aCoder encodeInt64:duration forKey:@"duration"];
 }
 
 @end
