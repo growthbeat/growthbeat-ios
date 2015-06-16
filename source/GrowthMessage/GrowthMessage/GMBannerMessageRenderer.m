@@ -127,20 +127,20 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 
 - (void) showText {
     
-    CGFloat labelLeft = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
-    CGFloat labelTop = kGMBannerMessageRendererMargin;
-    CGFloat labelWidth = baseView.frame.size.width - labelLeft - kGMBannerMessageRendererMargin;
-    CGFloat labelHeight = kGMBannerMessageRendererImageHeight / 2;
+    CGFloat left = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
+    CGFloat top = kGMBannerMessageRendererMargin;
+    CGFloat width = baseView.frame.size.width - left - kGMBannerMessageRendererMargin;
+    CGFloat height = kGMBannerMessageRendererImageHeight / 2;
     
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
-        labelWidth -= kGMBannerMessageRendererCloseButtonHeight + kGMBannerMessageRendererMargin;
+        width -= kGMBannerMessageRendererCloseButtonHeight + kGMBannerMessageRendererMargin;
     
-    UILabel *captionLabel = [[UILabel alloc]initWithFrame:CGRectMake(labelLeft, labelTop, labelWidth, labelHeight)];
+    UILabel *captionLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, top, width, height)];
     [captionLabel setText:bannerMessage.caption];
     [captionLabel setFont:[UIFont boldSystemFontOfSize:13]];
     [baseView addSubview:captionLabel];
     
-    UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(labelLeft, labelTop + labelHeight, labelWidth, labelHeight)];
+    UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, top + height, width, height)];
     [textLabel setText:bannerMessage.text];
     [textLabel setFont:[UIFont boldSystemFontOfSize:14]];
     [baseView addSubview:textLabel];
@@ -170,10 +170,35 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 - (void) adjustPositionWithSize:(CGSize)size {
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    CGFloat left = (window.frame.size.width - size.width)/2;
-    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.width);
+    
+    CGFloat left = (window.frame.size.width - size.width) / 2;
+    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height);
+    CGAffineTransform transform = CGAffineTransformMakeRotation(0);
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f) {
+        switch ([UIApplication sharedApplication].statusBarOrientation) {
+            case UIDeviceOrientationLandscapeLeft:
+                transform = CGAffineTransformMakeRotation(M_PI / 2);
+                left = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.width - size.width) : 0;
+                top = (window.frame.size.height - size.height) / 2;
+                break;
+            case UIDeviceOrientationLandscapeRight:
+                transform = CGAffineTransformMakeRotation(- M_PI / 2);
+                left = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.width - size.width);
+                top = (window.frame.size.height - size.height) / 2;
+                break;
+            case UIDeviceOrientationPortraitUpsideDown:
+                transform = CGAffineTransformMakeRotation(M_PI);
+                left = (window.frame.size.width - size.width) / 2;
+                top = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.height - size.height) : 0;
+                break;
+            default:
+                break;
+        }
+    }
     
     baseView.frame = CGRectMake(left, top, size.width, size.height);
+    baseView.transform = transform;
     
 }
 
