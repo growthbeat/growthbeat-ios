@@ -18,14 +18,12 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
     UIView *baseView;
-    UIActivityIndicatorView *activityIndicatorView;
     
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
 @property (nonatomic, strong) NSMutableDictionary *cachedImages;
 @property (nonatomic, strong) UIView *baseView;
-@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -36,7 +34,6 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 @synthesize boundButtons;
 @synthesize cachedImages;
 @synthesize baseView;
-@synthesize activityIndicatorView;
 
 - (instancetype) initWithBannerMessage:(GMBannerMessage *)newBannerMessage {
     self = [super init];
@@ -46,7 +43,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
         self.cachedImages = [NSMutableDictionary dictionary];
     }
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     
     return self;
@@ -55,7 +52,6 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 - (void) show {
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    //initWithFrame:[[UIScreen mainScreen] applicationFrame]
     
     if (!self.baseView) {
         baseView = [[UIView alloc] init];
@@ -77,19 +73,11 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
         availableHeight = bannerMessage.picture.height * ratio;
     }
     
-    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    activityIndicatorView.frame = baseView.frame;
-    activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
-    [activityIndicatorView startAnimating];
-    [baseView addSubview:activityIndicatorView];
-    
     [self cacheImages:^ {
         
         [self showOnlyImageWithView:baseView rect:baseView.frame];
         [self showImageTextWithView:baseView rect:baseView.frame];
         [self showCloseButtonWithView:baseView rect:baseView.frame];
-        
-        self.activityIndicatorView.hidden = YES;
         
     }];
     
