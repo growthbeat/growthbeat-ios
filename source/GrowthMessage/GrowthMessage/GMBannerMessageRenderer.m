@@ -63,36 +63,47 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     self.baseView = [[UIView alloc] init];
-    [window addSubview:baseView];
     
-    CGFloat width = 0;
-    CGFloat height = 0;
-    switch (bannerMessage.bannerType) {
-        case GMBannerMessageTypeOnlyImage:
-            width = MIN(window.frame.size.width, window.frame.size.height);
-            height = width / bannerMessage.picture.width * bannerMessage.picture.height;
-            [self createOnlyImageBaseView];
-            break;
-        case GMBannerMessageTypeImageText:
-            width = MIN(window.frame.size.width, window.frame.size.height);
-            height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
-            [self createImageTextBaseView];
-            break;
-        default:
-            break;
-    }
-    
-    CGFloat left = (window.frame.size.width - width)/2;
-    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - height);
-    
-    baseView.frame = CGRectMake(left, top, width, height);
-    baseView.backgroundColor = [UIColor grayColor];
+    [self cacheImages:^ {
+        [window addSubview:baseView];
+        
+        CGFloat width = 0;
+        CGFloat height = 0;
+        switch (bannerMessage.bannerType) {
+            case GMBannerMessageTypeOnlyImage:
+                width = MIN(window.frame.size.width, window.frame.size.height);
+                height = width / bannerMessage.picture.width * bannerMessage.picture.height;
+                [self createOnlyImageBaseView];
+                break;
+            case GMBannerMessageTypeImageText:
+                width = MIN(window.frame.size.width, window.frame.size.height);
+                height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
+                [self createImageTextBaseView];
+                break;
+            default:
+                break;
+        }
+        
+        CGFloat left = (window.frame.size.width - width)/2;
+        CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - height);
+        
+        baseView.frame = CGRectMake(left, top, width, height);
+        baseView.backgroundColor = [UIColor grayColor];
+    }];
     
 }
 
 - (void) createOnlyImageBaseView {
     
-    // TODO implement
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
+    button.frame = baseView.frame;
+    button.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
+    [baseView addSubview:button];
+    
+    GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
+    [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:button]];
     
 }
 
