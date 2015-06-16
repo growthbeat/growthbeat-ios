@@ -13,6 +13,7 @@
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGMBannerMessageRendererImageHeight = 40;
+static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 20;
 static NSInteger const kGMBannerMessageRendererMargin = 10;
 
 @interface GMBannerMessageRenderer () {
@@ -89,6 +90,18 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
         
         baseView.frame = CGRectMake(left, top, width, height);
         baseView.backgroundColor = [UIColor grayColor];
+        
+        switch (bannerMessage.bannerType) {
+            case GMBannerMessageTypeOnlyImage:
+                [self createOnlyImageBaseView];
+                break;
+            case GMBannerMessageTypeImageText:
+                [self createImageTextBaseView];
+                break;
+            default:
+                break;
+        }
+        
     }];
     
 }
@@ -104,6 +117,18 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
     [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:button]];
+    
+    GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
+    if (closeButton) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
+        CGFloat left = baseView.frame.size.width - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
+        CGFloat top = (baseView.frame.size.height - kGMBannerMessageRendererCloseButtonHeight)/2;
+        button.frame = CGRectMake(left, top, kGMBannerMessageRendererCloseButtonHeight, kGMBannerMessageRendererCloseButtonHeight);
+        [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
+        [baseView addSubview:button];
+        [boundButtons setObject:closeButton forKey:[NSValue valueWithNonretainedObject:button]];
+    }
     
 }
 
