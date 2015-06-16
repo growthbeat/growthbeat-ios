@@ -24,6 +24,12 @@
 /* Begin PBXBuildFile section */
 		B263FE941B300C6E0062FD63 /* GMBannerMessagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = B263FE911B300C6E0062FD63 /* GMBannerMessagePosition.m */; };
 		B263FE951B300C6E0062FD63 /* GMBannerMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = B263FE931B300C6E0062FD63 /* GMBannerMessageType.m */; };
+		B263FE9A1B3074820062FD63 /* GMBannerMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EAEFB12F1B1EE11800AAF5E8 /* GMBannerMessage.h */; };
+		B263FE9B1B3074820062FD63 /* GMBannerMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EAEFB1281B1DB28900AAF5E8 /* GMBannerMessageHandler.h */; };
+		B263FE9C1B3074820062FD63 /* GMBannerMessagePosition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B263FE901B300C6E0062FD63 /* GMBannerMessagePosition.h */; };
+		B263FE9D1B3074820062FD63 /* GMBannerMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EAEFB12C1B1DB3AF00AAF5E8 /* GMBannerMessageRenderer.h */; };
+		B263FE9E1B3074820062FD63 /* GMBannerMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B263FE921B300C6E0062FD63 /* GMBannerMessageType.h */; };
+		B263FE9F1B3074820062FD63 /* GMMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B263FE961B300F650062FD63 /* GMMessageRendererDelegate.h */; };
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
@@ -150,6 +156,12 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B263FE9A1B3074820062FD63 /* GMBannerMessage.h in CopyFiles */,
+				B263FE9B1B3074820062FD63 /* GMBannerMessageHandler.h in CopyFiles */,
+				B263FE9C1B3074820062FD63 /* GMBannerMessagePosition.h in CopyFiles */,
+				B263FE9D1B3074820062FD63 /* GMBannerMessageRenderer.h in CopyFiles */,
+				B263FE9E1B3074820062FD63 /* GMBannerMessageType.h in CopyFiles */,
+				B263FE9F1B3074820062FD63 /* GMMessageRendererDelegate.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
 				CE0628771B16F22E009263FA /* GPEnvironment.h in CopyFiles */,
 				CE0628781B16F22E009263FA /* GPOS.h in CopyFiles */,
