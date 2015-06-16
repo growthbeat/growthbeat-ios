@@ -296,9 +296,11 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
         if (image) {
             [cachedImages setObject:image forKey:urlString];
         }
-        if (completion) {
-            completion(urlString);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(urlString);
+            }
+        });
         
     }];
     

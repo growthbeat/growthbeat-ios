@@ -139,12 +139,14 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     [captionLabel setText:bannerMessage.caption];
     [captionLabel setFont:[UIFont boldSystemFontOfSize:13]];
     [captionLabel setTextColor:[UIColor whiteColor]];
+    [captionLabel setBackgroundColor:[UIColor clearColor]];
     [baseView addSubview:captionLabel];
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, top + height, width, height)];
     [textLabel setText:bannerMessage.text];
     [textLabel setFont:[UIFont systemFontOfSize:13]];
     [textLabel setTextColor:[UIColor whiteColor]];
+    [textLabel setBackgroundColor:[UIColor clearColor]];
     [baseView addSubview:textLabel];
     
 }
@@ -287,9 +289,11 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
         if (image) {
             [cachedImages setObject:image forKey:urlString];
         }
-        if (completion) {
-            completion(urlString);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(urlString);
+            }
+        });
         
     }];
     
