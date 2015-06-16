@@ -17,10 +17,6 @@ NSString *NSStringFromGMBannerType(GMBannerType bannerType) {
             return @"onlyImage";
         case GMBannerTypeImageText:
             return @"imageText";
-        case GMBannerPositionTop:
-            return @"top";
-        case GMBannerPositionBottom:
-            return @"bottom";
     }
     
 }
@@ -32,12 +28,6 @@ GMBannerType GMBannerTypeFromNSString(NSString *bannerTypeString) {
     }
     if ([bannerTypeString isEqualToString:@"imageText"]) {
         return GMBannerTypeImageText;
-    }
-    if ([bannerTypeString isEqualToString:@"top"]) {
-        return GMBannerPositionTop;
-    }
-    if ([bannerTypeString isEqualToString:@"bottom"]) {
-        return GMBannerPositionBottom;
     }
     return GMBannerTypeUnknown;
     

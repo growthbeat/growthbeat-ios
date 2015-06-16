@@ -11,9 +11,7 @@
 typedef NS_ENUM (NSUInteger, GMBannerType) {
     GMBannerTypeUnknown = 0,
     GMBannerTypeOnlyImage,
-    GMBannerTypeImageText,
-    GMBannerPositionTop,
-    GMBannerPositionBottom
+    GMBannerTypeImageText
 };
 
 NSString *NSStringFromGMBannerType(GMBannerType bannerType);
