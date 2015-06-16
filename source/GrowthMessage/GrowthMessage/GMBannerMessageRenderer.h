@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "GMBannerMessage.h"
-#import "GMBannerMessageRendererDelegate.h"
+#import "GMMessageRendererDelegate.h"
 
 @interface GMBannerMessageRenderer : NSObject {
     
     GMBannerMessage *bannerMessage;
-    __weak id <GMBannerMessageRendererDelegate> delegate;
+    __weak id <GMMessageRendererDelegate> delegate;
     
 }
 
 @property (nonatomic, strong) GMBannerMessage *bannerMessage;
-@property (nonatomic, weak) id <GMBannerMessageRendererDelegate> delegate;
+@property (nonatomic, weak) id <GMMessageRendererDelegate> delegate;
 
 - (instancetype)initWithBannerMessage:(GMBannerMessage *)newBannerMessage;
 - (void)show;

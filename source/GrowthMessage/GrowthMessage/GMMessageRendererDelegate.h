@@ -1,5 +1,5 @@
 //
-//  GMBannerMessageRendererDelegate.h
+//  GMMessageRendererDelegate.h
 //  GrowthMessage
 //
 //  Created by Baekwoo Chung on 2015/06/02.
@@ -10,7 +10,7 @@
 #import "GMButton.h"
 #import "GMMessage.h"
 
-@protocol GMBannerMessageRendererDelegate <NSObject>
+@protocol GMMessageRendererDelegate <NSObject>
 
 - (void)clickedButton:(GMButton *)button message:(GMMessage *)message;
 

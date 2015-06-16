@@ -17,18 +17,18 @@
     
 }
 
-@property (nonatomic, strong) NSMutableDictionary *BannerMessageRenderers;
+@property (nonatomic, strong) NSMutableDictionary *bannerMessageRenderers;
 
 @end
 
 @implementation GMBannerMessageHandler
 
-@synthesize BannerMessageRenderers;
+@synthesize bannerMessageRenderers;
 
 - (instancetype) init {
     self = [super init];
     if (self) {
-        self.BannerMessageRenderers = [[NSMutableDictionary alloc] init];
+        self.bannerMessageRenderers = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -51,14 +51,14 @@
     GMBannerMessageRenderer *bannerMessageRenderer = [[GMBannerMessageRenderer alloc] initWithBannerMessage:bannerMessage];
     bannerMessageRenderer.delegate = self;
     [bannerMessageRenderer show];
-    [BannerMessageRenderers setObject:bannerMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
+    [bannerMessageRenderers setObject:bannerMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
     
     return YES;
     
 }
 
 #pragma mark --
-#pragma mark GMBannerMessageRendererDelegate
+#pragma mark GMMessageRendererDelegate
 
 - (void) clickedButton:(GMButton *)button message:(GMMessage *)message {
     

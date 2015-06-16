@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "GMMessageHandler.h"
-#import "GMBannerMessageRendererDelegate.h"
+#import "GMMessageRendererDelegate.h"
 
-@interface GMBannerMessageHandler : NSObject <GMMessageHandler, GMBannerMessageRendererDelegate>
+@interface GMBannerMessageHandler : NSObject <GMMessageHandler, GMMessageRendererDelegate>
 
 @end

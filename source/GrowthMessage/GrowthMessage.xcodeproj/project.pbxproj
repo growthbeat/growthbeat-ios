@@ -25,7 +25,7 @@
 		B24FF04B1AEDA768004FEE7B /* GMCloseButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D4991AE40F89004B043B /* GMCloseButton.h */; };
 		B24FF04C1AEDA768004FEE7B /* GMImageMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D48D1AE4076F004B043B /* GMImageMessageHandler.h */; };
 		B24FF04D1AEDA768004FEE7B /* GMImageMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B27CB2361AE5A037001B38DB /* GMImageMessageRenderer.h */; };
-		B24FF04E1AEDA768004FEE7B /* GMImageMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B27CB2391AE5AD9A001B38DB /* GMImageMessageRendererDelegate.h */; };
+		B24FF04E1AEDA768004FEE7B /* GMMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B27CB2391AE5AD9A001B38DB /* GMMessageRendererDelegate.h */; };
 		B24FF04F1AEDA768004FEE7B /* GMPicture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D4901AE4094A004B043B /* GMPicture.h */; };
 		B24FF0501AEDA768004FEE7B /* GMPictureExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D4931AE40AD6004B043B /* GMPictureExtension.h */; };
 		B24FF0511AEDA768004FEE7B /* GMScreenButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2A6D49C1AE45B80004B043B /* GMScreenButton.h */; };
@@ -80,7 +80,7 @@
 				B24FF04B1AEDA768004FEE7B /* GMCloseButton.h in CopyFiles */,
 				B24FF04C1AEDA768004FEE7B /* GMImageMessageHandler.h in CopyFiles */,
 				B24FF04D1AEDA768004FEE7B /* GMImageMessageRenderer.h in CopyFiles */,
-				B24FF04E1AEDA768004FEE7B /* GMImageMessageRendererDelegate.h in CopyFiles */,
+				B24FF04E1AEDA768004FEE7B /* GMMessageRendererDelegate.h in CopyFiles */,
 				B24FF04F1AEDA768004FEE7B /* GMPicture.h in CopyFiles */,
 				B24FF0501AEDA768004FEE7B /* GMPictureExtension.h in CopyFiles */,
 				B24FF0511AEDA768004FEE7B /* GMScreenButton.h in CopyFiles */,
@@ -104,7 +104,7 @@
 /* Begin PBXFileReference section */
 		B27CB2361AE5A037001B38DB /* GMImageMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageRenderer.h; sourceTree = "<group>"; };
 		B27CB2371AE5A037001B38DB /* GMImageMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageRenderer.m; sourceTree = "<group>"; };
-		B27CB2391AE5AD9A001B38DB /* GMImageMessageRendererDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageRendererDelegate.h; sourceTree = "<group>"; };
+		B27CB2391AE5AD9A001B38DB /* GMMessageRendererDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMessageRendererDelegate.h; sourceTree = "<group>"; };
 		B2A6D48D1AE4076F004B043B /* GMImageMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageHandler.h; sourceTree = "<group>"; };
 		B2A6D48E1AE4076F004B043B /* GMImageMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageHandler.m; sourceTree = "<group>"; };
 		B2A6D4901AE4094A004B043B /* GMPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPicture.h; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 				B2C4A06B1AB7C89300015D16 /* GMImageMessage.h */,
 				B2A6D48D1AE4076F004B043B /* GMImageMessageHandler.h */,
 				B27CB2361AE5A037001B38DB /* GMImageMessageRenderer.h */,
-				B27CB2391AE5AD9A001B38DB /* GMImageMessageRendererDelegate.h */,
+				B27CB2391AE5AD9A001B38DB /* GMMessageRendererDelegate.h */,
 				B2C148301AA45D8100006EC3 /* GMMessage.h */,
 				EBB971131AA58B9F008ABE6C /* GMMessageHandler.h */,
 				B2EA120D1AB62BB500445389 /* GMMessageType.h */,
