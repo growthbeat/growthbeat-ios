@@ -66,7 +66,7 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     self.baseView = [[UIView alloc] init];
-    baseView.backgroundColor = [UIColor grayColor];
+    baseView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
     
     [self cacheImages:^ {
         [window addSubview:baseView];
@@ -138,11 +138,13 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     UILabel *captionLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, top, width, height)];
     [captionLabel setText:bannerMessage.caption];
     [captionLabel setFont:[UIFont boldSystemFontOfSize:13]];
+    [captionLabel setTextColor:[UIColor whiteColor]];
     [baseView addSubview:captionLabel];
     
     UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, top + height, width, height)];
     [textLabel setText:bannerMessage.text];
-    [textLabel setFont:[UIFont boldSystemFontOfSize:14]];
+    [textLabel setFont:[UIFont systemFontOfSize:13]];
+    [textLabel setTextColor:[UIColor whiteColor]];
     [baseView addSubview:textLabel];
     
 }
