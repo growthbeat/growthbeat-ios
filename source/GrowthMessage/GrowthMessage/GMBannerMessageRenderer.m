@@ -65,31 +65,63 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     self.baseView = [[UIView alloc] init];
     [window addSubview:baseView];
     
-    // TODO for test
-    baseView.backgroundColor = [UIColor redColor];
-    
+    CGFloat width = 0;
+    CGFloat height = 0;
     switch (bannerMessage.bannerType) {
         case GMBannerMessageTypeOnlyImage:
+            width = MIN(window.frame.size.width, window.frame.size.height);
+            height = width / bannerMessage.picture.width * bannerMessage.picture.height;
             [self createOnlyImageBaseView];
             break;
         case GMBannerMessageTypeImageText:
+            width = MIN(window.frame.size.width, window.frame.size.height);
+            height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
             [self createImageTextBaseView];
             break;
         default:
             break;
     }
     
+    CGFloat left = (window.frame.size.width - width)/2;
+    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - height);
+    
+    baseView.frame = CGRectMake(left, top, width, height);
+    baseView.backgroundColor = [UIColor grayColor];
+    
 }
 
 - (void) createOnlyImageBaseView {
     
-    // TOOD implement
+    // TODO implement
     
 }
 
 - (void) createImageTextBaseView {
     
-    // TODO implement
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kGMBannerMessageRendererMargin, kGMBannerMessageRendererMargin, kGMBannerMessageRendererImageHeight, kGMBannerMessageRendererImageHeight)];
+    UIImage *image = [cachedImages objectForKey:bannerMessage.picture.url];
+    imageView.image = image;
+    [baseView addSubview:imageView];
+    
+    CGFloat captionLabelLeft = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
+    CGFloat captionLabelTop = kGMBannerMessageRendererMargin;
+    CGFloat captionLabelWidth = 100;
+    CGFloat captionLabelHeight = kGMBannerMessageRendererImageHeight / 2;
+    UILabel *captionLabel = [[UILabel alloc]initWithFrame:CGRectMake(captionLabelLeft, captionLabelTop, captionLabelWidth, captionLabelHeight)];
+    [captionLabel setBackgroundColor:[UIColor clearColor]];
+    [captionLabel setText:bannerMessage.caption];
+    [captionLabel setFont:[UIFont boldSystemFontOfSize:13]];
+    [baseView addSubview:captionLabel];
+    
+    CGFloat textLabelLeft = captionLabelLeft;
+    CGFloat textLabelTop = captionLabelTop + captionLabelHeight;
+    CGFloat textLabelWidth = 100;
+    CGFloat textLabelHeight = kGMBannerMessageRendererImageHeight / 2;
+    UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(textLabelLeft, textLabelTop, textLabelWidth, textLabelHeight)];
+    [textLabel setBackgroundColor:[UIColor clearColor]];
+    [textLabel setText:bannerMessage.text];
+    [textLabel setFont:[UIFont boldSystemFontOfSize:14]];
+    [baseView addSubview:textLabel];
     
 }
 
