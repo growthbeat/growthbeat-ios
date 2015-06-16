@@ -163,7 +163,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Synchronizing..."];
         
-        GLSynchronization *synchronization = [GLSynchronization getWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId];
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId];
         if (!synchronization) {
             [logger error:@"Failed to Synchronize."];
             return;
@@ -174,7 +174,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         if(synchronization.browser){
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://stg.link.growthbeat.com/l/synchronize"]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://s.gbt.io/l/synchronize?applicationId=%@", applicationId]]];
             });
         }
         
