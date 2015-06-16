@@ -71,7 +71,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     CGFloat availableWidth = MIN(screenWidth, screenHeight);
     CGFloat availableHeight = 60;
     
-    if (bannerMessage.bannerType == GMBannerTypeOnlyImage) {
+    if (bannerMessage.bannerType == GMBannerMessageTypeOnlyImage) {
         availableWidth = MIN(bannerMessage.picture.width, MIN(screenWidth, screenHeight));
         CGFloat ratio = MIN(screenWidth, screenHeight) / bannerMessage.picture.width;
         availableHeight = bannerMessage.picture.height * ratio;
@@ -123,7 +123,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
     
     baseView.frame = baseRect;
     
-    if (bannerMessage.position == GMBannerPositionTop)
+    if (bannerMessage.position == GMBannerMessagePositionTop)
         baseView.center = CGPointMake(screenWidth / 2, baseView.center.y);
     else
         baseView.center = CGPointMake(screenWidth / 2, screenHeight - (availableHeight / 2));
@@ -132,7 +132,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 
 - (void) showOnlyImageWithView:view rect:(CGRect)rect {
     
-    if ( bannerMessage.bannerType != GMBannerTypeOnlyImage) {
+    if ( bannerMessage.bannerType != GMBannerMessageTypeOnlyImage) {
         return;
     }
     
@@ -151,7 +151,7 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 
 - (void) showImageTextWithView:(UIView *)view rect:(CGRect)rect {
     
-    if ( bannerMessage.bannerType != GMBannerTypeImageText) {
+    if ( bannerMessage.bannerType != GMBannerMessageTypeImageText) {
         return;
     }
     

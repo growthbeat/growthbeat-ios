@@ -31,10 +31,10 @@
             self.text = [dictionary objectForKey:@"text"];
         }
         if ([dictionary objectForKey:@"bannerType"] && [dictionary objectForKey:@"bannerType"] != [NSNull null]) {
-            self.bannerType = GMBannerTypeFromNSString([dictionary objectForKey:@"bannerType"]);
+            self.bannerType = GMBannerMessageTypeFromNSString([dictionary objectForKey:@"bannerType"]);
         }
         if ([dictionary objectForKey:@"position"] && [dictionary objectForKey:@"position"] != [NSNull null]) {
-            self.position = GMBannerTypeFromNSString([dictionary objectForKey:@"position"]);
+            self.position = GMBannerMessagePositionFromNSString([dictionary objectForKey:@"position"]);
         }
         if ([dictionary objectForKey:@"duration"] && [dictionary objectForKey:@"duration"] != [NSNull null]) {
             self.duration = [[dictionary objectForKey:@"duration"] integerValue];
@@ -60,10 +60,10 @@
             self.text = [aDecoder decodeObjectForKey:@"text"];
         }
         if ([aDecoder containsValueForKey:@"bannerType"]) {
-            self.bannerType = GMBannerTypeFromNSString([aDecoder decodeObjectForKey:@"bannerType"]);
+            self.bannerType = GMBannerMessageTypeFromNSString([aDecoder decodeObjectForKey:@"bannerType"]);
         }
         if ([aDecoder containsValueForKey:@"position"]) {
-            self.position = GMBannerTypeFromNSString([aDecoder decodeObjectForKey:@"position"]);
+            self.position = GMBannerMessagePositionFromNSString([aDecoder decodeObjectForKey:@"position"]);
         }
         if ([aDecoder containsValueForKey:@"duration"]) {
             self.duration = [aDecoder decodeIntegerForKey:@"duration"];
@@ -77,8 +77,8 @@
     [aCoder encodeObject:picture forKey:@"picture"];
     [aCoder encodeObject:caption forKey:@"caption"];
     [aCoder encodeObject:text forKey:@"text"];
-    [aCoder encodeInteger:bannerType forKey:@"bannerType"];
-    [aCoder encodeInteger:position forKey:@"position"];
+    [aCoder encodeObject:NSStringFromGMBannerMessageType(bannerType) forKey:@"bannerType"];
+    [aCoder encodeObject:NSStringFromGMBannerMessagePosition(position) forKey:@"position"];
     [aCoder encodeInteger:duration forKey:@"duration"];
 }
 

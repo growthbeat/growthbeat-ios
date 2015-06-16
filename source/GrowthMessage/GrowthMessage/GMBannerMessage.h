@@ -8,15 +8,16 @@
 
 #import "GMMessage.h"
 #import "GMPicture.h"
-#import "GMBannerType.h"
+#import "GMBannerMessageType.h"
+#import "GMBannerMessagePosition.h"
 
 @interface GMBannerMessage : GMMessage {
     
     GMPicture *picture;
     NSString *caption;
     NSString *text;
-    GMBannerType bannerType;
-    GMBannerType position;
+    GMBannerMessageType bannerType;
+    GMBannerMessagePosition position;
     NSInteger duration;
     
 }
@@ -24,8 +25,8 @@
 @property (nonatomic, strong) GMPicture *picture;
 @property (nonatomic, strong) NSString *caption;
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, assign) GMBannerType bannerType;
-@property (nonatomic, assign) GMBannerType position;
+@property (nonatomic, assign) GMBannerMessageType bannerType;
+@property (nonatomic, assign) GMBannerMessagePosition position;
 @property (nonatomic, assign) NSInteger duration;
 
 @end
