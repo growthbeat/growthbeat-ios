@@ -12,6 +12,8 @@
 #import "GMImageButton.h"
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
+static NSInteger const kGMBannerMessageRendererImageHeight = 40;
+static NSInteger const kGMBannerMessageRendererMargin = 10;
 
 @interface GMBannerMessageRenderer () {
     
@@ -51,149 +53,43 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 
 - (void) show {
     
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    
     if (!self.baseView) {
-        baseView = [[UIView alloc] init];
-        [window addSubview:baseView];
-    } else {
-        for (UIView *subview in baseView.subviews) {
-            [subview removeFromSuperview];
-        }
+        [self createBaseView];
     }
-    
-    CGFloat screenWidth = window.frame.size.width;
-    CGFloat screenHeight = window.frame.size.height;
-    CGFloat availableWidth = MIN(screenWidth, screenHeight);
-    CGFloat availableHeight = 60;
-    
-    if (bannerMessage.bannerType == GMBannerMessageTypeOnlyImage) {
-        availableWidth = MIN(bannerMessage.picture.width, MIN(screenWidth, screenHeight));
-        CGFloat ratio = MIN(screenWidth, screenHeight) / bannerMessage.picture.width;
-        availableHeight = bannerMessage.picture.height * ratio;
-    }
-    
-    [self cacheImages:^ {
-        
-        [self showOnlyImageWithView:baseView rect:baseView.frame];
-        [self showImageTextWithView:baseView rect:baseView.frame];
-        [self showCloseButtonWithView:baseView rect:baseView.frame];
-        
-    }];
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f ) {
-        
-        switch ([UIApplication sharedApplication].statusBarOrientation) {
-            case UIDeviceOrientationLandscapeLeft:
-                NSLog(@"1");
-                baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                break;
-            case UIDeviceOrientationLandscapeRight:
-                NSLog(@"2");
-                baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
-                break;
-            case UIDeviceOrientationPortraitUpsideDown:
-                NSLog(@"3");
-                baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
-                break;
-            default:
-                NSLog(@"4");
-                baseView.transform = CGAffineTransformMakeRotation(0);
-                break;
-        }
-    }
-    
-    CGRect baseRect = CGRectMake(0.0, 0.0, availableWidth, availableHeight);
-    
-    if ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortrait) {
-        baseRect.origin.y = 20;
-    }
-    
-    baseView.frame = baseRect;
-    
-    if (bannerMessage.position == GMBannerMessagePositionTop)
-        baseView.center = CGPointMake(screenWidth / 2, baseView.center.y);
-    else
-        baseView.center = CGPointMake(screenWidth / 2, screenHeight - (availableHeight / 2));
     
 }
 
-- (void) showOnlyImageWithView:view rect:(CGRect)rect {
+- (void) createBaseView {
     
-    if ( bannerMessage.bannerType != GMBannerMessageTypeOnlyImage) {
-        return;
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    self.baseView = [[UIView alloc] init];
+    [window addSubview:baseView];
+    
+    // TODO for test
+    baseView.backgroundColor = [UIColor redColor];
+    
+    switch (bannerMessage.bannerType) {
+        case GMBannerMessageTypeOnlyImage:
+            [self createOnlyImageBaseView];
+            break;
+        case GMBannerMessageTypeImageText:
+            [self createImageTextBaseView];
+            break;
+        default:
+            break;
     }
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
-    button.contentMode = UIViewContentModeScaleAspectFit;
-    button.frame = rect;
-    button.center = CGPointMake(rect.size.width / 2, rect.size.height / 2);
-    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:button];
-    
-    GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
-    [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:button]];
     
 }
 
-- (void) showImageTextWithView:(UIView *)view rect:(CGRect)rect {
+- (void) createOnlyImageBaseView {
     
-    if ( bannerMessage.bannerType != GMBannerMessageTypeImageText) {
-        return;
-    }
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIView *subView = [[UIView alloc] initWithFrame:rect];
-    subView.backgroundColor = [UIColor grayColor];
-    subView.center = CGPointMake(rect.size.width / 2, rect.size.height / 2);
-
-    UIImageView *imageHolder = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
-    UIImage *image = [cachedImages objectForKey:bannerMessage.picture.url];
-    imageHolder.image = image;
-    [subView addSubview:imageHolder];
-    
-    UILabel *captionLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, 10, 100, 20)];
-    [captionLabel setBackgroundColor:[UIColor clearColor]];
-    [captionLabel setText:bannerMessage.caption];
-    [captionLabel setFont:[UIFont boldSystemFontOfSize:13]];
-    [subView addSubview:captionLabel];
-    
-    UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, 30, 100, 20)];
-    [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setText:bannerMessage.text];
-    [textLabel setFont:[UIFont boldSystemFontOfSize:14]];
-    [subView addSubview:textLabel];
-    
-    button.contentMode = UIViewContentModeScaleAspectFit;
-    button.frame = rect;
-    button.center = CGPointMake(rect.size.width / 2, rect.size.height / 2);
-    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
-    [button addSubview:subView];
-    [view addSubview:button];
-    
-    GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
-    [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:button]];
+    // TOOD implement
     
 }
 
-- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect {
+- (void) createImageTextBaseView {
     
-    GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
-    
-    if (!closeButton) {
-        return;
-    }
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
-    button.contentMode = UIViewContentModeScaleAspectFit;
-    button.frame = CGRectMake(0.0, 0.0, 20.0, 20.0);
-    button.center = CGPointMake(rect.size.width - 20, rect.size.height / 2);
-    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:button];
-    
-    [boundButtons setObject:closeButton forKey:[NSValue valueWithNonretainedObject:button]];
+    // TODO implement
     
 }
 
