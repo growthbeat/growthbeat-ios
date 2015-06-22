@@ -16,7 +16,20 @@
 @synthesize clientId;
 @synthesize value;
 
-static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
+static NSString *const kGPPreferenceTagKey = @"tags";
+static NSMutableDictionary *tags;
+
++ (NSMutableDictionary *)tags {
+    
+    if (!self.tags) {
+        tags = [[[GrowthPush sharedInstance] preference] objectForKey:kGPPreferenceTagKey];
+        if (!tags)
+            tags = [NSMutableDictionary dictionary];
+    }
+    
+    return tags;
+
+}
 
 + (GPTag *) createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
     
@@ -48,7 +61,8 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
 + (void) save:(GPTag *)tag name:(NSString *)name {
     if (tag && name) {
-        [[[GrowthPush sharedInstance] preference] setObject:tag forKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
+        [tags setObject:tag forKey:name];
+        [[[GrowthPush sharedInstance] preference] setObject:tags forKey:kGPPreferenceTagKey];
     }
 }
 
@@ -57,7 +71,7 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
     if (name)
         return nil;
     
-    return [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
+    return [tags objectForKey:name];
     
 }
 

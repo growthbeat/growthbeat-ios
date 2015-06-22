@@ -17,8 +17,6 @@
 @synthesize clientId;
 @synthesize value;
 
-static NSString *const kGPPreferenceEventKeyFormat = @"events:%@";
-
 + (GPEvent *) createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
     
     NSString *path = @"/3/events";
@@ -46,22 +44,6 @@ static NSString *const kGPPreferenceEventKeyFormat = @"events:%@";
     return [GPEvent domainWithDictionary:httpResponse.body];
     
 }
-
-+ (void) save:(GPEvent *)event name:(NSString *)name {
-    if (event && name) {
-        [[[GrowthPush sharedInstance] preference] setObject:event forKey:[NSString stringWithFormat:kGPPreferenceEventKeyFormat, name]];
-    }
-}
-
-+ (GPEvent *) load:(NSString *)name {
-    
-    if (name)
-        return nil;
-    
-    return [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:kGPPreferenceEventKeyFormat, name]];
-    
-}
-
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
     

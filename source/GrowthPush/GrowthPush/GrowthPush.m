@@ -265,7 +265,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
         
         if (event) {
-            [GPEvent save:event name:name];
             [logger info:@"Setting event success. (name: %@)", name];
         }
         
