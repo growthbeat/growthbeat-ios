@@ -12,6 +12,7 @@
 #import "GrowthAnalytics.h"
 #import "GPTag.h"
 #import "GPEvent.h"
+#import "GBDeviceUtils.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -270,6 +271,29 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         
     });
     
+}
+
+- (void) setDefalutTag {
+    
+    if ([GBDeviceUtils model]) {
+        [self setTag:@"Device" value:[GBDeviceUtils model]];
+    }
+    if ([GBDeviceUtils os]) {
+        [self setTag:@"OS" value:[GBDeviceUtils os]];
+    }
+    if ([GBDeviceUtils language]) {
+        [self setTag:@"Language" value:[GBDeviceUtils language]];
+    }
+    if ([GBDeviceUtils timeZone]) {
+        [self setTag:@"Time Zone" value:[GBDeviceUtils timeZone]];
+    }
+    if ([GBDeviceUtils version]) {
+        [self setTag:@"Version" value:[GBDeviceUtils version]];
+    }
+    if ([GBDeviceUtils build]) {
+        [self setTag:@"Build" value:[GBDeviceUtils build]];
+    }
+
 }
 
 @end

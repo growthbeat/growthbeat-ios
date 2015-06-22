@@ -63,6 +63,11 @@
 - (void) trackEvent:(NSString *)name;
 - (void) trackEvent:(NSString *)name value:(NSString *)value;
 
+/**
+ * Set DefaultTags
+ */
+- (void) setDefalutTag;
+
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;
