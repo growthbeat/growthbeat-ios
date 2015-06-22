@@ -51,6 +51,19 @@
  */
 - (void)clearBadge;
 
+/**
+ * Set Tag
+ */
+- (void) setTag:(NSString *)name;
+- (void) setTag:(NSString *)name value:(NSString *)value;
+
+/**
+ * Set Event
+ */
+- (void) trackEvent:(NSString *)name;
+- (void) trackEvent:(NSString *)name value:(NSString *)value;
+
+
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;
 - (GBPreference *)preference;

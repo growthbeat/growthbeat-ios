@@ -10,6 +10,8 @@
 #import "GrowthPush.h"
 #import "GPClient.h"
 #import "GrowthAnalytics.h"
+#import "GPTag.h"
+#import "GPEvent.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -221,6 +223,53 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
     return [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]), ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]), ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
 
+}
+
+- (void) setTag:(NSString *)name {
+    [self setTag:name value:nil];
+}
+
+- (void) setTag:(NSString *)name value:(NSString *)value {
+ 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        GPTag *existingTag = [GPTag load:name];
+        if (existingTag) {
+            if (value && [value isEqualToString:existingTag.value]) {
+                [logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
+                return;
+            }
+            [logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
+        }
+        
+        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        
+        if (tag) {
+            [GPTag save:tag name:name];
+            [logger info:@"Setting tag success. (name: %@)", name];
+        }
+        
+    });
+    
+}
+
+- (void) trackEvent:(NSString *)name {
+    [self trackEvent:name value:nil];
+}
+
+- (void) trackEvent:(NSString *)name value:(NSString *)value {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        
+        if (event) {
+            [GPEvent save:event name:name];
+            [logger info:@"Setting event success. (name: %@)", name];
+        }
+        
+    });
+    
 }
 
 @end

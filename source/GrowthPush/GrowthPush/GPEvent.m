@@ -17,7 +17,7 @@
 @synthesize clientId;
 @synthesize value;
 
-static NSString *const kGPPreferenceTagKey = @"events";
+static NSString *const kGPPreferenceEventKeyFormat = @"events:%@";
 
 + (GPEvent *) createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
     
@@ -40,12 +40,28 @@ static NSString *const kGPPreferenceTagKey = @"events";
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to create tag. %@", httpResponse.error];
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to create event. %@", httpResponse.error];
     }
     
     return [GPEvent domainWithDictionary:httpResponse.body];
     
 }
+
++ (void) save:(GPEvent *)event name:(NSString *)name {
+    if (event && name) {
+        [[[GrowthPush sharedInstance] preference] setObject:event forKey:[NSString stringWithFormat:kGPPreferenceEventKeyFormat, name]];
+    }
+}
+
++ (GPEvent *) load:(NSString *)name {
+    
+    if (name)
+        return nil;
+    
+    return [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:kGPPreferenceEventKeyFormat, name]];
+    
+}
+
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
     
