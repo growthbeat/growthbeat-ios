@@ -56,6 +56,7 @@
 		CE0627BB1B15B634009263FA /* GBUrlIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627A11B15B634009263FA /* GBUrlIntentHandler.m */; };
 		CE0627BC1B15B634009263FA /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627A41B15B634009263FA /* GrowthbeatCore.m */; };
 		CEEF09541B380248003A39AD /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEF09531B380248003A39AD /* GPEvent.m */; };
+		CEEF09571B380D45003A39AD /* GPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEF09561B380D45003A39AD /* GPTag.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,8 @@
 		CE0627C51B15B64B009263FA /* GrowthAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthAnalytics.m; sourceTree = "<group>"; };
 		CEEF09521B380248003A39AD /* GPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEvent.h; sourceTree = "<group>"; };
 		CEEF09531B380248003A39AD /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEvent.m; sourceTree = "<group>"; };
+		CEEF09551B380D45003A39AD /* GPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTag.h; sourceTree = "<group>"; };
+		CEEF09561B380D45003A39AD /* GPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTag.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,7 @@
 				B2FA9CF21A0C3F0B0015E28B /* GPOS.h */,
 				B2FA9CF81A0C3F0B0015E28B /* GrowthPush.h */,
 				CEEF09521B380248003A39AD /* GPEvent.h */,
+				CEEF09551B380D45003A39AD /* GPTag.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -229,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				CEEF09531B380248003A39AD /* GPEvent.m */,
+				CEEF09561B380D45003A39AD /* GPTag.m */,
 				B2FA9CE71A0C3F0B0015E28B /* GPClient.m */,
 				B2FA9CED1A0C3F0B0015E28B /* GPEnvironmentUtils.m */,
 				B2FA9CF31A0C3F0B0015E28B /* GPOS.m */,
@@ -444,6 +449,7 @@
 				B2FA9D031A0C3F0B0015E28B /* GrowthPush.m in Sources */,
 				B2FA9CFD1A0C3F0B0015E28B /* GPEnvironmentUtils.m in Sources */,
 				B2FA9D001A0C3F0B0015E28B /* GPOS.m in Sources */,
+				CEEF09571B380D45003A39AD /* GPTag.m in Sources */,
 				CEEF09541B380248003A39AD /* GPEvent.m in Sources */,
 				B2FA9CFA1A0C3F0B0015E28B /* GPClient.m in Sources */,
 			);
