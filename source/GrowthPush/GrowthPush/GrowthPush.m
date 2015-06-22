@@ -273,7 +273,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     
 }
 
-- (void) setDefalutTag {
+- (void) setDeviceTags {
     
     if ([GBDeviceUtils model]) {
         [self setTag:@"Device" value:[GBDeviceUtils model]];
