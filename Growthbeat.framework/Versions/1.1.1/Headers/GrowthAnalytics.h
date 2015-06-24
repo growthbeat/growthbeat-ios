@@ -34,13 +34,13 @@ typedef NS_ENUM (NSInteger, GAGender) {
 - (void)track:(NSString *)name properties:(NSDictionary *)properties;
 - (void)track:(NSString *)name option:(GATrackOption)option;
 - (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
-- (void)track:(NSString *)namespace name:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option completion:(void(^)(GAClientEvent * clientEvent))completion;
+- (void)track:(NSString *)_namespace name:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option completion:(void(^)(GAClientEvent * clientEvent))completion;
 
 - (void)addEventHandler:(GAEventHandler *)eventHandler;
 
 - (void)tag:(NSString *)name;
 - (void)tag:(NSString *)name value:(NSString *)value;
-- (void)tag:(NSString *)namespace name:(NSString *)name value:(NSString *)value completion:(void(^)(GAClientTag * clientTag))completion;
+- (void)tag:(NSString *)_namespace name:(NSString *)name value:(NSString *)value completion:(void(^)(GAClientTag * clientTag))completion;
 
 - (void)open;
 - (void)close;
