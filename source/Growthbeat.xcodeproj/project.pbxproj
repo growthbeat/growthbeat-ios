@@ -127,6 +127,10 @@
 		CE0628A51B16F22E009263FA /* GBUrlIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627FE1B15B6A1009263FA /* GBUrlIntentHandler.h */; };
 		CE0628A61B16F22E009263FA /* GBUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628001B15B6A1009263FA /* GBUtils.h */; };
 		CE0628A71B16F22E009263FA /* GrowthbeatCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628011B15B6A1009263FA /* GrowthbeatCore.h */; };
+		CEDBE8C01B3A468000083D32 /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBE8BD1B3A468000083D32 /* GPEvent.m */; };
+		CEDBE8C11B3A468000083D32 /* GPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBE8BF1B3A468000083D32 /* GPTag.m */; };
+		CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BC1B3A468000083D32 /* GPEvent.h */; };
+		CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BE1B3A468000083D32 /* GPTag.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +150,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */,
+				CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
 				CE0628771B16F22E009263FA /* GPEnvironment.h in CopyFiles */,
 				CE0628781B16F22E009263FA /* GPOS.h in CopyFiles */,
@@ -313,6 +319,10 @@
 		CE06282E1B15B6BF009263FA /* GPOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
 		CE06282F1B15B6BF009263FA /* GrowthPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthPush.h; sourceTree = "<group>"; };
 		CE0628301B15B6BF009263FA /* GrowthPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
+		CEDBE8BC1B3A468000083D32 /* GPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEvent.h; sourceTree = "<group>"; };
+		CEDBE8BD1B3A468000083D32 /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEvent.m; sourceTree = "<group>"; };
+		CEDBE8BE1B3A468000083D32 /* GPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTag.h; sourceTree = "<group>"; };
+		CEDBE8BF1B3A468000083D32 /* GPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTag.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -477,6 +487,10 @@
 		CE0628281B15B6BF009263FA /* GrowthPush */ = {
 			isa = PBXGroup;
 			children = (
+				CEDBE8BC1B3A468000083D32 /* GPEvent.h */,
+				CEDBE8BD1B3A468000083D32 /* GPEvent.m */,
+				CEDBE8BE1B3A468000083D32 /* GPTag.h */,
+				CEDBE8BF1B3A468000083D32 /* GPTag.m */,
 				CE0628291B15B6BF009263FA /* GPClient.h */,
 				CE06282A1B15B6BF009263FA /* GPClient.m */,
 				CE06282B1B15B6BF009263FA /* GPEnvironment.h */,
@@ -589,6 +603,7 @@
 				CE0628411B16F1B8009263FA /* GMButtonType.m in Sources */,
 				CE0628441B16F1B8009263FA /* GMImageMessage.m in Sources */,
 				CE0628431B16F1B8009263FA /* GMImageButton.m in Sources */,
+				CEDBE8C11B3A468000083D32 /* GPTag.m in Sources */,
 				CE0628591B16F1E2009263FA /* GBGPClient.m in Sources */,
 				CE06285D1B16F1E2009263FA /* GBHttpUtils.m in Sources */,
 				CE0628541B16F1E2009263FA /* GBContentType.m in Sources */,
@@ -621,6 +636,7 @@
 				CE0628621B16F1E2009263FA /* GBNoopIntent.m in Sources */,
 				CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */,
 				CE06284C1B16F1B8009263FA /* GMPlainMessage.m in Sources */,
+				CEDBE8C01B3A468000083D32 /* GPEvent.m in Sources */,
 				CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */,
 				CE06285B1B16F1E2009263FA /* GBHttpRequest.m in Sources */,
 				CE0628581B16F1E2009263FA /* GBDomain.m in Sources */,
@@ -647,7 +663,7 @@
 		B275A7051A0C45A50050510A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.1.0;
+				FRAMEWORK_VERSION = 1.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -655,7 +671,7 @@
 		B275A7061A0C45A50050510A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.1.0;
+				FRAMEWORK_VERSION = 1.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -679,7 +695,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.1.0;
+				FRAMEWORK_VERSION = 1.1.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -722,7 +738,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.1.0;
+				FRAMEWORK_VERSION = 1.1.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -742,7 +758,7 @@
 		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.1.0;
+				FRAMEWORK_VERSION = 1.1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
@@ -753,7 +769,7 @@
 		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.1.0;
+				FRAMEWORK_VERSION = 1.1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";

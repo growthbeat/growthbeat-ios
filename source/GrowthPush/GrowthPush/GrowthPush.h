@@ -22,7 +22,7 @@
  * Get shared instance of GrowthPush
  *
  */
-+ (instancetype) sharedInstance;
++ (instancetype)sharedInstance;
 
 /**
  * Initialize GrowthPush instance and register the client device if not yet been registered
@@ -50,6 +50,24 @@
  * Clear badge of app icon
  */
 - (void)clearBadge;
+
+/**
+ * Set Tag
+ */
+- (void)setTag:(NSString *)name;
+- (void)setTag:(NSString *)name value:(NSString *)value;
+
+/**
+ * Set Event
+ */
+- (void)trackEvent:(NSString *)name;
+- (void)trackEvent:(NSString *)name value:(NSString *)value;
+
+/**
+ * Set DefaultTags
+ */
+- (void)setDeviceTags;
+
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;

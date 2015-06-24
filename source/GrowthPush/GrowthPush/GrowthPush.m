@@ -10,6 +10,9 @@
 #import "GrowthPush.h"
 #import "GPClient.h"
 #import "GrowthAnalytics.h"
+#import "GPTag.h"
+#import "GPEvent.h"
+#import "GBDeviceUtils.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -220,6 +223,79 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     const unsigned *tokenBytes = [targetDeviceToken bytes];
 
     return [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]), ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]), ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+
+}
+
+- (void) setTag:(NSString *)name {
+    [self setTag:name value:nil];
+}
+
+- (void) setTag:(NSString *)name value:(NSString *)value {
+ 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [logger info:@"Set Tag... (name: %@, value: %@)", name, value];
+        
+        GPTag *existingTag = [GPTag load:name];
+        if (existingTag) {
+            if (value && [value isEqualToString:existingTag.value]) {
+                [logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
+                return;
+            }
+            [logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
+        }
+        
+        GPTag *tag = [GPTag createWithGrowthbeatClient:[[[GrowthbeatCore sharedInstance] waitClient] id] credentialId:self.credentialId name:name value:value];
+        
+        if (tag) {
+            [GPTag save:tag name:name];
+            [logger info:@"Setting tag success. (name: %@)", name];
+        }
+        
+    });
+    
+}
+
+- (void) trackEvent:(NSString *)name {
+    [self trackEvent:name value:nil];
+}
+
+- (void) trackEvent:(NSString *)name value:(NSString *)value {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [logger info:@"Set Event... (name: %@, value: %@)", name, value];
+        
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:[[[GrowthbeatCore sharedInstance] waitClient] id] credentialId:self.credentialId name:name value:value];
+        
+        if (event) {
+            [logger info:@"Setting event success. (name: %@)", name];
+        }
+        
+    });
+    
+}
+
+- (void) setDeviceTags {
+    
+    if ([GBDeviceUtils model]) {
+        [self setTag:@"Device" value:[GBDeviceUtils model]];
+    }
+    if ([GBDeviceUtils os]) {
+        [self setTag:@"OS" value:[GBDeviceUtils os]];
+    }
+    if ([GBDeviceUtils language]) {
+        [self setTag:@"Language" value:[GBDeviceUtils language]];
+    }
+    if ([GBDeviceUtils timeZone]) {
+        [self setTag:@"Time Zone" value:[GBDeviceUtils timeZone]];
+    }
+    if ([GBDeviceUtils version]) {
+        [self setTag:@"Version" value:[GBDeviceUtils version]];
+    }
+    if ([GBDeviceUtils build]) {
+        [self setTag:@"Build" value:[GBDeviceUtils build]];
+    }
 
 }
 
