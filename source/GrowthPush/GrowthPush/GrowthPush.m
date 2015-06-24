@@ -245,7 +245,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             [logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
         
-        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        GPTag *tag = [GPTag createWithGrowthbeatClient:[[[GrowthbeatCore sharedInstance] waitClient] id] credentialId:self.credentialId name:name value:value];
         
         if (tag) {
             [GPTag save:tag name:name];
@@ -266,7 +266,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         
         [logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:[[[GrowthbeatCore sharedInstance] waitClient] id] credentialId:self.credentialId name:name value:value];
         
         if (event) {
             [logger info:@"Setting event success. (name: %@)", name];
