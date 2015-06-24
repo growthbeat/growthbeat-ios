@@ -234,6 +234,8 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
  
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
+        [logger info:@"Set Tag... (name: %@, value: %@)", name, value];
+        
         GPTag *existingTag = [GPTag load:name];
         if (existingTag) {
             if (value && [value isEqualToString:existingTag.value]) {
@@ -261,6 +263,8 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 - (void) trackEvent:(NSString *)name value:(NSString *)value {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
         GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
         

@@ -53,6 +53,7 @@ static NSMutableDictionary *tags;
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthPush sharedInstance] logger] error:@"Failed to create tag. %@", httpResponse.error];
+        return nil;
     }
     
     return [GPTag domainWithDictionary:httpResponse.body];

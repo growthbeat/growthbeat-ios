@@ -39,6 +39,7 @@
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthPush sharedInstance] logger] error:@"Failed to create event. %@", httpResponse.error];
+        return nil;
     }
     
     return [GPEvent domainWithDictionary:httpResponse.body];
