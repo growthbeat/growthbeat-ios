@@ -12,6 +12,7 @@
 #import "GrowthMessage.h"
 #import "GMPlainMessage.h"
 #import "GMImageMessage.h"
+#import "GMBannerMessage.h"
 
 @implementation GMMessage
 
@@ -75,6 +76,12 @@
                 return message;
             } else {
                 return [GMImageMessage domainWithDictionary:dictionary];
+            }
+        case GMMessageTypeBanner:
+            if ([message isKindOfClass:[GMBannerMessage class]]) {
+                return message;
+            } else {
+                return [GMBannerMessage domainWithDictionary:dictionary];
             }
         default:
             return nil;

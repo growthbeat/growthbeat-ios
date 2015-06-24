@@ -22,6 +22,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B263FE941B300C6E0062FD63 /* GMBannerMessagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = B263FE911B300C6E0062FD63 /* GMBannerMessagePosition.m */; };
+		B263FE951B300C6E0062FD63 /* GMBannerMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = B263FE931B300C6E0062FD63 /* GMBannerMessageType.m */; };
+		B263FE9A1B3074820062FD63 /* GMBannerMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EAEFB12F1B1EE11800AAF5E8 /* GMBannerMessage.h */; };
+		B263FE9B1B3074820062FD63 /* GMBannerMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EAEFB1281B1DB28900AAF5E8 /* GMBannerMessageHandler.h */; };
+		B263FE9C1B3074820062FD63 /* GMBannerMessagePosition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B263FE901B300C6E0062FD63 /* GMBannerMessagePosition.h */; };
+		B263FE9D1B3074820062FD63 /* GMBannerMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EAEFB12C1B1DB3AF00AAF5E8 /* GMBannerMessageRenderer.h */; };
+		B263FE9E1B3074820062FD63 /* GMBannerMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B263FE921B300C6E0062FD63 /* GMBannerMessageType.h */; };
+		B263FE9F1B3074820062FD63 /* GMMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B263FE961B300F650062FD63 /* GMMessageRendererDelegate.h */; };
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
@@ -88,7 +96,6 @@
 		CE06287E1B16F22E009263FA /* GMImageMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE06280C1B15B6B8009263FA /* GMImageMessage.h */; };
 		CE06287F1B16F22E009263FA /* GMImageMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE06280E1B15B6B8009263FA /* GMImageMessageHandler.h */; };
 		CE0628801B16F22E009263FA /* GMImageMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628101B15B6B8009263FA /* GMImageMessageRenderer.h */; };
-		CE0628811B16F22E009263FA /* GMImageMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628121B15B6B8009263FA /* GMImageMessageRendererDelegate.h */; };
 		CE0628821B16F22E009263FA /* GMMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628131B15B6B8009263FA /* GMMessage.h */; };
 		CE0628831B16F22E009263FA /* GMMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628151B15B6B8009263FA /* GMMessageHandler.h */; };
 		CE0628841B16F22E009263FA /* GMMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628161B15B6B8009263FA /* GMMessageType.h */; };
@@ -127,6 +134,9 @@
 		CE0628A51B16F22E009263FA /* GBUrlIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627FE1B15B6A1009263FA /* GBUrlIntentHandler.h */; };
 		CE0628A61B16F22E009263FA /* GBUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628001B15B6A1009263FA /* GBUtils.h */; };
 		CE0628A71B16F22E009263FA /* GrowthbeatCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628011B15B6A1009263FA /* GrowthbeatCore.h */; };
+		EAEFB12A1B1DB2AF00AAF5E8 /* GMBannerMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEFB1291B1DB2AF00AAF5E8 /* GMBannerMessageHandler.m */; };
+		EAEFB12E1B1DB3C000AAF5E8 /* GMBannerMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEFB12D1B1DB3C000AAF5E8 /* GMBannerMessageRenderer.m */; };
+		EAEFB1311B1EE12500AAF5E8 /* GMBannerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEFB1301B1EE12500AAF5E8 /* GMBannerMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +156,12 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B263FE9A1B3074820062FD63 /* GMBannerMessage.h in CopyFiles */,
+				B263FE9B1B3074820062FD63 /* GMBannerMessageHandler.h in CopyFiles */,
+				B263FE9C1B3074820062FD63 /* GMBannerMessagePosition.h in CopyFiles */,
+				B263FE9D1B3074820062FD63 /* GMBannerMessageRenderer.h in CopyFiles */,
+				B263FE9E1B3074820062FD63 /* GMBannerMessageType.h in CopyFiles */,
+				B263FE9F1B3074820062FD63 /* GMMessageRendererDelegate.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
 				CE0628771B16F22E009263FA /* GPEnvironment.h in CopyFiles */,
 				CE0628781B16F22E009263FA /* GPOS.h in CopyFiles */,
@@ -157,7 +173,6 @@
 				CE06287E1B16F22E009263FA /* GMImageMessage.h in CopyFiles */,
 				CE06287F1B16F22E009263FA /* GMImageMessageHandler.h in CopyFiles */,
 				CE0628801B16F22E009263FA /* GMImageMessageRenderer.h in CopyFiles */,
-				CE0628811B16F22E009263FA /* GMImageMessageRendererDelegate.h in CopyFiles */,
 				CE0628821B16F22E009263FA /* GMMessage.h in CopyFiles */,
 				CE0628831B16F22E009263FA /* GMMessageHandler.h in CopyFiles */,
 				CE0628841B16F22E009263FA /* GMMessageType.h in CopyFiles */,
@@ -207,6 +222,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B263FE901B300C6E0062FD63 /* GMBannerMessagePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessagePosition.h; sourceTree = "<group>"; };
+		B263FE911B300C6E0062FD63 /* GMBannerMessagePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessagePosition.m; sourceTree = "<group>"; };
+		B263FE921B300C6E0062FD63 /* GMBannerMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessageType.h; sourceTree = "<group>"; };
+		B263FE931B300C6E0062FD63 /* GMBannerMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessageType.m; sourceTree = "<group>"; };
+		B263FE961B300F650062FD63 /* GMMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMessageRendererDelegate.h; sourceTree = "<group>"; };
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
 		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,7 +303,6 @@
 		CE06280F1B15B6B8009263FA /* GMImageMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageHandler.m; sourceTree = "<group>"; };
 		CE0628101B15B6B8009263FA /* GMImageMessageRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMImageMessageRenderer.h; sourceTree = "<group>"; };
 		CE0628111B15B6B8009263FA /* GMImageMessageRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageRenderer.m; sourceTree = "<group>"; };
-		CE0628121B15B6B8009263FA /* GMImageMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMImageMessageRendererDelegate.h; sourceTree = "<group>"; };
 		CE0628131B15B6B8009263FA /* GMMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMessage.h; sourceTree = "<group>"; };
 		CE0628141B15B6B8009263FA /* GMMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMessage.m; sourceTree = "<group>"; };
 		CE0628151B15B6B8009263FA /* GMMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMessageHandler.h; sourceTree = "<group>"; };
@@ -313,6 +332,12 @@
 		CE06282E1B15B6BF009263FA /* GPOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
 		CE06282F1B15B6BF009263FA /* GrowthPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthPush.h; sourceTree = "<group>"; };
 		CE0628301B15B6BF009263FA /* GrowthPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
+		EAEFB1281B1DB28900AAF5E8 /* GMBannerMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessageHandler.h; sourceTree = "<group>"; };
+		EAEFB1291B1DB2AF00AAF5E8 /* GMBannerMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessageHandler.m; sourceTree = "<group>"; };
+		EAEFB12C1B1DB3AF00AAF5E8 /* GMBannerMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessageRenderer.h; sourceTree = "<group>"; };
+		EAEFB12D1B1DB3C000AAF5E8 /* GMBannerMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessageRenderer.m; sourceTree = "<group>"; };
+		EAEFB12F1B1EE11800AAF5E8 /* GMBannerMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessage.h; sourceTree = "<group>"; };
+		EAEFB1301B1EE12500AAF5E8 /* GMBannerMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,6 +458,16 @@
 		CE0628031B15B6B8009263FA /* GrowthMessage */ = {
 			isa = PBXGroup;
 			children = (
+				EAEFB12F1B1EE11800AAF5E8 /* GMBannerMessage.h */,
+				EAEFB1301B1EE12500AAF5E8 /* GMBannerMessage.m */,
+				EAEFB1281B1DB28900AAF5E8 /* GMBannerMessageHandler.h */,
+				EAEFB1291B1DB2AF00AAF5E8 /* GMBannerMessageHandler.m */,
+				B263FE901B300C6E0062FD63 /* GMBannerMessagePosition.h */,
+				B263FE911B300C6E0062FD63 /* GMBannerMessagePosition.m */,
+				EAEFB12C1B1DB3AF00AAF5E8 /* GMBannerMessageRenderer.h */,
+				EAEFB12D1B1DB3C000AAF5E8 /* GMBannerMessageRenderer.m */,
+				B263FE921B300C6E0062FD63 /* GMBannerMessageType.h */,
+				B263FE931B300C6E0062FD63 /* GMBannerMessageType.m */,
 				CE0628041B15B6B8009263FA /* GMButton.h */,
 				CE0628051B15B6B8009263FA /* GMButton.m */,
 				CE0628061B15B6B8009263FA /* GMButtonType.h */,
@@ -447,10 +482,10 @@
 				CE06280F1B15B6B8009263FA /* GMImageMessageHandler.m */,
 				CE0628101B15B6B8009263FA /* GMImageMessageRenderer.h */,
 				CE0628111B15B6B8009263FA /* GMImageMessageRenderer.m */,
-				CE0628121B15B6B8009263FA /* GMImageMessageRendererDelegate.h */,
 				CE0628131B15B6B8009263FA /* GMMessage.h */,
 				CE0628141B15B6B8009263FA /* GMMessage.m */,
 				CE0628151B15B6B8009263FA /* GMMessageHandler.h */,
+				B263FE961B300F650062FD63 /* GMMessageRendererDelegate.h */,
 				CE0628161B15B6B8009263FA /* GMMessageType.h */,
 				CE0628171B15B6B8009263FA /* GMMessageType.m */,
 				CE0628181B15B6B8009263FA /* GMPicture.h */,
@@ -594,6 +629,7 @@
 				CE0628541B16F1E2009263FA /* GBContentType.m in Sources */,
 				CE0628481B16F1B8009263FA /* GMMessageType.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
+				EAEFB12A1B1DB2AF00AAF5E8 /* GMBannerMessageHandler.m in Sources */,
 				CE0628461B16F1B8009263FA /* GMImageMessageRenderer.m in Sources */,
 				CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */,
 				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
@@ -608,6 +644,7 @@
 				CE06285A1B16F1E2009263FA /* GBHttpClient.m in Sources */,
 				CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */,
 				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
+				B263FE951B300C6E0062FD63 /* GMBannerMessageType.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
 				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
 				CE0628471B16F1B8009263FA /* GMMessage.m in Sources */,
@@ -622,9 +659,12 @@
 				CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */,
 				CE06284C1B16F1B8009263FA /* GMPlainMessage.m in Sources */,
 				CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */,
+				EAEFB1311B1EE12500AAF5E8 /* GMBannerMessage.m in Sources */,
 				CE06285B1B16F1E2009263FA /* GBHttpRequest.m in Sources */,
 				CE0628581B16F1E2009263FA /* GBDomain.m in Sources */,
 				CE0628601B16F1E2009263FA /* GBLogger.m in Sources */,
+				EAEFB12E1B1DB3C000AAF5E8 /* GMBannerMessageRenderer.m in Sources */,
+				B263FE941B300C6E0062FD63 /* GMBannerMessagePosition.m in Sources */,
 				CE0628651B16F1E2009263FA /* GBRequestMethod.m in Sources */,
 				CE0628401B16F1B8009263FA /* GMButton.m in Sources */,
 				CE0628571B16F1E2009263FA /* GBDeviceUtils.m in Sources */,
