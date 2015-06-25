@@ -19,7 +19,7 @@ static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthpush.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthpush-preferences";
-static NSString *const kGPPreferenceClientKey = @"client";
+static NSString *const kGPPreferenceClientKey = @"growthpush-client";
 static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 @interface GrowthPush () {
