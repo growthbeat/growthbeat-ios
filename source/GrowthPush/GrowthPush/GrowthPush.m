@@ -28,11 +28,8 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     GBHttpClient *httpClient;
     GBPreference *preference;
     
-    NSString *applicationId;
-    NSString *growthbeatClientId;
     NSString *credentialId;
     GPEnvironment environment;
-    BOOL debug;
     NSString *token;
     GBClient *growthbeatClient;
     GPClient *client;
@@ -44,10 +41,8 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
 
-@property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *credentialId;
 @property (nonatomic, assign) GPEnvironment environment;
-@property (nonatomic, assign) BOOL debug;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) GBClient *growthbeatClient;
 @property (nonatomic, strong) GPClient *client;
@@ -61,10 +56,8 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 @synthesize httpClient;
 @synthesize preference;
 
-@synthesize applicationId;
 @synthesize credentialId;
 @synthesize environment;
-@synthesize debug;
 @synthesize token;
 @synthesize growthbeatClient;
 @synthesize client;
@@ -92,17 +85,16 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     return self;
 }
 
-- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment {
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment {
     
-    self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
     self.environment = newEnvironment;
     self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
     self.client = [self loadClient];
     
-    [self.logger info:@"Initializing... (applicationId:%@)", self.applicationId];
+    [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
     
-    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:self.applicationId credentialId:self.credentialId];
+    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:self.credentialId];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         if (self.client && self.client.growthbeatClientId &&
