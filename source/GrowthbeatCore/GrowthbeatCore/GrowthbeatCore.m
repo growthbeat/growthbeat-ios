@@ -73,60 +73,60 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
 - (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId {
 
-    if (initialized) {
+    if (self.initialized) {
         return;
     }
-    initialized = YES;
+    self.initialized = YES;
     
-    [logger info:@"Initializing... (applicationId:%@)", applicationId];
+    [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
     
     GBGPClient __block *gpClient = [GBGPClient load];
     self.client = [GBClient load];
     
     if (gpClient) {
-        if (client && [client.id isEqualToString:gpClient.growthbeatClientId] &&
-            [client.application.id isEqualToString:gpClient.growthbeatApplicationId] &&
+        if (self.client && [self.client.id isEqualToString:gpClient.growthbeatClientId] &&
+            [self.client.application.id isEqualToString:gpClient.growthbeatApplicationId] &&
             [gpClient.growthbeatApplicationId isEqualToString:applicationId]) {
-            [logger info:@"Client already exists. (id:%@)", client.id];
+            [self.logger info:@"Client already exists. (id:%@)", self.client.id];
             return;
         }
     } else {
-        if (client && [client.application.id isEqualToString:applicationId]) {
-            [logger info:@"Client already exists. (id:%@)", client.id];
+        if (self.client && [self.client.application.id isEqualToString:applicationId]) {
+            [self.logger info:@"Client already exists. (id:%@)", self.client.id];
             return;
         }
     }
     
-    [preference removeAll];
+    [self.preference removeAll];
     self.client = nil;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
         if (gpClient) {
-            [logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gpClient.id, gpClient.growthbeatClientId];
+            [self.logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gpClient.id, gpClient.growthbeatClientId];
             
             gpClient = [GBGPClient findWithGPClientId:gpClient.id code:gpClient.code];
             self.client = [GBClient findWithId:gpClient.growthbeatClientId credentialId:credentialId];
-            if (!client || ![client.application.id isEqualToString:applicationId]) {
-                [logger error:@"Failed to convert client."];
+            if (!self.client || ![self.client.application.id isEqualToString:applicationId]) {
+                [self.logger error:@"Failed to convert client."];
                 self.client = nil;
                 [GBGPClient removePreference];
                 return;
             }
             
-            [GBClient save:client];
-            [logger info:@"Client converted. (id:%@)", client.id];
+            [GBClient save:self.client];
+            [self.logger info:@"Client converted. (id:%@)", self.client.id];
             
         } else {
-            [logger info:@"Creating client... (applicationId:%@)", applicationId];
+            [self.logger info:@"Creating client... (applicationId:%@)", applicationId];
             self.client = [GBClient createWithApplicationId:applicationId credentialId:credentialId];
-            if (!client) {
-                [logger info:@"Failed to create client."];
+            if (!self.client) {
+                [self.logger info:@"Failed to create client."];
                 return;
             }
             
-            [GBClient save:client];
-            [logger info:@"Client created. (id:%@)", client.id];
+            [GBClient save:self.client];
+            [self.logger info:@"Client created. (id:%@)", self.client.id];
             
         }
         
@@ -137,8 +137,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 - (GBClient *) waitClient {
 
     while (true) {
-        if (client != nil) {
-            return client;
+        if (self.client != nil) {
+            return self.client;
         }
         usleep(100 * 1000);
     }
