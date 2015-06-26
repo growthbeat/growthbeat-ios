@@ -102,7 +102,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 - (void) handleOpenUrl:(NSURL *)url {
     
-    NSString *clickId = url.host;
+    NSDictionary *query = [GBHttpUtils dictionaryWithQueryString:url.query];
+    NSString *clickId = [query objectForKeyedSubscript:@"clickId"];
     if(!clickId) {
         [logger error:@"Unabled to get clickId from url."];
         return;
@@ -112,7 +113,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Deeplinking..."];
         
-        GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] client] id] clickId:clickId install:isFirstSession credentialId:credentialId];
+        GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] waitClient] id] clickId:clickId install:isFirstSession credentialId:credentialId];
         if (!click || !click.pattern || !click.pattern.link) {
             [logger error:@"Failed to deeplink."];
             return;
@@ -177,7 +178,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         if(synchronization.browser){
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://s.gbt.io/l/synchronize?applicationId=%@", applicationId]]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gbt.io/l/synchronize?applicationId=%@", applicationId]]];
             });
         }
         
