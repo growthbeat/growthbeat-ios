@@ -133,6 +133,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         if(isFirstSession) {
             [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Install" properties:properties option:GATrackOptionDefault completion:nil];
+            if(click.pattern.link.id) {
+                [[GrowthAnalytics sharedInstance] tag:@"GrowthLink" name:@"InstallLink" value:click.pattern.link.id completion:nil];
+            }
         }
         
         [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Open" properties:properties option:GATrackOptionDefault completion:nil];
