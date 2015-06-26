@@ -11,7 +11,11 @@
 
 @interface GrowthLink : NSObject {
     
+    NSString *synchronizationUrl;
+    
 }
+
+@property (nonatomic, strong) NSString *synchronizationUrl;
 
 + (instancetype)sharedInstance;
 

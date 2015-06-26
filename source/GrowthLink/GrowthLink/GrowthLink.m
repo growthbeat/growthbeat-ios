@@ -12,6 +12,7 @@
 #import "GLClick.h"
 
 static GrowthLink *sharedInstance = nil;
+static NSString *const kDefaultSynchronizationUrl = @"http://gbt.io/l/synchronize";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
@@ -45,6 +46,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @implementation GrowthLink
 
+@synthesize synchronizationUrl;
+
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
@@ -70,6 +73,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 - (id) init {
     self = [super init];
     if (self) {
+        self.synchronizationUrl = kDefaultSynchronizationUrl;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
@@ -178,7 +182,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         if(synchronization.browser){
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gbt.io/l/synchronize?applicationId=%@", applicationId]]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?applicationId=%@", synchronizationUrl, applicationId]]];
             });
         }
         
