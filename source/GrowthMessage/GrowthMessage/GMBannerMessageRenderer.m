@@ -137,14 +137,14 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     
     UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, top, width, height)];
     [captionLabel setText:bannerMessage.caption];
-    [captionLabel setFont:[UIFont boldSystemFontOfSize:13]];
+    [captionLabel setFont:[UIFont boldSystemFontOfSize:10]];
     [captionLabel setTextColor:[UIColor whiteColor]];
     [captionLabel setBackgroundColor:[UIColor clearColor]];
     [baseView addSubview:captionLabel];
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, top + height, width, height)];
     [textLabel setText:bannerMessage.text];
-    [textLabel setFont:[UIFont systemFontOfSize:13]];
+    [textLabel setFont:[UIFont systemFontOfSize:12]];
     [textLabel setTextColor:[UIColor whiteColor]];
     [textLabel setBackgroundColor:[UIColor clearColor]];
     [baseView addSubview:textLabel];
