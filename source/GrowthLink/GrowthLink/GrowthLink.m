@@ -188,7 +188,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         if(synchronization.browser){
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?applicationId=%@", synchronizationUrl, applicationId]]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", synchronizationUrl, applicationId,[GBDeviceUtils getAdvertisingId]]]];
             });
         }
         
