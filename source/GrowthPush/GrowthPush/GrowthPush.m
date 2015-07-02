@@ -238,6 +238,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
         
+        [self waitClient];
         GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
         
         if (tag) {
@@ -259,6 +260,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
+        [self waitClient];
         GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
         
         if (event) {
@@ -290,6 +292,17 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         [self setTag:@"Build" value:[GBDeviceUtils build]];
     }
 
+}
+
+- (GPClient *) waitClient {
+    
+    while (true) {
+        if (self.client != nil) {
+            return self.client;
+        }
+        usleep(100 * 1000);
+    }
+    
 }
 
 @end
