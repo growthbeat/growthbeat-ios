@@ -109,7 +109,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     NSDictionary *query = [GBHttpUtils dictionaryWithQueryString:url.query];
     NSString *clickId = [query objectForKeyedSubscript:@"clickId"];
     if(!clickId) {
-        [logger error:@"Unabled to get clickId from url."];
+        [logger info:@"Unabled to get clickId from url."];
         return;
     }
     
