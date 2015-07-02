@@ -54,7 +54,7 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
 - (void) show {
 
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
 
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
