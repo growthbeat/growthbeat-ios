@@ -59,6 +59,7 @@ typedef NS_ENUM (NSInteger, GAGender) {
 - (void)setTimeZoneOffset;
 - (void)setAppVersion;
 - (void)setRandom;
+- (void) setUUID:(NSString *)uuid;
 - (void)setAdvertisingId;
 - (void)setTrackingEnabled;
 - (void)setBasicTags;

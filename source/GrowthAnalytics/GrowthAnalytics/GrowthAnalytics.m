@@ -323,6 +323,10 @@ static NSString *const kGACustomNamespace = @"Custom";
     [self tag:kGADefaultNamespace name:@"Random" value:[NSString stringWithFormat:@"%lf", random] completion:nil];
 }
 
+- (void) setUUID:(NSString *)uuid {
+    [self tag:kGADefaultNamespace name:@"UUID" value:uuid completion:nil];
+}
+
 - (void) setAdvertisingId {
     [self tag:kGADefaultNamespace name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId] completion:nil];
 }
