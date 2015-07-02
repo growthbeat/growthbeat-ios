@@ -101,7 +101,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
             [self clearClient];
         }
-        [self requestDeviceToken];
     });
 
 }
