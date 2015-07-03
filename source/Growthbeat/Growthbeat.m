@@ -52,7 +52,6 @@ static Growthbeat *sharedInstance = nil;
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId environment:kGrowthPushEnvironment];
-    [[GrowthLink sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
 - (void) start {
@@ -68,7 +67,6 @@ static Growthbeat *sharedInstance = nil;
     [[[GrowthAnalytics sharedInstance] logger] setSilent:silent];
     [[[GrowthMessage sharedInstance] logger] setSilent:silent];
     [[[GrowthPush sharedInstance] logger] setSilent:silent];
-    [[[GrowthLink sharedInstance] logger] setSilent:silent];
 }
 
 @end
