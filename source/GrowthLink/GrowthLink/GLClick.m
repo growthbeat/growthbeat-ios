@@ -7,8 +7,8 @@
 //
 
 #import "GLClick.h"
-#import "GBUtils.h"
-#import "GBHttpClient.h"
+#import <Growthbeat/GBUtils.h>
+#import <Growthbeat/GBHttpClient.h>
 #import "GrowthLink.h"
 
 @implementation GLClick

@@ -7,7 +7,7 @@
 //
 
 #import "GrowthLink.h"
-#import "GrowthAnalytics.h"
+#import <Growthbeat/GrowthAnalytics.h>
 #import "GLSynchronization.h"
 #import "GLClick.h"
 

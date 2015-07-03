@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDomain.h"
+#import <Growthbeat/GBDomain.h>
 #import "GLLink.h"
-#import "GBIntent.h"
+#import <Growthbeat/GBIntent.h>
 
 @interface GLPattern : GBDomain <NSCoding> {
     

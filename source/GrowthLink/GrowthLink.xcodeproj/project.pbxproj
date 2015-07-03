@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B26E18101B4651CA0039268B /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26E180F1B4651CA0039268B /* Growthbeat.framework */; };
 		B2C1480D1AA456F300006EC3 /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C1480C1AA456F300006EC3 /* GrowthLink.h */; };
 		B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C1480E1AA456F300006EC3 /* GrowthLink.m */; };
 		B2F7BA031B2599AB001C66A3 /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA001B2599AB001C66A3 /* GLLink.m */; };
@@ -62,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B26E180F1B4651CA0039268B /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../../Growthbeat.framework; sourceTree = "<group>"; };
 		B2C148091AA456F300006EC3 /* libGrowthLink.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthLink.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C1480C1AA456F300006EC3 /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
 		B2C1480E1AA456F300006EC3 /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -73,37 +75,6 @@
 		B2F7BA111B259F69001C66A3 /* GLClick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLClick.m; sourceTree = "<group>"; };
 		B2F7BA121B259F69001C66A3 /* GLClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLClick.h; sourceTree = "<group>"; };
 		B2F7BA131B259F69001C66A3 /* GLPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPattern.h; sourceTree = "<group>"; };
-		CE0627351B15B600009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
-		CE0627371B15B600009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
-		CE0627381B15B600009263FA /* GBApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBApplication.h; sourceTree = "<group>"; };
-		CE06273A1B15B600009263FA /* GBClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBClient.h; sourceTree = "<group>"; };
-		CE06273C1B15B600009263FA /* GBContentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBContentType.h; sourceTree = "<group>"; };
-		CE06273E1B15B600009263FA /* GBCustomIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBCustomIntent.h; sourceTree = "<group>"; };
-		CE0627401B15B600009263FA /* GBDateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDateUtils.h; sourceTree = "<group>"; };
-		CE0627421B15B600009263FA /* GBDeviceUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDeviceUtils.h; sourceTree = "<group>"; };
-		CE0627441B15B600009263FA /* GBDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDomain.h; sourceTree = "<group>"; };
-		CE0627461B15B600009263FA /* GBGPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBGPClient.h; sourceTree = "<group>"; };
-		CE0627481B15B600009263FA /* GBHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpClient.h; sourceTree = "<group>"; };
-		CE06274A1B15B600009263FA /* GBHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpRequest.h; sourceTree = "<group>"; };
-		CE06274C1B15B600009263FA /* GBHttpResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpResponse.h; sourceTree = "<group>"; };
-		CE06274E1B15B600009263FA /* GBHttpUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpUtils.h; sourceTree = "<group>"; };
-		CE0627501B15B600009263FA /* GBIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntent.h; sourceTree = "<group>"; };
-		CE0627521B15B600009263FA /* GBIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntentHandler.h; sourceTree = "<group>"; };
-		CE0627531B15B600009263FA /* GBIntentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntentType.h; sourceTree = "<group>"; };
-		CE0627551B15B600009263FA /* GBLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBLogger.h; sourceTree = "<group>"; };
-		CE0627571B15B600009263FA /* GBMultipartFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBMultipartFile.h; sourceTree = "<group>"; };
-		CE0627591B15B600009263FA /* GBNoopIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBNoopIntent.h; sourceTree = "<group>"; };
-		CE06275B1B15B600009263FA /* GBNoopIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBNoopIntentHandler.h; sourceTree = "<group>"; };
-		CE06275D1B15B600009263FA /* GBPreference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBPreference.h; sourceTree = "<group>"; };
-		CE06275F1B15B600009263FA /* GBRequestMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBRequestMethod.h; sourceTree = "<group>"; };
-		CE0627611B15B600009263FA /* GBUrlIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUrlIntent.h; sourceTree = "<group>"; };
-		CE0627631B15B600009263FA /* GBUrlIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUrlIntentHandler.h; sourceTree = "<group>"; };
-		CE0627651B15B600009263FA /* GBUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUtils.h; sourceTree = "<group>"; };
-		CE0627661B15B600009263FA /* GrowthbeatCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthbeatCore.h; sourceTree = "<group>"; };
-		CE0627691B15B60E009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
-		CE06276B1B15B60E009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
-		CE06276D1B15B60E009263FA /* GAEventHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAEventHandler.h; sourceTree = "<group>"; };
-		CE06276F1B15B60E009263FA /* GrowthAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthAnalytics.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26E18101B4651CA0039268B /* Growthbeat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,8 +92,6 @@
 		B2C148001AA456F300006EC3 = {
 			isa = PBXGroup;
 			children = (
-				CE0627681B15B60E009263FA /* GrowthAnalytics */,
-				CE0627341B15B600009263FA /* GrowthbeatCore */,
 				B2C1480B1AA456F300006EC3 /* GrowthLink */,
 				B2C1482D1AA45D1C00006EC3 /* Framework */,
 				B2C1480A1AA456F300006EC3 /* Products */,
@@ -172,55 +142,9 @@
 		B2C1482D1AA45D1C00006EC3 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				B26E180F1B4651CA0039268B /* Growthbeat.framework */,
 			);
 			name = Framework;
-			sourceTree = "<group>";
-		};
-		CE0627341B15B600009263FA /* GrowthbeatCore */ = {
-			isa = PBXGroup;
-			children = (
-				CE0627351B15B600009263FA /* GBAppDelegateWrapper.h */,
-				CE0627371B15B600009263FA /* GBAppDelegateWrapperDelegate.h */,
-				CE0627381B15B600009263FA /* GBApplication.h */,
-				CE06273A1B15B600009263FA /* GBClient.h */,
-				CE06273C1B15B600009263FA /* GBContentType.h */,
-				CE06273E1B15B600009263FA /* GBCustomIntent.h */,
-				CE0627401B15B600009263FA /* GBDateUtils.h */,
-				CE0627421B15B600009263FA /* GBDeviceUtils.h */,
-				CE0627441B15B600009263FA /* GBDomain.h */,
-				CE0627461B15B600009263FA /* GBGPClient.h */,
-				CE0627481B15B600009263FA /* GBHttpClient.h */,
-				CE06274A1B15B600009263FA /* GBHttpRequest.h */,
-				CE06274C1B15B600009263FA /* GBHttpResponse.h */,
-				CE06274E1B15B600009263FA /* GBHttpUtils.h */,
-				CE0627501B15B600009263FA /* GBIntent.h */,
-				CE0627521B15B600009263FA /* GBIntentHandler.h */,
-				CE0627531B15B600009263FA /* GBIntentType.h */,
-				CE0627551B15B600009263FA /* GBLogger.h */,
-				CE0627571B15B600009263FA /* GBMultipartFile.h */,
-				CE0627591B15B600009263FA /* GBNoopIntent.h */,
-				CE06275B1B15B600009263FA /* GBNoopIntentHandler.h */,
-				CE06275D1B15B600009263FA /* GBPreference.h */,
-				CE06275F1B15B600009263FA /* GBRequestMethod.h */,
-				CE0627611B15B600009263FA /* GBUrlIntent.h */,
-				CE0627631B15B600009263FA /* GBUrlIntentHandler.h */,
-				CE0627651B15B600009263FA /* GBUtils.h */,
-				CE0627661B15B600009263FA /* GrowthbeatCore.h */,
-			);
-			name = GrowthbeatCore;
-			path = ../GrowthbeatCore/GrowthbeatCore;
-			sourceTree = "<group>";
-		};
-		CE0627681B15B60E009263FA /* GrowthAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				CE0627691B15B60E009263FA /* GAClientEvent.h */,
-				CE06276B1B15B60E009263FA /* GAClientTag.h */,
-				CE06276D1B15B60E009263FA /* GAEventHandler.h */,
-				CE06276F1B15B60E009263FA /* GrowthAnalytics.h */,
-			);
-			name = GrowthAnalytics;
-			path = ../GrowthAnalytics/GrowthAnalytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +341,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../submodules/growthbeat-core-ios",
 					"$(SRCROOT)/../submodules/growthanalytics-ios",
+					"/Users/kataoka/growthbeat-ios",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -438,6 +363,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../submodules/growthbeat-core-ios",
 					"$(SRCROOT)/../submodules/growthanalytics-ios",
+					"/Users/kataoka/growthbeat-ios",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDomain.h"
+#import <Growthbeat/GBDomain.h>
 #import "GLPattern.h"
 
 @interface GLClick : GBDomain <NSCoding> {

@@ -7,7 +7,7 @@
 //
 
 #import "GLPattern.h"
-#import "GBUtils.h"
+#import <Growthbeat/GBUtils.h>
 
 @implementation GLPattern
 
