@@ -12,6 +12,7 @@
 #import "GMMessageHandler.h"
 #import "GMPlainMessageHandler.h"
 #import "GMImageMessageHandler.h"
+#import "GMSwipeMessageHandler.h"
 
 static GrowthMessage *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthMessage";
