@@ -324,6 +324,7 @@
 		CEDBE8BE1B3A468000083D32 /* GPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTag.h; sourceTree = "<group>"; };
 		CEDBE8BF1B3A468000083D32 /* GPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTag.m; sourceTree = "<group>"; };
 		F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageHandler.h; sourceTree = "<group>"; };
+		F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageType.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +482,7 @@
 				CE0628261B15B6B8009263FA /* GrowthMessage.h */,
 				CE0628271B15B6B8009263FA /* GrowthMessage.m */,
 				F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */,
+				F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */,
 			);
 			name = GrowthMessage;
 			path = GrowthMessage/GrowthMessage;
