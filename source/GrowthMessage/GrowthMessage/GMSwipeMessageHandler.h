@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "GMMessageHandler.h"
+#import "GMSwipeMessageRendererDelegate.h"
 
-@interface GMSwipeMessageHandler : NSObject <GMMessageHandler>
+@interface GMSwipeMessageHandler : NSObject <GMMessageHandler, GMSwipeMessageRendererDelegate>
 
 @end
