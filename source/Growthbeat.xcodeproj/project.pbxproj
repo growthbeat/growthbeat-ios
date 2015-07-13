@@ -329,6 +329,7 @@
 		F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessage.m; sourceTree = "<group>"; };
 		F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRenderer.h; sourceTree = "<group>"; };
 		F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
+		F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,6 +492,7 @@
 				F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */,
 				F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */,
 				F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */,
+				F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */,
 			);
 			name = GrowthMessage;
 			path = GrowthMessage/GrowthMessage;
