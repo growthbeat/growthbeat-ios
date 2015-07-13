@@ -12,9 +12,11 @@
 @interface GMSwipeMessage : GMMessage {
     
     GMSwipeMessageType swipeMessage;
+    NSArray *pictures;
     
 }
 
 @property (nonatomic, assign) GMSwipeMessageType swipeType;
+@property (nonatomic, assign) NSArray *pictures;
 
 @end
