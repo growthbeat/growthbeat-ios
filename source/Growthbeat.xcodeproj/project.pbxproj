@@ -326,6 +326,7 @@
 		F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageHandler.h; sourceTree = "<group>"; };
 		F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessage.h; sourceTree = "<group>"; };
 		F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageType.h; sourceTree = "<group>"; };
+		F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +486,7 @@
 				F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */,
 				F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */,
 				F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */,
+				F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */,
 			);
 			name = GrowthMessage;
 			path = GrowthMessage/GrowthMessage;
