@@ -326,6 +326,7 @@
 		F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageHandler.h; sourceTree = "<group>"; };
 		F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessage.h; sourceTree = "<group>"; };
 		F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageType.h; sourceTree = "<group>"; };
+		F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessage.m; sourceTree = "<group>"; };
 		F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRenderer.h; sourceTree = "<group>"; };
 		F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -487,6 +488,7 @@
 				F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */,
 				F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */,
 				F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */,
+				F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */,
 				F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */,
 				F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */,
 			);
