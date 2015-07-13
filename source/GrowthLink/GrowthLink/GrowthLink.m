@@ -42,6 +42,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;
 
+@property (nonatomic, copy) void (^synchronizeCallback)(NSString *);
+
 @end
 
 @implementation GrowthLink
@@ -57,6 +59,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @synthesize initialized;
 @synthesize isFirstSession;
+
+@synthesize synchronizeCallback;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -83,16 +87,16 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     return self;
 }
 
-- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
-
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId callback:(void (^)(NSString *fallbackUrl))newCallback {
     if (initialized) {
         return;
     }
     initialized = YES;
-
+    
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
-
+    self.synchronizeCallback = newCallback;
+    
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     if (![[GrowthbeatCore sharedInstance] client] || ![[[[[GrowthbeatCore sharedInstance] client] application] id] isEqualToString:applicationId]) {
         [preference removeAll];
@@ -101,7 +105,10 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     
     [self synchronize];
-    
+}
+
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
+    [self initializeWithApplicationId:newApplicationId credentialId:newCredentialId callback:nil];
 }
 
 - (void) handleOpenUrl:(NSURL *)url {
@@ -184,12 +191,15 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [GLSynchronization save:synchronization];
         [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];
-        
-        if(synchronization.browser){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", synchronizationUrl, applicationId,[GBDeviceUtils getAdvertisingId]]]];
-            });
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString* fallbackUrl = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", synchronizationUrl, applicationId,[GBDeviceUtils getAdvertisingId]];
+            if (self.synchronizeCallback) {
+                self.synchronizeCallback(fallbackUrl);
+            }else{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fallbackUrl]];
+            }
+            
+        });
         
     });
     

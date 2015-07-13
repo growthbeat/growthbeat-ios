@@ -19,6 +19,7 @@
 
 + (instancetype)sharedInstance;
 
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId callback:(void (^)(NSString *fallbackUrl))callback;
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
 - (GBLogger *)logger;
