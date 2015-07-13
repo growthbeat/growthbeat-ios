@@ -29,6 +29,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
     BOOL initialized;
     BOOL isFirstSession;
+    
+    void (^synchronizeCallback)(NSString *) ;
 
 }
 
@@ -83,6 +85,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
         self.isFirstSession = NO;
+        
     }
     return self;
 }
@@ -188,6 +191,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
             [logger error:@"Failed to Synchronize."];
             return;
         }
+
         
         [GLSynchronization save:synchronization];
         [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];
@@ -196,7 +200,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
             if (self.synchronizeCallback) {
                 self.synchronizeCallback(fallbackUrl);
             }else{
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fallbackUrl]];
+                if(synchronization.browser){
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fallbackUrl]];
+                }
             }
             
         });
