@@ -131,6 +131,14 @@
 		CEDBE8C11B3A468000083D32 /* GPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBE8BF1B3A468000083D32 /* GPTag.m */; };
 		CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BC1B3A468000083D32 /* GPEvent.h */; };
 		CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BE1B3A468000083D32 /* GPTag.h */; };
+		F3EBE01B1B54CF4B0065FDA7 /* GMSwipeMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */; };
+		F3EBE01C1B54CF4B0065FDA7 /* GMSwipeMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */; };
+		F3EBE01D1B54CF4B0065FDA7 /* GMSwipeMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */; };
+		F3EBE01E1B54CF4B0065FDA7 /* GMSwipeMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */; };
+		F3EBE01F1B54CF4B0065FDA7 /* GMSwipeMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */; };
+		F3EBE0211B54D3580065FDA7 /* GMSwipeMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */; };
+		F3EBE0221B54D55D0065FDA7 /* GMSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */; };
+		F3EBE0251B54DA660065FDA7 /* GMSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +158,11 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				F3EBE01B1B54CF4B0065FDA7 /* GMSwipeMessage.h in CopyFiles */,
+				F3EBE01C1B54CF4B0065FDA7 /* GMSwipeMessageHandler.h in CopyFiles */,
+				F3EBE01D1B54CF4B0065FDA7 /* GMSwipeMessageRenderer.h in CopyFiles */,
+				F3EBE01E1B54CF4B0065FDA7 /* GMSwipeMessageRendererDelegate.h in CopyFiles */,
+				F3EBE01F1B54CF4B0065FDA7 /* GMSwipeMessageType.h in CopyFiles */,
 				CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */,
 				CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
@@ -483,18 +496,18 @@
 				CE0628211B15B6B8009263FA /* GMPlainMessageHandler.m */,
 				CE0628221B15B6B8009263FA /* GMScreenButton.h */,
 				CE0628231B15B6B8009263FA /* GMScreenButton.m */,
+				F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */,
+				F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */,
+				F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */,
+				F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */,
+				F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */,
+				F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */,
+				F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */,
+				F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */,
 				CE0628241B15B6B8009263FA /* GMTask.h */,
 				CE0628251B15B6B8009263FA /* GMTask.m */,
 				CE0628261B15B6B8009263FA /* GrowthMessage.h */,
 				CE0628271B15B6B8009263FA /* GrowthMessage.m */,
-				F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */,
-				F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */,
-				F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */,
-				F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */,
-				F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */,
-				F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */,
-				F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */,
-				F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */,
 			);
 			name = GrowthMessage;
 			path = GrowthMessage/GrowthMessage;
@@ -640,8 +653,10 @@
 				CE06285A1B16F1E2009263FA /* GBHttpClient.m in Sources */,
 				CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */,
 				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
+				F3EBE0211B54D3580065FDA7 /* GMSwipeMessageHandler.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
 				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
+				F3EBE0221B54D55D0065FDA7 /* GMSwipeMessage.m in Sources */,
 				CE0628471B16F1B8009263FA /* GMMessage.m in Sources */,
 				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
 				CE0628501B16F1B8009263FA /* GrowthMessage.m in Sources */,
