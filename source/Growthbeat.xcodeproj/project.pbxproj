@@ -137,8 +137,9 @@
 		F3EBE01E1B54CF4B0065FDA7 /* GMSwipeMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */; };
 		F3EBE01F1B54CF4B0065FDA7 /* GMSwipeMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */; };
 		F3EBE0211B54D3580065FDA7 /* GMSwipeMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */; };
-		F3EBE0221B54D55D0065FDA7 /* GMSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */; };
-		F3EBE0251B54DA660065FDA7 /* GMSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */; };
+		F3EBE0261B54DDC10065FDA7 /* GMSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */; };
+		F3EBE0281B54DF040065FDA7 /* GMSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */; };
+		F3EBE02A1B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +345,7 @@
 		F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
 		F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageHandler.m; sourceTree = "<group>"; };
 		F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageType.m; sourceTree = "<group>"; };
+		F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageRenderer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,6 +503,7 @@
 				F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */,
 				F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */,
 				F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */,
+				F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */,
 				F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */,
 				F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */,
 				F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */,
@@ -639,7 +642,7 @@
 				CE0628481B16F1B8009263FA /* GMMessageType.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
 				CE0628461B16F1B8009263FA /* GMImageMessageRenderer.m in Sources */,
-				F3EBE0251B54DA660065FDA7 /* GMSwipeMessageType.m in Sources */,
+				F3EBE0281B54DF040065FDA7 /* GMSwipeMessageType.m in Sources */,
 				CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */,
 				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
 				CE0628451B16F1B8009263FA /* GMImageMessageHandler.m in Sources */,
@@ -656,9 +659,9 @@
 				F3EBE0211B54D3580065FDA7 /* GMSwipeMessageHandler.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
 				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
-				F3EBE0221B54D55D0065FDA7 /* GMSwipeMessage.m in Sources */,
 				CE0628471B16F1B8009263FA /* GMMessage.m in Sources */,
 				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
+				F3EBE02A1B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m in Sources */,
 				CE0628501B16F1B8009263FA /* GrowthMessage.m in Sources */,
 				CE06284B1B16F1B8009263FA /* GMPlainButton.m in Sources */,
 				CE06284A1B16F1B8009263FA /* GMPictureExtension.m in Sources */,
@@ -672,6 +675,7 @@
 				CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */,
 				CE06285B1B16F1E2009263FA /* GBHttpRequest.m in Sources */,
 				CE0628581B16F1E2009263FA /* GBDomain.m in Sources */,
+				F3EBE0261B54DDC10065FDA7 /* GMSwipeMessage.m in Sources */,
 				CE0628601B16F1E2009263FA /* GBLogger.m in Sources */,
 				CE0628651B16F1E2009263FA /* GBRequestMethod.m in Sources */,
 				CE0628401B16F1B8009263FA /* GMButton.m in Sources */,
