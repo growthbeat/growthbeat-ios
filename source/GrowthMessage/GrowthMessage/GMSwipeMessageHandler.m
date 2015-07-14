@@ -48,10 +48,10 @@
     
     GMSwipeMessage *swipeMessage = (GMSwipeMessage *)message;
     
-//    GMSwipeMessageRenderer *swipeMessageRenderer = [[GMSwipeMessageRenderer alloc] initWithSwipeMessage:swipeMessage];
-//    swipeMessageRenderer.delegate = self;
-//    [swipeMessageRenderer show];
-//    [swipeMessageRenderers setObject:swipeMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
+    GMSwipeMessageRenderer *swipeMessageRenderer = [[GMSwipeMessageRenderer alloc] initWithSwipeMessage:swipeMessage];
+    swipeMessageRenderer.delegate = self;
+    [swipeMessageRenderer show];
+    [swipeMessageRenderers setObject:swipeMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
     
     return YES;
     
