@@ -7,6 +7,7 @@
 //
 
 #import "GMSwipeMessage.h"
+#import "GMPicture.h"
 
 @implementation GMSwipeMessage
 
@@ -17,11 +18,15 @@
     
     self = [super initWithDictionary:dictionary];
     if (self) {
-        if ([dictionary objectForKey:@"pictures"] && [dictionary objectForKey:@"pictures"] != [NSNull null]) {
-//            self.pictures = [NSArray domainWithDictionary:[dictionary objectForKey:@"pictures"]];
-        }
         if ([dictionary objectForKey:@"swipeType"] && [dictionary objectForKey:@"swipeType"] != [NSNull null]) {
             self.swipeType = GMSwipeMessageTypeFromNSString([dictionary objectForKey:@"swipeType"]);
+        }
+        if ([dictionary objectForKey:@"pictures"] && [dictionary objectForKey:@"pictures"] != [NSNull null]) {
+            NSMutableArray *newPictures = [NSMutableArray array];
+            for (NSDictionary *pictureDictionary in [dictionary objectForKey:@"pictures"]) {
+                [newPictures addObject:[GMPicture domainWithDictionary:pictureDictionary]];
+            }
+            self.pictures = newPictures;
         }
     }
     return self;
@@ -34,11 +39,11 @@
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        if ([aDecoder containsValueForKey:@"pictures"]) {
-            self.pictures = [aDecoder decodeObjectForKey:@"pictures"];
-        }
         if ([aDecoder containsValueForKey:@"swipeType"]) {
             self.swipeType = GMSwipeMessageTypeFromNSString([aDecoder decodeObjectForKey:@"swipeType"]);
+        }
+        if ([aDecoder containsValueForKey:@"pictures"]) {
+            self.pictures = [aDecoder decodeObjectForKey:@"pictures"];
         }
     }
     return self;
@@ -46,8 +51,8 @@
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
-    [aCoder encodeObject:pictures forKey:@"pictures"];
     [aCoder encodeObject:NSStringFromGMSwipeMessageType(swipeType) forKey:@"swipeType"];
+    [aCoder encodeObject:pictures forKey:@"pictures"];
 }
 
 @end
