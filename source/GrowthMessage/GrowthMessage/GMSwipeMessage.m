@@ -11,13 +11,14 @@
 @implementation GMSwipeMessage
 
 @synthesize swipeType;
+@synthesize pictures;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     
     self = [super initWithDictionary:dictionary];
     if (self) {
         if ([dictionary objectForKey:@"pictures"] && [dictionary objectForKey:@"pictures"] != [NSNull null]) {
-            self.pictures = [NSArray domainWithDictionary:[dictionary objectForKey:@"pictures"]];
+//            self.pictures = [NSArray domainWithDictionary:[dictionary objectForKey:@"pictures"]];
         }
         if ([dictionary objectForKey:@"swipeType"] && [dictionary objectForKey:@"swipeType"] != [NSNull null]) {
             self.swipeType = GMSwipeMessageTypeFromNSString([dictionary objectForKey:@"swipeType"]);
