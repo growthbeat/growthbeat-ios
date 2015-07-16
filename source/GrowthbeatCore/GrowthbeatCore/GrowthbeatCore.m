@@ -10,6 +10,7 @@
 #import "GrowthbeatCore.h"
 #import "GBUrlIntentHandler.h"
 #import "GBNoopIntentHandler.h"
+#import "GBCustomIntentHandler.h"
 #import "GBGPClient.h"
 
 static GrowthbeatCore *sharedInstance = nil;
@@ -24,7 +25,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
+    GBCustomIntentHandler *customIntentHandler;
     BOOL initialized;
+    
 
 }
 
@@ -61,12 +64,13 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 - (instancetype) init {
     self = [super init];
     if (self) {
+        customIntentHandler = [[GBCustomIntentHandler alloc] init];
         self.client = nil;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
-        self.intentHandlers = @[[[GBUrlIntentHandler alloc] init], [[GBNoopIntentHandler alloc] init]];
+        self.intentHandlers = @[[[GBUrlIntentHandler alloc] init], [[GBNoopIntentHandler alloc] init], customIntentHandler];
     }
     return self;
 }
@@ -156,6 +160,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
     return NO;
 
+}
+
+- (void)implementIntentHandler:(void(^)(GBIntent *intent))block {
+    if (customIntentHandler) {
+        [customIntentHandler intentHandlerWithBlock:block];
+    }
 }
 
 @end

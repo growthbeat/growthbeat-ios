@@ -35,5 +35,5 @@
 - (GBClient *)waitClient;
 
 - (BOOL)handleIntent:(GBIntent *)intent;
-
+- (void)implementIntentHandler:(void(^)(GBIntent *intent))block;
 @end

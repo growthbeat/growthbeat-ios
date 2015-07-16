@@ -7,6 +7,8 @@
 //
 
 #import "GBCustomIntentHandler.h"
+#import "GrowthbeatCore.h"
+#import "GBLogger.h"
 
 @implementation GBCustomIntentHandler
 @synthesize block;
@@ -18,6 +20,8 @@
     }
     if (self.block) {
         self.block(intent);
+    } else {
+        [[[GrowthbeatCore sharedInstance] logger] error:@"error:GBCustomIntentHandler cannot handle intent. cause: block is nil"];
     }
     
     return YES;
