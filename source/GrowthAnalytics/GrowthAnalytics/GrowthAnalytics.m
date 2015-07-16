@@ -9,7 +9,6 @@
 #import "GrowthAnalytics.h"
 #import "GAClientEvent.h"
 #import "GAClientTag.h"
-#import <AdSupport/AdSupport.h>
 
 #define ARC4RANDOM_MAX (0x100000000)
 
@@ -324,18 +323,16 @@ static NSString *const kGACustomNamespace = @"Custom";
     [self tag:kGADefaultNamespace name:@"Random" value:[NSString stringWithFormat:@"%lf", random] completion:nil];
 }
 
-- (void) setAdvertisingId {
-    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
+- (void) setUUID:(NSString *)uuid {
+    [self tag:kGADefaultNamespace name:@"UUID" value:uuid completion:nil];
+}
 
-    if ([identifierManager isAdvertisingTrackingEnabled]) {
-        [self tag:kGADefaultNamespace name:@"AdvertisingID" value:identifierManager.advertisingIdentifier.UUIDString completion:nil];
-    }
+- (void) setAdvertisingId {
+    [self tag:kGADefaultNamespace name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId] completion:nil];
 }
 
 - (void) setTrackingEnabled {
-    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
-
-    [self tag:kGADefaultNamespace name:@"TrackingEnabled" value:[identifierManager isAdvertisingTrackingEnabled] ? @"true" : @"false" completion:nil];
+    [self tag:kGADefaultNamespace name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false" completion:nil];
 }
 
 - (void) setBasicTags {
