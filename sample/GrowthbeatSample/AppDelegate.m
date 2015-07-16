@@ -7,12 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import <Growthbeat/GBCustomIntent.h>
 
 @implementation AppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"P5C3vzoLOEijnlVj" credentialId:@"btFlFAitBJ1CBdL3IR3ROnhLYbeqmLlY"];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"P5C3vzoLOEijnlVj" credentialId:@"btFlFAitBJ1CBdL3IR3ROnhLYbeqmLlY"];
+    [[GrowthbeatCore sharedInstance] implementIntentHandler:^(GBIntent *intent) {
+        GBCustomIntent *customIntent = (GBCustomIntent *)intent;
+        NSDictionary *dictionary = customIntent.extra;
+    }];
+    
     [[GrowthPush sharedInstance] requestDeviceToken];
     return YES;
 }
