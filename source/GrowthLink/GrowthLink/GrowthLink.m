@@ -29,7 +29,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     BOOL initialized;
     BOOL isFirstSession;
     
-    void (^synchronizeCallback)(GLSynchronization *) ;
+    void (^synchronizationCallback)(GLSynchronization *) ;
 
 }
 
@@ -43,7 +43,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;
 
-@property (nonatomic, copy) void (^synchronizeCallback)(GLSynchronization *);
+@property (nonatomic, copy) void (^synchronizationCallback)(GLSynchronization *);
 
 @end
 
@@ -61,7 +61,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @synthesize initialized;
 @synthesize isFirstSession;
 
-@synthesize synchronizeCallback;
+@synthesize synchronizationCallback;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -84,7 +84,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
         self.isFirstSession = NO;
-        self.synchronizeCallback = ^(GLSynchronization *synchronization) {
+        self.synchronizationCallback = ^(GLSynchronization *synchronization) {
             if(!synchronization.browser){
                 return;
             }
@@ -196,8 +196,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [GLSynchronization save:synchronization];
         [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if(synchronizeCallback) {
-                synchronizeCallback(synchronization);
+            if(synchronizationCallback) {
+                synchronizationCallback(synchronization);
             }
         });
         
