@@ -23,25 +23,11 @@ static NSString *const kGACustomNamespace = @"Custom";
 
 @interface GrowthAnalytics () {
 
-    GBLogger *logger;
-    GBHttpClient *httpClient;
-    GBPreference *preference;
-
-    NSString *applicationId;
-    NSString *credentialId;
-
     BOOL initialized;
     NSDate *openTime;
     NSMutableArray *eventHandlers;
 
 }
-
-@property (nonatomic, strong) GBLogger *logger;
-@property (nonatomic, strong) GBHttpClient *httpClient;
-@property (nonatomic, strong) GBPreference *preference;
-
-@property (nonatomic, strong) NSString *applicationId;
-@property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, strong) NSDate *openTime;

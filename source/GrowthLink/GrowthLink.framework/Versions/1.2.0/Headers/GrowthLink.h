@@ -12,10 +12,16 @@
 
 @interface GrowthLink : NSObject {
     
+    NSString *applicationId;
+    NSString *credentialId;
+    
     NSString *synchronizationUrl;
     void (^synchronizationCallback)(GLSynchronization *) ;
     
 }
+
+@property (nonatomic, strong) NSString *applicationId;
+@property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, strong) NSString *synchronizationUrl;
 @property (nonatomic, copy) void (^synchronizationCallback)(GLSynchronization *);

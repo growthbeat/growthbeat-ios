@@ -16,7 +16,21 @@
 #define kGrowthPushEnvironment (GPEnvironmentProduction)
 #endif
 
-@interface GrowthPush : NSObject
+@interface GrowthPush : NSObject {
+    
+    GBLogger *logger;
+    GBHttpClient *httpClient;
+    GBPreference *preference;
+    
+    NSString *credentialId;
+    
+}
+
+@property (nonatomic, strong) GBLogger *logger;
+@property (nonatomic, strong) GBHttpClient *httpClient;
+@property (nonatomic, strong) GBPreference *preference;
+
+@property (nonatomic, strong) NSString *credentialId;
 
 /**
  * Get shared instance of GrowthPush

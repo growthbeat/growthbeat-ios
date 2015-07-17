@@ -23,9 +23,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBHttpClient *httpClient;
     GBPreference *preference;
 
-    NSString *applicationId;
-    NSString *credentialId;
-
     BOOL initialized;
     BOOL isFirstSession;
     
@@ -34,9 +31,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
-
-@property (nonatomic, strong) NSString *applicationId;
-@property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;

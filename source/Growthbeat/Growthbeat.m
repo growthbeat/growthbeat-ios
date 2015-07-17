@@ -10,15 +10,7 @@
 
 static Growthbeat *sharedInstance = nil;
 
-@interface Growthbeat () {
-
-    NSString *applicationId;
-    NSString *credentialId;
-
-}
-
-@property (nonatomic, strong) NSString *applicationId;
-@property (nonatomic, strong) NSString *credentialId;
+@interface Growthbeat ()
 
 @end
 
