@@ -63,6 +63,9 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     for (UIView *subview in backgroundView.subviews) {
         [subview removeFromSuperview];
     }
+    UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
+    baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [backgroundView addSubview:baseView];
 
 }
 
