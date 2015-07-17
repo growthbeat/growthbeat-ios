@@ -29,8 +29,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     BOOL initialized;
     BOOL isFirstSession;
     
-    void (^synchronizationCallback)(GLSynchronization *) ;
-
 }
 
 @property (nonatomic, strong) GBLogger *logger;
@@ -42,8 +40,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;
-
-@property (nonatomic, copy) void (^synchronizationCallback)(GLSynchronization *);
 
 @end
 
