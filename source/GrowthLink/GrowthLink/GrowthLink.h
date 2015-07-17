@@ -20,7 +20,6 @@
 
 + (instancetype)sharedInstance;
 
-- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId callback:(void (^)(GLSynchronization *synchronization))newCallback;
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
 - (GBLogger *)logger;

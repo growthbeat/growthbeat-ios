@@ -84,12 +84,18 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
         self.isFirstSession = NO;
-        
+        self.synchronizeCallback = ^(GLSynchronization *synchronization) {
+            if(!synchronization.browser){
+                return;
+            }
+            NSString* urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId],[GBDeviceUtils getAdvertisingId]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        };
     }
     return self;
 }
 
-- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId callback:(void (^)(GLSynchronization *synchronization))newCallback {
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
     if (initialized) {
         return;
     }
@@ -97,7 +103,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
-    self.synchronizeCallback = newCallback;
     
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     if (![[GrowthbeatCore sharedInstance] client] || ![[[[[GrowthbeatCore sharedInstance] client] application] id] isEqualToString:applicationId]) {
@@ -107,10 +112,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     
     [self synchronize];
-}
-
-- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
-    [self initializeWithApplicationId:newApplicationId credentialId:newCredentialId callback:nil];
 }
 
 - (void) handleOpenUrl:(NSURL *)url {
