@@ -8,7 +8,6 @@
 
 #import "GrowthLink.h"
 #import <Growthbeat/GrowthAnalytics.h>
-#import "GLSynchronization.h"
 #import "GLClick.h"
 
 static GrowthLink *sharedInstance = nil;
@@ -30,7 +29,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     BOOL initialized;
     BOOL isFirstSession;
     
-    void (^synchronizeCallback)(NSString *) ;
+    void (^synchronizeCallback)(GLSynchronization *) ;
 
 }
 
@@ -44,7 +43,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;
 
-@property (nonatomic, copy) void (^synchronizeCallback)(NSString *);
+@property (nonatomic, copy) void (^synchronizeCallback)(GLSynchronization *);
 
 @end
 
@@ -90,7 +89,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     return self;
 }
 
-- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId callback:(void (^)(NSString *fallbackUrl))newCallback {
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId callback:(void (^)(GLSynchronization *synchronization))newCallback {
     if (initialized) {
         return;
     }
@@ -196,15 +195,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [GLSynchronization save:synchronization];
         [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString* fallbackUrl = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", synchronizationUrl, applicationId,[GBDeviceUtils getAdvertisingId]];
-            if (self.synchronizeCallback) {
-                self.synchronizeCallback(fallbackUrl);
-            }else{
-                if(synchronization.browser){
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fallbackUrl]];
-                }
+            if(synchronizeCallback) {
+                synchronizeCallback(synchronization);
             }
-            
         });
         
     });

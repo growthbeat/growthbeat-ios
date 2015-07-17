@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Growthbeat/GrowthbeatCore.h>
+#import "GLSynchronization.h"
 
 @interface GrowthLink : NSObject {
     
@@ -19,7 +20,7 @@
 
 + (instancetype)sharedInstance;
 
-- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId callback:(void (^)(NSString *fallbackUrl))callback;
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId callback:(void (^)(GLSynchronization *synchronization))newCallback;
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
 - (GBLogger *)logger;
