@@ -58,6 +58,12 @@
 	[[GrowthPush sharedInstance] requestDeviceToken];
 	```
 
+1. Write following code to handle url in UIApplicationDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:. 
+
+	```objc
+	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+	```
+
 ### Growth Link
 
 1. Add GrowthLink.framework into your project. 

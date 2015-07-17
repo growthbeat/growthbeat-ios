@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Growthbeat/GrowthbeatCore.h>
+#import "GLSynchronization.h"
 
 @interface GrowthLink : NSObject {
     
