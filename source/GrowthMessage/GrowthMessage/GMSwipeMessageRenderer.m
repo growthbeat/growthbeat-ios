@@ -67,6 +67,12 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [backgroundView addSubview:baseView];
 
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    activityIndicatorView.frame = baseView.frame;
+    activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+    [activityIndicatorView startAnimating];
+    [baseView addSubview:activityIndicatorView];
+    
 }
 
 @end
