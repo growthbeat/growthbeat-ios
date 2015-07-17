@@ -60,6 +60,10 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         [window addSubview:backgroundView];
     }
     
+    for (UIView *subview in backgroundView.subviews) {
+        [subview removeFromSuperview];
+    }
+
 }
 
 @end
