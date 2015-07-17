@@ -51,6 +51,15 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 
 - (void) show {
     
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    if (!self.backgroundView) {
+        self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
+        backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [window addSubview:backgroundView];
+    }
+    
 }
 
 @end
