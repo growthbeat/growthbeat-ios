@@ -129,6 +129,8 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
         
     }];
 
+    [self recognizeSwipeGesture:baseView];
+
 }
 
 - (void) showImageWithView:view rect:(CGRect)rect ratio:(CGFloat)ratio {
@@ -147,7 +149,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
     NSMutableArray *urlStrings = [NSMutableArray array];
     
-    GMPicture *picture = [swipeMessage.pictures objectAtIndex:0];
+    GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
     if (picture.url) {
         [urlStrings addObject:picture.url];
     }
@@ -201,6 +203,37 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
         
     }];
     
+}
+
+- (void)recognizeSwipeGesture:view {
+    
+    UISwipeGestureRecognizer* swipeLeftGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeLeft:)];
+    swipeLeftGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [view addGestureRecognizer:swipeLeftGesture];
+    
+    UISwipeGestureRecognizer* swipeRightGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight:)];
+    swipeRightGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [view addGestureRecognizer:swipeRightGesture];
+    
+}
+
+- (void)swipeLeft:(UISwipeGestureRecognizer *)sender {
+    
+    if (kGMSwipeMessageRendererCurrentPageNumber == [swipeMessage.pictures count] - 1)
+        return;
+    
+    kGMSwipeMessageRendererCurrentPageNumber += 1;
+    [self show];
+    
+}
+
+- (void)swipeRight:(UISwipeGestureRecognizer *)sender {
+    
+    if (kGMSwipeMessageRendererCurrentPageNumber == 0)
+        return;
+    
+    kGMSwipeMessageRendererCurrentPageNumber -= 1;
+    [self show];
 }
 
 @end
