@@ -124,6 +124,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     [self cacheImages:^{
         
         [self showImageWithView:baseView rect:rect ratio:ratio];
+        [self showPageControlWithView:baseView];
         
         self.activityIndicatorView.hidden = YES;
         
@@ -142,6 +143,16 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.userInteractionEnabled = YES;
     [view addSubview:imageView];
+    
+}
+
+- (void) showPageControlWithView:view {
+    
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 450, 320, 30)];
+    
+    pageControl.numberOfPages = [swipeMessage.pictures count];
+    pageControl.currentPage = kGMSwipeMessageRendererCurrentPageNumber;
+    [view addSubview:pageControl];
     
 }
 
