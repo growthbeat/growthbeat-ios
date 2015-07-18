@@ -152,6 +152,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
     pageControl.numberOfPages = [swipeMessage.pictures count];
     pageControl.currentPage = kGMSwipeMessageRendererCurrentPageNumber;
+    pageControl.userInteractionEnabled = NO;
     [view addSubview:pageControl];
     
 }
