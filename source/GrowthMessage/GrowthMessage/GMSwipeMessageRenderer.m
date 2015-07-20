@@ -113,7 +113,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
 
     GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
     CGFloat availableWidth = MIN(picture.width, screenWidth * 0.85);
-    CGFloat availableHeight = MIN(picture.height, screenHeight * 0.85);
+    CGFloat availableHeight = MIN(picture.height, screenHeight * 0.85 * 0.8);
     CGFloat ratio = MIN(availableWidth / picture.width, availableHeight / picture.height);
     
     CGFloat width = picture.width * ratio;
