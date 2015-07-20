@@ -8,6 +8,8 @@
 
 #import "GMSwipeMessageRenderer.h"
 #import "GMPicture.h"
+#import "GMCloseButton.h"
+#import "GMImageButton.h"
 
 static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
@@ -124,6 +126,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     [self cacheImages:^{
         
         [self showImageWithView:baseView rect:rect ratio:ratio];
+        [self showCloseButtonWithView:baseView rect:rect ratio:ratio];
         [self showPageControlWithView:baseView];
         
         self.activityIndicatorView.hidden = YES;
@@ -146,6 +149,44 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
 }
 
+- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+    
+    GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
+    
+    if (!closeButton) {
+        return;
+    }
+    
+    CGFloat width = closeButton.picture.width * ratio;
+    CGFloat height = closeButton.picture.height * ratio;
+    CGFloat left = rect.origin.x + rect.size.width - width / 2;
+    CGFloat top = rect.origin.y - height / 2;
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
+    button.contentMode = UIViewContentModeScaleAspectFit;
+    button.frame = CGRectMake(left, top, width, height);
+    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:button];
+    
+    [boundButtons setObject:closeButton forKey:[NSValue valueWithNonretainedObject:button]];
+    
+}
+
+- (NSArray *) extractButtonsWithType:(GMButtonType)type {
+    
+    NSMutableArray *buttons = [NSMutableArray array];
+    
+    for (GMButton *button in swipeMessage.buttons) {
+        if (button.type == type) {
+            [buttons addObject:button];
+        }
+    }
+    
+    return buttons;
+    
+}
+
 - (void) showPageControlWithView:view {
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 450, 320, 30)];
@@ -164,6 +205,23 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
     if (picture.url) {
         [urlStrings addObject:picture.url];
+    }
+    
+    for (GMButton *button in swipeMessage.buttons) {
+        switch (button.type) {
+            case GMButtonTypeImage:
+                if (((GMImageButton *)button).picture.url) {
+                    [urlStrings addObject:((GMImageButton *)button).picture.url];
+                }
+                break;
+            case GMButtonTypeClose:
+                if (((GMCloseButton *)button).picture.url) {
+                    [urlStrings addObject:((GMCloseButton *)button).picture.url];
+                }
+                break;
+            default:
+                continue;
+        }
     }
     
     for (NSString *urlString in [urlStrings objectEnumerator]) {
@@ -214,6 +272,20 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
         }
         
     }];
+    
+}
+
+- (void) tapButton:(id)sender {
+    
+    GMButton *button = [boundButtons objectForKey:[NSValue valueWithNonretainedObject:sender]];
+    
+    [self.backgroundView removeFromSuperview];
+    self.backgroundView = nil;
+    self.boundButtons = nil;
+    
+    [delegate clickedButton:button message:swipeMessage];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
 
