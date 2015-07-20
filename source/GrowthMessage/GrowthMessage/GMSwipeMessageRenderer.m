@@ -126,6 +126,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     [self cacheImages:^{
         
         [self showImageWithView:baseView rect:rect ratio:ratio];
+        [self showImageButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
         [self showCloseButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight rect:rect];
         [self showPageControlWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
         
@@ -146,6 +147,36 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.userInteractionEnabled = YES;
     [view addSubview:imageView];
+    
+}
+
+- (void) showImageButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
+    
+    NSArray *imageButtons = [self extractButtonsWithType:GMButtonTypeImage];
+
+    if ([imageButtons count] == 0) {
+        return;
+    }
+
+    GMImageButton *imageButton = [imageButtons objectAtIndex:0];
+    
+    CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
+    CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
+    CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
+    
+    CGFloat width = imageButton.picture.width * ratio;
+    CGFloat height = imageButton.picture.height * ratio;
+    CGFloat left = (screenWidth - width) / 2;
+    CGFloat top = screenHeight * (0.075 + 0.85 * 0.8) + (screenHeight * 0.85 * 0.1 - height) / 2;
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
+    button.contentMode = UIViewContentModeScaleAspectFit;
+    button.frame = CGRectMake(left, top, width, height);
+    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:button];
+        
+    [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
     
 }
 
