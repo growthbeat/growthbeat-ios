@@ -153,12 +153,15 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
 - (void) showImageButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
     
     NSArray *imageButtons = [self extractButtonsWithType:GMButtonTypeImage];
+    NSInteger buttonIndex = 0;
 
     if ([imageButtons count] == 0) {
         return;
+    } else if ([imageButtons count] > 1) {
+        buttonIndex = kGMSwipeMessageRendererCurrentPageNumber;
     }
 
-    GMImageButton *imageButton = [imageButtons objectAtIndex:0];
+    GMImageButton *imageButton = [imageButtons objectAtIndex:buttonIndex];
     
     CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
     CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
