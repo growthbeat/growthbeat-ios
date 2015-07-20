@@ -127,7 +127,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
         
         [self showImageWithView:baseView rect:rect ratio:ratio];
         [self showCloseButtonWithView:baseView rect:rect ratio:ratio];
-        [self showPageControlWithView:baseView];
+        [self showPageControlWithView:baseView rect:rect ratio:ratio];
         
         self.activityIndicatorView.hidden = YES;
         
@@ -139,7 +139,12 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
 
 - (void) showImageWithView:view rect:(CGRect)rect ratio:(CGFloat)ratio {
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
+    CGFloat width = rect.size.width;
+    CGFloat height = rect.size.height * 0.8;
+    CGFloat left = rect.origin.x;
+    CGFloat top = rect.origin.y;
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
     GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
     imageView.image = [cachedImages objectForKey:picture.url];
@@ -187,9 +192,14 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
 }
 
-- (void) showPageControlWithView:view {
+- (void) showPageControlWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 450, 320, 30)];
+    CGFloat width = rect.size.width;
+    CGFloat height = rect.size.height * 0.1;
+    CGFloat left = rect.origin.x;
+    CGFloat top = rect.origin.y + rect.size.height * 0.9;
+    
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
     pageControl.numberOfPages = [swipeMessage.pictures count];
     pageControl.currentPage = kGMSwipeMessageRendererCurrentPageNumber;
