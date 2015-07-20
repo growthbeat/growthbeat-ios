@@ -119,15 +119,15 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     CGFloat width = picture.width * ratio;
     CGFloat height = picture.height * ratio;
     CGFloat left = (screenWidth - width) / 2;
-    CGFloat top = (screenHeight - height) / 2;
+    CGFloat top = (screenHeight * 0.83 - height) / 2;
     
     CGRect rect = CGRectMake(left, top, width, height);
 
     [self cacheImages:^{
         
         [self showImageWithView:baseView rect:rect ratio:ratio];
-        [self showCloseButtonWithView:baseView rect:rect ratio:ratio];
-        [self showPageControlWithView:baseView rect:rect ratio:ratio];
+        [self showCloseButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight rect:rect];
+        [self showPageControlWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
         
         self.activityIndicatorView.hidden = YES;
         
@@ -139,12 +139,7 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
 
 - (void) showImageWithView:view rect:(CGRect)rect ratio:(CGFloat)ratio {
     
-    CGFloat width = rect.size.width;
-    CGFloat height = rect.size.height * 0.8;
-    CGFloat left = rect.origin.x;
-    CGFloat top = rect.origin.y;
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(left, top, width, height)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
     
     GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
     imageView.image = [cachedImages objectForKey:picture.url];
@@ -154,13 +149,17 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
 }
 
-- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showCloseButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight rect:(CGRect)rect {
     
     GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
     
     if (!closeButton) {
         return;
     }
+    
+    CGFloat availableWidth = MIN(closeButton.picture.width, screenWidth * 0.85 * 0.05);
+    CGFloat availableHeight = MIN(closeButton.picture.height, screenHeight * 0.85 * 0.05);
+    CGFloat ratio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
     
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
@@ -192,12 +191,12 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
 }
 
-- (void) showPageControlWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showPageControlWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
     
-    CGFloat width = rect.size.width;
-    CGFloat height = rect.size.height * 0.1;
-    CGFloat left = rect.origin.x;
-    CGFloat top = rect.origin.y + rect.size.height * 0.9;
+    CGFloat width = screenWidth * 0.85;
+    CGFloat height = screenHeight * 0.85 * 0.1;
+    CGFloat left = screenWidth * 0.075;
+    CGFloat top = screenHeight * (0.075 + 0.85 * 0.9);
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
