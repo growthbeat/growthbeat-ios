@@ -12,7 +12,6 @@
 #import "GMImageButton.h"
 
 static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
-static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
 
 @interface GMSwipeMessageRenderer () {
     
@@ -38,6 +37,8 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
 @synthesize cachedImages;
 @synthesize backgroundView;
 @synthesize activityIndicatorView;
+@synthesize scrollView;
+@synthesize pageControl;
 
 - (instancetype) initWithSwipeMessage:(GMSwipeMessage *)newSwipeMessage {
     self = [super init];
@@ -110,76 +111,100 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
                     break;
             }
         }
-
-    GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
-    CGFloat availableWidth = MIN(picture.width, screenWidth * 0.85);
-    CGFloat availableHeight = MIN(picture.height, screenHeight * 0.85 * 0.8);
-    CGFloat ratio = MIN(availableWidth / picture.width, availableHeight / picture.height);
     
-    CGFloat width = picture.width * ratio;
-    CGFloat height = picture.height * ratio;
-    CGFloat left = (screenWidth - width) / 2;
-    CGFloat top = (screenHeight * 0.83 - height) / 2;
+    // scrollViewの座標
+    CGFloat width = screenWidth * 0.85;
+    CGFloat height = screenHeight * 0.85 * 0.9;
+    CGFloat left = screenWidth * 0.075;
+    CGFloat top = screenHeight * 0.075;
     
     CGRect rect = CGRectMake(left, top, width, height);
-
+    
+    [self showScrollView:baseView rect:rect];
+    [self showPageControlWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
+    
     [self cacheImages:^{
         
-        [self showImageWithView:baseView rect:rect ratio:ratio];
-        [self showImageButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
+        [self showImageWithView:scrollView rect:rect];
+        [self showImageButtonWithView:scrollView screenWidth:screenWidth screenHeight:screenHeight];
         [self showCloseButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight rect:rect];
-        [self showPageControlWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
         
         self.activityIndicatorView.hidden = YES;
         
     }];
 
-    [self recognizeSwipeGesture:baseView];
-
 }
 
-- (void) showImageWithView:view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showScrollView:view rect:(CGRect)rect {
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
+    scrollView = [[UIScrollView alloc] initWithFrame:rect];
     
-    GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
-    imageView.image = [cachedImages objectForKey:picture.url];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.userInteractionEnabled = YES;
-    [view addSubview:imageView];
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.pagingEnabled = YES;
+    scrollView.delegate = self;
+    scrollView.userInteractionEnabled = YES;
+    [scrollView setContentSize:CGSizeMake(([swipeMessage.pictures count] * rect.size.width), rect.size.height)];
+    
+    [view addSubview:scrollView];
+    
+}
+
+/**
+ * スクロールビューがスワイプされたとき
+ * @attention UIScrollViewのデリゲートメソッド
+ */
+- (void)scrollViewDidScroll:(UIScrollView *)_scrollView {
+    CGFloat pageWidth = scrollView.frame.size.width;
+    if ((NSInteger)fmod(scrollView.contentOffset.x , pageWidth) == 0) {
+        pageControl.currentPage = scrollView.contentOffset.x / pageWidth;
+    }
+}
+
+- (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
+    
+    for (int i = 0; i < [swipeMessage.pictures count]; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(rect.size.width * i, 0, rect.size.width, rect.size.height * 8 / 9)];
+        
+        GMPicture *picture = [swipeMessage.pictures objectAtIndex:i];
+        imageView.image = [cachedImages objectForKey:picture.url];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.userInteractionEnabled = YES;
+        [view addSubview:imageView];
+    }
     
 }
 
 - (void) showImageButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
     
     NSArray *imageButtons = [self extractButtonsWithType:GMButtonTypeImage];
-    NSInteger buttonIndex = 0;
 
-    if ([imageButtons count] == 0) {
+    if ([imageButtons count] <= 1) {
         return;
-    } else if ([imageButtons count] > 1) {
-        buttonIndex = kGMSwipeMessageRendererCurrentPageNumber;
     }
+    
+    for (int i = 0; i < [imageButtons count]; i++) {
 
-    GMImageButton *imageButton = [imageButtons objectAtIndex:buttonIndex];
-    
-    CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
-    CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
-    CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
-    
-    CGFloat width = imageButton.picture.width * ratio;
-    CGFloat height = imageButton.picture.height * ratio;
-    CGFloat left = (screenWidth - width) / 2;
-    CGFloat top = screenHeight * (0.075 + 0.85 * 0.8) + (screenHeight * 0.85 * 0.1 - height) / 2;
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
-    button.contentMode = UIViewContentModeScaleAspectFit;
-    button.frame = CGRectMake(left, top, width, height);
-    [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:button];
+        GMImageButton *imageButton = [imageButtons objectAtIndex:i];
         
-    [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
+        CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
+        CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
+        CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
+        
+        CGFloat width = imageButton.picture.width * ratio;
+        CGFloat height = imageButton.picture.height * ratio;
+        CGFloat left = (screenWidth * 0.85 - width) / 2 + screenWidth * 0.85 * i;
+        CGFloat top = screenHeight * 0.85 * 0.8 + (screenHeight * 0.85 * 0.1 - height) / 2;
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
+        button.contentMode = UIViewContentModeScaleAspectFit;
+        button.frame = CGRectMake(left, top, width, height);
+        [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:button];
+            
+        [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
+        
+    }
     
 }
 
@@ -232,10 +257,10 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     CGFloat left = screenWidth * 0.075;
     CGFloat top = screenHeight * (0.075 + 0.85 * 0.9);
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
+    pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
     pageControl.numberOfPages = [swipeMessage.pictures count];
-    pageControl.currentPage = kGMSwipeMessageRendererCurrentPageNumber;
+    pageControl.currentPage = 0;
     pageControl.userInteractionEnabled = NO;
     [view addSubview:pageControl];
     
@@ -245,9 +270,11 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
     NSMutableArray *urlStrings = [NSMutableArray array];
     
-    GMPicture *picture = [swipeMessage.pictures objectAtIndex:kGMSwipeMessageRendererCurrentPageNumber];
-    if (picture.url) {
-        [urlStrings addObject:picture.url];
+    for (int i = 0; i < [swipeMessage.pictures count]; i++) {
+        GMPicture *picture = [swipeMessage.pictures objectAtIndex:i];
+        if (picture.url) {
+            [urlStrings addObject:picture.url];
+        }
     }
     
     for (GMButton *button in swipeMessage.buttons) {
@@ -330,37 +357,6 @@ static NSInteger kGMSwipeMessageRendererCurrentPageNumber = 0;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-}
-
-- (void)recognizeSwipeGesture:view {
-    
-    UISwipeGestureRecognizer* swipeLeftGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeLeft:)];
-    swipeLeftGesture.direction = UISwipeGestureRecognizerDirectionLeft;
-    [view addGestureRecognizer:swipeLeftGesture];
-    
-    UISwipeGestureRecognizer* swipeRightGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight:)];
-    swipeRightGesture.direction = UISwipeGestureRecognizerDirectionRight;
-    [view addGestureRecognizer:swipeRightGesture];
-    
-}
-
-- (void)swipeLeft:(UISwipeGestureRecognizer *)sender {
-    
-    if (kGMSwipeMessageRendererCurrentPageNumber == [swipeMessage.pictures count] - 1)
-        return;
-    
-    kGMSwipeMessageRendererCurrentPageNumber += 1;
-    [self show];
-    
-}
-
-- (void)swipeRight:(UISwipeGestureRecognizer *)sender {
-    
-    if (kGMSwipeMessageRendererCurrentPageNumber == 0)
-        return;
-    
-    kGMSwipeMessageRendererCurrentPageNumber -= 1;
-    [self show];
 }
 
 @end

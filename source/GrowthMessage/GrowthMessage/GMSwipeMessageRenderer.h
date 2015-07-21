@@ -10,14 +10,18 @@
 #import "GMSwipeMessage.h"
 #import "GMSwipeMessageRendererDelegate.h"
 
-@interface GMSwipeMessageRenderer : NSObject {
+@interface GMSwipeMessageRenderer : UIViewController <UIScrollViewDelegate> {
     
     GMSwipeMessage *swipeMessage;
+    UIScrollView *scrollView;
+    UIPageControl *pageControl;
     __weak id <GMSwipeMessageRendererDelegate> delegate;
     
 }
 
 @property (nonatomic, strong) GMSwipeMessage *swipeMessage;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, weak) id <GMSwipeMessageRendererDelegate> delegate;
 
 - (instancetype)initWithSwipeMessage:(GMSwipeMessage *)newSwipeMessage;
