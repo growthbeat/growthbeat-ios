@@ -346,6 +346,7 @@
 		F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageHandler.m; sourceTree = "<group>"; };
 		F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageType.m; sourceTree = "<group>"; };
 		F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageRenderer.m; sourceTree = "<group>"; };
+		F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAnimationType.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +467,7 @@
 		CE0628031B15B6B8009263FA /* GrowthMessage */ = {
 			isa = PBXGroup;
 			children = (
+				F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */,
 				CE0628041B15B6B8009263FA /* GMButton.h */,
 				CE0628051B15B6B8009263FA /* GMButton.m */,
 				CE0628061B15B6B8009263FA /* GMButtonType.h */,
