@@ -141,6 +141,7 @@
 		F3EBE0281B54DF040065FDA7 /* GMSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */; };
 		F3EBE02A1B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */; };
 		F3EBE02D1B5DEB720065FDA7 /* GMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE02C1B5DEB720065FDA7 /* GMAnimationType.m */; };
+		F3EBE02E1B5DF4FD0065FDA7 /* GMAnimationType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				F3EBE02E1B5DF4FD0065FDA7 /* GMAnimationType.h in CopyFiles */,
 				F3EBE01B1B54CF4B0065FDA7 /* GMSwipeMessage.h in CopyFiles */,
 				F3EBE01C1B54CF4B0065FDA7 /* GMSwipeMessageHandler.h in CopyFiles */,
 				F3EBE01D1B54CF4B0065FDA7 /* GMSwipeMessageRenderer.h in CopyFiles */,
