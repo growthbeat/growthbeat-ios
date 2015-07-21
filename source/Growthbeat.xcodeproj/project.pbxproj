@@ -140,6 +140,7 @@
 		F3EBE0261B54DDC10065FDA7 /* GMSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */; };
 		F3EBE0281B54DF040065FDA7 /* GMSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */; };
 		F3EBE02A1B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */; };
+		F3EBE02D1B5DEB720065FDA7 /* GMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE02C1B5DEB720065FDA7 /* GMAnimationType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +348,7 @@
 		F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageType.m; sourceTree = "<group>"; };
 		F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageRenderer.m; sourceTree = "<group>"; };
 		F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAnimationType.h; sourceTree = "<group>"; };
+		F3EBE02C1B5DEB720065FDA7 /* GMAnimationType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAnimationType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */,
+				F3EBE02C1B5DEB720065FDA7 /* GMAnimationType.m */,
 				CE0628041B15B6B8009263FA /* GMButton.h */,
 				CE0628051B15B6B8009263FA /* GMButton.m */,
 				CE0628061B15B6B8009263FA /* GMButtonType.h */,
@@ -660,6 +663,7 @@
 				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
 				F3EBE0211B54D3580065FDA7 /* GMSwipeMessageHandler.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
+				F3EBE02D1B5DEB720065FDA7 /* GMAnimationType.m in Sources */,
 				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
 				CE0628471B16F1B8009263FA /* GMMessage.m in Sources */,
 				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
