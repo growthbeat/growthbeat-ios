@@ -178,13 +178,18 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     
     NSArray *imageButtons = [self extractButtonsWithType:GMButtonTypeImage];
 
-    if ([imageButtons count] <= 1) {
+    if (swipeMessage.swipeType == GMSwipeMessageTypeImageOnly) {
         return;
     }
     
-    for (int i = 0; i < [imageButtons count]; i++) {
-
-        GMImageButton *imageButton = [imageButtons objectAtIndex:i];
+    GMImageButton *imageButton;
+    imageButton = [imageButtons objectAtIndex:0];
+    
+    for (int i = 0; i < [swipeMessage.pictures count]; i++) {
+        
+        if (swipeMessage.swipeType == GMSwipeMessageTypeButtons) {
+            imageButton = [imageButtons objectAtIndex:i];
+        }
         
         CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
         CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
