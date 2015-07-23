@@ -292,8 +292,8 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         return;
     }
     
-    CGFloat availableWidth = MIN(closeButton.picture.width, screenWidth * 0.85 * 0.05);
-    CGFloat availableHeight = MIN(closeButton.picture.height, screenHeight * 0.85 * 0.05);
+    CGFloat availableWidth = MIN(closeButton.picture.width, 20);
+    CGFloat availableHeight = MIN(closeButton.picture.height, 20);
     CGFloat ratio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
     
     CGFloat width = closeButton.picture.width * ratio;
