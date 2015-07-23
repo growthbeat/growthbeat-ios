@@ -186,23 +186,34 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 
 - (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
     
-    CGFloat height = rect.size.height;
+    CGFloat heightOfImageArea = rect.size.height;
     switch (swipeMessage.swipeType) {
         case GMSwipeMessageTypeImageOnly:
             break;
         case GMSwipeMessageTypeOneButton:
             break;
         case GMSwipeMessageTypeButtons:
-            height = rect.size.height * 8 / 9;
+            heightOfImageArea = rect.size.height * 8 / 9;
             break;
         default:
             break;
     }
     
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(rect.size.width * i, 0, rect.size.width, height)];
         
         GMPicture *picture = [swipeMessage.pictures objectAtIndex:i];
+        
+        CGFloat availableWidth = MIN(picture.width, rect.size.width);
+        CGFloat availableHeight = MIN(picture.height, heightOfImageArea);
+        CGFloat ratio = MIN(availableWidth / picture.width, availableHeight / picture.height);
+        
+        CGFloat width = picture.width * ratio;
+        CGFloat height = picture.height * ratio;
+        CGFloat left = (rect.size.width - width) / 2 + rect.size.width * i;
+        CGFloat top = (heightOfImageArea - height) / 2;
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(left, top, width, height)];
+        
         imageView.image = [cachedImages objectForKey:picture.url];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.userInteractionEnabled = YES;
