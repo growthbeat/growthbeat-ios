@@ -113,7 +113,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         }
     
     // scrollViewの座標
-    CGFloat width = screenWidth * 0.85;
+    CGFloat width = screenWidth;
     CGFloat height;
     switch (swipeMessage.swipeType) {
         case GMSwipeMessageTypeImageOnly:
@@ -128,7 +128,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         default:
             break;
     }
-    CGFloat left = screenWidth * 0.075;
+    CGFloat left = 0;
     CGFloat top = screenHeight * 0.075;
     
     CGRect rect = CGRectMake(left, top, width, height);
@@ -203,7 +203,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         
         GMPicture *picture = [swipeMessage.pictures objectAtIndex:i];
         
-        CGFloat availableWidth = MIN(picture.width, rect.size.width);
+        CGFloat availableWidth = MIN(picture.width, rect.size.width * 0.85);
         CGFloat availableHeight = MIN(picture.height, heightOfImageArea);
         CGFloat ratio = MIN(availableWidth / picture.width, availableHeight / picture.height);
         
@@ -218,6 +218,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.userInteractionEnabled = YES;
         [view addSubview:imageView];
+        
     }
     
 }
@@ -263,7 +264,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
                 
                 CGFloat width = imageButton.picture.width * ratio;
                 CGFloat height = imageButton.picture.height * ratio;
-                CGFloat left = (screenWidth * 0.85 - width) / 2 + screenWidth * 0.85 * i;
+                CGFloat left = (screenWidth - width) / 2 + screenWidth * i;
                 CGFloat top = screenHeight * 0.85 * 0.8 + (screenHeight * 0.85 * 0.1 - height) / 2;
                 
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -297,7 +298,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
-    CGFloat left = rect.origin.x + rect.size.width - width / 2;
+    CGFloat left = rect.size.width * 0.925 - width / 2;
     CGFloat top = rect.origin.y - height / 2;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
