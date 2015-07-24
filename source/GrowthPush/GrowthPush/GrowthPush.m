@@ -23,12 +23,7 @@ static NSString *const kGPPreferenceClientKey = @"growthpush-client";
 static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 @interface GrowthPush () {
-
-    GBLogger *logger;
-    GBHttpClient *httpClient;
-    GBPreference *preference;
     
-    NSString *credentialId;
     GPEnvironment environment;
     NSString *token;
     GBClient *growthbeatClient;
@@ -37,11 +32,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
-@property (nonatomic, strong) GBLogger *logger;
-@property (nonatomic, strong) GBHttpClient *httpClient;
-@property (nonatomic, strong) GBPreference *preference;
-
-@property (nonatomic, strong) NSString *credentialId;
 @property (nonatomic, assign) GPEnvironment environment;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) GBClient *growthbeatClient;

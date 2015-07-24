@@ -12,7 +12,15 @@
 #import "GrowthMessage.h"
 #import "GrowthPush.h"
 
-@interface Growthbeat : NSObject
+@interface Growthbeat : NSObject {
+    
+    NSString *applicationId;
+    NSString *credentialId;
+    
+}
+
+@property (nonatomic, strong) NSString *applicationId;
+@property (nonatomic, strong) NSString *credentialId;
 
 + (instancetype)sharedInstance;
 
