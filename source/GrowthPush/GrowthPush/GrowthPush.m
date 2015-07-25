@@ -71,14 +71,14 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
+        self.environment = GPEnvironmentDevelopment;
     }
     return self;
 }
 
-- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment {
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId {
     
     self.credentialId = newCredentialId;
-    self.environment = newEnvironment;
     self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
     self.client = [self loadClient];
     
@@ -95,7 +95,9 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
-- (void) requestDeviceToken {
+- (void) requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment {
+    
+    self.environment = newEnvironment;
     
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
