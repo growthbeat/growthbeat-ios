@@ -55,7 +55,7 @@
 1. Call requestDeviceToken to get apns device token and send it to server.
 
 	```objc
-	[[GrowthPush sharedInstance] requestDeviceToken];
+	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
 	```
 
 1. Write following code to handle url in UIApplicationDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:. 
