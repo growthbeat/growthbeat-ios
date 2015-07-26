@@ -29,7 +29,6 @@
  *
  * @param applicationId Application ID
  * @param credentialId Credential ID for application
- * @param environment Build configuration (debug or release)
  */
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
