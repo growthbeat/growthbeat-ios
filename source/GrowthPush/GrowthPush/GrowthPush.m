@@ -81,7 +81,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
-        self.environment = GPEnvironmentDevelopment;
+        self.environment = GPEnvironmentUnknown;
     }
     return self;
 }
@@ -134,6 +134,11 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) registerClient {
+    
+    if (self.environment == GPEnvironmentUnknown) {
+        [self.logger info:@"Environment is not specified. Client has not registred."];
+        return;
+    }
 
     if (self.registeringClient) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
