@@ -16,7 +16,21 @@
 #define kGrowthPushEnvironment (GPEnvironmentProduction)
 #endif
 
-@interface GrowthPush : NSObject
+@interface GrowthPush : NSObject {
+    
+    GBLogger *logger;
+    GBHttpClient *httpClient;
+    GBPreference *preference;
+    
+    NSString *credentialId;
+    
+}
+
+@property (nonatomic, strong) GBLogger *logger;
+@property (nonatomic, strong) GBHttpClient *httpClient;
+@property (nonatomic, strong) GBPreference *preference;
+
+@property (nonatomic, strong) NSString *credentialId;
 
 /**
  * Get shared instance of GrowthPush
@@ -29,15 +43,14 @@
  *
  * @param applicationId Application ID
  * @param credentialId Credential ID for application
- * @param environment Build configuration (debug or release)
  */
-- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment;
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 
 /**
  * Request APNS device token.
  * Internally call UIApplication's registerForRemoteNotificationTypes:
  */
-- (void)requestDeviceToken;
+- (void)requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment;
 
 /**
  * Set device token obtained in AppDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:
