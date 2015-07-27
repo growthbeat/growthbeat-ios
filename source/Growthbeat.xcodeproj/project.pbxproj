@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		69F1B5991B66295F00E1D20D /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F1B5981B66295F00E1D20D /* GBCustomIntentHandler.m */; };
+		69F1B59D1B6636F900E1D20D /* GBCustomIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69F1B5971B66295100E1D20D /* GBCustomIntentHandler.h */; };
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
@@ -150,6 +152,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				69F1B59D1B6636F900E1D20D /* GBCustomIntentHandler.h in CopyFiles */,
 				CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */,
 				CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
@@ -213,6 +216,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		69F1B5971B66295100E1D20D /* GBCustomIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCustomIntentHandler.h; sourceTree = "<group>"; };
+		69F1B5981B66295F00E1D20D /* GBCustomIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCustomIntentHandler.m; sourceTree = "<group>"; };
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
 		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Growthbeat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -395,6 +400,8 @@
 				CE0627D81B15B6A1009263FA /* GBContentType.m */,
 				CE0627D91B15B6A1009263FA /* GBCustomIntent.h */,
 				CE0627DA1B15B6A1009263FA /* GBCustomIntent.m */,
+				69F1B5971B66295100E1D20D /* GBCustomIntentHandler.h */,
+				69F1B5981B66295F00E1D20D /* GBCustomIntentHandler.m */,
 				CE0627DB1B15B6A1009263FA /* GBDateUtils.h */,
 				CE0627DC1B15B6A1009263FA /* GBDateUtils.m */,
 				CE0627DD1B15B6A1009263FA /* GBDeviceUtils.h */,
@@ -645,6 +652,7 @@
 				CE0628401B16F1B8009263FA /* GMButton.m in Sources */,
 				CE0628571B16F1E2009263FA /* GBDeviceUtils.m in Sources */,
 				CE0628661B16F1E2009263FA /* GBUrlIntent.m in Sources */,
+				69F1B5991B66295F00E1D20D /* GBCustomIntentHandler.m in Sources */,
 				CE0628521B16F1E2009263FA /* GBApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +671,7 @@
 		B275A7051A0C45A50050510A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_VERSION = 1.2.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -670,6 +679,7 @@
 		B275A7061A0C45A50050510A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_VERSION = 1.2.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -693,7 +703,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -736,7 +746,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -756,6 +766,7 @@
 		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
@@ -766,6 +777,7 @@
 		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";

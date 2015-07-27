@@ -10,15 +10,7 @@
 
 static Growthbeat *sharedInstance = nil;
 
-@interface Growthbeat () {
-
-    NSString *applicationId;
-    NSString *credentialId;
-
-}
-
-@property (nonatomic, strong) NSString *applicationId;
-@property (nonatomic, strong) NSString *credentialId;
+@interface Growthbeat ()
 
 @end
 
@@ -51,7 +43,7 @@ static Growthbeat *sharedInstance = nil;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-    [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId environment:kGrowthPushEnvironment];
+    [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
 - (void) start {

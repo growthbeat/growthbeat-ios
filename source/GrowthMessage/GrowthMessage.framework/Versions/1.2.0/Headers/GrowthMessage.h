@@ -12,12 +12,18 @@
 #import "GMButton.h"
 
 @interface GrowthMessage : NSObject {
-
+    
+    NSString *applicationId;
+    NSString *credentialId;
+    
     NSArray *messageHandlers;
 
 }
 
 + (instancetype)sharedInstance;
+
+@property (nonatomic, strong) NSString *applicationId;
+@property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, strong) NSArray *messageHandlers;
 
