@@ -13,6 +13,14 @@
 @implementation GBCustomIntentHandler
 @synthesize block;
 
+- (id)initWithBlock:(void(^)(GBIntent *intent))argBlock{
+    self = [super init];
+    if (self != nil) {
+        self.block = argBlock;
+    }
+    return self;
+}
+
 - (BOOL) handleIntent:(GBIntent *)intent {
     
     if (intent.type != GBIntentTypeCustom) {

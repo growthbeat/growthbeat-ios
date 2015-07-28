@@ -12,6 +12,8 @@
 
 @interface GBCustomIntentHandler : NSObject <GBIntentHandler>
 
+- (id)initWithBlock:(void(^)(GBIntent *intent))argBlock;
+
 @property (copy, nonatomic) void(^block)(GBIntent *intent);
 
 - (void)intentHandlerWithBlock:(void(^)(GBIntent *intent))argBlock;
