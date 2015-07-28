@@ -18,12 +18,12 @@
     if (intent.type != GBIntentTypeCustom) {
         return NO;
     }
-    if (self.block) {
-        self.block(intent);
-    } else {
+    if (!self.block) {
         [[[GrowthbeatCore sharedInstance] logger] error:@"error:GBCustomIntentHandler cannot handle intent. cause: block is nil"];
+        return NO;
+        
     }
-    
+    self.block(intent);
     return YES;
     
 }
