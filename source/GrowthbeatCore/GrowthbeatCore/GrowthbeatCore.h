@@ -15,6 +15,7 @@
 #import "GBAppDelegateWrapper.h"
 #import "GBIntent.h"
 #import "GBIntentHandler.h"
+#import "GBCustomIntent.h"
 
 @interface GrowthbeatCore : NSObject {
 
@@ -37,5 +38,6 @@
 
 - (BOOL)handleIntent:(GBIntent *)intent;
 - (void)addIntentHandler:(NSObject *)intentHandler;
-- (void)addCustomIntentHandlerWithBlock:(void(^)(GBIntent *intent))block;
+- (void)addCustomIntentHandlerWithBlock:(BOOL(^)(GBCustomIntent *customIntent))block;
+
 @end

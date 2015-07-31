@@ -9,15 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "GBIntentHandler.h"
 #import "GBIntent.h"
+#import "GBCustomIntent.h"
 
 @interface GBCustomIntentHandler : NSObject <GBIntentHandler> {
     
-    void(^block)(GBIntent *intent);
+    BOOL(^block)(GBCustomIntent *customIntent);
     
 }
 
-@property (copy, nonatomic) void(^block)(GBIntent *intent);
+@property (copy, nonatomic) BOOL(^block)(GBCustomIntent *customIntent);
 
-- (id)initWithBlock:(void(^)(GBIntent *intent))argBlock;
+- (id)initWithBlock:(BOOL(^)(GBCustomIntent *customIntent))argBlock;
 
 @end

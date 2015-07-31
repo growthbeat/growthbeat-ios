@@ -164,7 +164,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     [intentHandlers addObject:intentHandler];
 }
 
-- (void)addCustomIntentHandlerWithBlock:(void(^)(GBIntent *intent))block {
+- (void)addCustomIntentHandlerWithBlock:(BOOL(^)(GBCustomIntent *customIntent))block {
     [intentHandlers addObject:[[GBCustomIntentHandler alloc] initWithBlock:block]];
 }
 

@@ -14,7 +14,7 @@
 
 @synthesize block;
 
-- (id)initWithBlock:(void(^)(GBIntent *intent))argBlock{
+- (id)initWithBlock:(BOOL(^)(GBCustomIntent *customIntent))argBlock{
     self = [super init];
     if (self != nil) {
         self.block = argBlock;
@@ -27,13 +27,17 @@
     if (intent.type != GBIntentTypeCustom) {
         return NO;
     }
+    
+    if (![intent isKindOfClass:[GBCustomIntent class]]) {
+        return NO;
+    }
+    
     if (!self.block) {
         [[[GrowthbeatCore sharedInstance] logger] error:@"GBCustomIntentHandler cannot handle intent. cause: block is nil"];
         return NO;
-        
     }
-    self.block(intent);
-    return YES;
+    
+    return self.block((GBCustomIntent *)intent);
     
 }
 
