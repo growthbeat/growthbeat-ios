@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Growthbeat/GBCustomIntent.h>
+#import <Growthbeat/GBCustomIntentHandler.h>
 
 @implementation AppDelegate
 
@@ -14,6 +16,11 @@
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
     [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+    [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+        NSDictionary *extra = customIntent.extra;
+        NSLog(@"extra: %@", extra);
+        return YES;
+    }]];
     return YES;
 }
 

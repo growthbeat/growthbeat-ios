@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		69F1B59C1B6629E800E1D20D /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F1B59B1B6629E800E1D20D /* GBCustomIntentHandler.m */; };
 		B20AD2041A0C3392003ABF66 /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AD1E51A0C3391003ABF66 /* GBAppDelegateWrapper.m */; };
 		B20AD2051A0C3392003ABF66 /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AD1E81A0C3391003ABF66 /* GBApplication.m */; };
 		B20AD2061A0C3392003ABF66 /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AD1EA1A0C3391003ABF66 /* GBClient.m */; };
@@ -123,6 +124,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		69F1B59A1B6629CC00E1D20D /* GBCustomIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCustomIntentHandler.h; sourceTree = "<group>"; };
+		69F1B59B1B6629E800E1D20D /* GBCustomIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCustomIntentHandler.m; sourceTree = "<group>"; };
 		B20AD1CA1A0C32FE003ABF66 /* libGrowthbeatCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeatCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20AD1E41A0C3391003ABF66 /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
 		B20AD1E51A0C3391003ABF66 /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
@@ -220,12 +223,13 @@
 				B20AD1E61A0C3391003ABF66 /* GBAppDelegateWrapperDelegate.h */,
 				B20AD1E71A0C3391003ABF66 /* GBApplication.h */,
 				B20AD1E91A0C3391003ABF66 /* GBClient.h */,
-				CE26C8721B0EF4E300785995 /* GBGPClient.h */,
 				B20AD1EB1A0C3391003ABF66 /* GBContentType.h */,
 				B2C4A0581AB78F2500015D16 /* GBCustomIntent.h */,
+				69F1B59A1B6629CC00E1D20D /* GBCustomIntentHandler.h */,
 				B20AD1ED1A0C3391003ABF66 /* GBDateUtils.h */,
 				B20AD1EF1A0C3391003ABF66 /* GBDeviceUtils.h */,
 				B20AD1F11A0C3391003ABF66 /* GBDomain.h */,
+				CE26C8721B0EF4E300785995 /* GBGPClient.h */,
 				B20AD1F31A0C3392003ABF66 /* GBHttpClient.h */,
 				B20AD1F51A0C3392003ABF66 /* GBHttpRequest.h */,
 				B20AD1F71A0C3392003ABF66 /* GBHttpResponse.h */,
@@ -253,12 +257,13 @@
 				B20AD1E51A0C3391003ABF66 /* GBAppDelegateWrapper.m */,
 				B20AD1E81A0C3391003ABF66 /* GBApplication.m */,
 				B20AD1EA1A0C3391003ABF66 /* GBClient.m */,
-				CE26C8731B0EF4E300785995 /* GBGPClient.m */,
 				B20AD1EC1A0C3391003ABF66 /* GBContentType.m */,
 				B2C4A0591AB78F2500015D16 /* GBCustomIntent.m */,
+				69F1B59B1B6629E800E1D20D /* GBCustomIntentHandler.m */,
 				B20AD1EE1A0C3391003ABF66 /* GBDateUtils.m */,
 				B20AD1F01A0C3391003ABF66 /* GBDeviceUtils.m */,
 				B20AD1F21A0C3392003ABF66 /* GBDomain.m */,
+				CE26C8731B0EF4E300785995 /* GBGPClient.m */,
 				B20AD1F41A0C3392003ABF66 /* GBHttpClient.m */,
 				B20AD1F61A0C3392003ABF66 /* GBHttpRequest.m */,
 				B20AD1F81A0C3392003ABF66 /* GBHttpResponse.m */,
@@ -383,6 +388,7 @@
 				B20AD2081A0C3392003ABF66 /* GBDateUtils.m in Sources */,
 				B282CED51AB556B0002D6F10 /* GBUrlIntentHandler.m in Sources */,
 				B20AD2051A0C3392003ABF66 /* GBApplication.m in Sources */,
+				69F1B59C1B6629E800E1D20D /* GBCustomIntentHandler.m in Sources */,
 				B20AD20A1A0C3392003ABF66 /* GBDomain.m in Sources */,
 				B20AD2151A0C33A5003ABF66 /* GrowthbeatCore.m in Sources */,
 				B20AD2111A0C3392003ABF66 /* GBPreference.m in Sources */,
@@ -425,7 +431,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -468,7 +474,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
