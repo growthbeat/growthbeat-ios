@@ -22,7 +22,7 @@
 
 }
 
-@property (nonatomic, strong) NSArray *intentHandlers;
+@property (nonatomic, strong) NSMutableArray *intentHandlers;
 
 + (GrowthbeatCore *)sharedInstance;
 
