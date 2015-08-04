@@ -199,16 +199,20 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
             break;
     }
     
+    CGFloat scale = [[UIScreen mainScreen] scale];
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         
         GMPicture *picture = [swipeMessage.pictures objectAtIndex:i];
         
-        CGFloat availableWidth = MIN(picture.width, rect.size.width * 0.85);
-        CGFloat availableHeight = MIN(picture.height, heightOfImageArea);
-        CGFloat ratio = MIN(availableWidth / picture.width, availableHeight / picture.height);
+        CGFloat pictureWidthDp = picture.width / scale;
+        CGFloat pictureHeightDp = picture.height / scale;
         
-        CGFloat width = picture.width * ratio;
-        CGFloat height = picture.height * ratio;
+        CGFloat availableWidth = MIN(pictureWidthDp, rect.size.width * 0.85);
+        CGFloat availableHeight = MIN(pictureHeightDp, heightOfImageArea);
+        CGFloat ratio = MIN(availableWidth / pictureWidthDp, availableHeight / pictureHeightDp);
+
+        CGFloat width = pictureWidthDp * ratio;
+        CGFloat height = pictureHeightDp * ratio;
         CGFloat left = (rect.size.width - width) / 2 + rect.size.width * i;
         CGFloat top = (heightOfImageArea - height) / 2;
         
