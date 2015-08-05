@@ -47,7 +47,6 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     
     return self;
 }
@@ -174,28 +173,27 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 - (void) adjustPositionWithSize:(CGSize)size {
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
     
     CGFloat left = (window.frame.size.width - size.width) / 2;
-    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? statusBarFrame.size.height : (window.frame.size.height - size.height);
+    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height);
     CGAffineTransform transform = CGAffineTransformMakeRotation(0);
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f) {
         switch ([UIApplication sharedApplication].statusBarOrientation) {
             case UIDeviceOrientationLandscapeLeft:
                 transform = CGAffineTransformMakeRotation(M_PI / 2);
-                left = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.width - size.width - statusBarFrame.size.width) : 0;
+                left = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.width - size.width) : 0;
                 top = (window.frame.size.height - size.height) / 2;
                 break;
             case UIDeviceOrientationLandscapeRight:
                 transform = CGAffineTransformMakeRotation(- M_PI / 2);
-                left = (bannerMessage.position == GMBannerMessagePositionTop) ? statusBarFrame.size.width : (window.frame.size.width - size.width);
+                left = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.width - size.width);
                 top = (window.frame.size.height - size.height) / 2;
                 break;
             case UIDeviceOrientationPortraitUpsideDown:
                 transform = CGAffineTransformMakeRotation(M_PI);
                 left = (window.frame.size.width - size.width) / 2;
-                top = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.height - size.height - statusBarFrame.size.height): 0;
+                top = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.height - size.height): 0;
                 break;
             default:
                 break;
