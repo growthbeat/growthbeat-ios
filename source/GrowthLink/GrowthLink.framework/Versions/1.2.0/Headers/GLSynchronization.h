@@ -20,7 +20,7 @@
 @property (nonatomic, assign) BOOL browser;
 @property (nonatomic, strong) NSString *clickId;
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId;
++ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId fingerprintParameters:(NSString *)fingerprintParameters;
 + (void) save:(GLSynchronization *)synchronization;
 + (GLSynchronization *) load;
 
