@@ -17,11 +17,38 @@ static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbe
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
+@interface NSURL (dictionaryFromQueryString)
+-(NSDictionary *) dictionaryFromQueryString;
+@end
+
+@implementation NSURL (dictionaryFromQueryString)
+-(NSDictionary *) dictionaryFromQueryString{
+    
+    NSString *query = [self query];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    
+    for (NSString *pair in pairs) {
+        NSRange range = [pair rangeOfString:@"="];
+        NSString *key = range.length ? [pair substringToIndex:range.location] : pair;
+        NSString *val = range.length ? [pair substringFromIndex:range.location+1] : @"";
+        key = [key stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+        val = [val stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+        key = [key stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        val = [val stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [dict setObject:val forKey:key];
+    }
+    return dict;
+}
+@end
+
 @interface GrowthLink () {
 
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
+    UIWebView *webView;
+    NSString *fingerprintParameters;
 
     BOOL initialized;
     BOOL isFirstSession;
@@ -100,9 +127,42 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     }
     
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-    
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    [self getFingerPrint:window];
     [self synchronize];
 }
+
+- (void) getFingerPrint: (UIWindow *)window {
+    webView = [[UIWebView alloc] initWithFrame:window.frame];
+    webView.delegate = self;
+    webView.hidden = NO;
+    NSString *html = @"<html><body>hoge<script>var elementCanvas = document.createElement('canvas');function browserSupportsWebGL(canvas) {var context = null;var names = [\"webgl\", \"experimental-webgl\", \"webkit-3d\", \"moz-webgl\"];for (var i = 0; i < names.length; ++i) {try {context = canvas.getContext(names[i]);    } catch(e) {    }    if (context) {break;}}return context != null;}function browserSupportCanvas(canvas) {try {    return !!(canvas.getContext && canvas.getContext('2d'));} catch(e) {    return false;}}function canvasContent(canvas) {var ctx = canvas.getContext('2d');var txt = 'example_canvas';ctx.textBaseline = \"top\";ctx.font = \"14px 'Arial'\";ctx.textBaseline = \"alphabetic\";ctx.fillStyle = \"#f60\";ctx.fillRect(125,1,62,20);ctx.fillStyle = \"#069\";ctx.fillText(txt, 2, 15);ctx.fillStyle = \"rgba(102, 204, 0, 0.7)\";ctx.fillText(txt, 4, 17);return canvas.toDataURL();}var plugins = [];for(var i=0;i < navigator.plugins.length;i++){plugins.push(navigator.plugins[i].name);}var mimeTypes = [];for(var i=0;i<navigator.mimeTypes.length;i++){ mimeTypes.push(navigator.mimeTypes[i].description);}window.onload = function(){var fingerprint_parameters = {userAgent: navigator.userAgent,language: navigator.language || navigator.userLanguage,platform: navigator.platform,appName: navigator.appName,appVersion: navigator.appVersion,cookieSupport: navigator.cookieEnabled,javaSupport: navigator.javaEnabled(),vendor: navigator.vendor,product: navigator.product,maxTouchPoints: navigator.maxTouchPoints,appCodeName: navigator.appCodeName,currentResolution: window.screen.width + 'x' + window.screen.height,colorDepth: window.screen.colorDepth,timeZone: new Date().getTimezoneOffset(),hasSessionStorage: !!window.sessionStorage,hasLocalStorage: !!window.localStorage,hasIndexedDB: !!window.indexedDB,plugins: plugins.toString(),encoding: document.characterSet,canvasSupport: browserSupportCanvas(elementCanvas),webgl: browserSupportsWebGL(elementCanvas),mineTypes: mimeTypes.toString(),canvasContent: canvasContent(elementCanvas).toString(),clientWidthHeight: document.documentElement.clientWidth + 'x' + document.documentElement.clientHeight};location.href = 'native://js?fingerprint_parameters=' + JSON.stringify(fingerprint_parameters) }</script></body></html>";
+    [webView loadHTMLString:html baseURL:[[NSBundle mainBundle] resourceURL]];
+    [window addSubview:webView];
+   
+
+    [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
+}
+
+
+-(BOOL)webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)
+request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if ([ request.URL.scheme isEqualToString:@"native" ]) {
+        if ([request.URL.host isEqualToString:@"js"]) {
+            NSDictionary *dict = request.URL.dictionaryFromQueryString;
+            fingerprintParameters = [dict valueForKey:@"fingerprint_parameters"];
+            [webView removeFromSuperview];
+        }
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
+
+
 
 - (void) handleOpenUrl:(NSURL *)url {
     
@@ -176,12 +236,11 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         [logger info:@"Synchronizing..."];
         
-        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId];
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId fingerprintParameters:fingerprintParameters];
         if (!synchronization) {
             [logger error:@"Failed to Synchronize."];
             return;
         }
-
         
         [GLSynchronization save:synchronization];
         [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];

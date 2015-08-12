@@ -19,7 +19,7 @@
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId {
++ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId fingerprintParameters:(NSString *)fingerprintParameters {
 
     NSString *path = @"/1/synchronize";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
@@ -33,6 +33,9 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (fingerprintParameters) {
+        [body setObject:fingerprintParameters forKey:@"fingerprint_parameters"];
     }
     
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
