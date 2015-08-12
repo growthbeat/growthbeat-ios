@@ -19,7 +19,7 @@
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId fingerprintParameters:(NSString *)fingerprintParameters {
++ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId userAgent:(NSString *)userAgent clientWidthHeight:(NSString *)clientWidthHeight fingerprintParameters:(NSString *)fingerprintParameters {
 
     NSString *path = @"/1/synchronize";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
@@ -33,6 +33,13 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (userAgent) {
+        [body setObject:userAgent forKey:@"useragent"];
+
+    }
+    if (clientWidthHeight) {
+        [body setObject:clientWidthHeight forKey:@"client_width_height"];
     }
     if (fingerprintParameters) {
         [body setObject:fingerprintParameters forKey:@"fingerprint_parameters"];
