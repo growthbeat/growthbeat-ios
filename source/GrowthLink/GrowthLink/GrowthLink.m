@@ -240,7 +240,7 @@ request navigationType:(UIWebViewNavigationType)navigationType
         
         [logger info:@"Synchronizing..."];
         
-        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId fingerprintParameters:fingerprintParameters];
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId userAgent:userAgent clientWidthHeight:clientWidthHeight fingerprintParameters:fingerprintParameters];
         if (!synchronization) {
             [logger error:@"Failed to Synchronize."];
             return;
