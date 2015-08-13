@@ -9,7 +9,6 @@
 #import "GBDeviceUtils.h"
 #import <UIKit/UIKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import <AdSupport/AdSupport.h>
 #import <mach/mach.h>
 #import <netinet/in.h>
 #include <sys/types.h>
@@ -170,22 +169,33 @@
 
 }
 
-+ (NSString *) getAdvertisingId {
-    
-    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
-    
-    if (![identifierManager isAdvertisingTrackingEnabled])
-        return nil;
-    
-    return identifierManager.advertisingIdentifier.UUIDString;
 
++ (NSString *) getAdvertisingId {
+    NSString *uid = nil;
+    Class ASIdentifierManagerClass = NSClassFromString(@"ASIdentifierManager");
+    if (ASIdentifierManagerClass) {
+        SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
+        id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
+        BOOL enabled = [GBDeviceUtils getTrackingEnabled];
+        if (enabled) {
+            SEL advertisingIdentifierSelector = NSSelectorFromString(@"advertisingIdentifier");
+            NSUUID *uuid = ((NSUUID* (*)(id, SEL))[sharedManager methodForSelector:advertisingIdentifierSelector])(sharedManager, advertisingIdentifierSelector);
+            uid = [uuid UUIDString];
+        }
+    }
+    return uid;
 }
 
 + (BOOL) getTrackingEnabled {
-    
-    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
-    return [identifierManager isAdvertisingTrackingEnabled];
-    
+    Class ASIdentifierManagerClass = NSClassFromString(@"ASIdentifierManager");
+    if (ASIdentifierManagerClass) {
+        SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
+        id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
+        SEL advertisingEnabledSelector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
+        BOOL enabled = ((BOOL (*)(id, SEL))[sharedManager methodForSelector:advertisingEnabledSelector])(sharedManager, advertisingEnabledSelector);
+        return enabled;
+    }
+    return YES;
 }
 
 @end
