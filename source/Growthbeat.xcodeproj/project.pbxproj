@@ -343,6 +343,7 @@
 		F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageHandler.h; sourceTree = "<group>"; };
 		F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessage.h; sourceTree = "<group>"; };
 		F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageType.h; sourceTree = "<group>"; };
+		F3E6A8CC1B82544F00633393 /* GMIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMIndicator.h; sourceTree = "<group>"; };
 		F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessage.m; sourceTree = "<group>"; };
 		F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRenderer.h; sourceTree = "<group>"; };
 		F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
@@ -488,6 +489,7 @@
 				CE0628101B15B6B8009263FA /* GMImageMessageRenderer.h */,
 				CE0628111B15B6B8009263FA /* GMImageMessageRenderer.m */,
 				CE0628121B15B6B8009263FA /* GMImageMessageRendererDelegate.h */,
+				F3E6A8CC1B82544F00633393 /* GMIndicator.h */,
 				CE0628131B15B6B8009263FA /* GMMessage.h */,
 				CE0628141B15B6B8009263FA /* GMMessage.m */,
 				CE0628151B15B6B8009263FA /* GMMessageHandler.h */,
