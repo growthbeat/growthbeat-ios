@@ -112,18 +112,15 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
             }
         }
     
-    // scrollViewの座標
     CGFloat width = screenWidth;
     CGFloat height;
     switch (swipeMessage.swipeType) {
         case GMSwipeMessageTypeImageOnly:
+        case GMSwipeMessageTypeButtons:
             height = screenHeight * 0.85 * 0.9;
             break;
         case GMSwipeMessageTypeOneButton:
             height = screenHeight * 0.85 * 0.8;
-            break;
-        case GMSwipeMessageTypeButtons:
-            height = screenHeight * 0.85 * 0.9;
             break;
         default:
             break;
@@ -140,14 +137,13 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         
         [self showImageWithView:scrollView rect:rect];
         switch (swipeMessage.swipeType) {
-            case GMSwipeMessageTypeImageOnly:
-                break;
             case GMSwipeMessageTypeOneButton:
                 [self showImageButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
                 break;
             case GMSwipeMessageTypeButtons:
                 [self showImageButtonWithView:scrollView screenWidth:screenWidth screenHeight:screenHeight];
                 break;
+            case GMSwipeMessageTypeImageOnly:
             default:
                 break;
         }
@@ -173,10 +169,6 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     
 }
 
-/**
- * スクロールビューがスワイプされたとき
- * @attention UIScrollViewのデリゲートメソッド
- */
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView {
     CGFloat pageWidth = scrollView.frame.size.width;
     if ((NSInteger)fmod(scrollView.contentOffset.x , pageWidth) == 0) {
@@ -188,13 +180,11 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     
     CGFloat heightOfImageArea = rect.size.height;
     switch (swipeMessage.swipeType) {
-        case GMSwipeMessageTypeImageOnly:
-            break;
-        case GMSwipeMessageTypeOneButton:
-            break;
         case GMSwipeMessageTypeButtons:
             heightOfImageArea = rect.size.height * 8 / 9;
             break;
+        case GMSwipeMessageTypeImageOnly:
+        case GMSwipeMessageTypeOneButton:
         default:
             break;
     }
