@@ -146,7 +146,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             
             GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
             if(createdClient) {
-                [self.logger info:@"Registering client success. (clientId: %@)", createdClient.growthbeatClientId];
+                [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
                 self.client = createdClient;
                 [self saveClient:client];
             }
@@ -168,7 +168,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             
             GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
             if(updatedClient) {
-                [self.logger info:@"Updating client success. (clientId: %@)", updatedClient.growthbeatClientId];
+                [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
                 self.client = updatedClient;
                 [self saveClient:self.client];
             }
