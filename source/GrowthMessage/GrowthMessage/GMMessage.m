@@ -12,6 +12,7 @@
 #import "GrowthMessage.h"
 #import "GMPlainMessage.h"
 #import "GMImageMessage.h"
+#import "GMSwipeMessage.h"
 
 @implementation GMMessage
 
@@ -22,6 +23,7 @@
 @synthesize frequency;
 @synthesize segmentId;
 @synthesize cap;
+@synthesize animation;
 @synthesize created;
 @synthesize task;
 @synthesize buttons;
@@ -76,6 +78,12 @@
             } else {
                 return [GMImageMessage domainWithDictionary:dictionary];
             }
+        case GMMessageTypeSwipe:
+            if ([message isKindOfClass:[GMSwipeMessage class]]) {
+                return message;
+            } else {
+                return [GMSwipeMessage domainWithDictionary:dictionary];
+            }
         default:
             return nil;
     }
@@ -106,6 +114,9 @@
         }
         if ([dictionary objectForKey:@"cap"] && [dictionary objectForKey:@"cap"] != [NSNull null]) {
             self.cap = [[dictionary objectForKey:@"cap"] integerValue];
+        }
+        if ([dictionary objectForKey:@"animation"] && [dictionary objectForKey:@"animation"] != [NSNull null]) {
+            self.animation = GMAnimationTypeFromNSString([dictionary objectForKey:@"animation"]);
         }
         if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
             self.created = [dictionary objectForKey:@"created"];
@@ -152,6 +163,9 @@
         if ([aDecoder containsValueForKey:@"cap"]) {
             self.cap = [aDecoder decodeIntegerForKey:@"cap"];
         }
+        if ([aDecoder containsValueForKey:@"animation"]) {
+            self.animation = [aDecoder decodeIntegerForKey:@"animation"];
+        }
         if ([aDecoder containsValueForKey:@"created"]) {
             self.created = [aDecoder decodeObjectForKey:@"created"];
         }
@@ -173,6 +187,7 @@
     [aCoder encodeInteger:frequency forKey:@"frequency"];
     [aCoder encodeObject:segmentId forKey:@"segmentId"];
     [aCoder encodeInteger:cap forKey:@"cap"];
+    [aCoder encodeInteger:animation forKey:@"animation"];
     [aCoder encodeObject:created forKey:@"created"];
     [aCoder encodeObject:task forKey:@"task"];
     [aCoder encodeObject:buttons forKey:@"buttons"];
