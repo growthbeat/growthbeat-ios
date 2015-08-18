@@ -7,12 +7,11 @@
 //
 
 #import "GMSwipeMessage.h"
-#import "GMPicture.h"
 
 @implementation GMSwipeMessage
 
 @synthesize swipeType;
-@synthesize pictures;
+@synthesize swipeImages;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     
@@ -21,12 +20,8 @@
         if ([dictionary objectForKey:@"swipeType"] && [dictionary objectForKey:@"swipeType"] != [NSNull null]) {
             self.swipeType = GMSwipeMessageTypeFromNSString([dictionary objectForKey:@"swipeType"]);
         }
-        if ([dictionary objectForKey:@"pictures"] && [dictionary objectForKey:@"pictures"] != [NSNull null]) {
-            NSMutableArray *newPictures = [NSMutableArray array];
-            for (NSDictionary *pictureDictionary in [dictionary objectForKey:@"pictures"]) {
-                [newPictures addObject:[GMPicture domainWithDictionary:pictureDictionary]];
-            }
-            self.pictures = newPictures;
+        if ([dictionary objectForKey:@"swipeImages"] && [dictionary objectForKey:@"swipeImages"] != [NSNull null]) {
+            self.swipeImages = [GMSwipeImages domainWithDictionary:[dictionary objectForKey:@"swipeImages"]];
         }
     }
     return self;
@@ -42,8 +37,8 @@
         if ([aDecoder containsValueForKey:@"swipeType"]) {
             self.swipeType = GMSwipeMessageTypeFromNSString([aDecoder decodeObjectForKey:@"swipeType"]);
         }
-        if ([aDecoder containsValueForKey:@"pictures"]) {
-            self.pictures = [aDecoder decodeObjectForKey:@"pictures"];
+        if ([aDecoder containsValueForKey:@"swipeImages"]) {
+            self.swipeImages = [aDecoder decodeObjectForKey:@"swipeImages"];
         }
     }
     return self;
@@ -52,7 +47,7 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
     [aCoder encodeObject:NSStringFromGMSwipeMessageType(swipeType) forKey:@"swipeType"];
-    [aCoder encodeObject:pictures forKey:@"pictures"];
+    [aCoder encodeObject:swipeImages forKey:@"swipeImages"];
 }
 
 @end

@@ -24,6 +24,8 @@
 /* Begin PBXBuildFile section */
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
+		C16DA7A01B82A65B0017ACB9 /* GMSwipeImages.m in Sources */ = {isa = PBXBuildFile; fileRef = C16DA79F1B82A65B0017ACB9 /* GMSwipeImages.m */; };
+		C16DA7A21B82A8050017ACB9 /* GMSwipeImages.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C16DA7A11B82A68C0017ACB9 /* GMSwipeImages.h */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
 		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
 		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
@@ -223,6 +225,7 @@
 				CE0628731B16F216009263FA /* GAClientTag.h in CopyFiles */,
 				CE0628741B16F216009263FA /* GAEventHandler.h in CopyFiles */,
 				CE0628751B16F216009263FA /* GrowthAnalytics.h in CopyFiles */,
+				C16DA7A21B82A8050017ACB9 /* GMSwipeImages.h in CopyFiles */,
 				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +236,8 @@
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
 		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Growthbeat.m; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C16DA79F1B82A65B0017ACB9 /* GMSwipeImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeImages.m; sourceTree = "<group>"; };
+		C16DA7A11B82A68C0017ACB9 /* GMSwipeImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeImages.h; sourceTree = "<group>"; };
 		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
 		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
 		CE0627C91B15B692009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
@@ -343,8 +348,6 @@
 		F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageHandler.h; sourceTree = "<group>"; };
 		F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessage.h; sourceTree = "<group>"; };
 		F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageType.h; sourceTree = "<group>"; };
-		F3E6A8CC1B82544F00633393 /* GMIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMIndicator.h; sourceTree = "<group>"; };
-		F3E6A8CD1B825AF100633393 /* GMPictures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPictures.h; sourceTree = "<group>"; };
 		F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessage.m; sourceTree = "<group>"; };
 		F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRenderer.h; sourceTree = "<group>"; };
 		F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
@@ -490,7 +493,6 @@
 				CE0628101B15B6B8009263FA /* GMImageMessageRenderer.h */,
 				CE0628111B15B6B8009263FA /* GMImageMessageRenderer.m */,
 				CE0628121B15B6B8009263FA /* GMImageMessageRendererDelegate.h */,
-				F3E6A8CC1B82544F00633393 /* GMIndicator.h */,
 				CE0628131B15B6B8009263FA /* GMMessage.h */,
 				CE0628141B15B6B8009263FA /* GMMessage.m */,
 				CE0628151B15B6B8009263FA /* GMMessageHandler.h */,
@@ -500,7 +502,6 @@
 				CE0628191B15B6B8009263FA /* GMPicture.m */,
 				CE06281A1B15B6B8009263FA /* GMPictureExtension.h */,
 				CE06281B1B15B6B8009263FA /* GMPictureExtension.m */,
-				F3E6A8CD1B825AF100633393 /* GMPictures.h */,
 				CE06281C1B15B6B8009263FA /* GMPlainButton.h */,
 				CE06281D1B15B6B8009263FA /* GMPlainButton.m */,
 				CE06281E1B15B6B8009263FA /* GMPlainMessage.h */,
@@ -522,6 +523,8 @@
 				CE0628251B15B6B8009263FA /* GMTask.m */,
 				CE0628261B15B6B8009263FA /* GrowthMessage.h */,
 				CE0628271B15B6B8009263FA /* GrowthMessage.m */,
+				C16DA7A11B82A68C0017ACB9 /* GMSwipeImages.h */,
+				C16DA79F1B82A65B0017ACB9 /* GMSwipeImages.m */,
 			);
 			name = GrowthMessage;
 			path = GrowthMessage/GrowthMessage;
@@ -657,6 +660,7 @@
 				CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */,
 				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
 				CE0628451B16F1B8009263FA /* GMImageMessageHandler.m in Sources */,
+				C16DA7A01B82A65B0017ACB9 /* GMSwipeImages.m in Sources */,
 				CE0628701B16F1EC009263FA /* GAEventHandler.m in Sources */,
 				CE06285E1B16F1E2009263FA /* GBIntent.m in Sources */,
 				CE06286E1B16F1EC009263FA /* GAClientEvent.m in Sources */,

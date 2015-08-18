@@ -163,7 +163,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
     scrollView.userInteractionEnabled = YES;
-    [scrollView setContentSize:CGSizeMake(([swipeMessage.pictures count] * rect.size.width), rect.size.height)];
+    [scrollView setContentSize:CGSizeMake(([swipeMessage.swipeImages.pictures count] * rect.size.width), rect.size.height)];
     
     [view addSubview:scrollView];
     
@@ -190,9 +190,9 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     }
     
     CGFloat scale = [[UIScreen mainScreen] scale];
-    for (int i = 0; i < [swipeMessage.pictures count]; i++) {
+    for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
         
-        GMPicture *picture = [swipeMessage.pictures objectAtIndex:i];
+        GMPicture *picture = [swipeMessage.swipeImages.pictures objectAtIndex:i];
         
         CGFloat pictureWidthDp = picture.width / scale;
         CGFloat pictureHeightDp = picture.height / scale;
@@ -248,7 +248,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
             break;
         }
         case GMSwipeMessageTypeButtons:
-            for (int i = 0; i < [swipeMessage.pictures count]; i++) {
+            for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
                 
                 GMImageButton *imageButton = [imageButtons objectAtIndex:i];
                 
@@ -329,7 +329,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
-    pageControl.numberOfPages = [swipeMessage.pictures count];
+    pageControl.numberOfPages = [swipeMessage.swipeImages.pictures count];
     pageControl.currentPage = 0;
     pageControl.userInteractionEnabled = NO;
     [view addSubview:pageControl];
@@ -340,8 +340,8 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     
     NSMutableArray *urlStrings = [NSMutableArray array];
     
-    for (int i = 0; i < [swipeMessage.pictures count]; i++) {
-        GMPicture *picture = [swipeMessage.pictures objectAtIndex:i];
+    for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
+        GMPicture *picture = [swipeMessage.swipeImages.pictures objectAtIndex:i];
         if (picture.url) {
             [urlStrings addObject:picture.url];
         }

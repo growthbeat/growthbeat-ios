@@ -8,15 +8,16 @@
 
 #import "GMMessage.h"
 #import "GMSwipeMessageType.h"
+#import "GMSwipeImages.h"
 
 @interface GMSwipeMessage : GMMessage {
     
     GMSwipeMessageType swipeType;
-    NSArray *pictures;
+    GMSwipeImages *swipeImages;
     
 }
 
 @property (nonatomic, assign) GMSwipeMessageType swipeType;
-@property (nonatomic, strong) NSArray *pictures;
+@property (nonatomic, strong) GMSwipeImages *swipeImages;
 
 @end
