@@ -12,6 +12,7 @@
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kDefaultSynchronizationUrl = @"http://gbt.io/l/synchronize";
+static NSString *const kFingerprintUrl = @"http://gbt.io/1/synchronize/fingerprint";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
@@ -138,10 +139,11 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     webView = [[UIWebView alloc] initWithFrame:window.frame];
     webView.delegate = self;
     webView.hidden = NO;
-    NSString *html = @"<html><body>hoge<script>var elementCanvas = document.createElement('canvas');function browserSupportsWebGL(canvas) {var context = null;var names = [\"webgl\", \"experimental-webgl\", \"webkit-3d\", \"moz-webgl\"];for (var i = 0; i < names.length; ++i) {try {context = canvas.getContext(names[i]);    } catch(e) {    }    if (context) {break;}}return context != null;}function browserSupportCanvas(canvas) {try {    return !!(canvas.getContext && canvas.getContext('2d'));} catch(e) {    return false;}}function canvasContent(canvas) {var ctx = canvas.getContext('2d');var txt = 'example_canvas';ctx.textBaseline = \"top\";ctx.font = \"14px 'Arial'\";ctx.textBaseline = \"alphabetic\";ctx.fillStyle = \"#f60\";ctx.fillRect(125,1,62,20);ctx.fillStyle = \"#069\";ctx.fillText(txt, 2, 15);ctx.fillStyle = \"rgba(102, 204, 0, 0.7)\";ctx.fillText(txt, 4, 17);return canvas.toDataURL();}var plugins = [];for(var i=0;i < navigator.plugins.length;i++){plugins.push(navigator.plugins[i].name);}var mimeTypes = [];for(var i=0;i<navigator.mimeTypes.length;i++){ mimeTypes.push(navigator.mimeTypes[i].description);}window.onload = function(){var fingerprint_parameters = {userAgent: navigator.userAgent,language: navigator.language || navigator.userLanguage,platform: navigator.platform,appName: navigator.appName,appVersion: navigator.appVersion,cookieSupport: navigator.cookieEnabled,javaSupport: navigator.javaEnabled(),vendor: navigator.vendor,product: navigator.product,maxTouchPoints: navigator.maxTouchPoints,appCodeName: navigator.appCodeName,currentResolution: window.screen.width + 'x' + window.screen.height,colorDepth: window.screen.colorDepth,timeZone: new Date().getTimezoneOffset(),hasSessionStorage: !!window.sessionStorage,hasLocalStorage: !!window.localStorage,hasIndexedDB: !!window.indexedDB,plugins: plugins.toString(),encoding: document.characterSet,canvasSupport: browserSupportCanvas(elementCanvas),webgl: browserSupportsWebGL(elementCanvas),mineTypes: mimeTypes.toString(),canvasContent: canvasContent(elementCanvas).toString(),clientWidthHeight: document.documentElement.clientWidth + 'x' + document.documentElement.clientHeight};location.href = 'native://js?fingerprint_parameters=' + JSON.stringify(fingerprint_parameters) + '&useragent=' + navigator.userAgent + '&client_width_height=' + document.documentElement.clientWidth + 'x' + document.documentElement.clientHeight }</script></body></html>";
     [webView loadHTMLString:html baseURL:[[NSBundle mainBundle] resourceURL]];
     [window addSubview:webView];
-   
+    NSURL *websiteUrl = [NSURL URLWithString:kFingerprintUrl];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    [webView loadRequest:urlRequest];
 
     [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
 }
