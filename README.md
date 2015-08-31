@@ -4,6 +4,8 @@
 
 ## Usage
 
+### Growthbeat
+
 1. Add Growthbeat.framework into your project. 
 
 1. Link SystemConfiguration.framework and AdSupport.framework. 
@@ -32,45 +34,62 @@
 	[[Growthbeat sharedInstance] stop];
 	```
 
-1. Write following code in the place to track custom event with Growth Analytics or display a message with Growth Message.
+### Growth Analytics
+
+1. Write following code in the place to track custom event with Growth Analytics.
 
 	```objc
-    [[GrowthAnalytics sharedInstance] track:@"EVENT_NAME"];
+	[[GrowthAnalytics sharedInstance] track:@"EVENT_NAME"];
+	```
+
+### Growth Message
+
+1. Write following code in the place to display a message with Growth Message. (The same code with Growth Analytics)
+
+	```objc
+	[[GrowthAnalytics sharedInstance] track:@"EVENT_NAME"];
+	```
+
+### Growth Push
+
+1. Call requestDeviceToken to get apns device token and send it to server.
+
+	```objc
+    [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+	```
+
+1. Write following code to handle url in UIApplicationDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:. 
+
+	```objc
+	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+	```
+
+### Growth Link
+
+1. Add GrowthLink.framework into your project. 
+
+1. Write initialization code.
+
+	```objc
+	[[GrowthLink sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
+	```
+
+1. Write following code to handle url in UIApplicationDelegate's application:openURL:sourceApplication:annotation:. 
+
+	```objc
+	[[GrowthLink sharedInstance] handleOpenUrl:url];
 	```
 
 ## Included SDKs
 
 Growthbeat is growth hack platform for mobile apps. This repository includes Growthbeat Core SDK, Growth Push SDK and Growth Replay SDK.
 
-### Growthbeat Core
-
-Growthbeat Core SDK is core functions for Growthbeat integrated services.
-
-* [Growthbeat Core SDK for iOS](https://github.com/SIROK/growthbeat-core-ios/)
-
-### Growth Analytics
-
-[Growth Analytics](https://analytics.growthbeat.com/) is analytics service for mobile apps.
-
-* [Growth Analytics SDK for iOS](https://github.com/SIROK/growthanalytics-ios)
-
-### Growth Message
-
-[Growth Message](https://message.growthbeat.com/) is in-app message tool for mobile apps.
-
-* [Growth Message SDK for iOS](https://github.com/SIROK/growthmessage-ios)
-
-### Growth Push (Under development)
-
-[Growth Push](https://growthpush.com/) is push notification and analysis platform for mobile apps.
-
-* [Growth Push SDK for iOS](https://github.com/SIROK/growthpush-ios)
-
-### Growth Replay (Under development)
-
-[Growth Replay](https://growthreplay.com/) is usability testing tool for mobile apps.
-
-* [Growth Replay SDK for iOS](https://github.com/SIROK/growthreplay-ios)
+* Growthbeat Core - core functions for Growthbeat integrated services.
+* Growth Analytics - analytics service for mobile apps.
+* Growth Message - in-app message tool for mobile apps.
+* Growth Push - push notification and analysis platform for mobile apps.
+* Growth Link (Pre-release) - deep linking tool.
+* Growth Replay (Under development) - usability testing tool for mobile apps.
 
 # Building framework
 

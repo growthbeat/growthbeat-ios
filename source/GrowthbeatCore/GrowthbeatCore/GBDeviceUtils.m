@@ -9,6 +9,7 @@
 #import "GBDeviceUtils.h"
 #import <UIKit/UIKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+#import <AdSupport/AdSupport.h>
 #import <mach/mach.h>
 #import <netinet/in.h>
 #include <sys/types.h>
@@ -167,6 +168,24 @@
 
     return platform;
 
+}
+
++ (NSString *) getAdvertisingId {
+    
+    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
+    
+    if (![identifierManager isAdvertisingTrackingEnabled])
+        return nil;
+    
+    return identifierManager.advertisingIdentifier.UUIDString;
+
+}
+
++ (BOOL) getTrackingEnabled {
+    
+    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
+    return [identifierManager isAdvertisingTrackingEnabled];
+    
 }
 
 @end

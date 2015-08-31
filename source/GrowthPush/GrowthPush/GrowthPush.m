@@ -10,26 +10,21 @@
 #import "GrowthPush.h"
 #import "GPClient.h"
 #import "GrowthAnalytics.h"
+#import "GPTag.h"
+#import "GPEvent.h"
+#import "GBDeviceUtils.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthpush.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthpush-preferences";
-static NSString *const kGPPreferenceClientKey = @"client";
+static NSString *const kGPPreferenceClientKey = @"growthpush-client";
 static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 @interface GrowthPush () {
-
-    GBLogger *logger;
-    GBHttpClient *httpClient;
-    GBPreference *preference;
     
-    NSString *applicationId;
-    NSString *growthbeatClientId;
-    NSString *credentialId;
     GPEnvironment environment;
-    BOOL debug;
     NSString *token;
     GBClient *growthbeatClient;
     GPClient *client;
@@ -37,14 +32,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
-@property (nonatomic, strong) GBLogger *logger;
-@property (nonatomic, strong) GBHttpClient *httpClient;
-@property (nonatomic, strong) GBPreference *preference;
-
-@property (nonatomic, strong) NSString *applicationId;
-@property (nonatomic, strong) NSString *credentialId;
 @property (nonatomic, assign) GPEnvironment environment;
-@property (nonatomic, assign) BOOL debug;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) GBClient *growthbeatClient;
 @property (nonatomic, strong) GPClient *client;
@@ -58,10 +46,8 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 @synthesize httpClient;
 @synthesize preference;
 
-@synthesize applicationId;
 @synthesize credentialId;
 @synthesize environment;
-@synthesize debug;
 @synthesize token;
 @synthesize growthbeatClient;
 @synthesize client;
@@ -85,30 +71,33 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
+        self.environment = GPEnvironmentUnknown;
     }
     return self;
 }
 
-- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment {
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId {
     
-    self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
-    self.environment = newEnvironment;
+    self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+    self.client = [self loadClient];
     
-    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
+    [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
+    
+    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:self.credentialId];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
-        self.client = [self loadClient];
-        if (self.client && self.client.growthbeatClientId && ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
+        if (self.client && self.client.growthbeatClientId &&
+            ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
             [self clearClient];
         }
-        [self requestDeviceToken];
     });
 
 }
 
-- (void) requestDeviceToken {
+- (void) requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment {
+    
+    self.environment = newEnvironment;
     
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
@@ -135,8 +124,13 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) registerClient {
+    
+    if (self.environment == GPEnvironmentUnknown) {
+        [self.logger info:@"Environment is not specified. Client has not registred."];
+        return;
+    }
 
-    if (registeringClient) {
+    if (self.registeringClient) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
                 [self registerClient];
             });
@@ -144,16 +138,15 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     }
     self.registeringClient = YES;
 
-    if (!client) {
+    if (!self.client) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             
-            [logger info:@"Registering client... (applicationId: %d, environment: %@)", applicationId, NSStringFromGPEnvironment(environment)];
+            [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
             
-            GPClient *createdClient = [GPClient createWithClientId:growthbeatClient.id credentialId:credentialId token:token environment:environment];
+            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
             if(createdClient) {
-                [logger info:@"Registering client success. (clientId: %lld)", createdClient.id];
-                [logger info:@"See https://growthpush.com/applications/%d/clients to check the client registration.", applicationId];
+                [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
                 self.client = createdClient;
                 [self saveClient:client];
             }
@@ -166,18 +159,18 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         
     }
 
-    if ((token != client.token && ![token isEqualToString:client.token]) || environment != client.environment) {
-        
+    if ((self.token != self.client.token &&
+         ![self.token isEqualToString:self.client.token]) || self.environment != self.client.environment) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             
-            [logger info:@"Update client... (id: %d, token: %@, environment: %@)", applicationId, token, NSStringFromGPEnvironment(environment)];
+            [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
             
-            GPClient *updatedClient = [GPClient updateWithClientId:growthbeatClient.id credentialId:credentialId token:token environment:environment];
+            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
             if(updatedClient) {
-                [logger info:@"Updating client success. (clientId: %lld)", updatedClient.id];
+                [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
                 self.client = updatedClient;
-                [self saveClient:client];
+                [self saveClient:self.client];
             }
             
             self.registeringClient = NO;
@@ -188,19 +181,19 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         
     }
 
-    [logger info:@"Client already registered."];
+    [self.logger info:@"Client already registered."];
 
 }
 
 - (GPClient *) loadClient {
     
-    return [preference objectForKey:kGPPreferenceClientKey];
+    return [self.preference objectForKey:kGPPreferenceClientKey];
 
 }
 
 - (void) saveClient:(GPClient *)newClient {
 
-    [preference setObject:newClient forKey:kGPPreferenceClientKey];
+    [self.preference setObject:newClient forKey:kGPPreferenceClientKey];
 
 }
 
@@ -221,6 +214,92 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
     return [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]), ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]), ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
 
+}
+
+- (void) setTag:(NSString *)name {
+    [self setTag:name value:nil];
+}
+
+- (void) setTag:(NSString *)name value:(NSString *)value {
+ 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
+        
+        GPTag *existingTag = [GPTag load:name];
+        if (existingTag) {
+            if (value && [value isEqualToString:existingTag.value]) {
+                [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
+                return;
+            }
+            [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
+        }
+        
+        [self waitClient];
+        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        
+        if (tag) {
+            [GPTag save:tag name:name];
+            [self.logger info:@"Setting tag success. (name: %@)", name];
+        }
+        
+    });
+    
+}
+
+- (void) trackEvent:(NSString *)name {
+    [self trackEvent:name value:nil];
+}
+
+- (void) trackEvent:(NSString *)name value:(NSString *)value {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
+        
+        [self waitClient];
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        
+        if (event) {
+            [self.logger info:@"Setting event success. (name: %@)", name];
+        }
+        
+    });
+    
+}
+
+- (void) setDeviceTags {
+    
+    if ([GBDeviceUtils model]) {
+        [self setTag:@"Device" value:[GBDeviceUtils model]];
+    }
+    if ([GBDeviceUtils os]) {
+        [self setTag:@"OS" value:[GBDeviceUtils os]];
+    }
+    if ([GBDeviceUtils language]) {
+        [self setTag:@"Language" value:[GBDeviceUtils language]];
+    }
+    if ([GBDeviceUtils timeZone]) {
+        [self setTag:@"Time Zone" value:[GBDeviceUtils timeZone]];
+    }
+    if ([GBDeviceUtils version]) {
+        [self setTag:@"Version" value:[GBDeviceUtils version]];
+    }
+    if ([GBDeviceUtils build]) {
+        [self setTag:@"Build" value:[GBDeviceUtils build]];
+    }
+
+}
+
+- (GPClient *) waitClient {
+    
+    while (true) {
+        if (self.client != nil) {
+            return self.client;
+        }
+        usleep(100 * 1000);
+    }
+    
 }
 
 @end

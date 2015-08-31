@@ -9,7 +9,6 @@
 #import "GrowthAnalytics.h"
 #import "GAClientEvent.h"
 #import "GAClientTag.h"
-#import <AdSupport/AdSupport.h>
 
 #define ARC4RANDOM_MAX (0x100000000)
 
@@ -24,25 +23,11 @@ static NSString *const kGACustomNamespace = @"Custom";
 
 @interface GrowthAnalytics () {
 
-    GBLogger *logger;
-    GBHttpClient *httpClient;
-    GBPreference *preference;
-
-    NSString *applicationId;
-    NSString *credentialId;
-
     BOOL initialized;
     NSDate *openTime;
     NSMutableArray *eventHandlers;
 
 }
-
-@property (nonatomic, strong) GBLogger *logger;
-@property (nonatomic, strong) GBHttpClient *httpClient;
-@property (nonatomic, strong) GBPreference *preference;
-
-@property (nonatomic, strong) NSString *applicationId;
-@property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, strong) NSDate *openTime;
@@ -122,12 +107,12 @@ static NSString *const kGACustomNamespace = @"Custom";
     [self track:kGACustomNamespace name:name properties:properties option:option completion:nil];
 }
 
-- (void) track:(NSString *)namespace name:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option completion:(void (^)(GAClientEvent *clientEvent))completion {
+- (void) track:(NSString *)_namespace name:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option completion:(void (^)(GAClientEvent *clientEvent))completion {
 
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-        NSString *eventId = [self generateEventIdWithNamespace:namespace name:name];
+        NSString *eventId = [self generateEventIdWithNamespace:_namespace name:name];
         [logger info:@"Track event... (eventId: %@)", eventId];
 
         NSMutableDictionary *processedProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
@@ -181,11 +166,11 @@ static NSString *const kGACustomNamespace = @"Custom";
     [self tag:kGACustomNamespace name:name value:value completion:nil];
 }
 
-- (void) tag:(NSString *)namespace name:(NSString *)name value:(NSString *)value completion:(void (^)(GAClientTag *clientTag))completion {
+- (void) tag:(NSString *)_namespace name:(NSString *)name value:(NSString *)value completion:(void (^)(GAClientTag *clientTag))completion {
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-        NSString *tagId = [self generateTagIdWithNamespace:namespace name:name];
+        NSString *tagId = [self generateTagIdWithNamespace:_namespace name:name];
 
         [logger info:@"Set tag... (tagId: %@, value: %@)", tagId, value];
 
@@ -324,18 +309,16 @@ static NSString *const kGACustomNamespace = @"Custom";
     [self tag:kGADefaultNamespace name:@"Random" value:[NSString stringWithFormat:@"%lf", random] completion:nil];
 }
 
-- (void) setAdvertisingId {
-    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
+- (void) setUUID:(NSString *)uuid {
+    [self tag:kGADefaultNamespace name:@"UUID" value:uuid completion:nil];
+}
 
-    if ([identifierManager isAdvertisingTrackingEnabled]) {
-        [self tag:kGADefaultNamespace name:@"AdvertisingID" value:identifierManager.advertisingIdentifier.UUIDString completion:nil];
-    }
+- (void) setAdvertisingId {
+    [self tag:kGADefaultNamespace name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId] completion:nil];
 }
 
 - (void) setTrackingEnabled {
-    ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
-
-    [self tag:kGADefaultNamespace name:@"TrackingEnabled" value:[identifierManager isAdvertisingTrackingEnabled] ? @"true" : @"false" completion:nil];
+    [self tag:kGADefaultNamespace name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false" completion:nil];
 }
 
 - (void) setBasicTags {

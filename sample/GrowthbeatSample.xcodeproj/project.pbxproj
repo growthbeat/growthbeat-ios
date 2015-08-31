@@ -19,6 +19,7 @@
 		B2421F131997954800E91C23 /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421F121997954800E91C23 /* Growthbeat.framework */; };
 		B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25341811997B301004C8EDB /* SystemConfiguration.framework */; };
 		B2942C061AD45075005D6D3A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2942C051AD45075005D6D3A /* AdSupport.framework */; };
+		B2E663511B578D4500C948D3 /* GrowthLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E663501B578D4500C948D3 /* GrowthLink.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		B2421F121997954800E91C23 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../Growthbeat.framework; sourceTree = "<group>"; };
 		B25341811997B301004C8EDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B2942C051AD45075005D6D3A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		B2E663501B578D4500C948D3 /* GrowthLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GrowthLink.framework; path = ../source/GrowthLink/GrowthLink.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 				B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */,
 				B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */,
 				B2421EE21997952D00E91C23 /* UIKit.framework in Frameworks */,
+				B2E663511B578D4500C948D3 /* GrowthLink.framework in Frameworks */,
 				B2421EDE1997952D00E91C23 /* Foundation.framework in Frameworks */,
 				B2421F131997954800E91C23 /* Growthbeat.framework in Frameworks */,
 			);
@@ -79,10 +82,11 @@
 			isa = PBXGroup;
 			children = (
 				B2942C051AD45075005D6D3A /* AdSupport.framework */,
-				B25341811997B301004C8EDB /* SystemConfiguration.framework */,
-				B2421F121997954800E91C23 /* Growthbeat.framework */,
-				B2421EDD1997952D00E91C23 /* Foundation.framework */,
 				B2421EDF1997952D00E91C23 /* CoreGraphics.framework */,
+				B2421EDD1997952D00E91C23 /* Foundation.framework */,
+				B2421F121997954800E91C23 /* Growthbeat.framework */,
+				B2E663501B578D4500C948D3 /* GrowthLink.framework */,
+				B25341811997B301004C8EDB /* SystemConfiguration.framework */,
 				B2421EE11997952D00E91C23 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -283,13 +287,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
+					"$(SRCROOT)/../source/GrowthLink",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowthbeatSample/GrowthbeatSample-Prefix.pch";
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "36966606-1c7a-4ac3-b0f4-94278d1a789e";
 				WRAPPER_EXTENSION = app;
@@ -301,13 +308,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
+					"$(SRCROOT)/../source/GrowthLink",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowthbeatSample/GrowthbeatSample-Prefix.pch";
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "36966606-1c7a-4ac3-b0f4-94278d1a789e";
 				WRAPPER_EXTENSION = app;
