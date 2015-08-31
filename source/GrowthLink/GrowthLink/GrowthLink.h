@@ -10,12 +10,13 @@
 #import <Growthbeat/GrowthbeatCore.h>
 #import "GLSynchronization.h"
 
-@interface GrowthLink : NSObject {
+@interface GrowthLink : NSObject <UIWebViewDelegate>{
     
     NSString *applicationId;
     NSString *credentialId;
     
     NSString *synchronizationUrl;
+    NSString *fingerprintUrl;
     void (^synchronizationCallback)(GLSynchronization *) ;
     
 }
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, strong) NSString *synchronizationUrl;
+@property (nonatomic, strong) NSString *fingerprintUrl;
 @property (nonatomic, copy) void (^synchronizationCallback)(GLSynchronization *);
 
 + (instancetype)sharedInstance;

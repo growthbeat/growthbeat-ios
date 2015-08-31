@@ -13,13 +13,12 @@
 
 @implementation GLSynchronization
 
-@synthesize scheme;
 @synthesize browser;
 @synthesize clickId;
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId {
++ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId fingerprintParameters:(NSString *)fingerprintParameters {
 
     NSString *path = @"/1/synchronize";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
@@ -33,6 +32,9 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (fingerprintParameters) {
+        [body setObject:fingerprintParameters forKey:@"fingerprintParameters"];
     }
     
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
@@ -57,9 +59,6 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     
     self = [super init];
     if (self) {
-        if ([dictionary objectForKey:@"scheme"] && [dictionary objectForKey:@"scheme"] != [NSNull null]) {
-            self.scheme = [dictionary objectForKey:@"scheme"];
-        }
         if ([dictionary objectForKey:@"browser"] && [dictionary objectForKey:@"browser"] != [NSNull null]) {
             self.browser = [[dictionary objectForKey:@"browser"] boolValue];
         }
@@ -77,9 +76,6 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        if ([aDecoder containsValueForKey:@"scheme"]) {
-            self.scheme = [aDecoder decodeObjectForKey:@"scheme"];
-        }
         if ([aDecoder containsValueForKey:@"browser"]) {
             self.browser = [aDecoder decodeBoolForKey:@"browser"];
         }
@@ -91,7 +87,6 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:scheme forKey:@"scheme"];
     [aCoder encodeBool:browser forKey:@"browser"];
     [aCoder encodeObject:clickId forKey:@"clickId"];
 }
