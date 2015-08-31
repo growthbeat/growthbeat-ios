@@ -12,7 +12,7 @@
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kDefaultSynchronizationUrl = @"http://gbt.io/l/synchronize";
-static NSString *const kFingerprintUrl = @"http://gbt.io/1/synchronize/fingerprint";
+static NSString *const kDefaultFingerprintUrl = @"http://gbt.io/l/fingerprint";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
@@ -51,9 +51,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     UIWebView *webView;
     NSString *fingerprintParameters;
     NSString *userAgent;
-    NSString *clientWidthHeight;
 
     BOOL initialized;
+    BOOL fingerPrintSuccess;
     BOOL isFirstSession;
     
 }
@@ -64,12 +64,14 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;
+@property (nonatomic, assign) BOOL fingerPrintSuccess;
 
 @end
 
 @implementation GrowthLink
 
 @synthesize synchronizationUrl;
+@synthesize fingerprintUrl;
 
 @synthesize logger;
 @synthesize httpClient;
@@ -80,6 +82,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @synthesize initialized;
 @synthesize isFirstSession;
+@synthesize fingerPrintSuccess;
 
 @synthesize synchronizationCallback;
 
@@ -99,11 +102,13 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     self = [super init];
     if (self) {
         self.synchronizationUrl = kDefaultSynchronizationUrl;
+        self.fingerprintUrl = kDefaultFingerprintUrl;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
         self.isFirstSession = NO;
+        self.fingerPrintSuccess = NO;
         self.synchronizationCallback = ^(GLSynchronization *synchronization) {
             if(!synchronization.browser){
                 return;
@@ -132,7 +137,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     [self getFingerPrint:window];
-    [self synchronize];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (!fingerPrintSuccess) {
+            [self synchronize];
+        }
+    });
 }
 
 - (void) getFingerPrint: (UIWindow *)window {
@@ -141,7 +151,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     webView.hidden = NO;
     [webView loadHTMLString:html baseURL:[[NSBundle mainBundle] resourceURL]];
     [window addSubview:webView];
-    NSURL *websiteUrl = [NSURL URLWithString:kFingerprintUrl];
+    NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [webView loadRequest:urlRequest];
 
@@ -155,10 +165,13 @@ request navigationType:(UIWebViewNavigationType)navigationType
     if ([ request.URL.scheme isEqualToString:@"native" ]) {
         if ([request.URL.host isEqualToString:@"js"]) {
             NSDictionary *dict = request.URL.dictionaryFromQueryString;
-            fingerprintParameters = [dict valueForKey:@"fingerprint_parameters"];
-            userAgent = [dict valueForKey:@"useragent"];
-            clientWidthHeight = [dict valueForKey:@"client_width_height"];
+            fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
+            userAgent = [dict valueForKey:@"userAgent"];
+            fingerPrintSuccess = YES;
             [webView removeFromSuperview];
+            if (!isFirstSession) {
+                [self synchronize];
+            }
         }
         return NO;
     }
@@ -242,7 +255,7 @@ request navigationType:(UIWebViewNavigationType)navigationType
         
         [logger info:@"Synchronizing..."];
         
-        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId userAgent:userAgent clientWidthHeight:clientWidthHeight fingerprintParameters:fingerprintParameters];
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId userAgent:userAgent fingerprintParameters:fingerprintParameters];
         if (!synchronization) {
             [logger error:@"Failed to Synchronize."];
             return;
@@ -250,6 +263,12 @@ request navigationType:(UIWebViewNavigationType)navigationType
         
         [GLSynchronization save:synchronization];
         [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];
+        
+        if (!synchronization.browser && synchronization.clickId) {
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@",synchronization.clickId ]];
+            [self handleOpenUrl:url];
+                          
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             if(synchronizationCallback) {
                 synchronizationCallback(synchronization);
