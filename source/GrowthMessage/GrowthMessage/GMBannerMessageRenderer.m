@@ -174,6 +174,8 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
+    float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    
     CGFloat left = (window.frame.size.width - size.width) / 2;
     CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height);
     CGAffineTransform transform = CGAffineTransformMakeRotation(0);
@@ -200,7 +202,7 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
         }
     }
     
-    baseView.frame = CGRectMake(left, top, size.width, size.height);
+    baseView.frame = CGRectMake(left, top + statusHeight, size.width, size.height);
     baseView.transform = transform;
     
 }
