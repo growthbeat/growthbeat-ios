@@ -50,7 +50,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBPreference *preference;
     UIWebView *webView;
     NSString *fingerprintParameters;
-    NSString *userAgent;
 
     BOOL initialized;
     BOOL fingerPrintSuccess;
@@ -149,7 +148,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     webView = [[UIWebView alloc] initWithFrame:window.frame];
     webView.delegate = self;
     webView.hidden = NO;
-    [webView loadHTMLString:html baseURL:[[NSBundle mainBundle] resourceURL]];
     [window addSubview:webView];
     NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
@@ -166,7 +164,6 @@ request navigationType:(UIWebViewNavigationType)navigationType
         if ([request.URL.host isEqualToString:@"js"]) {
             NSDictionary *dict = request.URL.dictionaryFromQueryString;
             fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
-            userAgent = [dict valueForKey:@"userAgent"];
             fingerPrintSuccess = YES;
             [webView removeFromSuperview];
             if (!isFirstSession) {
@@ -255,7 +252,7 @@ request navigationType:(UIWebViewNavigationType)navigationType
         
         [logger info:@"Synchronizing..."];
         
-        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId userAgent:userAgent fingerprintParameters:fingerprintParameters];
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId fingerprintParameters:fingerprintParameters];
         if (!synchronization) {
             [logger error:@"Failed to Synchronize."];
             return;
