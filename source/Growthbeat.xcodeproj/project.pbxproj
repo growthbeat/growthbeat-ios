@@ -22,6 +22,37 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		93E6632E1B985A850059F4F6 /* GMAnimationType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC82B1B94322800E58D80 /* GMAnimationType.h */; };
+		93E6632F1B985A850059F4F6 /* GMBannerMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC82D1B94322800E58D80 /* GMBannerMessage.h */; };
+		93E663301B985A850059F4F6 /* GMBannerMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC82F1B94322800E58D80 /* GMBannerMessageHandler.h */; };
+		93E663311B985A850059F4F6 /* GMBannerMessagePosition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8311B94322800E58D80 /* GMBannerMessagePosition.h */; };
+		93E663321B985A850059F4F6 /* GMBannerMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8331B94322800E58D80 /* GMBannerMessageRenderer.h */; };
+		93E663331B985A850059F4F6 /* GMBannerMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8351B94322800E58D80 /* GMBannerMessageType.h */; };
+		93E663341B985A850059F4F6 /* GMButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8371B94322800E58D80 /* GMButton.h */; };
+		93E663351B985A850059F4F6 /* GMButtonType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8391B94322800E58D80 /* GMButtonType.h */; };
+		93E663361B985A850059F4F6 /* GMCloseButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC83B1B94322800E58D80 /* GMCloseButton.h */; };
+		93E663371B985A850059F4F6 /* GMImageButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC83D1B94322800E58D80 /* GMImageButton.h */; };
+		93E663381B985A850059F4F6 /* GMImageMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC83F1B94322800E58D80 /* GMImageMessage.h */; };
+		93E663391B985A850059F4F6 /* GMImageMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8411B94322800E58D80 /* GMImageMessageHandler.h */; };
+		93E6633A1B985A850059F4F6 /* GMImageMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8431B94322800E58D80 /* GMImageMessageRenderer.h */; };
+		93E6633B1B985A850059F4F6 /* GMMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8451B94322800E58D80 /* GMMessage.h */; };
+		93E6633C1B985A850059F4F6 /* GMMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8471B94322800E58D80 /* GMMessageHandler.h */; };
+		93E6633D1B985A850059F4F6 /* GMMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8481B94322800E58D80 /* GMMessageRendererDelegate.h */; };
+		93E6633E1B985A850059F4F6 /* GMMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8491B94322800E58D80 /* GMMessageType.h */; };
+		93E6633F1B985A850059F4F6 /* GMPicture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC84B1B94322800E58D80 /* GMPicture.h */; };
+		93E663401B985A850059F4F6 /* GMPictureExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC84D1B94322800E58D80 /* GMPictureExtension.h */; };
+		93E663411B985A850059F4F6 /* GMPlainButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC84F1B94322800E58D80 /* GMPlainButton.h */; };
+		93E663421B985A850059F4F6 /* GMPlainMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8511B94322800E58D80 /* GMPlainMessage.h */; };
+		93E663431B985A850059F4F6 /* GMPlainMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8531B94322800E58D80 /* GMPlainMessageHandler.h */; };
+		93E663441B985A850059F4F6 /* GMScreenButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8551B94322800E58D80 /* GMScreenButton.h */; };
+		93E663451B985A850059F4F6 /* GMSwipeImages.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8571B94322800E58D80 /* GMSwipeImages.h */; };
+		93E663461B985A850059F4F6 /* GMSwipeMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8591B94322800E58D80 /* GMSwipeMessage.h */; };
+		93E663471B985A850059F4F6 /* GMSwipeMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC85B1B94322800E58D80 /* GMSwipeMessageHandler.h */; };
+		93E663481B985A850059F4F6 /* GMSwipeMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC85D1B94322800E58D80 /* GMSwipeMessageRenderer.h */; };
+		93E663491B985A850059F4F6 /* GMSwipeMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC85F1B94322800E58D80 /* GMSwipeMessageRendererDelegate.h */; };
+		93E6634A1B985A850059F4F6 /* GMSwipeMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8601B94322800E58D80 /* GMSwipeMessageType.h */; };
+		93E6634B1B985A850059F4F6 /* GMTask.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8621B94322800E58D80 /* GMTask.h */; };
+		93E6634C1B985A850059F4F6 /* GrowthMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8641B94322800E58D80 /* GrowthMessage.h */; };
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		C14EC8661B94322800E58D80 /* GMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = C14EC82C1B94322800E58D80 /* GMAnimationType.m */; };
@@ -142,6 +173,37 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				93E6632E1B985A850059F4F6 /* GMAnimationType.h in CopyFiles */,
+				93E6632F1B985A850059F4F6 /* GMBannerMessage.h in CopyFiles */,
+				93E663301B985A850059F4F6 /* GMBannerMessageHandler.h in CopyFiles */,
+				93E663311B985A850059F4F6 /* GMBannerMessagePosition.h in CopyFiles */,
+				93E663321B985A850059F4F6 /* GMBannerMessageRenderer.h in CopyFiles */,
+				93E663331B985A850059F4F6 /* GMBannerMessageType.h in CopyFiles */,
+				93E663341B985A850059F4F6 /* GMButton.h in CopyFiles */,
+				93E663351B985A850059F4F6 /* GMButtonType.h in CopyFiles */,
+				93E663361B985A850059F4F6 /* GMCloseButton.h in CopyFiles */,
+				93E663371B985A850059F4F6 /* GMImageButton.h in CopyFiles */,
+				93E663381B985A850059F4F6 /* GMImageMessage.h in CopyFiles */,
+				93E663391B985A850059F4F6 /* GMImageMessageHandler.h in CopyFiles */,
+				93E6633A1B985A850059F4F6 /* GMImageMessageRenderer.h in CopyFiles */,
+				93E6633B1B985A850059F4F6 /* GMMessage.h in CopyFiles */,
+				93E6633C1B985A850059F4F6 /* GMMessageHandler.h in CopyFiles */,
+				93E6633D1B985A850059F4F6 /* GMMessageRendererDelegate.h in CopyFiles */,
+				93E6633E1B985A850059F4F6 /* GMMessageType.h in CopyFiles */,
+				93E6633F1B985A850059F4F6 /* GMPicture.h in CopyFiles */,
+				93E663401B985A850059F4F6 /* GMPictureExtension.h in CopyFiles */,
+				93E663411B985A850059F4F6 /* GMPlainButton.h in CopyFiles */,
+				93E663421B985A850059F4F6 /* GMPlainMessage.h in CopyFiles */,
+				93E663431B985A850059F4F6 /* GMPlainMessageHandler.h in CopyFiles */,
+				93E663441B985A850059F4F6 /* GMScreenButton.h in CopyFiles */,
+				93E663451B985A850059F4F6 /* GMSwipeImages.h in CopyFiles */,
+				93E663461B985A850059F4F6 /* GMSwipeMessage.h in CopyFiles */,
+				93E663471B985A850059F4F6 /* GMSwipeMessageHandler.h in CopyFiles */,
+				93E663481B985A850059F4F6 /* GMSwipeMessageRenderer.h in CopyFiles */,
+				93E663491B985A850059F4F6 /* GMSwipeMessageRendererDelegate.h in CopyFiles */,
+				93E6634A1B985A850059F4F6 /* GMSwipeMessageType.h in CopyFiles */,
+				93E6634B1B985A850059F4F6 /* GMTask.h in CopyFiles */,
+				93E6634C1B985A850059F4F6 /* GrowthMessage.h in CopyFiles */,
 				CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */,
 				CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
