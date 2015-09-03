@@ -10,7 +10,7 @@
 #import <Growthbeat/GrowthbeatCore.h>
 #import "GLSynchronization.h"
 
-@interface GrowthLink : NSObject <UIWebViewDelegate>{
+@interface GrowthLink : NSObject {
     
     NSString *applicationId;
     NSString *credentialId;
