@@ -10,12 +10,14 @@
 
 @interface GLSynchronization : GBDomain <NSCoding> {
     
-    BOOL browser;
+    BOOL cookieTracking;
+    BOOL deviceFingerprint;
     NSString *clickId;
     
 }
 
-@property (nonatomic, assign) BOOL browser;
+@property (nonatomic, assign) BOOL cookieTracking;
+@property (nonatomic, assign) BOOL deviceFingerprint;
 @property (nonatomic, strong) NSString *clickId;
 
 + (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId fingerprintParameters:(NSString *)fingerprintParameters;

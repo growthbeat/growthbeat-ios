@@ -13,14 +13,15 @@
 
 @implementation GLSynchronization
 
-@synthesize browser;
+@synthesize cookieTracking;
+@synthesize deviceFingerprint;
 @synthesize clickId;
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
 + (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId fingerprintParameters:(NSString *)fingerprintParameters {
 
-    NSString *path = @"/1/synchronize";
+    NSString *path = @"/2/synchronize";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     
     if (applicationId) {
@@ -34,7 +35,7 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
         [body setObject:credentialId forKey:@"credentialId"];
     }
     if (fingerprintParameters) {
-        [body setObject:fingerprintParameters forKey:@"fingerprintParameters"];
+        [body setObject:fingerprintParameters forKey:@"fingerprintParameters" ];
     }
     
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
@@ -59,8 +60,11 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     
     self = [super init];
     if (self) {
-        if ([dictionary objectForKey:@"browser"] && [dictionary objectForKey:@"browser"] != [NSNull null]) {
-            self.browser = [[dictionary objectForKey:@"browser"] boolValue];
+        if ([dictionary objectForKey:@"cookieTracking"] && [dictionary objectForKey:@"cookieTracking"] != [NSNull null]) {
+            self.cookieTracking = [[dictionary objectForKey:@"cookieTracking"] boolValue];
+        }
+        if ([dictionary objectForKey:@"deviceFingerprint"] && [dictionary objectForKey:@"deviceFingerprint"] != [NSNull null]) {
+            self.deviceFingerprint = [[dictionary objectForKey:@"deviceFingerprint"] boolValue];
         }
         if ([dictionary objectForKey:@"clickId"] && [dictionary objectForKey:@"clickId"] != [NSNull null]) {
             self.clickId = [dictionary objectForKey:@"clickId"];
@@ -76,8 +80,11 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        if ([aDecoder containsValueForKey:@"browser"]) {
-            self.browser = [aDecoder decodeBoolForKey:@"browser"];
+        if ([aDecoder containsValueForKey:@"cookieTracking"]) {
+            self.cookieTracking = [aDecoder decodeBoolForKey:@"cookieTracking"];
+        }
+        if ([aDecoder containsValueForKey:@"deviceFingerprint"]) {
+            self.deviceFingerprint = [aDecoder decodeBoolForKey:@"deviceFingerprint"];
         }
         if ([aDecoder containsValueForKey:@"clickId"]) {
             self.clickId = [aDecoder decodeObjectForKey:@"clickId"];
@@ -87,7 +94,8 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeBool:browser forKey:@"browser"];
+    [aCoder encodeBool:cookieTracking forKey:@"cookieTracking"];
+    [aCoder encodeBool:deviceFingerprint forKey:@"deviceFingerprint"];
     [aCoder encodeObject:clickId forKey:@"clickId"];
 }
 

@@ -108,12 +108,18 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.initialized = NO;
         self.isFirstSession = NO;
         self.fingerPrintSuccess = NO;
-        self.synchronizationCallback = ^(GLSynchronization *synchronization) {
-            if(!synchronization.browser){
+        self.synchronizationCallback = ^(GLSynchronization *synchronization, GrowthLink *growthLink) {
+            if(synchronization.cookieTracking){
+                NSString* urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId],[GBDeviceUtils getAdvertisingId]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
                 return;
             }
-            NSString* urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId],[GBDeviceUtils getAdvertisingId]];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+           
+            if (synchronization.clickId) {
+                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@",synchronization.clickId ]];
+                [growthLink handleOpenUrl:url];
+        
+            }
         };
     }
     return self;
@@ -149,6 +155,10 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     webView.delegate = self;
     webView.hidden = NO;
     [window addSubview:webView];
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+    {
+        self.fingerprintUrl = [self.fingerprintUrl stringByReplacingOccurrencesOfString:@"iPhone" withString:@"iPad"];
+    }
     NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [webView loadRequest:urlRequest];
@@ -259,16 +269,11 @@ request navigationType:(UIWebViewNavigationType)navigationType
         }
         
         [GLSynchronization save:synchronization];
-        [logger info:@"Synchronize success. (browser: %@)", synchronization.browser?@"YES":@"NO"];
+        [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking?@"YES":@"NO", synchronization.deviceFingerprint?@"YES":@"NO",synchronization.clickId];
         
-        if (!synchronization.browser && synchronization.clickId) {
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@",synchronization.clickId ]];
-            [self handleOpenUrl:url];
-                          
-        }
         dispatch_async(dispatch_get_main_queue(), ^{
             if(synchronizationCallback) {
-                synchronizationCallback(synchronization);
+                synchronizationCallback(synchronization, self);
             }
         });
         
