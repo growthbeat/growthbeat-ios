@@ -80,6 +80,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
                     [self adjustPositionWithSize:CGSizeMake(width, height)];
                     [self showImage];
                     [self showText];
+                    [self showScreenLink];
                     [self showCloseButton];
                     break;
                 default:
@@ -105,8 +106,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     if (!screenButton) {
         return;
     }
-    
-    
+
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
     
@@ -116,8 +116,24 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     [baseView addSubview:button];
     
     [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:button]];
-    
+
 }
+
+- (void) showScreenLink {
+    
+    GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
+    if (!screenButton) {
+        return;
+    }
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(tapButton:) ];
+    
+    [baseView addGestureRecognizer:singleFingerTap];
+    [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:singleFingerTap ]];
+}
+
 
 - (void) showImage {
     
@@ -130,7 +146,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 
 - (void) showText {
     
-    CGFloat left = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
+    CGFloat left = kGMBannerMessageRendererImageHeight + (kGMBannerMessageRendererMargin * 2);
     CGFloat top = kGMBannerMessageRendererMargin;
     CGFloat width = baseView.frame.size.width - left - kGMBannerMessageRendererMargin;
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
@@ -166,10 +182,11 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     CGFloat top = (baseView.frame.size.height - kGMBannerMessageRendererCloseButtonHeight)/2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
+    
     button.frame = CGRectMake((left + (KGMBannerMessageRendererCloseButtonLeftRightPadding * 2)), top, (kGMBannerMessageRendererCloseButtonHeight - KGMBannerMessageRendererCloseButtonLeftRightPadding), kGMBannerMessageRendererCloseButtonHeight);
     
-    
     button.contentEdgeInsets = UIEdgeInsetsMake(KGMBannerMessageRendererCloseButtonTopBottomPadding, KGMBannerMessageRendererCloseButtonLeftRightPadding, KGMBannerMessageRendererCloseButtonTopBottomPadding, KGMBannerMessageRendererCloseButtonLeftRightPadding);
+    
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
     [boundButtons setObject:closeButton forKey:[NSValue valueWithNonretainedObject:button]];
@@ -308,9 +325,14 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 - (void) tapButton:(id)sender {
     
     GMButton *button = [boundButtons objectForKey:[NSValue valueWithNonretainedObject:sender]];
+    
+    [self.baseView removeFromSuperview];
+    self.baseView = nil;
+    self.boundButtons = nil;
+    
     [delegate clickedButton:button message:bannerMessage];
     
-    [self close];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
 
