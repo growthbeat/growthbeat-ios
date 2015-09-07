@@ -13,7 +13,7 @@
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGMBannerMessageRendererImageHeight = 50;
-static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 40;
+static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 50;
 static NSInteger const kGMBannerMessageRendererMargin = 10;
 
 @interface GMBannerMessageRenderer () {
@@ -108,7 +108,7 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
         return;
     }
     
-    // ボタン作成
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
     
@@ -169,7 +169,7 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
     button.frame = CGRectMake(left, top, kGMBannerMessageRendererCloseButtonHeight, kGMBannerMessageRendererCloseButtonHeight);
-    button.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    button.contentEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15);
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
     [boundButtons setObject:closeButton forKey:[NSValue valueWithNonretainedObject:button]];
