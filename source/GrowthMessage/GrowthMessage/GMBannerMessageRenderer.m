@@ -53,8 +53,6 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 
 - (void) show {
     
-    NSLog(@"banner: Call show");
-    
     if (!self.baseView) {
         
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
@@ -99,9 +97,7 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 }
 
 - (void) showScreenButton {
-    
-    NSLog(@"banner: Call show Screen button");
-    
+        
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
     
     if (!screenButton) {
