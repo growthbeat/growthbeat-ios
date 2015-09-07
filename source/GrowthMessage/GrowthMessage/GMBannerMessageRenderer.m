@@ -15,6 +15,8 @@ static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGMBannerMessageRendererImageHeight = 50;
 static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 50;
 static NSInteger const kGMBannerMessageRendererMargin = 10;
+static NSInteger const KGMBannerMessageRendererCloseButtonLeftRightPadding = 10;
+static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGMBannerMessageRendererCloseButtonLeftRightPadding + 5;
 
 @interface GMBannerMessageRenderer () {
     
@@ -134,7 +136,7 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
     
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
-        width -= kGMBannerMessageRendererCloseButtonHeight + kGMBannerMessageRendererMargin;
+        width -= (kGMBannerMessageRendererCloseButtonHeight - (KGMBannerMessageRendererCloseButtonTopBottomPadding * 3)) + kGMBannerMessageRendererMargin;
     
     UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, top, width, height)];
     [captionLabel setText:bannerMessage.caption];
@@ -164,8 +166,10 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     CGFloat top = (baseView.frame.size.height - kGMBannerMessageRendererCloseButtonHeight)/2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
-    button.frame = CGRectMake(left, top, kGMBannerMessageRendererCloseButtonHeight, kGMBannerMessageRendererCloseButtonHeight);
-    button.contentEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15);
+    button.frame = CGRectMake((left + (KGMBannerMessageRendererCloseButtonLeftRightPadding * 2)), top, (kGMBannerMessageRendererCloseButtonHeight - KGMBannerMessageRendererCloseButtonLeftRightPadding), kGMBannerMessageRendererCloseButtonHeight);
+    
+    
+    button.contentEdgeInsets = UIEdgeInsetsMake(KGMBannerMessageRendererCloseButtonTopBottomPadding, KGMBannerMessageRendererCloseButtonLeftRightPadding, KGMBannerMessageRendererCloseButtonTopBottomPadding, KGMBannerMessageRendererCloseButtonLeftRightPadding);
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
     [boundButtons setObject:closeButton forKey:[NSValue valueWithNonretainedObject:button]];
