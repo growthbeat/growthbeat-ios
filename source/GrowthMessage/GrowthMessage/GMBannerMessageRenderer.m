@@ -12,8 +12,8 @@
 #import "GMImageButton.h"
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
-static NSInteger const kGMBannerMessageRendererImageHeight = 40;
-static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 20;
+static NSInteger const kGMBannerMessageRendererImageHeight = 50;
+static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 40;
 static NSInteger const kGMBannerMessageRendererMargin = 10;
 
 @interface GMBannerMessageRenderer () {
@@ -52,6 +52,8 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 }
 
 - (void) show {
+    
+    NSLog(@"banner: Call show");
     
     if (!self.baseView) {
         
@@ -98,14 +100,18 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
 
 - (void) showScreenButton {
     
+    NSLog(@"banner: Call show Screen button");
+    
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
     
     if (!screenButton) {
         return;
     }
     
+    // ボタン作成
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
+    
     button.frame = CGRectMake(0, 0, baseView.frame.size.width, baseView.frame.size.height);
     button.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -160,10 +166,10 @@ static NSInteger const kGMBannerMessageRendererMargin = 10;
     
     CGFloat left = baseView.frame.size.width - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
     CGFloat top = (baseView.frame.size.height - kGMBannerMessageRendererCloseButtonHeight)/2;
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
     button.frame = CGRectMake(left, top, kGMBannerMessageRendererCloseButtonHeight, kGMBannerMessageRendererCloseButtonHeight);
+    button.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
     [boundButtons setObject:closeButton forKey:[NSValue valueWithNonretainedObject:button]];
