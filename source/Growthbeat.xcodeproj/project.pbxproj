@@ -24,6 +24,8 @@
 /* Begin PBXBuildFile section */
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
+		C16DA7A01B82A65B0017ACB9 /* GMSwipeImages.m in Sources */ = {isa = PBXBuildFile; fileRef = C16DA79F1B82A65B0017ACB9 /* GMSwipeImages.m */; };
+		C16DA7A21B82A8050017ACB9 /* GMSwipeImages.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C16DA7A11B82A68C0017ACB9 /* GMSwipeImages.h */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
 		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
 		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
@@ -131,6 +133,17 @@
 		CEDBE8C11B3A468000083D32 /* GPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBE8BF1B3A468000083D32 /* GPTag.m */; };
 		CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BC1B3A468000083D32 /* GPEvent.h */; };
 		CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BE1B3A468000083D32 /* GPTag.h */; };
+		F3EBE01B1B54CF4B0065FDA7 /* GMSwipeMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */; };
+		F3EBE01C1B54CF4B0065FDA7 /* GMSwipeMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */; };
+		F3EBE01D1B54CF4B0065FDA7 /* GMSwipeMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */; };
+		F3EBE01E1B54CF4B0065FDA7 /* GMSwipeMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */; };
+		F3EBE01F1B54CF4B0065FDA7 /* GMSwipeMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */; };
+		F3EBE0211B54D3580065FDA7 /* GMSwipeMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */; };
+		F3EBE0261B54DDC10065FDA7 /* GMSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */; };
+		F3EBE0281B54DF040065FDA7 /* GMSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */; };
+		F3EBE02A1B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */; };
+		F3EBE02D1B5DEB720065FDA7 /* GMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE02C1B5DEB720065FDA7 /* GMAnimationType.m */; };
+		F3EBE02E1B5DF4FD0065FDA7 /* GMAnimationType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +163,12 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				F3EBE02E1B5DF4FD0065FDA7 /* GMAnimationType.h in CopyFiles */,
+				F3EBE01B1B54CF4B0065FDA7 /* GMSwipeMessage.h in CopyFiles */,
+				F3EBE01C1B54CF4B0065FDA7 /* GMSwipeMessageHandler.h in CopyFiles */,
+				F3EBE01D1B54CF4B0065FDA7 /* GMSwipeMessageRenderer.h in CopyFiles */,
+				F3EBE01E1B54CF4B0065FDA7 /* GMSwipeMessageRendererDelegate.h in CopyFiles */,
+				F3EBE01F1B54CF4B0065FDA7 /* GMSwipeMessageType.h in CopyFiles */,
 				CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */,
 				CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */,
 				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
@@ -206,6 +225,7 @@
 				CE0628731B16F216009263FA /* GAClientTag.h in CopyFiles */,
 				CE0628741B16F216009263FA /* GAEventHandler.h in CopyFiles */,
 				CE0628751B16F216009263FA /* GrowthAnalytics.h in CopyFiles */,
+				C16DA7A21B82A8050017ACB9 /* GMSwipeImages.h in CopyFiles */,
 				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +236,8 @@
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
 		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Growthbeat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C16DA79F1B82A65B0017ACB9 /* GMSwipeImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeImages.m; sourceTree = "<group>"; };
+		C16DA7A11B82A68C0017ACB9 /* GMSwipeImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeImages.h; sourceTree = "<group>"; };
 		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
 		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
 		CE0627C91B15B692009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
@@ -323,6 +345,17 @@
 		CEDBE8BD1B3A468000083D32 /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEvent.m; sourceTree = "<group>"; };
 		CEDBE8BE1B3A468000083D32 /* GPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTag.h; sourceTree = "<group>"; };
 		CEDBE8BF1B3A468000083D32 /* GPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTag.m; sourceTree = "<group>"; };
+		F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageHandler.h; sourceTree = "<group>"; };
+		F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessage.h; sourceTree = "<group>"; };
+		F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageType.h; sourceTree = "<group>"; };
+		F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessage.m; sourceTree = "<group>"; };
+		F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRenderer.h; sourceTree = "<group>"; };
+		F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
+		F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageHandler.m; sourceTree = "<group>"; };
+		F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageType.m; sourceTree = "<group>"; };
+		F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageRenderer.m; sourceTree = "<group>"; };
+		F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAnimationType.h; sourceTree = "<group>"; };
+		F3EBE02C1B5DEB720065FDA7 /* GMAnimationType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAnimationType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +476,8 @@
 		CE0628031B15B6B8009263FA /* GrowthMessage */ = {
 			isa = PBXGroup;
 			children = (
+				F3EBE02B1B5DE75C0065FDA7 /* GMAnimationType.h */,
+				F3EBE02C1B5DEB720065FDA7 /* GMAnimationType.m */,
 				CE0628041B15B6B8009263FA /* GMButton.h */,
 				CE0628051B15B6B8009263FA /* GMButton.m */,
 				CE0628061B15B6B8009263FA /* GMButtonType.h */,
@@ -475,10 +510,21 @@
 				CE0628211B15B6B8009263FA /* GMPlainMessageHandler.m */,
 				CE0628221B15B6B8009263FA /* GMScreenButton.h */,
 				CE0628231B15B6B8009263FA /* GMScreenButton.m */,
+				F3552D351B527E2A005A9C09 /* GMSwipeMessage.h */,
+				F3EBE0121B538AEB0065FDA7 /* GMSwipeMessage.m */,
+				F3552D341B527B23005A9C09 /* GMSwipeMessageHandler.h */,
+				F3EBE0151B53A78B0065FDA7 /* GMSwipeMessageHandler.m */,
+				F3EBE0131B5392A30065FDA7 /* GMSwipeMessageRenderer.h */,
+				F3EBE0291B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m */,
+				F3EBE0141B53947D0065FDA7 /* GMSwipeMessageRendererDelegate.h */,
+				F3552D361B527FFF005A9C09 /* GMSwipeMessageType.h */,
+				F3EBE0231B54D8B20065FDA7 /* GMSwipeMessageType.m */,
 				CE0628241B15B6B8009263FA /* GMTask.h */,
 				CE0628251B15B6B8009263FA /* GMTask.m */,
 				CE0628261B15B6B8009263FA /* GrowthMessage.h */,
 				CE0628271B15B6B8009263FA /* GrowthMessage.m */,
+				C16DA7A11B82A68C0017ACB9 /* GMSwipeImages.h */,
+				C16DA79F1B82A65B0017ACB9 /* GMSwipeImages.m */,
 			);
 			name = GrowthMessage;
 			path = GrowthMessage/GrowthMessage;
@@ -610,9 +656,11 @@
 				CE0628481B16F1B8009263FA /* GMMessageType.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
 				CE0628461B16F1B8009263FA /* GMImageMessageRenderer.m in Sources */,
+				F3EBE0281B54DF040065FDA7 /* GMSwipeMessageType.m in Sources */,
 				CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */,
 				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
 				CE0628451B16F1B8009263FA /* GMImageMessageHandler.m in Sources */,
+				C16DA7A01B82A65B0017ACB9 /* GMSwipeImages.m in Sources */,
 				CE0628701B16F1EC009263FA /* GAEventHandler.m in Sources */,
 				CE06285E1B16F1E2009263FA /* GBIntent.m in Sources */,
 				CE06286E1B16F1EC009263FA /* GAClientEvent.m in Sources */,
@@ -623,10 +671,13 @@
 				CE06285A1B16F1E2009263FA /* GBHttpClient.m in Sources */,
 				CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */,
 				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
+				F3EBE0211B54D3580065FDA7 /* GMSwipeMessageHandler.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
+				F3EBE02D1B5DEB720065FDA7 /* GMAnimationType.m in Sources */,
 				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
 				CE0628471B16F1B8009263FA /* GMMessage.m in Sources */,
 				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
+				F3EBE02A1B54E0BE0065FDA7 /* GMSwipeMessageRenderer.m in Sources */,
 				CE0628501B16F1B8009263FA /* GrowthMessage.m in Sources */,
 				CE06284B1B16F1B8009263FA /* GMPlainButton.m in Sources */,
 				CE06284A1B16F1B8009263FA /* GMPictureExtension.m in Sources */,
@@ -640,6 +691,7 @@
 				CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */,
 				CE06285B1B16F1E2009263FA /* GBHttpRequest.m in Sources */,
 				CE0628581B16F1E2009263FA /* GBDomain.m in Sources */,
+				F3EBE0261B54DDC10065FDA7 /* GMSwipeMessage.m in Sources */,
 				CE0628601B16F1E2009263FA /* GBLogger.m in Sources */,
 				CE0628651B16F1E2009263FA /* GBRequestMethod.m in Sources */,
 				CE0628401B16F1B8009263FA /* GMButton.m in Sources */,
@@ -663,7 +715,7 @@
 		B275A7051A0C45A50050510A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -671,7 +723,7 @@
 		B275A7061A0C45A50050510A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -695,7 +747,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -738,7 +790,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -758,7 +810,7 @@
 		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
@@ -769,7 +821,7 @@
 		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.0;
+				FRAMEWORK_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";

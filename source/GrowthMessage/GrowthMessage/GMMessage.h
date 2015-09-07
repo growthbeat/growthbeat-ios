@@ -9,6 +9,7 @@
 #import "GBDomain.h"
 #import "GMTask.h"
 #import "GMMessageType.h"
+#import "GMAnimationType.h"
 
 @interface GMMessage : GBDomain <NSCoding> {
 
@@ -19,6 +20,7 @@
     NSInteger frequency;
     NSString *segmentId;
     NSInteger cap;
+    GMAnimationType animation;
     NSDate *created;
     GMTask *task;
     NSArray *buttons;
@@ -32,6 +34,7 @@
 @property (nonatomic, assign) NSInteger frequency;
 @property (nonatomic, strong) NSString *segmentId;
 @property (nonatomic, assign) NSInteger cap;
+@property (nonatomic, assign) GMAnimationType animation;
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, strong) GMTask *task;
 @property (nonatomic, strong) NSArray *buttons;
