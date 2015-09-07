@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Growthbeat/GrowthbeatCore.h>
 #import "GLSynchronization.h"
+#import "FingerprintUtil.h"
+
 
 @interface GrowthLink : NSObject <UIWebViewDelegate>{
     

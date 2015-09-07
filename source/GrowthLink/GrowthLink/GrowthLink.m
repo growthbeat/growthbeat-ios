@@ -18,31 +18,6 @@ static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbe
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
-@interface NSURL (dictionaryFromQueryString)
--(NSDictionary *) dictionaryFromQueryString;
-@end
-
-@implementation NSURL (dictionaryFromQueryString)
--(NSDictionary *) dictionaryFromQueryString{
-    
-    NSString *query = [self query];
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
-    NSArray *pairs = [query componentsSeparatedByString:@"&"];
-    
-    for (NSString *pair in pairs) {
-        NSRange range = [pair rangeOfString:@"="];
-        NSString *key = range.length ? [pair substringToIndex:range.location] : pair;
-        NSString *val = range.length ? [pair substringFromIndex:range.location+1] : @"";
-        key = [key stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-        val = [val stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-        key = [key stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        val = [val stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [dict setObject:val forKey:key];
-    }
-    return dict;
-}
-@end
-
 @interface GrowthLink () {
 
     GBLogger *logger;
@@ -115,10 +90,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
                 return;
             }
            
-            if (synchronization.clickId) {
+            if (synchronization.deviceFingerprint && synchronization.clickId) {
                 NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@",synchronization.clickId ]];
                 [growthLink handleOpenUrl:url];
-        
             }
         };
     }
@@ -149,44 +123,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         }
     });
 }
-
-- (void) getFingerPrint: (UIWindow *)window {
-    webView = [[UIWebView alloc] initWithFrame:window.frame];
-    webView.delegate = self;
-    webView.hidden = NO;
-    [window addSubview:webView];
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
-    {
-        self.fingerprintUrl = [self.fingerprintUrl stringByReplacingOccurrencesOfString:@"iPhone" withString:@"iPad"];
-    }
-    NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
-    [webView loadRequest:urlRequest];
-
-    [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
-}
-
-
--(BOOL)webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)
-request navigationType:(UIWebViewNavigationType)navigationType
-{
-    if ([ request.URL.scheme isEqualToString:@"native" ]) {
-        if ([request.URL.host isEqualToString:@"js"]) {
-            NSDictionary *dict = request.URL.dictionaryFromQueryString;
-            fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
-            fingerPrintSuccess = YES;
-            [webView removeFromSuperview];
-            if (!isFirstSession) {
-                [self synchronize];
-            }
-        }
-        return NO;
-    }
-    else {
-        return YES;
-    }
-}
-
 
 
 
@@ -262,7 +198,7 @@ request navigationType:(UIWebViewNavigationType)navigationType
         
         [logger info:@"Synchronizing..."];
         
-        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  credentialId:credentialId fingerprintParameters:fingerprintParameters];
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  fingerprintParameters:fingerprintParameters credentialId:credentialId];
         if (!synchronization) {
             [logger error:@"Failed to Synchronize."];
             return;
@@ -279,6 +215,39 @@ request navigationType:(UIWebViewNavigationType)navigationType
         
     });
     
+}
+
+- (void) getFingerPrint: (UIWindow *)window {
+    webView = [[UIWebView alloc] initWithFrame:window.frame];
+    webView.delegate = self;
+    webView.hidden = NO;
+    [window addSubview:webView];
+    NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    [webView loadRequest:urlRequest];
+    
+    [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
+}
+
+
+-(BOOL)webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)
+request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if ([ request.URL.scheme isEqualToString:@"native" ]) {
+        if ([request.URL.host isEqualToString:@"js"]) {
+            NSDictionary *dict = request.URL.dictionaryFromQueryString;
+            fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
+            fingerPrintSuccess = YES;
+            [webView removeFromSuperview];
+            if (!isFirstSession) {
+                [self synchronize];
+            }
+        }
+        return NO;
+    }
+    else {
+        return YES;
+    }
 }
 
 @end

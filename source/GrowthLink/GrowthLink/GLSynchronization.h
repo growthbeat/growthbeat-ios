@@ -20,7 +20,7 @@
 @property (nonatomic, assign) BOOL deviceFingerprint;
 @property (nonatomic, strong) NSString *clickId;
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId fingerprintParameters:(NSString *)fingerprintParameters;
++ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version fingerprintParameters:(NSString *)fingerprintParameters credentialId:(NSString *)credentialId;
 + (void) save:(GLSynchronization *)synchronization;
 + (GLSynchronization *) load;
 
