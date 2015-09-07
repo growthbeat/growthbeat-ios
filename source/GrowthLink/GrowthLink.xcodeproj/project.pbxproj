@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		6943F0E91B9DA8B90024E723 /* FingerprintUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6943F0E81B9DA8A60024E723 /* FingerprintUtil.h */; };
 		B26E18101B4651CA0039268B /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26E180F1B4651CA0039268B /* Growthbeat.framework */; };
 		B2C1480D1AA456F300006EC3 /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C1480C1AA456F300006EC3 /* GrowthLink.h */; };
 		B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C1480E1AA456F300006EC3 /* GrowthLink.m */; };
@@ -52,6 +53,7 @@
 			dstPath = Headers;
 			dstSubfolderSpec = 16;
 			files = (
+				6943F0E91B9DA8B90024E723 /* FingerprintUtil.h in CopyFiles */,
 				B2F7BA161B259F79001C66A3 /* GLClick.h in CopyFiles */,
 				B2F7BA171B259F79001C66A3 /* GLPattern.h in CopyFiles */,
 				B2F7BA051B259AEC001C66A3 /* GLLink.h in CopyFiles */,
@@ -63,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6943F0E81B9DA8A60024E723 /* FingerprintUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerprintUtil.h; sourceTree = "<group>"; };
 		B26E180F1B4651CA0039268B /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../../Growthbeat.framework; sourceTree = "<group>"; };
 		B2C148091AA456F300006EC3 /* libGrowthLink.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthLink.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C1480C1AA456F300006EC3 /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 		B2C1482B1AA45CFB00006EC3 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				6943F0E81B9DA8A60024E723 /* FingerprintUtil.h */,
 				B2F7BA121B259F69001C66A3 /* GLClick.h */,
 				B2F7B9FF1B2599AB001C66A3 /* GLLink.h */,
 				B2F7BA131B259F69001C66A3 /* GLPattern.h */,
