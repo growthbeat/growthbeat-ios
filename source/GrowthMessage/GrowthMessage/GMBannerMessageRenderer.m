@@ -258,7 +258,13 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
         switch ([UIApplication sharedApplication].statusBarOrientation) {
             case UIInterfaceOrientationPortrait:
                 if (bannerMessage.position == GMBannerMessagePositionTop) {
-                    baseView.frame = CGRectMake(left, 0 + statusHeight, size.width, size.height);
+                    // TODO: Done is better than perfect.
+                    if ( statusHeight == 0) {
+                        baseView.frame = CGRectMake(left, 0 + 20, size.width, size.height);
+                    }
+                    else {
+                        baseView.frame = CGRectMake(left, 0 + statusHeight, size.width, size.height);
+                    }
                 }
                 else {
                     baseView.frame = CGRectMake(left, window.frame.size.height - size.height, size.width, size.height);
