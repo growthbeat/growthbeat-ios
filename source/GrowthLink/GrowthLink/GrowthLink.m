@@ -12,7 +12,7 @@
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kDefaultSynchronizationUrl = @"http://gbt.io/l/synchronize";
-static NSString *const kDefaultFingerprintUrl = @"http://gbt.io/l/fingerprint";
+static NSString *const kDefaultFingerprintUrl = @"http://gbt.io/l/fingerprints";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
@@ -217,7 +217,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
 }
 
-- (void) getFingerPrint: (UIWindow *)window {
+- (void) getFingerPrint:(UIWindow *)window {
     webView = [[UIWebView alloc] initWithFrame:window.frame];
     webView.delegate = self;
     webView.hidden = NO;
@@ -229,11 +229,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
 }
 
-
--(BOOL)webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)
-request navigationType:(UIWebViewNavigationType)navigationType
-{
-    if ([ request.URL.scheme isEqualToString:@"native" ]) {
+- (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([request.URL.scheme isEqualToString:@"native"]) {
         if ([request.URL.host isEqualToString:@"fingerprint"]) {
             NSDictionary *dict = request.URL.dictionaryFromQueryString;
             fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
@@ -244,8 +241,7 @@ request navigationType:(UIWebViewNavigationType)navigationType
             }
         }
         return NO;
-    }
-    else {
+    } else {
         return YES;
     }
 }
