@@ -64,7 +64,7 @@
  *
  * @param YES is notification enabled
  */
-- (BOOL) enableRemoteNotification;
+- (BOOL) enableNotification;
 
 /**
  * Clear badge of app icon

@@ -110,7 +110,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
-- (BOOL) enableRemoteNotification {
+- (BOOL) enableNotification {
     if([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
         return [[UIApplication sharedApplication] enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone;
     else
