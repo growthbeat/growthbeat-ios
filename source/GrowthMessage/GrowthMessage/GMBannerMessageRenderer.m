@@ -203,25 +203,13 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 
 - (void) adjustPositionWithSize:(CGSize)size {
 
-    // window 作成
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
-    // ステータスバーの高さ
     float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
-    // レフトの場所
     CGFloat left = (window.frame.size.width - size.width) / 2;
-    
-    CGFloat top = 0.0;
-    if (bannerMessage.position == GMBannerMessagePositionTop) {
-        top = 0;
-    }
-    else {
-        top = window.frame.size.height - size.height;
-    }
-    
-    
-//  CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height);
+
+    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height);
     
 //    CGAffineTransform transform = CGAffineTransformMakeRotation(0);
     
@@ -253,7 +241,6 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     NSLog(@"banner: %@", sNumber);
     
     
-    // for ios8 ~
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f) {
         switch ([UIApplication sharedApplication].statusBarOrientation) {
             case UIInterfaceOrientationPortrait:
