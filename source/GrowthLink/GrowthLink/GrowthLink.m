@@ -234,7 +234,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 request navigationType:(UIWebViewNavigationType)navigationType
 {
     if ([ request.URL.scheme isEqualToString:@"native" ]) {
-        if ([request.URL.host isEqualToString:@"js"]) {
+        if ([request.URL.host isEqualToString:@"fingerprint"]) {
             NSDictionary *dict = request.URL.dictionaryFromQueryString;
             fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
             fingerPrintSuccess = YES;
