@@ -145,28 +145,34 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 }
 
 - (void) showText {
-    
+
     CGFloat left = kGMBannerMessageRendererImageHeight + (kGMBannerMessageRendererMargin * 2);
     CGFloat top = kGMBannerMessageRendererMargin;
-    CGFloat width = baseView.frame.size.width - left - kGMBannerMessageRendererMargin;
+    CGFloat width = baseView.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
     
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
         width -= (kGMBannerMessageRendererCloseButtonHeight - (KGMBannerMessageRendererCloseButtonTopBottomPadding * 3)) + kGMBannerMessageRendererMargin;
     
-    UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, top, width, height)];
-    [captionLabel setText:bannerMessage.caption];
-    [captionLabel setFont:[UIFont boldSystemFontOfSize:10]];
-    [captionLabel setTextColor:[UIColor whiteColor]];
-    [captionLabel setBackgroundColor:[UIColor clearColor]];
-    [baseView addSubview:captionLabel];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, top + height, width, height)];
-    [textLabel setText:bannerMessage.text];
-    [textLabel setFont:[UIFont systemFontOfSize:12]];
-    [textLabel setTextColor:[UIColor whiteColor]];
-    [textLabel setBackgroundColor:[UIColor clearColor]];
-    [baseView addSubview:textLabel];
+    UIView *LabelView = [[UIView alloc] initWithFrame:CGRectMake(left, top, width, height)];
+    
+    UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    captionLabel.text = bannerMessage.caption;
+    captionLabel.font = [UIFont boldSystemFontOfSize:11.25];
+    captionLabel.textColor = [UIColor whiteColor];
+    captionLabel.backgroundColor = [UIColor clearColor];
+    captionLabel.minimumScaleFactor = 10;
+    [LabelView addSubview:captionLabel];
+    
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (top + height - kGMBannerMessageRendererMargin), width, height)];
+    textLabel.text = bannerMessage.text;
+    textLabel.font = [UIFont systemFontOfSize:13.5];
+    textLabel.textColor = [UIColor whiteColor];
+    textLabel.backgroundColor = [UIColor clearColor];
+    [LabelView addSubview:textLabel];
+    
+    [baseView addSubview:LabelView];
     
 }
 
@@ -181,6 +187,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     CGFloat left = baseView.frame.size.width - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
     CGFloat top = (baseView.frame.size.height - kGMBannerMessageRendererCloseButtonHeight)/2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
     
     button.frame = CGRectMake((left + (KGMBannerMessageRendererCloseButtonLeftRightPadding * 2)), top, (kGMBannerMessageRendererCloseButtonHeight - KGMBannerMessageRendererCloseButtonLeftRightPadding), kGMBannerMessageRendererCloseButtonHeight);
