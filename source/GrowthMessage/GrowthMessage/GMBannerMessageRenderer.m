@@ -12,6 +12,7 @@
 #import "GMImageButton.h"
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
+static NSInteger const kGMBannerMessageRenderBaseHeight = 70;
 static NSInteger const kGMBannerMessageRendererImageHeight = 50;
 static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 50;
 static NSInteger const kGMBannerMessageRendererMargin = 10;
@@ -49,59 +50,54 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     
     return self;
 }
 
 - (void) show {
     
-    if (!self.baseView) {
-        
-        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-        self.baseView = [[UIView alloc] init];
-        baseView.backgroundColor = [UIColor colorWithWhite: 0.12f alpha:0.92f];
-        
-        [self cacheImages:^ {
-            [window addSubview:baseView];
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    
+    for(UIView *subview in self.baseView.subviews)
+        [subview removeFromSuperview];
+    
+    [baseView removeFromSuperview];
+
+    [self cacheImages:^ {
             
-            CGFloat width = 0;
-            CGFloat height = 0;
-            
-            switch (bannerMessage.bannerType) {
-                case GMBannerMessageTypeOnlyImage:
-                    width = MIN(window.frame.size.width, window.frame.size.height);
-                    height = width / bannerMessage.picture.width * bannerMessage.picture.height;
-                    [self adjustPositionWithSize:CGSizeMake(width, height)];
-                    [self showScreenButton];
-                    [self showCloseButton];
-                    break;
-                case GMBannerMessageTypeImageText:
-                    width = MIN(window.frame.size.width, window.frame.size.height);
-                    height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
-                    [self adjustPositionWithSize:CGSizeMake(width, height)];
-                    [self showImage];
-                    [self showText];
-                    [self showScreenLink];
-                    [self showCloseButton];
-                    break;
-                default:
-                    break;
+        CGFloat width = 0;
+        CGFloat height = 0;
+        
+        switch (bannerMessage.bannerType) {
+            case GMBannerMessageTypeOnlyImage: {
+                width = MIN(window.frame.size.width, window.frame.size.height);
+                height = width / bannerMessage.picture.width * bannerMessage.picture.height;
+                [self adjustPositionWithSize:CGSizeMake(width, height)];
+                [self showScreenButton];
+                [self showCloseButton];
+                break;
             }
-            
-        }];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-            [self close];
-        });
-        
-    }
-    
-    [self adjustPositionWithSize:baseView.frame.size];
-    
+            case GMBannerMessageTypeImageText: {
+                width = MIN(window.frame.size.width, window.frame.size.height);
+                height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
+                NSLog(@"width -> %f", width);
+                NSLog(@"height -> %f", height);
+                [self adjustPositionWithSize:CGSizeMake(width, height)];
+                [self showImage];
+                [self showText];
+                [self showScreenLink];
+                [self showCloseButton];
+                break;
+            }
+            default:
+                break;
+        }
+    }];
 }
 
 - (void) showScreenButton {
-        
+    
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
     
     if (!screenButton) {
@@ -146,10 +142,11 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 }
 
 - (void) showText {
-
+    
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     CGFloat left = kGMBannerMessageRendererImageHeight + (kGMBannerMessageRendererMargin * 2);
     CGFloat top = kGMBannerMessageRendererMargin;
-    CGFloat width = baseView.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
+    CGFloat width = window.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
     
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
@@ -185,8 +182,8 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
         return;
     }
     
-    CGFloat left = baseView.frame.size.width - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
-    CGFloat top = (baseView.frame.size.height - kGMBannerMessageRendererCloseButtonHeight)/2;
+    CGFloat left = 320 - (kGMBannerMessageRendererMargin * 2) - kGMBannerMessageRendererCloseButtonHeight;
+    CGFloat top = (70 - kGMBannerMessageRendererCloseButtonHeight)/2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
@@ -203,75 +200,88 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 
 - (void) adjustPositionWithSize:(CGSize)size {
 
+    self.baseView = [[UIView alloc] init];
+    baseView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        [self close];
+    });
+    
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
-    float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-    
     CGFloat left = (window.frame.size.width - size.width) / 2;
-
-    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height);
+    CGFloat top = ((bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height)) + 20;
+    CGFloat width = size.width;
+    CGFloat height = size.height;
     
-//    CGAffineTransform transform = CGAffineTransformMakeRotation(0);
-    
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f) {
-//        switch ([UIApplication sharedApplication].statusBarOrientation) {
-//            case UIDeviceOrientationLandscapeLeft:
-//                transform = CGAffineTransformMakeRotation(M_PI / 2);
-//                left = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.width - size.width) : 0;
-//                top = (window.frame.size.height - size.height) / 2;
-//                break;
-//            case UIDeviceOrientationLandscapeRight:
-//                transform = CGAffineTransformMakeRotation(- M_PI / 2);
-//                left = (bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.width - size.width);
-//                top = (window.frame.size.height - size.height) / 2;
-//                break;
-//            case UIDeviceOrientationPortraitUpsideDown:
-//                transform = CGAffineTransformMakeRotation(M_PI);
-//                left = (window.frame.size.width - size.width) / 2;
-//                top = (bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.height - size.height): 0;
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-    
-//    baseView.frame = CGRectMake(left, top + statusHeight, size.width, size.height);
-    
-    NSNumber *sNumber = @(statusHeight);
-    NSLog(@"banner: %@", sNumber);
-    
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
+        ( [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
+          [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
+          [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown) ) {
+        
+        NSLog(@"banner");
+        
+            width = size.height;
+            height = size.width;
+        
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationLandscapeLeft:
+                    NSLog(@"Transform Left");
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI / 2);
+                    left = ((bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.width - size.height) - 20: 20);
+                    top = (window.frame.size.height - size.width) / 2;
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+                    NSLog(@"Transform Right");
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI / -2);
+                    left = ((bannerMessage.position == GMBannerMessagePositionTop) ? 20 : (window.frame.size.width - size.height) - 20);
+                    top = (window.frame.size.height - size.width) / 2;
+                    break;
+                case UIDeviceOrientationPortraitUpsideDown:
+                    NSLog(@"Transform UpsideDown");
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
+                    left = (window.frame.size.width - size.height) / 2;
+                    top = ((bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.height - size.height): 0);
+                    break;
+                default:
+                    break;
+            }
+        
+            baseView.frame = CGRectMake(left, top, width, height);
+            [window addSubview:baseView];
+        
+    }
+    else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f) {
         switch ([UIApplication sharedApplication].statusBarOrientation) {
             case UIInterfaceOrientationPortrait:
                 if (bannerMessage.position == GMBannerMessagePositionTop) {
                     // TODO: Done is better than perfect.
-                    if ( statusHeight == 0) {
-                        baseView.frame = CGRectMake(left, 0 + 20, size.width, size.height);
-                    }
-                    else {
-                        baseView.frame = CGRectMake(left, 0 + statusHeight, size.width, size.height);
-                    }
+                    baseView.frame = CGRectMake(left, 0 + top, size.width, size.height);
+                    [window addSubview:baseView];
                 }
                 else {
                     baseView.frame = CGRectMake(left, window.frame.size.height - size.height, size.width, size.height);
+                    [window addSubview:baseView];
                 }
                 break;
             case UIInterfaceOrientationLandscapeRight:
             case UIInterfaceOrientationLandscapeLeft:
                 if (bannerMessage.position == GMBannerMessagePositionTop) {
                     baseView.frame = CGRectMake(left, 0, size.width, size.height);
+                    [window addSubview:baseView];
                 }
                 else {
                     baseView.frame = CGRectMake(left, window.frame.size.height - size.height, size.width, size.height);
+                    [window addSubview:baseView];
                 }
                 break;
             default:
                 break;
         }
     }
-    
-//    baseView.transform = transform;
+    else {
+        return;
+    }
 }
 
 - (NSArray *) extractButtonsWithType:(GMButtonType)type {
