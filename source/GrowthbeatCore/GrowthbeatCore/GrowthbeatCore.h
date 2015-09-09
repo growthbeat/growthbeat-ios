@@ -14,11 +14,13 @@
 #import "GBClient.h"
 #import "GBAppDelegateWrapper.h"
 #import "GBIntent.h"
+#import "GBIntentHandler.h"
+#import "GBCustomIntent.h"
+
 
 @interface GrowthbeatCore : NSObject {
 
-    NSArray *intentHandlers;
-
+    NSMutableArray *intentHandlers;
 }
 
 @property (nonatomic, strong) NSArray *intentHandlers;
@@ -35,5 +37,8 @@
 - (GBClient *)waitClient;
 
 - (BOOL)handleIntent:(GBIntent *)intent;
+- (void)addIntentHandler:(NSObject *)intentHandler;
+- (void)addCustomIntentHandlerWithBlock:(BOOL(^)(GBCustomIntent *customIntent))block;
+
 
 @end
