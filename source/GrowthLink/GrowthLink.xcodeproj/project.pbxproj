@@ -22,8 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		6943F0E91B9DA8B90024E723 /* FingerprintUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6943F0E81B9DA8A60024E723 /* FingerprintUtil.h */; };
-		B26E18101B4651CA0039268B /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B26E180F1B4651CA0039268B /* Growthbeat.framework */; };
+		6943F0E91B9DA8B90024E723 /* Fingerprint.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6943F0E81B9DA8A60024E723 /* Fingerprint.h */; };
+		694890CC1B9FC86D00E6715F /* Fingerprint.m in Sources */ = {isa = PBXBuildFile; fileRef = 694890CB1B9FC86D00E6715F /* Fingerprint.m */; };
+		69B2A3A51B9F4416007ED667 /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B2A3A41B9F4416007ED667 /* Growthbeat.framework */; };
 		B2C1480D1AA456F300006EC3 /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B2C1480C1AA456F300006EC3 /* GrowthLink.h */; };
 		B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C1480E1AA456F300006EC3 /* GrowthLink.m */; };
 		B2F7BA031B2599AB001C66A3 /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F7BA001B2599AB001C66A3 /* GLLink.m */; };
@@ -53,7 +54,7 @@
 			dstPath = Headers;
 			dstSubfolderSpec = 16;
 			files = (
-				6943F0E91B9DA8B90024E723 /* FingerprintUtil.h in CopyFiles */,
+				6943F0E91B9DA8B90024E723 /* Fingerprint.h in CopyFiles */,
 				B2F7BA161B259F79001C66A3 /* GLClick.h in CopyFiles */,
 				B2F7BA171B259F79001C66A3 /* GLPattern.h in CopyFiles */,
 				B2F7BA051B259AEC001C66A3 /* GLLink.h in CopyFiles */,
@@ -65,8 +66,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6943F0E81B9DA8A60024E723 /* FingerprintUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerprintUtil.h; sourceTree = "<group>"; };
-		B26E180F1B4651CA0039268B /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../../Growthbeat.framework; sourceTree = "<group>"; };
+		6943F0E81B9DA8A60024E723 /* Fingerprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fingerprint.h; sourceTree = "<group>"; };
+		694890CB1B9FC86D00E6715F /* Fingerprint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fingerprint.m; sourceTree = "<group>"; };
+		69B2A3A41B9F4416007ED667 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../../Growthbeat.framework; sourceTree = "<group>"; };
 		B2C148091AA456F300006EC3 /* libGrowthLink.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthLink.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C1480C1AA456F300006EC3 /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
 		B2C1480E1AA456F300006EC3 /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -85,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B26E18101B4651CA0039268B /* Growthbeat.framework in Frameworks */,
+				69B2A3A51B9F4416007ED667 /* Growthbeat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +123,7 @@
 		B2C1482B1AA45CFB00006EC3 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				6943F0E81B9DA8A60024E723 /* FingerprintUtil.h */,
+				6943F0E81B9DA8A60024E723 /* Fingerprint.h */,
 				B2F7BA121B259F69001C66A3 /* GLClick.h */,
 				B2F7B9FF1B2599AB001C66A3 /* GLLink.h */,
 				B2F7BA131B259F69001C66A3 /* GLPattern.h */,
@@ -139,6 +141,7 @@
 				B2F7BA101B259F69001C66A3 /* GLPattern.m */,
 				B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */,
 				B2C1480E1AA456F300006EC3 /* GrowthLink.m */,
+				694890CB1B9FC86D00E6715F /* Fingerprint.m */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -146,7 +149,7 @@
 		B2C1482D1AA45D1C00006EC3 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				B26E180F1B4651CA0039268B /* Growthbeat.framework */,
+				69B2A3A41B9F4416007ED667 /* Growthbeat.framework */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				694890CC1B9FC86D00E6715F /* Fingerprint.m in Sources */,
 				B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */,
 				B2F7BA141B259F69001C66A3 /* GLPattern.m in Sources */,
 				B2F7BA151B259F69001C66A3 /* GLClick.m in Sources */,
@@ -296,7 +300,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
@@ -346,6 +350,7 @@
 					"$(SRCROOT)/../submodules/growthbeat-core-ios",
 					"$(SRCROOT)/../submodules/growthanalytics-ios",
 					"/Users/kataoka/growthbeat-ios",
+					"$(SRCROOT)/../../",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -367,7 +372,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../submodules/growthbeat-core-ios",
 					"$(SRCROOT)/../submodules/growthanalytics-ios",
-					"/Users/kataoka/growthbeat-ios",
+					"$(SRCROOT)/../../",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
