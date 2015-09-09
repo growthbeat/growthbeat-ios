@@ -141,29 +141,35 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 
 - (void) showText {
     
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    CGFloat width = 0;
     CGFloat left = kGMBannerMessageRendererImageHeight + (kGMBannerMessageRendererMargin * 2);
     CGFloat top = kGMBannerMessageRendererMargin;
-    CGFloat width = window.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f ) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        width = window.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
+    }
+    else {
+        width = baseView.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
+    }
     
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
         width -= (kGMBannerMessageRendererCloseButtonHeight - (KGMBannerMessageRendererCloseButtonTopBottomPadding * 3)) + kGMBannerMessageRendererMargin;
-    
     
     UIView *LabelView = [[UIView alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
     UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     captionLabel.text = bannerMessage.caption;
-    captionLabel.font = [UIFont boldSystemFontOfSize:11.25];
+    captionLabel.font = [UIFont boldSystemFontOfSize:10];
     captionLabel.textColor = [UIColor whiteColor];
     captionLabel.backgroundColor = [UIColor clearColor];
     captionLabel.minimumScaleFactor = 10;
     [LabelView addSubview:captionLabel];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (top + height - kGMBannerMessageRendererMargin), width, height)];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (top + height - kGMBannerMessageRendererMargin - 5), width, height)];
     textLabel.text = bannerMessage.text;
-    textLabel.font = [UIFont systemFontOfSize:13.5];
+    textLabel.font = [UIFont systemFontOfSize:12];
     textLabel.textColor = [UIColor whiteColor];
     textLabel.backgroundColor = [UIColor clearColor];
     [LabelView addSubview:textLabel];
