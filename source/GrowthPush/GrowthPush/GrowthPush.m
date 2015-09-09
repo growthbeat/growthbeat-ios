@@ -110,6 +110,14 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
+- (BOOL) enableNotification {
+    if([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+        return [[UIApplication sharedApplication] enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone;
+    else
+        return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+
+}
+
 - (void) setDeviceToken:(NSData *)newDeviceToken {
 
     self.token = [self convertToHexToken:newDeviceToken];
