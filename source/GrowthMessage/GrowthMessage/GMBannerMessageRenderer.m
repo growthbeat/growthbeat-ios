@@ -214,7 +214,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     CGFloat width = size.width;
     CGFloat height = size.height;
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f &&
         ( [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown) ) {
@@ -251,7 +251,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
             [window addSubview:baseView];
         
     }
-    else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f) {
+    else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f) {
         switch ([UIApplication sharedApplication].statusBarOrientation) {
             case UIInterfaceOrientationPortrait:
                 if (bannerMessage.position == GMBannerMessagePositionTop) {
