@@ -108,7 +108,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
     
-    button.frame = CGRectMake(0, 0, baseView.frame.size.width, baseView.frame.size.height);
+    button.frame = CGRectMake(0, 0, kGMBannerMessageRendererBaseWidth, kGMBannerMessageRendererBaseHeight);
     button.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
@@ -217,7 +217,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
     CGFloat left = (window.frame.size.width - size.width) / 2;
-    CGFloat top = ((bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height)) + kGMBannerMessageRendererStatusBarHeight;
+    CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? kGMBannerMessageRendererStatusBarHeight : (window.frame.size.height - size.height);
     CGFloat width = size.width;
     CGFloat height = size.height;
     

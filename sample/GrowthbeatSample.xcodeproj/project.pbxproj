@@ -296,9 +296,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowthbeatSample/GrowthbeatSample-Prefix.pch";
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36966606-1c7a-4ac3-b0f4-94278d1a789e";
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -317,9 +317,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowthbeatSample/GrowthbeatSample-Prefix.pch";
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36966606-1c7a-4ac3-b0f4-94278d1a789e";
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
