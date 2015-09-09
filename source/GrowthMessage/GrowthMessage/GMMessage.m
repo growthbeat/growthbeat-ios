@@ -12,6 +12,7 @@
 #import "GrowthMessage.h"
 #import "GMPlainMessage.h"
 #import "GMImageMessage.h"
+#import "GMBannerMessage.h"
 #import "GMSwipeMessage.h"
 
 @implementation GMMessage
@@ -77,6 +78,12 @@
                 return message;
             } else {
                 return [GMImageMessage domainWithDictionary:dictionary];
+            }
+        case GMMessageTypeBanner:
+            if ([message isKindOfClass:[GMBannerMessage class]]) {
+                return message;
+            } else {
+                return [GMBannerMessage domainWithDictionary:dictionary];
             }
         case GMMessageTypeSwipe:
             if ([message isKindOfClass:[GMSwipeMessage class]]) {
