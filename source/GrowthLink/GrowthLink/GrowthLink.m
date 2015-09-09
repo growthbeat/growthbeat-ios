@@ -82,7 +82,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.initialized = NO;
         self.isFirstSession = NO;
         self.fingerPrintSuccess = NO;
-        self.synchronizationCallback = ^(GLSynchronization *synchronization, GrowthLink *growthLink) {
+        self.synchronizationCallback = ^(GLSynchronization *synchronization) {
             if(synchronization.cookieTracking){
                 NSString* urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId],[GBDeviceUtils getAdvertisingId]];
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
@@ -91,7 +91,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
            
             if (synchronization.deviceFingerprint && synchronization.clickId) {
                 NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@",synchronization.clickId ]];
-                [growthLink handleOpenUrl:url];
+                [[GrowthLink sharedInstance] handleOpenUrl:url];
             }
         };
     }
@@ -118,9 +118,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     }
     fingerprint = [[Fingerprint alloc] init];
-    __weak typeof(self) weakSelf = self;
     [fingerprint getFingerPrint:window fingerprintUrl:fingerprintUrl argBlock:^(NSString *fingerprintParameters) {
-        [weakSelf synchronize:fingerprintParameters];
+        [[GrowthLink sharedInstance] synchronize:fingerprintParameters];
     }];
 
 }
@@ -210,7 +209,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if(synchronizationCallback) {
-                synchronizationCallback(synchronization, self);
+                synchronizationCallback(synchronization);
             }
         });
         

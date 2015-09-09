@@ -19,7 +19,7 @@
     
     NSString *synchronizationUrl;
     NSString *fingerprintUrl;
-    void (^synchronizationCallback)(GLSynchronization *, GrowthLink *) ;
+    void (^synchronizationCallback)(GLSynchronization *) ;
     
 }
 
@@ -28,7 +28,7 @@
 
 @property (nonatomic, strong) NSString *synchronizationUrl;
 @property (nonatomic, strong) NSString *fingerprintUrl;
-@property (nonatomic, copy) void (^synchronizationCallback)(GLSynchronization *, GrowthLink *);
+@property (nonatomic, copy) void (^synchronizationCallback)(GLSynchronization *);
 
 + (instancetype)sharedInstance;
 
