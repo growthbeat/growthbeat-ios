@@ -54,7 +54,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     
     return self;
 }
@@ -129,7 +129,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
                                             action:@selector(tapButton:) ];
     
     [baseView addGestureRecognizer:singleFingerTap];
-    [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:singleFingerTap ]];
+    [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:singleFingerTap]];
 }
 
 
@@ -152,8 +152,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f ) {
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
         width = window.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
-    }
-    else {
+    } else {
         width = baseView.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
     }
     
@@ -254,8 +253,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
         baseView.frame = CGRectMake(left, top, width, height);
         [window addSubview:baseView];
 
-    }
-    else {
+    } else {
         switch ([UIApplication sharedApplication].statusBarOrientation) {
             case UIInterfaceOrientationPortrait:
                 if (bannerMessage.position == GMBannerMessagePositionTop) {
