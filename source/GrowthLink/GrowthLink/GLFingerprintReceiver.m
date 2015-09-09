@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Fingerprint.h"
+#import "GLFingerprintReceiver.h"
+#import <Growthbeat/GBHttpUtils.h>
 
-@implementation Fingerprint{
+@implementation GLFingerprintReceiver{
     UIWebView* webView;
     void (^callback)(NSString *fingerprintParameters);
 }
@@ -30,7 +31,7 @@
 - (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if ([request.URL.scheme isEqualToString:@"native"]) {
         if ([request.URL.host isEqualToString:@"fingerprint"]) {
-            NSDictionary *dict = request.URL.dictionaryFromQueryString;
+            NSDictionary *dict = [GBHttpUtils dictionaryWithQueryString:request.URL.query];
             NSString *fingerprint = [dict valueForKey:@"fingerprintParameters"];
             if (callback) {
                 callback(fingerprint);

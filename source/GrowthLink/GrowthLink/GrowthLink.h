@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <Growthbeat/GrowthbeatCore.h>
 #import "GLSynchronization.h"
-#import "Fingerprint.h"
 
 
 @interface GrowthLink : NSObject{
