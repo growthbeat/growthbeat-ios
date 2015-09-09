@@ -20,18 +20,7 @@
 		B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25341811997B301004C8EDB /* SystemConfiguration.framework */; };
 		B2942C061AD45075005D6D3A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2942C051AD45075005D6D3A /* AdSupport.framework */; };
 		B2E663511B578D4500C948D3 /* GrowthLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E663501B578D4500C948D3 /* GrowthLink.framework */; };
-		C56CCEF81B9D9196004CF348 /* libGrowthbeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5AC01C31B9D906F00756AC5 /* libGrowthbeat.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C5AC01C21B9D906F00756AC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5AC01BD1B9D906F00756AC5 /* Growthbeat.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B2ED14171A0C451E0078F6BC;
-			remoteInfo = Growthbeat;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B2421EDA1997952D00E91C23 /* GrowthbeatSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrowthbeatSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +41,6 @@
 		B25341811997B301004C8EDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B2942C051AD45075005D6D3A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B2E663501B578D4500C948D3 /* GrowthLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GrowthLink.framework; path = ../source/GrowthLink/GrowthLink.framework; sourceTree = "<group>"; };
-		C5AC01BD1B9D906F00756AC5 /* Growthbeat.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Growthbeat.xcodeproj; path = ../source/Growthbeat.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +48,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C56CCEF81B9D9196004CF348 /* libGrowthbeat.a in Frameworks */,
 				B2942C061AD45075005D6D3A /* AdSupport.framework in Frameworks */,
 				B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */,
 				B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */,
@@ -77,7 +64,6 @@
 		B2421ED11997952D00E91C23 = {
 			isa = PBXGroup;
 			children = (
-				C5AC01BD1B9D906F00756AC5 /* Growthbeat.xcodeproj */,
 				B2421EE31997952D00E91C23 /* GrowthbeatSample */,
 				B2421EDC1997952D00E91C23 /* Frameworks */,
 				B2421EDB1997952D00E91C23 /* Products */,
@@ -131,14 +117,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C5AC01BE1B9D906F00756AC5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C5AC01C31B9D906F00756AC5 /* libGrowthbeat.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,11 +145,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "SIROK, Inc.";
-				TargetAttributes = {
-					B2421ED91997952D00E91C23 = {
-						DevelopmentTeam = KXJAKTLCBX;
-					};
-				};
 			};
 			buildConfigurationList = B2421ED51997952D00E91C23 /* Build configuration list for PBXProject "GrowthbeatSample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -184,28 +157,12 @@
 			mainGroup = B2421ED11997952D00E91C23;
 			productRefGroup = B2421EDB1997952D00E91C23 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = C5AC01BE1B9D906F00756AC5 /* Products */;
-					ProjectRef = C5AC01BD1B9D906F00756AC5 /* Growthbeat.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B2421ED91997952D00E91C23 /* GrowthbeatSample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		C5AC01C31B9D906F00756AC5 /* libGrowthbeat.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGrowthbeat.a;
-			remoteRef = C5AC01C21B9D906F00756AC5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B2421ED81997952D00E91C23 /* Resources */ = {
@@ -330,8 +287,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
@@ -342,7 +298,7 @@
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -352,8 +308,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
@@ -364,7 +319,7 @@
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

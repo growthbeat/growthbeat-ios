@@ -192,13 +192,12 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     CGFloat left = kGMBannerMessageRendererBaseWidth - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
     CGFloat top = (kGMBannerMessageRendererBaseHeight - kGMBannerMessageRendererCloseButtonHeight)/2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        
+    
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
     
     button.frame = CGRectMake((left + (kGMBannerMessageRendererCloseButtonLeftRightPadding * 2)), top, (kGMBannerMessageRendererCloseButtonHeight - kGMBannerMessageRendererCloseButtonLeftRightPadding), kGMBannerMessageRendererCloseButtonHeight);
     
     button.contentEdgeInsets = UIEdgeInsetsMake(kGMBannerMessageRendererCloseButtonTopBottomPadding, kGMBannerMessageRendererCloseButtonLeftRightPadding, kGMBannerMessageRendererCloseButtonTopBottomPadding, kGMBannerMessageRendererCloseButtonLeftRightPadding);
-    
     
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
