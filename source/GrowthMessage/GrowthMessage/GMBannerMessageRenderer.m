@@ -56,12 +56,22 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     
+    self.baseView = [[UIView alloc] init];
+    baseView.backgroundColor = [UIColor colorWithWhite: 0.12f alpha:0.92f];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        [self close];
+    });
+    
     return self;
 }
 
 - (void) show {
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    for (UIView *subview in window.subviews)
+        if(subview == baseView)
+            [subview removeFromSuperview];
     
     for(UIView *subview in self.baseView.subviews)
         [subview removeFromSuperview];
@@ -95,15 +105,15 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
                 break;
         }
     }];
+    
+    [window addSubview:baseView];
 }
 
 - (void) showScreenButton {
     
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
-    
-    if (!screenButton) {
+    if (!screenButton)
         return;
-    }
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
@@ -120,14 +130,12 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 - (void) showScreenLink {
     
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
-    if (!screenButton) {
+    if (!screenButton)
         return;
-    }
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(tapButton:) ];
-    
     [baseView addGestureRecognizer:singleFingerTap];
     [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:singleFingerTap]];
 }
@@ -149,7 +157,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     CGFloat top = kGMBannerMessageRendererMargin;
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f ) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f ) {
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
         width = window.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
     } else {
@@ -159,7 +167,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
         width -= (kGMBannerMessageRendererCloseButtonHeight - (kGMBannerMessageRendererCloseButtonTopBottomPadding * 3)) + kGMBannerMessageRendererMargin;
     
-    UIView *LabelView = [[UIView alloc] initWithFrame:CGRectMake(left, top + 2, width, height)];
+    UIView *labelView = [[UIView alloc] initWithFrame:CGRectMake(left, top + 2, width, height)];
     
     UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     captionLabel.text = bannerMessage.caption;
@@ -167,26 +175,24 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     captionLabel.textColor = [UIColor whiteColor];
     captionLabel.backgroundColor = [UIColor clearColor];
     captionLabel.minimumScaleFactor = 10;
-    [LabelView addSubview:captionLabel];
+    [labelView addSubview:captionLabel];
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (top + height - kGMBannerMessageRendererMargin - 4), width, height)];
     textLabel.text = bannerMessage.text;
     textLabel.font = [UIFont systemFontOfSize:kGMBannerMessageRendererTextFontSize];
     textLabel.textColor = [UIColor whiteColor];
     textLabel.backgroundColor = [UIColor clearColor];
-    [LabelView addSubview:textLabel];
+    [labelView addSubview:textLabel];
     
-    [baseView addSubview:LabelView];
+    [baseView addSubview:labelView];
     
 }
 
 - (void) showCloseButton {
     
     GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
-    
-    if (!closeButton) {
+    if (!closeButton)
         return;
-    }
     
     CGFloat left = kGMBannerMessageRendererBaseWidth - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
     CGFloat top = (kGMBannerMessageRendererBaseHeight - kGMBannerMessageRendererCloseButtonHeight)/2;
@@ -205,13 +211,6 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 }
 
 - (void) generateBaseViewWithSize:(CGSize)size {
-
-    self.baseView = [[UIView alloc] init];
-    baseView.backgroundColor = [UIColor colorWithWhite: 0.12f alpha:0.92f];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-        [self close];
-    });
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
@@ -220,9 +219,9 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     CGFloat width = size.width;
     CGFloat height = size.height;
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f ) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f ) {
        
-        if ( [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
+        if ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown) {
             
@@ -249,37 +248,27 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
                     break;
             }
         }
-        
-        baseView.frame = CGRectMake(left, top, width, height);
-        [window addSubview:baseView];
 
     } else {
         switch ([UIApplication sharedApplication].statusBarOrientation) {
             case UIInterfaceOrientationPortrait:
-                if (bannerMessage.position == GMBannerMessagePositionTop) {
-                    baseView.frame = CGRectMake(left, top, size.width, size.height);
-                    [window addSubview:baseView];
-                }
-                else {
-                    baseView.frame = CGRectMake(left, window.frame.size.height - size.height, size.width, size.height);
-                    [window addSubview:baseView];
-                }
+                if (bannerMessage.position != GMBannerMessagePositionTop)
+                    top = window.frame.size.height - size.height;
                 break;
             case UIInterfaceOrientationLandscapeRight:
             case UIInterfaceOrientationLandscapeLeft:
-                if (bannerMessage.position == GMBannerMessagePositionTop) {
-                    baseView.frame = CGRectMake(left, 0, size.width, size.height);
-                    [window addSubview:baseView];
-                }
-                else {
-                    baseView.frame = CGRectMake(left, window.frame.size.height - size.height, size.width, size.height);
-                    [window addSubview:baseView];
-                }
+                if (bannerMessage.position == GMBannerMessagePositionTop)
+                    top = 0;
+                else
+                    top = window.frame.size.height - size.height;
                 break;
             default:
                 break;
         }
     }
+    
+    baseView.frame = CGRectMake(left, top, width, height);
+    
 }
 
 - (NSArray *) extractButtonsWithType:(GMButtonType)type {
