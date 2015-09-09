@@ -54,14 +54,6 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-    
-    self.baseView = [[UIView alloc] init];
-    baseView.backgroundColor = [UIColor colorWithWhite: 0.12f alpha:0.92f];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-        [self close];
-    });
     
     return self;
 }
@@ -69,9 +61,6 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 - (void) show {
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    for (UIView *subview in window.subviews)
-        if(subview == baseView)
-            [subview removeFromSuperview];
     
     for(UIView *subview in self.baseView.subviews)
         [subview removeFromSuperview];
@@ -105,8 +94,6 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
                 break;
         }
     }];
-    
-    [window addSubview:baseView];
 }
 
 - (void) showScreenButton {
@@ -213,6 +200,13 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 - (void) generateBaseViewWithSize:(CGSize)size {
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    self.baseView = [[UIView alloc] init];
+    baseView.backgroundColor = [UIColor colorWithWhite: 0.12f alpha:0.92f];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        [self close];
+    });
+
     
     CGFloat left = (window.frame.size.width - size.width) / 2;
     CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? kGMBannerMessageRendererStatusBarHeight : (window.frame.size.height - size.height);
@@ -268,6 +262,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     }
     
     baseView.frame = CGRectMake(left, top, width, height);
+    [window addSubview:baseView];
     
 }
 
