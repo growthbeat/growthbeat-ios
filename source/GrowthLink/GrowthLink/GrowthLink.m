@@ -113,7 +113,10 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     }
     
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if (window == nil) {
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    }
     fingerprint = [[Fingerprint alloc] init];
     __weak typeof(self) weakSelf = self;
     [fingerprint getFingerPrint:window fingerprintUrl:fingerprintUrl argBlock:^(NSString *fingerprintParameters) {
@@ -215,33 +218,5 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
 }
 
-//- (void) getFingerPrint:(UIWindow *)window {
-//    webView = [[UIWebView alloc] initWithFrame:window.frame];
-//    webView.delegate = self;
-//    webView.hidden = NO;
-//    [window addSubview:webView];
-//    NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
-//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
-//    [webView loadRequest:urlRequest];
-//    
-//    [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
-//}
-//
-//- (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-//    if ([request.URL.scheme isEqualToString:@"native"]) {
-//        if ([request.URL.host isEqualToString:@"fingerprint"]) {
-//            NSDictionary *dict = request.URL.dictionaryFromQueryString;
-//            fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
-//            fingerPrintSuccess = YES;
-//            [webView removeFromSuperview];
-//            if (!isFirstSession) {
-//                [self synchronize];
-//            }
-//        }
-//        return NO;
-//    } else {
-//        return YES;
-//    }
-//}
 
 @end

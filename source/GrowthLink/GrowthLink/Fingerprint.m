@@ -24,7 +24,7 @@
     NSURL *websiteUrl = [NSURL URLWithString:fingerprintUrl];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [webView loadRequest:urlRequest];
-    [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
+    [window makeKeyAndVisible];
 }
 
 - (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
