@@ -160,7 +160,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
         width -= (kGMBannerMessageRendererCloseButtonHeight - (kGMBannerMessageRendererCloseButtonTopBottomPadding * 3)) + kGMBannerMessageRendererMargin;
     
-    UIView *LabelView = [[UIView alloc] initWithFrame:CGRectMake(left, top, width, height)];
+    UIView *LabelView = [[UIView alloc] initWithFrame:CGRectMake(left, top + 2, width, height)];
     
     UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     captionLabel.text = bannerMessage.caption;
@@ -170,7 +170,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     captionLabel.minimumScaleFactor = 10;
     [LabelView addSubview:captionLabel];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (top + height - kGMBannerMessageRendererMargin - 5), width, height)];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (top + height - kGMBannerMessageRendererMargin - 4), width, height)];
     textLabel.text = bannerMessage.text;
     textLabel.font = [UIFont systemFontOfSize:kGMBannerMessageRendererTextFontSize];
     textLabel.textColor = [UIColor whiteColor];
