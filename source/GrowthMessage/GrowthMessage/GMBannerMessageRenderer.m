@@ -201,7 +201,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
 - (void) adjustPositionWithSize:(CGSize)size {
 
     self.baseView = [[UIView alloc] init];
-    baseView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
+    baseView.backgroundColor = [UIColor colorWithWhite: 0.12f alpha:0.92f];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
         [self close];
