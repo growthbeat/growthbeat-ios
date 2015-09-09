@@ -12,8 +12,6 @@
 #import "GMImageButton.h"
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
-static NSInteger const kGMBannerMessageRendererBaseWidth = 320;
-static NSInteger const kGMBannerMessageRendererBaseHeight = 70;
 static NSInteger const kGMBannerMessageRendererImageHeight = 50;
 static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 50;
 static NSInteger const kGMBannerMessageRendererMargin = 10;
@@ -65,7 +63,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     for(UIView *subview in self.baseView.subviews)
         [subview removeFromSuperview];
     [baseView removeFromSuperview];
-
+    
     [self cacheImages:^ {
             
         CGFloat width = 0;
@@ -75,19 +73,21 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
             case GMBannerMessageTypeOnlyImage: {
                 width = MIN(window.frame.size.width, window.frame.size.height);
                 height = width / bannerMessage.picture.width * bannerMessage.picture.height;
-                [self generateBaseViewWithSize:CGSizeMake(width, height)];
-                [self showScreenButton];
-                [self showCloseButton];
+                CGSize size = CGSizeMake(width, height);
+                [self generateBaseViewWithSize:size];
+                [self showScreenButton:size];
+                [self showCloseButton:size];
                 break;
             }
             case GMBannerMessageTypeImageText: {
                 width = MIN(window.frame.size.width, window.frame.size.height);
                 height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
-                [self generateBaseViewWithSize:CGSizeMake(width, height)];
+                CGSize size = CGSizeMake(width, height);
+                [self generateBaseViewWithSize:size];
                 [self showImage];
                 [self showText];
                 [self showScreenLink];
-                [self showCloseButton];
+                [self showCloseButton:size];
                 break;
             }
             default:
@@ -96,7 +96,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     }];
 }
 
-- (void) showScreenButton {
+- (void) showScreenButton:(CGSize)size {
     
     GMScreenButton *screenButton = [[self extractButtonsWithType:GMButtonTypeScreen] lastObject];
     if (!screenButton)
@@ -105,7 +105,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:bannerMessage.picture.url] forState:UIControlStateNormal];
     
-    button.frame = CGRectMake(0, 0, kGMBannerMessageRendererBaseWidth, kGMBannerMessageRendererBaseHeight);
+    button.frame = CGRectMake(0, 0, size.width, size.height);
     button.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
@@ -175,14 +175,14 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     
 }
 
-- (void) showCloseButton {
+- (void) showCloseButton:(CGSize)size {
     
     GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
     if (!closeButton)
         return;
     
-    CGFloat left = kGMBannerMessageRendererBaseWidth - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
-    CGFloat top = (kGMBannerMessageRendererBaseHeight - kGMBannerMessageRendererCloseButtonHeight)/2;
+    CGFloat left = size.width - kGMBannerMessageRendererMargin - kGMBannerMessageRendererCloseButtonHeight;
+    CGFloat top = (size.height - kGMBannerMessageRendererCloseButtonHeight) / 2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
