@@ -213,19 +213,11 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     CGFloat height = size.height;
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f ) {
-<<<<<<< 200717d9a025aa331f7f476ad4884d8092fdda0d
-        
-        if([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
-           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
-           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown) {
-        
-=======
        
         if ( [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
           [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown) {
             
->>>>>>> Adjust: GMBannerMessageRenderer.m: banner positon on both os
             width = size.height;
             height = size.width;
         
