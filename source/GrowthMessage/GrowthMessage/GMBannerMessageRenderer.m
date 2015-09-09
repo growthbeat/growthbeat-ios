@@ -12,13 +12,16 @@
 #import "GMImageButton.h"
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
-static NSInteger const kGMBannerMessageRenderBaseWidth = 320;
-static NSInteger const kGMBannerMessageRenderBaseHeight = 70;
+static NSInteger const kGMBannerMessageRendererBaseWidth = 320;
+static NSInteger const kGMBannerMessageRendererBaseHeight = 70;
 static NSInteger const kGMBannerMessageRendererImageHeight = 50;
 static NSInteger const kGMBannerMessageRendererCloseButtonHeight = 50;
 static NSInteger const kGMBannerMessageRendererMargin = 10;
-static NSInteger const KGMBannerMessageRendererCloseButtonLeftRightPadding = 10;
-static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGMBannerMessageRendererCloseButtonLeftRightPadding + 5;
+static NSInteger const kGMBannerMessageRendererCloseButtonLeftRightPadding = 10;
+static NSInteger const kGMBannerMessageRendererCloseButtonTopBottomPadding = kGMBannerMessageRendererCloseButtonLeftRightPadding + 5;
+static NSInteger const kGMBannerMessageRendererStatusBarHeight = 20;
+static CGFloat const kGMBannerMessageRendererTitleFontSize = 10;
+static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
 @interface GMBannerMessageRenderer () {
     
@@ -155,13 +158,13 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     }
     
     if([[self extractButtonsWithType:GMButtonTypeClose] lastObject])
-        width -= (kGMBannerMessageRendererCloseButtonHeight - (KGMBannerMessageRendererCloseButtonTopBottomPadding * 3)) + kGMBannerMessageRendererMargin;
+        width -= (kGMBannerMessageRendererCloseButtonHeight - (kGMBannerMessageRendererCloseButtonTopBottomPadding * 3)) + kGMBannerMessageRendererMargin;
     
     UIView *LabelView = [[UIView alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
     UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     captionLabel.text = bannerMessage.caption;
-    captionLabel.font = [UIFont boldSystemFontOfSize:10];
+    captionLabel.font = [UIFont boldSystemFontOfSize:kGMBannerMessageRendererTitleFontSize];
     captionLabel.textColor = [UIColor whiteColor];
     captionLabel.backgroundColor = [UIColor clearColor];
     captionLabel.minimumScaleFactor = 10;
@@ -169,7 +172,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (top + height - kGMBannerMessageRendererMargin - 5), width, height)];
     textLabel.text = bannerMessage.text;
-    textLabel.font = [UIFont systemFontOfSize:12];
+    textLabel.font = [UIFont systemFontOfSize:kGMBannerMessageRendererTextFontSize];
     textLabel.textColor = [UIColor whiteColor];
     textLabel.backgroundColor = [UIColor clearColor];
     [LabelView addSubview:textLabel];
@@ -186,15 +189,15 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
         return;
     }
     
-    CGFloat left = kGMBannerMessageRenderBaseWidth - (kGMBannerMessageRendererMargin * 2) - kGMBannerMessageRendererCloseButtonHeight;
-    CGFloat top = (kGMBannerMessageRenderBaseHeight - kGMBannerMessageRendererCloseButtonHeight)/2;
+    CGFloat left = kGMBannerMessageRendererBaseWidth - (kGMBannerMessageRendererMargin * 2) - kGMBannerMessageRendererCloseButtonHeight;
+    CGFloat top = (kGMBannerMessageRendererBaseHeight - kGMBannerMessageRendererCloseButtonHeight)/2;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
     
-    button.frame = CGRectMake((left + (KGMBannerMessageRendererCloseButtonLeftRightPadding * 2)), top, (kGMBannerMessageRendererCloseButtonHeight - KGMBannerMessageRendererCloseButtonLeftRightPadding), kGMBannerMessageRendererCloseButtonHeight);
+    button.frame = CGRectMake((left + (kGMBannerMessageRendererCloseButtonLeftRightPadding * 2)), top, (kGMBannerMessageRendererCloseButtonHeight - kGMBannerMessageRendererCloseButtonLeftRightPadding), kGMBannerMessageRendererCloseButtonHeight);
     
-    button.contentEdgeInsets = UIEdgeInsetsMake(KGMBannerMessageRendererCloseButtonTopBottomPadding, KGMBannerMessageRendererCloseButtonLeftRightPadding, KGMBannerMessageRendererCloseButtonTopBottomPadding, KGMBannerMessageRendererCloseButtonLeftRightPadding);
+    button.contentEdgeInsets = UIEdgeInsetsMake(kGMBannerMessageRendererCloseButtonTopBottomPadding, kGMBannerMessageRendererCloseButtonLeftRightPadding, kGMBannerMessageRendererCloseButtonTopBottomPadding, kGMBannerMessageRendererCloseButtonLeftRightPadding);
     
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
@@ -214,7 +217,7 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
     CGFloat left = (window.frame.size.width - size.width) / 2;
-    CGFloat top = ((bannerMessage.position == GMBannerMessagePositionTop) ? 20 : (window.frame.size.height - size.height));
+    CGFloat top = ((bannerMessage.position == GMBannerMessagePositionTop) ? 0 : (window.frame.size.height - size.height)) + kGMBannerMessageRendererStatusBarHeight;
     CGFloat width = size.width;
     CGFloat height = size.height;
     
@@ -230,12 +233,12 @@ static NSInteger const KGMBannerMessageRendererCloseButtonTopBottomPadding = KGM
             switch ([UIApplication sharedApplication].statusBarOrientation) {
                 case UIDeviceOrientationLandscapeLeft:
                     baseView.transform = CGAffineTransformMakeRotation(M_PI / 2);
-                    left = ((bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.width - size.height) - 20: 0);
+                    left = ((bannerMessage.position == GMBannerMessagePositionTop) ? (window.frame.size.width - size.height) - kGMBannerMessageRendererStatusBarHeight: 0);
                     top = (window.frame.size.height - size.width) / 2;
                     break;
                 case UIDeviceOrientationLandscapeRight:
                     baseView.transform = CGAffineTransformMakeRotation(M_PI / -2);
-                    left = ((bannerMessage.position == GMBannerMessagePositionTop) ? 20 : (window.frame.size.width - size.height) - 0);
+                    left = ((bannerMessage.position == GMBannerMessagePositionTop) ? kGMBannerMessageRendererStatusBarHeight : (window.frame.size.width - size.height));
                     top = (window.frame.size.height - size.width) / 2;
                     break;
                 case UIDeviceOrientationPortraitUpsideDown:
