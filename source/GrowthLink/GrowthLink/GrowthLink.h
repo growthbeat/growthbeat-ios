@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <Growthbeat/GrowthbeatCore.h>
 #import "GLSynchronization.h"
-#import "FingerprintUtil.h"
+#import "Fingerprint.h"
 
 
-@interface GrowthLink : NSObject <UIWebViewDelegate>{
+@interface GrowthLink : NSObject{
     
     NSString *applicationId;
     NSString *credentialId;

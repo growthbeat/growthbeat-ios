@@ -9,6 +9,7 @@
 #import "GrowthLink.h"
 #import <Growthbeat/GrowthAnalytics.h>
 #import "GLClick.h"
+#import "Fingerprint.h"
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kDefaultSynchronizationUrl = @"http://gbt.io/l/synchronize";
@@ -23,9 +24,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-    UIWebView *webView;
-    NSString *fingerprintParameters;
-
+    Fingerprint *fingerprint;
     BOOL initialized;
     BOOL fingerPrintSuccess;
     BOOL isFirstSession;
@@ -115,13 +114,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    [self getFingerPrint:window];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        if (!fingerPrintSuccess) {
-            [self synchronize];
-        }
-    });
+    fingerprint = [[Fingerprint alloc] init];
+    __weak typeof(self) weakSelf = self;
+    [fingerprint getFingerPrint:window fingerprintUrl:fingerprintUrl argBlock:^(NSString *fingerprintParameters) {
+        [weakSelf synchronize:fingerprintParameters];
+    }];
+
 }
 
 
@@ -184,7 +182,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
 }
 
-- (void) synchronize {
+- (void) synchronize:(NSString *)fingerprintParameters{
     
     [logger info:@"Check initialization..."];
     if([GLSynchronization load]) {
@@ -217,33 +215,33 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
 }
 
-- (void) getFingerPrint:(UIWindow *)window {
-    webView = [[UIWebView alloc] initWithFrame:window.frame];
-    webView.delegate = self;
-    webView.hidden = NO;
-    [window addSubview:webView];
-    NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
-    [webView loadRequest:urlRequest];
-    
-    [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
-}
-
-- (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if ([request.URL.scheme isEqualToString:@"native"]) {
-        if ([request.URL.host isEqualToString:@"fingerprint"]) {
-            NSDictionary *dict = request.URL.dictionaryFromQueryString;
-            fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
-            fingerPrintSuccess = YES;
-            [webView removeFromSuperview];
-            if (!isFirstSession) {
-                [self synchronize];
-            }
-        }
-        return NO;
-    } else {
-        return YES;
-    }
-}
+//- (void) getFingerPrint:(UIWindow *)window {
+//    webView = [[UIWebView alloc] initWithFrame:window.frame];
+//    webView.delegate = self;
+//    webView.hidden = NO;
+//    [window addSubview:webView];
+//    NSURL *websiteUrl = [NSURL URLWithString:self.fingerprintUrl];
+//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+//    [webView loadRequest:urlRequest];
+//    
+//    [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
+//}
+//
+//- (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+//    if ([request.URL.scheme isEqualToString:@"native"]) {
+//        if ([request.URL.host isEqualToString:@"fingerprint"]) {
+//            NSDictionary *dict = request.URL.dictionaryFromQueryString;
+//            fingerprintParameters = [dict valueForKey:@"fingerprintParameters"];
+//            fingerPrintSuccess = YES;
+//            [webView removeFromSuperview];
+//            if (!isFirstSession) {
+//                [self synchronize];
+//            }
+//        }
+//        return NO;
+//    } else {
+//        return YES;
+//    }
+//}
 
 @end

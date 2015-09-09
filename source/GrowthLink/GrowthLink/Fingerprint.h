@@ -30,3 +30,7 @@
     return dict;
 }
 @end
+
+@interface Fingerprint : NSObject <UIWebViewDelegate>
+- (void) getFingerPrint:(UIWindow *)window fingerprintUrl:(NSString*)fingerprintUrl argBlock:(void(^)(NSString *fingerprintParameters))argBlock;
+@end
