@@ -56,7 +56,7 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 - (void) show {
 
     UIWindow *window = [GBViewUtils getWindow];
-    
+
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
         backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
@@ -297,9 +297,12 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
         if (image) {
             [cachedImages setObject:image forKey:urlString];
         }
-        if (completion) {
-            completion(urlString);
-        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(urlString);
+            }
+        });
 
     }];
 

@@ -10,16 +10,16 @@
 
 @implementation GBViewUtils
 
-+ (UIWindow *)getWindow {
-    
++ (UIWindow *) getWindow {
+
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    
+
     if (!window) {
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     }
-    
+
     return window;
-    
+
 }
 
 @end

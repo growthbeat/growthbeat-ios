@@ -12,6 +12,8 @@
 #import "GMMessageHandler.h"
 #import "GMPlainMessageHandler.h"
 #import "GMImageMessageHandler.h"
+#import "GMBannerMessageHandler.h"
+#import "GMSwipeMessageHandler.h"
 
 static GrowthMessage *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthMessage";
@@ -99,7 +101,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthmessage-preference
         [self receiveMessageWithEventId:eventId];
     }]];
 
-    self.messageHandlers = [NSArray arrayWithObjects:[[GMPlainMessageHandler alloc] init], [[GMImageMessageHandler alloc] init], nil];
+    self.messageHandlers = [NSArray arrayWithObjects:[[GMPlainMessageHandler alloc] init], [[GMImageMessageHandler alloc] init], [[GMBannerMessageHandler alloc] init], [[GMSwipeMessageHandler alloc] init], nil];
 
 }
 

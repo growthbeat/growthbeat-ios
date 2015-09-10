@@ -60,6 +60,13 @@
 - (void)setDeviceToken:(NSData *)deviceToken;
 
 /**
+ * Get enable remoete notification
+ *
+ * @param YES is notification enabled
+ */
+- (BOOL)enableNotification;
+
+/**
  * Clear badge of app icon
  */
 - (void)clearBadge;
