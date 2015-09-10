@@ -24,13 +24,13 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-    
+
     GLFingerprintReceiver *fingerprintReceiver;
-    
+
     BOOL initialized;
     BOOL fingerPrintSuccess;
     BOOL isFirstSession;
-    
+
 }
 
 @property (nonatomic, strong) GBLogger *logger;
@@ -86,14 +86,14 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.initialized = NO;
         self.isFirstSession = NO;
         self.synchronizationCallback = ^(GLSynchronization *synchronization) {
-            if(synchronization.cookieTracking){
-                NSString* urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId],[GBDeviceUtils getAdvertisingId]];
+            if (synchronization.cookieTracking) {
+                NSString *urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId], [GBDeviceUtils getAdvertisingId]];
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
                 return;
             }
-           
+
             if (synchronization.deviceFingerprint && synchronization.clickId) {
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@",synchronization.clickId ]];
+                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@", synchronization.clickId ]];
                 [[GrowthLink sharedInstance] handleOpenUrl:url];
             }
         };
@@ -101,20 +101,20 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     return self;
 }
 
-- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
     if (initialized) {
         return;
     }
     initialized = YES;
-    
+
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
-    
+
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     if (![[GrowthbeatCore sharedInstance] client] || ![[[[[GrowthbeatCore sharedInstance] client] application] id] isEqualToString:applicationId]) {
         [preference removeAll];
     }
-    
+
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [self synchronize];
 }
@@ -122,31 +122,32 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 
 - (void) handleOpenUrl:(NSURL *)url {
-    
+
     NSDictionary *query = [GBHttpUtils dictionaryWithQueryString:url.query];
     NSString *clickId = [query objectForKeyedSubscript:@"clickId"];
-    if(!clickId) {
+
+    if (!clickId) {
         [logger info:@"Unabled to get clickId from url."];
         return;
     }
-    
+
     NSString *uuid = [query objectForKeyedSubscript:@"uuid"];
-    if(uuid) {
+    if (uuid) {
         [[GrowthAnalytics sharedInstance] setUUID:uuid];
     }
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
+
         [logger info:@"Deeplinking..."];
-        
+
         GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] waitClient] id] clickId:clickId install:isFirstSession credentialId:credentialId];
         if (!click || !click.pattern || !click.pattern.link) {
             [logger error:@"Failed to deeplink."];
             return;
         }
-        
+
         [logger info:@"Deeplink success. (clickId: %@)", click.id];
-        
+
         NSMutableDictionary *properties = [NSMutableDictionary dictionary];
         if (click.pattern.link.id) {
             [properties setObject:click.pattern.link.id forKey:@"linkId"];
@@ -157,63 +158,64 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         if (click.pattern.intent.id) {
             [properties setObject:click.pattern.intent.id forKey:@"intentId"];
         }
-        
-        if(isFirstSession) {
+
+        if (isFirstSession) {
             [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Install" properties:properties option:GATrackOptionDefault completion:nil];
-            if(click.pattern.link.id) {
+            if (click.pattern.link.id) {
                 [[GrowthAnalytics sharedInstance] tag:@"GrowthLink" name:@"InstallLink" value:click.pattern.link.id completion:nil];
             }
         }
-        
+
         [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Open" properties:properties option:GATrackOptionDefault completion:nil];
-        
+
         isFirstSession = NO;
-        
-        if(click.pattern.intent) {
+
+        if (click.pattern.intent) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[GrowthbeatCore sharedInstance] handleIntent:click.pattern.intent];
             });
         }
-        
+
     });
-    
+
 }
 
-- (void) synchronize{
-    
+- (void) synchronize {
+
     [logger info:@"Check initialization..."];
-    if([GLSynchronization load]) {
+    if ([GLSynchronization load]) {
         [logger info:@"Already initialized."];
         return;
     }
-    
+
     isFirstSession = YES;
-    
-    fingerprintReceiver = [[GLFingerprintReceiver alloc] init];
+
+    self.fingerprintReceiver = [[GLFingerprintReceiver alloc] init];
     [fingerprintReceiver getFingerprintParametersWithFingerprintUrl:fingerprintUrl completion:^(NSString *fingerprintParameters) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            
+
             [logger info:@"Synchronizing..."];
-            
+
             GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  fingerprintParameters:fingerprintParameters credentialId:credentialId];
             if (!synchronization) {
                 [logger error:@"Failed to Synchronize."];
                 return;
             }
-            
+
             [GLSynchronization save:synchronization];
-            [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking?@"YES":@"NO", synchronization.deviceFingerprint?@"YES":@"NO",synchronization.clickId];
-            
+            [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking ? @"YES" : @"NO", synchronization.deviceFingerprint ? @"YES" : @"NO", synchronization.clickId];
+
             dispatch_async(dispatch_get_main_queue(), ^{
-                if(synchronizationCallback) {
+                if (synchronizationCallback) {
                     synchronizationCallback(synchronization);
                 }
+                self.fingerprintReceiver = nil;
             });
-            
+
         });
     }];
-    
-    
+
+
 }
 
 

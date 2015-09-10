@@ -9,7 +9,7 @@
 #import "GBDomain.h"
 
 @interface GBGPClient : GBDomain<NSCoding> {
-    
+
     long long id;
     NSInteger applicationId;
     NSString *code;
@@ -19,7 +19,7 @@
     NSString *os;
     NSString *environment;
     NSDate *created;
-    
+
 }
 
 @property (nonatomic, assign) long long id;
@@ -32,8 +32,8 @@
 @property (nonatomic, strong) NSString *environment;
 @property (nonatomic, strong) NSDate *created;
 
-+ (GBGPClient *) load;
-+ (void) removePreference;
-+ (GBGPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code;
++ (GBGPClient *)load;
++ (void)removePreference;
++ (GBGPClient *)findWithGPClientId:(long long)clientId code:(NSString *)code;
 
 @end

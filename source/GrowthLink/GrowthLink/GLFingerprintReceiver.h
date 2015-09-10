@@ -1,5 +1,5 @@
 //
-//  FingerprintReceiver.h
+//  GLFingerprintReceiver.h
 //  GrowthLink
 //
 //  Created by TABATAKATSUTOSHI on 2015/09/07.
@@ -11,6 +11,6 @@
 
 @interface GLFingerprintReceiver : NSObject <UIWebViewDelegate>
 
-- (void) getFingerprintParametersWithFingerprintUrl:(NSString *)fingerprintUrl completion:(void(^)(NSString *fingerprintParameters))completion;
+- (void)getFingerprintParametersWithFingerprintUrl:(NSString *)fingerprintUrl completion:(void(^)(NSString * fingerprintParameters))completion;
 
 @end

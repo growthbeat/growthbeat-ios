@@ -77,12 +77,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
         return;
     }
     self.initialized = YES;
-    
+
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
-    
+
     GBGPClient __block *gpClient = [GBGPClient load];
     self.client = [GBClient load];
-    
+
     if (gpClient) {
         if (self.client && [self.client.id isEqualToString:gpClient.growthbeatClientId] &&
             [self.client.application.id isEqualToString:gpClient.growthbeatApplicationId] &&
@@ -96,16 +96,16 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
             return;
         }
     }
-    
+
     [self.preference removeAll];
     self.client = nil;
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
+
         if (gpClient) {
             gpClient = [GBGPClient findWithGPClientId:gpClient.id code:gpClient.code];
-                        [self.logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gpClient.id, gpClient.growthbeatClientId];
-            
+            [self.logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gpClient.id, gpClient.growthbeatClientId];
+
             self.client = [GBClient findWithId:gpClient.growthbeatClientId credentialId:credentialId];
             if (!self.client || ![self.client.application.id isEqualToString:applicationId]) {
                 [self.logger error:@"Failed to convert client."];
@@ -113,10 +113,10 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
                 [GBGPClient removePreference];
                 return;
             }
-            
+
             [GBClient save:self.client];
             [self.logger info:@"Client converted. (id:%@)", self.client.id];
-            
+
         } else {
 
             [self.logger info:@"Creating client... (applicationId:%@)", applicationId];
@@ -125,14 +125,14 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
                 [self.logger info:@"Failed to create client."];
                 return;
             }
-            
+
             [GBClient save:self.client];
             [self.logger info:@"Client created. (id:%@)", self.client.id];
-            
+
         }
-        
+
     });
-    
+
 }
 
 - (GBClient *) waitClient {

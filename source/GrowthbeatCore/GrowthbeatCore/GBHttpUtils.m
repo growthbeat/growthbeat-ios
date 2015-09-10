@@ -31,23 +31,26 @@
 
 }
 
-+ (NSDictionary *)dictionaryWithQueryString:(NSString *)queryString {
-    
++ (NSDictionary *) dictionaryWithQueryString:(NSString *)queryString {
+
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    for (NSString *nameValuePair in [queryString componentsSeparatedByString:@"&"]){
+
+    for (NSString *nameValuePair in [queryString componentsSeparatedByString:@"&"]) {
         NSString *predecodedNameValuePair = [nameValuePair stringByReplacingOccurrencesOfString:@"+" withString:@" "];
         NSRange range = [predecodedNameValuePair rangeOfString:@"="];
-        if(range.location == NSNotFound)
+        if (range.location == NSNotFound) {
             continue;
+        }
         NSString *key = [[predecodedNameValuePair substringToIndex:range.location] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSString *value = [[predecodedNameValuePair substringFromIndex:range.location + 1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        if(!key || !value)
+        if (!key || !value) {
             continue;
+        }
         [dictionary setObject:value forKeyedSubscript:key];
     }
-    
+
     return dictionary;
-    
+
 }
 
 + (NSData *) formUrlencodedBodyWithDictionary:(NSDictionary *)params {

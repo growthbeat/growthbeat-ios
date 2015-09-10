@@ -23,7 +23,7 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
     NSString *path = @"/2/synchronize";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
-    
+
     if (applicationId) {
         [body setObject:applicationId forKey:@"applicationId"];
     }
@@ -37,14 +37,14 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     if (fingerprintParameters) {
         [body setObject:fingerprintParameters forKey:@"fingerprintParameters" ];
     }
-    
+
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthLink sharedInstance] logger] error:@"Failed to get synchronization. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
-    
+
     return [self domainWithDictionary:httpResponse.body];
 }
 
@@ -57,7 +57,7 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
-    
+
     self = [super init];
     if (self) {
         if ([dictionary objectForKey:@"cookieTracking"] && [dictionary objectForKey:@"cookieTracking"] != [NSNull null]) {
@@ -71,7 +71,7 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
         }
     }
     return self;
-    
+
 }
 
 #pragma mark --

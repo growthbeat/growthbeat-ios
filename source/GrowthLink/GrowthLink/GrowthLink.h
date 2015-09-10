@@ -11,15 +11,15 @@
 #import "GLSynchronization.h"
 
 
-@interface GrowthLink : NSObject{
-    
+@interface GrowthLink : NSObject {
+
     NSString *applicationId;
     NSString *credentialId;
-    
+
     NSString *synchronizationUrl;
     NSString *fingerprintUrl;
-    void (^synchronizationCallback)(GLSynchronization *) ;
-    
+    void(^ synchronizationCallback)(GLSynchronization *);
+
 }
 
 @property (nonatomic, strong) NSString *applicationId;
@@ -27,7 +27,7 @@
 
 @property (nonatomic, strong) NSString *synchronizationUrl;
 @property (nonatomic, strong) NSString *fingerprintUrl;
-@property (nonatomic, copy) void (^synchronizationCallback)(GLSynchronization *);
+@property (nonatomic, copy)void(^ synchronizationCallback)(GLSynchronization *);
 
 + (instancetype)sharedInstance;
 
@@ -37,6 +37,6 @@
 - (GBHttpClient *)httpClient;
 - (GBPreference *)preference;
 
-- (void) handleOpenUrl:(NSURL *)url;
+- (void)handleOpenUrl:(NSURL *)url;
 
 @end

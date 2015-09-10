@@ -349,7 +349,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../submodules/growthbeat-core-ios",
 					"$(SRCROOT)/../submodules/growthanalytics-ios",
-					"/Users/kataoka/growthbeat-ios",
 					"$(SRCROOT)/../../",
 				);
 				HEADER_SEARCH_PATHS = (
