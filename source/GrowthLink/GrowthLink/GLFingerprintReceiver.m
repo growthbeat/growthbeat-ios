@@ -6,51 +6,75 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "GLFingerprintReceiver.h"
 #import <Growthbeat/GBHttpUtils.h>
 
-@implementation GLFingerprintReceiver{
+@interface GLFingerprintReceiver () {
     
     UIWebView* webView;
     void (^completion)(NSString *fingerprintParameters);
     
 }
 
+@property (nonatomic, strong) UIWebView* webView;
+@property (nonatomic, copy) void (^completion)(NSString *fingerprintParameters);
+
+@end
+
+@implementation GLFingerprintReceiver
+
+@synthesize webView;
+@synthesize completion;
+
+- (id)init {
+    self = [super init];
+    if(self){
+        self.webView = [[UIWebView alloc] init];
+        webView.delegate = self;
+        webView.hidden = YES;
+    }
+    return self;
+}
+
 - (void) getFingerprintParametersWithFingerprintUrl:(NSString *)fingerprintUrl completion:(void(^)(NSString *fingerprintParameters))newCompletion {
     
+    self.completion = newCompletion;
+    
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    if (window == nil) {
+    if (!window) {
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     }
     
-    completion = newCompletion;
-    webView = [[UIWebView alloc] initWithFrame:window.frame];
-    webView.delegate = self;
-    webView.hidden = NO;
+    [webView setFrame:window.frame];
     [window addSubview:webView];
-    NSURL *websiteUrl = [NSURL URLWithString:fingerprintUrl];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:fingerprintUrl]];
     [webView loadRequest:urlRequest];
     [window makeKeyAndVisible];
     
 }
 
+#pragma mark --
+#pragma mark UIWebViewDelegate
+
 - (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if ([request.URL.scheme isEqualToString:@"native"]) {
-        if ([request.URL.host isEqualToString:@"fingerprint"]) {
-            NSDictionary *dict = [GBHttpUtils dictionaryWithQueryString:request.URL.query];
-            NSString *fingerprint = [dict valueForKey:@"fingerprintParameters"];
-            if (completion) {
-                completion(fingerprint);
-            }
-            [webView removeFromSuperview];
-        }
-        return NO;
-    } else {
+    
+    if (![request.URL.scheme isEqualToString:@"native"]) {
         return YES;
     }
+    
+    if ([request.URL.host isEqualToString:@"fingerprint"]) {
+        NSDictionary *query = [GBHttpUtils dictionaryWithQueryString:request.URL.query];
+        NSString *fingerprintParameters = [query valueForKey:@"fingerprintParameters"];
+        if (completion) {
+            completion(fingerprintParameters);
+            self.completion = nil;
+        }
+        [webView removeFromSuperview];
+    }
+    
+    return NO;
+    
 }
 
 @end
