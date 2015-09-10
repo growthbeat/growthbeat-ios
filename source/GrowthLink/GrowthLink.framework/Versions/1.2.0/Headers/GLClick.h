@@ -10,7 +10,7 @@
 #import "GLPattern.h"
 
 @interface GLClick : GBDomain <NSCoding> {
-    
+
     NSString *id;
     GLPattern *pattern;
     NSString *clientId;
@@ -18,7 +18,7 @@
     BOOL install;
     NSDate *created;
     NSDate *accessed;
-    
+
 }
 
 @property (nonatomic, strong) NSString *id;
@@ -29,6 +29,6 @@
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, strong) NSDate *accessed;
 
-+ (instancetype) deeplinkWithClientId:(NSString *)clientId clickId:(NSString *)clickId install:(BOOL)install credentialId:(NSString *)credentialId;
++ (instancetype)deeplinkWithClientId:(NSString *)clientId clickId:(NSString *)clickId install:(BOOL)install credentialId:(NSString *)credentialId;
 
 @end

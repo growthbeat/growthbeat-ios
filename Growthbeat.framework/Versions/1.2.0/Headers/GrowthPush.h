@@ -17,13 +17,13 @@
 #endif
 
 @interface GrowthPush : NSObject {
-    
+
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-    
+
     NSString *credentialId;
-    
+
 }
 
 @property (nonatomic, strong) GBLogger *logger;

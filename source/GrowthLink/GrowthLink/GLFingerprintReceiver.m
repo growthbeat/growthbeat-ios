@@ -8,6 +8,7 @@
 
 #import "GLFingerprintReceiver.h"
 #import <Growthbeat/GBHttpUtils.h>
+#import <Growthbeat/GBViewUtils.h>
 
 @interface GLFingerprintReceiver () {
 
@@ -40,10 +41,7 @@
 
     self.completion = newCompletion;
 
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    if (!window) {
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-    }
+    UIWindow *window = [GBViewUtils getWindow];
 
     [webView setFrame:window.frame];
     [window addSubview:webView];
