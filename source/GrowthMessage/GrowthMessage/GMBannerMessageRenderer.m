@@ -51,6 +51,11 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
         self.cachedImages = [NSMutableDictionary dictionary];
     }
     
+    self.baseView = [[UIView alloc] init];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        [self close];
+    });
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     
     return self;
@@ -63,6 +68,9 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     for(UIView *subview in self.baseView.subviews)
         [subview removeFromSuperview];
     [baseView removeFromSuperview];
+    
+    if(!self.baseView)
+        return;
     
     [self cacheImages:^ {
             
@@ -202,11 +210,6 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     self.baseView = [[UIView alloc] init];
     baseView.backgroundColor = [UIColor colorWithWhite: 0.12f alpha:0.92f];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-        [self close];
-    });
-
     
     CGFloat left = (window.frame.size.width - size.width) / 2;
     CGFloat top = (bannerMessage.position == GMBannerMessagePositionTop) ? kGMBannerMessageRendererStatusBarHeight : (window.frame.size.height - size.height);
