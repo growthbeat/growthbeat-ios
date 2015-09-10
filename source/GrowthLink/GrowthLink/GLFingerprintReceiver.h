@@ -7,5 +7,7 @@
 //
 
 @interface GLFingerprintReceiver : NSObject <UIWebViewDelegate>
-- (void) getFingerPrint:(UIWindow *)window fingerprintUrl:(NSString*)fingerprintUrl argBlock:(void(^)(NSString *fingerprintParameters))argBlock;
+
+- (void) getFingerprintParametersWithFingerprintUrl:(NSString *)fingerprintUrl completion:(void(^)(NSString *fingerprintParameters))completion;
+
 @end

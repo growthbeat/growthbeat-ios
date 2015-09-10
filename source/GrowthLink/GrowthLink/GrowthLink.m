@@ -188,12 +188,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     }
     
     isFirstSession = YES;
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    if (window == nil) {
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-    }
+    
     fingerprintReceiver = [[GLFingerprintReceiver alloc] init];
-    [fingerprintReceiver getFingerPrint:window fingerprintUrl:fingerprintUrl argBlock:^(NSString *fingerprintParameters) {
+    [fingerprintReceiver getFingerprintParametersWithFingerprintUrl:fingerprintUrl completion:^(NSString *fingerprintParameters) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             
             [logger info:@"Synchronizing..."];

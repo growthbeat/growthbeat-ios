@@ -12,12 +12,20 @@
 #import <Growthbeat/GBHttpUtils.h>
 
 @implementation GLFingerprintReceiver{
+    
     UIWebView* webView;
-    void (^callback)(NSString *fingerprintParameters);
+    void (^completion)(NSString *fingerprintParameters);
+    
 }
 
-- (void) getFingerPrint:(UIWindow *)window fingerprintUrl:(NSString*)fingerprintUrl argBlock:(void(^)(NSString *fingerprintParameters))argBlock{
-    callback = argBlock;
+- (void) getFingerprintParametersWithFingerprintUrl:(NSString *)fingerprintUrl completion:(void(^)(NSString *fingerprintParameters))newCompletion {
+    
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if (window == nil) {
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    }
+    
+    completion = newCompletion;
     webView = [[UIWebView alloc] initWithFrame:window.frame];
     webView.delegate = self;
     webView.hidden = NO;
@@ -26,6 +34,7 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [webView loadRequest:urlRequest];
     [window makeKeyAndVisible];
+    
 }
 
 - (BOOL) webView:(UIWebView *)argWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -33,8 +42,8 @@
         if ([request.URL.host isEqualToString:@"fingerprint"]) {
             NSDictionary *dict = [GBHttpUtils dictionaryWithQueryString:request.URL.query];
             NSString *fingerprint = [dict valueForKey:@"fingerprintParameters"];
-            if (callback) {
-                callback(fingerprint);
+            if (completion) {
+                completion(fingerprint);
             }
             [webView removeFromSuperview];
         }
