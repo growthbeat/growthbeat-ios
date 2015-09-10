@@ -9,11 +9,11 @@
 #import "GBDomain.h"
 
 @interface GMSwipeImages : GBDomain <NSCoding> {
-    
+
     NSArray *pictures;
     float widthRatio;
     float topMargin;
-    
+
 }
 
 @property (nonatomic, strong) NSArray *pictures;

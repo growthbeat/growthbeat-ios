@@ -9,12 +9,12 @@
 #import "GBDomain.h"
 
 @interface GPEvent : GBDomain<NSCoding> {
-    
+
     NSInteger goalId;
     long long clientId;
     long long timestamp;
     NSString *value;
-    
+
 }
 
 @property (nonatomic, assign) NSInteger goalId;

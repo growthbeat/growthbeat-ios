@@ -13,10 +13,10 @@
 #import "GrowthPush.h"
 
 @interface Growthbeat : NSObject {
-    
+
     NSString *applicationId;
     NSString *credentialId;
-    
+
 }
 
 @property (nonatomic, strong) NSString *applicationId;

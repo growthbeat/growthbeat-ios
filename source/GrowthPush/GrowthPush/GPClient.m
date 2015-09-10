@@ -23,10 +23,10 @@
 @synthesize created;
 
 + (GPClient *) createWithClientId:(NSString *)clientId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment {
-    
+
     NSString *path = @"/3/clients";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
-    
+
     if (clientId) {
         [body setObject:clientId forKey:@"clientId"];
     }
@@ -42,23 +42,23 @@
     if (NSStringFromGPEnvironment(environment)) {
         [body setObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];
     }
-    
+
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
-    if(!httpResponse.success){
+    if (!httpResponse.success) {
         [[[GrowthPush sharedInstance] logger] error:@"Failed to create client. %@", httpResponse.error];
         return nil;
     }
-    
+
     return [GPClient domainWithDictionary:httpResponse.body];
-    
+
 }
 
 + (GPClient *) updateWithClientId:(NSString *)clientId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment {
-    
+
     NSString *path = [NSString stringWithFormat:@"/3/clients/%@", clientId];
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
-    
+
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
     }
@@ -68,14 +68,14 @@
     if (NSStringFromGPEnvironment(environment)) {
         [body setObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];
     }
-    
+
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPut path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
-    if(!httpResponse.success){
+    if (!httpResponse.success) {
         [[[GrowthPush sharedInstance] logger] error:@"Failed to update client. %@", httpResponse.error];
         return nil;
     }
-    
+
     return [GPClient domainWithDictionary:httpResponse.body];
 
 }

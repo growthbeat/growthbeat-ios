@@ -17,13 +17,13 @@
 #endif
 
 @interface GrowthPush : NSObject {
-    
+
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-    
+
     NSString *credentialId;
-    
+
 }
 
 @property (nonatomic, strong) GBLogger *logger;
@@ -64,7 +64,7 @@
  *
  * @param YES is notification enabled
  */
-- (BOOL) enableNotification;
+- (BOOL)enableNotification;
 
 /**
  * Clear badge of app icon

@@ -11,10 +11,10 @@
 #import "GMMessageRendererDelegate.h"
 
 @interface GMBannerMessageRenderer : NSObject {
-    
+
     GMBannerMessage *bannerMessage;
     __weak id <GMMessageRendererDelegate> delegate;
-    
+
 }
 
 @property (nonatomic, strong) GMBannerMessage *bannerMessage;

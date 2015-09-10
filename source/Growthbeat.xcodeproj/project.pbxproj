@@ -53,6 +53,8 @@
 		93E6634A1B985A850059F4F6 /* GMSwipeMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8601B94322800E58D80 /* GMSwipeMessageType.h */; };
 		93E6634B1B985A850059F4F6 /* GMTask.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8621B94322800E58D80 /* GMTask.h */; };
 		93E6634C1B985A850059F4F6 /* GrowthMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14EC8641B94322800E58D80 /* GrowthMessage.h */; };
+		B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B229828F1BA1577D0015C9A5 /* GBViewUtils.m */; };
+		B22982911BA157E50015C9A5 /* GBViewUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B229828E1BA1577D0015C9A5 /* GBViewUtils.h */; };
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		C14EC8661B94322800E58D80 /* GMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = C14EC82C1B94322800E58D80 /* GMAnimationType.m */; };
@@ -173,6 +175,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B22982911BA157E50015C9A5 /* GBViewUtils.h in CopyFiles */,
 				93E6632E1B985A850059F4F6 /* GMAnimationType.h in CopyFiles */,
 				93E6632F1B985A850059F4F6 /* GMBannerMessage.h in CopyFiles */,
 				93E663301B985A850059F4F6 /* GMBannerMessageHandler.h in CopyFiles */,
@@ -248,6 +251,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B229828E1BA1577D0015C9A5 /* GBViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBViewUtils.h; sourceTree = "<group>"; };
+		B229828F1BA1577D0015C9A5 /* GBViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBViewUtils.m; sourceTree = "<group>"; };
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
 		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Growthbeat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -491,6 +496,8 @@
 				CE0627FE1B15B6A1009263FA /* GBUrlIntentHandler.h */,
 				CE0627FF1B15B6A1009263FA /* GBUrlIntentHandler.m */,
 				CE0628001B15B6A1009263FA /* GBUtils.h */,
+				B229828E1BA1577D0015C9A5 /* GBViewUtils.h */,
+				B229828F1BA1577D0015C9A5 /* GBViewUtils.m */,
 				CE0628011B15B6A1009263FA /* GrowthbeatCore.h */,
 				CE0628021B15B6A1009263FA /* GrowthbeatCore.m */,
 			);
@@ -676,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE0628531B16F1E2009263FA /* GBClient.m in Sources */,
+				B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */,
 				CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */,
 				CE06283F1B16F1A1009263FA /* GrowthPush.m in Sources */,
 				CEDBE8C11B3A468000083D32 /* GPTag.m in Sources */,
@@ -755,7 +763,6 @@
 		B275A7051A0C45A50050510A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -763,7 +770,6 @@
 		B275A7061A0C45A50050510A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -850,7 +856,6 @@
 		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
@@ -861,7 +866,6 @@
 		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";

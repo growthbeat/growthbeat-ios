@@ -60,23 +60,24 @@ static GBHttpClient *httpClient = nil;
 + (GBGPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {
     NSString *path = [NSString stringWithFormat:@"/1/clients/%lld", clientId];
     NSMutableDictionary *query = [NSMutableDictionary dictionary];
-    
-    if (code)
+
+    if (code) {
         [query setObject:code forKey:@"code"];
-    
+    }
+
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query body:nil];
     GBHttpResponse *httpResponse = [[GBGPClient httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthbeatCore sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
-    
+
     return [GBGPClient domainWithDictionary:httpResponse.body];
 
 }
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
-    
+
     self = [super init];
     if (self) {
         if ([dictionary objectForKey:@"id"] && [dictionary objectForKey:@"id"] != [NSNull null]) {
@@ -108,14 +109,14 @@ static GBHttpClient *httpClient = nil;
         }
     }
     return self;
-    
+
 }
 
 #pragma mark --
 #pragma mark NSCoding
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
-    
+
     self = [super init];
     if (self) {
         if ([aDecoder containsValueForKey:@"id"]) {
@@ -147,11 +148,11 @@ static GBHttpClient *httpClient = nil;
         }
     }
     return self;
-    
+
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    
+
     [aCoder encodeObject:@(id) forKey:@"id"];
     [aCoder encodeInteger:applicationId forKey:@"applicationId"];
     [aCoder encodeObject:code forKey:@"code"];
@@ -161,7 +162,7 @@ static GBHttpClient *httpClient = nil;
     [aCoder encodeObject:os forKey:@"os"];
     [aCoder encodeObject:environment forKey:@"environment"];
     [aCoder encodeObject:created forKey:@"created"];
-    
+
 }
 
 @end

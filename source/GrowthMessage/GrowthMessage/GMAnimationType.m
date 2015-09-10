@@ -9,7 +9,7 @@
 #import "GMAnimationType.h"
 
 NSString *NSStringFromGMAnimationType(GMAnimationType animationType) {
-    
+
     switch (animationType) {
         case GMAnimationTypeNone:
             return @"none";
@@ -18,11 +18,11 @@ NSString *NSStringFromGMAnimationType(GMAnimationType animationType) {
         case GMAnimationTypeUnknown:
             return nil;
     }
-    
+
 }
 
 GMAnimationType GMAnimationTypeFromNSString(NSString *animationTypeString) {
-    
+
     if ([animationTypeString isEqualToString:@"none"]) {
         return GMAnimationTypeNone;
     }
@@ -30,5 +30,5 @@ GMAnimationType GMAnimationTypeFromNSString(NSString *animationTypeString) {
         return GMAnimationTypeDefaults;
     }
     return GMAnimationTypeUnknown;
-    
+
 }

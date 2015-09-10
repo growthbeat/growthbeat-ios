@@ -43,23 +43,23 @@ static NSString *const kGBPreferenceClientKey = @"client";
 }
 
 + (GBClient *) findWithId:(NSString *)id credentialId:(NSString *)credentialId {
-    
-    NSString *path = [NSString stringWithFormat:@"/1/clients/%@" ,id];
+
+    NSString *path = [NSString stringWithFormat:@"/1/clients/%@", id];
     NSMutableDictionary *query = [NSMutableDictionary dictionary];
-    
+
     if (credentialId) {
         [query setObject:credentialId forKey:@"credentialId"];
     }
-    
+
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query body:nil];
     GBHttpResponse *httpResponse = [[[GrowthbeatCore sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthbeatCore sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
-    
+
     return [GBClient domainWithDictionary:httpResponse.body];
-    
+
 }
 
 + (void) save:(GBClient *)client {
