@@ -9,12 +9,12 @@
 #import <Growthbeat/GBDomain.h>
 
 @interface GLLink : GBDomain <NSCoding> {
-    
+
     NSString *id;
     NSString *alias;
     NSString *applicationId;
     NSString *name;
-    
+
 }
 
 @property (nonatomic, strong) NSString *id;

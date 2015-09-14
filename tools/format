@@ -1,1 +1,14 @@
-../submodules/growthbeat-core-ios/tools/format
+#!/bin/bash
+
+DIR=$(cd $(dirname $0)/../ && pwd)
+
+cd $DIR
+FILES=`find . \( -name '*.h' -o -name '*.m' \) | grep -v '.framework'`
+
+ORG_IFS=$IFS
+IFS=$'\n'
+for FILE in $FILES
+do
+    uncrustify -c "${DIR}/tools/objc.cfg" --no-backup "${DIR}/${FILE}"
+done
+IFS=ORG_IFS

@@ -13,17 +13,17 @@
 
 @implementation GLSynchronization
 
-@synthesize scheme;
-@synthesize browser;
+@synthesize cookieTracking;
+@synthesize deviceFingerprint;
 @synthesize clickId;
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId {
++ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version fingerprintParameters:(NSString *)fingerprintParameters credentialId:(NSString *)credentialId {
 
-    NSString *path = @"/1/synchronize";
+    NSString *path = @"/2/synchronize";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
-    
+
     if (applicationId) {
         [body setObject:applicationId forKey:@"applicationId"];
     }
@@ -34,14 +34,17 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
     }
-    
+    if (fingerprintParameters) {
+        [body setObject:fingerprintParameters forKey:@"fingerprintParameters" ];
+    }
+
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthLink sharedInstance] logger] error:@"Failed to get synchronization. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
-    
+
     return [self domainWithDictionary:httpResponse.body];
 }
 
@@ -54,21 +57,21 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
-    
+
     self = [super init];
     if (self) {
-        if ([dictionary objectForKey:@"scheme"] && [dictionary objectForKey:@"scheme"] != [NSNull null]) {
-            self.scheme = [dictionary objectForKey:@"scheme"];
+        if ([dictionary objectForKey:@"cookieTracking"] && [dictionary objectForKey:@"cookieTracking"] != [NSNull null]) {
+            self.cookieTracking = [[dictionary objectForKey:@"cookieTracking"] boolValue];
         }
-        if ([dictionary objectForKey:@"browser"] && [dictionary objectForKey:@"browser"] != [NSNull null]) {
-            self.browser = [[dictionary objectForKey:@"browser"] boolValue];
+        if ([dictionary objectForKey:@"deviceFingerprint"] && [dictionary objectForKey:@"deviceFingerprint"] != [NSNull null]) {
+            self.deviceFingerprint = [[dictionary objectForKey:@"deviceFingerprint"] boolValue];
         }
         if ([dictionary objectForKey:@"clickId"] && [dictionary objectForKey:@"clickId"] != [NSNull null]) {
             self.clickId = [dictionary objectForKey:@"clickId"];
         }
     }
     return self;
-    
+
 }
 
 #pragma mark --
@@ -77,11 +80,11 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        if ([aDecoder containsValueForKey:@"scheme"]) {
-            self.scheme = [aDecoder decodeObjectForKey:@"scheme"];
+        if ([aDecoder containsValueForKey:@"cookieTracking"]) {
+            self.cookieTracking = [aDecoder decodeBoolForKey:@"cookieTracking"];
         }
-        if ([aDecoder containsValueForKey:@"browser"]) {
-            self.browser = [aDecoder decodeBoolForKey:@"browser"];
+        if ([aDecoder containsValueForKey:@"deviceFingerprint"]) {
+            self.deviceFingerprint = [aDecoder decodeBoolForKey:@"deviceFingerprint"];
         }
         if ([aDecoder containsValueForKey:@"clickId"]) {
             self.clickId = [aDecoder decodeObjectForKey:@"clickId"];
@@ -91,8 +94,8 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:scheme forKey:@"scheme"];
-    [aCoder encodeBool:browser forKey:@"browser"];
+    [aCoder encodeBool:cookieTracking forKey:@"cookieTracking"];
+    [aCoder encodeBool:deviceFingerprint forKey:@"deviceFingerprint"];
     [aCoder encodeObject:clickId forKey:@"clickId"];
 }
 

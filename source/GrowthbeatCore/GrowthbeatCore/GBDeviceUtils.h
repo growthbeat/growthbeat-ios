@@ -24,7 +24,7 @@
 + (unsigned int)getAvailableMemory;
 + (uint64_t)getCPUUsage;
 + (NSString *)getPlatformString;
-+ (NSString *) getAdvertisingId;
-+ (BOOL) getTrackingEnabled;
++ (NSString *)getAdvertisingId;
++ (BOOL)getTrackingEnabled;
 
 @end

@@ -11,12 +11,12 @@
 #import "GMSwipeMessageRendererDelegate.h"
 
 @interface GMSwipeMessageRenderer : UIViewController <UIScrollViewDelegate> {
-    
+
     GMSwipeMessage *swipeMessage;
     UIScrollView *scrollView;
     UIPageControl *pageControl;
     __weak id <GMSwipeMessageRendererDelegate> delegate;
-    
+
 }
 
 @property (nonatomic, strong) GMSwipeMessage *swipeMessage;

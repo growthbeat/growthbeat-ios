@@ -9,11 +9,11 @@
 #import "GBDomain.h"
 
 @interface GPTag : GBDomain<NSCoding> {
-    
+
     NSInteger tagId;
     long long clientId;
     NSString *value;
-    
+
 }
 
 @property (nonatomic, assign) NSInteger tagId;

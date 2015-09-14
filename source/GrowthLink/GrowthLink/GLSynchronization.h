@@ -9,19 +9,19 @@
 #import <Growthbeat/GBDomain.h>
 
 @interface GLSynchronization : GBDomain <NSCoding> {
-    
-    NSString *scheme;
-    BOOL browser;
+
+    BOOL cookieTracking;
+    BOOL deviceFingerprint;
     NSString *clickId;
-    
+
 }
 
-@property (nonatomic, strong) NSString *scheme;
-@property (nonatomic, assign) BOOL browser;
+@property (nonatomic, assign) BOOL cookieTracking;
+@property (nonatomic, assign) BOOL deviceFingerprint;
 @property (nonatomic, strong) NSString *clickId;
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version credentialId:(NSString *)credentialId;
-+ (void) save:(GLSynchronization *)synchronization;
-+ (GLSynchronization *) load;
++ (instancetype)synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version fingerprintParameters:(NSString *)fingerprintParameters credentialId:(NSString *)credentialId;
++ (void)save:(GLSynchronization *)synchronization;
++ (GLSynchronization *)load;
 
 @end

@@ -171,21 +171,23 @@
 }
 
 + (NSString *) getAdvertisingId {
-    
+
     ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
-    
-    if (![identifierManager isAdvertisingTrackingEnabled])
+
+    if (![identifierManager isAdvertisingTrackingEnabled]) {
         return nil;
-    
+    }
+
     return identifierManager.advertisingIdentifier.UUIDString;
 
 }
 
 + (BOOL) getTrackingEnabled {
-    
+
     ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
+
     return [identifierManager isAdvertisingTrackingEnabled];
-    
+
 }
 
 @end

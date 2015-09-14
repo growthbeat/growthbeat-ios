@@ -10,6 +10,7 @@
 #import "GMScreenButton.h"
 #import "GMCloseButton.h"
 #import "GMImageButton.h"
+#import "GBUtils.h"
 
 static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
@@ -54,7 +55,7 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
 - (void) show {
 
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIWindow *window = [GBViewUtils getWindow];
 
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
@@ -80,36 +81,36 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
     CGFloat screenHeight = window.frame.size.height;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
         ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
-         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
-         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
-            
-            screenWidth = window.frame.size.height;
-            screenHeight = window.frame.size.width;
-            
-            CGRect frame = [UIScreen mainScreen].applicationFrame;
-            baseView.center = CGPointMake(CGRectGetWidth(frame) * 0.5f, CGRectGetHeight(frame) * 0.5f);
-            
-            CGRect bounds;
-            bounds.origin = CGPointZero;
-            bounds.size.width = CGRectGetHeight(frame);
-            bounds.size.height = CGRectGetWidth(frame);
-            baseView.bounds = bounds;
-            
-            switch ([UIApplication sharedApplication].statusBarOrientation) {
-                case UIDeviceOrientationLandscapeLeft:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                    break;
-                case UIDeviceOrientationLandscapeRight:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
-                    break;
-                case UIDeviceOrientationPortraitUpsideDown:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
-                    break;
-                default:
-                    break;
-            }
+        [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
+        [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
+
+        screenWidth = window.frame.size.height;
+        screenHeight = window.frame.size.width;
+
+        CGRect frame = [UIScreen mainScreen].applicationFrame;
+        baseView.center = CGPointMake(CGRectGetWidth(frame) * 0.5f, CGRectGetHeight(frame) * 0.5f);
+
+        CGRect bounds;
+        bounds.origin = CGPointZero;
+        bounds.size.width = CGRectGetHeight(frame);
+        bounds.size.height = CGRectGetWidth(frame);
+        baseView.bounds = bounds;
+
+        switch ([UIApplication sharedApplication].statusBarOrientation) {
+            case UIDeviceOrientationLandscapeLeft:
+                baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                break;
+            case UIDeviceOrientationLandscapeRight:
+                baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                break;
+            case UIDeviceOrientationPortraitUpsideDown:
+                baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
+                break;
+            default:
+                break;
         }
-    
+    }
+
     CGFloat availableWidth = MIN(imageMessage.picture.width, screenWidth * 0.85);
     CGFloat availableHeight = MIN(imageMessage.picture.height, screenHeight * 0.85);
     CGFloat ratio = MIN(availableWidth / imageMessage.picture.width, availableHeight / imageMessage.picture.height);
@@ -121,7 +122,7 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
     CGRect rect = CGRectMake(left, top, width, height);
 
-    [self cacheImages:^ {
+    [self cacheImages:^{
 
         [self showImageWithView:baseView rect:rect ratio:ratio];
         [self showScreenButtonWithView:baseView rect:rect ratio:ratio];
@@ -255,55 +256,56 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
     for (NSString *urlString in [urlStrings objectEnumerator]) {
         [self cacheImageWithUrlString:urlString completion:^(NSString *urlString){
-            
+
             [urlStrings removeObject:urlString];
-            if(![cachedImages objectForKey:urlString]) {
+            if (![cachedImages objectForKey:urlString]) {
                 [self.backgroundView removeFromSuperview];
                 self.backgroundView = nil;
             }
-            
-            if([urlStrings count] == 0 && callback) {
+
+            if ([urlStrings count] == 0 && callback) {
                 callback();
             }
-            
+
         }];
     }
 
 }
 
 - (void) cacheImageWithUrlString:(NSString *)urlString completion:(void (^)(NSString *urlString))completion {
-    
+
     if ([cachedImages objectForKey:urlString]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(completion) {
-                completion(urlString);
-            }
-        });
-        return;
-    }
-    
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:kGMImageMessageRendererImageDownloadTimeout];
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        
-        if(!data || error) {
-            if(completion) {
-                completion(urlString);
-            }
-            return;
-        }
-        
-        UIImage *image = [UIImage imageWithData:data];
-        if (image) {
-            [cachedImages setObject:image forKey:urlString];
-        }
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completion) {
                 completion(urlString);
             }
         });
-        
+        return;
+    }
+
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:kGMImageMessageRendererImageDownloadTimeout];
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+
+        if (!data || error) {
+            if (completion) {
+                completion(urlString);
+            }
+            return;
+        }
+
+        UIImage *image = [UIImage imageWithData:data];
+        if (image) {
+            [cachedImages setObject:image forKey:urlString];
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(urlString);
+            }
+        });
+
     }];
-    
+
 }
 
 - (void) tapButton:(id)sender {

@@ -12,14 +12,14 @@
 #import "GMBannerMessagePosition.h"
 
 @interface GMBannerMessage : GMMessage {
-    
+
     GMPicture *picture;
     NSString *caption;
     NSString *text;
     GMBannerMessageType bannerType;
     GMBannerMessagePosition position;
     long long duration;
-    
+
 }
 
 @property (nonatomic, strong) GMPicture *picture;

@@ -12,9 +12,9 @@
 #import "GrowthMessage.h"
 
 @interface GMSwipeMessageHandler () {
-    
+
     NSMutableDictionary *swipeMessageRenderers;
-    
+
 }
 
 @property (nonatomic, strong) NSMutableDictionary *swipeMessageRenderers;
@@ -37,35 +37,35 @@
 #pragma mark GMMessageHandler
 
 - (BOOL) handleMessage:(GMMessage *)message {
-    
+
     if (message.type != GMMessageTypeSwipe) {
         return NO;
     }
-    
+
     if (![message isKindOfClass:[GMSwipeMessage class]]) {
         return NO;
     }
-    
+
     GMSwipeMessage *swipeMessage = (GMSwipeMessage *)message;
-    
+
     GMSwipeMessageRenderer *swipeMessageRenderer = [[GMSwipeMessageRenderer alloc] initWithSwipeMessage:swipeMessage];
     swipeMessageRenderer.delegate = self;
     [swipeMessageRenderer show];
     [swipeMessageRenderers setObject:swipeMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
-    
+
     return YES;
-    
+
 }
 
 #pragma mark --
 #pragma mark GMSwipeMessageRendererDelegate
 
 - (void) clickedButton:(GMButton *)button message:(GMMessage *)message {
-    
+
     [[GrowthMessage sharedInstance] selectButton:button message:message];
-    
+
     [swipeMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
-    
+
 }
 
 @end

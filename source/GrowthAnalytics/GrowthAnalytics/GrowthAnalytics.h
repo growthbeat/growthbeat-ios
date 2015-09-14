@@ -25,14 +25,14 @@ typedef NS_ENUM (NSInteger, GAGender) {
 };
 
 @interface GrowthAnalytics : NSObject {
-    
+
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-    
+
     NSString *applicationId;
     NSString *credentialId;
-    
+
 }
 
 @property (nonatomic, strong) GBLogger *logger;
@@ -75,7 +75,7 @@ typedef NS_ENUM (NSInteger, GAGender) {
 - (void)setTimeZoneOffset;
 - (void)setAppVersion;
 - (void)setRandom;
-- (void) setUUID:(NSString *)uuid;
+- (void)setUUID:(NSString *)uuid;
 - (void)setAdvertisingId;
 - (void)setTrackingEnabled;
 - (void)setBasicTags;

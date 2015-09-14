@@ -11,10 +11,10 @@
 #import "GMSwipeImages.h"
 
 @interface GMSwipeMessage : GMMessage {
-    
+
     GMSwipeMessageType swipeType;
     GMSwipeImages *swipeImages;
-    
+
 }
 
 @property (nonatomic, assign) GMSwipeMessageType swipeType;

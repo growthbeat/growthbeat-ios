@@ -9,7 +9,7 @@
 #import "GMSwipeMessageType.h"
 
 NSString *NSStringFromGMSwipeMessageType(GMSwipeMessageType swipeMessageType) {
-    
+
     switch (swipeMessageType) {
         case GMSwipeMessageTypeUnknown:
             return nil;
@@ -20,11 +20,11 @@ NSString *NSStringFromGMSwipeMessageType(GMSwipeMessageType swipeMessageType) {
         case GMSwipeMessageTypeButtons:
             return @"buttons";
     }
-    
+
 }
 
 GMSwipeMessageType GMSwipeMessageTypeFromNSString(NSString *swipeMessageTypeString) {
-    
+
     if ([swipeMessageTypeString isEqualToString:@"imageOnly"]) {
         return GMSwipeMessageTypeImageOnly;
     }
@@ -35,5 +35,5 @@ GMSwipeMessageType GMSwipeMessageTypeFromNSString(NSString *swipeMessageTypeStri
         return GMSwipeMessageTypeButtons;
     }
     return GMSwipeMessageTypeUnknown;
-    
+
 }
