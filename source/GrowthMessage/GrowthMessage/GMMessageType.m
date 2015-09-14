@@ -15,6 +15,8 @@ NSString *NSStringFromGMMessageType(GMMessageType messageType) {
             return @"plain";
         case GMMessageTypeImage:
             return @"image";
+        case GMMessageTypeBanner:
+            return @"banner";
         case GMMessageTypeSwipe:
             return @"swipe";
         case GMMessageTypeUnknown:
@@ -30,6 +32,9 @@ GMMessageType GMMessageTypeFromNSString(NSString *messageTypeString) {
     }
     if ([messageTypeString isEqualToString:@"image"]) {
         return GMMessageTypeImage;
+    }
+    if ([messageTypeString isEqualToString:@"banner"]) {
+        return GMMessageTypeBanner;
     }
     if ([messageTypeString isEqualToString:@"swipe"]) {
         return GMMessageTypeSwipe;

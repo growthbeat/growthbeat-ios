@@ -57,7 +57,7 @@
 }
 
 #pragma mark --
-#pragma mark GMImageMessageRendererDelegate
+#pragma mark GMMessageRendererDelegate
 
 - (void) clickedButton:(GMButton *)button message:(GMMessage *)message {
 

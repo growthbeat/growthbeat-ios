@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "GMImageMessage.h"
-#import "GMImageMessageRendererDelegate.h"
+#import "GMMessageRendererDelegate.h"
 
 @interface GMImageMessageRenderer : NSObject {
 
     GMImageMessage *imageMessage;
-    __weak id <GMImageMessageRendererDelegate> delegate;
+    __weak id <GMMessageRendererDelegate> delegate;
 
 }
 
 @property (nonatomic, strong) GMImageMessage *imageMessage;
-@property (nonatomic, weak) id <GMImageMessageRendererDelegate> delegate;
+@property (nonatomic, weak) id <GMMessageRendererDelegate> delegate;
 
 - (instancetype)initWithImageMessage:(GMImageMessage *)newImageMessage;
 - (void)show;
