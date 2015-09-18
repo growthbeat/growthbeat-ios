@@ -160,7 +160,10 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f ) {
-        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        if (window == nil) {
+            window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+        }
         width = window.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
     } else {
         width = baseView.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
