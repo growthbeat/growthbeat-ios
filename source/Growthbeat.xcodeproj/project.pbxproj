@@ -58,6 +58,7 @@
 		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */; settings = {ASSET_TAGS = (); }; };
+		C12497CE1BABBE67000AFEE0 /* GBCustomIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */; };
 		C14EC8661B94322800E58D80 /* GMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = C14EC82C1B94322800E58D80 /* GMAnimationType.m */; };
 		C14EC8671B94322800E58D80 /* GMBannerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C14EC82E1B94322800E58D80 /* GMBannerMessage.m */; };
 		C14EC8681B94322800E58D80 /* GMBannerMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C14EC8301B94322800E58D80 /* GMBannerMessageHandler.m */; };
@@ -176,6 +177,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				C12497CE1BABBE67000AFEE0 /* GBCustomIntentHandler.h in CopyFiles */,
 				B22982911BA157E50015C9A5 /* GBViewUtils.h in CopyFiles */,
 				93E6632E1B985A850059F4F6 /* GMAnimationType.h in CopyFiles */,
 				93E6632F1B985A850059F4F6 /* GMBannerMessage.h in CopyFiles */,
