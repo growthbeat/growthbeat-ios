@@ -10,6 +10,7 @@
 #import "GMScreenButton.h"
 #import "GMCloseButton.h"
 #import "GMImageButton.h"
+#import "GBViewUtils.h"
 
 static NSTimeInterval const kGMBannerMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGMBannerMessageRendererImageHeight = 50;
@@ -63,9 +64,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
 - (void) show {
 
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    if(!window)
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    UIWindow *window = [GBViewUtils getWindow];
 
     for (UIView *subview in self.baseView.subviews) {
         [subview removeFromSuperview];
@@ -162,10 +161,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     CGFloat height = kGMBannerMessageRendererImageHeight / 2;
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f ) {
-        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-        if (window == nil) {
-            window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-        }
+        UIWindow *window = [GBViewUtils getWindow];
         width = window.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
     } else {
         width = baseView.frame.size.width - left - (kGMBannerMessageRendererMargin * 3);
@@ -222,7 +218,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
 - (void) generateBaseViewWithSize:(CGSize)size {
 
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    UIWindow *window = [GBViewUtils getWindow];
 
     self.baseView = [[UIView alloc] init];
     baseView.backgroundColor = [UIColor colorWithWhite:0.12f alpha:0.92f];

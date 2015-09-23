@@ -11,6 +11,7 @@
 #import "GMCloseButton.h"
 #import "GMImageButton.h"
 #import "GBUtils.h"
+#import "GBViewUtils.h"
 
 static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
@@ -55,9 +56,7 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 
 - (void) show {
 
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    if (!window)
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    UIWindow *window = [GBViewUtils getWindow];
 
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
