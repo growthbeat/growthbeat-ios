@@ -63,7 +63,9 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
 - (void) show {
 
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if(!window)
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
 
     for (UIView *subview in self.baseView.subviews) {
         [subview removeFromSuperview];
