@@ -53,9 +53,11 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     }
 
     self.baseView = [[UIView alloc] init];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-        [self close];
-    });
+    if(bannerMessage.duration && bannerMessage.duration > 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(bannerMessage.duration * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            [self close];
+        });
+    }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 
@@ -69,6 +71,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     for (UIView *subview in self.baseView.subviews) {
         [subview removeFromSuperview];
     }
+    
     [baseView removeFromSuperview];
 
     if (!self.baseView) {
@@ -77,13 +80,11 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
     [self cacheImages:^{
 
-        CGFloat width = 0;
-        CGFloat height = 0;
+        CGFloat width = MIN(window.frame.size.width, window.frame.size.height);
 
         switch (bannerMessage.bannerType) {
             case GMBannerMessageTypeOnlyImage: {
-                width = MIN(window.frame.size.width, window.frame.size.height);
-                height = width / bannerMessage.picture.width * bannerMessage.picture.height;
+                CGFloat height = width / bannerMessage.picture.width * bannerMessage.picture.height;
                 CGSize size = CGSizeMake(width, height);
                 [self generateBaseViewWithSize:size];
                 [self showScreenButton:size];
@@ -91,8 +92,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
                 break;
             }
             case GMBannerMessageTypeImageText: {
-                width = MIN(window.frame.size.width, window.frame.size.height);
-                height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
+                CGFloat height = kGMBannerMessageRendererImageHeight + kGMBannerMessageRendererMargin * 2;
                 CGSize size = CGSizeMake(width, height);
                 [self generateBaseViewWithSize:size];
                 [self showImage];
@@ -122,7 +122,6 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
     button.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
-
     [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:button]];
 
 }
@@ -137,9 +136,10 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
     UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(tapButton:) ];
+                                                action:@selector(tapButton:)];
     [baseView addGestureRecognizer:singleFingerTap];
     [boundButtons setObject:screenButton forKey:[NSValue valueWithNonretainedObject:singleFingerTap]];
+    
 }
 
 
@@ -256,6 +256,7 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
                 default:
                     break;
             }
+            
         }
 
     } else {
@@ -379,6 +380,9 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
     GMButton *button = [boundButtons objectForKey:[NSValue valueWithNonretainedObject:sender]];
 
+    for (UIView *subview in self.baseView.subviews) {
+        [subview removeFromSuperview];
+    }
     [self.baseView removeFromSuperview];
     self.baseView = nil;
     self.boundButtons = nil;
@@ -391,6 +395,10 @@ static CGFloat const kGMBannerMessageRendererTextFontSize = 12;
 
 - (void) close {
 
+    for (UIView *subview in self.baseView.subviews) {
+        [subview removeFromSuperview];
+    }
+    
     [self.baseView removeFromSuperview];
     self.baseView = nil;
     self.boundButtons = nil;
