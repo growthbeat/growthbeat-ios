@@ -14,7 +14,7 @@
 @synthesize swipeImages;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
-    
+
     self = [super initWithDictionary:dictionary];
     if (self) {
         if ([dictionary objectForKey:@"swipeType"] && [dictionary objectForKey:@"swipeType"] != [NSNull null]) {
@@ -25,7 +25,7 @@
         }
     }
     return self;
-    
+
 }
 
 #pragma mark --

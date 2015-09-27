@@ -23,7 +23,7 @@ static NSString *const kGPPreferenceClientKey = @"growthpush-client";
 static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 @interface GrowthPush () {
-    
+
     GPEnvironment environment;
     NSString *token;
     GBClient *growthbeatClient;
@@ -76,19 +76,19 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     return self;
 }
 
-- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId {
-    
+- (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId {
+
     self.credentialId = newCredentialId;
     self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
     self.client = [self loadClient];
-    
+
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
-    
+
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:self.credentialId];
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         if (self.client && self.client.growthbeatClientId &&
-            ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
+        ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
             [self clearClient];
         }
     });
@@ -96,14 +96,14 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment {
-    
+
     self.environment = newEnvironment;
-    
+
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         return;
     }
-    
+
     UIUserNotificationSettings *userNotificationSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:userNotificationSettings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -111,10 +111,11 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (BOOL) enableNotification {
-    if([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
         return [[UIApplication sharedApplication] enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone;
-    else
+    } else {
         return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+    }
 
 }
 
@@ -132,7 +133,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) registerClient {
-    
+
     if (self.environment == GPEnvironmentUnknown) {
         [self.logger info:@"Environment is not specified. Client has not registred."];
         return;
@@ -140,53 +141,53 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
     if (self.registeringClient) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
-                [self registerClient];
-            });
+            [self registerClient];
+        });
         return;
     }
     self.registeringClient = YES;
 
     if (!self.client) {
-        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            
+
             [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
-            
+
             GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
-            if(createdClient) {
+            if (createdClient) {
                 [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
                 self.client = createdClient;
                 [self saveClient:client];
             }
-            
+
             self.registeringClient = NO;
-            
+
         });
-        
+
         return;
-        
+
     }
 
     if ((self.token != self.client.token &&
-         ![self.token isEqualToString:self.client.token]) || self.environment != self.client.environment) {
-        
+        ![self.token isEqualToString:self.client.token]) || self.environment != self.client.environment) {
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            
+
             [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
-            
+
             GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
-            if(updatedClient) {
+            if (updatedClient) {
                 [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
                 self.client = updatedClient;
                 [self saveClient:self.client];
             }
-            
+
             self.registeringClient = NO;
-            
+
         });
-        
+
         return;
-        
+
     }
 
     [self.logger info:@"Client already registered."];
@@ -194,7 +195,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (GPClient *) loadClient {
-    
+
     return [self.preference objectForKey:kGPPreferenceClientKey];
 
 }
@@ -229,11 +230,11 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) setTag:(NSString *)name value:(NSString *)value {
- 
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
+
         [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
-        
+
         GPTag *existingTag = [GPTag load:name];
         if (existingTag) {
             if (value && [value isEqualToString:existingTag.value]) {
@@ -242,17 +243,17 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             }
             [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
-        
+
         [self waitClient];
         GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
-        
+
         if (tag) {
             [GPTag save:tag name:name];
             [self.logger info:@"Setting tag success. (name: %@)", name];
         }
-        
+
     });
-    
+
 }
 
 - (void) trackEvent:(NSString *)name {
@@ -260,24 +261,24 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) trackEvent:(NSString *)name value:(NSString *)value {
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
+
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
-        
+
         [self waitClient];
         GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
-        
+
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];
         }
-        
+
     });
-    
+
 }
 
 - (void) setDeviceTags {
-    
+
     if ([GBDeviceUtils model]) {
         [self setTag:@"Device" value:[GBDeviceUtils model]];
     }
@@ -300,14 +301,14 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (GPClient *) waitClient {
-    
+
     while (true) {
         if (self.client != nil) {
             return self.client;
         }
         usleep(100 * 1000);
     }
-    
+
 }
 
 @end

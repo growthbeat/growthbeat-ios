@@ -12,5 +12,6 @@
 #import "GBDateUtils.h"
 #import "GBDeviceUtils.h"
 #import "GBHttpUtils.h"
+#import "GBViewUtils.h"
 
 #endif

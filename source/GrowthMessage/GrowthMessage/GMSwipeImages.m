@@ -17,7 +17,7 @@
 @synthesize topMargin;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
-    
+
     self = [super init];
     if (self) {
         if ([dictionary objectForKey:@"pictures"] && [dictionary objectForKey:@"pictures"] != [NSNull null]) {
@@ -35,7 +35,7 @@
         }
     }
     return self;
-    
+
 }
 
 #pragma mark --

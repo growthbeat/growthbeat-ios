@@ -12,9 +12,9 @@
 #import "GrowthMessage.h"
 
 @interface GMBannerMessageHandler () {
-    
+
     NSMutableDictionary *bannerMessageRenderers;
-    
+
 }
 
 @property (nonatomic, strong) NSMutableDictionary *bannerMessageRenderers;
@@ -37,35 +37,35 @@
 #pragma mark GMMessageHandler
 
 - (BOOL) handleMessage:(GMMessage *)message {
-    
+
     if (message.type != GMMessageTypeBanner) {
         return NO;
     }
-    
+
     if (![message isKindOfClass:[GMBannerMessage class]]) {
         return NO;
     }
-    
+
     GMBannerMessage *bannerMessage = (GMBannerMessage *)message;
-    
+
     GMBannerMessageRenderer *bannerMessageRenderer = [[GMBannerMessageRenderer alloc] initWithBannerMessage:bannerMessage];
     bannerMessageRenderer.delegate = self;
     [bannerMessageRenderer show];
     [bannerMessageRenderers setObject:bannerMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
-    
+
     return YES;
-    
+
 }
 
 #pragma mark --
 #pragma mark GMMessageRendererDelegate
 
 - (void) clickedButton:(GMButton *)button message:(GMMessage *)message {
-    
+
     [[GrowthMessage sharedInstance] selectButton:button message:message];
-    
+
     [bannerMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
-    
+
 }
 
 @end

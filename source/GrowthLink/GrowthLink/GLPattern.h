@@ -11,14 +11,14 @@
 #import <Growthbeat/GBIntent.h>
 
 @interface GLPattern : GBDomain <NSCoding> {
-    
+
     NSString *id;
     NSString *url;
     GLLink *link;
     GBIntent *intent;
     NSDate *created;
     NSDate *updated;
-    
+
 }
 
 @property (nonatomic, strong) NSString *id;

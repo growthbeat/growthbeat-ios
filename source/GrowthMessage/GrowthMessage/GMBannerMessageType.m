@@ -9,7 +9,7 @@
 #import "GMBannerMessageType.h"
 
 NSString *NSStringFromGMBannerMessageType(GMBannerMessageType bannerMessageType) {
-    
+
     switch (bannerMessageType) {
         case GMBannerMessageTypeUnknown:
             return nil;
@@ -18,11 +18,11 @@ NSString *NSStringFromGMBannerMessageType(GMBannerMessageType bannerMessageType)
         case GMBannerMessageTypeImageText:
             return @"imageText";
     }
-    
+
 }
 
 GMBannerMessageType GMBannerMessageTypeFromNSString(NSString *bannerMessageTypeString) {
-    
+
     if ([bannerMessageTypeString isEqualToString:@"onlyImage"]) {
         return GMBannerMessageTypeOnlyImage;
     }
@@ -30,5 +30,5 @@ GMBannerMessageType GMBannerMessageTypeFromNSString(NSString *bannerMessageTypeS
         return GMBannerMessageTypeImageText;
     }
     return GMBannerMessageTypeUnknown;
-    
+
 }

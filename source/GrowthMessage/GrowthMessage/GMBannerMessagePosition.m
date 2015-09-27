@@ -9,7 +9,7 @@
 #import "GMBannerMessagePosition.h"
 
 NSString *NSStringFromGMBannerMessagePosition(GMBannerMessagePosition bannerMessagePosition) {
-    
+
     switch (bannerMessagePosition) {
         case GMBannerMessagePositionUnknown:
             return nil;
@@ -18,11 +18,11 @@ NSString *NSStringFromGMBannerMessagePosition(GMBannerMessagePosition bannerMess
         case GMBannerMessagePositionBottom:
             return @"bottom";
     }
-    
+
 }
 
 GMBannerMessagePosition GMBannerMessagePositionFromNSString(NSString *bannerMessagePositionString) {
-    
+
     if ([bannerMessagePositionString isEqualToString:@"top"]) {
         return GMBannerMessagePositionTop;
     }
@@ -30,5 +30,5 @@ GMBannerMessagePosition GMBannerMessagePositionFromNSString(NSString *bannerMess
         return GMBannerMessagePositionBottom;
     }
     return GMBannerMessagePositionUnknown;
-    
+
 }

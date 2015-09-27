@@ -16,7 +16,7 @@
 @synthesize name;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
-    
+
     self = [super init];
     if (self) {
         if ([dictionary objectForKey:@"id"] && [dictionary objectForKey:@"id"] != [NSNull null]) {
@@ -33,7 +33,7 @@
         }
     }
     return self;
-    
+
 }
 
 #pragma mark --
