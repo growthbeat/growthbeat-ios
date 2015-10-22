@@ -17,13 +17,6 @@
     return YES;
 }
 
-- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
-    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        //UniversalLinkで飛んできた時の処理
-    }
-    return true;
-}
-
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     [[Growthbeat sharedInstance] start];
