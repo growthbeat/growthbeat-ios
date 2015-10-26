@@ -8,12 +8,13 @@
 
 #import "GrowthLink.h"
 #import <Growthbeat/GrowthAnalytics.h>
+#import <SafariServices/SafariServices.h>
 #import "GLClick.h"
 #import "GLFingerprintReceiver.h"
 
 static GrowthLink *sharedInstance = nil;
-static NSString *const kDefaultSynchronizationUrl = @"http://gbt.io/l/synchronize";
-static NSString *const kDefaultFingerprintUrl = @"http://gbt.io/l/fingerprints";
+static NSString *const kDefaultSynchronizationUrl = @"https://gbt.io/l/synchronize";
+static NSString *const kDefaultFingerprintUrl = @"https://gbt.io/l/fingerprints";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
@@ -24,6 +25,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
+    UIViewController *safariViewControllerObject;
 
     GLFingerprintReceiver *fingerprintReceiver;
 
@@ -36,6 +38,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
+@property (nonatomic, strong) UIViewController *safariViewControllerObject;
 
 @property (nonatomic, strong) GLFingerprintReceiver *fingerprintReceiver;
 
@@ -52,6 +55,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
+@synthesize safariViewControllerObject;
 
 @synthesize fingerprintReceiver;
 
@@ -85,10 +89,19 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
         self.isFirstSession = NO;
+        __weak GrowthLink *weakSelf = self;
         self.synchronizationCallback = ^(GLSynchronization *synchronization) {
             if (synchronization.cookieTracking) {
                 NSString *urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId], [GBDeviceUtils getAdvertisingId]];
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+                Class safari = NSClassFromString(@"SFSafariViewController");
+                if (safari != nil && weakSelf) {
+                    weakSelf.safariViewControllerObject =
+                    [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:urlString]];
+                    UIWindow *window = [GBViewUtils getWindow];
+                    [window.rootViewController presentViewController:weakSelf.safariViewControllerObject animated:YES completion:nil];
+                } else {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+                }
                 return;
             }
 
@@ -122,6 +135,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 
 - (void) handleOpenUrl:(NSURL *)url {
+    if (safariViewControllerObject) {
+        [safariViewControllerObject dismissViewControllerAnimated:NO completion:nil];
+    }
 
     NSDictionary *query = [GBHttpUtils dictionaryWithQueryString:url.query];
     NSString *clickId = [query objectForKeyedSubscript:@"clickId"];
