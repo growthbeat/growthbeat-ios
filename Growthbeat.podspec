@@ -6,11 +6,11 @@ Pod::Spec.new do |s|
   Growthbeat is growth hack platform for smart devices.
   https://growthbeat.com/
   DESC
-  s.homepage = "https://github.com/SIROK/growthbeat-ios"
+  s.homepage = "https://github.com/growthbeat/growthbeat-ios"
   s.license = {:type => "Apache License, Version 2.0", :file => "LICENSE"}
   s.author = {"SIROK, Inc." => "support@growthbeat.com"}
 
-  s.source = {:git => "https://github.com/SIROK/growthbeat-ios.git", :tag => "#{s.version}"}
+  s.source = {:git => "https://github.com/growthbeat/growthbeat-ios.git", :tag => "#{s.version}"}
   s.source_files = [
       "source/Growthbeat/*.h"
   ]
