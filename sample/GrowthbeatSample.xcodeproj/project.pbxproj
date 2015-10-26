@@ -20,6 +20,7 @@
 		B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25341811997B301004C8EDB /* SystemConfiguration.framework */; };
 		B2942C061AD45075005D6D3A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2942C051AD45075005D6D3A /* AdSupport.framework */; };
 		B2E663511B578D4500C948D3 /* GrowthLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E663501B578D4500C948D3 /* GrowthLink.framework */; };
+		C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC842E1BDE06BA00626543 /* SafariServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		B25341811997B301004C8EDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B2942C051AD45075005D6D3A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B2E663501B578D4500C948D3 /* GrowthLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GrowthLink.framework; path = ../source/GrowthLink/GrowthLink.framework; sourceTree = "<group>"; };
+		C1FC842E1BDE06BA00626543 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */,
 				B2942C061AD45075005D6D3A /* AdSupport.framework in Frameworks */,
 				B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */,
 				B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +84,7 @@
 		B2421EDC1997952D00E91C23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1FC842E1BDE06BA00626543 /* SafariServices.framework */,
 				B2942C051AD45075005D6D3A /* AdSupport.framework */,
 				B2421EDF1997952D00E91C23 /* CoreGraphics.framework */,
 				B2421EDD1997952D00E91C23 /* Foundation.framework */,
@@ -251,6 +255,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -284,6 +289,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -294,7 +300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,7 +312,7 @@
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -316,7 +322,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -328,7 +334,7 @@
 				INFOPLIST_FILE = "GrowthbeatSample/GrowthbeatSample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "282e8de8-ae49-48fc-94c4-bf936b540c5b";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
