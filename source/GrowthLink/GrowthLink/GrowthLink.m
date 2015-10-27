@@ -98,7 +98,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
                     weakSelf.safariViewControllerObject =
                     [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:urlString]];
                     UIWindow *window = [GBViewUtils getWindow];
-                    [window.rootViewController presentViewController:weakSelf.safariViewControllerObject animated:YES completion:nil];
+                    
+                    UIViewController *presentViewController = window.rootViewController;
+                    while (presentViewController.presentedViewController)
+                        presentViewController = presentViewController.presentedViewController;
+                    
+                    [presentViewController presentViewController:weakSelf.safariViewControllerObject animated:YES completion:nil];
                 } else {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
                 }
