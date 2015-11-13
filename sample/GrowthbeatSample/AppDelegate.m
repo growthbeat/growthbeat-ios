@@ -17,6 +17,7 @@
     return YES;
 }
 
+
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     [[Growthbeat sharedInstance] start];
 }
