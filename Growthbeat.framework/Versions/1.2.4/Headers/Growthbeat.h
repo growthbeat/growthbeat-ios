@@ -29,5 +29,6 @@
 - (void)start;
 - (void)stop;
 - (void)setLoggerSilent:(BOOL)silent;
+- (void) getClient:(void(^)(GBClient *client))callback;
 
 @end

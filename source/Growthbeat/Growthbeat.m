@@ -61,4 +61,12 @@ static Growthbeat *sharedInstance = nil;
     [[[GrowthPush sharedInstance] logger] setSilent:silent];
 }
 
+- (void) getClient:(void(^)(GBClient *client))callback {
+    if(callback) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            callback([[GrowthbeatCore sharedInstance] waitClient]);
+        });
+    }
+}
+
 @end
