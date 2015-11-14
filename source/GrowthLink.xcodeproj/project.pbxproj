@@ -68,7 +68,7 @@
 /* Begin PBXFileReference section */
 		6943F0E81B9DA8A60024E723 /* GLFingerprintReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFingerprintReceiver.h; sourceTree = "<group>"; };
 		694890CB1B9FC86D00E6715F /* GLFingerprintReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFingerprintReceiver.m; sourceTree = "<group>"; };
-		69B2A3A41B9F4416007ED667 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../../Growthbeat.framework; sourceTree = "<group>"; };
+		69B2A3A41B9F4416007ED667 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../Growthbeat.framework; sourceTree = "<group>"; };
 		B2C148091AA456F300006EC3 /* libGrowthLink.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthLink.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C1480C1AA456F300006EC3 /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
 		B2C1480E1AA456F300006EC3 /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
@@ -117,7 +117,8 @@
 				B2C1482B1AA45CFB00006EC3 /* Headers */,
 				B2C1482C1AA45D0600006EC3 /* Sources */,
 			);
-			path = GrowthLink;
+			name = GrowthLink;
+			path = Growthbeat/GrowthLink;
 			sourceTree = "<group>";
 		};
 		B2C1482B1AA45CFB00006EC3 /* Headers */ = {
