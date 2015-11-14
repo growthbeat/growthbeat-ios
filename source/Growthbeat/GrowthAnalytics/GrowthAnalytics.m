@@ -88,6 +88,7 @@ static NSString *const kGACustomNamespace = @"Custom";
     }
 
     [self setBasicTags];
+    [self track:kGADefaultNamespace name:@"Install" properties:nil option:GATrackOptionOnce completion:nil];
 
 }
 
@@ -201,7 +202,6 @@ static NSString *const kGACustomNamespace = @"Custom";
 - (void) open {
     openTime = [NSDate date];
     [self track:kGADefaultNamespace name:@"Open" properties:nil option:GATrackOptionCounter completion:nil];
-    [self track:kGADefaultNamespace name:@"Install" properties:nil option:GATrackOptionOnce completion:nil];
 }
 
 - (void) close {
@@ -314,11 +314,15 @@ static NSString *const kGACustomNamespace = @"Custom";
 }
 
 - (void) setAdvertisingId {
+#if GROWTHANALYTICS_NO_IDFA
     [self tag:kGADefaultNamespace name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId] completion:nil];
+#endif
 }
 
 - (void) setTrackingEnabled {
+#if GROWTHANALYTICS_NO_IDFA
     [self tag:kGADefaultNamespace name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false" completion:nil];
+#endif
 }
 
 - (void) setBasicTags {
