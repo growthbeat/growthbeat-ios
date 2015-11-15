@@ -73,23 +73,27 @@ static NSString *const kGACustomNamespace = @"Custom";
 }
 
 - (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
+    [self initializeWithApplicationId:newApplicationId credentialId:newCredentialId adInfoEnable:YES];
+}
 
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId adInfoEnable:(BOOL)adInfoEnable {
+    
     if (initialized) {
         return;
     }
     initialized = YES;
-
+    
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
-
+    
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     if (![[GrowthbeatCore sharedInstance] client] || ![[[[[GrowthbeatCore sharedInstance] client] application] id] isEqualToString:applicationId]) {
         [preference removeAll];
     }
-
-    [self setBasicTags];
+    
+    [self setBasicTags:adInfoEnable];
     [self track:kGADefaultNamespace name:@"Install" properties:nil option:GATrackOptionOnce completion:nil];
-
+    
 }
 
 - (void) track:(NSString *)name {
@@ -314,26 +318,28 @@ static NSString *const kGACustomNamespace = @"Custom";
 }
 
 - (void) setAdvertisingId {
-#if GROWTHANALYTICS_NO_IDFA
     [self tag:kGADefaultNamespace name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId] completion:nil];
-#endif
 }
 
 - (void) setTrackingEnabled {
-#if GROWTHANALYTICS_NO_IDFA
     [self tag:kGADefaultNamespace name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false" completion:nil];
-#endif
 }
 
 - (void) setBasicTags {
+    [self setBasicTags:YES];
+}
+
+- (void) setBasicTags:(BOOL)adInfoEnable {
     [self setDeviceModel];
     [self setOS];
     [self setLanguage];
     [self setTimeZone];
     [self setTimeZoneOffset];
     [self setAppVersion];
-    [self setAdvertisingId];
-    [self setTrackingEnabled];
+    if(adInfoEnable) {
+        [self setAdvertisingId];
+        [self setTrackingEnabled];
+    }
 }
 
 - (NSString *) generateEventIdWithNamespace:(NSString *)namespace name:(NSString *)name {

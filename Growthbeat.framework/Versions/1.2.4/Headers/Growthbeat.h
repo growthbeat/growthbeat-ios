@@ -25,6 +25,7 @@
 + (instancetype)sharedInstance;
 
 - (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
+- (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId adInfoEnable:(BOOL)adInfoEnable;
 
 - (void)start;
 - (void)stop;

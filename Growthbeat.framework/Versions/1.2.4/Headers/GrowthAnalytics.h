@@ -45,6 +45,7 @@ typedef NS_ENUM (NSInteger, GAGender) {
 + (instancetype)sharedInstance;
 
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId adInfoEnable:(BOOL)adInfoEnable;
 
 - (void)track:(NSString *)name;
 - (void)track:(NSString *)name properties:(NSDictionary *)properties;
@@ -79,6 +80,7 @@ typedef NS_ENUM (NSInteger, GAGender) {
 - (void)setAdvertisingId;
 - (void)setTrackingEnabled;
 - (void)setBasicTags;
+- (void)setBasicTags:(BOOL)adInfoEnable;
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;
