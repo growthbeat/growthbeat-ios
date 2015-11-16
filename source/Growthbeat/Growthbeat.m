@@ -38,10 +38,14 @@ static Growthbeat *sharedInstance = nil;
 }
 
 - (void) initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId {
+    [self initializeWithApplicationId:initialApplicationId credentialId:initialCredentialId adInfoEnable:YES];
+}
+
+- (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId adInfoEnable:(BOOL)adInfoEnable {
     self.applicationId = initialApplicationId;
     self.credentialId = initialCredentialId;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-    [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
+    [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId adInfoEnable:adInfoEnable];
     [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
@@ -59,6 +63,16 @@ static Growthbeat *sharedInstance = nil;
     [[[GrowthAnalytics sharedInstance] logger] setSilent:silent];
     [[[GrowthMessage sharedInstance] logger] setSilent:silent];
     [[[GrowthPush sharedInstance] logger] setSilent:silent];
+}
+
+- (void) getClient:(void(^)(GBClient *client))callback {
+    if(callback) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                callback([[GrowthbeatCore sharedInstance] waitClient]);
+            });
+        });
+    }
 }
 
 @end
