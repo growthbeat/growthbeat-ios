@@ -79,7 +79,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 - (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId {
 
     self.credentialId = newCredentialId;
-    self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
     self.client = [self loadClient];
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
@@ -87,6 +86,9 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:self.credentialId];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+        
         if (self.client && self.client.growthbeatClientId &&
         ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
             [self clearClient];
