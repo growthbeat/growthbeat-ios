@@ -87,12 +87,11 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
-        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
-        
         if (self.client && self.client.growthbeatClientId &&
         ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
             [self clearClient];
         }
+        
     });
 
 }
@@ -124,7 +123,10 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 - (void) setDeviceToken:(NSData *)newDeviceToken {
 
     self.token = [self convertToHexToken:newDeviceToken];
-    [self registerClient];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+        [self registerClient];
+    });
 
 }
 
