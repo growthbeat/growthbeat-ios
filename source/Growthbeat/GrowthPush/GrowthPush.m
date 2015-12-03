@@ -120,9 +120,12 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
-- (void) setDeviceToken:(NSData *)newDeviceToken {
+- (void) setDeviceToken:(id)newDeviceToken {
 
-    self.token = [self convertToHexToken:newDeviceToken];
+    if ([newDeviceToken isKindOfClass:[NSString class]])
+        self.token = newDeviceToken;
+    else
+        self.token = [self convertToHexToken:newDeviceToken];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
         [self registerClient];
