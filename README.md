@@ -1,14 +1,39 @@
-# Growthbeat SDK for iOS
+Growthbeat SDK for iOS
+
+===
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Download](https://img.shields.io/cocoapods/v/Growthbeat.svg)](https://cocoapods.org/?q=growthbeat)
 
 [Growthbeat](https://growthbeat.com/) is growth hack platform for smart devices.
+
+## Install
+
+- **CocoaPods**
+
+Add Podfile.
+
+```
+pod 'Growthbeat'
+```
+
+Run command.
+
+```sh
+pod install
+```
+
+## Dependencies
+
+- Foundation.framework
+- UIKit.framework
+- CoreGraphics.framework
+- SystemConfiguration.framework
+- AdSupport.framework
+- CFNetwork.framework
 
 ## Usage
 
 ### Growthbeat
-
-1. Add Growthbeat.framework into your project. 
-
-1. Link SystemConfiguration.framework and AdSupport.framework. 
 
 1. Import the framework header.
 
@@ -61,7 +86,9 @@
 1. Write following code to handle url in UIApplicationDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:. 
 
 	```objc
-	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+	- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+		[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+	}
 	```
 
 ### Growth Link
@@ -80,23 +107,9 @@
 	[[GrowthLink sharedInstance] handleOpenUrl:url];
 	```
 
-## Included SDKs
+## Supported Environment
 
-Growthbeat is growth hack platform for mobile apps. This repository includes Growthbeat Core SDK, Growth Push SDK and Growth Replay SDK.
-
-* Growthbeat Core - core functions for Growthbeat integrated services.
-* Growth Analytics - analytics service for mobile apps.
-* Growth Message - in-app message tool for mobile apps.
-* Growth Push - push notification and analysis platform for mobile apps.
-* Growth Link (Pre-release) - deep linking tool.
-* Growth Replay (Under development) - usability testing tool for mobile apps.
-
-# Building framework
-
-1. Set build target to GrowthbeatFramework and iOS Device.
-1. Run.
-
-Archive the project on Xcode and you will get framework package.
+* iOS5 and later.
 
 ## License
 
