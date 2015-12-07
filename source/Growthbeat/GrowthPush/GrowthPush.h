@@ -57,7 +57,7 @@
  *
  * @param deviceToken Device token
  */
-- (void)setDeviceToken:(NSData *)deviceToken;
+- (void)setDeviceToken:(id)deviceToken;
 
 /**
  * Get enable remoete notification

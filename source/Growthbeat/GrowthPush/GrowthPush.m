@@ -79,7 +79,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 - (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId {
 
     self.credentialId = newCredentialId;
-    self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
     self.client = [self loadClient];
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
@@ -87,10 +86,12 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:self.credentialId];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
         if (self.client && self.client.growthbeatClientId &&
         ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
             [self clearClient];
         }
+        
     });
 
 }
@@ -119,10 +120,16 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
-- (void) setDeviceToken:(NSData *)newDeviceToken {
+- (void) setDeviceToken:(id)newDeviceToken {
 
-    self.token = [self convertToHexToken:newDeviceToken];
-    [self registerClient];
+    if ([newDeviceToken isKindOfClass:[NSString class]])
+        self.token = newDeviceToken;
+    else
+        self.token = [self convertToHexToken:newDeviceToken];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+        [self registerClient];
+    });
 
 }
 
@@ -219,9 +226,10 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         return nil;
     }
 
-    const unsigned *tokenBytes = [targetDeviceToken bytes];
-
-    return [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]), ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]), ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    return [[[[targetDeviceToken description]
+              stringByReplacingOccurrencesOfString:@"<" withString:@""]
+             stringByReplacingOccurrencesOfString:@">" withString:@""]
+            stringByReplacingOccurrencesOfString:@" " withString:@""];
 
 }
 

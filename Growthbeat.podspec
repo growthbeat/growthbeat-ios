@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Growthbeat"
-  s.version = "1.2.5"
+  s.version = "1.2.6"
   s.summary = "Growthbeat SDK for iOS"
   s.description = <<-DESC
   Growthbeat is growth hack platform for smart devices.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.source = {:git => "https://github.com/growthbeat/growthbeat-ios.git", :tag => "#{s.version}"}
   s.source_files = [
-      "source/Growthbeat/*.h"
+      "source/**/*.h"
   ]
   s.frameworks = [
       "Growthbeat",
