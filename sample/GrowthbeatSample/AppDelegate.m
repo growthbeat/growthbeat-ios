@@ -20,6 +20,31 @@
     return YES;
 }
 
+- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        NSURL *webpageURL = userActivity.webpageURL;
+        if ( [self handleUniversalLink:webpageURL]){
+            [[GrowthLink sharedInstance] handleOpenUrl:webpageURL];
+        } else {
+            // 例：コンテンツをアプリで開けない時にSafariにリダイレクトする場合
+            [[UIApplication sharedApplication] openURL:webpageURL];
+            return false;
+        }
+        
+    }
+    return true;
+}
+
+- (BOOL) handleUniversalLink:(NSURL*) url{
+    NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
+    if (!component || !component.host) return false;
+    if ([@"gbt.io" isEqualToString:component.host] ) {
+        
+        return true;
+    }
+    return false;
+}
+
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     [[Growthbeat sharedInstance] start];
