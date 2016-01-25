@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSString *synchronizationUrl;
 @property (nonatomic, strong) NSString *fingerprintUrl;
 @property (nonatomic, copy)void(^ synchronizationCallback)(GLSynchronization *);
+@property (nonatomic, strong) UIViewController *safariViewControllerObject;
 
 + (instancetype)sharedInstance;
 

@@ -38,7 +38,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
-@property (nonatomic, strong) UIViewController *safariViewControllerObject;
 
 @property (nonatomic, strong) GLFingerprintReceiver *fingerprintReceiver;
 
@@ -89,13 +88,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.initialized = NO;
         self.isFirstSession = NO;
-        __weak GrowthLink *weakSelf = self;
         self.synchronizationCallback = ^(GLSynchronization *synchronization) {
             if (synchronization.cookieTracking) {
                 NSString *urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId], [GBDeviceUtils getAdvertisingId]];
                 Class safari = NSClassFromString(@"SFSafariViewController");
-                if (safari != nil && weakSelf) {
-                    weakSelf.safariViewControllerObject =
+                if (safari != nil) {
+                    [GrowthLink sharedInstance].safariViewControllerObject =
                     [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:urlString]];
                     UIWindow *window = [GBViewUtils getWindow];
                     
@@ -103,7 +101,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
                     while (presentViewController.presentedViewController)
                         presentViewController = presentViewController.presentedViewController;
                     
-                    [presentViewController presentViewController:weakSelf.safariViewControllerObject animated:YES completion:nil];
+                    [presentViewController presentViewController:[GrowthLink sharedInstance].safariViewControllerObject animated:YES completion:nil];
                 } else {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
                 }
