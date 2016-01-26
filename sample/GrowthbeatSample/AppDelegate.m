@@ -13,6 +13,16 @@
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
+    [[GrowthLink sharedInstance] setSynchronizationCallback:^(GLSynchronization *synchronization) {
+        if (synchronization.deviceFingerprint && synchronization.clickId) {
+            [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithFingerprint:synchronization];
+            return;
+        }
+        if (synchronization.cookieTracking) {
+            [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithCookie:synchronization];
+            return;
+        }
+    }];
     [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
     [[Growthbeat sharedInstance] getClient:^(GBClient *client) {
         NSLog(@"clientId is %@",client.id);
