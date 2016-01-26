@@ -42,12 +42,18 @@
             [windowRootController.view addSubview:safariViewController.view];
             [safariViewController didMoveToParentViewController:windowRootController];
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [safariViewController willMoveToParentViewController:nil];
-                [safariViewController.view removeFromSuperview];
-                [safariViewController removeFromParentViewController];
-                [self.window removeFromSuperview];
-                self.window = nil;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @synchronized (_objectForLock)
+                {
+                    if (self.window) {
+                        [safariViewController willMoveToParentViewController:nil];
+                        [safariViewController.view removeFromSuperview];
+                        [safariViewController removeFromParentViewController];
+                        [self.window removeFromSuperview];
+                        self.window = nil;
+                    }
+                }
+
             });
         });
     } else {
