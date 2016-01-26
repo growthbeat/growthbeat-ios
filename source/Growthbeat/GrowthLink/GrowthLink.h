@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Growthbeat/GrowthbeatCore.h>
 #import "GLSynchronization.h"
+#import "GLSynchronizationHandler.h"
 
 
 @interface GrowthLink : NSObject {
@@ -28,7 +29,7 @@
 @property (nonatomic, strong) NSString *synchronizationUrl;
 @property (nonatomic, strong) NSString *fingerprintUrl;
 @property (nonatomic, copy)void(^ synchronizationCallback)(GLSynchronization *);
-@property (nonatomic, strong) UIViewController *safariViewControllerObject;
+@property (nonatomic, strong) GLSynchronizationHandler *synchronizationHandler;
 
 + (instancetype)sharedInstance;
 
