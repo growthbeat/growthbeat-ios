@@ -72,6 +72,11 @@
 - (void)clearBadge;
 
 /**
+ * Set environment
+ */
+- (void)setEnvironment:(GPEnvironment)newEnvironment;
+
+/**
  * Set Tag
  */
 - (void)setTag:(NSString *)name;
