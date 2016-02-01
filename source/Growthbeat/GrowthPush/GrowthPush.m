@@ -233,6 +233,10 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 }
 
+- (void)setEnvironment:(GPEnvironment)newEnvironment {
+    self.environment = newEnvironment;
+}
+
 - (void) setTag:(NSString *)name {
     [self setTag:name value:nil];
 }
