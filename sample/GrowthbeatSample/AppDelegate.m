@@ -26,7 +26,7 @@
         if ( [self handleUniversalLink:webpageURL]){
             [[GrowthLink sharedInstance] handleOpenUrl:webpageURL];
         } else {
-            // 例：コンテンツをアプリで開けない時にSafariにリダイレクトする場合
+            //コンテンツをアプリで開けない時にSafariにリダイレクト
             [[UIApplication sharedApplication] openURL:webpageURL];
             return false;
         }
