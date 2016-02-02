@@ -356,9 +356,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../submodules/growthbeat-core-ios",
-					"$(SRCROOT)/../submodules/growthanalytics-ios",
-					"$(SRCROOT)/../../",
+					"$(SRCROOT)/../",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -378,9 +376,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../submodules/growthbeat-core-ios",
-					"$(SRCROOT)/../submodules/growthanalytics-ios",
-					"$(SRCROOT)/../../",
+					"$(SRCROOT)/../",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
