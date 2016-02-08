@@ -12,7 +12,13 @@
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
+    [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+        NSDictionary *extra = customIntent.extra;
+        NSLog(@"extra: %@", extra);
+        return YES;
+    }]];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
+
     [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
     [[Growthbeat sharedInstance] getClient:^(GBClient *client) {
         NSLog(@"clientId is %@",client.id);
@@ -23,28 +29,10 @@
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
     if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
         NSURL *webpageURL = userActivity.webpageURL;
-        if ( [self handleUniversalLink:webpageURL]){
-            [[GrowthLink sharedInstance] handleOpenUrl:webpageURL];
-        } else {
-            //コンテンツをアプリで開けない時にSafariにリダイレクト
-            [[UIApplication sharedApplication] openURL:webpageURL];
-            return false;
-        }
-        
+        [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
     }
     return true;
 }
-
-- (BOOL) handleUniversalLink:(NSURL*) url{
-    NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
-    if (!component || !component.host) return false;
-    if ([@"gbt.io" isEqualToString:component.host] ) {
-        
-        return true;
-    }
-    return false;
-}
-
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     [[Growthbeat sharedInstance] start];
