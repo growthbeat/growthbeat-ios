@@ -8,6 +8,7 @@
 
 #import "GrowthLink.h"
 #import <Growthbeat/GrowthAnalytics.h>
+#import <Growthbeat/GBCustomIntentHandler.h>
 #import <SafariServices/SafariServices.h>
 #import "GLClick.h"
 #import "GLFingerprintReceiver.h"
@@ -15,6 +16,7 @@
 static GrowthLink *sharedInstance = nil;
 static NSString *const kDefaultSynchronizationUrl = @"https://gbt.io/l/synchronize";
 static NSString *const kDefaultFingerprintUrl = @"https://gbt.io/l/fingerprints";
+static NSString *const kDefaultHost = @"gbt.io";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
@@ -54,6 +56,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @synthesize httpClient;
 @synthesize preference;
 @synthesize synchronizationHandler;
+@synthesize host;
 
 @synthesize fingerprintReceiver;
 
@@ -80,6 +83,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 - (id) init {
     self = [super init];
     if (self) {
+        self.host = kDefaultHost;
         self.synchronizationUrl = kDefaultSynchronizationUrl;
         self.fingerprintUrl = kDefaultFingerprintUrl;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
@@ -122,6 +126,48 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 }
 
 
+- (void)handleUniversalLinks:(NSURL *)url {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
+        if ( [self canHandleUniversalLinks:component]){
+            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+            BOOL hasClickId = NO;
+            for (NSURLQueryItem *queryItem in component.queryItems) {
+                if ([queryItem.name isEqualToString:@"clickId"]) {
+                    hasClickId = YES;
+                } else {
+                    [parameters setObject:queryItem.name forKey:queryItem.value];
+                }
+            }
+            if (hasClickId) {
+                [[GrowthLink sharedInstance] handleOpenUrl:url];
+            } else {
+                NSString *path = component.path;
+                NSString* pattern = @"/ul/.*?/(.*)";
+                NSError* error = nil;
+                NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+                if (error != nil){
+                    return;
+                }
+                NSTextCheckingResult *match= [regex firstMatchInString:path options:NSMatchingReportProgress range:NSMakeRange(0, path.length)];
+                NSString *alias =  [path substringWithRange:[match rangeAtIndex:1]];
+                [logger info:@"Deeplinking...(Universal Link)"];
+
+                GLClick *click = [GLClick deeplinkUniversal:[[[GrowthbeatCore sharedInstance] waitClient] id] alias:alias credentialId:credentialId queryItems:component.queryItems];
+                [self handleClick:click];
+            }
+        }
+    });
+}
+
+- (BOOL) canHandleUniversalLinks:(NSURLComponents*) component{
+    if (!component || !component.host) return false;
+    if ([self.host isEqualToString:component.host] ) {
+        return true;
+    }
+    return false;
+}
+
 
 - (void) handleOpenUrl:(NSURL *)url {
     [self.synchronizationHandler removeWindowIfExists];
@@ -144,42 +190,46 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [logger info:@"Deeplinking..."];
 
         GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] waitClient] id] clickId:clickId install:isFirstSession credentialId:credentialId];
-        if (!click || !click.pattern || !click.pattern.link) {
-            [logger error:@"Failed to deeplink."];
-            return;
-        }
-
-        [logger info:@"Deeplink success. (clickId: %@)", click.id];
-
-        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
-        if (click.pattern.link.id) {
-            [properties setObject:click.pattern.link.id forKey:@"linkId"];
-        }
-        if (click.pattern.id) {
-            [properties setObject:click.pattern.id forKey:@"patternId"];
-        }
-        if (click.pattern.intent.id) {
-            [properties setObject:click.pattern.intent.id forKey:@"intentId"];
-        }
-
-        if (isFirstSession) {
-            [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Install" properties:properties option:GATrackOptionDefault completion:nil];
-            if (click.pattern.link.id) {
-                [[GrowthAnalytics sharedInstance] tag:@"GrowthLink" name:@"InstallLink" value:click.pattern.link.id completion:nil];
-            }
-        }
-
-        [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Open" properties:properties option:GATrackOptionDefault completion:nil];
-
-        isFirstSession = NO;
-
-        if (click.pattern.intent) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[GrowthbeatCore sharedInstance] handleIntent:click.pattern.intent];
-            });
-        }
-
+        [self handleClick:click];
     });
+
+}
+
+- (void) handleClick:(GLClick *) click{
+    if (!click || !click.pattern || !click.pattern.link) {
+        [logger error:@"Failed to deeplink."];
+        return;
+    }
+    
+    [logger info:@"Deeplink success. (clickId: %@)", click.id];
+    
+    NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+    if (click.pattern.link.id) {
+        [properties setObject:click.pattern.link.id forKey:@"linkId"];
+    }
+    if (click.pattern.id) {
+        [properties setObject:click.pattern.id forKey:@"patternId"];
+    }
+    if (click.pattern.intent.id) {
+        [properties setObject:click.pattern.intent.id forKey:@"intentId"];
+    }
+    
+    if (isFirstSession) {
+        [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Install" properties:properties option:GATrackOptionDefault completion:nil];
+        if (click.pattern.link.id) {
+            [[GrowthAnalytics sharedInstance] tag:@"GrowthLink" name:@"InstallLink" value:click.pattern.link.id completion:nil];
+        }
+    }
+    
+    [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Open" properties:properties option:GATrackOptionDefault completion:nil];
+    
+    isFirstSession = NO;
+    
+    if (click.pattern.intent) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[GrowthbeatCore sharedInstance] handleIntent:click.pattern.intent];
+        });
+    }
 
 }
 
