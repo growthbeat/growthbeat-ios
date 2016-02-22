@@ -48,7 +48,7 @@
 }
 
 + (instancetype)deeplinkUniversal:(NSString *)clientId alias:(NSString *)alias credentialId:(NSString *)credentialId queryItems:(NSArray *)queryItems{
-    NSString *path = @"/1/deeplink_universal";
+    NSString *path = @"/1/deeplink/universal_link";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     if (clientId) {
         [body setObject:clientId forKey:@"clientId"];
