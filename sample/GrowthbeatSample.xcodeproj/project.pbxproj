@@ -24,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69BDE4131C55FD8E006DF256 /* GrowthbeatSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GrowthbeatSample.entitlements; sourceTree = "<group>"; };
 		B2421EDA1997952D00E91C23 /* GrowthbeatSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrowthbeatSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2421EDD1997952D00E91C23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2421EDF1997952D00E91C23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -99,6 +100,7 @@
 		B2421EE31997952D00E91C23 /* GrowthbeatSample */ = {
 			isa = PBXGroup;
 			children = (
+				69BDE4131C55FD8E006DF256 /* GrowthbeatSample.entitlements */,
 				B2421EEC1997952D00E91C23 /* AppDelegate.h */,
 				B2421EED1997952D00E91C23 /* AppDelegate.m */,
 				B2421EEF1997952D00E91C23 /* Main.storyboard */,
@@ -152,6 +154,11 @@
 				TargetAttributes = {
 					B2421ED91997952D00E91C23 = {
 						DevelopmentTeam = KXJAKTLCBX;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -238,7 +245,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -279,7 +286,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -300,6 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = GrowthbeatSample/GrowthbeatSample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -314,7 +322,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4291fca8-f6bb-4090-aee8-69b230ac1e48";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -324,6 +332,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = GrowthbeatSample/GrowthbeatSample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SIROK, Inc. (KXJAKTLCBX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -337,7 +346,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a34cb01c-dec9-4aa7-9f78-87285eb0c1c6";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

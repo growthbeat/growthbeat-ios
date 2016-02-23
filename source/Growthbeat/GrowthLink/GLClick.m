@@ -47,6 +47,31 @@
     return [self domainWithDictionary:httpResponse.body];
 }
 
++ (instancetype)deeplinkUniversalLink:(NSString *)clientId alias:(NSString *)alias credentialId:(NSString *)credentialId queryItems:(NSArray *)queryItems{
+    NSString *path = @"/1/deeplink/universal_link";
+    NSMutableDictionary *body = [NSMutableDictionary dictionary];
+    if (clientId) {
+        [body setObject:clientId forKey:@"clientId"];
+    }
+    if (alias) {
+        [body setObject:alias forKey:@"alias"];
+    }
+    if (credentialId) {
+        [body setObject:credentialId forKey:@"credentialId"];
+    }
+    for (NSURLQueryItem *queryItem in queryItems) {
+        [body setObject:queryItem.value forKey:queryItem.name];
+    }
+    
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
+    GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
+    if (!httpResponse.success) {
+        [[[GrowthLink sharedInstance] logger] error:@"Failed to deeplink universal. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
+        return nil;
+    }
+    return [self domainWithDictionary:httpResponse.body];
+}
+
 - (id) initWithDictionary:(NSDictionary *)dictionary {
 
     self = [super init];

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Growthbeat/GrowthbeatCore.h>
 #import "GLSynchronization.h"
+#import "GLSynchronizationHandler.h"
 
 
 @interface GrowthLink : NSObject {
@@ -27,7 +28,9 @@
 
 @property (nonatomic, strong) NSString *synchronizationUrl;
 @property (nonatomic, strong) NSString *fingerprintUrl;
+@property (nonatomic, strong) NSString *host;
 @property (nonatomic, copy)void(^ synchronizationCallback)(GLSynchronization *);
+@property (nonatomic, strong) GLSynchronizationHandler *synchronizationHandler;
 
 + (instancetype)sharedInstance;
 
@@ -37,6 +40,7 @@
 - (GBHttpClient *)httpClient;
 - (GBPreference *)preference;
 
+- (void)handleUniversalLinks:(NSURL *)url;
 - (void)handleOpenUrl:(NSURL *)url;
 
 @end
