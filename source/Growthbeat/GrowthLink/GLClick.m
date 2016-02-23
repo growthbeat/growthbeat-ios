@@ -47,7 +47,7 @@
     return [self domainWithDictionary:httpResponse.body];
 }
 
-+ (instancetype)deeplinkUniversal:(NSString *)clientId alias:(NSString *)alias credentialId:(NSString *)credentialId queryItems:(NSArray *)queryItems{
++ (instancetype)deeplinkUniversalLink:(NSString *)clientId alias:(NSString *)alias credentialId:(NSString *)credentialId queryItems:(NSArray *)queryItems{
     NSString *path = @"/1/deeplink/universal_link";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     if (clientId) {
