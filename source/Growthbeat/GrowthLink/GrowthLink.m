@@ -153,7 +153,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
                 NSString *alias =  [path substringWithRange:[match rangeAtIndex:1]];
                 [logger info:@"Deeplinking...(Universal Link)"];
 
-                GLClick *click = [GLClick deeplinkUniversal:[[[GrowthbeatCore sharedInstance] waitClient] id] alias:alias credentialId:credentialId queryItems:component.queryItems];
+                GLClick *click = [GLClick deeplinkUniversalLink:[[[GrowthbeatCore sharedInstance] waitClient] id] alias:alias credentialId:credentialId queryItems:component.queryItems];
                 [self handleClick:click];
             }
         }
