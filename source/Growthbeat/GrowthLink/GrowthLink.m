@@ -153,7 +153,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
                 NSString *alias =  [path substringWithRange:[match rangeAtIndex:1]];
                 [logger info:@"Deeplinking...(Universal Link)"];
                 GLClick *click = [GLClick deeplinkUniversalLink:[[[GrowthbeatCore sharedInstance] waitClient] id] alias:alias credentialId:credentialId queryItems:component.queryItems];
-                //LPありでUniversal Linksでアプリにきた場合は、必要パラメータを付与しSafariで該当LPを表示させる
+                //If the link has a landing page url, open it in safari adding required params.
                 if (click.pattern.url) {
                     NSURLComponents *urlComponent = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:click.pattern.url] resolvingAgainstBaseURL:true];
                     NSMutableArray *newParameters = [NSMutableArray array];
