@@ -164,7 +164,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
                     [newParameters addObject:[NSURLQueryItem queryItemWithName:@"universalLink" value:[NSString stringWithFormat:@"https://%@/l/universallink/%@?clickId=%@",component.host, [GrowthLink sharedInstance].applicationId, click.id]]];
                     [newParameters addObject:[NSURLQueryItem queryItemWithName:@"deepLinkUrl" value:[NSString stringWithFormat:@"https://%@/l/%@", component.host, alias]]];
                     newComponents.queryItems = newParameters;
-                    [[UIApplication sharedApplication] openURL:newComponents.URL    ];
+                    [[UIApplication sharedApplication] openURL:newComponents.URL];
                 } else {
                     [self handleClick:click];
                 }
