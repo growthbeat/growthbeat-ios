@@ -31,7 +31,7 @@
 
 + (instancetype)deeplinkWithClientId:(NSString *)clientId clickId:(NSString *)clickId install:(BOOL)install credentialId:(NSString *)credentialId;
 
-+ (instancetype)deeplinkUniversal:(NSString *)clientId alias:(NSString *)alias credentialId:(NSString *)credentialId queryItems:(NSArray *)queryItems;
++ (instancetype)deeplinkUniversalLink:(NSString *)clientId alias:(NSString *)alias credentialId:(NSString *)credentialId queryItems:(NSArray *)queryItems;
 
 
 @end
