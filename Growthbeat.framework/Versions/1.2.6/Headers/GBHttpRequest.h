@@ -30,6 +30,7 @@
 + (id)instanceWithMethod:(GBRequestMethod)requestMethod path:(NSString *)path query:(NSDictionary *)query;
 + (id)instanceWithMethod:(GBRequestMethod)requestMethod path:(NSString *)path query:(NSDictionary *)query body:(NSDictionary *)body;
 + (id)instanceWithMethod:(GBRequestMethod)requestMethod path:(NSString *)path query:(NSDictionary *)query body:(NSDictionary *)body contentType:(GBContentType)contentType;
++ (id)instanceWithMethod:(GBRequestMethod)requestMethod path:(NSString *)path query:(NSDictionary *)query body:(NSDictionary *)body userAgent:(NSString *)userAgent;
 
 - (NSURLRequest *)urlRequestWithBaseUrl:(NSURL *)baseUrl;
 
