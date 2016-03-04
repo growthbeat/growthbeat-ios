@@ -11,7 +11,6 @@
 #import <Growthbeat/GBCustomIntentHandler.h>
 #import <SafariServices/SafariServices.h>
 #import "GLClick.h"
-#import "GLFingerprintReceiver.h"
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kDefaultSynchronizationUrlTmplete = @"https://%@/l/synchronize";
@@ -28,7 +27,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBHttpClient *httpClient;
     GBPreference *preference;
 
-    GLFingerprintReceiver *fingerprintReceiver;
 
     BOOL initialized;
     BOOL fingerPrintSuccess;
@@ -39,8 +37,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
-
-@property (nonatomic, strong) GLFingerprintReceiver *fingerprintReceiver;
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;
@@ -57,8 +53,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @synthesize preference;
 @synthesize synchronizationHandler;
 @synthesize host;
-
-@synthesize fingerprintReceiver;
 
 @synthesize applicationId;
 @synthesize credentialId;
@@ -89,7 +83,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
-        self.fingerprintReceiver = [[GLFingerprintReceiver alloc] init];
         self.synchronizationHandler = [[GLSynchronizationHandler alloc] init];
         self.initialized = NO;
         self.isFirstSession = NO;
@@ -256,31 +249,28 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
     isFirstSession = YES;
 
-    [fingerprintReceiver getFingerprintParametersWithFingerprintUrl:fingerprintUrl completion:^(NSString *fingerprintParameters) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
+    NSString *userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
 
-            [logger info:@"Synchronizing..."];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-            GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  fingerprintParameters:fingerprintParameters credentialId:credentialId];
-            if (!synchronization) {
-                [logger error:@"Failed to Synchronize."];
-                return;
+        [logger info:@"Synchronizing..."];
+
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  userAgent:userAgent credentialId:credentialId];
+        if (!synchronization) {
+            [logger error:@"Failed to Synchronize."];
+            return;
+        }
+
+        [GLSynchronization save:synchronization];
+        [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking ? @"YES" : @"NO", synchronization.deviceFingerprint ? @"YES" : @"NO", synchronization.clickId];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (synchronizationCallback) {
+                synchronizationCallback(synchronization);
             }
-
-            [GLSynchronization save:synchronization];
-            [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking ? @"YES" : @"NO", synchronization.deviceFingerprint ? @"YES" : @"NO", synchronization.clickId];
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (synchronizationCallback) {
-                    synchronizationCallback(synchronization);
-                }
-                self.fingerprintReceiver = nil;
-            });
-
         });
-    }];
-
-
+    });
 }
 
 

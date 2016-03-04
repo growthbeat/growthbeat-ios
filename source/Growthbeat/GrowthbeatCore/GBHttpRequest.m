@@ -58,6 +58,17 @@
 
 }
 
++ (id)instanceWithMethod:(GBRequestMethod)requestMethod path:(NSString *)path query:(NSDictionary *)query body:(NSDictionary *)body userAgent:(NSString *)userAgent {
+
+    GBHttpRequest *httpRequest = [self instanceWithMethod:requestMethod path:path query:query body:body];
+
+    if (userAgent) {
+        [httpRequest setValue:userAgent forKey:@"User-Agent"];
+    }
+
+    return httpRequest;
+}
+
 - (void) dealloc {
 
     self.path = nil;

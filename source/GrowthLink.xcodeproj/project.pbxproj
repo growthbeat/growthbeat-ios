@@ -22,8 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		6943F0E91B9DA8B90024E723 /* GLFingerprintReceiver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6943F0E81B9DA8A60024E723 /* GLFingerprintReceiver.h */; };
-		694890CC1B9FC86D00E6715F /* GLFingerprintReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 694890CB1B9FC86D00E6715F /* GLFingerprintReceiver.m */; };
 		696071271C5740990004C517 /* GLSynchronizationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 696071261C5740990004C517 /* GLSynchronizationHandler.m */; };
 		696071281C5749F10004C517 /* GLSynchronizationHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 696071251C5740990004C517 /* GLSynchronizationHandler.h */; };
 		69B2A3A51B9F4416007ED667 /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B2A3A41B9F4416007ED667 /* Growthbeat.framework */; };
@@ -57,7 +55,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				696071281C5749F10004C517 /* GLSynchronizationHandler.h in CopyFiles */,
-				6943F0E91B9DA8B90024E723 /* GLFingerprintReceiver.h in CopyFiles */,
 				B2F7BA161B259F79001C66A3 /* GLClick.h in CopyFiles */,
 				B2F7BA171B259F79001C66A3 /* GLPattern.h in CopyFiles */,
 				B2F7BA051B259AEC001C66A3 /* GLLink.h in CopyFiles */,
@@ -69,8 +66,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6943F0E81B9DA8A60024E723 /* GLFingerprintReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFingerprintReceiver.h; sourceTree = "<group>"; };
-		694890CB1B9FC86D00E6715F /* GLFingerprintReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFingerprintReceiver.m; sourceTree = "<group>"; };
 		696071251C5740990004C517 /* GLSynchronizationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSynchronizationHandler.h; sourceTree = "<group>"; };
 		696071261C5740990004C517 /* GLSynchronizationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSynchronizationHandler.m; sourceTree = "<group>"; };
 		69B2A3A41B9F4416007ED667 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../Growthbeat.framework; sourceTree = "<group>"; };
@@ -130,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				B2F7BA121B259F69001C66A3 /* GLClick.h */,
-				6943F0E81B9DA8A60024E723 /* GLFingerprintReceiver.h */,
 				B2F7B9FF1B2599AB001C66A3 /* GLLink.h */,
 				B2F7BA131B259F69001C66A3 /* GLPattern.h */,
 				B2F7BA011B2599AB001C66A3 /* GLSynchronization.h */,
@@ -144,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				B2F7BA111B259F69001C66A3 /* GLClick.m */,
-				694890CB1B9FC86D00E6715F /* GLFingerprintReceiver.m */,
 				B2F7BA001B2599AB001C66A3 /* GLLink.m */,
 				B2F7BA101B259F69001C66A3 /* GLPattern.m */,
 				B2F7BA021B2599AB001C66A3 /* GLSynchronization.m */,
@@ -253,7 +246,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				696071271C5740990004C517 /* GLSynchronizationHandler.m in Sources */,
-				694890CC1B9FC86D00E6715F /* GLFingerprintReceiver.m in Sources */,
 				B2C1480F1AA456F300006EC3 /* GrowthLink.m in Sources */,
 				B2F7BA141B259F69001C66A3 /* GLPattern.m in Sources */,
 				B2F7BA151B259F69001C66A3 /* GLClick.m in Sources */,
