@@ -7,7 +7,6 @@
 //
 
 #import "GrowthLink.h"
-#import <Growthbeat/GrowthAnalytics.h>
 #import <Growthbeat/GBCustomIntentHandler.h>
 #import <SafariServices/SafariServices.h>
 #import "GLClick.h"
@@ -114,7 +113,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [preference removeAll];
     }
 
-    [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [self synchronize];
 }
 
@@ -185,12 +183,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [logger info:@"Unabled to get clickId from url."];
         return;
     }
-
-    NSString *uuid = [query objectForKeyedSubscript:@"uuid"];
-    if (uuid) {
-        [[GrowthAnalytics sharedInstance] setUUID:uuid];
-    }
-
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
         [logger info:@"Deeplinking..."];
@@ -219,16 +212,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     if (click.pattern.intent.id) {
         [properties setObject:click.pattern.intent.id forKey:@"intentId"];
     }
-    
-    if (isFirstSession) {
-        [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Install" properties:properties option:GATrackOptionDefault completion:nil];
-        if (click.pattern.link.id) {
-            [[GrowthAnalytics sharedInstance] tag:@"GrowthLink" name:@"InstallLink" value:click.pattern.link.id completion:nil];
-        }
-    }
-    
-    [[GrowthAnalytics sharedInstance] track:@"GrowthLink" name:@"Open" properties:properties option:GATrackOptionDefault completion:nil];
-    
     isFirstSession = NO;
     
     if (click.pattern.intent) {
