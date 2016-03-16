@@ -22,6 +22,7 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 + (instancetype)synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version userAgent:(NSString *)userAgent credentialId:(NSString *)credentialId {
 
     NSString *path = @"/2.1/synchronize";
+    NSString *deviceModel = [GBDeviceUtils model];
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
 
     if (applicationId) {
@@ -33,6 +34,9 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (deviceModel) {
+        [body setObject:deviceModel forKey:@"deviceModel"];
     }
     [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];;
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body userAgent:userAgent];
