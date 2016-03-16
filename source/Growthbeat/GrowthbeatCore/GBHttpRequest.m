@@ -124,6 +124,10 @@
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
     [urlRequest setHTTPMethod:NSStringFromGBRequestMethod(requestMethod)];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    if (self.userAgent) {
+        [urlRequest setValue:self.userAgent forKey:@"User-Agent"]
+    }
 
     if (requestMethod != GBRequestMethodGet) {
         [urlRequest setValue:contentTypeString forHTTPHeaderField:@"Content-Type"];
