@@ -126,7 +126,7 @@
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     if (self.userAgent) {
-        [urlRequest setValue:self.userAgent forKey:@"User-Agent"]
+        [urlRequest setValue:self.userAgent forKey:@"User-Agent"];
     }
 
     if (requestMethod != GBRequestMethodGet) {
