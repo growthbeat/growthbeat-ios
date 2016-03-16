@@ -13,7 +13,6 @@
 
 static GrowthLink *sharedInstance = nil;
 static NSString *const kDefaultSynchronizationUrlTmplete = @"https://%@/l/synchronize";
-static NSString *const kDefaultFingerprintUrlTemplete = @"https://%@/l/fingerprints";
 static NSString *const kDefaultHost = @"gbt.io";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
@@ -25,7 +24,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-
 
     BOOL initialized;
     BOOL fingerPrintSuccess;
@@ -45,7 +43,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @implementation GrowthLink
 
 @synthesize synchronizationUrl;
-@synthesize fingerprintUrl;
 
 @synthesize logger;
 @synthesize httpClient;
@@ -78,7 +75,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     if (self) {
         self.host = kDefaultHost;
         self.synchronizationUrl = [NSString stringWithFormat:kDefaultSynchronizationUrlTmplete,self.host];
-        self.fingerprintUrl = [NSString stringWithFormat:kDefaultFingerprintUrlTemplete,self.host];
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
