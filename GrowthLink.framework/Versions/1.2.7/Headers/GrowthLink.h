@@ -18,7 +18,6 @@
     NSString *credentialId;
 
     NSString *synchronizationUrl;
-    NSString *fingerprintUrl;
     void(^ synchronizationCallback)(GLSynchronization *);
 
 }
@@ -27,7 +26,6 @@
 @property (nonatomic, strong) NSString *credentialId;
 
 @property (nonatomic, strong) NSString *synchronizationUrl;
-@property (nonatomic, strong) NSString *fingerprintUrl;
 @property (nonatomic, strong) NSString *host;
 @property (nonatomic, copy)void(^ synchronizationCallback)(GLSynchronization *);
 @property (nonatomic, strong) GLSynchronizationHandler *synchronizationHandler;
