@@ -67,13 +67,13 @@
 
 + (NSString *) version {
 
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 
 }
 
 + (NSString *) build {
 
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 
 }
 
