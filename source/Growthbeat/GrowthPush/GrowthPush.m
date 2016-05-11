@@ -165,19 +165,19 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     if (!self.client) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            @synchronized (self)
+            
+            [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
+            
+            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
+            if (createdClient) {
+                [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
+                self.client = createdClient;
+                [self saveClient:client];
+            }
+            
+            self.registeringClient = NO;
+            @synchronized (self.tagArray)
             {
-                
-                [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
-                
-                GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
-                if (createdClient) {
-                    [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
-                    self.client = createdClient;
-                    [self saveClient:client];
-                }
-                
-                self.registeringClient = NO;
                 
                 if (self.tagArray && self.tagArray.count > 0) {
                     NSArray *retArray = [GPTag bulkCreateWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId tagIdValueArray:self.tagArray];
@@ -189,6 +189,10 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                     }
                     self.tagArray = nil;
                 }
+            }
+            
+            @synchronized (self.eventArray)
+            {
                 
                 if (self.eventArray && self.eventArray.count > 0) {
                     [self.eventArray enumerateObjectsUsingBlock:^(GPEvent *data, NSUInteger idx, BOOL *stop) {
@@ -275,7 +279,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        @synchronized (self)
+        @synchronized (self.tagArray)
         {
             
             
@@ -317,7 +321,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 - (void) trackEvent:(NSString *)name value:(NSString *)value {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        @synchronized (self)
+        @synchronized (self.eventArray)
         {
             
             [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
