@@ -100,6 +100,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         }
         
     });
+    [self registerClient];
     
 }
 
