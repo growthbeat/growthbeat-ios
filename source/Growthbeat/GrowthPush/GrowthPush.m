@@ -134,16 +134,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         self.token = newDeviceToken;
     else
         self.token = [self convertToHexToken:newDeviceToken];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        while (true) {
-            if ([GrowthbeatCore sharedInstance].client != nil) {
-                self.growthbeatClient = [GrowthbeatCore sharedInstance].client;
-                [self registerClient];
-            }
-            usleep(100 * 1000);
-        }
-    });
-    
+    [self registerClient];
 }
 
 - (void) clearBadge {
@@ -153,94 +144,101 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) registerClient {
-    
-    if (self.environment == GPEnvironmentUnknown) {
-        [self.logger info:@"Environment is not specified. Client has not registred."];
-        return;
-    }
-    
-    if (self.registeringClient) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
-            [self registerClient];
-        });
-        return;
-    }
-    self.registeringClient = YES;
-    
-    if (!self.client) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        if (self.environment == GPEnvironmentUnknown) {
+            [self.logger info:@"Environment is not specified. Client has not registred."];
+            return;
+        }
+        
+        if (self.registeringClient) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+                [self registerClient];
+            });
+            return;
+        }
+        while ([GrowthbeatCore sharedInstance].client == nil) {
+            usleep(100 * 1000);
+        }
+        
+        self.growthbeatClient = [GrowthbeatCore sharedInstance].client;
+        self.registeringClient = YES;
+        
+        if (!self.client) {
             
-            [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
-            
-            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
-            if (createdClient) {
-                [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
-                self.client = createdClient;
-                [self saveClient:client];
-            }
-            
-            self.registeringClient = NO;
-            @synchronized (self.tagArray)
-            {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                 
-                if (self.tagArray && self.tagArray.count > 0) {
-                    NSArray *retArray = [GPTag bulkCreateWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId tagIdValueArray:self.tagArray];
-                    if (retArray && retArray.count > 0) {
-                        [retArray enumerateObjectsUsingBlock:^(GPTag *tag, NSUInteger idx, BOOL *stop) {
-                            [GPTag save:tag name:tag.name];
-                            [self.logger info:@"Setting tag success. (name: %@)", tag.name];
-                        }];
-                    }
-                    self.tagArray = nil;
+                [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
+                
+                GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
+                if (createdClient) {
+                    [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
+                    self.client = createdClient;
+                    [self saveClient:client];
                 }
-            }
-            
-            @synchronized (self.eventArray)
-            {
                 
-                if (self.eventArray && self.eventArray.count > 0) {
-                    [self.eventArray enumerateObjectsUsingBlock:^(GPEvent *data, NSUInteger idx, BOOL *stop) {
-                        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
-                        
-                        if (event) {
-                            [self.logger info:@"Setting event success. (name: %@)", event.name];
+                self.registeringClient = NO;
+                @synchronized (self.tagArray)
+                {
+                    
+                    if (self.tagArray && self.tagArray.count > 0) {
+                        NSArray *retArray = [GPTag bulkCreateWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId tagIdValueArray:self.tagArray];
+                        if (retArray && retArray.count > 0) {
+                            [retArray enumerateObjectsUsingBlock:^(GPTag *tag, NSUInteger idx, BOOL *stop) {
+                                [GPTag save:tag name:tag.name];
+                                [self.logger info:@"Setting tag success. (name: %@)", tag.name];
+                            }];
                         }
-                        [NSThread sleepForTimeInterval:0.1];
-                        
-                    }];
-                    self.eventArray = nil;
+                        self.tagArray = nil;
+                    }
                 }
-            }
-        });
-        
-        return;
-        
-    }
-    
-    if ((self.token != self.client.token &&
-         ![self.token isEqualToString:self.client.token]) || self.environment != self.client.environment) {
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                
+                @synchronized (self.eventArray)
+                {
+                    
+                    if (self.eventArray && self.eventArray.count > 0) {
+                        [self.eventArray enumerateObjectsUsingBlock:^(GPEvent *data, NSUInteger idx, BOOL *stop) {
+                            GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
+                            
+                            if (event) {
+                                [self.logger info:@"Setting event success. (name: %@)", event.name];
+                            }
+                            [NSThread sleepForTimeInterval:0.1];
+                            
+                        }];
+                        self.eventArray = nil;
+                    }
+                }
+            });
             
-            [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
+            return;
             
-            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
-            if (updatedClient) {
-                [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
-                self.client = updatedClient;
-                [self saveClient:self.client];
-            }
-            
-            self.registeringClient = NO;
-            
-        });
+        }
         
-        return;
+        if ((self.token != self.client.token &&
+             ![self.token isEqualToString:self.client.token]) || self.environment != self.client.environment) {
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                
+                [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
+                
+                GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
+                if (updatedClient) {
+                    [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
+                    self.client = updatedClient;
+                    [self saveClient:self.client];
+                }
+                
+                self.registeringClient = NO;
+                
+            });
+            
+            return;
+            
+        }
         
-    }
-    
-    [self.logger info:@"Client already registered."];
+        [self.logger info:@"Client already registered."];
+    });
     
 }
 
