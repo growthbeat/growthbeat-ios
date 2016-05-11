@@ -135,8 +135,13 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     else
         self.token = [self convertToHexToken:newDeviceToken];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
-        [self registerClient];
+        while (true) {
+            if ([GrowthbeatCore sharedInstance].client != nil) {
+                self.growthbeatClient = [GrowthbeatCore sharedInstance].client;
+                [self registerClient];
+            }
+            usleep(100 * 1000);
+        }
     });
     
 }
@@ -363,17 +368,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     }
     if ([GBDeviceUtils build]) {
         [self setTag:@"Build" value:[GBDeviceUtils build]];
-    }
-    
-}
-
-- (GPClient *) waitClient {
-    
-    while (true) {
-        if (self.client != nil) {
-            return self.client;
-        }
-        usleep(100 * 1000);
     }
     
 }
