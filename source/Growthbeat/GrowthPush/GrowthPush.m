@@ -284,9 +284,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         @synchronized (self.tagArray)
         {
-            
-            
-            
             GPTag *existingTag = [GPTag load:name];
             if (existingTag) {
                 if (value && [value isEqualToString:existingTag.value]) {
