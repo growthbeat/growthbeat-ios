@@ -13,6 +13,7 @@
     NSInteger goalId;
     long long clientId;
     long long timestamp;
+    NSString *name;
     NSString *value;
 
 }
@@ -20,6 +21,7 @@
 @property (nonatomic, assign) NSInteger goalId;
 @property (nonatomic, assign) long long clientId;
 @property (nonatomic, assign) long long timestamp;
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *value;
 
 + (GPEvent *)createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value;

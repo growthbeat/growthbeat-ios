@@ -15,6 +15,7 @@
 @synthesize goalId;
 @synthesize timestamp;
 @synthesize clientId;
+@synthesize name;
 @synthesize value;
 
 + (GPEvent *) createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
@@ -59,6 +60,9 @@
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
             self.clientId = [[dictionary objectForKey:@"clientId"] longLongValue];
         }
+        if ([dictionary objectForKey:@"name"] && [dictionary objectForKey:@"name"] != [NSNull null]) {
+            self.name = [dictionary objectForKey:@"name"];
+        }
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
         }
@@ -84,6 +88,9 @@
         if ([aDecoder containsValueForKey:@"clientId"]) {
             self.clientId = [[aDecoder decodeObjectForKey:@"clientId"] longLongValue];
         }
+        if ([aDecoder containsValueForKey:@"name"]) {
+            self.name = [aDecoder decodeObjectForKey:@"name"];
+        }
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
         }
@@ -98,6 +105,7 @@
     [aCoder encodeInteger:goalId forKey:@"goalId"];
     [aCoder encodeObject:@(timestamp) forKey:@"timestamp"];
     [aCoder encodeObject:@(clientId) forKey:@"clientId"];
+    [aCoder encodeObject:name forKey:@"name"];
     [aCoder encodeObject:value forKey:@"value"];
 
 }

@@ -14,6 +14,7 @@
 
 @synthesize tagId;
 @synthesize clientId;
+@synthesize name;
 @synthesize value;
 
 static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
@@ -47,6 +48,32 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
 }
 
++ (NSArray *) bulkCreateWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId tagIdValueArray:(NSArray *) tagIdValueArray {
+    
+    NSString *path = @"/3/tags";
+    NSMutableDictionary *body = [NSMutableDictionary dictionary];
+    
+    if (clientId) {
+        [body setObject:clientId forKey:@"clientId"];
+    }
+    if (credentialId) {
+        [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (tagIdValueArray && tagIdValueArray.count > 0) {
+        [body setObject:tagIdValueArray forKey:@"tagIdValues"];
+    }
+    
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body contentType:GBContentTypeJson];
+    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
+    if (!httpResponse.success) {
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to create tag. %@", httpResponse.error];
+        return nil;
+    }
+    
+    return tagIdValueArray;
+    
+}
+
 + (void) save:(GPTag *)tag name:(NSString *)name {
     if (tag && name) {
         [[[GrowthPush sharedInstance] preference] setObject:tag forKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
@@ -73,10 +100,13 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
             self.clientId = [[dictionary objectForKey:@"clientId"] longLongValue];
         }
+        if ([dictionary objectForKey:@"name"] && [dictionary objectForKey:@"name"] != [NSNull null]) {
+            self.name = [dictionary objectForKey:@"name"];
+        }
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
         }
-    }
+}
 
     return self;
 
@@ -95,9 +125,13 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
         if ([aDecoder containsValueForKey:@"clientId"]) {
             self.clientId = [[aDecoder decodeObjectForKey:@"clientId"] longLongValue];
         }
+        if ([aDecoder containsValueForKey:@"name"]) {
+            self.name = [aDecoder decodeObjectForKey:@"name"];
+        }
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
         }
+        
     }
 
     return self;
@@ -108,8 +142,8 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
     [aCoder encodeInteger:tagId forKey:@"tagId"];
     [aCoder encodeObject:@(clientId) forKey:@"clientId"];
+    [aCoder encodeObject:value forKey:@"name"];
     [aCoder encodeObject:value forKey:@"value"];
-
 }
 
 
