@@ -23,7 +23,6 @@
 @property (nonatomic, strong) NSString *value;
 
 + (GPTag *)createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value;
-+ (NSArray *) bulkCreateWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId tagIdValueArray:(NSArray *) tagIdValueArray;
 + (void)save:(GPTag *)tag name:(NSString *)name;
 + (GPTag *)load:(NSString *)name;
 
