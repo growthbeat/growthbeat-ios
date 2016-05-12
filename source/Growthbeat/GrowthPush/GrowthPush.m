@@ -180,13 +180,14 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                 self.registeringClient = NO;
                 @synchronized (self.eventArray)
                 {
-                    
                     if (self.eventArray && self.eventArray.count > 0) {
+                        [self.logger info:@"Set Event on registerClient"];
                         [self.eventArray enumerateObjectsUsingBlock:^(GPEvent *data, NSUInteger idx, BOOL *stop) {
+                            [self.logger info:@"Set Event... (name: %@, value: %@)", data.name, data.value];
                             GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
                             
                             if (event) {
-                                [self.logger info:@"Setting event success. (name: %@)", event.name];
+                                [self.logger info:@"Setting event success. (name: %@)", data.name];
                             }
                             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
                             
@@ -199,12 +200,14 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                 {
                     
                     if (self.tagArray && self.tagArray.count > 0) {
+                        [self.logger info:@"Set Tag on registerClient"];
                         [self.tagArray enumerateObjectsUsingBlock:^(GPTag *data, NSUInteger idx, BOOL *stop) {
+                            [self.logger info:@"Set Tag... (name: %@, value: %@)", data.name, data.value];
                             GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
                             
                             if (tag) {
                                 [GPTag save:tag name:tag.name];
-                                [self.logger info:@"Setting tag success. (name: %@)", tag.name];
+                                [self.logger info:@"Setting tag success. (name: %@)", data.name];
                             }
                             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
                             
@@ -284,6 +287,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
 - (void) setTag:(NSString *)name value:(NSString *)value {
     
+    [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         @synchronized (self.tagArray)
