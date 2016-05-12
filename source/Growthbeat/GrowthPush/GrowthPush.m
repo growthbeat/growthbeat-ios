@@ -178,21 +178,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                 }
                 
                 self.registeringClient = NO;
-                @synchronized (self.tagArray)
-                {
-                    
-                    if (self.tagArray && self.tagArray.count > 0) {
-                        NSArray *retArray = [GPTag bulkCreateWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId tagIdValueArray:self.tagArray];
-                        if (retArray && retArray.count > 0) {
-                            [retArray enumerateObjectsUsingBlock:^(GPTag *tag, NSUInteger idx, BOOL *stop) {
-                                [GPTag save:tag name:tag.name];
-                                [self.logger info:@"Setting tag success. (name: %@)", tag.name];
-                            }];
-                        }
-                        self.tagArray = nil;
-                    }
-                }
-                
                 @synchronized (self.eventArray)
                 {
                     
@@ -203,12 +188,31 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                             if (event) {
                                 [self.logger info:@"Setting event success. (name: %@)", event.name];
                             }
-                            [NSThread sleepForTimeInterval:0.1];
+                            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
                             
                         }];
                         self.eventArray = nil;
                     }
                 }
+                
+                @synchronized (self.tagArray)
+                {
+                    
+                    if (self.tagArray && self.tagArray.count > 0) {
+                        [self.tagArray enumerateObjectsUsingBlock:^(GPTag *data, NSUInteger idx, BOOL *stop) {
+                            GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
+                            
+                            if (tag) {
+                                [GPTag save:tag name:tag.name];
+                                [self.logger info:@"Setting tag success. (name: %@)", tag.name];
+                            }
+                            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
+                            
+                        }];
+                        self.tagArray = nil;
+                    }
+                }
+                
             });
             
             return;

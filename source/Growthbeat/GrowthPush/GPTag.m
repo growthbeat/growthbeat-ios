@@ -48,32 +48,6 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
 }
 
-+ (NSArray *) bulkCreateWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId tagIdValueArray:(NSArray *) tagIdValueArray {
-    
-    NSString *path = @"/3/tags";
-    NSMutableDictionary *body = [NSMutableDictionary dictionary];
-    
-    if (clientId) {
-        [body setObject:clientId forKey:@"clientId"];
-    }
-    if (credentialId) {
-        [body setObject:credentialId forKey:@"credentialId"];
-    }
-    if (tagIdValueArray && tagIdValueArray.count > 0) {
-        [body setObject:tagIdValueArray forKey:@"tagIdValues"];
-    }
-    
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body contentType:GBContentTypeJson];
-    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
-    if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to create tag. %@", httpResponse.error];
-        return nil;
-    }
-    
-    return tagIdValueArray;
-    
-}
-
 + (void) save:(GPTag *)tag name:(NSString *)name {
     if (tag && name) {
         [[[GrowthPush sharedInstance] preference] setObject:tag forKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
