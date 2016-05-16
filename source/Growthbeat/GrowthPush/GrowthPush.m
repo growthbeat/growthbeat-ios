@@ -206,9 +206,12 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                             GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
                             
                             if (tag) {
-                                [GPTag save:tag name:tag.name];
-                                [self.logger info:@"Setting tag success. (name: %@)", data.name];
+                                [GPTag save:tag name:data.name];
+                                [self.logger info:@"Setting tag success. (name: %@, value:%@)", data.name, data.value];
+
                             }
+                            
+                            
                             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
                             
                         }];
@@ -313,7 +316,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             
             if (tag) {
                 [GPTag save:tag name:name];
-                [self.logger info:@"Setting tag success. (name: %@)", name];
+                [self.logger info:@"Setting tag success. (name: %@, value:%@)", name, tag.value];
             }
             
             
