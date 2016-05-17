@@ -180,43 +180,13 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                 self.registeringClient = NO;
                 @synchronized (self.eventArray)
                 {
-                    if (self.eventArray && self.eventArray.count > 0) {
-                        [self.logger info:@"Set Event on registerClient"];
-                        [self.eventArray enumerateObjectsUsingBlock:^(GPEvent *data, NSUInteger idx, BOOL *stop) {
-                            [self.logger info:@"Set Event... (name: %@, value: %@)", data.name, data.value];
-                            GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
-                            
-                            if (event) {
-                                [self.logger info:@"Setting event success. (name: %@)", data.name];
-                            }
-                            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
-                            
-                        }];
-                        self.eventArray = nil;
-                    }
+                    [self flushEventsIfExists];
                 }
                 
                 @synchronized (self.tagArray)
                 {
                     
-                    if (self.tagArray && self.tagArray.count > 0) {
-                        [self.logger info:@"Set Tag on registerClient"];
-                        [self.tagArray enumerateObjectsUsingBlock:^(GPTag *data, NSUInteger idx, BOOL *stop) {
-                            [self.logger info:@"Set Tag... (name: %@, value: %@)", data.name, data.value];
-                            GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
-                            
-                            if (tag) {
-                                [GPTag save:tag name:data.name];
-                                [self.logger info:@"Setting tag success. (name: %@, value:%@)", data.name, data.value];
-
-                            }
-                            
-                            
-                            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
-                            
-                        }];
-                        self.tagArray = nil;
-                    }
+                    [self flushTagsIfExists];
                 }
                 
             });
@@ -312,6 +282,8 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                 return;
             }
             
+            [self flushTagsIfExists];
+            
             GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
             
             if (tag) {
@@ -344,6 +316,9 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
                 [self.eventArray addObject:event];
                 return;
             }
+            
+            [self flushEventsIfExists];
+            
             GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
             
             if (event) {
@@ -376,6 +351,52 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         [self setTag:@"Build" value:[GBDeviceUtils build]];
     }
     
+}
+
+- (void) flushTagsIfExists {
+    if (!self.client) {
+        return;
+    }
+    
+    if (self.tagArray && self.tagArray.count > 0) {
+        [self.logger info:@"Set Tag on registerClient"];
+        [self.tagArray enumerateObjectsUsingBlock:^(GPTag *data, NSUInteger idx, BOOL *stop) {
+            [self.logger info:@"Set Tag... (name: %@, value: %@)", data.name, data.value];
+            GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
+            
+            if (tag) {
+                [GPTag save:tag name:data.name];
+                [self.logger info:@"Setting tag success. (name: %@, value:%@)", data.name, data.value];
+                
+            }
+            
+            
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
+            
+        }];
+        [self.tagArray removeAllObjects];
+    }
+}
+
+- (void) flushEventsIfExists {
+    if (!self.client) {
+        return;
+    }
+    
+    if (self.eventArray && self.eventArray.count > 0) {
+        [self.logger info:@"Set Event on registerClient"];
+        [self.eventArray enumerateObjectsUsingBlock:^(GPEvent *data, NSUInteger idx, BOOL *stop) {
+            [self.logger info:@"Set Event... (name: %@, value: %@)", data.name, data.value];
+            GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:data.name value:data.value];
+            
+            if (event) {
+                [self.logger info:@"Setting event success. (name: %@)", data.name];
+            }
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
+            
+        }];
+        [self.eventArray removeAllObjects];
+    }
 }
 
 @end
