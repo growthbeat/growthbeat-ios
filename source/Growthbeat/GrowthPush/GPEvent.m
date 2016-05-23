@@ -28,6 +28,9 @@
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
     }
+    if (name) {
+        [body setObject:name forKey:@"name"];
+    }
     if (value) {
         [body setObject:value forKey:@"value"];
     }

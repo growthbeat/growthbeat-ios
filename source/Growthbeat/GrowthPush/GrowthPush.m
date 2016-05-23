@@ -277,7 +277,9 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             if (!self.client) {
                 NSMutableDictionary *tagData = [NSMutableDictionary dictionary];
                 [tagData setObject:name forKey:@"name"];
-                [tagData setObject:value forKey:@"value"];
+                if (value) {
+                    [tagData setObject:value forKey:@"value"];
+                }
                 [self.tagArray addObject:tagData];
                 return;
             }
@@ -312,7 +314,9 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
             if (!self.client) {
                 NSMutableDictionary *eventData = [NSMutableDictionary dictionary];
                 [eventData setObject:name forKey:@"name"];
-                [eventData setObject:value forKey:@"value"];
+                if (value) {
+                     [eventData setObject:value forKey:@"value"];
+                }
                 [self.eventArray addObject:eventData];
                 return;
             }
