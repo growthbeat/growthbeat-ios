@@ -12,14 +12,12 @@
 
     NSInteger tagId;
     long long clientId;
-    NSString *name;
     NSString *value;
 
 }
 
 @property (nonatomic, assign) NSInteger tagId;
 @property (nonatomic, assign) long long clientId;
-@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *value;
 
 + (GPTag *)createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value;

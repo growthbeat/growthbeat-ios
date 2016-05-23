@@ -14,7 +14,6 @@
 
 @synthesize tagId;
 @synthesize clientId;
-@synthesize name;
 @synthesize value;
 
 static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
@@ -29,9 +28,6 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
-    }
-    if (name) {
-        [body setObject:name forKey:@"name"];
     }
     if (value) {
         [body setObject:value forKey:@"value"];
@@ -74,9 +70,6 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
             self.clientId = [[dictionary objectForKey:@"clientId"] longLongValue];
         }
-        if ([dictionary objectForKey:@"name"] && [dictionary objectForKey:@"name"] != [NSNull null]) {
-            self.name = [dictionary objectForKey:@"name"];
-        }
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
         }
@@ -99,9 +92,6 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
         if ([aDecoder containsValueForKey:@"clientId"]) {
             self.clientId = [[aDecoder decodeObjectForKey:@"clientId"] longLongValue];
         }
-        if ([aDecoder containsValueForKey:@"name"]) {
-            self.name = [aDecoder decodeObjectForKey:@"name"];
-        }
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
         }
@@ -116,7 +106,6 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
     [aCoder encodeInteger:tagId forKey:@"tagId"];
     [aCoder encodeObject:@(clientId) forKey:@"clientId"];
-    [aCoder encodeObject:value forKey:@"name"];
     [aCoder encodeObject:value forKey:@"value"];
 }
 
