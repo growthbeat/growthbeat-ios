@@ -9,11 +9,14 @@
 #import "GBDeviceUtils.h"
 #import <UIKit/UIKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import <AdSupport/AdSupport.h>
 #import <mach/mach.h>
 #import <netinet/in.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
+
+#if !BEAT_NO_IDFA
+#import <AdSupport/AdSupport.h>
+#endif
 
 @implementation GBDeviceUtils
 
@@ -171,23 +174,30 @@
 }
 
 + (NSString *) getAdvertisingId {
-
+    
+#if BEAT_NO_IDFA
+    return nil;
+#else
     ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
-
+    
     if (![identifierManager isAdvertisingTrackingEnabled]) {
         return nil;
     }
-
     return identifierManager.advertisingIdentifier.UUIDString;
-
+#endif
+    
 }
 
 + (BOOL) getTrackingEnabled {
-
+    
+#if BEAT_NO_IDFA
+    return nil;
+#else
     ASIdentifierManager *identifierManager = [ASIdentifierManager sharedManager];
-
+    
     return [identifierManager isAdvertisingTrackingEnabled];
-
+#endif
+    
 }
 
 @end
