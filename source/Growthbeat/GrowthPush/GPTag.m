@@ -76,7 +76,7 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
         }
-    }
+}
 
     return self;
 
@@ -98,6 +98,7 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
         }
+        
     }
 
     return self;
@@ -109,7 +110,6 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
     [aCoder encodeInteger:tagId forKey:@"tagId"];
     [aCoder encodeObject:@(clientId) forKey:@"clientId"];
     [aCoder encodeObject:value forKey:@"value"];
-
 }
 
 
