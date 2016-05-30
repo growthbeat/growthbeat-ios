@@ -170,19 +170,18 @@
 }
 
 + (NSString *) getAdvertisingId {
-    NSString *uid = nil;
     Class ASIdentifierManagerClass = NSClassFromString(@"ASIdentifierManager");
     if (ASIdentifierManagerClass) {
         SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
         id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
-        BOOL enabled = [GBDeviceUtils getTrackingEnabled];
-        if (enabled) {
+        if ([GBDeviceUtils getTrackingEnabled]) {
             SEL advertisingIdentifierSelector = NSSelectorFromString(@"advertisingIdentifier");
             NSUUID *uuid = ((NSUUID* (*)(id, SEL))[sharedManager methodForSelector:advertisingIdentifierSelector])(sharedManager, advertisingIdentifierSelector);
-            uid = [uuid UUIDString];
+            return[uuid UUIDString];
         }
     }
-    return uid;
+    
+    return nil;
 }
 
 + (BOOL) getTrackingEnabled {
@@ -191,10 +190,9 @@
         SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
         id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
         SEL advertisingEnabledSelector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
-        BOOL enabled = ((BOOL (*)(id, SEL))[sharedManager methodForSelector:advertisingEnabledSelector])(sharedManager, advertisingEnabledSelector);
-        return enabled;
+        return ((BOOL (*)(id, SEL))[sharedManager methodForSelector:advertisingEnabledSelector])(sharedManager, advertisingEnabledSelector);
     }
-    return YES;
+    return NO;
 }
 
 @end
