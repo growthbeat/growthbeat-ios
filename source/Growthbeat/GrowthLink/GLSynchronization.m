@@ -7,8 +7,8 @@
 //
 
 #import "GLSynchronization.h"
-#import <Growthbeat/GBUtils.h>
-#import <Growthbeat/GBHttpClient.h>
+#import "GBUtils.h"
+#import "GBHttpClient.h"
 #import "GrowthLink.h"
 
 @implementation GLSynchronization

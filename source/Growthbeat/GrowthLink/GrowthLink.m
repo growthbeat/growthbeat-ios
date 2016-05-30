@@ -7,7 +7,7 @@
 //
 
 #import "GrowthLink.h"
-#import <Growthbeat/GBCustomIntentHandler.h>
+#import "GBCustomIntentHandler.h"
 #import <SafariServices/SafariServices.h>
 #import "GLClick.h"
 
