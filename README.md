@@ -28,6 +28,7 @@ pod install
 - CoreGraphics.framework
 - SystemConfiguration.framework
 - AdSupport.framework
+- SafariServices.framework
 - CFNetwork.framework
 
 ## Usage
