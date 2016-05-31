@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.frameworks = [
       "Growthbeat",
       "AdSupport",
-      "SafariServices"
+      "SafariServices",
       "SystemConfiguration",
       "CoreGraphics",
       "CFNetwork",
