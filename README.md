@@ -37,7 +37,8 @@ See the [support page](http://support.growthbeat.com/).
 
 ## Supported Environment
 
-* iOS5 and later.
+* iOS8 and later.
+* support bitcode.
 
 ## License
 
