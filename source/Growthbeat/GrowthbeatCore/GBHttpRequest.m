@@ -13,6 +13,7 @@
 
 @synthesize requestMethod;
 @synthesize contentType;
+@synthesize userAgent;
 @synthesize path;
 @synthesize query;
 @synthesize body;
@@ -56,6 +57,15 @@
 
     return httpRequest;
 
+}
+
++ (id)instanceWithMethod:(GBRequestMethod)requestMethod path:(NSString *)path query:(NSDictionary *)query body:(NSDictionary *)body userAgent:(NSString *)userAgent {
+
+    GBHttpRequest *httpRequest = [self instanceWithMethod:requestMethod path:path query:query body:body];
+    
+    httpRequest.userAgent = userAgent;
+    
+    return httpRequest;
 }
 
 - (void) dealloc {
@@ -114,6 +124,10 @@
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
     [urlRequest setHTTPMethod:NSStringFromGBRequestMethod(requestMethod)];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    if (self.userAgent) {
+        [urlRequest setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+    }
 
     if (requestMethod != GBRequestMethodGet) {
         [urlRequest setValue:contentTypeString forHTTPHeaderField:@"Content-Type"];

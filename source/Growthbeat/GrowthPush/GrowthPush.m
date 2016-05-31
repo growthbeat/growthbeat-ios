@@ -85,15 +85,6 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:self.credentialId];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        if (self.client && self.client.growthbeatClientId &&
-        ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
-            [self clearClient];
-        }
-        
-    });
-
 }
 
 - (void) requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment {
@@ -126,8 +117,16 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         self.token = newDeviceToken;
     else
         self.token = [self convertToHexToken:newDeviceToken];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+        
+        if (self.client && self.client.growthbeatClientId &&
+            ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
+            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.growthbeatClientId, self.growthbeatClient.id];
+            [self clearClient];
+        }
+        
         [self registerClient];
     });
 

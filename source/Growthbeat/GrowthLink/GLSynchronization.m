@@ -7,8 +7,8 @@
 //
 
 #import "GLSynchronization.h"
-#import <Growthbeat/GBUtils.h>
-#import <Growthbeat/GBHttpClient.h>
+#import "GBUtils.h"
+#import "GBHttpClient.h"
 #import "GrowthLink.h"
 
 @implementation GLSynchronization
@@ -19,9 +19,10 @@
 
 static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
 
-+ (instancetype) synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version fingerprintParameters:(NSString *)fingerprintParameters credentialId:(NSString *)credentialId {
++ (instancetype)synchronizeWithApplicationId:(NSString *)applicationId version:(NSString *)version userAgent:(NSString *)userAgent credentialId:(NSString *)credentialId {
 
-    NSString *path = @"/2/synchronize";
+    NSString *path = @"/2.1/synchronize";
+    NSString *deviceModel = [GBDeviceUtils model];
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
 
     if (applicationId) {
@@ -34,11 +35,11 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
     }
-    if (fingerprintParameters) {
-        [body setObject:fingerprintParameters forKey:@"fingerprintParameters" ];
+    if (deviceModel) {
+        [body setObject:deviceModel forKey:@"deviceModel"];
     }
-
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
+    [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];;
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body userAgent:userAgent];
     GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthLink sharedInstance] logger] error:@"Failed to get synchronization. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];

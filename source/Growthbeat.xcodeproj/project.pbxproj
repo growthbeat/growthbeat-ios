@@ -87,6 +87,18 @@
 		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */; };
 		C12497CE1BABBE67000AFEE0 /* GBCustomIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */; };
+		C165AE471CFBC3940078D38C /* GLClick.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE3B1CFBC3730078D38C /* GLClick.h */; };
+		C165AE481CFBC3940078D38C /* GLLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE3D1CFBC3730078D38C /* GLLink.h */; };
+		C165AE491CFBC3940078D38C /* GLPattern.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE3F1CFBC3730078D38C /* GLPattern.h */; };
+		C165AE4A1CFBC3940078D38C /* GLSynchronization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE411CFBC3730078D38C /* GLSynchronization.h */; };
+		C165AE4B1CFBC3940078D38C /* GLSynchronizationHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */; };
+		C165AE4C1CFBC3940078D38C /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE451CFBC3730078D38C /* GrowthLink.h */; };
+		C165AE4D1CFBC3A20078D38C /* GLClick.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3C1CFBC3730078D38C /* GLClick.m */; };
+		C165AE4E1CFBC3A20078D38C /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3E1CFBC3730078D38C /* GLLink.m */; };
+		C165AE4F1CFBC3A20078D38C /* GLPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE401CFBC3730078D38C /* GLPattern.m */; };
+		C165AE501CFBC3A20078D38C /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE421CFBC3730078D38C /* GLSynchronization.m */; };
+		C165AE511CFBC3A20078D38C /* GLSynchronizationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */; };
+		C165AE521CFBC3A20078D38C /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE461CFBC3730078D38C /* GrowthLink.m */; };
 		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
 		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
 		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
@@ -161,13 +173,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		17DC6E0A1BF700EE0039BC0C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 17DC6E051BF700EE0039BC0C /* GrowthLink.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B2C148091AA456F300006EC3;
-			remoteInfo = GrowthLink;
-		};
 		B275A7071A0C45AC0050510A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2ED140F1A0C451E0078F6BC /* Project object */;
@@ -184,6 +189,12 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				C165AE471CFBC3940078D38C /* GLClick.h in CopyFiles */,
+				C165AE481CFBC3940078D38C /* GLLink.h in CopyFiles */,
+				C165AE491CFBC3940078D38C /* GLPattern.h in CopyFiles */,
+				C165AE4A1CFBC3940078D38C /* GLSynchronization.h in CopyFiles */,
+				C165AE4B1CFBC3940078D38C /* GLSynchronizationHandler.h in CopyFiles */,
+				C165AE4C1CFBC3940078D38C /* GrowthLink.h in CopyFiles */,
 				17E0AE671BF7147A00AD380C /* GMPicture.h in CopyFiles */,
 				17E0AE681BF7147A00AD380C /* GMPictureExtension.h in CopyFiles */,
 				17E0AE691BF7147A00AD380C /* GMPlainButton.h in CopyFiles */,
@@ -320,7 +331,6 @@
 		178DDC231BB2A88E008A859F /* GMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMTask.m; sourceTree = "<group>"; };
 		178DDC241BB2A88E008A859F /* GrowthMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowthMessage.h; sourceTree = "<group>"; };
 		178DDC251BB2A88E008A859F /* GrowthMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthMessage.m; sourceTree = "<group>"; };
-		17DC6E051BF700EE0039BC0C /* GrowthLink.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GrowthLink.xcodeproj; sourceTree = "<group>"; };
 		B229828E1BA1577D0015C9A5 /* GBViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBViewUtils.h; sourceTree = "<group>"; };
 		B229828F1BA1577D0015C9A5 /* GBViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBViewUtils.m; sourceTree = "<group>"; };
 		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
@@ -328,6 +338,18 @@
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCustomIntentHandler.h; sourceTree = "<group>"; };
 		C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCustomIntentHandler.m; sourceTree = "<group>"; };
+		C165AE3B1CFBC3730078D38C /* GLClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLClick.h; sourceTree = "<group>"; };
+		C165AE3C1CFBC3730078D38C /* GLClick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLClick.m; sourceTree = "<group>"; };
+		C165AE3D1CFBC3730078D38C /* GLLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLLink.h; sourceTree = "<group>"; };
+		C165AE3E1CFBC3730078D38C /* GLLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLLink.m; sourceTree = "<group>"; };
+		C165AE3F1CFBC3730078D38C /* GLPattern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLPattern.h; sourceTree = "<group>"; };
+		C165AE401CFBC3730078D38C /* GLPattern.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLPattern.m; sourceTree = "<group>"; };
+		C165AE411CFBC3730078D38C /* GLSynchronization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSynchronization.h; sourceTree = "<group>"; };
+		C165AE421CFBC3730078D38C /* GLSynchronization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSynchronization.m; sourceTree = "<group>"; };
+		C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSynchronizationHandler.h; sourceTree = "<group>"; };
+		C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSynchronizationHandler.m; sourceTree = "<group>"; };
+		C165AE451CFBC3730078D38C /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
+		C165AE461CFBC3730078D38C /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
 		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
 		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
 		CE0627C91B15B692009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
@@ -412,18 +434,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		17DC6E061BF700EE0039BC0C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				17DC6E0B1BF700EE0039BC0C /* libGrowthLink.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		B2ED140E1A0C451E0078F6BC = {
 			isa = PBXGroup;
 			children = (
-				17DC6E051BF700EE0039BC0C /* GrowthLink.xcodeproj */,
+				C165AE3A1CFBC3730078D38C /* GrowthLink */,
 				CE0628281B15B6BF009263FA /* GrowthPush */,
 				CE0628031B15B6B8009263FA /* GrowthMessage */,
 				CE0627CF1B15B6A1009263FA /* GrowthbeatCore */,
@@ -448,6 +462,26 @@
 				B275A6FF1A0C455D0050510A /* Growthbeat.m */,
 			);
 			path = Growthbeat;
+			sourceTree = "<group>";
+		};
+		C165AE3A1CFBC3730078D38C /* GrowthLink */ = {
+			isa = PBXGroup;
+			children = (
+				C165AE3B1CFBC3730078D38C /* GLClick.h */,
+				C165AE3C1CFBC3730078D38C /* GLClick.m */,
+				C165AE3D1CFBC3730078D38C /* GLLink.h */,
+				C165AE3E1CFBC3730078D38C /* GLLink.m */,
+				C165AE3F1CFBC3730078D38C /* GLPattern.h */,
+				C165AE401CFBC3730078D38C /* GLPattern.m */,
+				C165AE411CFBC3730078D38C /* GLSynchronization.h */,
+				C165AE421CFBC3730078D38C /* GLSynchronization.m */,
+				C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */,
+				C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */,
+				C165AE451CFBC3730078D38C /* GrowthLink.h */,
+				C165AE461CFBC3730078D38C /* GrowthLink.m */,
+			);
+			name = GrowthLink;
+			path = Growthbeat/GrowthLink;
 			sourceTree = "<group>";
 		};
 		CE0627C61B15B692009263FA /* GrowthAnalytics */ = {
@@ -664,12 +698,6 @@
 			mainGroup = B2ED140E1A0C451E0078F6BC;
 			productRefGroup = B2ED14181A0C451E0078F6BC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 17DC6E061BF700EE0039BC0C /* Products */;
-					ProjectRef = 17DC6E051BF700EE0039BC0C /* GrowthLink.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B2ED14161A0C451E0078F6BC /* Growthbeat */,
@@ -677,16 +705,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		17DC6E0B1BF700EE0039BC0C /* libGrowthLink.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGrowthLink.a;
-			remoteRef = 17DC6E0A1BF700EE0039BC0C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		B275A7021A0C45870050510A /* ShellScript */ = {
@@ -722,6 +740,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C165AE4D1CFBC3A20078D38C /* GLClick.m in Sources */,
+				C165AE4E1CFBC3A20078D38C /* GLLink.m in Sources */,
+				C165AE4F1CFBC3A20078D38C /* GLPattern.m in Sources */,
+				C165AE501CFBC3A20078D38C /* GLSynchronization.m in Sources */,
+				C165AE511CFBC3A20078D38C /* GLSynchronizationHandler.m in Sources */,
+				C165AE521CFBC3A20078D38C /* GrowthLink.m in Sources */,
 				CE0628531B16F1E2009263FA /* GBClient.m in Sources */,
 				B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */,
 				178DDC361BB2A88E008A859F /* GMPictureExtension.m in Sources */,
@@ -804,6 +828,7 @@
 		B275A7051A0C45A50050510A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEPLOYMENT_POSTPROCESSING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -811,6 +836,7 @@
 		B275A7061A0C45A50050510A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEPLOYMENT_POSTPROCESSING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -821,7 +847,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -833,17 +859,20 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				ENABLE_BITCODE = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.6;
+				FRAMEWORK_VERSION = 1.2.7;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -864,7 +893,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -876,11 +905,15 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
-				ENABLE_BITCODE = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.6;
+				FRAMEWORK_VERSION = 1.2.7;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -899,7 +932,8 @@
 		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.6;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_VERSION = 1.2.7;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -911,7 +945,8 @@
 		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_VERSION = 1.2.6;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_VERSION = 1.2.7;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

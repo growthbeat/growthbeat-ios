@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import <Growthbeat/GBDomain.h>
+#import "GBDomain.h"
 #import "GLPattern.h"
 
 @interface GLClick : GBDomain <NSCoding> {
@@ -30,5 +30,8 @@
 @property (nonatomic, strong) NSDate *accessed;
 
 + (instancetype)deeplinkWithClientId:(NSString *)clientId clickId:(NSString *)clickId install:(BOOL)install credentialId:(NSString *)credentialId;
+
++ (instancetype)deeplinkUniversalLink:(NSString *)clientId alias:(NSString *)alias credentialId:(NSString *)credentialId queryItems:(NSArray *)queryItems;
+
 
 @end
