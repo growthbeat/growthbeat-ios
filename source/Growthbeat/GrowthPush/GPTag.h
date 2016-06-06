@@ -18,9 +18,11 @@
 
 @property (nonatomic, assign) NSInteger tagId;
 @property (nonatomic, assign) long long clientId;
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *value;
 
 + (GPTag *)createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value;
++ (NSArray *)createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId tagList:(NSArray *)tagList;
 + (void)save:(GPTag *)tag name:(NSString *)name;
 + (GPTag *)load:(NSString *)name;
 

@@ -364,20 +364,24 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     
     if (self.tagArray && self.tagArray.count > 0) {
         [self.logger info:@"Set Tag on registerClient"];
+        NSMutableArray *tagDataArray = [NSMutableArray array];
         [self.tagArray enumerateObjectsUsingBlock:^(NSDictionary *data, NSUInteger idx, BOOL *stop) {
             [self.logger info:@"Set Tag... (name: %@, value: %@)", [data objectForKey:@"name"], [data objectForKey:@"value"]];
-            GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:[data objectForKey:@"name"] value:[data objectForKey:@"value"]];
-            
-            if (tag) {
-                [GPTag save:tag name:[data objectForKey:@"name"]];
-                [self.logger info:@"Setting tag success. (name: %@, value:%@)", [data objectForKey:@"name"], [data objectForKey:@"value"]];
-                
-            }
-            
-            
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.05]];
+            [tagDataArray addObject:[NSString stringWithFormat:@"%@:::%@", [data objectForKey:@"name"], [data objectForKey:@"value"]]];
             
         }];
+        NSArray *resultArray = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId tagList:
+                                tagDataArray];
+
+            
+        if (resultArray && resultArray.count > 0) {
+            [resultArray enumerateObjectsUsingBlock:^(GPTag *tag, NSUInteger idx, BOOL *stop) {
+                [GPTag save:tag name:tag.name];
+                [self.logger info:@"Setting tag success. (name: %@, value:%@)", tag.name, tag.value];
+            }];
+            
+        }
+            
         [self.tagArray removeAllObjects];
     }
 }
