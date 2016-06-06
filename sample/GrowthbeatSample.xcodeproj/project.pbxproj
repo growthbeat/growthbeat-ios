@@ -18,8 +18,7 @@
 		B2421EF61997952D00E91C23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2421EF51997952D00E91C23 /* Images.xcassets */; };
 		B2421F131997954800E91C23 /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421F121997954800E91C23 /* Growthbeat.framework */; };
 		B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25341811997B301004C8EDB /* SystemConfiguration.framework */; };
-		B2942C061AD45075005D6D3A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2942C051AD45075005D6D3A /* AdSupport.framework */; };
-		B2E663511B578D4500C948D3 /* GrowthLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E663501B578D4500C948D3 /* GrowthLink.framework */; };
+		C15C2DD81CFBE263006E48D7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15C2DD71CFBE263006E48D7 /* AdSupport.framework */; };
 		C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC842E1BDE06BA00626543 /* SafariServices.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +40,7 @@
 		B2421EF51997952D00E91C23 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B2421F121997954800E91C23 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../Growthbeat.framework; sourceTree = "<group>"; };
 		B25341811997B301004C8EDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B2942C051AD45075005D6D3A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		B2E663501B578D4500C948D3 /* GrowthLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GrowthLink.framework; path = ../GrowthLink.framework; sourceTree = "<group>"; };
+		C15C2DD71CFBE263006E48D7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C1FC842E1BDE06BA00626543 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,12 +49,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C15C2DD81CFBE263006E48D7 /* AdSupport.framework in Frameworks */,
 				C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */,
-				B2942C061AD45075005D6D3A /* AdSupport.framework in Frameworks */,
 				B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */,
 				B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */,
 				B2421EE21997952D00E91C23 /* UIKit.framework in Frameworks */,
-				B2E663511B578D4500C948D3 /* GrowthLink.framework in Frameworks */,
 				B2421EDE1997952D00E91C23 /* Foundation.framework in Frameworks */,
 				B2421F131997954800E91C23 /* Growthbeat.framework in Frameworks */,
 			);
@@ -85,12 +82,11 @@
 		B2421EDC1997952D00E91C23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C15C2DD71CFBE263006E48D7 /* AdSupport.framework */,
 				C1FC842E1BDE06BA00626543 /* SafariServices.framework */,
-				B2942C051AD45075005D6D3A /* AdSupport.framework */,
 				B2421EDF1997952D00E91C23 /* CoreGraphics.framework */,
 				B2421EDD1997952D00E91C23 /* Foundation.framework */,
 				B2421F121997954800E91C23 /* Growthbeat.framework */,
-				B2E663501B578D4500C948D3 /* GrowthLink.framework */,
 				B25341811997B301004C8EDB /* SystemConfiguration.framework */,
 				B2421EE11997952D00E91C23 /* UIKit.framework */,
 			);

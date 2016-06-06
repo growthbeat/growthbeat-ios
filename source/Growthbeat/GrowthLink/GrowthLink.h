@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Growthbeat/GrowthbeatCore.h>
+#import "GrowthbeatCore.h"
 #import "GLSynchronization.h"
 #import "GLSynchronizationHandler.h"
 

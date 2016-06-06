@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import <Growthbeat/GBPreference.h>
+#import <Growthbeat/GPClient.h>
 
 @implementation AppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [[Growthbeat sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
     [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary *extra = customIntent.extra;

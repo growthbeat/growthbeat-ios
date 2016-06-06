@@ -7,7 +7,7 @@
 //
 
 #import "GrowthLink.h"
-#import <Growthbeat/GBCustomIntentHandler.h>
+#import "GBCustomIntentHandler.h"
 #import <SafariServices/SafariServices.h>
 #import "GLClick.h"
 
@@ -191,6 +191,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 }
 
 - (void) handleClick:(GLClick *) click{
+    isFirstSession = NO;
     if (!click || !click.pattern || !click.pattern.link) {
         [logger error:@"Failed to deeplink."];
         return;
@@ -208,7 +209,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     if (click.pattern.intent.id) {
         [properties setObject:click.pattern.intent.id forKey:@"intentId"];
     }
-    isFirstSession = NO;
     
     if (click.pattern.intent) {
         dispatch_async(dispatch_get_main_queue(), ^{
