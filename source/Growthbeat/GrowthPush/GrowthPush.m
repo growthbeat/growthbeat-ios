@@ -271,7 +271,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         {
             GPTag *existingTag = [GPTag load:name];
             if (existingTag) {
-                if (value && [value isEqualToString:existingTag.value]) {
+                if (!value || (value && [value isEqualToString:existingTag.value])) {
                     [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
                     return;
                 }
