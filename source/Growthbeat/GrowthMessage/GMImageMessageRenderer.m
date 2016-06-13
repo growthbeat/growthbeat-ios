@@ -111,9 +111,21 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
                 break;
         }
     }
+    
+    CGFloat defaultWidth = 280;
+    CGFloat defaultHeight = 448;
+    
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation))
+    {
+        CGFloat tmpValue = defaultWidth;
+        defaultWidth = defaultHeight;
+        defaultHeight = tmpValue;
+        
+    }
 
-    CGFloat availableWidth = MIN(imageMessage.picture.width, screenWidth * 0.85);
-    CGFloat availableHeight = MIN(imageMessage.picture.height, screenHeight * 0.85);
+    CGFloat availableWidth = MIN(imageMessage.picture.width, defaultWidth);
+    CGFloat availableHeight = MIN(imageMessage.picture.height, defaultHeight);
     CGFloat ratio = MIN(availableWidth / imageMessage.picture.width, availableHeight / imageMessage.picture.height);
 
     CGFloat width = imageMessage.picture.width * ratio;
@@ -199,7 +211,12 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
     if (!closeButton) {
         return;
     }
-
+    
+    CGFloat availableWidth = MIN(closeButton.picture.width, 64);
+    CGFloat availableHeight = MIN(closeButton.picture.height, 64);
+    CGFloat sizeRatio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
+    ratio = ratio * sizeRatio;
+    
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
     CGFloat left = rect.origin.x + rect.size.width - width / 2;
