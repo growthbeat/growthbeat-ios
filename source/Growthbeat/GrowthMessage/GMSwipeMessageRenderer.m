@@ -13,6 +13,10 @@
 #import "GBViewUtils.h"
 
 static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
+static const CGFloat kDefaultWidth = 280.f;
+static const CGFloat kDefaultHeight = 448.f;
+static const CGFloat kPagingHeight = 16.f;
+static const CGFloat kCloseButtonSizeMax = 64.f;
 
 @interface GMSwipeMessageRenderer () {
 
@@ -29,11 +33,6 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
-
-static const CGFloat kDefaultWidth = 280.f;
-static const CGFloat kDefaultHeight = 448.f;
-static const CGFloat kPagingHeight = 16.f;
-static const CGFloat kCloseButtonSizeMax = 64.f;
 
 @implementation GMSwipeMessageRenderer
 

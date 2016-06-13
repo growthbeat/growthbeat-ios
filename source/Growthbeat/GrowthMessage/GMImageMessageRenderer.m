@@ -14,6 +14,10 @@
 #import "GBViewUtils.h"
 
 static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
+static const CGFloat kDefaultWidth = 280.f;
+static const CGFloat kDefaultHeight = 448.f;
+static const CGFloat kPagingHeight = 16.f;
+static const CGFloat kCloseButtonSizeMax = 64.f;
 
 @interface GMImageMessageRenderer () {
 
@@ -112,14 +116,14 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
         }
     }
     
-    CGFloat defaultWidth = 280;
-    CGFloat defaultHeight = 448;
+    CGFloat defaultWidth = kDefaultWidth;
+    CGFloat defaultHeight = kDefaultHeight;
     
     UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     if (UIInterfaceOrientationIsLandscape(interfaceOrientation))
     {
-        CGFloat tmpValue = defaultWidth;
-        defaultWidth = defaultHeight;
+        CGFloat tmpValue = kDefaultWidth;
+        defaultWidth = kDefaultHeight;
         defaultHeight = tmpValue;
         
     }
@@ -212,15 +216,15 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
         return;
     }
     
-    CGFloat availableWidth = MIN(closeButton.picture.width, 64);
-    CGFloat availableHeight = MIN(closeButton.picture.height, 64);
+    CGFloat availableWidth = MIN(closeButton.picture.width, kCloseButtonSizeMax);
+    CGFloat availableHeight = MIN(closeButton.picture.height, kCloseButtonSizeMax);
     CGFloat sizeRatio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
     ratio = ratio * sizeRatio;
     
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
-    CGFloat left = rect.origin.x + rect.size.width - width / 2;
-    CGFloat top = rect.origin.y - height / 2;
+    CGFloat left = rect.origin.x + rect.size.width - width - 8;
+    CGFloat top = rect.origin.y + 8;
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
