@@ -30,6 +30,11 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 
 @end
 
+static const CGFloat kDefaultWidth = 280.f;
+static const CGFloat kDefaultHeight = 448.f;
+static const CGFloat kPagingHeight = 16.f;
+static const CGFloat kCloseButtonSizeMax = 64.f;
+
 @implementation GMSwipeMessageRenderer
 
 @synthesize swipeMessage;
@@ -112,27 +117,26 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
                 break;
         }
     }
-
-    CGFloat width = screenWidth;
-    CGFloat height;
-    switch (swipeMessage.swipeType) {
-        case GMSwipeMessageTypeImageOnly:
-        case GMSwipeMessageTypeButtons:
-            height = screenHeight * 0.85 * 0.9;
-            break;
-        case GMSwipeMessageTypeOneButton:
-            height = screenHeight * 0.85 * 0.8;
-            break;
-        default:
-            break;
+    CGFloat pagingHeight = kPagingHeight;
+    CGFloat width = kDefaultWidth;
+    CGFloat height = kDefaultHeight + pagingHeight;
+    
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation))
+    {
+        CGFloat tmpValue = width;
+        width = height;
+        width = tmpValue;
+        
     }
-    CGFloat left = 0;
-    CGFloat top = screenHeight * 0.075;
 
+    CGFloat left = (screenWidth - width) / 2;
+    CGFloat top = (screenHeight - height) / 2;
+    
     CGRect rect = CGRectMake(left, top, width, height);
-
+    
     [self showScrollView:baseView rect:rect];
-    [self showPageControlWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
+    [self showPageControlWithView:baseView rect:rect];
 
     [self cacheImages:^{
 
@@ -148,7 +152,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
             default:
                 break;
         }
-        [self showCloseButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight rect:rect];
+        [self showCloseButtonWithView:baseView rect:rect];
 
         self.activityIndicatorView.hidden = YES;
 
@@ -180,32 +184,21 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 
 - (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
 
-    CGFloat heightOfImageArea = rect.size.height;
+    CGFloat heightOfImageArea = rect.size.height - kPagingHeight;
 
-    switch (swipeMessage.swipeType) {
-        case GMSwipeMessageTypeButtons:
-            heightOfImageArea = rect.size.height * 8 / 9;
-            break;
-        case GMSwipeMessageTypeImageOnly:
-        case GMSwipeMessageTypeOneButton:
-        default:
-            break;
-    }
-
-    CGFloat scale = [[UIScreen mainScreen] scale];
     for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
 
         GMPicture *picture = [swipeMessage.swipeImages.pictures objectAtIndex:i];
 
-        CGFloat pictureWidthDp = picture.width / scale;
-        CGFloat pictureHeightDp = picture.height / scale;
+        CGFloat pictureWidth = picture.width;
+        CGFloat pictureHeight = picture.height;
 
-        CGFloat availableWidth = MIN(pictureWidthDp, rect.size.width * 0.85);
-        CGFloat availableHeight = MIN(pictureHeightDp, heightOfImageArea);
-        CGFloat ratio = MIN(availableWidth / pictureWidthDp, availableHeight / pictureHeightDp);
+        CGFloat availableWidth = MIN(pictureWidth, rect.size.width);
+        CGFloat availableHeight = MIN(pictureHeight, heightOfImageArea);
+        CGFloat ratio = MIN(availableWidth / pictureWidth, availableHeight / pictureHeight);
 
-        CGFloat width = pictureWidthDp * ratio;
-        CGFloat height = pictureHeightDp * ratio;
+        CGFloat width = pictureWidth * ratio;
+        CGFloat height = pictureHeight * ratio;
         CGFloat left = (rect.size.width - width) / 2 + rect.size.width * i;
         CGFloat top = (heightOfImageArea - height) / 2;
 
@@ -281,7 +274,7 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 
 }
 
-- (void) showCloseButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight rect:(CGRect)rect {
+- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect {
 
     GMCloseButton *closeButton = [[self extractButtonsWithType:GMButtonTypeClose] lastObject];
 
@@ -289,14 +282,14 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
         return;
     }
 
-    CGFloat availableWidth = MIN(closeButton.picture.width, 20);
-    CGFloat availableHeight = MIN(closeButton.picture.height, 20);
+    CGFloat availableWidth = MIN(closeButton.picture.width, kCloseButtonSizeMax);
+    CGFloat availableHeight = MIN(closeButton.picture.height, kCloseButtonSizeMax);
     CGFloat ratio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
 
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
-    CGFloat left = rect.size.width * 0.925 - width / 2;
-    CGFloat top = rect.origin.y - height / 2;
+    CGFloat left = rect.origin.x + rect.size.width - width - 8;
+    CGFloat top = rect.origin.y + 8;
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
@@ -337,6 +330,22 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
     pageControl.userInteractionEnabled = NO;
     [view addSubview:pageControl];
 
+}
+
+- (void) showPageControlWithView:(UIView *)view rect:(CGRect)rect {
+    
+    CGFloat width = rect.size.width;
+    CGFloat height = kPagingHeight;
+    CGFloat left = rect.origin.x;
+    CGFloat top = rect.origin.y + rect.size.height - 16;
+    
+    pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
+    
+    pageControl.numberOfPages = [swipeMessage.swipeImages.pictures count];
+    pageControl.currentPage = 0;
+    pageControl.userInteractionEnabled = NO;
+    [view addSubview:pageControl];
+    
 }
 
 - (void) cacheImages:(void (^)(void))callback {
