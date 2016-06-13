@@ -16,6 +16,8 @@ static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
 static const CGFloat kDefaultWidth = 280.f;
 static const CGFloat kDefaultHeight = 448.f;
 static const CGFloat kPagingHeight = 16.f;
+static const CGFloat kImageButtonWidthMax = 280.f;
+static const CGFloat kImageButtonHeightMax = 48.f;
 static const CGFloat kCloseButtonSizeMax = 64.f;
 
 @interface GMSwipeMessageRenderer () {
@@ -142,10 +144,7 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
         [self showImageWithView:scrollView rect:rect];
         switch (swipeMessage.swipeType) {
             case GMSwipeMessageTypeOneButton:
-                [self showImageButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
-                break;
-            case GMSwipeMessageTypeButtons:
-                [self showImageButtonWithView:scrollView screenWidth:screenWidth screenHeight:screenHeight];
+                [self showImageButtonWithView:baseView rect:rect];
                 break;
             case GMSwipeMessageTypeImageOnly:
             default:
@@ -212,7 +211,7 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
 
 }
 
-- (void) showImageButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
+- (void) showImageButtonWithView:(UIView *)view rect:(CGRect)rect {
 
     NSArray *imageButtons = [self extractButtonsWithType:GMButtonTypeImage];
 
@@ -223,14 +222,14 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
         {
             GMImageButton *imageButton = [imageButtons objectAtIndex:0];
 
-            CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
-            CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
+            CGFloat availableWidth = MIN(imageButton.picture.width, kImageButtonWidthMax);
+            CGFloat availableHeight = MIN(imageButton.picture.height, kImageButtonHeightMax);
             CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
 
             CGFloat width = imageButton.picture.width * ratio;
             CGFloat height = imageButton.picture.height * ratio;
-            CGFloat left = screenWidth * 0.075 + (screenWidth * 0.85 - width) / 2;
-            CGFloat top = screenHeight * (0.075 + 0.85 * 0.8) + (screenHeight * 0.85 * 0.1 - height) / 2;
+            CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
+            CGFloat top = rect.origin.y + rect.size.height - height - kPagingHeight;
 
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
@@ -242,31 +241,6 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
             [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
             break;
         }
-        case GMSwipeMessageTypeButtons:
-            for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
-
-                GMImageButton *imageButton = [imageButtons objectAtIndex:i];
-
-                CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
-                CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
-                CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
-
-                CGFloat width = imageButton.picture.width * ratio;
-                CGFloat height = imageButton.picture.height * ratio;
-                CGFloat left = (screenWidth - width) / 2 + screenWidth * i;
-                CGFloat top = screenHeight * 0.85 * 0.8 + (screenHeight * 0.85 * 0.1 - height) / 2;
-
-                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-                [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
-                button.contentMode = UIViewContentModeScaleAspectFit;
-                button.frame = CGRectMake(left, top, width, height);
-                [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
-                [view addSubview:button];
-
-                [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
-
-            }
-            break;
         default:
             break;
     }
@@ -315,28 +289,12 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
 
 }
 
-- (void) showPageControlWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
-
-    CGFloat width = screenWidth * 0.85;
-    CGFloat height = screenHeight * 0.85 * 0.1;
-    CGFloat left = screenWidth * 0.075;
-    CGFloat top = screenHeight * (0.075 + 0.85 * 0.9);
-
-    pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
-
-    pageControl.numberOfPages = [swipeMessage.swipeImages.pictures count];
-    pageControl.currentPage = 0;
-    pageControl.userInteractionEnabled = NO;
-    [view addSubview:pageControl];
-
-}
-
 - (void) showPageControlWithView:(UIView *)view rect:(CGRect)rect {
     
     CGFloat width = rect.size.width;
     CGFloat height = kPagingHeight;
     CGFloat left = rect.origin.x;
-    CGFloat top = rect.origin.y + rect.size.height - 16;
+    CGFloat top = rect.origin.y + rect.size.height - kPagingHeight;
     
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     

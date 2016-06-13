@@ -16,7 +16,8 @@
 static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
 static const CGFloat kDefaultWidth = 280.f;
 static const CGFloat kDefaultHeight = 448.f;
-static const CGFloat kPagingHeight = 16.f;
+static const CGFloat kImageButtonWidthMax = 280.f;
+static const CGFloat kImageButtonHeightMax = 48.f;
 static const CGFloat kCloseButtonSizeMax = 64.f;
 
 @interface GMImageMessageRenderer () {
@@ -189,9 +190,13 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
     CGFloat top = rect.origin.y + rect.size.height;
 
     for (GMImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
+        
+        CGFloat availableWidth = MIN(imageButton.picture.width * ratio, kImageButtonWidthMax);
+        CGFloat availableHeight = MIN(imageButton.picture.height * ratio, kImageButtonHeightMax);
+        CGFloat sizeRatio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
 
-        CGFloat width = imageButton.picture.width * ratio;
-        CGFloat height = imageButton.picture.height * ratio;
+        CGFloat width = imageButton.picture.width * sizeRatio;
+        CGFloat height = imageButton.picture.height * sizeRatio;
         CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
         top -= height;
 
