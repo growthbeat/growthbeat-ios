@@ -7,6 +7,7 @@
 //
 
 #import "GBDomain.h"
+#import "GMMessageOrientation.h"
 
 @interface GMTask : GBDomain <NSCoding> {
 
@@ -14,6 +15,7 @@
     NSString *applicationId;
     NSString *name;
     NSString *description;
+    GMMessageOrientation orientation;
     NSDate *availableFrom;
     NSDate *availableTo;
     BOOL disabled;
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *description;
+@property (nonatomic, assign) GMMessageOrientation orientation;
 @property (nonatomic, strong) NSDate *availableFrom;
 @property (nonatomic, strong) NSDate *availableTo;
 @property (nonatomic, assign) BOOL disabled;
