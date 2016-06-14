@@ -15,6 +15,7 @@
 @synthesize applicationId;
 @synthesize name;
 @synthesize description;
+@synthesize orientation;
 @synthesize availableFrom;
 @synthesize availableTo;
 @synthesize disabled;
@@ -36,6 +37,9 @@
         }
         if ([dictionary objectForKey:@"description"] && [dictionary objectForKey:@"description"] != [NSNull null]) {
             self.description = [dictionary objectForKey:@"description"];
+        }
+        if ([dictionary objectForKey:@"orientation"] && [dictionary objectForKey:@"orientation"] != [NSNull null]) {
+            self.orientation = GMMessageOrientationFromNSString([dictionary objectForKey:@"orientation"]);
         }
         if ([dictionary objectForKey:@"availableFrom"] && [dictionary objectForKey:@"availableFrom"] != [NSNull null]) {
             self.availableFrom = [dictionary objectForKey:@"availableFrom"];
@@ -75,6 +79,9 @@
         if ([aDecoder containsValueForKey:@"description"]) {
             self.description = [aDecoder decodeObjectForKey:@"description"];
         }
+        if ([aDecoder containsValueForKey:@"orientation"]) {
+            self.orientation = [aDecoder decodeIntegerForKey:@"orientation"];
+        }
         if ([aDecoder containsValueForKey:@"availableFrom"]) {
             self.availableFrom = [aDecoder decodeObjectForKey:@"availableFrom"];
         }
@@ -99,6 +106,7 @@
     [aCoder encodeObject:applicationId forKey:@"applicationId"];
     [aCoder encodeObject:name forKey:@"name"];
     [aCoder encodeObject:description forKey:@"description"];
+    [aCoder encodeInteger:orientation forKey:@"orientation"];
     [aCoder encodeObject:availableFrom forKey:@"availableFrom"];
     [aCoder encodeObject:availableTo forKey:@"availableTo"];
     [aCoder encodeBool:disabled forKey:@"disabled"];

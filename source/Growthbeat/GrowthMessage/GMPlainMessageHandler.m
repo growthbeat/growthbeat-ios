@@ -44,29 +44,58 @@
     if (![message isKindOfClass:[GMPlainMessage class]]) {
         return NO;
     }
-
+    
     GMPlainMessage *plainMessage = (GMPlainMessage *)message;
-
-    UIAlertView *alertView = [[UIAlertView alloc] init];
-    [plainMessages setObject:plainMessage forKey:[NSValue valueWithNonretainedObject:alertView]];
-
-    alertView.delegate = self;
-    alertView.title = plainMessage.caption;
-    alertView.message = plainMessage.text;
-
-    for (GMButton *button in plainMessage.buttons) {
-        GMPlainButton *plainButton = (GMPlainButton *)button;
-        [alertView addButtonWithTitle:plainButton.label];
+    if ([UIAlertController class]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:plainMessage.caption message:plainMessage.text preferredStyle:UIAlertControllerStyleAlert];
+        for (int i = 0; i < [plainMessage.buttons count]; i ++) {
+            GMPlainButton *plainButton = (GMPlainButton *)[plainMessage.buttons objectAtIndex:i];
+            UIAlertAction* action = [UIAlertAction actionWithTitle:plainButton.label style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                
+                GMButton *button = [plainMessage.buttons objectAtIndex:(NSInteger)i];
+                [[GrowthMessage sharedInstance] selectButton:button message:plainMessage];
+                [alertController dismissViewControllerAnimated:YES completion:nil];
+                
+            }];
+            [alertController addAction: action];
+            
+        }
+        
+        UIWindow *window = [[UIWindow alloc] initWithFrame:[[[[UIApplication sharedApplication] delegate] window] bounds]];
+        UIViewController *windowRootController = [[UIViewController alloc] init];
+        window.rootViewController = windowRootController;
+        [window makeKeyAndVisible];
+        [windowRootController presentViewController:alertController animated:YES completion:nil];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        UIAlertView *alertView = [[UIAlertView alloc] init];
+        [plainMessages setObject:plainMessage forKey:[NSValue valueWithNonretainedObject:alertView]];
+        
+        alertView.delegate = self;
+        alertView.title = plainMessage.caption;
+        alertView.message = plainMessage.text;
+        
+        for (GMButton *button in plainMessage.buttons) {
+            GMPlainButton *plainButton = (GMPlainButton *)button;
+            [alertView addButtonWithTitle:plainButton.label];
+        }
+        
+        [alertView show];
+#pragma clang diagnostic pop
+        
     }
 
-    [alertView show];
-
+    
     return YES;
 
 }
 
 #pragma mark --
 #pragma mark UIAlertViewDelegate
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 
@@ -78,5 +107,7 @@
     [plainMessages removeObjectForKey:[NSValue valueWithNonretainedObject:alertView]];
 
 }
+
+#pragma clang diagnostic pop
 
 @end

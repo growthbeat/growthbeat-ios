@@ -21,7 +21,11 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
     UIActivityIndicatorView *activityIndicatorView;
-
+    CGFloat defaultWidth;
+    CGFloat defaultHeight;
+    CGFloat imageButtonWidthMax;
+    CGFloat imageButtonHeightMax;
+    CGFloat closeButtonSizeMax;
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
@@ -46,6 +50,16 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
         self.imageMessage = newImageMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
+        defaultWidth = 280.f;
+        defaultHeight = 448.f;
+        imageButtonWidthMax = 280.f;
+        imageButtonHeightMax = 48.f;
+        closeButtonSizeMax = 64.f;
+        if (newImageMessage.task.orientation == GMMessageOrientationHorizontal) {
+            defaultWidth = 448.f;
+            defaultHeight = 280.f;
+            imageButtonWidthMax = 448.f;
+        }
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -112,8 +126,8 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
         }
     }
 
-    CGFloat availableWidth = MIN(imageMessage.picture.width, screenWidth * 0.85);
-    CGFloat availableHeight = MIN(imageMessage.picture.height, screenHeight * 0.85);
+    CGFloat availableWidth = MIN(imageMessage.picture.width, defaultWidth);
+    CGFloat availableHeight = MIN(imageMessage.picture.height, defaultHeight);
     CGFloat ratio = MIN(availableWidth / imageMessage.picture.width, availableHeight / imageMessage.picture.height);
 
     CGFloat width = imageMessage.picture.width * ratio;
@@ -173,9 +187,13 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
     CGFloat top = rect.origin.y + rect.size.height;
 
     for (GMImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
+        
+        CGFloat availableWidth = MIN(imageButton.picture.width * ratio, imageButtonWidthMax);
+        CGFloat availableHeight = MIN(imageButton.picture.height * ratio, imageButtonHeightMax);
+        CGFloat sizeRatio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
 
-        CGFloat width = imageButton.picture.width * ratio;
-        CGFloat height = imageButton.picture.height * ratio;
+        CGFloat width = imageButton.picture.width * sizeRatio;
+        CGFloat height = imageButton.picture.height * sizeRatio;
         CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
         top -= height;
 
@@ -199,11 +217,16 @@ static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
     if (!closeButton) {
         return;
     }
-
+    
+    CGFloat availableWidth = MIN(closeButton.picture.width, closeButtonSizeMax);
+    CGFloat availableHeight = MIN(closeButton.picture.height, closeButtonSizeMax);
+    CGFloat sizeRatio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
+    ratio = ratio * sizeRatio;
+    
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
-    CGFloat left = rect.origin.x + rect.size.width - width / 2;
-    CGFloat top = rect.origin.y - height / 2;
+    CGFloat left = rect.origin.x + rect.size.width - width - 8;
+    CGFloat top = rect.origin.y + 8;
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
