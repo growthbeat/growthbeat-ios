@@ -14,11 +14,6 @@
 #import "GBViewUtils.h"
 
 static NSTimeInterval const kGMImageMessageRendererImageDownloadTimeout = 10;
-static const CGFloat kDefaultWidth = 280.f;
-static const CGFloat kDefaultHeight = 448.f;
-static const CGFloat kImageButtonWidthMax = 280.f;
-static const CGFloat kImageButtonHeightMax = 48.f;
-static const CGFloat kCloseButtonSizeMax = 64.f;
 
 @interface GMImageMessageRenderer () {
 
@@ -26,7 +21,11 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
     UIActivityIndicatorView *activityIndicatorView;
-
+    CGFloat defaultWidth;
+    CGFloat defaultHeight;
+    CGFloat imageButtonWidthMax;
+    CGFloat imageButtonHeightMax;
+    CGFloat closeButtonSizeMax;
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
@@ -51,6 +50,16 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
         self.imageMessage = newImageMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
+        defaultWidth = 280.f;
+        defaultHeight = 448.f;
+        imageButtonWidthMax = 280.f;
+        imageButtonHeightMax = 48.f;
+        closeButtonSizeMax = 64.f;
+        if (newImageMessage.task.orientation == GMMessageOrientationHorizontal) {
+            defaultWidth = 448.f;
+            defaultHeight = 280.f;
+            imageButtonWidthMax = 448.f;
+        }
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -116,18 +125,6 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
                 break;
         }
     }
-    
-    CGFloat defaultWidth = kDefaultWidth;
-    CGFloat defaultHeight = kDefaultHeight;
-    
-    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if (UIInterfaceOrientationIsLandscape(interfaceOrientation))
-    {
-        CGFloat tmpValue = kDefaultWidth;
-        defaultWidth = kDefaultHeight;
-        defaultHeight = tmpValue;
-        
-    }
 
     CGFloat availableWidth = MIN(imageMessage.picture.width, defaultWidth);
     CGFloat availableHeight = MIN(imageMessage.picture.height, defaultHeight);
@@ -191,8 +188,8 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
 
     for (GMImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
         
-        CGFloat availableWidth = MIN(imageButton.picture.width * ratio, kImageButtonWidthMax);
-        CGFloat availableHeight = MIN(imageButton.picture.height * ratio, kImageButtonHeightMax);
+        CGFloat availableWidth = MIN(imageButton.picture.width * ratio, imageButtonWidthMax);
+        CGFloat availableHeight = MIN(imageButton.picture.height * ratio, imageButtonHeightMax);
         CGFloat sizeRatio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
 
         CGFloat width = imageButton.picture.width * sizeRatio;
@@ -221,8 +218,8 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
         return;
     }
     
-    CGFloat availableWidth = MIN(closeButton.picture.width, kCloseButtonSizeMax);
-    CGFloat availableHeight = MIN(closeButton.picture.height, kCloseButtonSizeMax);
+    CGFloat availableWidth = MIN(closeButton.picture.width, closeButtonSizeMax);
+    CGFloat availableHeight = MIN(closeButton.picture.height, closeButtonSizeMax);
     CGFloat sizeRatio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
     ratio = ratio * sizeRatio;
     

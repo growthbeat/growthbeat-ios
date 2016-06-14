@@ -13,12 +13,6 @@
 #import "GBViewUtils.h"
 
 static NSTimeInterval const kGMSwipeMessageRendererImageDownloadTimeout = 10;
-static const CGFloat kDefaultWidth = 280.f;
-static const CGFloat kDefaultHeight = 448.f;
-static const CGFloat kPagingHeight = 16.f;
-static const CGFloat kImageButtonWidthMax = 280.f;
-static const CGFloat kImageButtonHeightMax = 48.f;
-static const CGFloat kCloseButtonSizeMax = 64.f;
 
 @interface GMSwipeMessageRenderer () {
 
@@ -26,6 +20,12 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
     UIActivityIndicatorView *activityIndicatorView;
+    CGFloat defaultWidth;
+    CGFloat defaultHeight;
+    CGFloat pagingHeight;
+    CGFloat imageButtonWidthMax;
+    CGFloat imageButtonHeightMax;
+    CGFloat closeButtonSizeMax;
 
 }
 
@@ -53,6 +53,18 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
         self.swipeMessage = newSwipeMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
+        defaultWidth = 280.f;
+        defaultHeight = 448.f;
+        imageButtonWidthMax = 280.f;
+        imageButtonHeightMax = 48.f;
+        closeButtonSizeMax = 64.f;
+        pagingHeight = 16.f;
+        if (newSwipeMessage.task.orientation == GMMessageOrientationHorizontal) {
+            defaultWidth = 448.f;
+            defaultHeight = 280.f;
+            imageButtonWidthMax = 448.f;
+        }
+
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -118,23 +130,11 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
                 break;
         }
     }
-    CGFloat pagingHeight = kPagingHeight;
-    CGFloat width = kDefaultWidth;
-    CGFloat height = kDefaultHeight + pagingHeight;
-    
-    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if (UIInterfaceOrientationIsLandscape(interfaceOrientation))
-    {
-        CGFloat tmpValue = width;
-        width = height;
-        width = tmpValue;
-        
-    }
 
-    CGFloat left = (screenWidth - width) / 2;
-    CGFloat top = (screenHeight - height) / 2;
+    CGFloat left = (screenWidth - defaultWidth) / 2;
+    CGFloat top = (screenHeight - defaultHeight) / 2;
     
-    CGRect rect = CGRectMake(left, top, width, height);
+    CGRect rect = CGRectMake(left, top, defaultWidth, defaultHeight);
     
     [self showScrollView:baseView rect:rect];
     [self showPageControlWithView:baseView rect:rect];
@@ -182,7 +182,7 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
 
 - (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
 
-    CGFloat heightOfImageArea = rect.size.height - kPagingHeight;
+    CGFloat heightOfImageArea = rect.size.height - pagingHeight;
 
     for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
 
@@ -222,14 +222,14 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
         {
             GMImageButton *imageButton = [imageButtons objectAtIndex:0];
 
-            CGFloat availableWidth = MIN(imageButton.picture.width, kImageButtonWidthMax);
-            CGFloat availableHeight = MIN(imageButton.picture.height, kImageButtonHeightMax);
+            CGFloat availableWidth = MIN(imageButton.picture.width, imageButtonWidthMax);
+            CGFloat availableHeight = MIN(imageButton.picture.height, imageButtonHeightMax);
             CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
 
             CGFloat width = imageButton.picture.width * ratio;
             CGFloat height = imageButton.picture.height * ratio;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
-            CGFloat top = rect.origin.y + rect.size.height - height - kPagingHeight;
+            CGFloat top = rect.origin.y + rect.size.height - height - pagingHeight;
 
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
@@ -255,8 +255,8 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
         return;
     }
 
-    CGFloat availableWidth = MIN(closeButton.picture.width, kCloseButtonSizeMax);
-    CGFloat availableHeight = MIN(closeButton.picture.height, kCloseButtonSizeMax);
+    CGFloat availableWidth = MIN(closeButton.picture.width, closeButtonSizeMax);
+    CGFloat availableHeight = MIN(closeButton.picture.height, closeButtonSizeMax);
     CGFloat ratio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
 
     CGFloat width = closeButton.picture.width * ratio;
@@ -292,9 +292,9 @@ static const CGFloat kCloseButtonSizeMax = 64.f;
 - (void) showPageControlWithView:(UIView *)view rect:(CGRect)rect {
     
     CGFloat width = rect.size.width;
-    CGFloat height = kPagingHeight;
+    CGFloat height = pagingHeight;
     CGFloat left = rect.origin.x;
-    CGFloat top = rect.origin.y + rect.size.height - kPagingHeight;
+    CGFloat top = rect.origin.y + rect.size.height - pagingHeight;
     
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
