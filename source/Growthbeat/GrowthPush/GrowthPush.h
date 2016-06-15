@@ -11,6 +11,7 @@
 #import "GPEnvironment.h"
 #import "GPMessage.h"
 #import "GPQueue.h"
+#import "GPButton.h"
 
 #ifdef DEBUG
 #define kGrowthPushEnvironment (GPEnvironmentDevelopment)
@@ -96,6 +97,7 @@ typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
 
 - (void) openMessageIfExists;
 - (void) openMessage:(GPMessage *)message;
+- (void) selectButton:(GPButton *)button message:(GPMessage *)message;
 - (void) notifyClose;
 
 

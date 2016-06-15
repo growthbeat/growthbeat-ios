@@ -46,7 +46,6 @@ static Growthbeat *sharedInstance = nil;
     self.credentialId = initialCredentialId;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId adInfoEnable:adInfoEnable];
-    [[GrowthMessage sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
@@ -61,7 +60,6 @@ static Growthbeat *sharedInstance = nil;
 - (void) setLoggerSilent:(BOOL)silent {
     [[[GrowthbeatCore sharedInstance] logger] setSilent:silent];
     [[[GrowthAnalytics sharedInstance] logger] setSilent:silent];
-    [[[GrowthMessage sharedInstance] logger] setSilent:silent];
     [[[GrowthPush sharedInstance] logger] setSilent:silent];
 }
 

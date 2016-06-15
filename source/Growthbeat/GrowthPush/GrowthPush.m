@@ -378,6 +378,25 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
 }
 
+- (void) selectButton:(GPButton *)button message:(GPMessage *)message {
+    
+    [[GrowthbeatCore sharedInstance] handleIntent:button.intent];
+    
+    NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+    if (message.task.id) {
+        [properties setObject:message.task.id forKey:@"taskId"];
+    }
+    if (message.id) {
+        [properties setObject:message.id forKey:@"messageId"];
+    }
+    if (button.intent.id) {
+        [properties setObject:button.intent.id forKey:@"intentId"];
+    }
+    
+    [[GrowthAnalytics sharedInstance] track:@"GrowthMessage" name:@"SelectButton" properties:properties option:GATrackOptionDefault completion:nil];
+    
+}
+
 - (void) setDeviceTags {
 
     if ([GBDeviceUtils model]) {

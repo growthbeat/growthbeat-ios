@@ -8,7 +8,7 @@
 
 #import "GPImageMessageHandler.h"
 #import "GPImageMessageRenderer.h"
-#import "GrowthMessage.h"
+#import "GrowthPush.h"
 
 @interface GPImageMessageHandler () {
     
@@ -35,9 +35,9 @@
 #pragma mark --
 #pragma mark GMMessageHandler
 
-- (BOOL) handleMessage:(GMMessage *)message {
+- (BOOL) handleMessage:(GPMessage *)message {
     
-    if (message.type != GMMessageTypeImage) {
+    if (message.type != GPMessageTypeImage) {
         return NO;
     }
     
@@ -59,9 +59,9 @@
 #pragma mark --
 #pragma mark GMMessageRendererDelegate
 
-- (void) clickedButton:(GMButton *)button message:(GMMessage *)message {
+- (void) clickedButton:(GPButton *)button message:(GPMessage *)message {
     
-    [[GrowthMessage sharedInstance] selectButton:button message:message];
+    [[GrowthPush sharedInstance] selectButton:button message:message];
     
     [imageMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
     

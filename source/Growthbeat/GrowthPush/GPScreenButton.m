@@ -7,7 +7,7 @@
 //
 
 #import "GPScreenButton.h"
-#import "GMPicture.h"
+#import "GPPicture.h"
 
 @implementation GPScreenButton
 
