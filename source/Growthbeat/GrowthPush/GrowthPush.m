@@ -12,7 +12,12 @@
 #import "GrowthAnalytics.h"
 #import "GPTag.h"
 #import "GPEvent.h"
+#import "GPTask.h"
 #import "GBDeviceUtils.h"
+#import "GPMessageHandler.h"
+#import "GPPlainMessageHandler.h"
+#import "GPImageMessageHandler.h"
+#import "GPSwipeMessageHandler.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -21,6 +26,12 @@ static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthpush-preferences";
 static NSString *const kGPPreferenceClientKey = @"growthpush-client";
 static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
+static const NSTimeInterval kMinWaitingTimeForOverrideMessage = 30.0f;
+static const char * const kInternalQueueName = "com.growthpush.Queue";
+const NSInteger kMaxQueueSize = 100;
+const NSInteger kMessageTimeout = 10;
+const CGFloat kDefaultMessageInterval = 1.0f;
+
 
 @interface GrowthPush () {
 
@@ -29,6 +40,16 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
     GBClient *growthbeatClient;
     GPClient *client;
     BOOL registeringClient;
+    BOOL showingMessage;
+    
+    NSString *_applicationId;
+    NSString *_credentialId;
+    NSArray *_messageHandlers;
+    dispatch_queue_t _internalQueue;
+    GPQueue *messageQueue;
+    CGFloat messageInterval;
+    
+    NSDate *lastMessageOpened;
 
 }
 
@@ -37,6 +58,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 @property (nonatomic, strong) GBClient *growthbeatClient;
 @property (nonatomic, strong) GPClient *client;
 @property (nonatomic, assign) BOOL registeringClient;
+@property (nonatomic, assign) BOOL showingMessage;
 
 @end
 
@@ -46,12 +68,14 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 @synthesize httpClient;
 @synthesize preference;
 
-@synthesize credentialId;
 @synthesize environment;
 @synthesize token;
 @synthesize growthbeatClient;
 @synthesize client;
 @synthesize registeringClient;
+@synthesize showingMessage;
+@synthesize messageQueue;
+@synthesize messageInterval;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -72,18 +96,25 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.environment = GPEnvironmentUnknown;
+        self.messageQueue = [[GPQueue alloc] initWithSize:kMaxQueueSize];
+        self.messageInterval = kDefaultMessageInterval;
+        self.showingMessage = NO;
+        _internalQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
 
-- (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)newCredentialId {
+- (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)cedentialId {
 
-    self.credentialId = newCredentialId;
     self.client = [self loadClient];
+    _applicationId = applicationId;
+    _credentialId = cedentialId;
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
-    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:self.credentialId];
+    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:cedentialId];
+    
+    _messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPImageMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
 
 }
 
@@ -159,7 +190,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
             [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
+            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:_credentialId token:self.token environment:self.environment];
             if (createdClient) {
                 [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
                 self.client = createdClient;
@@ -181,7 +212,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 
             [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
+            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:_credentialId token:self.token environment:self.environment];
             if (updatedClient) {
                 [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
                 self.client = updatedClient;
@@ -252,7 +283,7 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
         }
 
         [self waitClient];
-        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:_credentialId name:name value:value];
 
         if (tag) {
             [GPTag save:tag name:name];
@@ -268,20 +299,83 @@ static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 }
 
 - (void) trackEvent:(NSString *)name value:(NSString *)value {
+    [self trackEvent:name value:value messageHandler:nil];
+}
 
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(ShowMessageHandler)messageHandler {
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-
+        
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
-
+        
         [self waitClient];
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
-
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:_credentialId name:name value:value];
+        
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];
         }
-
+        
+        if (messageHandler) {
+            NSError *error = nil;
+            NSArray *taskArray = [GPTask getTaskList:_applicationId credentialId:_credentialId goalId:event.goalId];
+            for (GPTask *task in taskArray) {
+                GPMessage *message = [GPMessage getMessage:task.id clientId:self.growthbeatClient.id credentialId:_credentialId];
+                [self.messageQueue enqueue:message];
+            }
+            [self openMessageIfExists];
+        }
+        
     });
+}
 
+- (void) openMessageIfExists {
+    
+    dispatch_async(_internalQueue, ^{
+        NSTimeInterval diff = [[NSDate date] timeIntervalSinceDate:lastMessageOpened];
+        if (self.showingMessage || diff > kMinWaitingTimeForOverrideMessage) {
+            return;
+        }
+        GPMessage *message = [self.messageQueue dequeue];
+        if (message) {
+            self.showingMessage = YES;
+            dispatch_queue_t mainQueue = dispatch_get_main_queue();
+            dispatch_async(mainQueue, ^{
+                [self openMessage:message];
+            });
+            lastMessageOpened = [NSDate date];
+        }
+    });
+}
+
+- (void) notifyClose {
+    self.showingMessage = NO;
+}
+
+
+
+
+- (void) openMessage:(GPMessage *)message {
+    
+    for (id<GPMessageHandler> handler in _messageHandlers) {
+        
+        if (![handler handleMessage:message]) {
+            continue;
+        }
+        
+//        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+//        if (message.task.id) {
+//            [properties setObject:message.task.id forKey:@"taskId"];
+//        }
+//        if (message.id) {
+//            [properties setObject:message.id forKey:@"messageId"];
+//        }
+//        
+//        [[GrowthAnalytics sharedInstance] track:@"GrowthMessage" name:@"ShowMessage" properties:properties option:GATrackOptionDefault completion:nil];
+        
+        break;
+        
+    }
+    
 }
 
 - (void) setDeviceTags {

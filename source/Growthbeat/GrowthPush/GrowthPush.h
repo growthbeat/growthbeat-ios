@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "GrowthbeatCore.h"
 #import "GPEnvironment.h"
+#import "GPMessage.h"
+#import "GPQueue.h"
 
 #ifdef DEBUG
 #define kGrowthPushEnvironment (GPEnvironmentDevelopment)
 #else
 #define kGrowthPushEnvironment (GPEnvironmentProduction)
+#endif
+
+#if NS_BLOCKS_AVAILABLE
+typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
 #endif
 
 @interface GrowthPush : NSObject {
@@ -22,15 +28,14 @@
     GBHttpClient *httpClient;
     GBPreference *preference;
 
-    NSString *credentialId;
-
 }
 
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
+@property (nonatomic, strong) GPQueue *messageQueue;
+@property (nonatomic, assign) CGFloat messageInterval;
 
-@property (nonatomic, strong) NSString *credentialId;
 
 /**
  * Get shared instance of GrowthPush
@@ -82,11 +87,16 @@
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(ShowMessageHandler)messageHandler;
 
 /**
  * Set DefaultTags
  */
 - (void)setDeviceTags;
+
+- (void) openMessageIfExists;
+- (void) openMessage:(GPMessage *)message;
+- (void) notifyClose;
 
 
 - (GBLogger *)logger;

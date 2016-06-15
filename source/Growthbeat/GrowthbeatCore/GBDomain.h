@@ -12,6 +12,8 @@
 
 + (instancetype)domainWithDictionary:(NSDictionary *)dictionary;
 
++ (NSArray *) domainArrayFromArray:(NSArray *)dictionary;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

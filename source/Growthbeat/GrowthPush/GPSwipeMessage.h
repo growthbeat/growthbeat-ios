@@ -1,0 +1,23 @@
+//
+//  GPSwipeMessage.h
+//  GrowthbeatSample
+//
+//  Created by TABATAKATSUTOSHI on 2016/06/15.
+//  Copyright © 2016年 SIROK, Inc. All rights reserved.
+//
+
+#import "GPMessage.h"
+#import "GPSwipeMessageType.h"
+#import "GPSwipeImages.h"
+
+@interface GPSwipeMessage : GPMessage {
+    
+    GPSwipeMessageType swipeType;
+    GPSwipeImages *swipeImages;
+    
+}
+
+@property (nonatomic, assign) GPSwipeMessageType swipeType;
+@property (nonatomic, strong) GPSwipeImages *swipeImages;
+
+@end

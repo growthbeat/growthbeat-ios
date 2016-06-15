@@ -21,6 +21,24 @@
 
 }
 
++ (NSArray *) domainArrayFromArray:(NSArray *)array {
+    if (!array) {
+        return nil;
+    }
+    NSMutableArray *results = [NSMutableArray array];
+    for (id tempObject in array) {
+        if (![tempObject isKindOfClass:[NSDictionary class]] ) {
+            continue;
+        }
+        GBDomain *data = [[self alloc] initWithDictionary:(NSDictionary *)tempObject];
+        if (!data) {
+            continue;
+        }
+        [results addObject:data];
+    }
+    return results;
+}
+
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     return [self init];
 }
