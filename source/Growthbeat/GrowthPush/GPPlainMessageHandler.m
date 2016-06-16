@@ -106,6 +106,9 @@
 #pragma mark --
 #pragma mark UIAlertViewDelegate
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     GPPlainMessage *plainMessage = [plainMessages objectForKey:[NSValue valueWithNonretainedObject:alertView]];
@@ -119,6 +122,8 @@
     [plainMessages removeObjectForKey:[NSValue valueWithNonretainedObject:alertView]];
     
 }
+
+#pragma clang diagnostic pop
 
 @end
 
