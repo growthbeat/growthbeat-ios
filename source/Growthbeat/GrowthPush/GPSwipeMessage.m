@@ -12,6 +12,8 @@
 
 @synthesize swipeType;
 @synthesize swipeImages;
+@synthesize baseWidth;
+@synthesize baseHeight;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     
@@ -22,6 +24,12 @@
         }
         if ([dictionary objectForKey:@"swipeImages"] && [dictionary objectForKey:@"swipeImages"] != [NSNull null]) {
             self.swipeImages = [GPSwipeImages domainWithDictionary:[dictionary objectForKey:@"swipeImages"]];
+        }
+        if ([dictionary objectForKey:@"baseWidth"] && [dictionary objectForKey:@"baseWidth"] != [NSNull null]) {
+            self.baseWidth = [[dictionary objectForKey:@"baseWidth"] integerValue];
+        }
+        if ([dictionary objectForKey:@"baseHeight"] && [dictionary objectForKey:@"baseHeight"] != [NSNull null]) {
+            self.baseHeight = [[dictionary objectForKey:@"baseHeight"] integerValue];
         }
     }
     return self;
@@ -40,6 +48,12 @@
         if ([aDecoder containsValueForKey:@"swipeImages"]) {
             self.swipeImages = [aDecoder decodeObjectForKey:@"swipeImages"];
         }
+        if ([aDecoder containsValueForKey:@"baseWidth"]) {
+            self.baseWidth = [aDecoder decodeIntegerForKey:@"baseWidth"];
+        }
+        if ([aDecoder containsValueForKey:@"baseHeight"]) {
+            self.baseHeight = [aDecoder decodeIntegerForKey:@"baseHeight"];
+        }
     }
     return self;
 }
@@ -48,6 +62,8 @@
     [super encodeWithCoder:aCoder];
     [aCoder encodeObject:NSStringFromGPSwipeMessageType(swipeType) forKey:@"swipeType"];
     [aCoder encodeObject:swipeImages forKey:@"swipeImages"];
+    [aCoder encodeInteger:baseWidth forKey:@"baseWidth"];
+    [aCoder encodeInteger:baseHeight forKey:@"baseHeight"];
 }
 
 @end

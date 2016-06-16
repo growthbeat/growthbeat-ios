@@ -22,6 +22,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     UIView *backgroundView;
     UIActivityIndicatorView *activityIndicatorView;
     
+    
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;

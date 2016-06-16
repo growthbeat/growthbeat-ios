@@ -16,9 +16,7 @@
     GPPictureExtension extension;
     NSInteger width;
     NSInteger height;
-    NSString *name;
     NSDate *created;
-    NSDate *updated;
     NSString *url;
     
 }
@@ -28,9 +26,7 @@
 @property (nonatomic, assign) GPPictureExtension extension;
 @property (nonatomic, assign) NSInteger width;
 @property (nonatomic, assign) NSInteger height;
-@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSDate *created;
-@property (nonatomic, strong) NSDate *updated;
 @property (nonatomic, strong) NSString *url;
 
 @end

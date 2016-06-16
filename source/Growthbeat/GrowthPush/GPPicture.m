@@ -11,15 +11,12 @@
 
 @implementation GPPicture
 
-
 @synthesize id;
 @synthesize applicationId;
 @synthesize extension;
 @synthesize width;
 @synthesize height;
-@synthesize name;
 @synthesize created;
-@synthesize updated;
 @synthesize url;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
@@ -41,14 +38,8 @@
         if ([dictionary objectForKey:@"height"] && [dictionary objectForKey:@"height"] != [NSNull null]) {
             self.height = [[dictionary objectForKey:@"height"] integerValue];
         }
-        if ([dictionary objectForKey:@"name"] && [dictionary objectForKey:@"name"] != [NSNull null]) {
-            self.name = [dictionary objectForKey:@"name"];
-        }
         if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
             self.created = [GBDateUtils dateWithDateTimeString:[dictionary objectForKey:@"created"]];
-        }
-        if ([dictionary objectForKey:@"updated"] && [dictionary objectForKey:@"updated"] != [NSNull null]) {
-            self.updated = [GBDateUtils dateWithDateTimeString:[dictionary objectForKey:@"updated"]];
         }
         if ([dictionary objectForKey:@"url"] && [dictionary objectForKey:@"url"] != [NSNull null]) {
             self.url = [dictionary objectForKey:@"url"];
@@ -79,14 +70,8 @@
         if ([aDecoder containsValueForKey:@"height"]) {
             self.height = [aDecoder decodeIntegerForKey:@"height"];
         }
-        if ([aDecoder containsValueForKey:@"name"]) {
-            self.name = [aDecoder decodeObjectForKey:@"name"];
-        }
         if ([aDecoder containsValueForKey:@"created"]) {
             self.created = [aDecoder decodeObjectForKey:@"created"];
-        }
-        if ([aDecoder containsValueForKey:@"updated"]) {
-            self.updated = [aDecoder decodeObjectForKey:@"updated"];
         }
         if ([aDecoder containsValueForKey:@"url"]) {
             self.url = [aDecoder decodeObjectForKey:@"url"];
@@ -101,9 +86,7 @@
     [aCoder encodeObject:NSStringFromGPPictureExtension(extension) forKey:@"extension"];
     [aCoder encodeInteger:width forKey:@"width"];
     [aCoder encodeInteger:height forKey:@"height"];
-    [aCoder encodeObject:name forKey:@"name"];
     [aCoder encodeObject:created forKey:@"created"];
-    [aCoder encodeObject:updated forKey:@"updated"];
     [aCoder encodeObject:url forKey:@"url"];
 }
 

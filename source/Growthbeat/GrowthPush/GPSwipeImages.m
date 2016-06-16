@@ -13,8 +13,6 @@
 @implementation GPSwipeImages
 
 @synthesize pictures;
-@synthesize widthRatio;
-@synthesize topMargin;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     
@@ -26,12 +24,6 @@
                 [newPictures addObject:[GPPicture domainWithDictionary:pictureDictionary]];
             }
             self.pictures = newPictures;
-        }
-        if ([dictionary objectForKey:@"widthRatio"] && [dictionary objectForKey:@"widthRatio"] != [NSNull null]) {
-            self.widthRatio = [[dictionary objectForKey:@"widthRatio"] floatValue];
-        }
-        if ([dictionary objectForKey:@"topMargin"] && [dictionary objectForKey:@"topMargin"] != [NSNull null]) {
-            self.topMargin = [[dictionary objectForKey:@"topMargin"] floatValue];
         }
     }
     return self;
@@ -47,20 +39,12 @@
         if ([aDecoder containsValueForKey:@"pictures"]) {
             self.pictures = [aDecoder decodeObjectForKey:@"pictures"];
         }
-        if ([aDecoder containsValueForKey:@"widthRatio"]) {
-            self.widthRatio = [aDecoder decodeFloatForKey:@"widthRatio"];
-        }
-        if ([aDecoder containsValueForKey:@"topMargin"]) {
-            self.topMargin = [aDecoder decodeFloatForKey:@"topMargin"];
-        }
     }
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:pictures forKey:@"pictures"];
-    [aCoder encodeFloat:widthRatio forKey:@"widthRatio"];
-    [aCoder encodeFloat:topMargin forKey:@"topMargin"];
 }
 
 @end

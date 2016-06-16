@@ -12,9 +12,13 @@
 @interface GPImageMessage : GPMessage {
     
     GPPicture *picture;
+    NSInteger baseWidth;
+    NSInteger baseHeight;
     
 }
 
 @property (nonatomic, strong) GPPicture *picture;
+@property (nonatomic, assign) NSInteger baseWidth;
+@property (nonatomic, assign) NSInteger baseHeight;
 
 @end

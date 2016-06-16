@@ -14,10 +14,15 @@
     
     GPSwipeMessageType swipeType;
     GPSwipeImages *swipeImages;
+    NSInteger baseWidth;
+    NSInteger baseHeight;
     
 }
 
 @property (nonatomic, assign) GPSwipeMessageType swipeType;
 @property (nonatomic, strong) GPSwipeImages *swipeImages;
+@property (nonatomic, assign) NSInteger baseWidth;
+@property (nonatomic, assign) NSInteger baseHeight;
+
 
 @end

@@ -42,9 +42,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     BOOL registeringClient;
     BOOL showingMessage;
     
-    NSString *_applicationId;
-    NSString *_credentialId;
-    NSArray *_messageHandlers;
     dispatch_queue_t _internalQueue;
     GPQueue *messageQueue;
     CGFloat messageInterval;
@@ -67,6 +64,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
+
+@synthesize applicationId;
+@synthesize credentialId;
+@synthesize messageHandlers;
 
 @synthesize environment;
 @synthesize token;
@@ -107,14 +108,14 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 - (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)cedentialId {
 
     self.client = [self loadClient];
-    _applicationId = applicationId;
-    _credentialId = cedentialId;
+    self.applicationId = applicationId;
+    self.credentialId = cedentialId;
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:cedentialId];
     
-    _messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPImageMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
+    self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPImageMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
 
 }
 
@@ -190,7 +191,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:_credentialId token:self.token environment:self.environment];
+            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
             if (createdClient) {
                 [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
                 self.client = createdClient;
@@ -212,7 +213,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:_credentialId token:self.token environment:self.environment];
+            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
             if (updatedClient) {
                 [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
                 self.client = updatedClient;
@@ -283,7 +284,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         }
 
         [self waitClient];
-        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:_credentialId name:name value:value];
+        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
 
         if (tag) {
             [GPTag save:tag name:name];
@@ -309,7 +310,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
         [self waitClient];
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:_credentialId name:name value:value];
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
         
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];
@@ -317,9 +318,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         if (messageHandler) {
             NSError *error = nil;
-            NSArray *taskArray = [GPTask getTaskList:_applicationId credentialId:_credentialId goalId:event.goalId];
+            NSArray *taskArray = [GPTask getTaskList:self.applicationId credentialId:self.credentialId goalId:event.goalId];
             for (GPTask *task in taskArray) {
-                GPMessage *message = [GPMessage getMessage:task.id clientId:self.growthbeatClient.id credentialId:_credentialId];
+                GPMessage *message = [GPMessage getMessage:task.id clientId:self.growthbeatClient.id credentialId:self.credentialId];
                 [self.messageQueue enqueue:message];
             }
             [self openMessageIfExists];
@@ -356,7 +357,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void) openMessage:(GPMessage *)message {
     
-    for (id<GPMessageHandler> handler in _messageHandlers) {
+    for (id<GPMessageHandler> handler in self.messageHandlers) {
         
         if (![handler handleMessage:message]) {
             continue;

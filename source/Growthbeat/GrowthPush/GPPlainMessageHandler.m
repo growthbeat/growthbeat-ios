@@ -73,8 +73,7 @@
     GPPlainMessage *plainMessage = [plainMessages objectForKey:[NSValue valueWithNonretainedObject:alertView]];
     GPButton *button = [plainMessage.buttons objectAtIndex:buttonIndex];
     
-    //TODO: 戻す
-    //[[GrowthPush sharedInstance] selectButton:button message:plainMessage];
+    [[GrowthPush sharedInstance] selectButton:button message:plainMessage];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, [GrowthPush sharedInstance].messageInterval * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         [[GrowthPush sharedInstance] notifyClose];
         [[GrowthPush sharedInstance] openMessageIfExists];

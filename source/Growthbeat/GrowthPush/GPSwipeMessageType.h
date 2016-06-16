@@ -11,8 +11,7 @@
 typedef NS_ENUM (NSUInteger, GPSwipeMessageType) {
     GPSwipeMessageTypeUnknown = 0,
     GPSwipeMessageTypeImageOnly,
-    GPSwipeMessageTypeOneButton,
-    GPSwipeMessageTypeButtons
+    GPSwipeMessageTypeOneButton
 };
 
 NSString *NSStringFromGPSwipeMessageType(GPSwipeMessageType swipeMessageType);

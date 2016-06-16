@@ -118,9 +118,6 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
     CGFloat height;
     switch (swipeMessage.swipeType) {
         case GPSwipeMessageTypeImageOnly:
-        case GPSwipeMessageTypeButtons:
-            height = screenHeight * 0.85 * 0.9;
-            break;
         case GPSwipeMessageTypeOneButton:
             height = screenHeight * 0.85 * 0.8;
             break;
@@ -141,9 +138,6 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
         switch (swipeMessage.swipeType) {
             case GPSwipeMessageTypeOneButton:
                 [self showImageButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
-                break;
-            case GPSwipeMessageTypeButtons:
-                [self showImageButtonWithView:scrollView screenWidth:screenWidth screenHeight:screenHeight];
                 break;
             case GPSwipeMessageTypeImageOnly:
             default:
@@ -183,15 +177,6 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
     
     CGFloat heightOfImageArea = rect.size.height;
     
-    switch (swipeMessage.swipeType) {
-        case GPSwipeMessageTypeButtons:
-            heightOfImageArea = rect.size.height * 8 / 9;
-            break;
-        case GPSwipeMessageTypeImageOnly:
-        case GPSwipeMessageTypeOneButton:
-        default:
-            break;
-    }
     
     CGFloat scale = [[UIScreen mainScreen] scale];
     for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
@@ -251,31 +236,6 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
             [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
             break;
         }
-        case GPSwipeMessageTypeButtons:
-            for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
-                
-                GPImageButton *imageButton = [imageButtons objectAtIndex:i];
-                
-                CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
-                CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
-                CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
-                
-                CGFloat width = imageButton.picture.width * ratio;
-                CGFloat height = imageButton.picture.height * ratio;
-                CGFloat left = (screenWidth - width) / 2 + screenWidth * i;
-                CGFloat top = screenHeight * 0.85 * 0.8 + (screenHeight * 0.85 * 0.1 - height) / 2;
-                
-                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-                [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
-                button.contentMode = UIViewContentModeScaleAspectFit;
-                button.frame = CGRectMake(left, top, width, height);
-                [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
-                [view addSubview:button];
-                
-                [boundButtons setObject:imageButton forKey:[NSValue valueWithNonretainedObject:button]];
-                
-            }
-            break;
         default:
             break;
     }

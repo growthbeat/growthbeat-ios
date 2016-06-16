@@ -24,12 +24,20 @@ typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
 #endif
 
 @interface GrowthPush : NSObject {
+    
+    NSString *applicationId;
+    NSString *credentialId;
+    NSArray *messageHandlers;
 
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
 
 }
+
+@property (nonatomic, strong) NSString *applicationId;
+@property (nonatomic, strong) NSString *credentialId;
+@property (nonatomic, strong) NSArray *messageHandlers;
 
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;

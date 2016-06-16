@@ -12,7 +12,6 @@ typedef NS_ENUM (NSInteger, GPMessageType) {
     GPMessageTypeUnknown = 0,
     GPMessageTypePlain,
     GPMessageTypeImage,
-    GPMessageTypeBanner,
     GPMessageTypeSwipe
 };
 

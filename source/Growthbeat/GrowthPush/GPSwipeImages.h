@@ -11,13 +11,9 @@
 @interface GPSwipeImages : GBDomain <NSCoding> {
     
     NSArray *pictures;
-    float widthRatio;
-    float topMargin;
     
 }
 
 @property (nonatomic, strong) NSArray *pictures;
-@property (nonatomic, assign) float widthRatio;
-@property (nonatomic, assign) float topMargin;
 
 @end

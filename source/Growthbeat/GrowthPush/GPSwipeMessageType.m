@@ -17,8 +17,6 @@ NSString *NSStringFromGPSwipeMessageType(GPSwipeMessageType swipeMessageType) {
             return @"imageOnly";
         case GPSwipeMessageTypeOneButton:
             return @"oneButton";
-        case GPSwipeMessageTypeButtons:
-            return @"buttons";
     }
     
 }
@@ -30,9 +28,6 @@ GPSwipeMessageType GPSwipeMessageTypeFromNSString(NSString *swipeMessageTypeStri
     }
     if ([swipeMessageTypeString isEqualToString:@"oneButton"]) {
         return GPSwipeMessageTypeOneButton;
-    }
-    if ([swipeMessageTypeString isEqualToString:@"buttons"]) {
-        return GPSwipeMessageTypeButtons;
     }
     return GPSwipeMessageTypeUnknown;
     
