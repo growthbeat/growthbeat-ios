@@ -10,7 +10,7 @@
 #import "GPImageMessage.h"
 #import "GPMessageRendererDelegate.h"
 
-@interface GPImageMessageRenderer : NSObject {
+@interface GPImageMessageRenderer : NSObject <UIGestureRecognizerDelegate> {
     
     GPImageMessage *imageMessage;
     __weak id <GPMessageRendererDelegate> delegate;

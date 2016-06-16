@@ -14,6 +14,8 @@
 
 
 static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
+static CGFloat const kPagingHeight = 16.f;
+static CGFloat const kCloseButtonSizeMax = 64.f;
 
 @interface GPSwipeMessageRenderer () {
     
@@ -62,8 +64,14 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
     
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
-        backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        backgroundView.backgroundColor = [GBViewUtils hexToUIColor: [NSString stringWithFormat:@"%X",self.swipeMessage.background.color] alpha:self.swipeMessage.background.opacity];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(backgroundTouched:)];
+        singleFingerTap.cancelsTouchesInView = NO;
+        singleFingerTap.delegate = self;
+        [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
     
@@ -71,8 +79,10 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
         [subview removeFromSuperview];
     }
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
+    baseView.tag = 1;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [backgroundView addSubview:baseView];
+    
     
     self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicatorView.frame = baseView.frame;
@@ -113,37 +123,24 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
                     break;
             }
         }
+
+    CGRect baseRect = CGRectMake((screenWidth - self.swipeMessage.baseWidth) / 2, (screenHeight - self.swipeMessage.baseHeight) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight);
     
-    CGFloat width = screenWidth;
-    CGFloat height;
-    switch (swipeMessage.swipeType) {
-        case GPSwipeMessageTypeImageOnly:
-        case GPSwipeMessageTypeOneButton:
-            height = screenHeight * 0.85 * 0.8;
-            break;
-        default:
-            break;
-    }
-    CGFloat left = 0;
-    CGFloat top = screenHeight * 0.075;
-    
-    CGRect rect = CGRectMake(left, top, width, height);
-    
-    [self showScrollView:baseView rect:rect];
-    [self showPageControlWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
+    [self showScrollView:baseView rect:baseRect];
+    [self showPageControlWithView:baseView rect:baseRect];
     
     [self cacheImages:^{
         
-        [self showImageWithView:scrollView rect:rect];
+        [self showImageWithView:scrollView rect:baseRect];
         switch (swipeMessage.swipeType) {
             case GPSwipeMessageTypeOneButton:
-                [self showImageButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight];
+                [self showImageButtonWithView:baseView rect:baseRect];
                 break;
             case GPSwipeMessageTypeImageOnly:
             default:
                 break;
         }
-        [self showCloseButtonWithView:baseView screenWidth:screenWidth screenHeight:screenHeight rect:rect];
+        [self showCloseButtonWithView:baseView rect:baseRect];
         
         self.activityIndicatorView.hidden = YES;
         
@@ -175,27 +172,18 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
 
 - (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
     
-    CGFloat heightOfImageArea = rect.size.height;
-    
-    
-    CGFloat scale = [[UIScreen mainScreen] scale];
     for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
         
         GPPicture *picture = [swipeMessage.swipeImages.pictures objectAtIndex:i];
         
-        CGFloat pictureWidthDp = picture.width / scale;
-        CGFloat pictureHeightDp = picture.height / scale;
         
-        CGFloat availableWidth = MIN(pictureWidthDp, rect.size.width * 0.85);
-        CGFloat availableHeight = MIN(pictureHeightDp, heightOfImageArea);
-        CGFloat ratio = MIN(availableWidth / pictureWidthDp, availableHeight / pictureHeightDp);
+        CGFloat width = swipeMessage.baseWidth;
+        CGFloat height = swipeMessage.baseHeight - kPagingHeight;
+        CGFloat left = rect.size.width * i;
+        CGFloat top = 0;
+        CGRect imageRect = CGRectMake(left, top, width, height);
         
-        CGFloat width = pictureWidthDp * ratio;
-        CGFloat height = pictureHeightDp * ratio;
-        CGFloat left = (rect.size.width - width) / 2 + rect.size.width * i;
-        CGFloat top = (heightOfImageArea - height) / 2;
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(left, top, width, height)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageRect];
         
         imageView.image = [cachedImages objectForKey:picture.url];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -206,7 +194,7 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showImageButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
+- (void) showImageButtonWithView:(UIView *)view rect:(CGRect)rect {
     
     NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
     
@@ -217,15 +205,13 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
         {
             GPImageButton *imageButton = [imageButtons objectAtIndex:0];
             
-            CGFloat availableWidth = MIN(imageButton.picture.width, screenWidth * 0.85);
-            CGFloat availableHeight = MIN(imageButton.picture.height, screenHeight * 0.85 * 0.1);
-            CGFloat ratio = MIN(availableWidth / imageButton.picture.width, availableHeight / imageButton.picture.height);
+            CGFloat availableWidth = MIN(imageButton.baseWidth, rect.size.width);
+            CGFloat ratio = MIN(availableWidth / imageButton.baseWidth, 1);
             
-            CGFloat width = imageButton.picture.width * ratio;
-            CGFloat height = imageButton.picture.height * ratio;
-            CGFloat left = screenWidth * 0.075 + (screenWidth * 0.85 - width) / 2;
-            CGFloat top = screenHeight * (0.075 + 0.85 * 0.8) + (screenHeight * 0.85 * 0.1 - height) / 2;
-            
+            CGFloat width = imageButton.baseWidth * ratio;
+            CGFloat height = imageButton.baseHeight * ratio;
+            CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
+            CGFloat top = rect.origin.y + rect.size.height - kPagingHeight - height;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
             button.contentMode = UIViewContentModeScaleAspectFit;
@@ -242,7 +228,7 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showCloseButtonWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight rect:(CGRect)rect {
+- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect {
     
     GPCloseButton *closeButton = [[self extractButtonsWithType:GPButtonTypeClose] lastObject];
     
@@ -250,15 +236,14 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
         return;
     }
     
-    CGFloat availableWidth = MIN(closeButton.picture.width, 20);
-    CGFloat availableHeight = MIN(closeButton.picture.height, 20);
-    CGFloat ratio = MIN(availableWidth / closeButton.picture.width, availableHeight / closeButton.picture.height);
+    CGFloat availableWidth = MIN(closeButton.baseWidth, kCloseButtonSizeMax);
+    CGFloat availableHeight = MIN(closeButton.baseHeight, kCloseButtonSizeMax);
+    CGFloat ratio = MIN(availableWidth / closeButton.baseWidth, availableHeight / closeButton.baseHeight);
     
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
-    CGFloat left = rect.size.width * 0.925 - width / 2;
-    CGFloat top = rect.origin.y - height / 2;
-    
+    CGFloat left = rect.origin.x + rect.size.width - width - 8;
+    CGFloat top = rect.origin.y + 8;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
@@ -284,12 +269,12 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showPageControlWithView:(UIView *)view screenWidth:(CGFloat)screenWidth screenHeight:(CGFloat)screenHeight {
+- (void) showPageControlWithView:(UIView *)view rect:(CGRect)rect {
     
-    CGFloat width = screenWidth * 0.85;
-    CGFloat height = screenHeight * 0.85 * 0.1;
-    CGFloat left = screenWidth * 0.075;
-    CGFloat top = screenHeight * (0.075 + 0.85 * 0.9);
+    CGFloat width = rect.size.width;
+    CGFloat height = kPagingHeight;
+    CGFloat left = rect.origin.x;
+    CGFloat top = rect.origin.y + rect.size.height - kPagingHeight;
     
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
@@ -392,5 +377,29 @@ static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
+
+- (void)backgroundTouched:(UITapGestureRecognizer *)recognizer {
+    if (!swipeMessage.background.outsideClose) {
+        return;
+    }
+    [self.backgroundView removeFromSuperview];
+    self.backgroundView = nil;
+    self.boundButtons = nil;
+    [delegate backgroundTouched:swipeMessage];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if (touch.view.tag != 1)
+    {
+        return false;
+    }
+    return true;
+}
+
 
 @end

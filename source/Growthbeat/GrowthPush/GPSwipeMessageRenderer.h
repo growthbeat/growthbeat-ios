@@ -10,7 +10,7 @@
 #import "GPSwipeMessage.h"
 #import "GPMessageRendererDelegate.h"
 
-@interface GPSwipeMessageRenderer : UIViewController <UIScrollViewDelegate> {
+@interface GPSwipeMessageRenderer : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate> {
     
     GPSwipeMessage *swipeMessage;
     UIScrollView *scrollView;

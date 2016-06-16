@@ -13,12 +13,12 @@
     
     NSInteger color;
     CGFloat opacity;
-    GPMessageOutsideClose outsideClose;
+    BOOL outsideClose;
     
 }
 
 @property (nonatomic, assign) NSInteger color;
 @property (nonatomic, assign) CGFloat opacity;
-@property (nonatomic, assign) GPMessageOutsideClose outsideClose;
+@property (nonatomic, assign) BOOL outsideClose;
 
 @end

@@ -13,5 +13,6 @@
 @protocol GPMessageRendererDelegate <NSObject>
 
 - (void)clickedButton:(GPButton *)button message:(GPMessage *)message;
+- (void)backgroundTouched:(GPMessage *)message;
 
 @end

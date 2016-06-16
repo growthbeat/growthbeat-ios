@@ -9,11 +9,13 @@
 #import "GBDomain.h"
 #import "GPTask.h"
 #import "GPMessageType.h"
+#import "GPBackground.h"
 
 @interface GPMessage : GBDomain <NSCoding> {
     
     NSString *id;
     GPMessageType type;
+    GPBackground *background;
     NSDictionary *extra;
     NSDate *created;
     GPTask *task;
@@ -22,6 +24,7 @@
 }
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, assign) GPMessageType type;
+@property (nonatomic, strong) GPBackground *background;
 @property (nonatomic, strong) NSDictionary *extra;
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, strong) GPTask *task;

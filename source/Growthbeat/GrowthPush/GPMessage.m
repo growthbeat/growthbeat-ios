@@ -14,6 +14,7 @@
 
 @synthesize id;
 @synthesize type;
+@synthesize background;
 @synthesize extra;
 @synthesize created;
 @synthesize task;
@@ -64,6 +65,9 @@
         if ([aDecoder containsValueForKey:@"type"]) {
             self.type = [aDecoder decodeIntegerForKey:@"type"];
         }
+        if ([aDecoder containsValueForKey:@"background"]) {
+            self.background = [aDecoder decodeObjectForKey:@"background"];
+        }
         if ([aDecoder containsValueForKey:@"created"]) {
             self.created = [aDecoder decodeObjectForKey:@"created"];
         }
@@ -83,6 +87,7 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:id forKey:@"id"];
     [aCoder encodeInteger:type forKey:@"type"];
+    [aCoder encodeObject:background forKey:@"background"];
     [aCoder encodeObject:created forKey:@"created"];
     [aCoder encodeObject:extra forKey:@"extra"];
     [aCoder encodeObject:task forKey:@"task"];

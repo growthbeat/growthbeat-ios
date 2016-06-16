@@ -27,7 +27,7 @@
             self.opacity = [aDecoder decodeFloatForKey:@"opacity"];
         }
         if ([aDecoder containsValueForKey:@"outsideClose"]) {
-            self.outsideClose = [aDecoder decodeIntegerForKey:@"outsideClose"];
+            self.outsideClose = [aDecoder decodeBoolForKey:@"outsideClose"];
         }
     }
     return self;
@@ -36,7 +36,7 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeInteger:color forKey:@"color"];
     [aCoder encodeFloat:opacity forKey:@"opacity"];
-    [aCoder encodeInteger:outsideClose forKey:@"outsideClose"];
+    [aCoder encodeBool:outsideClose forKey:@"outsideClose"];
 }
 
 

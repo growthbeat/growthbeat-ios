@@ -14,6 +14,7 @@
 #import "GBViewUtils.h"
 
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
+static CGFloat const kCloseButtonSizeMax = 64.f;
 
 @interface GPImageMessageRenderer () {
     
@@ -21,7 +22,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
     UIActivityIndicatorView *activityIndicatorView;
-    
+    float opacity;
     
 }
 
@@ -47,6 +48,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
         self.imageMessage = newImageMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
+        
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -61,8 +63,14 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
-        backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        backgroundView.backgroundColor = [GBViewUtils hexToUIColor: [NSString stringWithFormat:@"%X",self.imageMessage.background.color] alpha:self.imageMessage.background.opacity];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(backgroundTouched:)];
+        singleFingerTap.cancelsTouchesInView = NO;
+        singleFingerTap.delegate = self;
+        [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
     
@@ -72,6 +80,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [backgroundView addSubview:baseView];
+    baseView.tag = 1;
     
     self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicatorView.frame = baseView.frame;
@@ -113,23 +122,17 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
             }
         }
     
-    CGFloat availableWidth = MIN(imageMessage.picture.width, screenWidth * 0.85);
-    CGFloat availableHeight = MIN(imageMessage.picture.height, screenHeight * 0.85);
-    CGFloat ratio = MIN(availableWidth / imageMessage.picture.width, availableHeight / imageMessage.picture.height);
+
     
-    CGFloat width = imageMessage.picture.width * ratio;
-    CGFloat height = imageMessage.picture.height * ratio;
-    CGFloat left = (screenWidth - width) / 2;
-    CGFloat top = (screenHeight - height) / 2;
     
-    CGRect rect = CGRectMake(left, top, width, height);
+    CGRect baseRect = CGRectMake((screenWidth - self.imageMessage.baseWidth) / 2, (screenHeight - self.imageMessage.baseHeight) / 2, self.imageMessage.baseWidth, self.imageMessage.baseHeight);
     
     [self cacheImages:^{
         
-        [self showImageWithView:baseView rect:rect ratio:ratio];
-        [self showScreenButtonWithView:baseView rect:rect ratio:ratio];
-        [self showImageButtonsWithView:baseView rect:rect ratio:ratio];
-        [self showCloseButtonWithView:baseView rect:rect ratio:ratio];
+        [self showImageWithView:baseView rect:baseRect];
+        [self showScreenButtonWithView:baseView rect:baseRect];
+        [self showImageButtonsWithView:baseView rect:baseRect];
+        [self showCloseButtonWithView:baseView rect:baseRect];
         
         self.activityIndicatorView.hidden = YES;
         
@@ -137,7 +140,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showImageWithView:view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showImageWithView:view rect:(CGRect)rect {
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
     
@@ -148,7 +151,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showScreenButtonWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showScreenButtonWithView:(UIView *)view rect:(CGRect)rect {
     
     GPScreenButton *screenButton = [[self extractButtonsWithType:GPButtonTypeScreen] lastObject];
     
@@ -167,7 +170,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showImageButtonsWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showImageButtonsWithView:(UIView *)view rect:(CGRect)rect {
     
     NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
     
@@ -175,8 +178,8 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
     for (GPImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
         
-        CGFloat width = imageButton.picture.width * ratio;
-        CGFloat height = imageButton.picture.height * ratio;
+        CGFloat width = imageButton.baseWidth ;
+        CGFloat height = imageButton.baseHeight;
         CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
         top -= height;
         
@@ -193,7 +196,7 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
 }
 
-- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect ratio:(CGFloat)ratio {
+- (void) showCloseButtonWithView:(UIView *)view rect:(CGRect)rect {
     
     GPCloseButton *closeButton = [[self extractButtonsWithType:GPButtonTypeClose] lastObject];
     
@@ -201,10 +204,14 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
         return;
     }
     
+    CGFloat availableWidth = MIN(closeButton.baseWidth, kCloseButtonSizeMax);
+    CGFloat availableHeight = MIN(closeButton.baseHeight, kCloseButtonSizeMax);
+    CGFloat ratio = MIN(availableWidth / closeButton.baseWidth, availableHeight / closeButton.baseHeight);
+    
     CGFloat width = closeButton.picture.width * ratio;
     CGFloat height = closeButton.picture.height * ratio;
-    CGFloat left = rect.origin.x + rect.size.width - width / 2;
-    CGFloat top = rect.origin.y - height / 2;
+    CGFloat left = rect.origin.x + rect.size.width - width - 8;
+    CGFloat top = rect.origin.y + 8;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
@@ -323,5 +330,30 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
+
+- (void)backgroundTouched:(UITapGestureRecognizer *)recognizer {
+    if (!imageMessage.background.outsideClose) {
+        return;
+    }
+    [self.backgroundView removeFromSuperview];
+    self.backgroundView = nil;
+    self.boundButtons = nil;
+    
+    [delegate backgroundTouched:imageMessage];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if (touch.view.tag != 1)
+    {
+        return false;
+    }
+    return true;
+}
+
 
 @end

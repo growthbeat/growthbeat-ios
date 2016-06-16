@@ -70,4 +70,12 @@
     
 }
 
+- (void)backgroundTouched:(GPMessage *)message {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, [GrowthPush sharedInstance].messageInterval * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [[GrowthPush sharedInstance] notifyClose];
+        [[GrowthPush sharedInstance] openMessageIfExists];
+    });
+    [imageMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
+}
+
 @end

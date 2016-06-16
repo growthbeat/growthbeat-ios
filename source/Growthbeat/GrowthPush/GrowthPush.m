@@ -333,7 +333,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
     dispatch_async(_internalQueue, ^{
         NSTimeInterval diff = [[NSDate date] timeIntervalSinceDate:lastMessageOpened];
-        if (self.showingMessage || diff > kMinWaitingTimeForOverrideMessage) {
+        if (self.showingMessage && diff < kMinWaitingTimeForOverrideMessage) {
             return;
         }
         GPMessage *message = [self.messageQueue dequeue];
