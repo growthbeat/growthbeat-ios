@@ -11,6 +11,9 @@
 #import "GPMessageType.h"
 #import "GPPlainButton.h"
 #import "GrowthPush.h"
+#import "GPPlainMessage.h"
+#import "GPPlainButton.h"
+#import "GPButton.h"
 
 @interface GPPlainMessageHandler () {
     
@@ -18,6 +21,7 @@
     
 }
 @property (nonatomic, strong) NSMutableDictionary *plainMessages;
+@property (nonatomic, strong) UIWindow *alertWindow;
 
 @end
 
@@ -37,6 +41,7 @@
 
 - (BOOL) handleMessage:(GPMessage *)message {
     
+    
     if (message.type != GPMessageTypePlain) {
         return NO;
     }
@@ -46,20 +51,53 @@
     }
     
     GPPlainMessage *plainMessage = (GPPlainMessage *)message;
-    
-    UIAlertView *alertView = [[UIAlertView alloc] init];
-    [plainMessages setObject:plainMessage forKey:[NSValue valueWithNonretainedObject:alertView]];
-    
-    alertView.delegate = self;
-    alertView.title = plainMessage.caption;
-    alertView.message = plainMessage.text;
-    
-    for (GPButton *button in plainMessage.buttons) {
-        GPPlainButton *plainButton = (GPPlainButton *)button;
-        [alertView addButtonWithTitle:plainButton.label];
+    if ([UIAlertController class]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:plainMessage.caption message:plainMessage.text preferredStyle:UIAlertControllerStyleAlert];
+        for (int i = 0; i < [plainMessage.buttons count]; i ++) {
+            GPPlainButton *plainButton = (GPPlainButton *)[plainMessage.buttons objectAtIndex:i];
+            UIAlertAction* action = [UIAlertAction actionWithTitle:plainButton.label style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                
+                GPButton *button = [plainMessage.buttons objectAtIndex:(NSInteger)i];
+                [[GrowthPush sharedInstance] selectButton:button message:plainMessage];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, [GrowthPush sharedInstance].messageInterval * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    [[GrowthPush sharedInstance] notifyClose];
+                    [[GrowthPush sharedInstance] openMessageIfExists];
+                });
+                [alertController dismissViewControllerAnimated:YES completion:nil];
+                self.alertWindow.hidden = YES;
+                self.alertWindow = nil;
+                
+            }];
+            [alertController addAction: action];
+            
+        }
+        
+        self.alertWindow = [[UIWindow alloc] initWithFrame:[[[[UIApplication sharedApplication] delegate] window] bounds]];
+        
+        UIViewController *windowRootController = [[UIViewController alloc] init];
+        self.alertWindow .rootViewController = windowRootController;
+        [self.alertWindow  makeKeyAndVisible];
+        [windowRootController presentViewController:alertController animated:YES completion:nil];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        UIAlertView *alertView = [[UIAlertView alloc] init];
+        [plainMessages setObject:plainMessage forKey:[NSValue valueWithNonretainedObject:alertView]];
+        
+        alertView.delegate = self;
+        alertView.title = plainMessage.caption;
+        alertView.message = plainMessage.text;
+        
+        for (GPButton *button in plainMessage.buttons) {
+            GPPlainButton *plainButton = (GPPlainButton *)button;
+            [alertView addButtonWithTitle:plainButton.label];
+        }
+        
+        [alertView show];
+#pragma clang diagnostic pop
+        
     }
     
-    [alertView show];
     
     return YES;
     
