@@ -59,10 +59,7 @@
                 
                 GPButton *button = [plainMessage.buttons objectAtIndex:(NSInteger)i];
                 [[GrowthPush sharedInstance] selectButton:button message:plainMessage];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, [GrowthPush sharedInstance].messageInterval * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                    [[GrowthPush sharedInstance] notifyClose];
-                    [[GrowthPush sharedInstance] openMessageIfExists];
-                });
+                [[GrowthPush sharedInstance] notifyClose];
                 [alertController dismissViewControllerAnimated:YES completion:nil];
                 self.alertWindow.hidden = YES;
                 self.alertWindow = nil;
@@ -115,10 +112,7 @@
     GPButton *button = [plainMessage.buttons objectAtIndex:buttonIndex];
     
     [[GrowthPush sharedInstance] selectButton:button message:plainMessage];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, [GrowthPush sharedInstance].messageInterval * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [[GrowthPush sharedInstance] notifyClose];
-        [[GrowthPush sharedInstance] openMessageIfExists];
-    });
+    [[GrowthPush sharedInstance] notifyClose];
     [plainMessages removeObjectForKey:[NSValue valueWithNonretainedObject:alertView]];
     
 }
