@@ -18,7 +18,7 @@
     GPMessageOrientation orientation;
     NSDate *begin;
     NSDate *end;
-    NSInteger cap;
+    NSInteger capacity;
     NSDate *created;
 
 }
@@ -30,9 +30,9 @@
 @property (nonatomic, assign) GPMessageOrientation orientation;
 @property (nonatomic, strong) NSDate *begin;
 @property (nonatomic, strong) NSDate *end;
-@property (nonatomic, assign) NSInteger cap;
+@property (nonatomic, assign) NSInteger capacity;
 @property (nonatomic, strong) NSDate *created;
 
-+ (NSArray *) getTaskList:(NSString *)applicationId credentialId:(NSString *)credentialId goalId:(NSInteger)goalId;
++ (NSArray *) getTasks:(NSString *)applicationId credentialId:(NSString *)credentialId goalId:(NSInteger)goalId;
 
 @end

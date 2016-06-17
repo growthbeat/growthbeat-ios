@@ -105,15 +105,15 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     return self;
 }
 
-- (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)cedentialId {
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
 
     self.client = [self loadClient];
-    self.applicationId = applicationId;
-    self.credentialId = cedentialId;
+    self.applicationId = newApplicationId;
+    self.credentialId = newCredentialId;
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
-    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:cedentialId];
+    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:newCredentialId];
     
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPImageMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
 
@@ -318,7 +318,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         if (messageHandler) {
             NSError *error = nil;
-            NSArray *taskArray = [GPTask getTaskList:self.applicationId credentialId:self.credentialId goalId:event.goalId];
+            NSArray *taskArray = [GPTask getTasks:self.applicationId credentialId:self.credentialId goalId:event.goalId];
             for (GPTask *task in taskArray) {
                 GPMessage *message = [GPMessage getMessage:task.id clientId:self.growthbeatClient.id credentialId:self.credentialId];
                 [self.messageQueue enqueue:message];

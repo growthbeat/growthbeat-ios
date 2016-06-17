@@ -19,10 +19,10 @@
 @synthesize orientation;
 @synthesize begin;
 @synthesize end;
-@synthesize cap;
+@synthesize capacity;
 @synthesize created;
 
-+ (NSArray *) getTaskList:(NSString *)applicationId credentialId:(NSString *)credentialId goalId:(NSInteger)goalId {
++ (NSArray *) getTasks:(NSString *)applicationId credentialId:(NSString *)credentialId goalId:(NSInteger)goalId {
     NSString *path = @"/1/tasks";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     
@@ -79,8 +79,8 @@
         if ([aDecoder containsValueForKey:@"end"]) {
             self.end = [aDecoder decodeObjectForKey:@"end"];
         }
-        if ([aDecoder containsValueForKey:@"cap"]) {
-            self.cap = [aDecoder decodeIntegerForKey:@"cap"];
+        if ([aDecoder containsValueForKey:@"capacity"]) {
+            self.capacity = [aDecoder decodeIntegerForKey:@"capacity"];
         }
         if ([aDecoder containsValueForKey:@"created"]) {
             self.created = [aDecoder decodeObjectForKey:@"created"];
@@ -97,7 +97,7 @@
     [aCoder encodeInteger:orientation forKey:@"orientation"];
     [aCoder encodeObject:begin forKey:@"begin"];
     [aCoder encodeObject:end forKey:@"end"];
-    [aCoder encodeInteger:cap forKey:@"cap"];
+    [aCoder encodeInteger:capacity forKey:@"capacity"];
     [aCoder encodeObject:created forKey:@"created"];
 }
 

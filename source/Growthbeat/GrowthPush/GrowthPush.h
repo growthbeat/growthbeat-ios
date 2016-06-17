@@ -58,7 +58,7 @@ typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
  * @param applicationId Application ID
  * @param credentialId Credential ID for application
  */
-- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId;
 
 /**
  * Request APNS device token.

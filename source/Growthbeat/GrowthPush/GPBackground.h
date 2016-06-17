@@ -7,7 +7,6 @@
 //
 
 #import "GBDomain.h"
-#import "GPMessageOutsideClose.h"
 
 @interface GPBackground : GBDomain <NSCoding> {
     

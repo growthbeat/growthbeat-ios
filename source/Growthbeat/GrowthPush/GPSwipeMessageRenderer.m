@@ -240,8 +240,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     CGFloat availableHeight = MIN(closeButton.baseHeight, kCloseButtonSizeMax);
     CGFloat ratio = MIN(availableWidth / closeButton.baseWidth, availableHeight / closeButton.baseHeight);
     
-    CGFloat width = closeButton.picture.width * ratio;
-    CGFloat height = closeButton.picture.height * ratio;
+    CGFloat width = closeButton.baseWidth * ratio;
+    CGFloat height = closeButton.baseHeight * ratio;
     CGFloat left = rect.origin.x + rect.size.width - width - 8;
     CGFloat top = rect.origin.y + 8;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

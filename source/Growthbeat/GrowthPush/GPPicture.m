@@ -13,9 +13,6 @@
 
 @synthesize id;
 @synthesize applicationId;
-@synthesize extension;
-@synthesize width;
-@synthesize height;
 @synthesize created;
 @synthesize url;
 
@@ -28,15 +25,6 @@
         }
         if ([dictionary objectForKey:@"applicationId"] && [dictionary objectForKey:@"applicationId"] != [NSNull null]) {
             self.applicationId = [dictionary objectForKey:@"applicationId"];
-        }
-        if ([dictionary objectForKey:@"extension"] && [dictionary objectForKey:@"extension"] != [NSNull null]) {
-            self.extension = GPPictureExtensionFromNSString([dictionary objectForKey:@"extension"]);
-        }
-        if ([dictionary objectForKey:@"width"] && [dictionary objectForKey:@"width"] != [NSNull null]) {
-            self.width = [[dictionary objectForKey:@"width"] integerValue];
-        }
-        if ([dictionary objectForKey:@"height"] && [dictionary objectForKey:@"height"] != [NSNull null]) {
-            self.height = [[dictionary objectForKey:@"height"] integerValue];
         }
         if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
             self.created = [GBDateUtils dateWithDateTimeString:[dictionary objectForKey:@"created"]];
@@ -61,15 +49,6 @@
         if ([aDecoder containsValueForKey:@"applicationId"]) {
             self.applicationId = [aDecoder decodeObjectForKey:@"applicationId"];
         }
-        if ([aDecoder containsValueForKey:@"extension"]) {
-            self.extension = GPPictureExtensionFromNSString([aDecoder decodeObjectForKey:@"extension"]);
-        }
-        if ([aDecoder containsValueForKey:@"width"]) {
-            self.width = [aDecoder decodeIntegerForKey:@"width"];
-        }
-        if ([aDecoder containsValueForKey:@"height"]) {
-            self.height = [aDecoder decodeIntegerForKey:@"height"];
-        }
         if ([aDecoder containsValueForKey:@"created"]) {
             self.created = [aDecoder decodeObjectForKey:@"created"];
         }
@@ -83,9 +62,6 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:id forKey:@"id"];
     [aCoder encodeObject:applicationId forKey:@"applicationId"];
-    [aCoder encodeObject:NSStringFromGPPictureExtension(extension) forKey:@"extension"];
-    [aCoder encodeInteger:width forKey:@"width"];
-    [aCoder encodeInteger:height forKey:@"height"];
     [aCoder encodeObject:created forKey:@"created"];
     [aCoder encodeObject:url forKey:@"url"];
 }
