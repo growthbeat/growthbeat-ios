@@ -6,9 +6,9 @@
 //  Copyright © 2016年 SIROK, Inc. All rights reserved.
 //
 
-#import "GPQueue.h"
+#import "GPMessageQueue.h"
 
-@implementation GPQueue
+@implementation GPMessageQueue
 
 - (id)initWithSize:(int)aMaxSize {
     self = [super init];

@@ -15,13 +15,12 @@
 @synthesize id;
 @synthesize type;
 @synthesize background;
-@synthesize extra;
 @synthesize created;
 @synthesize task;
 @synthesize buttons;
 
-+ (GPMessage *)getMessage:(NSString *)taskId clientId:(NSString *)clientId credentialId:(NSString *)credentialId {
-    NSString *path = @"/1/messages";
++ (GPMessage *)receive:(NSString *)taskId clientId:(NSString *)clientId credentialId:(NSString *)credentialId {
+    NSString *path = @"/4/receive";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     if (taskId) {
         [body setObject:taskId forKey:@"taskId"];
@@ -71,9 +70,6 @@
         if ([aDecoder containsValueForKey:@"created"]) {
             self.created = [aDecoder decodeObjectForKey:@"created"];
         }
-        if ([aDecoder containsValueForKey:@"extra"]) {
-            self.extra = [aDecoder decodeObjectForKey:@"extra"];
-        }
         if ([aDecoder containsValueForKey:@"task"]) {
             self.task = [aDecoder decodeObjectForKey:@"task"];
         }
@@ -89,7 +85,6 @@
     [aCoder encodeInteger:type forKey:@"type"];
     [aCoder encodeObject:background forKey:@"background"];
     [aCoder encodeObject:created forKey:@"created"];
-    [aCoder encodeObject:extra forKey:@"extra"];
     [aCoder encodeObject:task forKey:@"task"];
     [aCoder encodeObject:buttons forKey:@"buttons"];
 }

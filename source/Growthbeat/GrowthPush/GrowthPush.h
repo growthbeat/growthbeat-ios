@@ -10,7 +10,7 @@
 #import "GrowthbeatCore.h"
 #import "GPEnvironment.h"
 #import "GPMessage.h"
-#import "GPQueue.h"
+#import "GPMessageQueue.h"
 #import "GPButton.h"
 
 #ifdef DEBUG
@@ -42,7 +42,7 @@ typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
-@property (nonatomic, strong) GPQueue *messageQueue;
+@property (nonatomic, strong) GPMessageQueue *messageQueue;
 @property (nonatomic, assign) CGFloat messageInterval;
 
 

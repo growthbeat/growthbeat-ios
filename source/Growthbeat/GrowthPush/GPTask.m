@@ -23,7 +23,7 @@
 @synthesize created;
 
 + (NSArray *) getTasks:(NSString *)applicationId credentialId:(NSString *)credentialId goalId:(NSInteger)goalId {
-    NSString *path = @"/1/tasks";
+    NSString *path = @"/4/tasks";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     
     if (applicationId) {

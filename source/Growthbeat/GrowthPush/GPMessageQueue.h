@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GPQueue : NSObject {
+@interface GPMessageQueue : NSObject {
     NSMutableArray *queue;
     int maxSize;
 }

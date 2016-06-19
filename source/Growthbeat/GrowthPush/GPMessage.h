@@ -16,7 +16,6 @@
     NSString *id;
     GPMessageType type;
     GPBackground *background;
-    NSDictionary *extra;
     NSDate *created;
     GPTask *task;
     NSArray *buttons;
@@ -25,11 +24,10 @@
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, assign) GPMessageType type;
 @property (nonatomic, strong) GPBackground *background;
-@property (nonatomic, strong) NSDictionary *extra;
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, strong) GPTask *task;
 @property (nonatomic, strong) NSArray *buttons;
 
-+ (GPMessage *)getMessage:(NSString *)taskId clientId:(NSString *)clientId credentialId:(NSString *)credentialId;
++ (GPMessage *)receive:(NSString *)taskId clientId:(NSString *)clientId credentialId:(NSString *)credentialId;
 
 @end

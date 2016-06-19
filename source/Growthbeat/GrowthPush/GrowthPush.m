@@ -43,7 +43,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     BOOL showingMessage;
     
     dispatch_queue_t _internalQueue;
-    GPQueue *messageQueue;
+    GPMessageQueue *messageQueue;
     CGFloat messageInterval;
     
     NSDate *lastMessageOpened;
@@ -97,7 +97,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.environment = GPEnvironmentUnknown;
-        self.messageQueue = [[GPQueue alloc] initWithSize:kMaxQueueSize];
+        self.messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
         self.messageInterval = kDefaultMessageInterval;
         self.showingMessage = NO;
         _internalQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
@@ -115,6 +115,18 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:newCredentialId];
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+        
+        if (self.client && self.client.growthbeatClientId &&
+            ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
+            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.growthbeatClientId, self.growthbeatClient.id];
+            [self clearClient];
+        }
+        
+    });
+
+    
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPImageMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
 
 }
@@ -131,6 +143,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     UIUserNotificationSettings *userNotificationSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:userNotificationSettings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    [self registerClient];
 
 }
 
@@ -320,7 +334,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             NSError *error = nil;
             NSArray *taskArray = [GPTask getTasks:self.applicationId credentialId:self.credentialId goalId:event.goalId];
             for (GPTask *task in taskArray) {
-                GPMessage *message = [GPMessage getMessage:task.id clientId:self.growthbeatClient.id credentialId:self.credentialId];
+                GPMessage *message = [GPMessage receive:task.id clientId:self.growthbeatClient.id credentialId:self.credentialId];
                 [self.messageQueue enqueue:message];
             }
             [self openMessageIfExists];
