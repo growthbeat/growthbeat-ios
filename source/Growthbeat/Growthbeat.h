@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "GrowthbeatCore.h"
 #import "GrowthAnalytics.h"
-#import "GrowthMessage.h"
 #import "GrowthPush.h"
 
 @interface Growthbeat : NSObject {

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "GrowthbeatCore.h"
 #import "GPEnvironment.h"
+#import "GPMessage.h"
+#import "GPQueue.h"
+#import "GPButton.h"
 
 #ifdef DEBUG
 #define kGrowthPushEnvironment (GPEnvironmentDevelopment)
@@ -16,21 +19,32 @@
 #define kGrowthPushEnvironment (GPEnvironmentProduction)
 #endif
 
+#if NS_BLOCKS_AVAILABLE
+typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
+#endif
+
 @interface GrowthPush : NSObject {
+    
+    NSString *applicationId;
+    NSString *credentialId;
+    NSArray *messageHandlers;
 
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
 
-    NSString *credentialId;
-
 }
+
+@property (nonatomic, strong) NSString *applicationId;
+@property (nonatomic, strong) NSString *credentialId;
+@property (nonatomic, strong) NSArray *messageHandlers;
 
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
+@property (nonatomic, strong) GPQueue *messageQueue;
+@property (nonatomic, assign) CGFloat messageInterval;
 
-@property (nonatomic, strong) NSString *credentialId;
 
 /**
  * Get shared instance of GrowthPush
@@ -44,7 +58,7 @@
  * @param applicationId Application ID
  * @param credentialId Credential ID for application
  */
-- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId;
 
 /**
  * Request APNS device token.
@@ -82,11 +96,17 @@
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(ShowMessageHandler)messageHandler;
 
 /**
  * Set DefaultTags
  */
 - (void)setDeviceTags;
+
+- (void) openMessageIfExists;
+- (void) openMessage:(GPMessage *)message;
+- (void) selectButton:(GPButton *)button message:(GPMessage *)message;
+- (void) notifyClose;
 
 
 - (GBLogger *)logger;
