@@ -213,7 +213,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
+            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
             if (createdClient) {
                 [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
                 self.client = createdClient;
@@ -235,7 +235,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id credentialId:self.credentialId token:self.token environment:self.environment];
+            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
             if (updatedClient) {
                 [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
                 self.client = updatedClient;
@@ -306,7 +306,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         }
 
         [self waitClient];
-        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId name:name value:value];
 
         if (tag) {
             [GPTag save:tag name:name];
@@ -332,7 +332,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
         [self waitClient];
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id credentialId:self.credentialId name:name value:value];
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId name:name value:value];
         
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];

@@ -18,13 +18,16 @@
 
 static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
-+ (GPTag *) createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
++ (GPTag *) createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
 
-    NSString *path = @"/3/tags";
+    NSString *path = @"/4/tags";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
 
     if (clientId) {
         [body setObject:clientId forKey:@"clientId"];
+    }
+    if (applicationId) {
+        [body setObject:applicationId forKey:@"applicationId"];
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];

@@ -22,6 +22,6 @@
 @property (nonatomic, assign) long long timestamp;
 @property (nonatomic, strong) NSString *value;
 
-+ (GPEvent *)createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value;
++ (GPEvent *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value;
 
 @end
