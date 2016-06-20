@@ -19,9 +19,6 @@
 #define kGrowthPushEnvironment (GPEnvironmentProduction)
 #endif
 
-#if NS_BLOCKS_AVAILABLE
-typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
-#endif
 
 @interface GrowthPush : NSObject {
     
@@ -96,8 +93,7 @@ typedef void (^ShowMessageHandler)(GPMessage *message, NSError *error);
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
-- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(ShowMessageHandler)messageHandler;
-
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(GPMessage *message))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
 /**
  * Set DefaultTags
  */
