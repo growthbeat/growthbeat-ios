@@ -93,7 +93,7 @@
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
-- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
 /**
  * Set DefaultTags
  */

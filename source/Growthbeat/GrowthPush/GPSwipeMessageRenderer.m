@@ -11,6 +11,7 @@
 #import "GPCloseButton.h"
 #import "GPImageButton.h"
 #import "GBViewUtils.h"
+#import "GrowthPush.h"
 
 
 static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
@@ -130,19 +131,20 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     [self showPageControlWithView:baseView rect:baseRect];
     
     [self cacheImages:^{
-        
-        [self showImageWithView:scrollView rect:baseRect];
-        switch (swipeMessage.swipeType) {
-            case GPSwipeMessageTypeOneButton:
-                [self showImageButtonWithView:baseView rect:baseRect];
-                break;
-            case GPSwipeMessageTypeImageOnly:
-            default:
-                break;
-        }
-        [self showCloseButtonWithView:baseView rect:baseRect];
-        
-        self.activityIndicatorView.hidden = YES;
+        [[GrowthPush sharedInstance] messageCallback:^{
+            [self showImageWithView:scrollView rect:baseRect];
+            switch (swipeMessage.swipeType) {
+                case GPSwipeMessageTypeOneButton:
+                    [self showImageButtonWithView:baseView rect:baseRect];
+                    break;
+                case GPSwipeMessageTypeImageOnly:
+                default:
+                    break;
+            }
+            [self showCloseButtonWithView:baseView rect:baseRect];
+            
+            self.activityIndicatorView.hidden = YES;
+        } message:swipeMessage];
         
     }];
     

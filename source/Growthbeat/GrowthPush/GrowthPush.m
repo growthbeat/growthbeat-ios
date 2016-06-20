@@ -325,7 +325,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     [self trackEvent:name value:value messageHandler:nil failureHandler:nil];
 }
 
-- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
