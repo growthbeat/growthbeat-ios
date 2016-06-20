@@ -249,12 +249,12 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         switch (button.type) {
             case GPButtonTypeImage:
                 if (((GPImageButton *)button).picture.url) {
-                    [urlStrings addObject:((GPImageButton *)button).picture.url];
+                    [urlStrings addObject:[GBViewUtils addDensityByPictureUrl:((GPImageButton *)button).picture.url]];
                 }
                 break;
             case GPButtonTypeClose:
                 if (((GPCloseButton *)button).picture.url) {
-                    [urlStrings addObject:((GPCloseButton *)button).picture.url];
+                    [urlStrings addObject:[GBViewUtils addDensityByPictureUrl:((GPCloseButton *)button).picture.url]];
                 }
                 break;
             default:

@@ -32,4 +32,20 @@
     return [UIColor colorWithRed:r green:g blue:b alpha:a];
 }
 
++ (NSString *)addDensityByPictureUrl:(NSString *)originalUrl {
+    int scale = (int)floor([[UIScreen mainScreen] scale]);
+    if (scale == 1)
+        return originalUrl;
+    
+    NSMutableArray *filenameArray = [[originalUrl componentsSeparatedByString:@"/"] mutableCopy];
+    NSString *filename = [filenameArray objectAtIndex:filenameArray.count - 1];
+    NSArray *extensionArray = [filename componentsSeparatedByString:@"."];
+    NSString *resultFileName = [NSString stringWithFormat:@"%@@%d.%@",[extensionArray objectAtIndex:0], (int)floor([[UIScreen mainScreen] scale]), [extensionArray objectAtIndex:1] ];
+    [filenameArray removeLastObject];
+    NSString *pathString = [filenameArray componentsJoinedByString:@"/"];
+    NSString *resultString = [NSString stringWithFormat:@"%@/%@",pathString,resultFileName];
+    
+    return resultString;
+}
+
 @end
