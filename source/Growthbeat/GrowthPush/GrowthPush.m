@@ -19,6 +19,7 @@
 #import "GPCardMessageHandler.h"
 #import "GPSwipeMessageHandler.h"
 #import "GPShowMessageHandler.h"
+#import "GPMessage.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -410,15 +411,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             continue;
         }
         
-//        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
-//        if (message.task.id) {
-//            [properties setObject:message.task.id forKey:@"taskId"];
-//        }
-//        if (message.id) {
-//            [properties setObject:message.id forKey:@"messageId"];
-//        }
-//        
-//        [[GrowthAnalytics sharedInstance] track:@"GrowthMessage" name:@"ShowMessage" properties:properties option:GATrackOptionDefault completion:nil];
+        [GPMessage receiveCount:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId taskId:message.task.id messageId:message.id];
         
         break;
         
@@ -441,7 +434,15 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [properties setObject:button.intent.id forKey:@"intentId"];
     }
     
-    [[GrowthAnalytics sharedInstance] track:@"GrowthMessage" name:@"SelectButton" properties:properties option:GATrackOptionDefault completion:nil];
+    NSString *value = nil;
+    if([NSJSONSerialization isValidJSONObject:properties]){
+        NSError *error = nil;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:properties options:NSJSONWritingPrettyPrinted error:&error];
+        value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+
+    
+    [self trackEvent:@"SelectButton" value:value];
     
 }
 

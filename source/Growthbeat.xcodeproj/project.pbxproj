@@ -22,12 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		17664B8A1D16780800A6BABB /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 17664B511D16780700A6BABB /* GPClient.m */; };
-		17664B8C1D16780800A6BABB /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17664B551D16780700A6BABB /* GPEnvironmentUtils.m */; };
-		17664B8D1D16780800A6BABB /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 17664B571D16780700A6BABB /* GPEvent.m */; };
-		17664B951D16780800A6BABB /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 17664B691D16780700A6BABB /* GPOS.m */; };
-		17664BA11D16780800A6BABB /* GPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 17664B811D16780800A6BABB /* GPTag.m */; };
-		17664BA31D16780800A6BABB /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 17664B851D16780800A6BABB /* GrowthPush.m */; };
 		178C32271D167E9000F913CB /* GPBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31EC1D167E9000F913CB /* GPBackground.m */; };
 		178C32281D167E9000F913CB /* GPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31EE1D167E9000F913CB /* GPButton.m */; };
 		178C32291D167E9000F913CB /* GPButtonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31F01D167E9000F913CB /* GPButtonType.m */; };
@@ -199,12 +193,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		17664B511D16780700A6BABB /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
-		17664B551D16780700A6BABB /* GPEnvironmentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEnvironmentUtils.m; sourceTree = "<group>"; };
-		17664B571D16780700A6BABB /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEvent.m; sourceTree = "<group>"; };
-		17664B691D16780700A6BABB /* GPOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
-		17664B811D16780800A6BABB /* GPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTag.m; sourceTree = "<group>"; };
-		17664B851D16780800A6BABB /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
 		178C31EB1D167E9000F913CB /* GPBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBackground.h; sourceTree = "<group>"; };
 		178C31EC1D167E9000F913CB /* GPBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBackground.m; sourceTree = "<group>"; };
 		178C31ED1D167E9000F913CB /* GPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPButton.h; sourceTree = "<group>"; };
@@ -655,16 +643,13 @@
 				178C32431D167E9000F913CB /* GrowthPush.m in Sources */,
 				C165AE521CFBC3A20078D38C /* GrowthLink.m in Sources */,
 				178C32281D167E9000F913CB /* GPButton.m in Sources */,
-				17664BA31D16780800A6BABB /* GrowthPush.m in Sources */,
 				CE0628531B16F1E2009263FA /* GBClient.m in Sources */,
 				178C322D1D167E9000F913CB /* GPEvent.m in Sources */,
 				178C32321D167E9000F913CB /* GPMessage.m in Sources */,
 				B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */,
-				17664B8D1D16780800A6BABB /* GPEvent.m in Sources */,
 				178C32421D167E9000F913CB /* GPTask.m in Sources */,
 				CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */,
 				178C32311D167E9000F913CB /* GPCardMessageRenderer.m in Sources */,
-				17664B951D16780800A6BABB /* GPOS.m in Sources */,
 				C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */,
 				CE0628591B16F1E2009263FA /* GBGPClient.m in Sources */,
 				CE06285D1B16F1E2009263FA /* GBHttpUtils.m in Sources */,
@@ -685,7 +670,6 @@
 				CE06285A1B16F1E2009263FA /* GBHttpClient.m in Sources */,
 				CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */,
 				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
-				17664B8C1D16780800A6BABB /* GPEnvironmentUtils.m in Sources */,
 				178C322C1D167E9000F913CB /* GPEnvironmentUtils.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
 				178C32361D167E9000F913CB /* GPOS.m in Sources */,
@@ -694,7 +678,6 @@
 				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
 				178C322F1D167E9000F913CB /* GPCardMessage.m in Sources */,
 				CE0628621B16F1E2009263FA /* GBNoopIntent.m in Sources */,
-				17664BA11D16780800A6BABB /* GPTag.m in Sources */,
 				CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */,
 				CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */,
 				178C32411D167E9000F913CB /* GPTag.m in Sources */,
@@ -708,7 +691,6 @@
 				178C32371D167E9000F913CB /* GPPicture.m in Sources */,
 				CE0628571B16F1E2009263FA /* GBDeviceUtils.m in Sources */,
 				CE0628661B16F1E2009263FA /* GBUrlIntent.m in Sources */,
-				17664B8A1D16780800A6BABB /* GPClient.m in Sources */,
 				178C322A1D167E9000F913CB /* GPClient.m in Sources */,
 				178C32351D167E9000F913CB /* GPMessageType.m in Sources */,
 				178C32381D167E9000F913CB /* GPPlainButton.m in Sources */,
