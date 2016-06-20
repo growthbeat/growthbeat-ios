@@ -12,6 +12,7 @@
 #import "GPImageButton.h"
 #import "GBUtils.h"
 #import "GBViewUtils.h"
+#import "GrowthPush.h"
 
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
 static CGFloat const kCloseButtonSizeMax = 64.f;
@@ -127,13 +128,15 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     CGRect baseRect = CGRectMake((screenWidth - self.imageMessage.baseWidth) / 2, (screenHeight - self.imageMessage.baseHeight) / 2, self.imageMessage.baseWidth, self.imageMessage.baseHeight);
     
     [self cacheImages:^{
-        
-        [self showImageWithView:baseView rect:baseRect];
-        [self showScreenButtonWithView:baseView rect:baseRect];
-        [self showImageButtonsWithView:baseView rect:baseRect];
-        [self showCloseButtonWithView:baseView rect:baseRect];
-        
-        self.activityIndicatorView.hidden = YES;
+        [[GrowthPush sharedInstance] messageCallback:^{
+            [self showImageWithView:baseView rect:baseRect];
+            [self showScreenButtonWithView:baseView rect:baseRect];
+            [self showImageButtonsWithView:baseView rect:baseRect];
+            [self showCloseButtonWithView:baseView rect:baseRect];
+            
+            self.activityIndicatorView.hidden = YES;
+        } message:imageMessage];
+
         
     }];
     

@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) GPImageMessage *imageMessage;
 @property (nonatomic, weak) id <GPMessageRendererDelegate> delegate;
+@property (nonatomic, copy) void(^ messageCallback)(GPMessage * message);
+
 
 - (instancetype)initWithImageMessage:(GPImageMessage *)newImageMessage;
 - (void)show;
