@@ -100,7 +100,7 @@
         
     };
     
-    GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:plainMessage];
+    GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:plainMessage.id];
     if(showMessageHandler) {
         showMessageHandler.handleMessage(^{
             renderCallback();

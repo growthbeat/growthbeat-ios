@@ -147,7 +147,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
             self.activityIndicatorView.hidden = YES;
         };
         
-        GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:swipeMessage];
+        GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:swipeMessage.id];
         if(showMessageHandler) {
             showMessageHandler.handleMessage(^{
                 renderCallback();
