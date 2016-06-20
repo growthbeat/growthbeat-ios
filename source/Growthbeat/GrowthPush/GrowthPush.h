@@ -93,7 +93,7 @@
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
-- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(GPMessage *message))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
 /**
  * Set DefaultTags
  */
@@ -103,6 +103,7 @@
 - (void) openMessage:(GPMessage *)message;
 - (void) selectButton:(GPButton *)button message:(GPMessage *)message;
 - (void) notifyClose;
+- (void) messageCallback:(void(^)())messageCallback message:(GPMessage *)message;
 
 
 - (GBLogger *)logger;

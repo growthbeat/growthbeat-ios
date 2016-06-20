@@ -18,7 +18,7 @@
 #import "GPPlainMessageHandler.h"
 #import "GPImageMessageHandler.h"
 #import "GPSwipeMessageHandler.h"
-#import "GPEventHandler.h"
+#import "GPShowMessageHandler.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -50,7 +50,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
     NSDate *lastMessageOpened;
     
-    NSMutableDictionary *eventHandlers;
+    NSMutableDictionary *showMessageHandlers;
 }
 
 @property (nonatomic, assign) GPEnvironment environment;
@@ -59,7 +59,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @property (nonatomic, strong) GPClient *client;
 @property (nonatomic, assign) BOOL registeringClient;
 @property (nonatomic, assign) BOOL showingMessage;
-@property (nonatomic, strong) NSMutableDictionary *eventHandlers;
+@property (nonatomic, strong) NSMutableDictionary *showMessageHandlers;
 
 @end
 
@@ -81,7 +81,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize showingMessage;
 @synthesize messageQueue;
 @synthesize messageInterval;
-@synthesize eventHandlers;
+@synthesize showMessageHandlers;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -106,7 +106,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.messageInterval = kDefaultMessageInterval;
         self.showingMessage = NO;
         
-        self.eventHandlers = [NSMutableDictionary dictionary];
+        self.showMessageHandlers = [NSMutableDictionary dictionary];
         
         _internalQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
     }
@@ -325,7 +325,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     [self trackEvent:name value:value messageHandler:nil failureHandler:nil];
 }
 
-- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(GPMessage *))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
@@ -346,19 +346,21 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 for (GPTask *task in taskArray) {
                     GPMessage *message = [GPMessage receive:task.id clientId:self.growthbeatClient.id credentialId:self.credentialId];
                     [self.messageQueue enqueue:message];
+                    
+                    GPShowMessageHandler *handler = [[GPShowMessageHandler alloc] initWithBlock:messageHandler];
+                    
+                    @synchronized (self.showMessageHandlers)
+                    {
+                        [self.showMessageHandlers setObject:handler forKey:message.id];
+                    }
+
                     count = count + 1;
                 }
                 if (count == 0) {
                     failureHandler(@"message not found");
                     return;
                 }
-                GPEventHandler *handler = [[GPEventHandler alloc] initWithBlock:messageHandler];
                 
-                @synchronized (self.eventHandlers)
-                {
-                    [self.eventHandlers setObject:handler forKey:[NSNumber numberWithInteger:event.goalId]];
-                }
-
                 [self openMessageIfExists];
             }
 
@@ -382,15 +384,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             self.showingMessage = YES;
             dispatch_queue_t mainQueue = dispatch_get_main_queue();
             dispatch_async(mainQueue, ^{
-                GPEventHandler *eventHandler = nil;
-                @synchronized (self.eventHandlers)
-                {
-                    eventHandler = [self.eventHandlers objectForKey:[NSNumber numberWithInteger:message.task.goalId]];
-                }
-                if (eventHandler) {
-                    eventHandler.handleMessage(message);
-
-                }
+                [self openMessage:message];
             });
             lastMessageOpened = [NSDate date];
         }
@@ -430,6 +424,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
     }
     
+}
+
+- (void) messageCallback:(void(^)())messageCallback message:(GPMessage *)message{
+    GPShowMessageHandler *handler = [self.showMessageHandlers objectForKey:message.id];
+    if (handler) {
+        handler.handleMessage(messageCallback);
+    }
 }
 
 - (void) selectButton:(GPButton *)button message:(GPMessage *)message {
