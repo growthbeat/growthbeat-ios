@@ -10,6 +10,6 @@
 #import "GPMessageHandler.h"
 #import "GPMessageRendererDelegate.h"
 
-@interface GPImageMessageHandler: NSObject <GPMessageHandler, GPMessageRendererDelegate>
+@interface GPCardMessageHandler: NSObject <GPMessageHandler, GPMessageRendererDelegate>
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 SIROK, Inc. All rights reserved.
 //
 
-#import "GPImageMessageRenderer.h"
+#import "GPCardMessageRenderer.h"
 #import "GPScreenButton.h"
 #import "GPCloseButton.h"
 #import "GPImageButton.h"
@@ -17,7 +17,7 @@
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
 static CGFloat const kCloseButtonSizeMax = 64.f;
 
-@interface GPImageMessageRenderer () {
+@interface GPCardMessageRenderer () {
     
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
@@ -33,19 +33,19 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
 
 @end
 
-@implementation GPImageMessageRenderer
+@implementation GPCardMessageRenderer
 
-@synthesize imageMessage;
+@synthesize cardMessage;
 @synthesize delegate;
 @synthesize boundButtons;
 @synthesize cachedImages;
 @synthesize backgroundView;
 @synthesize activityIndicatorView;
 
-- (instancetype) initWithImageMessage:(GPImageMessage *)newImageMessage {
+- (instancetype) initWithImageMessage:(GPCardMessage *)newCardMessage {
     self = [super init];
     if (self) {
-        self.imageMessage = newImageMessage;
+        self.cardMessage = newCardMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
         
@@ -63,7 +63,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
-        backgroundView.backgroundColor = [GBViewUtils hexToUIColor: [NSString stringWithFormat:@"%lX",(long)self.imageMessage.background.color] alpha:self.imageMessage.background.opacity];
+        backgroundView.backgroundColor = [GBViewUtils hexToUIColor: [NSString stringWithFormat:@"%lX",(long)self.cardMessage.background.color] alpha:self.cardMessage.background.opacity];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -125,7 +125,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
 
     
     
-    CGRect baseRect = CGRectMake((screenWidth - self.imageMessage.baseWidth) / 2, (screenHeight - self.imageMessage.baseHeight) / 2, self.imageMessage.baseWidth, self.imageMessage.baseHeight);
+    CGRect baseRect = CGRectMake((screenWidth - self.cardMessage.baseWidth) / 2, (screenHeight - self.cardMessage.baseHeight) / 2, self.cardMessage.baseWidth, self.cardMessage.baseHeight);
     
     [self cacheImages:^{
         [[GrowthPush sharedInstance] messageCallback:^{
@@ -135,7 +135,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
             [self showCloseButtonWithView:baseView rect:baseRect];
             
             self.activityIndicatorView.hidden = YES;
-        } message:imageMessage];
+        } message:cardMessage];
 
         
     }];
@@ -146,7 +146,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
     
-    imageView.image = [cachedImages objectForKey:imageMessage.picture.url];
+    imageView.image = [cachedImages objectForKey:cardMessage.picture.url];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.userInteractionEnabled = YES;
     [view addSubview:imageView];
@@ -162,7 +162,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     }
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[cachedImages objectForKey:imageMessage.picture.url] forState:UIControlStateNormal];
+    [button setImage:[cachedImages objectForKey:cardMessage.picture.url] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
     button.frame = rect;
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -230,7 +230,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     NSMutableArray *buttons = [NSMutableArray array];
     
-    for (GPButton *button in imageMessage.buttons) {
+    for (GPButton *button in cardMessage.buttons) {
         if (button.type == type) {
             [buttons addObject:button];
         }
@@ -244,11 +244,11 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     NSMutableArray *urlStrings = [NSMutableArray array];
     
-    if (imageMessage.picture.url) {
-        [urlStrings addObject:imageMessage.picture.url];
+    if (cardMessage.picture.url) {
+        [urlStrings addObject:cardMessage.picture.url];
     }
     
-    for (GPButton *button in imageMessage.buttons) {
+    for (GPButton *button in cardMessage.buttons) {
         switch (button.type) {
             case GPButtonTypeImage:
                 if (((GPImageButton *)button).picture.url) {
@@ -327,21 +327,21 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     self.backgroundView = nil;
     self.boundButtons = nil;
     
-    [delegate clickedButton:button message:imageMessage];
+    [delegate clickedButton:button message:cardMessage];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
 
 - (void)backgroundTouched:(UITapGestureRecognizer *)recognizer {
-    if (!imageMessage.background.outsideClose) {
+    if (!cardMessage.background.outsideClose) {
         return;
     }
     [self.backgroundView removeFromSuperview];
     self.backgroundView = nil;
     self.boundButtons = nil;
     
-    [delegate backgroundTouched:imageMessage];
+    [delegate backgroundTouched:cardMessage];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

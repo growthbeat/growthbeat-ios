@@ -16,7 +16,7 @@
 #import "GBDeviceUtils.h"
 #import "GPMessageHandler.h"
 #import "GPPlainMessageHandler.h"
-#import "GPImageMessageHandler.h"
+#import "GPCardMessageHandler.h"
 #import "GPSwipeMessageHandler.h"
 #import "GPShowMessageHandler.h"
 
@@ -135,7 +135,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     });
 
     
-    self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPImageMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
+    self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
 
 }
 

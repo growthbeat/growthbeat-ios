@@ -9,7 +9,7 @@
 #import "GPMessage.h"
 #import "GPPicture.h"
 
-@interface GPImageMessage : GPMessage {
+@interface GPCardMessage : GPMessage {
     
     GPPicture *picture;
     NSInteger baseWidth;

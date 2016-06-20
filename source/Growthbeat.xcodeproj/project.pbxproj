@@ -36,9 +36,9 @@
 		178C322C1D167E9000F913CB /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31F61D167E9000F913CB /* GPEnvironmentUtils.m */; };
 		178C322D1D167E9000F913CB /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31F81D167E9000F913CB /* GPEvent.m */; };
 		178C322E1D167E9000F913CB /* GPImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31FA1D167E9000F913CB /* GPImageButton.m */; };
-		178C322F1D167E9000F913CB /* GPImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31FC1D167E9000F913CB /* GPImageMessage.m */; };
-		178C32301D167E9000F913CB /* GPImageMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31FE1D167E9000F913CB /* GPImageMessageHandler.m */; };
-		178C32311D167E9000F913CB /* GPImageMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C32001D167E9000F913CB /* GPImageMessageRenderer.m */; };
+		178C322F1D167E9000F913CB /* GPCardMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31FC1D167E9000F913CB /* GPCardMessage.m */; };
+		178C32301D167E9000F913CB /* GPCardMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C31FE1D167E9000F913CB /* GPCardMessageHandler.m */; };
+		178C32311D167E9000F913CB /* GPCardMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C32001D167E9000F913CB /* GPCardMessageRenderer.m */; };
 		178C32321D167E9000F913CB /* GPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C32021D167E9000F913CB /* GPMessage.m */; };
 		178C32331D167E9000F913CB /* GPMessageOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C32051D167E9000F913CB /* GPMessageOrientation.m */; };
 		178C32341D167E9000F913CB /* GPMessageQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 178C32071D167E9000F913CB /* GPMessageQueue.m */; };
@@ -221,12 +221,12 @@
 		178C31F81D167E9000F913CB /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEvent.m; sourceTree = "<group>"; };
 		178C31F91D167E9000F913CB /* GPImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPImageButton.h; sourceTree = "<group>"; };
 		178C31FA1D167E9000F913CB /* GPImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPImageButton.m; sourceTree = "<group>"; };
-		178C31FB1D167E9000F913CB /* GPImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPImageMessage.h; sourceTree = "<group>"; };
-		178C31FC1D167E9000F913CB /* GPImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPImageMessage.m; sourceTree = "<group>"; };
-		178C31FD1D167E9000F913CB /* GPImageMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPImageMessageHandler.h; sourceTree = "<group>"; };
-		178C31FE1D167E9000F913CB /* GPImageMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPImageMessageHandler.m; sourceTree = "<group>"; };
-		178C31FF1D167E9000F913CB /* GPImageMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPImageMessageRenderer.h; sourceTree = "<group>"; };
-		178C32001D167E9000F913CB /* GPImageMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPImageMessageRenderer.m; sourceTree = "<group>"; };
+		178C31FB1D167E9000F913CB /* GPCardMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCardMessage.h; sourceTree = "<group>"; };
+		178C31FC1D167E9000F913CB /* GPCardMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessage.m; sourceTree = "<group>"; };
+		178C31FD1D167E9000F913CB /* GPCardMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCardMessageHandler.h; sourceTree = "<group>"; };
+		178C31FE1D167E9000F913CB /* GPCardMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessageHandler.m; sourceTree = "<group>"; };
+		178C31FF1D167E9000F913CB /* GPCardMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCardMessageRenderer.h; sourceTree = "<group>"; };
+		178C32001D167E9000F913CB /* GPCardMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessageRenderer.m; sourceTree = "<group>"; };
 		178C32011D167E9000F913CB /* GPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessage.h; sourceTree = "<group>"; };
 		178C32021D167E9000F913CB /* GPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPMessage.m; sourceTree = "<group>"; };
 		178C32031D167E9000F913CB /* GPMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessageHandler.h; sourceTree = "<group>"; };
@@ -503,12 +503,12 @@
 				178C31F81D167E9000F913CB /* GPEvent.m */,
 				178C31F91D167E9000F913CB /* GPImageButton.h */,
 				178C31FA1D167E9000F913CB /* GPImageButton.m */,
-				178C31FB1D167E9000F913CB /* GPImageMessage.h */,
-				178C31FC1D167E9000F913CB /* GPImageMessage.m */,
-				178C31FD1D167E9000F913CB /* GPImageMessageHandler.h */,
-				178C31FE1D167E9000F913CB /* GPImageMessageHandler.m */,
-				178C31FF1D167E9000F913CB /* GPImageMessageRenderer.h */,
-				178C32001D167E9000F913CB /* GPImageMessageRenderer.m */,
+				178C31FB1D167E9000F913CB /* GPCardMessage.h */,
+				178C31FC1D167E9000F913CB /* GPCardMessage.m */,
+				178C31FD1D167E9000F913CB /* GPCardMessageHandler.h */,
+				178C31FE1D167E9000F913CB /* GPCardMessageHandler.m */,
+				178C31FF1D167E9000F913CB /* GPCardMessageRenderer.h */,
+				178C32001D167E9000F913CB /* GPCardMessageRenderer.m */,
 				178C32011D167E9000F913CB /* GPMessage.h */,
 				178C32021D167E9000F913CB /* GPMessage.m */,
 				178C32031D167E9000F913CB /* GPMessageHandler.h */,
@@ -663,7 +663,7 @@
 				17664B8D1D16780800A6BABB /* GPEvent.m in Sources */,
 				178C32421D167E9000F913CB /* GPTask.m in Sources */,
 				CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */,
-				178C32311D167E9000F913CB /* GPImageMessageRenderer.m in Sources */,
+				178C32311D167E9000F913CB /* GPCardMessageRenderer.m in Sources */,
 				17664B951D16780800A6BABB /* GPOS.m in Sources */,
 				C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */,
 				CE0628591B16F1E2009263FA /* GBGPClient.m in Sources */,
@@ -689,10 +689,10 @@
 				178C322C1D167E9000F913CB /* GPEnvironmentUtils.m in Sources */,
 				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
 				178C32361D167E9000F913CB /* GPOS.m in Sources */,
-				178C32301D167E9000F913CB /* GPImageMessageHandler.m in Sources */,
+				178C32301D167E9000F913CB /* GPCardMessageHandler.m in Sources */,
 				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
 				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
-				178C322F1D167E9000F913CB /* GPImageMessage.m in Sources */,
+				178C322F1D167E9000F913CB /* GPCardMessage.m in Sources */,
 				CE0628621B16F1E2009263FA /* GBNoopIntent.m in Sources */,
 				17664BA11D16780800A6BABB /* GPTag.m in Sources */,
 				CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */,

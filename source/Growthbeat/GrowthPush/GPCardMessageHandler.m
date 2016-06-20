@@ -6,11 +6,11 @@
 //  Copyright © 2016年 SIROK, Inc. All rights reserved.
 //
 
-#import "GPImageMessageHandler.h"
-#import "GPImageMessageRenderer.h"
+#import "GPCardMessageHandler.h"
+#import "GPCardMessageRenderer.h"
 #import "GrowthPush.h"
 
-@interface GPImageMessageHandler () {
+@interface GPCardMessageHandler () {
     
     NSMutableDictionary *imageMessageRenderers;
     
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation GPImageMessageHandler
+@implementation GPCardMessageHandler
 
 @synthesize imageMessageRenderers;
 
@@ -41,13 +41,13 @@
         return NO;
     }
     
-    if (![message isKindOfClass:[GPImageMessage class]]) {
+    if (![message isKindOfClass:[GPCardMessage class]]) {
         return NO;
     }
     
-    GPImageMessage *imageMessage = (GPImageMessage *)message;
+    GPCardMessage *imageMessage = (GPCardMessage *)message;
     
-    GPImageMessageRenderer *imageMessageRenderer = [[GPImageMessageRenderer alloc] initWithImageMessage:imageMessage];
+    GPCardMessageRenderer *imageMessageRenderer = [[GPCardMessageRenderer alloc] initWithImageMessage:imageMessage];
     imageMessageRenderer.delegate = self;
     [imageMessageRenderer show];
     [imageMessageRenderers setObject:imageMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];

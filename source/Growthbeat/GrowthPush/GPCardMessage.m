@@ -6,9 +6,9 @@
 //  Copyright © 2016年 SIROK, Inc. All rights reserved.
 //
 
-#import "GPImageMessage.h"
+#import "GPCardMessage.h"
 
-@implementation GPImageMessage
+@implementation GPCardMessage
 
 @synthesize picture;
 @synthesize baseWidth;

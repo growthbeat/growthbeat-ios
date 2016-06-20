@@ -6,6 +6,7 @@
 //  Copyright © 2016年 SIROK, Inc. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "GBDomain.h"
 
 @interface GPBackground : GBDomain <NSCoding> {

@@ -7,22 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GPImageMessage.h"
+#import "GPCardMessage.h"
 #import "GPMessageRendererDelegate.h"
 
-@interface GPImageMessageRenderer : NSObject <UIGestureRecognizerDelegate> {
+@interface GPCardMessageRenderer : NSObject <UIGestureRecognizerDelegate> {
     
-    GPImageMessage *imageMessage;
+    GPCardMessage *cardMessage;
     __weak id <GPMessageRendererDelegate> delegate;
     
 }
 
-@property (nonatomic, strong) GPImageMessage *imageMessage;
+@property (nonatomic, strong) GPCardMessage *cardMessage;
 @property (nonatomic, weak) id <GPMessageRendererDelegate> delegate;
 @property (nonatomic, copy) void(^ messageCallback)(GPMessage * message);
 
 
-- (instancetype)initWithImageMessage:(GPImageMessage *)newImageMessage;
+- (instancetype)initWithImageMessage:(GPCardMessage *)newCardMessage;
 - (void)show;
 
 @end
