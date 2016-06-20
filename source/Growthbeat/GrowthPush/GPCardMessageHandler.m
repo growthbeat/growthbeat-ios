@@ -16,18 +16,18 @@
     
 }
 
-@property (nonatomic, strong) NSMutableDictionary *imageMessageRenderers;
+@property (nonatomic, strong) NSMutableDictionary *cardMessageRenderers;
 
 @end
 
 @implementation GPCardMessageHandler
 
-@synthesize imageMessageRenderers;
+@synthesize cardMessageRenderers;
 
 - (instancetype) init {
     self = [super init];
     if (self) {
-        self.imageMessageRenderers = [[NSMutableDictionary alloc] init];
+        self.cardMessageRenderers = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -47,10 +47,10 @@
     
     GPCardMessage *imageMessage = (GPCardMessage *)message;
     
-    GPCardMessageRenderer *imageMessageRenderer = [[GPCardMessageRenderer alloc] initWithImageMessage:imageMessage];
-    imageMessageRenderer.delegate = self;
-    [imageMessageRenderer show];
-    [imageMessageRenderers setObject:imageMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
+    GPCardMessageRenderer *cardMessageRenderer = [[GPCardMessageRenderer alloc] initWithImageMessage:imageMessage];
+    cardMessageRenderer.delegate = self;
+    [cardMessageRenderer show];
+    [imageMessageRenderers setObject:cardMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
     
     return YES;
     

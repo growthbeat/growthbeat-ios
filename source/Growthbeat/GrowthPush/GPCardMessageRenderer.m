@@ -13,6 +13,7 @@
 #import "GBUtils.h"
 #import "GBViewUtils.h"
 #import "GrowthPush.h"
+#import "GPShowMessageHandler.h"
 
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
 static CGFloat const kCloseButtonSizeMax = 64.f;
@@ -128,16 +129,24 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     CGRect baseRect = CGRectMake((screenWidth - self.cardMessage.baseWidth) / 2, (screenHeight - self.cardMessage.baseHeight) / 2, self.cardMessage.baseWidth, self.cardMessage.baseHeight);
     
     [self cacheImages:^{
-        [[GrowthPush sharedInstance] messageCallback:^{
+        
+        void(^renderCallback)(void) = ^() {
             [self showImageWithView:baseView rect:baseRect];
             [self showScreenButtonWithView:baseView rect:baseRect];
             [self showImageButtonsWithView:baseView rect:baseRect];
             [self showCloseButtonWithView:baseView rect:baseRect];
             
             self.activityIndicatorView.hidden = YES;
-        } message:cardMessage];
-
+        };
         
+        GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:cardMessage];
+        if(showMessageHandler) {
+            showMessageHandler.handleMessage(^{
+                renderCallback();
+            });
+        } else {
+            renderCallback();
+        }
     }];
     
 }

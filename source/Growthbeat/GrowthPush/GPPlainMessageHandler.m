@@ -52,7 +52,8 @@
     }
     
     GPPlainMessage *plainMessage = (GPPlainMessage *)message;
-    [[GrowthPush sharedInstance] messageCallback:^{
+    
+     void(^renderCallback)(void) = ^() {
         if ([UIAlertController class]) {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:plainMessage.caption message:plainMessage.text preferredStyle:UIAlertControllerStyleAlert];
             for (int i = 0; i < [plainMessage.buttons count]; i ++) {
@@ -96,8 +97,17 @@
 #pragma clang diagnostic pop
             
         }
-
-    } message:message];
+        
+    };
+    
+    GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:plainMessage];
+    if(showMessageHandler) {
+        showMessageHandler.handleMessage(^{
+            renderCallback();
+        });
+    } else {
+        renderCallback();
+    }
     
     return YES;
     

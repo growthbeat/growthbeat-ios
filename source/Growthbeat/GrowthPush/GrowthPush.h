@@ -12,6 +12,7 @@
 #import "GPMessage.h"
 #import "GPMessageQueue.h"
 #import "GPButton.h"
+#import "GPShowMessageHandler.h"
 
 #ifdef DEBUG
 #define kGrowthPushEnvironment (GPEnvironmentDevelopment)
@@ -103,11 +104,11 @@
 - (void) openMessage:(GPMessage *)message;
 - (void) selectButton:(GPButton *)button message:(GPMessage *)message;
 - (void) notifyClose;
-- (void) messageCallback:(void(^)())messageCallback message:(GPMessage *)message;
 
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;
 - (GBPreference *)preference;
+- (NSMutableDictionary *)showMessageHandlers;
 
 @end

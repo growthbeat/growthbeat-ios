@@ -131,7 +131,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     [self showPageControlWithView:baseView rect:baseRect];
     
     [self cacheImages:^{
-        [[GrowthPush sharedInstance] messageCallback:^{
+        
+        void(^renderCallback)() = ^() {
             [self showImageWithView:scrollView rect:baseRect];
             switch (swipeMessage.swipeType) {
                 case GPSwipeMessageTypeOneButton:
@@ -144,7 +145,16 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
             [self showCloseButtonWithView:baseView rect:baseRect];
             
             self.activityIndicatorView.hidden = YES;
-        } message:swipeMessage];
+        };
+        
+        GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:swipeMessage];
+        if(showMessageHandler) {
+            showMessageHandler.handleMessage(^{
+                renderCallback();
+            });
+        } else {
+            renderCallback();
+        }
         
     }];
     

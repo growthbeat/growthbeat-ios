@@ -426,13 +426,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
 }
 
-- (void) messageCallback:(void(^)())messageCallback message:(GPMessage *)message{
-    GPShowMessageHandler *handler = [self.showMessageHandlers objectForKey:message.id];
-    if (handler) {
-        handler.handleMessage(messageCallback);
-    }
-}
-
 - (void) selectButton:(GPButton *)button message:(GPMessage *)message {
     
     [[GrowthbeatCore sharedInstance] handleIntent:button.intent];
