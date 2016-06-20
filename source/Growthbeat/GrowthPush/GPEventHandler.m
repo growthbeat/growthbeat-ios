@@ -16,12 +16,12 @@
 
 @implementation GPEventHandler
 
-@synthesize handleMessage;
+@synthesize messageHandler;
 
 - (instancetype)initWithBlock:(void(^)(GPMessage *message))newHandleMessage {
     self = [super init];
     if (self) {
-        self.handleMessage = newHandleMessage;
+        self.messageHandler = messageHandler;
     }
     return self;
 }

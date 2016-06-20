@@ -10,13 +10,12 @@
 #import "GPMessage.h"
 
 @interface GPEventHandler : NSObject {
-    void(^ handleMessage)(GPMessage * message);
-    void(^ handleFailure)(NSString *detail);
+    void(^ messageHandler)(GPMessage * message);
 }
 
-@property (nonatomic, strong)void(^ handleMessage)(GPMessage *message);
+@property (nonatomic, strong)void(^ messageHandler)(GPMessage *message);
 
-- (instancetype)initWithBlock:(void(^)(GPMessage *message))handleMessage;
+- (instancetype)initWithBlock:(void(^)(GPMessage *message))messageHandler;
 
 
 @end
