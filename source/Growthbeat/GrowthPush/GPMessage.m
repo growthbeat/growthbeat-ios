@@ -19,7 +19,7 @@
 @synthesize task;
 @synthesize buttons;
 
-+ (GPMessage *)receive:(NSString *)taskId clientId:(NSString *)clientId credentialId:(NSString *)credentialId {
++ (GPMessage *)receive:(NSString *)taskId applicationId:(NSString *)applicationId clientId:(NSString *)clientId credentialId:(NSString *)credentialId {
     NSString *path = @"/4/receive";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
     if (taskId) {
@@ -49,6 +49,44 @@
     return [GPMessage domainWithDictionary:httpResponse.body];
 
 
+}
+
++ (GPTag *)receiveCount:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId taskId:(NSString *)taskId messageId:(NSString *)messageId {
+    
+    NSString *path = @"/4/receive/count";
+    NSMutableDictionary *body = [NSMutableDictionary dictionary];
+    if(clientId) {
+        [body setObject:clientId forKey:@"clientId"];
+    }
+    if(applicationId) {
+        [body setObject:applicationId forKey:@"applicationId"];
+    }
+    if(credentialId) {
+        [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if(taskId) {
+        [body setObject:taskId forKey:@"taskId"];
+    }
+    if(messageId) {
+        [body setObject:messageId forKey:@"messageId"];
+    }
+    
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:nil body:body];
+    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
+    if (!httpResponse.success) {
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to get message. %@", httpResponse.error];
+        return nil;
+    }
+    
+    if (!httpResponse.body) {
+        [[[GrowthPush sharedInstance] logger] info:@"No message is received."];
+        return nil;
+    }
+    
+    [[[GrowthPush sharedInstance] logger] info:@"A message is received."];
+    
+    return [GPTag domainWithDictionary:httpResponse.body];
+    
 }
 
 

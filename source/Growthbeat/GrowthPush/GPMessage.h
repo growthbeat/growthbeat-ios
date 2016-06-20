@@ -10,6 +10,7 @@
 #import "GPTask.h"
 #import "GPMessageType.h"
 #import "GPBackground.h"
+#import "GPTag.h"
 
 @interface GPMessage : GBDomain <NSCoding> {
     
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) GPTask *task;
 @property (nonatomic, strong) NSArray *buttons;
 
-+ (GPMessage *)receive:(NSString *)taskId clientId:(NSString *)clientId credentialId:(NSString *)credentialId;
++ (GPMessage *)receive:(NSString *)taskId applicationId:(NSString *)applicationId clientId:(NSString *)clientId credentialId:(NSString *)credentialId;
++ (GPTag *)receiveCount:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId taskId:(NSString *)taskId messageId:(NSString *)messageId;
 
 @end
