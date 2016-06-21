@@ -93,14 +93,6 @@
 		CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627FF1B15B6A1009263FA /* GBUrlIntentHandler.m */; };
 		CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0628021B15B6A1009263FA /* GrowthbeatCore.m */; };
 		CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627D11B15B6A1009263FA /* GBAppDelegateWrapper.m */; };
-		CE06286E1B16F1EC009263FA /* GAClientEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627C81B15B692009263FA /* GAClientEvent.m */; };
-		CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627CA1B15B692009263FA /* GAClientTag.m */; };
-		CE0628701B16F1EC009263FA /* GAEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627CC1B15B692009263FA /* GAEventHandler.m */; };
-		CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627CE1B15B692009263FA /* GrowthAnalytics.m */; };
-		CE0628721B16F216009263FA /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627C71B15B692009263FA /* GAClientEvent.h */; };
-		CE0628731B16F216009263FA /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627C91B15B692009263FA /* GAClientTag.h */; };
-		CE0628741B16F216009263FA /* GAEventHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627CB1B15B692009263FA /* GAEventHandler.h */; };
-		CE0628751B16F216009263FA /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627CD1B15B692009263FA /* GrowthAnalytics.h */; };
 		CE06288D1B16F22E009263FA /* GBAppDelegateWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D01B15B6A1009263FA /* GBAppDelegateWrapper.h */; };
 		CE06288E1B16F22E009263FA /* GBAppDelegateWrapperDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D21B15B6A1009263FA /* GBAppDelegateWrapperDelegate.h */; };
 		CE06288F1B16F22E009263FA /* GBApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D31B15B6A1009263FA /* GBApplication.h */; };
@@ -182,10 +174,6 @@
 				CE0628A51B16F22E009263FA /* GBUrlIntentHandler.h in CopyFiles */,
 				CE0628A61B16F22E009263FA /* GBUtils.h in CopyFiles */,
 				CE0628A71B16F22E009263FA /* GrowthbeatCore.h in CopyFiles */,
-				CE0628721B16F216009263FA /* GAClientEvent.h in CopyFiles */,
-				CE0628731B16F216009263FA /* GAClientTag.h in CopyFiles */,
-				CE0628741B16F216009263FA /* GAEventHandler.h in CopyFiles */,
-				CE0628751B16F216009263FA /* GrowthAnalytics.h in CopyFiles */,
 				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,14 +260,6 @@
 		C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSynchronizationHandler.m; sourceTree = "<group>"; };
 		C165AE451CFBC3730078D38C /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
 		C165AE461CFBC3730078D38C /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
-		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
-		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
-		CE0627C91B15B692009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
-		CE0627CA1B15B692009263FA /* GAClientTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientTag.m; sourceTree = "<group>"; };
-		CE0627CB1B15B692009263FA /* GAEventHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAEventHandler.h; sourceTree = "<group>"; };
-		CE0627CC1B15B692009263FA /* GAEventHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAEventHandler.m; sourceTree = "<group>"; };
-		CE0627CD1B15B692009263FA /* GrowthAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthAnalytics.h; sourceTree = "<group>"; };
-		CE0627CE1B15B692009263FA /* GrowthAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GrowthAnalytics.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CE0627D01B15B6A1009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
 		CE0627D11B15B6A1009263FA /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
 		CE0627D21B15B6A1009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
@@ -350,7 +330,6 @@
 				C165AE3A1CFBC3730078D38C /* GrowthLink */,
 				CE0628281B15B6BF009263FA /* GrowthPush */,
 				CE0627CF1B15B6A1009263FA /* GrowthbeatCore */,
-				CE0627C61B15B692009263FA /* GrowthAnalytics */,
 				B2ED14191A0C451E0078F6BC /* Growthbeat */,
 				B2ED14181A0C451E0078F6BC /* Products */,
 			);
@@ -391,22 +370,6 @@
 			);
 			name = GrowthLink;
 			path = Growthbeat/GrowthLink;
-			sourceTree = "<group>";
-		};
-		CE0627C61B15B692009263FA /* GrowthAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				CE0627C71B15B692009263FA /* GAClientEvent.h */,
-				CE0627C81B15B692009263FA /* GAClientEvent.m */,
-				CE0627C91B15B692009263FA /* GAClientTag.h */,
-				CE0627CA1B15B692009263FA /* GAClientTag.m */,
-				CE0627CB1B15B692009263FA /* GAEventHandler.h */,
-				CE0627CC1B15B692009263FA /* GAEventHandler.m */,
-				CE0627CD1B15B692009263FA /* GrowthAnalytics.h */,
-				CE0627CE1B15B692009263FA /* GrowthAnalytics.m */,
-			);
-			name = GrowthAnalytics;
-			path = Growthbeat/GrowthAnalytics;
 			sourceTree = "<group>";
 		};
 		CE0627CF1B15B6A1009263FA /* GrowthbeatCore */ = {
@@ -659,10 +622,8 @@
 				178C323D1D167E9000F913CB /* GPSwipeMessage.m in Sources */,
 				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
 				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
-				CE0628701B16F1EC009263FA /* GAEventHandler.m in Sources */,
 				178C323B1D167E9000F913CB /* GPScreenButton.m in Sources */,
 				CE06285E1B16F1E2009263FA /* GBIntent.m in Sources */,
-				CE06286E1B16F1EC009263FA /* GAClientEvent.m in Sources */,
 				CE06285F1B16F1E2009263FA /* GBIntentType.m in Sources */,
 				CE0628631B16F1E2009263FA /* GBNoopIntentHandler.m in Sources */,
 				CE0628611B16F1E2009263FA /* GBMultipartFile.m in Sources */,
@@ -671,11 +632,9 @@
 				CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */,
 				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
 				178C322C1D167E9000F913CB /* GPEnvironmentUtils.m in Sources */,
-				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
 				178C32361D167E9000F913CB /* GPOS.m in Sources */,
 				178C32301D167E9000F913CB /* GPCardMessageHandler.m in Sources */,
 				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
-				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
 				178C322F1D167E9000F913CB /* GPCardMessage.m in Sources */,
 				CE0628621B16F1E2009263FA /* GBNoopIntent.m in Sources */,
 				CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */,
