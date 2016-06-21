@@ -86,8 +86,6 @@
 		69989BAD1D18E241006B0EFE /* GPShowMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989BAA1D18E230006B0EFE /* GPShowMessageHandler.h */; };
 		B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B229828F1BA1577D0015C9A5 /* GBViewUtils.m */; };
 		B22982911BA157E50015C9A5 /* GBViewUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B229828E1BA1577D0015C9A5 /* GBViewUtils.h */; };
-		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
-		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
 		C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */; };
 		C12497CE1BABBE67000AFEE0 /* GBCustomIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */; };
 		C165AE471CFBC3940078D38C /* GLClick.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE3B1CFBC3730078D38C /* GLClick.h */; };
@@ -239,7 +237,6 @@
 				CE0628A51B16F22E009263FA /* GBUrlIntentHandler.h in CopyFiles */,
 				CE0628A61B16F22E009263FA /* GBUtils.h in CopyFiles */,
 				CE0628A71B16F22E009263FA /* GrowthbeatCore.h in CopyFiles */,
-				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,8 +307,6 @@
 		69989BAB1D18E230006B0EFE /* GPShowMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPShowMessageHandler.m; sourceTree = "<group>"; };
 		B229828E1BA1577D0015C9A5 /* GBViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBViewUtils.h; sourceTree = "<group>"; };
 		B229828F1BA1577D0015C9A5 /* GBViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBViewUtils.m; sourceTree = "<group>"; };
-		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
-		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Growthbeat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCustomIntentHandler.h; sourceTree = "<group>"; };
 		C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCustomIntentHandler.m; sourceTree = "<group>"; };
@@ -413,8 +408,6 @@
 		B2ED14191A0C451E0078F6BC /* Growthbeat */ = {
 			isa = PBXGroup;
 			children = (
-				B275A6FE1A0C455D0050510A /* Growthbeat.h */,
-				B275A6FF1A0C455D0050510A /* Growthbeat.m */,
 			);
 			path = Growthbeat;
 			sourceTree = "<group>";
@@ -689,7 +682,6 @@
 				178C322E1D167E9000F913CB /* GPImageButton.m in Sources */,
 				178C32291D167E9000F913CB /* GPButtonType.m in Sources */,
 				178C323D1D167E9000F913CB /* GPSwipeMessage.m in Sources */,
-				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
 				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
 				178C323B1D167E9000F913CB /* GPScreenButton.m in Sources */,
 				CE06285E1B16F1E2009263FA /* GBIntent.m in Sources */,

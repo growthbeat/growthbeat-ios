@@ -113,11 +113,12 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     return self;
 }
 
-- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment{
 
     self.client = [self loadClient];
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
+    self.environment = newEnvironment;
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
@@ -134,14 +135,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
     });
 
-    
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
+    
+    [self registerClient];
 
 }
 
-- (void) requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment {
-
-    self.environment = newEnvironment;
+- (void) requestDeviceToken {
 
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
@@ -440,7 +440,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
 
-    
     [self trackEvent:@"SelectButton" value:value];
     
 }
