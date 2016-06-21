@@ -314,7 +314,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         }
         
         [self waitClient];
-        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId tagType:type name:name value:value];
+        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
         if (tag) {
             [GPTag save:tag name:name];
@@ -342,7 +342,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
         [self waitClient];
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId eventType:type name:name value:value];
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];

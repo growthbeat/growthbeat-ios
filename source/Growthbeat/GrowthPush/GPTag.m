@@ -18,7 +18,7 @@
 
 static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
-+ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId tagType:(GPTagType)tagType name:(NSString *)name value:(NSString *)value {
++ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId type:(GPTagType)tagType name:(NSString *)name value:(NSString *)value {
 
     NSString *path = @"/4/tags";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];

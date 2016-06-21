@@ -21,7 +21,7 @@
 @property (nonatomic, assign) long long clientId;
 @property (nonatomic, strong) NSString *value;
 
-+ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId tagType:(GPTagType)tagType name:(NSString *)name value:(NSString *)value;
++ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId type:(GPTagType)tagType name:(NSString *)name value:(NSString *)value;
 + (void)save:(GPTag *)tag name:(NSString *)name;
 + (GPTag *)load:(NSString *)name;
 
