@@ -7,6 +7,7 @@
 //
 
 #import "GBDomain.h"
+#import "GPTagType.h"
 
 @interface GPTag : GBDomain<NSCoding> {
 
@@ -20,8 +21,8 @@
 @property (nonatomic, assign) long long clientId;
 @property (nonatomic, strong) NSString *value;
 
-+ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value;
-+ (void)save:(GPTag *)tag name:(NSString *)name;
-+ (GPTag *)load:(NSString *)name;
++ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId type:(GPTagType)tagType name:(NSString *)name value:(NSString *)value;
++ (void)save:(GPTag *)tag type:(GPTagType)tagType name:(NSString *)name;
++ (GPTag *)load:(GPTagType)tagType name:(NSString *)name;
 
 @end

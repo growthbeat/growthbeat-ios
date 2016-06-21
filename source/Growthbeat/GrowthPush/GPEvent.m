@@ -17,7 +17,7 @@
 @synthesize clientId;
 @synthesize value;
 
-+ (GPEvent *) createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
++ (GPEvent *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId type:(GPEventType)eventType name:(NSString *)name value:(NSString *)value {
 
     NSString *path = @"/4/events";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
@@ -30,6 +30,9 @@
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (NSStringFromGPEventType(eventType)) {
+        [body setObject:NSStringFromGPEventType(eventType) forKey:@"type"];
     }
     if (name) {
         [body setObject:name forKey:@"name"];

@@ -16,9 +16,9 @@
 @synthesize clientId;
 @synthesize value;
 
-static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
+static NSString *const kGPPreferenceTagKeyFormatV4 = @"tags:%@:%@";
 
-+ (GPTag *) createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
++ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId type:(GPTagType)tagType name:(NSString *)name value:(NSString *)value {
 
     NSString *path = @"/4/tags";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
@@ -31,6 +31,9 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
     }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (NSStringFromGPTagType(tagType) ) {
+        [body setObject:NSStringFromGPTagType(tagType) forKey:@"type"];
     }
     if (name) {
         [body setObject:name forKey:@"name"];
@@ -50,20 +53,30 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
 }
 
-+ (void) save:(GPTag *)tag name:(NSString *)name {
-    if (tag && name) {
-        [[[GrowthPush sharedInstance] preference] setObject:tag forKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
++ (void)save:(GPTag *)tag type:(GPTagType)tagType name:(NSString *)name {
+    if (tag && name && NSStringFromGPTagType(tagType)) {
+        [[[GrowthPush sharedInstance] preference] setObject:tag forKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormatV4, NSStringFromGPTagType(tagType), name]];
     }
 }
 
-+ (GPTag *) load:(NSString *)name {
++ (GPTag *)load:(GPTagType)tagType name:(NSString *)name {
 
-    if (!name) {
+    if (!name || !NSStringFromGPTagType(tagType)) {
         return nil;
     }
 
-    return [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
-
+    GPTag *tag = [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormatV4, NSStringFromGPTagType(tagType), name]];
+    if (tag)
+        return tag;
+    
+    NSString *oldKeyFrommat = @"tags:%@";
+    tag = [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:oldKeyFrommat, name]];
+    if (!tag)
+        return nil;
+    
+    [GPTag save:tag type:tagType name:name];
+    return tag;
+    
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
