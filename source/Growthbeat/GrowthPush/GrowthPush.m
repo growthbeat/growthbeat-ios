@@ -304,7 +304,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
         
-        GPTag *existingTag = [GPTag load:name];
+        GPTag *existingTag = [GPTag load:type name:name];
         if (existingTag) {
             if (value && [value isEqualToString:existingTag.value]) {
                 [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
@@ -317,7 +317,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
         if (tag) {
-            [GPTag save:tag name:name];
+            [GPTag save:tag type:type name:name];
             [self.logger info:@"Setting tag success. (name: %@)", name];
         }
         
@@ -344,6 +344,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [self waitClient];
         GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
+        
+        if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
+            return;
+        }
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];
             if (messageHandler) {
