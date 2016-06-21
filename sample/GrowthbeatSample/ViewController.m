@@ -17,19 +17,19 @@
 @synthesize priceTextField;
 
 - (IBAction) tapRandomTagButton:(id)sender {
-    [[GrowthAnalytics sharedInstance] setRandom];
+    //[[GrowthAnalytics sharedInstance] setRandom];
 }
 
 - (IBAction) changeDevelopmentTagSwitch:(id)sender {
-    [[GrowthAnalytics sharedInstance] setDevelopment:developmentTagSwitch.on];
+    //[[GrowthAnalytics sharedInstance] setDevelopment:developmentTagSwitch.on];
 }
 
 - (IBAction) tapLevelTagButton:(id)sender {
-    [[GrowthAnalytics sharedInstance] setLevel:[levelTextField.text intValue]];
+    //[[GrowthAnalytics sharedInstance] setLevel:[levelTextField.text intValue]];
 }
 
 - (IBAction) tapPurchaseEventButton:(id)sender {
-    [[GrowthAnalytics sharedInstance] purchase:[priceTextField.text intValue] setCategory:@"item" setProduct:itemTextField.text];
+    //[[GrowthAnalytics sharedInstance] purchase:[priceTextField.text intValue] setCategory:@"item" setProduct:itemTextField.text];
 }
 
 @end
