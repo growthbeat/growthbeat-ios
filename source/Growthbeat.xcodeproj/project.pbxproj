@@ -400,7 +400,6 @@
 				C165AE3A1CFBC3730078D38C /* GrowthLink */,
 				CE0628281B15B6BF009263FA /* GrowthPush */,
 				CE0627CF1B15B6A1009263FA /* GrowthbeatCore */,
-				B2ED14191A0C451E0078F6BC /* Growthbeat */,
 				B2ED14181A0C451E0078F6BC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -411,13 +410,6 @@
 				B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B2ED14191A0C451E0078F6BC /* Growthbeat */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Growthbeat;
 			sourceTree = "<group>";
 		};
 		C165AE3A1CFBC3730078D38C /* GrowthLink */ = {
