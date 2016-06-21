@@ -345,11 +345,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
         
-        if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
-            return;
-        }
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];
+            if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
+                return;
+            }
             if (messageHandler) {
                 NSArray *taskArray = [GPTask getTasks:self.applicationId credentialId:self.credentialId goalId:event.goalId];
                 if (!taskArray || taskArray.count == 0) {

@@ -71,6 +71,8 @@ static NSString *const kGPPreferenceTagKeyFormatV4 = @"tags:%@:%@";
     
     NSString *oldKeyFrommat = @"tags:%@";
     tag = [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:oldKeyFrommat, name]];
+    if (!tag)
+        return nil;
     
     [GPTag save:tag type:tagType name:name];
     return tag;
