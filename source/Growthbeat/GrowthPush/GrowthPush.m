@@ -113,15 +113,21 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     return self;
 }
 
+
 - (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment{
 
+    [self initializeWithApplicationId:newApplicationId credentialId:newCredentialId environment:newEnvironment adInfoEnable:YES];
+}
+
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment adInfoEnable:(BOOL)adInfoEnable {
+    
     self.client = [self loadClient];
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
     self.environment = newEnvironment;
-
+    
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
-
+    
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:newCredentialId];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -134,19 +140,18 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         }
         
     });
-
+    
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
     
     [self registerClient];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         [self waitClient];
-
+        
         [self setAdvertisingId];
         [self setTrackingEnabled];
         [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
     });
 
-    
 }
 
 - (void) requestDeviceToken {

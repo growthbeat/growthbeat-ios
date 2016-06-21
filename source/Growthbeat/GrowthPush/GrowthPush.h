@@ -60,6 +60,8 @@
  */
 - (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment;
 
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment adInfoEnable:(BOOL)adInfoEnable;
+
 /**
  * Request APNS device token.
  * Internally call UIApplication's registerForRemoteNotificationTypes:
