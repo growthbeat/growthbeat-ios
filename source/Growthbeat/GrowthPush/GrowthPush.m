@@ -138,7 +138,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
     [self setAdvertisingId];
     [self setTrackingEnabled];
-    [self trackEvent:GPEventTypeDefault name:@"Open" value:nil messageHandler:nil failureHandler:nil];
+    [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
 
     
 
