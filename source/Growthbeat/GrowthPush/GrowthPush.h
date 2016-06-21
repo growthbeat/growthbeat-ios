@@ -58,13 +58,13 @@
  * @param applicationId Application ID
  * @param credentialId Credential ID for application
  */
-- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId;
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment;
 
 /**
  * Request APNS device token.
  * Internally call UIApplication's registerForRemoteNotificationTypes:
  */
-- (void)requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment;
+- (void)requestDeviceToken;
 
 /**
  * Set device token obtained in AppDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:

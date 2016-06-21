@@ -113,11 +113,12 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     return self;
 }
 
-- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId {
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment{
 
     self.client = [self loadClient];
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
+    self.environment = newEnvironment;
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
@@ -134,19 +135,21 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
     });
 
-    
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
-    [self setAdvertisingId];
-    [self setTrackingEnabled];
-    [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
+    
+    [self registerClient];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self waitClient];
+
+        [self setAdvertisingId];
+        [self setTrackingEnabled];
+        [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
+    });
 
     
-
 }
 
-- (void) requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment {
-
-    self.environment = newEnvironment;
+- (void) requestDeviceToken {
 
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
@@ -198,6 +201,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) registerClient {
+
 
     if (self.environment == GPEnvironmentUnknown) {
         [self.logger info:@"Environment is not specified. Client has not registred."];
@@ -461,7 +465,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
 
-    
     [self trackEvent:@"SelectButton" value:value];
     
 }
@@ -490,15 +493,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) setAdvertisingId {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self setTag:GPTagTypeDefault name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
-    });
+    [self setTag:GPTagTypeDefault name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
 }
 
 - (void) setTrackingEnabled {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self setTag:GPTagTypeDefault name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
-    });
+    [self setTag:GPTagTypeDefault name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
 }
 
 - (GPClient *) waitClient {
