@@ -13,6 +13,8 @@
 #import "GPMessageQueue.h"
 #import "GPButton.h"
 #import "GPShowMessageHandler.h"
+#import "GPTagType.h"
+#import "GPEventType.h"
 
 #ifdef DEBUG
 #define kGrowthPushEnvironment (GPEnvironmentDevelopment)
@@ -88,13 +90,14 @@
  */
 - (void)setTag:(NSString *)name;
 - (void)setTag:(NSString *)name value:(NSString *)value;
-
+- (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value;
 /**
  * Set Event
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
 - (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
+- (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
 /**
  * Set DefaultTags
  */

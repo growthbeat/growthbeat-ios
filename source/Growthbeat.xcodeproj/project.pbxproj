@@ -84,6 +84,9 @@
 		69989BA91D18E1B1006B0EFE /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178C32251D167E9000F913CB /* GrowthPush.h */; };
 		69989BAC1D18E230006B0EFE /* GPShowMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989BAB1D18E230006B0EFE /* GPShowMessageHandler.m */; };
 		69989BAD1D18E241006B0EFE /* GPShowMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989BAA1D18E230006B0EFE /* GPShowMessageHandler.h */; };
+		69989D3D1D190CCB006B0EFE /* GPTagType.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D3C1D190CCB006B0EFE /* GPTagType.m */; };
+		69989D3E1D190D02006B0EFE /* GPTagType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D3B1D190CCB006B0EFE /* GPTagType.h */; };
+		69989D411D1914A0006B0EFE /* GPEventType.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D401D1914A0006B0EFE /* GPEventType.m */; };
 		B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B229828F1BA1577D0015C9A5 /* GBViewUtils.m */; };
 		B22982911BA157E50015C9A5 /* GBViewUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B229828E1BA1577D0015C9A5 /* GBViewUtils.h */; };
 		C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */; };
@@ -170,6 +173,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				69989D3E1D190D02006B0EFE /* GPTagType.h in CopyFiles */,
 				69989BAD1D18E241006B0EFE /* GPShowMessageHandler.h in CopyFiles */,
 				69989B8B1D18E1B1006B0EFE /* GPBackground.h in CopyFiles */,
 				69989B8C1D18E1B1006B0EFE /* GPButton.h in CopyFiles */,
@@ -305,6 +309,10 @@
 		178C32261D167E9000F913CB /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
 		69989BAA1D18E230006B0EFE /* GPShowMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPShowMessageHandler.h; sourceTree = "<group>"; };
 		69989BAB1D18E230006B0EFE /* GPShowMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPShowMessageHandler.m; sourceTree = "<group>"; };
+		69989D3B1D190CCB006B0EFE /* GPTagType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTagType.h; sourceTree = "<group>"; };
+		69989D3C1D190CCB006B0EFE /* GPTagType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTagType.m; sourceTree = "<group>"; };
+		69989D3F1D1914A0006B0EFE /* GPEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEventType.h; sourceTree = "<group>"; };
+		69989D401D1914A0006B0EFE /* GPEventType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEventType.m; sourceTree = "<group>"; };
 		B229828E1BA1577D0015C9A5 /* GBViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBViewUtils.h; sourceTree = "<group>"; };
 		B229828F1BA1577D0015C9A5 /* GBViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBViewUtils.m; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -518,6 +526,8 @@
 				178C31F61D167E9000F913CB /* GPEnvironmentUtils.m */,
 				178C31F71D167E9000F913CB /* GPEvent.h */,
 				178C31F81D167E9000F913CB /* GPEvent.m */,
+				69989D3F1D1914A0006B0EFE /* GPEventType.h */,
+				69989D401D1914A0006B0EFE /* GPEventType.m */,
 				178C31F91D167E9000F913CB /* GPImageButton.h */,
 				178C31FA1D167E9000F913CB /* GPImageButton.m */,
 				178C32011D167E9000F913CB /* GPMessage.h */,
@@ -556,6 +566,8 @@
 				178C32201D167E9000F913CB /* GPSwipeMessageType.m */,
 				178C32211D167E9000F913CB /* GPTag.h */,
 				178C32221D167E9000F913CB /* GPTag.m */,
+				69989D3B1D190CCB006B0EFE /* GPTagType.h */,
+				69989D3C1D190CCB006B0EFE /* GPTagType.m */,
 				178C32231D167E9000F913CB /* GPTask.h */,
 				178C32241D167E9000F913CB /* GPTask.m */,
 				178C32251D167E9000F913CB /* GrowthPush.h */,
@@ -674,6 +686,7 @@
 				B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */,
 				178C32421D167E9000F913CB /* GPTask.m in Sources */,
 				CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */,
+				69989D411D1914A0006B0EFE /* GPEventType.m in Sources */,
 				178C32311D167E9000F913CB /* GPCardMessageRenderer.m in Sources */,
 				C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */,
 				CE0628591B16F1E2009263FA /* GBGPClient.m in Sources */,
@@ -713,6 +726,7 @@
 				CE0628571B16F1E2009263FA /* GBDeviceUtils.m in Sources */,
 				CE0628661B16F1E2009263FA /* GBUrlIntent.m in Sources */,
 				178C322A1D167E9000F913CB /* GPClient.m in Sources */,
+				69989D3D1D190CCB006B0EFE /* GPTagType.m in Sources */,
 				178C32351D167E9000F913CB /* GPMessageType.m in Sources */,
 				178C32381D167E9000F913CB /* GPPlainButton.m in Sources */,
 				178C323F1D167E9000F913CB /* GPSwipeMessageRenderer.m in Sources */,

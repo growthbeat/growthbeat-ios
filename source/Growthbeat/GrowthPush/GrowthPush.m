@@ -139,6 +139,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
     [self registerClient];
 
+    [self setAdvertisingId];
+    [self setTrackingEnabled];
+    [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
+
+    
 }
 
 - (void) requestDeviceToken {
@@ -193,6 +198,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) registerClient {
+
 
     if (self.environment == GPEnvironmentUnknown) {
         [self.logger info:@"Environment is not specified. Client has not registred."];
@@ -291,12 +297,15 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) setTag:(NSString *)name value:(NSString *)value {
+    [self setTag:GPTagTypeCustom name:name value:value];
+}
 
+- (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-
+        
         [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
-
-        GPTag *existingTag = [GPTag load:name];
+        
+        GPTag *existingTag = [GPTag load:type name:name];
         if (existingTag) {
             if (value && [value isEqualToString:existingTag.value]) {
                 [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
@@ -304,17 +313,16 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             }
             [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
-
+        
         [self waitClient];
-        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId name:name value:value];
-
+        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        
         if (tag) {
-            [GPTag save:tag name:name];
+            [GPTag save:tag type:type name:name];
             [self.logger info:@"Setting tag success. (name: %@)", name];
         }
-
+        
     });
-
 }
 
 - (void) trackEvent:(NSString *)name {
@@ -326,20 +334,29 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
-    
+    [self trackEvent:GPEventTypeCustom name:name value:value messageHandler:messageHandler failureHandler:failureHandler];
+}
+
+- (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
         [self waitClient];
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId name:name value:value];
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        
         
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];
+            if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
+                return;
+            }
             if (messageHandler) {
                 NSArray *taskArray = [GPTask getTasks:self.applicationId credentialId:self.credentialId goalId:event.goalId];
                 if (!taskArray || taskArray.count == 0) {
-                    failureHandler(@"task not found");
+                    if (failureHandler) {
+                        failureHandler(@"task not found");
+                    }
                     return;
                 }
                 int count = 0;
@@ -353,24 +370,29 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                     {
                         [self.showMessageHandlers setObject:handler forKey:message.id];
                     }
-
+                    
                     count = count + 1;
                 }
                 if (count == 0) {
-                    failureHandler(@"message not found");
+                    if (failureHandler) {
+                        failureHandler(@"message not found");
+                    }
                     return;
                 }
                 
                 [self openMessageIfExists];
             }
-
+            
         } else {
-            failureHandler(@"event not found");
+            if (failureHandler) {
+                failureHandler(@"event not found");
+            }
             return;
         }
         
         
     });
+
 }
 
 - (void) openMessageIfExists {
@@ -465,6 +487,18 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [self setTag:@"Build" value:[GBDeviceUtils build]];
     }
 
+}
+
+- (void) setAdvertisingId {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self setTag:GPTagTypeDefault name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
+    });
+}
+
+- (void) setTrackingEnabled {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self setTag:GPTagTypeDefault name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
+    });
 }
 
 - (GPClient *) waitClient {
