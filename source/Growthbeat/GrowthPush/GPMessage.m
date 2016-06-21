@@ -25,6 +25,9 @@
     if (taskId) {
         [body setObject:taskId forKey:@"taskId"];
     }
+    if (applicationId) {
+        [body setObject:applicationId forKey:@"applicationId"];
+    }
     if (clientId) {
         [body setObject:clientId forKey:@"clientId"];
     }
@@ -71,7 +74,7 @@
         [body setObject:messageId forKey:@"messageId"];
     }
     
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:nil body:body];
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthPush sharedInstance] logger] error:@"Failed to get message. %@", httpResponse.error];
