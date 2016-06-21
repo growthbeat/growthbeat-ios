@@ -138,10 +138,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
     
     [self registerClient];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self waitClient];
 
-    [self setAdvertisingId];
-    [self setTrackingEnabled];
-    [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
+        [self setAdvertisingId];
+        [self setTrackingEnabled];
+        [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
+    });
 
     
 }
@@ -490,15 +493,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) setAdvertisingId {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self setTag:GPTagTypeDefault name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
-    });
+    [self setTag:GPTagTypeDefault name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
 }
 
 - (void) setTrackingEnabled {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self setTag:GPTagTypeDefault name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
-    });
+    [self setTag:GPTagTypeDefault name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
 }
 
 - (GPClient *) waitClient {
