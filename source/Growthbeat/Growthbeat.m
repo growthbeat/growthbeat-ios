@@ -45,21 +45,19 @@ static Growthbeat *sharedInstance = nil;
     self.applicationId = initialApplicationId;
     self.credentialId = initialCredentialId;
     [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-    [[GrowthAnalytics sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId adInfoEnable:adInfoEnable];
     [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
 }
 
 - (void) start {
-    [[GrowthAnalytics sharedInstance] open];
+    //TODO: openイベント
 }
 
 - (void) stop {
-    [[GrowthAnalytics sharedInstance] close];
+    //TODO: closeイベント
 }
 
 - (void) setLoggerSilent:(BOOL)silent {
     [[[GrowthbeatCore sharedInstance] logger] setSilent:silent];
-    [[[GrowthAnalytics sharedInstance] logger] setSilent:silent];
     [[[GrowthPush sharedInstance] logger] setSilent:silent];
 }
 

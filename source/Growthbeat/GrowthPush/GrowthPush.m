@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "GrowthPush.h"
 #import "GPClient.h"
-#import "GrowthAnalytics.h"
 #import "GPTag.h"
 #import "GPEvent.h"
 #import "GPTask.h"
