@@ -136,9 +136,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     });
 
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
-    
-    [self registerClient];
+
+   
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [[Growthbeat sharedInstance] waitClient];
+        [self registerClient];
         [self waitClient];
 
         [self setAdvertisingId];
