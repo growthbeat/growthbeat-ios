@@ -310,7 +310,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         GPTag *existingTag = [GPTag load:type name:name];
         if (existingTag) {
-            if (value && [value isEqualToString:existingTag.value]) {
+            if ((value == nil && existingTag.value == nil ) || (value && [value isEqualToString:existingTag.value])) {
                 [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
                 return;
             }
