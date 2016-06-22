@@ -10,8 +10,6 @@
 
 NSString *NSStringFromGPTagType(GPTagType tagType) {
     switch (tagType) {
-        case GPTagTypeDefault:
-            return @"default";
         case GPTagTypeCustom:
             return @"custom";
         case GPTagTypeMessage:
@@ -21,9 +19,6 @@ NSString *NSStringFromGPTagType(GPTagType tagType) {
     }
 }
 GPTagType GPTagTypeFromNSString(NSString *tagTypeString) {
-    if ([tagTypeString isEqualToString:@"default"]) {
-        return GPTagTypeDefault;
-    }
     if ([tagTypeString isEqualToString:@"custom"]) {
         return GPTagTypeCustom;
     }

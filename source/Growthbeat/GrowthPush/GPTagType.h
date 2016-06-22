@@ -10,7 +10,6 @@
 
 typedef NS_ENUM (NSInteger, GPTagType) {
     GPTagTypeUnknown = 0,
-    GPTagTypeDefault,
     GPTagTypeCustom,
     GPTagTypeMessage
 };

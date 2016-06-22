@@ -493,11 +493,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) setAdvertisingId {
-    [self setTag:GPTagTypeDefault name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
+    [self setTag:GPTagTypeCustom name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
 }
 
 - (void) setTrackingEnabled {
-    [self setTag:GPTagTypeDefault name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
+    [self setTag:GPTagTypeCustom name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
 }
 
 - (GPClient *) waitClient {
