@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 #import "GBUrlIntentHandler.h"
 #import "GBNoopIntentHandler.h"
 #import "GBCustomIntentHandler.h"
 #import "GBGPClient.h"
 
-static GrowthbeatCore *sharedInstance = nil;
+static Growthbeat *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthbeatCore";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
-@interface GrowthbeatCore () {
+@interface Growthbeat () {
 
     GBClient *client;
     GBLogger *logger;
@@ -37,7 +37,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
 @end
 
-@implementation GrowthbeatCore
+@implementation Growthbeat
 
 @synthesize client;
 @synthesize logger;
@@ -47,7 +47,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
 @synthesize intentHandlers;
 
-+ (GrowthbeatCore *) sharedInstance {
++ (Growthbeat *) sharedInstance {
     @synchronized(self) {
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 5.0f) {
             return nil;

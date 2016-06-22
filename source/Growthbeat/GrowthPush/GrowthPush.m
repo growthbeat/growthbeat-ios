@@ -122,10 +122,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
-    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:newCredentialId];
+    [[Growthbeat sharedInstance] initializeWithApplicationId:applicationId credentialId:newCredentialId];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+        self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
         if (self.client && self.client.growthbeatClientId &&
             ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
@@ -181,7 +181,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.token = [self convertToHexToken:newDeviceToken];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        self.growthbeatClient = [[GrowthbeatCore sharedInstance] waitClient];
+        self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
         if (self.client && self.client.growthbeatClientId &&
             ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
@@ -445,7 +445,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void) selectButton:(GPButton *)button message:(GPMessage *)message {
     
-    [[GrowthbeatCore sharedInstance] handleIntent:button.intent];
+    [[Growthbeat sharedInstance] handleIntent:button.intent];
     
     NSMutableDictionary *properties = [NSMutableDictionary dictionary];
     if (message.task.id) {

@@ -9,7 +9,7 @@
 #import "GBClient.h"
 #import "GBUtils.h"
 #import "GBHttpClient.h"
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 
 static NSString *const kGBPreferenceClientKey = @"client";
 
@@ -32,9 +32,9 @@ static NSString *const kGBPreferenceClientKey = @"client";
     }
 
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
-    GBHttpResponse *httpResponse = [[[GrowthbeatCore sharedInstance] httpClient] httpRequest:httpRequest];
+    GBHttpResponse *httpResponse = [[[Growthbeat sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthbeatCore sharedInstance] logger] error:@"Failed to create client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
+        [[[Growthbeat sharedInstance] logger] error:@"Failed to create client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
 
@@ -52,9 +52,9 @@ static NSString *const kGBPreferenceClientKey = @"client";
     }
 
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query body:nil];
-    GBHttpResponse *httpResponse = [[[GrowthbeatCore sharedInstance] httpClient] httpRequest:httpRequest];
+    GBHttpResponse *httpResponse = [[[Growthbeat sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthbeatCore sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
+        [[[Growthbeat sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
 
@@ -66,11 +66,11 @@ static NSString *const kGBPreferenceClientKey = @"client";
     if (!client) {
         return;
     }
-    [[[GrowthbeatCore sharedInstance] preference] setObject:client forKey:kGBPreferenceClientKey];
+    [[[Growthbeat sharedInstance] preference] setObject:client forKey:kGBPreferenceClientKey];
 }
 
 + (GBClient *) load {
-    return [[[GrowthbeatCore sharedInstance] preference] objectForKey:kGBPreferenceClientKey];
+    return [[[Growthbeat sharedInstance] preference] objectForKey:kGBPreferenceClientKey];
 }
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {

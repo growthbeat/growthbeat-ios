@@ -7,7 +7,7 @@
 //
 
 #import "GBHttpClient.h"
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 
 @implementation GBHttpClient
 
@@ -35,7 +35,7 @@
 - (GBHttpResponse *) httpRequest:(GBHttpRequest *)httpRequest {
 
     if (!baseUrl) {
-        [[[GrowthbeatCore sharedInstance] logger] error:@"GBHttpClient's baseUrl is not set."];
+        [[[Growthbeat sharedInstance] logger] error:@"GBHttpClient's baseUrl is not set."];
         return nil;
     }
 

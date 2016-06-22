@@ -7,7 +7,7 @@
 //
 
 #import "GBPreference.h"
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 
 @implementation GBPreference
 
@@ -82,7 +82,7 @@
 - (NSURL *) preferenceFileUrl {
 
     if (!fileName) {
-        [[[GrowthbeatCore sharedInstance] logger] error:@"GBPreference's fileName is not set."];
+        [[[Growthbeat sharedInstance] logger] error:@"GBPreference's fileName is not set."];
         return nil;
     }
 

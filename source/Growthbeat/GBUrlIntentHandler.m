@@ -8,7 +8,7 @@
 
 #import "GBUrlIntentHandler.h"
 #import <UIKit/UIKit.h>
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 #import "GBUrlIntent.h"
 
 @implementation GBUrlIntentHandler

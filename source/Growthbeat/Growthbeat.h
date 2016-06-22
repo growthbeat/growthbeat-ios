@@ -18,14 +18,14 @@
 #import "GBCustomIntent.h"
 
 
-@interface GrowthbeatCore : NSObject {
+@interface Growthbeat : NSObject {
 
     NSMutableArray *intentHandlers;
 }
 
 @property (nonatomic, strong) NSArray *intentHandlers;
 
-+ (GrowthbeatCore *)sharedInstance;
++ (Growthbeat *)sharedInstance;
 
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 

@@ -104,8 +104,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
 
-    [[GrowthbeatCore sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-    if (![[GrowthbeatCore sharedInstance] client] || ![[[[[GrowthbeatCore sharedInstance] client] application] id] isEqualToString:applicationId]) {
+    [[Growthbeat sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
+    if (![[Growthbeat sharedInstance] client] || ![[[[[Growthbeat sharedInstance] client] application] id] isEqualToString:applicationId]) {
         [preference removeAll];
     }
 
@@ -139,7 +139,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
                 NSTextCheckingResult *match= [regex firstMatchInString:path options:NSMatchingReportProgress range:NSMakeRange(0, path.length)];
                 NSString *alias =  [path substringWithRange:[match rangeAtIndex:1]];
                 [logger info:@"Deeplinking...(Universal Link)"];
-                GLClick *click = [GLClick deeplinkUniversalLink:[[[GrowthbeatCore sharedInstance] waitClient] id] alias:alias credentialId:credentialId queryItems:component.queryItems];
+                GLClick *click = [GLClick deeplinkUniversalLink:[[[Growthbeat sharedInstance] waitClient] id] alias:alias credentialId:credentialId queryItems:component.queryItems];
                 //If the link has a landing page url, open it in safari adding required params.
                 if (click.pattern.url) {
                     NSURLComponents *urlComponent = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:click.pattern.url] resolvingAgainstBaseURL:true];
@@ -184,7 +184,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
         [logger info:@"Deeplinking..."];
 
-        GLClick *click = [GLClick deeplinkWithClientId:[[[GrowthbeatCore sharedInstance] waitClient] id] clickId:clickId install:isFirstSession credentialId:credentialId];
+        GLClick *click = [GLClick deeplinkWithClientId:[[[Growthbeat sharedInstance] waitClient] id] clickId:clickId install:isFirstSession credentialId:credentialId];
         [self handleClick:click];
     });
 
@@ -212,7 +212,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     if (click.pattern.intent) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[GrowthbeatCore sharedInstance] handleIntent:click.pattern.intent];
+            [[Growthbeat sharedInstance] handleIntent:click.pattern.intent];
         });
     }
 

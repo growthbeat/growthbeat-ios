@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 #import "GPEnvironment.h"
 #import "GPMessage.h"
 #import "GPMessageQueue.h"

@@ -9,7 +9,7 @@
 #import "GBGPClient.h"
 #import "GBPreference.h"
 #import "GBHttpClient.h"
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 
 static NSString *const kGBGPPreferenceFileName = @"growthpush-preferences";
 static NSString *const kGBGPPreferenceClientKey = @"client";
@@ -68,7 +68,7 @@ static GBHttpClient *httpClient = nil;
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query body:nil];
     GBHttpResponse *httpResponse = [[GBGPClient httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthbeatCore sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
+        [[[Growthbeat sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
 
