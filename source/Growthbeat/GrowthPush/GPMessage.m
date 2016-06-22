@@ -9,6 +9,9 @@
 #import "GPMessage.h"
 #import "GrowthPush.h"
 #import "GBHttpClient.h"
+#import "GPPlainMessage.h"
+#import "GPCardMessage.h"
+#import "GPSwipeMessage.h"
 
 @implementation GPMessage
 
@@ -54,6 +57,36 @@
 
 }
 
+
++ (instancetype) domainWithDictionary:(NSDictionary *)dictionary {
+    
+    GPMessage *message = [[self alloc] initWithDictionary:dictionary];
+    
+    switch (message.type) {
+        case GPMessageTypePlain:
+            if ([message isKindOfClass:[GPPlainMessage class]]) {
+                return message;
+            } else {
+                return [GPPlainMessage domainWithDictionary:dictionary];
+            }
+        case GPMessageTypeImage:
+            if ([message isKindOfClass:[GPCardMessage class]]) {
+                return message;
+            } else {
+                return [GPCardMessage domainWithDictionary:dictionary];
+            }
+        case GPMessageTypeSwipe:
+            if ([message isKindOfClass:[GPSwipeMessage class]]) {
+                return message;
+            } else {
+                return [GPSwipeMessage domainWithDictionary:dictionary];
+            }
+        default:
+            return nil;
+    }
+    
+}
+
 + (GPTag *)receiveCount:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId taskId:(NSString *)taskId messageId:(NSString *)messageId {
     
     NSString *path = @"/4/receive/count";
@@ -91,6 +124,39 @@
     return [GPTag domainWithDictionary:httpResponse.body];
     
 }
+
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary {
+    
+    self = [super init];
+    if (self) {
+        if ([dictionary objectForKey:@"id"] && [dictionary objectForKey:@"id"] != [NSNull null]) {
+            self.id = [dictionary objectForKey:@"id"];
+        }
+        if ([dictionary objectForKey:@"type"] && [dictionary objectForKey:@"type"] != [NSNull null]) {
+            self.type = GPMessageTypeFromNSString([dictionary objectForKey:@"type"]);
+        }
+        if ([dictionary objectForKey:@"background"] && [dictionary objectForKey:@"background"] != [NSNull null]) {
+            self.background = [dictionary objectForKey:@"background"];
+        }
+        if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
+            self.created = [GBDateUtils dateWithString:[dictionary objectForKey:@"created"] format:@"yyyy-MM-dd HH:mm:ss"];
+        }
+        if ([dictionary objectForKey:@"task"] && [dictionary objectForKey:@"task"] != [NSNull null]) {
+            self.task = [GPTask domainWithDictionary:[dictionary objectForKey:@"task"]];
+        }
+        if ([dictionary objectForKey:@"buttons"] && [dictionary objectForKey:@"buttons"] != [NSNull null]) {
+            NSMutableArray *buttonArray = [NSMutableArray array];
+            NSArray *array  = (NSArray*)[dictionary objectForKey:@"buttons"];
+            for (NSDictionary *dictionary in array) {
+                [buttonArray addObject:[GPButton domainWithDictionary:dictionary]];
+            }
+            self.buttons = buttonArray;
+        }
+    }
+    return self;
+    
+}
+
 
 
 #pragma mark --

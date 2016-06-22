@@ -367,6 +367,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 int count = 0;
                 for (GPTask *task in taskArray) {
                     GPMessage *message = [GPMessage receive:task.id applicationId:self.applicationId clientId:self.growthbeatClient.id credentialId:self.credentialId];
+                    if (!message)
+                        continue;
+                    
                     [self.messageQueue enqueue:message];
                     
                     GPShowMessageHandler *handler = [[GPShowMessageHandler alloc] initWithBlock:messageHandler];

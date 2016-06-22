@@ -52,6 +52,39 @@
     return [GPTask domainArrayFromArray:httpResponse.body];
 }
 
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary {
+    
+    self = [super init];
+    if (self) {
+        if ([dictionary objectForKey:@"id"] && [dictionary objectForKey:@"id"] != [NSNull null]) {
+            self.id = [dictionary objectForKey:@"id"];
+        }
+        if ([dictionary objectForKey:@"applicationId"] && [dictionary objectForKey:@"applicationId"] != [NSNull null]) {
+            self.applicationId = [dictionary objectForKey:@"applicationId"];
+        }
+        if ([dictionary objectForKey:@"goalId"] && [dictionary objectForKey:@"goalId"] != [NSNull null]) {
+            self.goalId = [[dictionary objectForKey:@"goalId"] integerValue];
+        }
+        if ([dictionary objectForKey:@"segmentId"] && [dictionary objectForKey:@"segmentId"] != [NSNull null]) {
+            self.segmentId = [[dictionary objectForKey:@"segmentId"] integerValue];
+        }
+        if ([dictionary objectForKey:@"orientation"] && [dictionary objectForKey:@"orientation"] != [NSNull null]) {
+            self.orientation = GMMessageOrientationFromNSString([dictionary objectForKey:@"orientation"]);
+        }
+        if ([dictionary objectForKey:@"begin"] && [dictionary objectForKey:@"begin"] != [NSNull null]) {
+            self.begin = [GBDateUtils dateWithString:[dictionary objectForKey:@"begin"] format:@"yyyy-MM-dd HH:mm:ss"];
+        }
+        if ([dictionary objectForKey:@"end"] && [dictionary objectForKey:@"end"] != [NSNull null]) {
+            self.end = [GBDateUtils dateWithString:[dictionary objectForKey:@"end"] format:@"yyyy-MM-dd HH:mm:ss"];
+        }
+        if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
+            self.created = [GBDateUtils dateWithString:[dictionary objectForKey:@"created"] format:@"yyyy-MM-dd HH:mm:ss"];
+        }
+    }
+    return self;
+    
+}
+
 #pragma mark --
 #pragma mark NSCoding
 
