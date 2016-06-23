@@ -69,7 +69,7 @@
             } else {
                 return [GPPlainMessage domainWithDictionary:dictionary];
             }
-        case GPMessageTypeImage:
+        case GPMessageTypeCard:
             if ([message isKindOfClass:[GPCardMessage class]]) {
                 return message;
             } else {
@@ -136,7 +136,7 @@
             self.type = GPMessageTypeFromNSString([dictionary objectForKey:@"type"]);
         }
         if ([dictionary objectForKey:@"background"] && [dictionary objectForKey:@"background"] != [NSNull null]) {
-            self.background = [dictionary objectForKey:@"background"];
+            self.background = [GPBackground domainWithDictionary:[dictionary objectForKey:@"background"]];
         }
         if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
             self.created = [GBDateUtils dateWithString:[dictionary objectForKey:@"created"] format:@"yyyy-MM-dd HH:mm:ss"];

@@ -158,6 +158,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     imageView.image = [cachedImages objectForKey:cardMessage.picture.url];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.userInteractionEnabled = YES;
+
     [view addSubview:imageView];
     
 }

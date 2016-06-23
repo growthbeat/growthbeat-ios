@@ -37,7 +37,7 @@
 
 - (BOOL) handleMessage:(GPMessage *)message {
     
-    if (message.type != GPMessageTypeImage) {
+    if (message.type != GPMessageTypeCard) {
         return NO;
     }
     

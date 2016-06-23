@@ -14,6 +14,25 @@
 @synthesize opacity;
 @synthesize outsideClose;
 
+- (id) initWithDictionary:(NSDictionary *)dictionary {
+    
+    self = [super init];
+    if (self) {
+        if ([dictionary objectForKey:@"color"] && [dictionary objectForKey:@"color"] != [NSNull null]) {
+            self.color = [[dictionary objectForKey:@"color"] integerValue];
+        }
+        if ([dictionary objectForKey:@"opacity"] && [dictionary objectForKey:@"opacity"] != [NSNull null]) {
+            self.opacity = [[dictionary objectForKey:@"opacity"] floatValue];
+        }
+        if ([dictionary objectForKey:@"outsideClose"] && [dictionary objectForKey:@"outsideClose"] != [NSNull null]) {
+            self.outsideClose = [[dictionary objectForKey:@"outsideClose"] boolValue];
+        }
+    }
+    
+    return self;
+    
+}
+
 #pragma mark --
 #pragma mark NSCoding
 
