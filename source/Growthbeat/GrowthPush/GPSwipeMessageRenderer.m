@@ -124,11 +124,30 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
                     break;
             }
         }
+    
+    CGFloat baseWidth = self.swipeMessage.baseWidth;
+    CGFloat baseHeight = self.swipeMessage.baseHeight;
+    
+    
+    CGFloat rootWidth = baseWidth;
+    CGFloat rootHeight = baseHeight + kPagingHeight;
+    
+    if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
+        NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
+        GPImageButton *imageButton = [imageButtons objectAtIndex:0];
+        CGFloat availableWidth = MIN(imageButton.baseWidth, baseWidth);
+        CGFloat ratio = MIN(availableWidth / imageButton.baseWidth, 1);
+        CGFloat buttonWidth = imageButton.baseWidth * ratio;
+        CGFloat buttonHeight = imageButton.baseHeight * ratio;
+        rootHeight += buttonHeight;
+    }
 
-    CGRect baseRect = CGRectMake((screenWidth - self.swipeMessage.baseWidth) / 2, (screenHeight - self.swipeMessage.baseHeight) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight);
+    CGRect baseRect = CGRectMake((screenWidth - baseWidth) / 2, (screenHeight - rootHeight) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight);
+    
+    CGRect rootRect = CGRectMake((screenWidth - rootWidth) / 2, (screenHeight - rootHeight) / 2, rootWidth, rootHeight);
     
     [self showScrollView:baseView rect:baseRect];
-    [self showPageControlWithView:baseView rect:baseRect];
+    [self showPageControlWithView:baseView rect:rootRect];
     
     [self cacheImages:^{
         
@@ -190,7 +209,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         
         
         CGFloat width = swipeMessage.baseWidth;
-        CGFloat height = swipeMessage.baseHeight - kPagingHeight;
+        CGFloat height = swipeMessage.baseHeight;
         CGFloat left = rect.size.width * i;
         CGFloat top = 0;
         CGRect imageRect = CGRectMake(left, top, width, height);
@@ -223,7 +242,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
             CGFloat width = imageButton.baseWidth * ratio;
             CGFloat height = imageButton.baseHeight * ratio;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
-            CGFloat top = rect.origin.y + rect.size.height - kPagingHeight - height;
+            CGFloat top = rect.origin.y + rect.size.height;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:imageButton.picture.url ]] forState:UIControlStateNormal];
             button.contentMode = UIViewContentModeScaleAspectFit;

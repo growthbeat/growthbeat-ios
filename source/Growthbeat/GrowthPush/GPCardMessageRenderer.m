@@ -79,9 +79,9 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         [subview removeFromSuperview];
     }
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
+    baseView.tag = 1;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [backgroundView addSubview:baseView];
-    baseView.tag = 1;
     
     self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicatorView.frame = baseView.frame;
