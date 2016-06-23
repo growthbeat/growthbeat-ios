@@ -13,14 +13,14 @@
 @interface GPSwipeMessage : GPMessage {
     
     GPSwipeMessageType swipeType;
-    GPSwipeImages *swipeImages;
+    NSArray *pictures;
     NSInteger baseWidth;
     NSInteger baseHeight;
     
 }
 
 @property (nonatomic, assign) GPSwipeMessageType swipeType;
-@property (nonatomic, strong) GPSwipeImages *swipeImages;
+@property (nonatomic, strong) NSArray *pictures;
 @property (nonatomic, assign) NSInteger baseWidth;
 @property (nonatomic, assign) NSInteger baseHeight;
 

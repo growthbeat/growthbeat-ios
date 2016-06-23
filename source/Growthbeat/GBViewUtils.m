@@ -40,7 +40,7 @@
     NSMutableArray *filenameArray = [[originalUrl componentsSeparatedByString:@"/"] mutableCopy];
     NSString *filename = [filenameArray objectAtIndex:filenameArray.count - 1];
     NSArray *extensionArray = [filename componentsSeparatedByString:@"."];
-    NSString *resultFileName = [NSString stringWithFormat:@"%@@%d.%@",[extensionArray objectAtIndex:0], (int)floor([[UIScreen mainScreen] scale]), [extensionArray objectAtIndex:1] ];
+    NSString *resultFileName = [NSString stringWithFormat:@"%@@%dx.%@",[extensionArray objectAtIndex:0], (int)floor([[UIScreen mainScreen] scale]), [extensionArray objectAtIndex:1] ];
     [filenameArray removeLastObject];
     NSString *pathString = [filenameArray componentsJoinedByString:@"/"];
     NSString *resultString = [NSString stringWithFormat:@"%@/%@",pathString,resultFileName];

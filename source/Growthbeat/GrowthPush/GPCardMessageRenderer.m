@@ -131,6 +131,14 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     [self cacheImages:^{
         
         void(^renderCallback)(void) = ^() {
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            btn.frame = CGRectMake(10, 10, 100, 30);
+            [btn setTitle:@"押してね" forState:UIControlStateNormal];
+            [btn setTitle:@"ぽち" forState:UIControlStateHighlighted];
+            [btn setTitle:@"押せません" forState:UIControlStateDisabled];
+
+            [baseView addSubview:btn];
+            
             [self showImageWithView:baseView rect:baseRect];
             [self showScreenButtonWithView:baseView rect:baseRect];
             [self showImageButtonsWithView:baseView rect:baseRect];

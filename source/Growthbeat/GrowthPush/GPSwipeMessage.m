@@ -7,11 +7,12 @@
 //
 
 #import "GPSwipeMessage.h"
+#import "GPPicture.h"
 
 @implementation GPSwipeMessage
 
 @synthesize swipeType;
-@synthesize swipeImages;
+@synthesize pictures;
 @synthesize baseWidth;
 @synthesize baseHeight;
 
@@ -22,8 +23,13 @@
         if ([dictionary objectForKey:@"swipeType"] && [dictionary objectForKey:@"swipeType"] != [NSNull null]) {
             self.swipeType = GPSwipeMessageTypeFromNSString([dictionary objectForKey:@"swipeType"]);
         }
-        if ([dictionary objectForKey:@"swipeImages"] && [dictionary objectForKey:@"swipeImages"] != [NSNull null]) {
-            self.swipeImages = [GPSwipeImages domainWithDictionary:[dictionary objectForKey:@"swipeImages"]];
+        if ([dictionary objectForKey:@"pictures"] && [dictionary objectForKey:@"pictures"] != [NSNull null]) {
+            NSMutableArray *pictureArray = [NSMutableArray array];
+            NSArray *array  = (NSArray*)[dictionary objectForKey:@"pictures"];
+            for (NSDictionary *dictionary in array) {
+                [pictureArray addObject:[GPPicture domainWithDictionary:dictionary]];
+            }
+            self.pictures = pictureArray;
         }
         if ([dictionary objectForKey:@"baseWidth"] && [dictionary objectForKey:@"baseWidth"] != [NSNull null]) {
             self.baseWidth = [[dictionary objectForKey:@"baseWidth"] integerValue];
@@ -45,8 +51,8 @@
         if ([aDecoder containsValueForKey:@"swipeType"]) {
             self.swipeType = GPSwipeMessageTypeFromNSString([aDecoder decodeObjectForKey:@"swipeType"]);
         }
-        if ([aDecoder containsValueForKey:@"swipeImages"]) {
-            self.swipeImages = [aDecoder decodeObjectForKey:@"swipeImages"];
+        if ([aDecoder containsValueForKey:@"pictures"]) {
+            self.pictures = [aDecoder decodeObjectForKey:@"pictures"];
         }
         if ([aDecoder containsValueForKey:@"baseWidth"]) {
             self.baseWidth = [aDecoder decodeIntegerForKey:@"baseWidth"];
@@ -61,7 +67,7 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
     [aCoder encodeObject:NSStringFromGPSwipeMessageType(swipeType) forKey:@"swipeType"];
-    [aCoder encodeObject:swipeImages forKey:@"swipeImages"];
+    [aCoder encodeObject:pictures forKey:@"pictures"];
     [aCoder encodeInteger:baseWidth forKey:@"baseWidth"];
     [aCoder encodeInteger:baseHeight forKey:@"baseHeight"];
 }

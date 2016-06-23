@@ -168,7 +168,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
     scrollView.userInteractionEnabled = YES;
-    [scrollView setContentSize:CGSizeMake(([swipeMessage.swipeImages.pictures count] * rect.size.width), rect.size.height)];
+    [scrollView setContentSize:CGSizeMake(([swipeMessage.pictures count] * rect.size.width), rect.size.height)];
     
     [view addSubview:scrollView];
     
@@ -184,9 +184,9 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
 
 - (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
     
-    for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
+    for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         
-        GPPicture *picture = [swipeMessage.swipeImages.pictures objectAtIndex:i];
+        GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
         
         
         CGFloat width = swipeMessage.baseWidth;
@@ -290,7 +290,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
-    pageControl.numberOfPages = [swipeMessage.swipeImages.pictures count];
+    pageControl.numberOfPages = [swipeMessage.pictures count];
     pageControl.currentPage = 0;
     pageControl.userInteractionEnabled = NO;
     [view addSubview:pageControl];
@@ -301,8 +301,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     NSMutableArray *urlStrings = [NSMutableArray array];
     
-    for (int i = 0; i < [swipeMessage.swipeImages.pictures count]; i++) {
-        GPPicture *picture = [swipeMessage.swipeImages.pictures objectAtIndex:i];
+    for (int i = 0; i < [swipeMessage.pictures count]; i++) {
+        GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
         if (picture.url) {
             [urlStrings addObject:picture.url];
         }
