@@ -367,6 +367,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 int count = 0;
                 for (GPTask *task in taskArray) {
                     GPMessage *message = [GPMessage receive:task.id applicationId:self.applicationId clientId:self.growthbeatClient.id credentialId:self.credentialId];
+                    
                     if (!message)
                         continue;
                     

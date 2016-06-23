@@ -197,7 +197,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageRect];
         
-        imageView.image = [cachedImages objectForKey:picture.url];
+        imageView.image = [cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:picture.url]];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.userInteractionEnabled = YES;
         [view addSubview:imageView];
@@ -225,7 +225,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
             CGFloat top = rect.origin.y + rect.size.height - kPagingHeight - height;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
+            [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:imageButton.picture.url ]] forState:UIControlStateNormal];
             button.contentMode = UIViewContentModeScaleAspectFit;
             button.frame = CGRectMake(left, top, width, height);
             [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -257,7 +257,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     CGFloat left = rect.origin.x + rect.size.width - width - 8;
     CGFloat top = rect.origin.y + 8;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
+    [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:closeButton.picture.url]] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
     button.frame = CGRectMake(left, top, width, height);
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -304,7 +304,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
         if (picture.url) {
-            [urlStrings addObject:picture.url];
+            [urlStrings addObject:[GBViewUtils addDensityByPictureUrl:picture.url]];
         }
     }
     

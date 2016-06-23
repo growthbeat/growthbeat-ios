@@ -155,7 +155,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
     
-    imageView.image = [cachedImages objectForKey:cardMessage.picture.url];
+    imageView.image = [cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:cardMessage.picture.url]];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.userInteractionEnabled = YES;
 
@@ -172,7 +172,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     }
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[cachedImages objectForKey:cardMessage.picture.url] forState:UIControlStateNormal];
+    [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:cardMessage.picture.url]] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
     button.frame = rect;
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -196,7 +196,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         top -= height;
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:[cachedImages objectForKey:imageButton.picture.url] forState:UIControlStateNormal];
+        [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:imageButton.picture.url]] forState:UIControlStateNormal];
         button.contentMode = UIViewContentModeScaleAspectFit;
         button.frame = CGRectMake(left, top, width, height);
         [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -226,7 +226,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     CGFloat top = rect.origin.y + 8;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[cachedImages objectForKey:closeButton.picture.url] forState:UIControlStateNormal];
+    [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:closeButton.picture.url]] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
     button.frame = CGRectMake(left, top, width, height);
     [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -255,7 +255,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     NSMutableArray *urlStrings = [NSMutableArray array];
     
     if (cardMessage.picture.url) {
-        [urlStrings addObject:cardMessage.picture.url];
+        [urlStrings addObject:[GBViewUtils addDensityByPictureUrl:cardMessage.picture.url]];
     }
     
     for (GPButton *button in cardMessage.buttons) {
