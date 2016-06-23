@@ -12,7 +12,7 @@
 
 @interface GPCardMessageHandler () {
     
-    NSMutableDictionary *imageMessageRenderers;
+    NSMutableDictionary *cardMessageRenderers;
     
 }
 
@@ -45,12 +45,12 @@
         return NO;
     }
     
-    GPCardMessage *imageMessage = (GPCardMessage *)message;
+    GPCardMessage *cardMessage = (GPCardMessage *)message;
     
-    GPCardMessageRenderer *cardMessageRenderer = [[GPCardMessageRenderer alloc] initWithImageMessage:imageMessage];
+    GPCardMessageRenderer *cardMessageRenderer = [[GPCardMessageRenderer alloc] initWithCardMessage:cardMessage];
     cardMessageRenderer.delegate = self;
     [cardMessageRenderer show];
-    [imageMessageRenderers setObject:cardMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
+    [cardMessageRenderers setObject:cardMessageRenderer forKey:[NSValue valueWithNonretainedObject:message]];
     
     return YES;
     
@@ -63,13 +63,13 @@
     
     [[GrowthPush sharedInstance] selectButton:button message:message];
     [[GrowthPush sharedInstance] notifyClose];
-    [imageMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
+    [cardMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
     
 }
 
 - (void)backgroundTouched:(GPMessage *)message {
     [[GrowthPush sharedInstance] notifyClose];
-    [imageMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
+    [cardMessageRenderers removeObjectForKey:[NSValue valueWithNonretainedObject:message]];
 }
 
 @end

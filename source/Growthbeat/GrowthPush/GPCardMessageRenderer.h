@@ -22,7 +22,7 @@
 @property (nonatomic, copy) void(^ messageCallback)(GPMessage * message);
 
 
-- (instancetype)initWithImageMessage:(GPCardMessage *)newCardMessage;
+- (instancetype)initWithCardMessage:(GPCardMessage *)newCardMessage;
 - (void)show;
 
 @end

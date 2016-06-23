@@ -43,7 +43,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
 @synthesize backgroundView;
 @synthesize activityIndicatorView;
 
-- (instancetype) initWithImageMessage:(GPCardMessage *)newCardMessage {
+- (instancetype) initWithCardMessage:(GPCardMessage *)newCardMessage {
     self = [super init];
     if (self) {
         self.cardMessage = newCardMessage;
@@ -78,6 +78,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     for (UIView *subview in backgroundView.subviews) {
         [subview removeFromSuperview];
     }
+    
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
     baseView.tag = 1;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
