@@ -98,31 +98,33 @@ static CGFloat const kPagingHeight = 16.f;
     CGFloat baseWidth = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
     CGFloat baseHeight = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseHeight : self.swipeMessage.baseWidth;
     
-    CGFloat rootWidth = baseWidth;
-    CGFloat rootHeight = baseHeight + kPagingHeight;
-    
+    CGFloat additionalHeight = kPagingHeight;
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
         GPImageButton *imageButton = [imageButtons objectAtIndex:0];
-        rootHeight += imageButton.baseHeight;
+        additionalHeight += imageButton.baseHeight;
     }
-
-    CGRect baseRect = CGRectMake((screenWidth - baseWidth) / 2, (screenHeight - rootHeight) / 2, baseWidth, baseHeight);
     
-    CGRect rootRect = CGRectMake((screenWidth - rootWidth) / 2, (screenHeight - rootHeight) / 2, rootWidth, rootHeight);
+    CGFloat rootWidth = baseWidth;
+    CGFloat rootHeight = baseHeight + additionalHeight;
     
+    CGRect baseRect = CGRectMake((screenWidth - rootWidth) / 2, (screenHeight - rootHeight) / 2, rootWidth, rootHeight);
     [self showScrollView:baseView rect:baseRect];
-    [self showPageControlWithView:baseView rect:rootRect];
+    [self showPageControlWithView:baseView rect:baseRect];
+    
     
     [self cacheImages:^{
         
         void(^renderCallback)() = ^() {
             [self showImageWithView:scrollView rect:baseRect];
             switch (swipeMessage.swipeType) {
-                case GPSwipeMessageTypeOneButton:
-                    [self showImageButtonWithView:baseView rect:baseRect];
+                case GPSwipeMessageTypeOneButton: {
+                    CGRect oneButtonRect = CGRectMake((screenWidth - baseWidth) / 2, (screenHeight - baseHeight - additionalHeight) / 2, baseWidth, baseHeight);
+                    [self showImageButtonWithView:baseView rect:oneButtonRect];
                     break;
+                }
                 case GPSwipeMessageTypeImageOnly:
+                    break;
                 default:
                     break;
             }
@@ -202,10 +204,8 @@ static CGFloat const kPagingHeight = 16.f;
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         
         GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
-        
-        
-        CGFloat width = swipeMessage.baseWidth;
-        CGFloat height = swipeMessage.baseHeight;
+        CGFloat width = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
+        CGFloat height = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseHeight : self.swipeMessage.baseWidth;
         CGFloat left = rect.size.width * i;
         CGFloat top = 0;
         CGRect imageRect = CGRectMake(left, top, width, height);
@@ -237,7 +237,7 @@ static CGFloat const kPagingHeight = 16.f;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
             CGFloat top = rect.origin.y + rect.size.height;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:imageButton.picture.url ]] forState:UIControlStateNormal];
+            [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:imageButton.picture.url]] forState:UIControlStateNormal];
             button.contentMode = UIViewContentModeScaleAspectFit;
             button.frame = CGRectMake(left, top, width, height);
             [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];

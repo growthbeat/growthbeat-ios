@@ -10,8 +10,6 @@
 
 NSString *NSStringFromGPEventType(GPEventType eventType) {
     switch (eventType) {
-        case GPEventTypeDefault:
-            return @"default";
         case GPEventTypeCustom:
             return @"custom";
         case GPEventTypeMessage:
@@ -22,9 +20,6 @@ NSString *NSStringFromGPEventType(GPEventType eventType) {
 }
 
 GPEventType GPEventTypeFromNSString(NSString *eventTypeString) {
-    if ([eventTypeString isEqualToString:@"default"]) {
-        return GPEventTypeDefault;
-    }
     if ([eventTypeString isEqualToString:@"custom"]) {
         return GPEventTypeCustom;
     }

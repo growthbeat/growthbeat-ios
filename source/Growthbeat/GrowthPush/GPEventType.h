@@ -10,7 +10,6 @@
 
 typedef NS_ENUM (NSInteger, GPEventType) {
     GPEventTypeUnknown = 0,
-    GPEventTypeDefault,
     GPEventTypeCustom,
     GPEventTypeMessage
 };

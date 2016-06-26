@@ -146,7 +146,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
         [self setAdvertisingId];
         [self setTrackingEnabled];
-        [self trackEvent:GPEventTypeDefault name:@"Install" value:nil messageHandler:nil failureHandler:nil];
+        [self trackEvent:@"Install" value:nil messageHandler:nil failureHandler:nil];
     });
 
     
