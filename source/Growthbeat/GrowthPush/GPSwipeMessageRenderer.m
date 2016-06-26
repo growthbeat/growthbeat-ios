@@ -16,7 +16,6 @@
 
 static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
 static CGFloat const kPagingHeight = 16.f;
-static CGFloat const kCloseButtonSizeMax = 64.f;
 
 @interface GPSwipeMessageRenderer () {
     
@@ -96,8 +95,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     [self rotateBaseView:baseView];
     
     
-    CGFloat baseWidth = self.swipeMessage.baseWidth;
-    CGFloat baseHeight = self.swipeMessage.baseHeight;
+    CGFloat baseWidth = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
+    CGFloat baseHeight = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseHeight : self.swipeMessage.baseWidth;
     
     CGFloat rootWidth = baseWidth;
     CGFloat rootHeight = baseHeight + kPagingHeight;
@@ -105,13 +104,10 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
         GPImageButton *imageButton = [imageButtons objectAtIndex:0];
-        CGFloat availableWidth = MIN(imageButton.baseWidth, baseWidth);
-        CGFloat ratio = MIN(availableWidth / imageButton.baseWidth, 1);
-        CGFloat buttonHeight = imageButton.baseHeight * ratio;
-        rootHeight += buttonHeight;
+        rootHeight += imageButton.baseHeight;
     }
 
-    CGRect baseRect = CGRectMake((screenWidth - baseWidth) / 2, (screenHeight - rootHeight) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight);
+    CGRect baseRect = CGRectMake((screenWidth - baseWidth) / 2, (screenHeight - rootHeight) / 2, baseWidth, baseHeight);
     
     CGRect rootRect = CGRectMake((screenWidth - rootWidth) / 2, (screenHeight - rootHeight) / 2, rootWidth, rootHeight);
     
@@ -236,11 +232,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         {
             GPImageButton *imageButton = [imageButtons objectAtIndex:0];
             
-            CGFloat availableWidth = MIN(imageButton.baseWidth, rect.size.width);
-            CGFloat ratio = MIN(availableWidth / imageButton.baseWidth, 1);
-            
-            CGFloat width = imageButton.baseWidth * ratio;
-            CGFloat height = imageButton.baseHeight * ratio;
+            CGFloat width = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
+            CGFloat height = imageButton.baseHeight;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
             CGFloat top = rect.origin.y + rect.size.height;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -267,12 +260,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         return;
     }
     
-    CGFloat availableWidth = MIN(closeButton.baseWidth, kCloseButtonSizeMax);
-    CGFloat availableHeight = MIN(closeButton.baseHeight, kCloseButtonSizeMax);
-    CGFloat ratio = MIN(availableWidth / closeButton.baseWidth, availableHeight / closeButton.baseHeight);
-    
-    CGFloat width = closeButton.baseWidth * ratio;
-    CGFloat height = closeButton.baseHeight * ratio;
+    CGFloat width = closeButton.baseWidth;
+    CGFloat height = closeButton.baseHeight;
     CGFloat left = rect.origin.x + rect.size.width - width - 8;
     CGFloat top = rect.origin.y + 8;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
