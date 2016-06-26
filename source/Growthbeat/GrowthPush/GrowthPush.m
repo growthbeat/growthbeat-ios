@@ -140,7 +140,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [[Growthbeat sharedInstance] waitClient];
+        self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         [self registerClient];
         [self waitClient];
 
