@@ -91,11 +91,11 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-//    CGFloat screenWidth = cardMessage.task.orientation == GPMessageOrientationVertical ? window.frame.size.width : window.frame.size.height;
-//    CGFloat screenHeight = cardMessage.task.orientation == GPMessageOrientationVertical ? window.window.frame.size.height : window.frame.size.width;
+    NSInteger width = cardMessage.task.orientation == GPMessageOrientationVertical ? self.cardMessage.baseWidth : self.cardMessage.baseHeight;
+    NSInteger height = cardMessage.task.orientation == GPMessageOrientationVertical ? self.cardMessage.baseHeight : self.cardMessage.baseWidth;
     [self rotateBaseView:baseView];
     
-    CGRect baseRect = CGRectMake((screenWidth - self.cardMessage.baseWidth) / 2, (screenHeight - self.cardMessage.baseHeight) / 2, self.cardMessage.baseWidth, self.cardMessage.baseHeight);
+    CGRect baseRect = CGRectMake((screenWidth - width) / 2, (screenHeight - height) / 2, width, height);
     
     [self cacheImages:^{
         
@@ -190,13 +190,14 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
     for (GPImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
         
-        CGFloat width = imageButton.baseWidth;
+        CGFloat width = cardMessage.task.orientation == GPMessageOrientationVertical ? cardMessage.baseWidth : cardMessage.baseHeight;
         CGFloat height = imageButton.baseHeight;
         CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
         top -= height;
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:imageButton.picture.url]] forState:UIControlStateNormal];
+        UIImage *buttonImage = [cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:imageButton.picture.url]];
+        [button setImage:buttonImage forState:UIControlStateNormal];
         button.contentMode = UIViewContentModeScaleAspectFit;
         button.frame = CGRectMake(left, top, width, height);
         [button addTarget:self action:@selector(tapButton:) forControlEvents:UIControlEventTouchUpInside];
