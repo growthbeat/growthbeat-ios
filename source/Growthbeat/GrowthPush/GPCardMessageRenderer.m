@@ -92,41 +92,6 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
-        ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
-         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
-         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
-            
-            screenWidth = window.frame.size.height;
-            screenHeight = window.frame.size.width;
-            
-            CGRect frame = [UIScreen mainScreen].applicationFrame;
-            baseView.center = CGPointMake(CGRectGetWidth(frame) * 0.5f, CGRectGetHeight(frame) * 0.5f);
-            
-            CGRect bounds;
-            bounds.origin = CGPointZero;
-            bounds.size.width = CGRectGetHeight(frame);
-            bounds.size.height = CGRectGetWidth(frame);
-            baseView.bounds = bounds;
-            
-            switch ([UIApplication sharedApplication].statusBarOrientation) {
-                case UIDeviceOrientationLandscapeLeft:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                    break;
-                case UIDeviceOrientationLandscapeRight:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
-                    break;
-                case UIDeviceOrientationPortraitUpsideDown:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
-                    break;
-                default:
-                    break;
-            }
-        }
-    
-
-    
-    
     CGRect baseRect = CGRectMake((screenWidth - self.cardMessage.baseWidth) / 2, (screenHeight - self.cardMessage.baseHeight) / 2, self.cardMessage.baseWidth, self.cardMessage.baseHeight);
     
     [self cacheImages:^{

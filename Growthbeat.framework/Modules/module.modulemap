@@ -1,6 +1,0 @@
-framework module Growthbeat {
-  umbrella header "Growthbeat.h"
-
-  export *
-  module * { export * }
-}
