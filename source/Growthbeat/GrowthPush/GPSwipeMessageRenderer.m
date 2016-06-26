@@ -137,7 +137,6 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         GPImageButton *imageButton = [imageButtons objectAtIndex:0];
         CGFloat availableWidth = MIN(imageButton.baseWidth, baseWidth);
         CGFloat ratio = MIN(availableWidth / imageButton.baseWidth, 1);
-        CGFloat buttonWidth = imageButton.baseWidth * ratio;
         CGFloat buttonHeight = imageButton.baseHeight * ratio;
         rootHeight += buttonHeight;
     }

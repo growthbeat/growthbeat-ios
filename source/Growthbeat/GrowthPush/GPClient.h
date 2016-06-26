@@ -21,8 +21,8 @@
 
 }
 
-@property (nonatomic, assign) NSString *id;
-@property (nonatomic, assign) NSString *applicationId;
+@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, assign) GPOS os;
 @property (nonatomic, assign) GPEnvironment environment;

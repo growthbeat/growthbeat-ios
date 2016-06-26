@@ -12,5 +12,7 @@
 @interface GBViewUtils : NSObject
 
 + (UIWindow *)getWindow;
++ (UIColor*) hexToUIColor:(NSString *)hex alpha:(CGFloat)a;
++ (NSString *)addDensityByPictureUrl:(NSString *)originalUrl;
 
 @end

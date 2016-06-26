@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GrowthbeatCore.h"
+#import "Growthbeat.h"
 #import "GPEnvironment.h"
+#import "GPMessage.h"
+#import "GPMessageQueue.h"
+#import "GPButton.h"
+#import "GPShowMessageHandler.h"
+#import "GPTagType.h"
+#import "GPEventType.h"
 
 #ifdef DEBUG
 #define kGrowthPushEnvironment (GPEnvironmentDevelopment)
@@ -16,21 +22,29 @@
 #define kGrowthPushEnvironment (GPEnvironmentProduction)
 #endif
 
+
 @interface GrowthPush : NSObject {
+    
+    NSString *applicationId;
+    NSString *credentialId;
+    NSArray *messageHandlers;
 
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
 
-    NSString *credentialId;
-
 }
+
+@property (nonatomic, strong) NSString *applicationId;
+@property (nonatomic, strong) NSString *credentialId;
+@property (nonatomic, strong) NSArray *messageHandlers;
 
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
+@property (nonatomic, strong) GPMessageQueue *messageQueue;
+@property (nonatomic, assign) CGFloat messageInterval;
 
-@property (nonatomic, strong) NSString *credentialId;
 
 /**
  * Get shared instance of GrowthPush
@@ -44,13 +58,13 @@
  * @param applicationId Application ID
  * @param credentialId Credential ID for application
  */
-- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
+- (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment;
 
 /**
  * Request APNS device token.
  * Internally call UIApplication's registerForRemoteNotificationTypes:
  */
-- (void)requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment;
+- (void)requestDeviceToken;
 
 /**
  * Set device token obtained in AppDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:
@@ -76,21 +90,28 @@
  */
 - (void)setTag:(NSString *)name;
 - (void)setTag:(NSString *)name value:(NSString *)value;
-
+- (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value;
 /**
  * Set Event
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
-
+- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
+- (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
 /**
  * Set DefaultTags
  */
 - (void)setDeviceTags;
 
+- (void) openMessageIfExists;
+- (void) openMessage:(GPMessage *)message;
+- (void) selectButton:(GPButton *)button message:(GPMessage *)message;
+- (void) notifyClose;
+
 
 - (GBLogger *)logger;
 - (GBHttpClient *)httpClient;
 - (GBPreference *)preference;
+- (NSMutableDictionary *)showMessageHandlers;
 
 @end

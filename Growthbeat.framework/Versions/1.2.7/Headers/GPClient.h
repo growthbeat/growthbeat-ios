@@ -12,10 +12,8 @@
 
 @interface GPClient : GBDomain <NSCoding> {
 
-    long long id;
-    NSString *growthbeatClientId;
-    NSInteger applicationId;
-    NSString *code;
+    NSString *id;
+    NSString *applicationId;
     NSString *token;
     GPOS os;
     GPEnvironment environment;
@@ -23,16 +21,14 @@
 
 }
 
-@property (nonatomic, assign) long long id;
-@property (nonatomic, strong) NSString *growthbeatClientId;
-@property (nonatomic, assign) NSInteger applicationId;
-@property (nonatomic, strong) NSString *code;
+@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, assign) GPOS os;
 @property (nonatomic, assign) GPEnvironment environment;
 @property (nonatomic, strong) NSDate *created;
 
-+ (GPClient *)createWithClientId:(NSString *)clientId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
-+ (GPClient *)updateWithClientId:(NSString *)clientId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
++ (GPClient *)createWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
++ (GPClient *)updateWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
 
 @end
