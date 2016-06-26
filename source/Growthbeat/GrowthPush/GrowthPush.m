@@ -127,9 +127,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
-        if (self.client && self.client.growthbeatClientId &&
-            ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
-            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.growthbeatClientId, self.growthbeatClient.id];
+        if (self.client && self.client.id &&
+            ![self.client.id isEqualToString:self.growthbeatClient.id]) {
+            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, self.growthbeatClient.id];
             [self clearClient];
         }
         
@@ -185,9 +185,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
-        if (self.client && self.client.growthbeatClientId &&
-            ![self.client.growthbeatClientId isEqualToString:self.growthbeatClient.id]) {
-            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.growthbeatClientId, self.growthbeatClient.id];
+        if (self.client && self.client.id &&
+            ![self.client.id isEqualToString:self.growthbeatClient.id]) {
+            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, self.growthbeatClient.id];
             [self clearClient];
         }
         
@@ -226,7 +226,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
             if (createdClient) {
-                [self.logger info:@"Create client success. (clientId: %@)", createdClient.growthbeatClientId];
+                [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
                 self.client = createdClient;
                 [self saveClient:client];
             }
@@ -248,7 +248,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
             if (updatedClient) {
-                [self.logger info:@"Update client success. (clientId: %@)", updatedClient.growthbeatClientId];
+                [self.logger info:@"Update client success. (clientId: %@)", updatedClient.id];
                 self.client = updatedClient;
                 [self saveClient:self.client];
             }

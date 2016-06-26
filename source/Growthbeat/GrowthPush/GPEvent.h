@@ -12,14 +12,14 @@
 @interface GPEvent : GBDomain<NSCoding> {
 
     NSInteger goalId;
-    long long clientId;
+    NSString *clientId;
     long long timestamp;
     NSString *value;
 
 }
 
 @property (nonatomic, assign) NSInteger goalId;
-@property (nonatomic, assign) long long clientId;
+@property (nonatomic, assign) NSString *clientId;
 @property (nonatomic, assign) long long timestamp;
 @property (nonatomic, strong) NSString *value;
 

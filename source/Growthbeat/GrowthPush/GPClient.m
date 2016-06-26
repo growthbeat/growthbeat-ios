@@ -14,9 +14,7 @@
 @implementation GPClient
 
 @synthesize id;
-@synthesize growthbeatClientId;
 @synthesize applicationId;
-@synthesize code;
 @synthesize token;
 @synthesize os;
 @synthesize environment;
@@ -91,16 +89,10 @@
     self = [super init];
     if (self) {
         if ([dictionary objectForKey:@"id"] && [dictionary objectForKey:@"id"] != [NSNull null]) {
-            self.id = [[dictionary objectForKey:@"id"] longLongValue];
-        }
-        if ([dictionary objectForKey:@"growthbeatClientId"] && [dictionary objectForKey:@"growthbeatClientId"] != [NSNull null]) {
-            self.growthbeatClientId = [dictionary objectForKey:@"growthbeatClientId"];
+            self.id = [dictionary objectForKey:@"id"];
         }
         if ([dictionary objectForKey:@"applicationId"] && [dictionary objectForKey:@"applicationId"] != [NSNull null]) {
-            self.applicationId = [[dictionary objectForKey:@"applicationId"] integerValue];
-        }
-        if ([dictionary objectForKey:@"code"] && [dictionary objectForKey:@"code"] != [NSNull null]) {
-            self.code = [dictionary objectForKey:@"code"];
+            self.applicationId = [dictionary objectForKey:@"applicationId"];
         }
         if ([dictionary objectForKey:@"token"] && [dictionary objectForKey:@"token"] != [NSNull null]) {
             self.token = [dictionary objectForKey:@"token"];
@@ -125,16 +117,10 @@
     self = [super init];
     if (self) {
         if ([aDecoder containsValueForKey:@"id"]) {
-            self.id = [[aDecoder decodeObjectForKey:@"id"] longLongValue];
-        }
-        if ([aDecoder containsValueForKey:@"growthbeatClientId"]) {
-            self.growthbeatClientId = [aDecoder decodeObjectForKey:@"growthbeatClientId"];
+            self.id = [aDecoder decodeObjectForKey:@"id"];
         }
         if ([aDecoder containsValueForKey:@"applicationId"]) {
-            self.applicationId = [aDecoder decodeIntegerForKey:@"applicationId"];
-        }
-        if ([aDecoder containsValueForKey:@"code"]) {
-            self.code = [aDecoder decodeObjectForKey:@"code"];
+            self.applicationId = [aDecoder decodeObjectForKey:@"applicationId"];
         }
         if ([aDecoder containsValueForKey:@"token"]) {
             self.token = [aDecoder decodeObjectForKey:@"token"];
@@ -156,10 +142,8 @@
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
 
-    [aCoder encodeObject:@(id) forKey:@"id"];
-    [aCoder encodeObject:growthbeatClientId forKey:@"growthbeatClientId"];
-    [aCoder encodeInteger:applicationId forKey:@"applicationId"];
-    [aCoder encodeObject:code forKey:@"code"];
+    [aCoder encodeObject:id forKey:@"id"];
+    [aCoder encodeObject:applicationId forKey:@"applicationId"];
     [aCoder encodeObject:token forKey:@"token"];
     [aCoder encodeObject:NSStringFromGPOS(os) forKey:@"os"];
     [aCoder encodeObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];

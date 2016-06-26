@@ -87,7 +87,7 @@ static NSString *const kGPPreferenceTagKeyFormatV4 = @"tags:%@:%@";
             self.tagId = [[dictionary objectForKey:@"tagId"] integerValue];
         }
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
-            self.clientId = [[dictionary objectForKey:@"clientId"] longLongValue];
+            self.clientId = [dictionary objectForKey:@"clientId"];
         }
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
@@ -109,7 +109,7 @@ static NSString *const kGPPreferenceTagKeyFormatV4 = @"tags:%@:%@";
             self.tagId = [aDecoder decodeIntegerForKey:@"tagId"];
         }
         if ([aDecoder containsValueForKey:@"clientId"]) {
-            self.clientId = [[aDecoder decodeObjectForKey:@"clientId"] longLongValue];
+            self.clientId = [aDecoder decodeObjectForKey:@"clientId"];
         }
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
@@ -123,7 +123,7 @@ static NSString *const kGPPreferenceTagKeyFormatV4 = @"tags:%@:%@";
 - (void) encodeWithCoder:(NSCoder *)aCoder {
 
     [aCoder encodeInteger:tagId forKey:@"tagId"];
-    [aCoder encodeObject:@(clientId) forKey:@"clientId"];
+    [aCoder encodeObject:clientId forKey:@"clientId"];
     [aCoder encodeObject:value forKey:@"value"];
 
 }

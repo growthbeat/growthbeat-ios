@@ -63,7 +63,7 @@
             self.timestamp = [[dictionary objectForKey:@"timestamp"] longLongValue];
         }
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
-            self.clientId = [[dictionary objectForKey:@"clientId"] longLongValue];
+            self.clientId = [dictionary objectForKey:@"clientId"];
         }
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
@@ -88,7 +88,7 @@
             self.timestamp = [[aDecoder decodeObjectForKey:@"timestamp"] longLongValue];
         }
         if ([aDecoder containsValueForKey:@"clientId"]) {
-            self.clientId = [[aDecoder decodeObjectForKey:@"clientId"] longLongValue];
+            self.clientId = [aDecoder decodeObjectForKey:@"clientId"];
         }
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
@@ -103,7 +103,7 @@
 
     [aCoder encodeInteger:goalId forKey:@"goalId"];
     [aCoder encodeObject:@(timestamp) forKey:@"timestamp"];
-    [aCoder encodeObject:@(clientId) forKey:@"clientId"];
+    [aCoder encodeObject:clientId forKey:@"clientId"];
     [aCoder encodeObject:value forKey:@"value"];
 
 }

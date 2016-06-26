@@ -12,10 +12,8 @@
 
 @interface GPClient : GBDomain <NSCoding> {
 
-    long long id;
-    NSString *growthbeatClientId;
-    NSInteger applicationId;
-    NSString *code;
+    NSString *id;
+    NSString *applicationId;
     NSString *token;
     GPOS os;
     GPEnvironment environment;
@@ -23,10 +21,8 @@
 
 }
 
-@property (nonatomic, assign) long long id;
-@property (nonatomic, strong) NSString *growthbeatClientId;
-@property (nonatomic, assign) NSInteger applicationId;
-@property (nonatomic, strong) NSString *code;
+@property (nonatomic, assign) NSString *id;
+@property (nonatomic, assign) NSString *applicationId;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, assign) GPOS os;
 @property (nonatomic, assign) GPEnvironment environment;
