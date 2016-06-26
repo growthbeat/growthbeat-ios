@@ -16,7 +16,6 @@
 #import "GPShowMessageHandler.h"
 
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
-static CGFloat const kCloseButtonSizeMax = 64.f;
 
 @interface GPCardMessageRenderer () {
     
@@ -92,6 +91,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
+//    CGFloat screenWidth = cardMessage.task.orientation == GPMessageOrientationVertical ? window.frame.size.width : window.frame.size.height;
+//    CGFloat screenHeight = cardMessage.task.orientation == GPMessageOrientationVertical ? window.window.frame.size.height : window.frame.size.width;
     [self rotateBaseView:baseView];
     
     CGRect baseRect = CGRectMake((screenWidth - self.cardMessage.baseWidth) / 2, (screenHeight - self.cardMessage.baseHeight) / 2, self.cardMessage.baseWidth, self.cardMessage.baseHeight);
@@ -189,7 +190,7 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     for (GPImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
         
-        CGFloat width = imageButton.baseWidth ;
+        CGFloat width = imageButton.baseWidth;
         CGFloat height = imageButton.baseHeight;
         CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
         top -= height;
@@ -215,12 +216,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         return;
     }
     
-    CGFloat availableWidth = MIN(closeButton.baseWidth, kCloseButtonSizeMax);
-    CGFloat availableHeight = MIN(closeButton.baseHeight, kCloseButtonSizeMax);
-    CGFloat ratio = MIN(availableWidth / closeButton.baseWidth, availableHeight / closeButton.baseHeight);
-    
-    CGFloat width = closeButton.baseWidth * ratio;
-    CGFloat height = closeButton.baseHeight * ratio;
+    CGFloat width = closeButton.baseWidth;
+    CGFloat height = closeButton.baseHeight;
     CGFloat left = rect.origin.x + rect.size.width - width - 8;
     CGFloat top = rect.origin.y + 8;
     
