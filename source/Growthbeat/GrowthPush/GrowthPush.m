@@ -19,6 +19,7 @@
 #import "GPSwipeMessageHandler.h"
 #import "GPShowMessageHandler.h"
 #import "GPMessage.h"
+#import "GPNoContentMessage.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -356,41 +357,49 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
                 return;
             }
-            if (messageHandler) {
-                NSArray *taskArray = [GPTask getTasks:self.applicationId credentialId:self.credentialId goalId:event.goalId];
-                if (!taskArray || taskArray.count == 0) {
-                    if (failureHandler) {
-                        failureHandler(@"task not found");
-                    }
-                    return;
+            
+            [self.logger info:@"Receive message..."];
+            
+            NSArray *taskArray = [GPTask getTasks:self.applicationId credentialId:self.credentialId goalId:event.goalId];
+            if (!taskArray || taskArray.count == 0) {
+                if (failureHandler) {
+                    failureHandler(@"task not found");
                 }
-                int count = 0;
-                for (GPTask *task in taskArray) {
-                    GPMessage *message = [GPMessage receive:task.id applicationId:self.applicationId clientId:self.growthbeatClient.id credentialId:self.credentialId];
-                    
-                    if (!message)
-                        continue;
-                    
-                    [self.messageQueue enqueue:message];
-                    
+                return;
+            }
+            
+            [self.logger info:[NSString stringWithFormat:@"Task exist %lu fro goalId: %ld", (unsigned long)taskArray.count, (long)event.goalId]];
+            
+            int count = 0;
+            for (GPTask *task in taskArray) {
+                GPMessage *message = [GPMessage receive:task.id applicationId:self.applicationId clientId:self.growthbeatClient.id credentialId:self.credentialId];
+                
+                if (!message || [message isKindOfClass:[GPNoContentMessage class]]) {
+                    [[self logger] info:@"This message no target client."];
+                    continue;
+                }
+                
+                [self.messageQueue enqueue:message];
+                
+                if(messageHandler) {
                     GPShowMessageHandler *handler = [[GPShowMessageHandler alloc] initWithBlock:messageHandler];
                     
                     @synchronized (self.showMessageHandlers)
                     {
                         [self.showMessageHandlers setObject:handler forKey:message.id];
                     }
-                    
-                    count = count + 1;
-                }
-                if (count == 0) {
-                    if (failureHandler) {
-                        failureHandler(@"message not found");
-                    }
-                    return;
                 }
                 
-                [self openMessageIfExists];
+                count = count + 1;
             }
+            if (count == 0) {
+                if (failureHandler) {
+                    failureHandler(@"message not found");
+                }
+                return;
+            }
+            
+            [self openMessageIfExists];
             
         } else {
             if (failureHandler) {

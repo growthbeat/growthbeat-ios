@@ -14,20 +14,24 @@
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[GrowthPush sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo" environment:kGrowthPushEnvironment];
+    [[[GrowthPush sharedInstance] httpClient] setBaseUrl:[NSURL URLWithString:@"https://api.stg.growthpush.com/"]];
+    [[GrowthPush sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"RtYOQo4QaSaFHNYdZSddSeoeEiJ2kboW" environment:kGrowthPushEnvironment];
     [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary *extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
+        if([extra objectForKey:@"type"]) {
+            [[GrowthPush sharedInstance] requestDeviceToken];
+        }
         return YES;
     }]];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
 
-    [[GrowthPush sharedInstance] requestDeviceToken];
     [[GrowthPush sharedInstance] setDeviceTags];
+//    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil messageHandler:^(void(^renderMessage)()){
+//        renderMessage();
+//    } failureHandler:nil];
     
-    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil messageHandler:^(void(^renderMessage)()){
-        renderMessage();
-    } failureHandler:nil];
+    [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
     
     return YES;
 }

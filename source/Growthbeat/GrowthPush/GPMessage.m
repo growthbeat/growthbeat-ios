@@ -12,6 +12,7 @@
 #import "GPPlainMessage.h"
 #import "GPCardMessage.h"
 #import "GPSwipeMessage.h"
+#import "GPNoContentMessage.h"
 
 @implementation GPMessage
 
@@ -61,6 +62,8 @@
 + (instancetype) domainWithDictionary:(NSDictionary *)dictionary {
     
     GPMessage *message = [[self alloc] initWithDictionary:dictionary];
+    if(!message)
+        return [GPNoContentMessage domainWithDictionary:dictionary];
     
     switch (message.type) {
         case GPMessageTypePlain:
@@ -129,6 +132,10 @@
     
     self = [super init];
     if (self) {
+        
+        if (![dictionary objectForKey:@"type"])
+            return nil;
+        
         if ([dictionary objectForKey:@"id"] && [dictionary objectForKey:@"id"] != [NSNull null]) {
             self.id = [dictionary objectForKey:@"id"];
         }
