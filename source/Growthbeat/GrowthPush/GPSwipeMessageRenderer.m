@@ -93,10 +93,11 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-  
+    [self rotateBaseView:baseView];
+    
+    
     CGFloat baseWidth = self.swipeMessage.baseWidth;
     CGFloat baseHeight = self.swipeMessage.baseHeight;
-    
     
     CGFloat rootWidth = baseWidth;
     CGFloat rootHeight = baseHeight + kPagingHeight;
@@ -145,6 +146,37 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         
     }];
     
+}
+
+- (void) rotateBaseView:(UIView *)baseView {
+    
+    switch (swipeMessage.task.orientation) {
+        case GPMessageOrientationVertical:
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationLandscapeLeft:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case GPMessageOrientationHorizontal:
+            
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationPortraitUpsideDown:
+                case UIInterfaceOrientationPortrait:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 - (void) showScrollView:view rect:(CGRect)rect {

@@ -92,6 +92,8 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
+    [self rotateBaseView:baseView];
+    
     CGRect baseRect = CGRectMake((screenWidth - self.cardMessage.baseWidth) / 2, (screenHeight - self.cardMessage.baseHeight) / 2, self.cardMessage.baseWidth, self.cardMessage.baseHeight);
     
     [self cacheImages:^{
@@ -115,6 +117,37 @@ static CGFloat const kCloseButtonSizeMax = 64.f;
         }
     }];
     
+}
+
+- (void) rotateBaseView:(UIView *)baseView {
+    
+    switch (cardMessage.task.orientation) {
+        case GPMessageOrientationVertical:
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationLandscapeLeft:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case GPMessageOrientationHorizontal:
+            
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationPortraitUpsideDown:
+                case UIInterfaceOrientationPortrait:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 - (void) showImageWithView:view rect:(CGRect)rect {
