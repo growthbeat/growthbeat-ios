@@ -58,7 +58,7 @@
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:plainMessage.caption message:plainMessage.text preferredStyle:UIAlertControllerStyleAlert];
             for (int i = 0; i < [plainMessage.buttons count]; i ++) {
                 GPPlainButton *plainButton = (GPPlainButton *)[plainMessage.buttons objectAtIndex:i];
-                UIAlertAction* action = [UIAlertAction actionWithTitle:plainButton.label style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                UIAlertAction* action = [UIAlertAction actionWithTitle:plainButton.label style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                     
                     GPButton *button = [plainMessage.buttons objectAtIndex:(NSInteger)i];
                     [[GrowthPush sharedInstance] selectButton:button message:plainMessage];
@@ -69,7 +69,6 @@
                     
                 }];
                 [alertController addAction: action];
-                
             }
             
             self.alertWindow = [[UIWindow alloc] initWithFrame:[[[[UIApplication sharedApplication] delegate] window] bounds]];

@@ -17,6 +17,7 @@
 
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGPCloseButtonPadding = 8;
+static NSInteger const kGPBackgroundTagId = 9999;
 
 @interface GPCardMessageRenderer () {
     
@@ -61,12 +62,14 @@ static NSInteger const kGPCloseButtonPadding = 8;
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
         backgroundView.backgroundColor = [GBViewUtils hexToUIColor: [NSString stringWithFormat:@"%lX",(long)self.cardMessage.background.color] alpha:self.cardMessage.background.opacity];
+        backgroundView.tag = kGPBackgroundTagId;
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(backgroundTouched:)];
-        singleFingerTap.cancelsTouchesInView = NO;
-        singleFingerTap.delegate = self;
+        singleFingerTap.numberOfTapsRequired = 1;
+        singleFingerTap.numberOfTouchesRequired = 1;
+        backgroundView.userInteractionEnabled = true;
         [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
@@ -298,9 +301,9 @@ static NSInteger const kGPCloseButtonPadding = 8;
 }
 
 - (void)backgroundTouched:(UITapGestureRecognizer *)recognizer {
-    if (!cardMessage.background.outsideClose) {
+    if (!cardMessage.background.outsideClose && recognizer.view.tag != kGPBackgroundTagId)
         return;
-    }
+    
     [self.backgroundView removeFromSuperview];
     self.backgroundView = nil;
     self.boundButtons = nil;

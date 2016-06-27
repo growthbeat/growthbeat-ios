@@ -17,6 +17,7 @@
 static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGPCloseButtonPadding = 8;
 static CGFloat const kPagingHeight = 16.f;
+static NSInteger const kGPBackgroundTagId = 9999;
 
 @interface GPSwipeMessageRenderer () {
     
@@ -63,12 +64,14 @@ static CGFloat const kPagingHeight = 16.f;
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
         backgroundView.backgroundColor = [GBViewUtils hexToUIColor:[NSString stringWithFormat:@"%ld",(long) self.swipeMessage.background.color] alpha:self.swipeMessage.background.opacity];
+        backgroundView.tag = kGPBackgroundTagId;
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(backgroundTouched:)];
-        singleFingerTap.cancelsTouchesInView = NO;
-        singleFingerTap.delegate = self;
+        singleFingerTap.numberOfTapsRequired = 1;
+        singleFingerTap.numberOfTouchesRequired = 1;
+        backgroundView.userInteractionEnabled = true;
         [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
@@ -354,9 +357,9 @@ static CGFloat const kPagingHeight = 16.f;
 }
 
 - (void)backgroundTouched:(UITapGestureRecognizer *)recognizer {
-    if (!swipeMessage.background.outsideClose) {
+    if (!swipeMessage.background.outsideClose && recognizer.view.tag != kGPBackgroundTagId)
         return;
-    }
+    
     [self.backgroundView removeFromSuperview];
     self.backgroundView = nil;
     self.boundButtons = nil;
