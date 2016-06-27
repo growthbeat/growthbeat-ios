@@ -21,7 +21,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 @interface Growthbeat () {
 
     GBClient *client;
-    GPClient *gpClient;
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
@@ -30,7 +29,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 }
 
 @property (nonatomic, strong) GBClient *client;
-@property (nonatomic, strong) GPClient *gpClient;
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
@@ -41,13 +39,13 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 @implementation Growthbeat
 
 @synthesize client;
-@synthesize gpClient;
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
 @synthesize initialized;
 
 @synthesize intentHandlers;
+@synthesize gpClient;
 
 + (Growthbeat *) sharedInstance {
     @synchronized(self) {
@@ -100,7 +98,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
         if (existingGpClient) {
-            existingGpClient = [GPClient findWithGPClientId:gpClient.id code:gpClient.code];
+            existingGpClient = [GPClient findWithGPClientId:existingGpClient.id code:existingGpClient.code];
             [self.logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", existingGpClient.id, existingGpClient.growthbeatClientId];
 
             existingClient = [GBClient findWithId:existingGpClient.growthbeatClientId credentialId:credentialId];
@@ -144,10 +142,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
         usleep(100 * 1000);
     }
 
-}
-
-- (GPClient *) gpClient {
-    return self.gpClient;
 }
 
 - (BOOL) handleIntent:(GBIntent *)intent {

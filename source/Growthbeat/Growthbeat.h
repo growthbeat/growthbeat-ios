@@ -21,9 +21,12 @@
 @interface Growthbeat : NSObject {
 
     NSMutableArray *intentHandlers;
+    GPClient *gpClient;
+
 }
 
 @property (nonatomic, strong) NSArray *intentHandlers;
+@property (nonatomic, strong) GPClient *gpClient;
 
 + (Growthbeat *)sharedInstance;
 
