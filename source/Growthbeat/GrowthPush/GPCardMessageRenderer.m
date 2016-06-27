@@ -16,6 +16,7 @@
 #import "GPShowMessageHandler.h"
 
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
+static NSInteger const kGPCloseButtonPadding = 8;
 
 @interface GPCardMessageRenderer () {
     
@@ -45,7 +46,6 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
         self.cardMessage = newCardMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
-        
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -62,12 +62,12 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
         backgroundView.backgroundColor = [GBViewUtils hexToUIColor: [NSString stringWithFormat:@"%lX",(long)self.cardMessage.background.color] alpha:self.cardMessage.background.opacity];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        UITapGestureRecognizer *singleFingerTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(backgroundTouched:)];
-        singleFingerTap.cancelsTouchesInView = NO;
-        singleFingerTap.delegate = self;
-        [backgroundView addGestureRecognizer:singleFingerTap];
+//        UITapGestureRecognizer *singleFingerTap =
+//        [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                action:@selector(backgroundTouched:)];
+//        singleFingerTap.cancelsTouchesInView = NO;
+//        singleFingerTap.delegate = self;
+//        [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
     
@@ -208,8 +208,8 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     
     CGFloat width = closeButton.baseWidth;
     CGFloat height = closeButton.baseHeight;
-    CGFloat left = rect.origin.x + rect.size.width - width - 8;
-    CGFloat top = rect.origin.y + 8;
+    CGFloat left = rect.origin.x + rect.size.width - width - kGPCloseButtonPadding;
+    CGFloat top = rect.origin.y + kGPCloseButtonPadding;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:closeButton.picture.url]] forState:UIControlStateNormal];

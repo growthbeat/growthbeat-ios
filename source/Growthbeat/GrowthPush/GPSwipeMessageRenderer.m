@@ -15,6 +15,7 @@
 
 
 static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
+static NSInteger const kGPCloseButtonPadding = 8;
 static CGFloat const kPagingHeight = 16.f;
 
 @interface GPSwipeMessageRenderer () {
@@ -63,12 +64,12 @@ static CGFloat const kPagingHeight = 16.f;
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
         backgroundView.backgroundColor = [GBViewUtils hexToUIColor:[NSString stringWithFormat:@"%ld",(long) self.swipeMessage.background.color] alpha:self.swipeMessage.background.opacity];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        UITapGestureRecognizer *singleFingerTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(backgroundTouched:)];
-        singleFingerTap.cancelsTouchesInView = NO;
-        singleFingerTap.delegate = self;
-        [backgroundView addGestureRecognizer:singleFingerTap];
+//        UITapGestureRecognizer *singleFingerTap =
+//        [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                action:@selector(backgroundTouched:)];
+//        singleFingerTap.cancelsTouchesInView = NO;
+//        singleFingerTap.delegate = self;
+//        [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
     
@@ -250,8 +251,8 @@ static CGFloat const kPagingHeight = 16.f;
     
     CGFloat width = closeButton.baseWidth;
     CGFloat height = closeButton.baseHeight;
-    CGFloat left = rect.origin.x + rect.size.width - width - 8;
-    CGFloat top = rect.origin.y + 8;
+    CGFloat left = rect.origin.x + rect.size.width - width - kGPCloseButtonPadding;
+    CGFloat top = rect.origin.y + kGPCloseButtonPadding;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[cachedImages objectForKey:[GBViewUtils addDensityByPictureUrl:closeButton.picture.url]] forState:UIControlStateNormal];
     button.contentMode = UIViewContentModeScaleAspectFit;
