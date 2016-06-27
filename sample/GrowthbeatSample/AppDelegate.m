@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "GBPreference.h"
-#import "GPClient.h"
 
 @implementation AppDelegate
 

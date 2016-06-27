@@ -12,8 +12,9 @@
 
 @interface GPClient : GBDomain <NSCoding> {
 
-    NSString *id;
-    NSString *applicationId;
+    long long id;
+    NSInteger applicationId;
+    NSString *code;
     NSString *token;
     GPOS os;
     GPEnvironment environment;
@@ -21,14 +22,18 @@
 
 }
 
-@property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSString *applicationId;
-@property (nonatomic, strong) NSString *token;
+@property (nonatomic, assign) long long id;
+@property (nonatomic, assign) NSInteger applicationId;
+@property (nonatomic, retain) NSString *code;
+@property (nonatomic, retain) NSString *growthbeatClientId;
+@property (nonatomic, retain) NSString *growthbeatApplicationId;
+@property (nonatomic, retain) NSString *token;
 @property (nonatomic, assign) GPOS os;
 @property (nonatomic, assign) GPEnvironment environment;
-@property (nonatomic, strong) NSDate *created;
+@property (nonatomic, retain) NSDate *created;
 
-+ (GPClient *)createWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
-+ (GPClient *)updateWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
++ (GPClient *) load;
++ (void) removePreference;
++ (GPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GrowthPush.h"
-#import "GPClient.h"
+#import "GPClientV4.h"
 #import "GPTag.h"
 #import "GPEvent.h"
 #import "GPTask.h"
@@ -41,7 +41,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     GPEnvironment environment;
     NSString *token;
     GBClient *growthbeatClient;
-    GPClient *client;
+    GPClientV4 *client;
     BOOL registeringClient;
     BOOL showingMessage;
     
@@ -57,7 +57,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @property (nonatomic, assign) GPEnvironment environment;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) GBClient *growthbeatClient;
-@property (nonatomic, strong) GPClient *client;
+@property (nonatomic, strong) GPClientV4 *client;
 @property (nonatomic, assign) BOOL registeringClient;
 @property (nonatomic, assign) BOOL showingMessage;
 @property (nonatomic, strong) NSMutableDictionary *showMessageHandlers;
@@ -225,7 +225,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *createdClient = [GPClient createWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
+            GPClientV4 *createdClient = [GPClientV4 createWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
             if (createdClient) {
                 [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
                 self.client = createdClient;
@@ -247,7 +247,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
             [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClient *updatedClient = [GPClient updateWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
+            GPClientV4 *updatedClient = [GPClientV4 updateWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
             if (updatedClient) {
                 [self.logger info:@"Update client success. (clientId: %@)", updatedClient.id];
                 self.client = updatedClient;
@@ -266,13 +266,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
-- (GPClient *) loadClient {
+- (GPClientV4 *) loadClient {
 
     return [self.preference objectForKey:kGPPreferenceClientKey];
 
 }
 
-- (void) saveClient:(GPClient *)newClient {
+- (void) saveClient:(GPClientV4 *)newClient {
 
     [self.preference setObject:newClient forKey:kGPPreferenceClientKey];
 
@@ -515,7 +515,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     [self setTag:GPTagTypeCustom name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
 }
 
-- (GPClient *) waitClient {
+- (GPClientV4 *) waitClient {
 
     while (true) {
         if (self.client != nil) {

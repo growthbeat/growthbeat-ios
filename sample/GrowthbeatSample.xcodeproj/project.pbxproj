@@ -16,7 +16,6 @@
 		17BA63041D1FF7F400BBFE69 /* GBDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62831D1FF7F400BBFE69 /* GBDateUtils.m */; };
 		17BA63051D1FF7F400BBFE69 /* GBDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62851D1FF7F400BBFE69 /* GBDeviceUtils.m */; };
 		17BA63061D1FF7F400BBFE69 /* GBDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62871D1FF7F400BBFE69 /* GBDomain.m */; };
-		17BA63071D1FF7F400BBFE69 /* GBGPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62891D1FF7F400BBFE69 /* GBGPClient.m */; };
 		17BA63081D1FF7F400BBFE69 /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA628B1D1FF7F400BBFE69 /* GBHttpClient.m */; };
 		17BA63091D1FF7F400BBFE69 /* GBHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA628D1D1FF7F400BBFE69 /* GBHttpRequest.m */; };
 		17BA630A1D1FF7F400BBFE69 /* GBHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA628F1D1FF7F400BBFE69 /* GBHttpResponse.m */; };
@@ -45,7 +44,7 @@
 		17BA63211D1FF7F400BBFE69 /* GPCardMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62C11D1FF7F400BBFE69 /* GPCardMessage.m */; };
 		17BA63221D1FF7F400BBFE69 /* GPCardMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62C31D1FF7F400BBFE69 /* GPCardMessageHandler.m */; };
 		17BA63231D1FF7F400BBFE69 /* GPCardMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62C51D1FF7F400BBFE69 /* GPCardMessageRenderer.m */; };
-		17BA63241D1FF7F400BBFE69 /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62C71D1FF7F400BBFE69 /* GPClient.m */; };
+		17BA63241D1FF7F400BBFE69 /* GPClientV4.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62C71D1FF7F400BBFE69 /* GPClientV4.m */; };
 		17BA63251D1FF7F400BBFE69 /* GPCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62C91D1FF7F400BBFE69 /* GPCloseButton.m */; };
 		17BA63261D1FF7F400BBFE69 /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62CB1D1FF7F400BBFE69 /* GPEnvironmentUtils.m */; };
 		17BA63271D1FF7F400BBFE69 /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62CD1D1FF7F400BBFE69 /* GPEvent.m */; };
@@ -84,6 +83,7 @@
 		B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25341811997B301004C8EDB /* SystemConfiguration.framework */; };
 		C15C2DD81CFBE263006E48D7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15C2DD71CFBE263006E48D7 /* AdSupport.framework */; };
 		C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC842E1BDE06BA00626543 /* SafariServices.framework */; };
+		F81D87671D210321007910A2 /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D87661D210321007910A2 /* GPClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,8 +106,6 @@
 		17BA62851D1FF7F400BBFE69 /* GBDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDeviceUtils.m; path = ../source/Growthbeat/GBDeviceUtils.m; sourceTree = "<group>"; };
 		17BA62861D1FF7F400BBFE69 /* GBDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDomain.h; path = ../source/Growthbeat/GBDomain.h; sourceTree = "<group>"; };
 		17BA62871D1FF7F400BBFE69 /* GBDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDomain.m; path = ../source/Growthbeat/GBDomain.m; sourceTree = "<group>"; };
-		17BA62881D1FF7F400BBFE69 /* GBGPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBGPClient.h; path = ../source/Growthbeat/GBGPClient.h; sourceTree = "<group>"; };
-		17BA62891D1FF7F400BBFE69 /* GBGPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBGPClient.m; path = ../source/Growthbeat/GBGPClient.m; sourceTree = "<group>"; };
 		17BA628A1D1FF7F400BBFE69 /* GBHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpClient.h; path = ../source/Growthbeat/GBHttpClient.h; sourceTree = "<group>"; };
 		17BA628B1D1FF7F400BBFE69 /* GBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpClient.m; path = ../source/Growthbeat/GBHttpClient.m; sourceTree = "<group>"; };
 		17BA628C1D1FF7F400BBFE69 /* GBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpRequest.h; path = ../source/Growthbeat/GBHttpRequest.h; sourceTree = "<group>"; };
@@ -166,8 +164,8 @@
 		17BA62C31D1FF7F400BBFE69 /* GPCardMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessageHandler.m; sourceTree = "<group>"; };
 		17BA62C41D1FF7F400BBFE69 /* GPCardMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCardMessageRenderer.h; sourceTree = "<group>"; };
 		17BA62C51D1FF7F400BBFE69 /* GPCardMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessageRenderer.m; sourceTree = "<group>"; };
-		17BA62C61D1FF7F400BBFE69 /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPClient.h; sourceTree = "<group>"; };
-		17BA62C71D1FF7F400BBFE69 /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
+		17BA62C61D1FF7F400BBFE69 /* GPClientV4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPClientV4.h; sourceTree = "<group>"; };
+		17BA62C71D1FF7F400BBFE69 /* GPClientV4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClientV4.m; sourceTree = "<group>"; };
 		17BA62C81D1FF7F400BBFE69 /* GPCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCloseButton.h; sourceTree = "<group>"; };
 		17BA62C91D1FF7F400BBFE69 /* GPCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCloseButton.m; sourceTree = "<group>"; };
 		17BA62CA1D1FF7F400BBFE69 /* GPEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEnvironment.h; sourceTree = "<group>"; };
@@ -240,6 +238,8 @@
 		B25341811997B301004C8EDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C15C2DD71CFBE263006E48D7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C1FC842E1BDE06BA00626543 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		F81D87651D210321007910A2 /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPClient.h; sourceTree = "<group>"; };
+		F81D87661D210321007910A2 /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,8 +281,6 @@
 				17BA62851D1FF7F400BBFE69 /* GBDeviceUtils.m */,
 				17BA62861D1FF7F400BBFE69 /* GBDomain.h */,
 				17BA62871D1FF7F400BBFE69 /* GBDomain.m */,
-				17BA62881D1FF7F400BBFE69 /* GBGPClient.h */,
-				17BA62891D1FF7F400BBFE69 /* GBGPClient.m */,
 				17BA628A1D1FF7F400BBFE69 /* GBHttpClient.h */,
 				17BA628B1D1FF7F400BBFE69 /* GBHttpClient.m */,
 				17BA628C1D1FF7F400BBFE69 /* GBHttpRequest.h */,
@@ -358,8 +356,8 @@
 				17BA62C31D1FF7F400BBFE69 /* GPCardMessageHandler.m */,
 				17BA62C41D1FF7F400BBFE69 /* GPCardMessageRenderer.h */,
 				17BA62C51D1FF7F400BBFE69 /* GPCardMessageRenderer.m */,
-				17BA62C61D1FF7F400BBFE69 /* GPClient.h */,
-				17BA62C71D1FF7F400BBFE69 /* GPClient.m */,
+				17BA62C61D1FF7F400BBFE69 /* GPClientV4.h */,
+				17BA62C71D1FF7F400BBFE69 /* GPClientV4.m */,
 				17BA62C81D1FF7F400BBFE69 /* GPCloseButton.h */,
 				17BA62C91D1FF7F400BBFE69 /* GPCloseButton.m */,
 				17BA62CA1D1FF7F400BBFE69 /* GPEnvironment.h */,
@@ -414,6 +412,8 @@
 				17BA62FB1D1FF7F400BBFE69 /* GPTask.m */,
 				17BA62FC1D1FF7F400BBFE69 /* GrowthPush.h */,
 				17BA62FD1D1FF7F400BBFE69 /* GrowthPush.m */,
+				F81D87651D210321007910A2 /* GPClient.h */,
+				F81D87661D210321007910A2 /* GPClient.m */,
 			);
 			name = GrowthPush;
 			path = ../source/Growthbeat/GrowthPush;
@@ -585,7 +585,7 @@
 				17BA63291D1FF7F400BBFE69 /* GPImageButton.m in Sources */,
 				17BA63391D1FF7F400BBFE69 /* GPSwipeMessageRenderer.m in Sources */,
 				B2421EEA1997952D00E91C23 /* main.m in Sources */,
-				17BA63071D1FF7F400BBFE69 /* GBGPClient.m in Sources */,
+				F81D87671D210321007910A2 /* GPClient.m in Sources */,
 				17BA63091D1FF7F400BBFE69 /* GBHttpRequest.m in Sources */,
 				17BA63031D1FF7F400BBFE69 /* GBCustomIntentHandler.m in Sources */,
 				17BA63221D1FF7F400BBFE69 /* GPCardMessageHandler.m in Sources */,
@@ -611,7 +611,7 @@
 				17BA633A1D1FF7F400BBFE69 /* GPSwipeMessageType.m in Sources */,
 				17BA63131D1FF7F400BBFE69 /* GBRequestMethod.m in Sources */,
 				17BA63361D1FF7F400BBFE69 /* GPSwipeImages.m in Sources */,
-				17BA63241D1FF7F400BBFE69 /* GPClient.m in Sources */,
+				17BA63241D1FF7F400BBFE69 /* GPClientV4.m in Sources */,
 				17BA63301D1FF7F400BBFE69 /* GPPicture.m in Sources */,
 				17BA63181D1FF7F400BBFE69 /* GLClick.m in Sources */,
 				17BA63251D1FF7F400BBFE69 /* GPCloseButton.m in Sources */,
