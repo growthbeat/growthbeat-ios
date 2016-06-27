@@ -143,6 +143,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
         [self setAdvertisingId];
         [self setTrackingEnabled];
+        [self setDeviceTags];
         [self trackEvent:@"Install" value:nil messageHandler:nil failureHandler:nil];
     });
 

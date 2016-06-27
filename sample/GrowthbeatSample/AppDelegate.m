@@ -25,7 +25,6 @@
     }]];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
 
-    [[GrowthPush sharedInstance] setDeviceTags];
     [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil messageHandler:^(void(^renderMessage)()){
         renderMessage();
     } failureHandler:nil];
