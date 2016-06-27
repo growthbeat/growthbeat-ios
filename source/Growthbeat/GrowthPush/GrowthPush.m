@@ -39,7 +39,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @interface GrowthPush () {
 
     GPEnvironment environment;
-    NSString *token;
     GBClient *growthbeatClient;
     GPClientV4 *client;
     BOOL registeringClient;
@@ -55,7 +54,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 @property (nonatomic, assign) GPEnvironment environment;
-@property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) GBClient *growthbeatClient;
 @property (nonatomic, strong) GPClientV4 *client;
 @property (nonatomic, assign) BOOL registeringClient;
@@ -75,7 +73,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize messageHandlers;
 
 @synthesize environment;
-@synthesize token;
 @synthesize growthbeatClient;
 @synthesize client;
 @synthesize registeringClient;
@@ -141,7 +138,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
-        [self registerClient];
+        [self registerClient:nil];
         [self waitClient];
 
         [self setAdvertisingId];
@@ -163,8 +160,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     [[UIApplication sharedApplication] registerUserNotificationSettings:userNotificationSettings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
-    [self registerClient];
-
 }
 
 - (BOOL) enableNotification {
@@ -177,11 +172,12 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) setDeviceToken:(id)newDeviceToken {
-
+    
+    NSString __block *token = nil;
     if ([newDeviceToken isKindOfClass:[NSString class]])
-        self.token = newDeviceToken;
+        token = newDeviceToken;
     else
-        self.token = [self convertToHexToken:newDeviceToken];
+        token = [self convertToHexToken:newDeviceToken];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
@@ -192,7 +188,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             [self clearClient];
         }
         
-        [self registerClient];
+        [self registerClient:token];
     });
 
 }
@@ -203,7 +199,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
-- (void) registerClient {
+- (void) registerClient:(NSString *)token {
 
 
     if (self.environment == GPEnvironmentUnknown) {
@@ -213,23 +209,23 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
     if (self.registeringClient) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
-            [self registerClient];
+            [self registerClient:token];
         });
         return;
     }
     self.registeringClient = YES;
     
     
-    if (self.client && (![self.token isEqualToString:self.client.token] || self.environment != self.client.environment)) {
+    if (self.client && ((token && ![token isEqualToString:self.client.token]) || self.environment != self.client.environment)) {
         
-        [self updateClient:self.token environment:self.environment];
+        [self updateClient:token environment:self.environment];
         
         return;
         
     }
     
     GPClient *gbgpClient = [GPClient loadGBGPClient];
-    if (gbgpClient && (!self.client || ![self.client.token isEqualToString:gbgpClient.token] || self.client.environment != gbgpClient.environment)) {
+    if (gbgpClient && (!self.client || !self.client.token || ![self.client.token isEqualToString:gbgpClient.token] || self.client.environment != gbgpClient.environment)) {
         
         [self updateClient:gbgpClient.token environment:gbgpClient.environment];
         [GPClient removeGBGPClientPreference];
@@ -239,7 +235,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
     
     GPClient *gpClient = [[Growthbeat sharedInstance] gpClient];
-    if (gpClient && (!self.client || ![self.client.token isEqualToString:gpClient.token] || self.client.environment != gpClient.environment)) {
+    if (gpClient && (!self.client || !self.client.token || ![self.client.token isEqualToString:gpClient.token] || self.client.environment != gpClient.environment)) {
         
         [self updateClient:gpClient.token environment:gpClient.environment];
         
@@ -251,9 +247,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-            [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, self.token, NSStringFromGPEnvironment(self.environment)];
+            [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClientV4 *createdClient = [GPClientV4 createWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:self.token environment:self.environment];
+            GPClientV4 *createdClient = [GPClientV4 createWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
             if (createdClient) {
                 [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
                 self.client = createdClient;
