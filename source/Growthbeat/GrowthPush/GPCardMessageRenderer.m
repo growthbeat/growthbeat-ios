@@ -62,12 +62,12 @@ static NSInteger const kGPCloseButtonPadding = 8;
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
         backgroundView.backgroundColor = [GBViewUtils hexToUIColor: [NSString stringWithFormat:@"%lX",(long)self.cardMessage.background.color] alpha:self.cardMessage.background.opacity];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//        UITapGestureRecognizer *singleFingerTap =
-//        [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                                action:@selector(backgroundTouched:)];
-//        singleFingerTap.cancelsTouchesInView = NO;
-//        singleFingerTap.delegate = self;
-//        [backgroundView addGestureRecognizer:singleFingerTap];
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(backgroundTouched:)];
+        singleFingerTap.cancelsTouchesInView = NO;
+        singleFingerTap.delegate = self;
+        [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
     
@@ -84,7 +84,6 @@ static NSInteger const kGPCloseButtonPadding = 8;
     CGFloat screenHeight = window.frame.size.height;
     NSInteger width = cardMessage.task.orientation == GPMessageOrientationVertical ? self.cardMessage.baseWidth : self.cardMessage.baseHeight;
     NSInteger height = cardMessage.task.orientation == GPMessageOrientationVertical ? self.cardMessage.baseHeight : self.cardMessage.baseWidth;
-    [self rotateBaseView:baseView];
     
     CGRect baseRect = CGRectMake((screenWidth - width) / 2, (screenHeight - height) / 2, width, height);
     
@@ -107,37 +106,6 @@ static NSInteger const kGPCloseButtonPadding = 8;
         }
     }];
     
-}
-
-- (void) rotateBaseView:(UIView *)baseView {
-    
-    switch (cardMessage.task.orientation) {
-        case GPMessageOrientationVertical:
-            switch ([UIApplication sharedApplication].statusBarOrientation) {
-                case UIDeviceOrientationLandscapeLeft:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
-                    break;
-                case UIDeviceOrientationLandscapeRight:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case GPMessageOrientationHorizontal:
-            
-            switch ([UIApplication sharedApplication].statusBarOrientation) {
-                case UIDeviceOrientationPortraitUpsideDown:
-                case UIInterfaceOrientationPortrait:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
-    }
 }
 
 - (void) showImageWithView:view rect:(CGRect)rect {

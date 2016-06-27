@@ -64,12 +64,12 @@ static CGFloat const kPagingHeight = 16.f;
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
         backgroundView.backgroundColor = [GBViewUtils hexToUIColor:[NSString stringWithFormat:@"%ld",(long) self.swipeMessage.background.color] alpha:self.swipeMessage.background.opacity];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//        UITapGestureRecognizer *singleFingerTap =
-//        [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                                action:@selector(backgroundTouched:)];
-//        singleFingerTap.cancelsTouchesInView = NO;
-//        singleFingerTap.delegate = self;
-//        [backgroundView addGestureRecognizer:singleFingerTap];
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(backgroundTouched:)];
+        singleFingerTap.cancelsTouchesInView = NO;
+        singleFingerTap.delegate = self;
+        [backgroundView addGestureRecognizer:singleFingerTap];
         [window addSubview:backgroundView];
     }
     
@@ -84,8 +84,6 @@ static CGFloat const kPagingHeight = 16.f;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    [self rotateBaseView:baseView];
-    
     CGFloat baseWidth = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
     CGFloat baseHeight = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseHeight : self.swipeMessage.baseWidth;
     
@@ -102,7 +100,6 @@ static CGFloat const kPagingHeight = 16.f;
     CGRect baseRect = CGRectMake((screenWidth - rootWidth) / 2, (screenHeight - rootHeight) / 2, rootWidth, rootHeight);
     [self showScrollView:baseView rect:baseRect];
     [self showPageControlWithView:baseView rect:baseRect];
-    
     
     [self cacheImages:^{
         
@@ -133,37 +130,6 @@ static CGFloat const kPagingHeight = 16.f;
         
     }];
     
-}
-
-- (void) rotateBaseView:(UIView *)baseView {
-    
-    switch (swipeMessage.task.orientation) {
-        case GPMessageOrientationVertical:
-            switch ([UIApplication sharedApplication].statusBarOrientation) {
-                case UIDeviceOrientationLandscapeLeft:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
-                    break;
-                case UIDeviceOrientationLandscapeRight:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case GPMessageOrientationHorizontal:
-            
-            switch ([UIApplication sharedApplication].statusBarOrientation) {
-                case UIDeviceOrientationPortraitUpsideDown:
-                case UIInterfaceOrientationPortrait:
-                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
-    }
 }
 
 - (void) showScrollView:view rect:(CGRect)rect {
