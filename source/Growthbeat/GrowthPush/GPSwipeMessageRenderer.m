@@ -22,14 +22,12 @@ static CGFloat const kPagingHeight = 16.f;
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
-    UIActivityIndicatorView *activityIndicatorView;
     
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
 @property (nonatomic, strong) NSMutableDictionary *cachedImages;
 @property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -40,7 +38,6 @@ static CGFloat const kPagingHeight = 16.f;
 @synthesize boundButtons;
 @synthesize cachedImages;
 @synthesize backgroundView;
-@synthesize activityIndicatorView;
 @synthesize scrollView;
 @synthesize pageControl;
 
@@ -78,22 +75,15 @@ static CGFloat const kPagingHeight = 16.f;
     for (UIView *subview in backgroundView.subviews) {
         [subview removeFromSuperview];
     }
+    
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
     baseView.tag = 1;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [backgroundView addSubview:baseView];
     
-    
-    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    activityIndicatorView.frame = baseView.frame;
-    activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
-    [activityIndicatorView startAnimating];
-    [baseView addSubview:activityIndicatorView];
-    
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
     [self rotateBaseView:baseView];
-    
     
     CGFloat baseWidth = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
     CGFloat baseHeight = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseHeight : self.swipeMessage.baseWidth;
@@ -129,8 +119,6 @@ static CGFloat const kPagingHeight = 16.f;
                     break;
             }
             [self showCloseButtonWithView:baseView rect:baseRect];
-            
-            self.activityIndicatorView.hidden = YES;
         };
         
         GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:swipeMessage.id];

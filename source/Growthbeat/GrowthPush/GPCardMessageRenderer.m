@@ -22,14 +22,12 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
-    UIActivityIndicatorView *activityIndicatorView;
     
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
 @property (nonatomic, strong) NSMutableDictionary *cachedImages;
 @property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -40,7 +38,6 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
 @synthesize boundButtons;
 @synthesize cachedImages;
 @synthesize backgroundView;
-@synthesize activityIndicatorView;
 
 - (instancetype) initWithCardMessage:(GPCardMessage *)newCardMessage {
     self = [super init];
@@ -83,12 +80,6 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [backgroundView addSubview:baseView];
     
-    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    activityIndicatorView.frame = baseView.frame;
-    activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
-    [activityIndicatorView startAnimating];
-    [baseView addSubview:activityIndicatorView];
-    
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
     NSInteger width = cardMessage.task.orientation == GPMessageOrientationVertical ? self.cardMessage.baseWidth : self.cardMessage.baseHeight;
@@ -104,8 +95,6 @@ static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
             [self showScreenButtonWithView:baseView rect:baseRect];
             [self showImageButtonsWithView:baseView rect:baseRect];
             [self showCloseButtonWithView:baseView rect:baseRect];
-            
-            self.activityIndicatorView.hidden = YES;
         };
         
         GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:cardMessage.id];

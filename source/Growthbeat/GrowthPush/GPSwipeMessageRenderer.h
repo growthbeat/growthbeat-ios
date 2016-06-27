@@ -15,7 +15,6 @@
     GPSwipeMessage *swipeMessage;
     UIScrollView *scrollView;
     UIPageControl *pageControl;
-    __weak id <GPMessageRendererDelegate> delegate;
     
 }
 
