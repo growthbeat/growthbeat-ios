@@ -22,13 +22,22 @@
 @synthesize environment;
 @synthesize created;
 
-static NSString *const kGBGPPreferenceClientKey = @"client";
+static NSString *const kGPPreferenceClientKey = @"client";
+static NSString *const kGBGPPreferenceClientKey = @"growthpush-client";
 
-+ (GPClient *) load {
++ (GPClient *) loadGPClient {
+    return [[[GrowthPush sharedInstance] preference] objectForKey:kGPPreferenceClientKey];
+}
+
++ (GPClient *) loadGBGPClient {
     return [[[GrowthPush sharedInstance] preference] objectForKey:kGBGPPreferenceClientKey];
 }
 
-+ (void) removePreference {
++ (void) removeGPClientPreference {
+    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGPPreferenceClientKey];
+}
+
++ (void) removeGBGPClientPreference {
     [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceClientKey];
 }
 

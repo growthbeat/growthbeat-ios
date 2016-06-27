@@ -26,7 +26,7 @@ static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthpush.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthpush-preferences";
-static NSString *const kGPPreferenceClientKey = @"growthpush-client";
+static NSString *const kGPPreferenceClientV4Key = @"growthpush-client-v4";
 static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 static const NSTimeInterval kMinWaitingTimeForOverrideMessage = 30.0f;
 static const char * const kInternalQueueName = "com.growthpush.Queue";
@@ -219,8 +219,35 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
     self.registeringClient = YES;
     
+    
+    if (self.client && (![self.token isEqualToString:self.client.token] || self.environment != self.client.environment)) {
+        
+        [self updateClient:self.token environment:self.environment];
+        
+        return;
+        
+    }
+    
+    GPClient *gbgpClient = [GPClient loadGBGPClient];
+    if (gbgpClient && (!self.client || ![self.client.token isEqualToString:gbgpClient.token] || self.client.environment != gbgpClient.environment)) {
+        
+        [self updateClient:gbgpClient.token environment:gbgpClient.environment];
+        [GPClient removeGBGPClientPreference];
+        
+        return;
+        
+    }
+    
     GPClient *gpClient = [[Growthbeat sharedInstance] gpClient];
-    if (!gpClient && !self.client) {
+    if (gpClient && (!self.client || ![self.client.token isEqualToString:gpClient.token] || self.client.environment != gpClient.environment)) {
+        
+        [self updateClient:gpClient.token environment:gpClient.environment];
+        
+        return;
+        
+    }
+    
+    if (!self.client) {
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
@@ -237,21 +264,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
         });
 
-        return;
-
-    }
-
-    if (!self.client || ![self.client.token isEqualToString:gpClient.token] || self.client.environment != gpClient.environment) {
-        
-        [self updateClient:gpClient.token environment:gpClient.environment];
-        
-        return;
-        
-    } else if ((self.token != self.client.token &&
-        ![self.token isEqualToString:self.client.token]) || self.environment != self.client.environment) {
-
-        [self updateClient:self.token environment:self.environment];
-        
         return;
 
     }
@@ -281,13 +293,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (GPClientV4 *) loadClient {
 
-    return [self.preference objectForKey:kGPPreferenceClientKey];
+    return [self.preference objectForKey:kGPPreferenceClientV4Key];
 
 }
 
 - (void) saveClient:(GPClientV4 *)newClient {
 
-    [self.preference setObject:newClient forKey:kGPPreferenceClientKey];
+    [self.preference setObject:newClient forKey:kGPPreferenceClientV4Key];
 
 }
 

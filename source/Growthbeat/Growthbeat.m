@@ -82,7 +82,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
-    GPClient __block *existingGpClient = [GPClient load];
+    GPClient __block *existingGpClient = [GPClient loadGPClient];
     GBClient __block *existingClient = [GBClient load];
     
     if (!existingGpClient) {
@@ -104,14 +104,14 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
             existingClient = [GBClient findWithId:existingGpClient.growthbeatClientId credentialId:credentialId];
             if (!existingClient && ![existingClient.application.id isEqualToString:applicationId]) {
                 [self.logger error:@"Failed to convert client."];
-                [GPClient removePreference];
+                [GPClient removeGPClientPreference];
                 return;
             }
 
             self.client = existingClient;
             self.gpClient = existingGpClient;
             [GBClient save:existingClient];
-            [GPClient removePreference];
+            [GPClient removeGPClientPreference];
             [self.logger info:@"Client converted. (id:%@)", existingClient.id];
 
         } else {
