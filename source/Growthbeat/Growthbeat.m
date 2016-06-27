@@ -11,7 +11,6 @@
 #import "GBUrlIntentHandler.h"
 #import "GBNoopIntentHandler.h"
 #import "GBCustomIntentHandler.h"
-#import "GBGPClient.h"
 
 static Growthbeat *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthbeatCore";
@@ -46,6 +45,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 @synthesize initialized;
 
 @synthesize intentHandlers;
+@synthesize gpClient;
 
 + (Growthbeat *) sharedInstance {
     @synchronized(self) {
@@ -63,6 +63,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     self = [super init];
     if (self) {
         self.client = nil;
+        self.gpClient = nil;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
@@ -81,54 +82,50 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
-    GBGPClient __block *gpClient = [GBGPClient load];
-    self.client = [GBClient load];
-
-    if (gpClient) {
-        if (self.client && [self.client.id isEqualToString:gpClient.growthbeatClientId] &&
-            [self.client.application.id isEqualToString:gpClient.growthbeatApplicationId] &&
-            [gpClient.growthbeatApplicationId isEqualToString:applicationId]) {
-            [self.logger info:@"Client already exists. (id:%@)", self.client.id];
-            return;
-        }
-    } else {
-        if (self.client && [self.client.application.id isEqualToString:applicationId]) {
-            [self.logger info:@"Client already exists. (id:%@)", self.client.id];
+    GPClient __block *existingGpClient = [GPClient loadGPClient];
+    GBClient __block *existingClient = [GBClient load];
+    
+    if (!existingGpClient) {
+        if (existingClient && [existingClient.application.id isEqualToString:applicationId]) {
+            [self.logger info:@"Client already exists. (id:%@)", existingClient.id];
+            self.client = existingClient;
             return;
         }
     }
 
     [self.preference removeAll];
-    self.client = nil;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-        if (gpClient) {
-            gpClient = [GBGPClient findWithGPClientId:gpClient.id code:gpClient.code];
-            [self.logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gpClient.id, gpClient.growthbeatClientId];
+        if (existingGpClient) {
+            existingGpClient = [GPClient findWithGPClientId:existingGpClient.id code:existingGpClient.code];
+            [self.logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", existingGpClient.id, existingGpClient.growthbeatClientId];
 
-            self.client = [GBClient findWithId:gpClient.growthbeatClientId credentialId:credentialId];
-            if (!self.client || ![self.client.application.id isEqualToString:applicationId]) {
+            existingClient = [GBClient findWithId:existingGpClient.growthbeatClientId credentialId:credentialId];
+            if (!existingClient && ![existingClient.application.id isEqualToString:applicationId]) {
                 [self.logger error:@"Failed to convert client."];
-                self.client = nil;
-                [GBGPClient removePreference];
+                [GPClient removeGPClientPreference];
                 return;
             }
 
-            [GBClient save:self.client];
-            [self.logger info:@"Client converted. (id:%@)", self.client.id];
+            self.client = existingClient;
+            self.gpClient = existingGpClient;
+            [GBClient save:existingClient];
+            [GPClient removeGPClientPreference];
+            [self.logger info:@"Client converted. (id:%@)", existingClient.id];
 
         } else {
 
             [self.logger info:@"Creating client... (applicationId:%@)", applicationId];
-            self.client = [GBClient createWithApplicationId:applicationId credentialId:credentialId];
-            if (!self.client) {
+            existingClient = [GBClient createWithApplicationId:applicationId credentialId:credentialId];
+            if (!existingClient) {
                 [self.logger info:@"Failed to create client."];
                 return;
             }
 
-            [GBClient save:self.client];
-            [self.logger info:@"Client created. (id:%@)", self.client.id];
+            self.client = existingClient;
+            [GBClient save:existingClient];
+            [self.logger info:@"Client created. (id:%@)", existingClient.id];
 
         }
 
