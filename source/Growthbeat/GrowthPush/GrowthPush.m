@@ -34,12 +34,11 @@ const NSInteger kMaxQueueSize = 100;
 const NSInteger kMessageTimeout = 10;
 const CGFloat kDefaultMessageInterval = 1.0f;
 
-
-
 @interface GrowthPush () {
 
     GPEnvironment environment;
     GPClientV4 *client;
+    NSArray *messageHandlers;
     BOOL registeringClient;
     BOOL showingMessage;
     
@@ -49,14 +48,15 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
     NSDate *lastMessageOpened;
     
-    NSMutableDictionary *showMessageHandlers;
 }
 
 @property (nonatomic, assign) GPEnvironment environment;
 @property (nonatomic, strong) GPClientV4 *client;
+@property (nonatomic, strong) NSArray *messageHandlers;
 @property (nonatomic, assign) BOOL registeringClient;
 @property (nonatomic, assign) BOOL showingMessage;
-@property (nonatomic, strong) NSMutableDictionary *showMessageHandlers;
+@property (nonatomic, assign) CGFloat messageInterval;
+@property (nonatomic, strong) GPMessageQueue *messageQueue;
 
 @end
 
@@ -358,10 +358,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
-    [self trackEvent:GPEventTypeCustom name:name value:value messageHandler:messageHandler failureHandler:failureHandler];
+    [self trackEvent:GPEventTypeCustom name:name value:value showMessage:messageHandler failure:failureHandler];
 }
 
-- (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
+- (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
@@ -399,8 +399,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 
                 [self.messageQueue enqueue:message];
                 
-                if(messageHandler) {
-                    GPShowMessageHandler *handler = [[GPShowMessageHandler alloc] initWithBlock:messageHandler];
+                if(showMessageHandler) {
+                    GPShowMessageHandler *handler = [[GPShowMessageHandler alloc] initWithBlock:showMessageHandler];
                     
                     @synchronized (self.showMessageHandlers)
                     {
