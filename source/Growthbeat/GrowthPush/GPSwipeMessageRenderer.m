@@ -63,7 +63,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     if (!self.backgroundView) {
         self.backgroundView = [[UIView alloc] initWithFrame:window.frame];
-        backgroundView.backgroundColor = [GBViewUtils hexToUIColor:[NSString stringWithFormat:@"%ld",(long) self.swipeMessage.background.color] alpha:self.swipeMessage.background.opacity];
+        backgroundView.backgroundColor = [GBViewUtils hexToUIColor:[NSString stringWithFormat:@"%lX",(long) self.swipeMessage.background.color] alpha:self.swipeMessage.background.opacity];
         backgroundView.tag = kGPBackgroundTagId;
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         UITapGestureRecognizer *singleFingerTap =
@@ -87,8 +87,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    CGFloat baseWidth = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
-    CGFloat baseHeight = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseHeight : self.swipeMessage.baseWidth;
+    CGFloat baseWidth = self.swipeMessage.baseWidth;
+    CGFloat baseHeight = self.swipeMessage.baseHeight;
     
     CGFloat additionalHeight = kPagingHeight;
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
@@ -162,8 +162,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         
         GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
-        CGFloat width = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
-        CGFloat height = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseHeight : self.swipeMessage.baseWidth;
+        CGFloat width = self.swipeMessage.baseWidth;
+        CGFloat height = self.swipeMessage.baseHeight;
         CGFloat left = rect.size.width * i;
         CGFloat top = 0;
         CGRect imageRect = CGRectMake(left, top, width, height);
@@ -190,7 +190,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         {
             GPImageButton *imageButton = [imageButtons objectAtIndex:0];
             
-            CGFloat width = self.swipeMessage.task.orientation == GPMessageOrientationVertical ? self.swipeMessage.baseWidth : self.swipeMessage.baseHeight;
+            CGFloat width = imageButton.baseWidth;
             CGFloat height = imageButton.baseHeight;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
             CGFloat top = rect.origin.y + rect.size.height;

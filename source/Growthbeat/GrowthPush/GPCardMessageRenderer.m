@@ -85,8 +85,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    NSInteger width = cardMessage.task.orientation == GPMessageOrientationVertical ? self.cardMessage.baseWidth : self.cardMessage.baseHeight;
-    NSInteger height = cardMessage.task.orientation == GPMessageOrientationVertical ? self.cardMessage.baseHeight : self.cardMessage.baseWidth;
+    NSInteger width = self.cardMessage.baseWidth;
+    NSInteger height = self.cardMessage.baseHeight;
     
     CGRect baseRect = CGRectMake((screenWidth - width) / 2, (screenHeight - height) / 2, width, height);
     
@@ -150,7 +150,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     for (GPImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
         
-        CGFloat width = cardMessage.task.orientation == GPMessageOrientationVertical ? cardMessage.baseWidth : cardMessage.baseHeight;
+        CGFloat width = imageButton.baseWidth;
         CGFloat height = imageButton.baseHeight;
         CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
         top -= height;
