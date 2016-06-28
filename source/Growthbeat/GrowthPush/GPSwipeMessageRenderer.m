@@ -171,7 +171,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         CGFloat width = size.width;
         CGFloat height = size.height;
         CGFloat left = ((rect.size.width - width) / 2) + (rect.size.width * i);
-        CGFloat top = 0;
+        CGFloat top = (rect.size.width - width) / 2;
         CGRect imageRect = CGRectMake(left, top, width, height);
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageRect];
