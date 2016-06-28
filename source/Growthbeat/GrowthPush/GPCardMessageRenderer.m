@@ -301,7 +301,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
 }
 
 - (void)backgroundTouched:(UITapGestureRecognizer *)recognizer {
-    if (!cardMessage.background.outsideClose && recognizer.view.tag != kGPBackgroundTagId)
+
+    if (!cardMessage.background.outsideClose || recognizer.view.tag != kGPBackgroundTagId)
         return;
     
     [self.backgroundView removeFromSuperview];
