@@ -87,8 +87,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    CGFloat baseWidth = self.swipeMessage.baseWidth;
-    CGFloat baseHeight = self.swipeMessage.baseHeight;
+    CGFloat baseWidth = [self.swipeMessage pictureSize].width;
+    CGFloat baseHeight = [self.swipeMessage pictureSize].height;
     
     CGFloat additionalHeight = kPagingHeight;
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
@@ -162,8 +162,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         
         GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
-        CGFloat width = self.swipeMessage.baseWidth;
-        CGFloat height = self.swipeMessage.baseHeight;
+        CGFloat width = [self.swipeMessage pictureSize].width;
+        CGFloat height = [self.swipeMessage pictureSize].height;
         CGFloat left = rect.size.width * i;
         CGFloat top = 0;
         CGRect imageRect = CGRectMake(left, top, width, height);
@@ -190,8 +190,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
         {
             GPImageButton *imageButton = [imageButtons objectAtIndex:0];
             
-            CGFloat width = imageButton.baseWidth;
-            CGFloat height = imageButton.baseHeight;
+            CGFloat width = [imageButton pictureSize].width;
+            CGFloat height = [imageButton pictureSize].height;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
             CGFloat top = rect.origin.y + rect.size.height;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -218,8 +218,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
         return;
     }
     
-    CGFloat width = closeButton.baseWidth;
-    CGFloat height = closeButton.baseHeight;
+    CGFloat width = [closeButton pictureSize].width;
+    CGFloat height = [closeButton pictureSize].height;
     CGFloat left = rect.origin.x + rect.size.width - width - kGPCloseButtonPadding;
     CGFloat top = rect.origin.y + kGPCloseButtonPadding;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
