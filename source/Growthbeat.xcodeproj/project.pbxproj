@@ -97,7 +97,6 @@
 		69989D7F1D1A23DA006B0EFE /* GBDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D501D1A23D9006B0EFE /* GBDateUtils.m */; };
 		69989D801D1A23DA006B0EFE /* GBDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D521D1A23D9006B0EFE /* GBDeviceUtils.m */; };
 		69989D811D1A23DA006B0EFE /* GBDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D541D1A23D9006B0EFE /* GBDomain.m */; };
-		69989D821D1A23DA006B0EFE /* GBGPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D561D1A23D9006B0EFE /* GBGPClient.m */; };
 		69989D831D1A23DA006B0EFE /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D581D1A23D9006B0EFE /* GBHttpClient.m */; };
 		69989D841D1A23DA006B0EFE /* GBHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D5A1D1A23D9006B0EFE /* GBHttpRequest.m */; };
 		69989D851D1A23DA006B0EFE /* GBHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D5C1D1A23D9006B0EFE /* GBHttpResponse.m */; };
@@ -105,7 +104,6 @@
 		69989D871D1A23DA006B0EFE /* GBIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D601D1A23D9006B0EFE /* GBIntent.m */; };
 		69989D881D1A23DA006B0EFE /* GBIntentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D631D1A23D9006B0EFE /* GBIntentType.m */; };
 		69989D891D1A23DA006B0EFE /* GBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D651D1A23D9006B0EFE /* GBLogger.m */; };
-		69989D8A1D1A23DA006B0EFE /* GBMultipartFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D671D1A23D9006B0EFE /* GBMultipartFile.m */; };
 		69989D8B1D1A23DA006B0EFE /* GBNoopIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D691D1A23D9006B0EFE /* GBNoopIntent.m */; };
 		69989D8C1D1A23DA006B0EFE /* GBNoopIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D6B1D1A23D9006B0EFE /* GBNoopIntentHandler.m */; };
 		69989D8D1D1A23DA006B0EFE /* GBPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D6D1D1A23D9006B0EFE /* GBPreference.m */; };
@@ -124,7 +122,6 @@
 		69989D9A1D1A241E006B0EFE /* GBDateUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D4F1D1A23D9006B0EFE /* GBDateUtils.h */; };
 		69989D9B1D1A241E006B0EFE /* GBDeviceUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D511D1A23D9006B0EFE /* GBDeviceUtils.h */; };
 		69989D9C1D1A241E006B0EFE /* GBDomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D531D1A23D9006B0EFE /* GBDomain.h */; };
-		69989D9D1D1A241E006B0EFE /* GBGPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D551D1A23D9006B0EFE /* GBGPClient.h */; };
 		69989D9E1D1A241E006B0EFE /* GBHttpClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D571D1A23D9006B0EFE /* GBHttpClient.h */; };
 		69989D9F1D1A241E006B0EFE /* GBHttpRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D591D1A23D9006B0EFE /* GBHttpRequest.h */; };
 		69989DA01D1A241E006B0EFE /* GBHttpResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D5B1D1A23D9006B0EFE /* GBHttpResponse.h */; };
@@ -133,7 +130,6 @@
 		69989DA31D1A241E006B0EFE /* GBIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D611D1A23D9006B0EFE /* GBIntentHandler.h */; };
 		69989DA41D1A241E006B0EFE /* GBIntentType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D621D1A23D9006B0EFE /* GBIntentType.h */; };
 		69989DA51D1A241E006B0EFE /* GBLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D641D1A23D9006B0EFE /* GBLogger.h */; };
-		69989DA61D1A241E006B0EFE /* GBMultipartFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D661D1A23D9006B0EFE /* GBMultipartFile.h */; };
 		69989DA71D1A241E006B0EFE /* GBNoopIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D681D1A23D9006B0EFE /* GBNoopIntent.h */; };
 		69989DA81D1A241E006B0EFE /* GBNoopIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */; };
 		69989DA91D1A241E006B0EFE /* GBPreference.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 69989D6C1D1A23D9006B0EFE /* GBPreference.h */; };
@@ -185,7 +181,6 @@
 				69989D9A1D1A241E006B0EFE /* GBDateUtils.h in CopyFiles */,
 				69989D9B1D1A241E006B0EFE /* GBDeviceUtils.h in CopyFiles */,
 				69989D9C1D1A241E006B0EFE /* GBDomain.h in CopyFiles */,
-				69989D9D1D1A241E006B0EFE /* GBGPClient.h in CopyFiles */,
 				69989D9E1D1A241E006B0EFE /* GBHttpClient.h in CopyFiles */,
 				69989D9F1D1A241E006B0EFE /* GBHttpRequest.h in CopyFiles */,
 				69989DA01D1A241E006B0EFE /* GBHttpResponse.h in CopyFiles */,
@@ -194,7 +189,6 @@
 				69989DA31D1A241E006B0EFE /* GBIntentHandler.h in CopyFiles */,
 				69989DA41D1A241E006B0EFE /* GBIntentType.h in CopyFiles */,
 				69989DA51D1A241E006B0EFE /* GBLogger.h in CopyFiles */,
-				69989DA61D1A241E006B0EFE /* GBMultipartFile.h in CopyFiles */,
 				69989DA71D1A241E006B0EFE /* GBNoopIntent.h in CopyFiles */,
 				69989DA81D1A241E006B0EFE /* GBNoopIntentHandler.h in CopyFiles */,
 				69989DA91D1A241E006B0EFE /* GBPreference.h in CopyFiles */,
@@ -337,8 +331,6 @@
 		69989D521D1A23D9006B0EFE /* GBDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDeviceUtils.m; path = Growthbeat/GBDeviceUtils.m; sourceTree = "<group>"; };
 		69989D531D1A23D9006B0EFE /* GBDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDomain.h; path = Growthbeat/GBDomain.h; sourceTree = "<group>"; };
 		69989D541D1A23D9006B0EFE /* GBDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDomain.m; path = Growthbeat/GBDomain.m; sourceTree = "<group>"; };
-		69989D551D1A23D9006B0EFE /* GBGPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBGPClient.h; path = Growthbeat/GBGPClient.h; sourceTree = "<group>"; };
-		69989D561D1A23D9006B0EFE /* GBGPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBGPClient.m; path = Growthbeat/GBGPClient.m; sourceTree = "<group>"; };
 		69989D571D1A23D9006B0EFE /* GBHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpClient.h; path = Growthbeat/GBHttpClient.h; sourceTree = "<group>"; };
 		69989D581D1A23D9006B0EFE /* GBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpClient.m; path = Growthbeat/GBHttpClient.m; sourceTree = "<group>"; };
 		69989D591D1A23D9006B0EFE /* GBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpRequest.h; path = Growthbeat/GBHttpRequest.h; sourceTree = "<group>"; };
@@ -354,8 +346,6 @@
 		69989D631D1A23D9006B0EFE /* GBIntentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBIntentType.m; path = Growthbeat/GBIntentType.m; sourceTree = "<group>"; };
 		69989D641D1A23D9006B0EFE /* GBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBLogger.h; path = Growthbeat/GBLogger.h; sourceTree = "<group>"; };
 		69989D651D1A23D9006B0EFE /* GBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBLogger.m; path = Growthbeat/GBLogger.m; sourceTree = "<group>"; };
-		69989D661D1A23D9006B0EFE /* GBMultipartFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBMultipartFile.h; path = Growthbeat/GBMultipartFile.h; sourceTree = "<group>"; };
-		69989D671D1A23D9006B0EFE /* GBMultipartFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBMultipartFile.m; path = Growthbeat/GBMultipartFile.m; sourceTree = "<group>"; };
 		69989D681D1A23D9006B0EFE /* GBNoopIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBNoopIntent.h; path = Growthbeat/GBNoopIntent.h; sourceTree = "<group>"; };
 		69989D691D1A23D9006B0EFE /* GBNoopIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBNoopIntent.m; path = Growthbeat/GBNoopIntent.m; sourceTree = "<group>"; };
 		69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBNoopIntentHandler.h; path = Growthbeat/GBNoopIntentHandler.h; sourceTree = "<group>"; };
@@ -421,8 +411,6 @@
 				69989D521D1A23D9006B0EFE /* GBDeviceUtils.m */,
 				69989D531D1A23D9006B0EFE /* GBDomain.h */,
 				69989D541D1A23D9006B0EFE /* GBDomain.m */,
-				69989D551D1A23D9006B0EFE /* GBGPClient.h */,
-				69989D561D1A23D9006B0EFE /* GBGPClient.m */,
 				69989D571D1A23D9006B0EFE /* GBHttpClient.h */,
 				69989D581D1A23D9006B0EFE /* GBHttpClient.m */,
 				69989D591D1A23D9006B0EFE /* GBHttpRequest.h */,
@@ -438,8 +426,6 @@
 				69989D631D1A23D9006B0EFE /* GBIntentType.m */,
 				69989D641D1A23D9006B0EFE /* GBLogger.h */,
 				69989D651D1A23D9006B0EFE /* GBLogger.m */,
-				69989D661D1A23D9006B0EFE /* GBMultipartFile.h */,
-				69989D671D1A23D9006B0EFE /* GBMultipartFile.m */,
 				69989D681D1A23D9006B0EFE /* GBNoopIntent.h */,
 				69989D691D1A23D9006B0EFE /* GBNoopIntent.m */,
 				69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */,
@@ -666,7 +652,6 @@
 				178C32331D167E9000F913CB /* GPMessageOrientation.m in Sources */,
 				69989D7D1D1A23D9006B0EFE /* GBCustomIntent.m in Sources */,
 				C165AE4E1CFBC3A20078D38C /* GLLink.m in Sources */,
-				69989D821D1A23DA006B0EFE /* GBGPClient.m in Sources */,
 				C165AE4F1CFBC3A20078D38C /* GLPattern.m in Sources */,
 				178C322B1D167E9000F913CB /* GPCloseButton.m in Sources */,
 				69989D801D1A23DA006B0EFE /* GBDeviceUtils.m in Sources */,
@@ -711,7 +696,6 @@
 				69989D7A1D1A23D9006B0EFE /* GBApplication.m in Sources */,
 				69989BAC1D18E230006B0EFE /* GPShowMessageHandler.m in Sources */,
 				69989D871D1A23DA006B0EFE /* GBIntent.m in Sources */,
-				69989D8A1D1A23DA006B0EFE /* GBMultipartFile.m in Sources */,
 				69989D881D1A23DA006B0EFE /* GBIntentType.m in Sources */,
 				178C323A1D167E9000F913CB /* GPPlainMessageHandler.m in Sources */,
 				69989D911D1A23DA006B0EFE /* GBViewUtils.m in Sources */,

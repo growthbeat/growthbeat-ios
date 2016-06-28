@@ -97,8 +97,6 @@
             case GBContentTypeJson:
                 requestBody = [GBHttpUtils jsonBodyWithDictionary:body];
                 break;
-            case GBContentTypeMultipart:
-                requestBody = [GBHttpUtils multipartBodyWithDictionary:body];
                 break;
             default:
                 break;
@@ -106,9 +104,6 @@
     }
 
     switch (contentType) {
-        case GBContentTypeMultipart:
-            contentTypeString = [NSString stringWithFormat:@"%@; boundary=%@; charset=%@", NSStringFromGBContentType(contentType), kMultipartBoundary, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding))];
-            break;
         default:
             contentTypeString = [NSString stringWithFormat:@"%@; charset=%@", NSStringFromGBContentType(contentType), CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding))];
             break;

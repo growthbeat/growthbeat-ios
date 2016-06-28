@@ -15,8 +15,6 @@ NSString *NSStringFromGBContentType(GBContentType contentType) {
             return nil;
         case GBContentTypeFormUrlEncoded:
             return @"application/x-www-form-urlencoded";
-        case GBContentTypeMultipart:
-            return @"multipart/form-data";
         case GBContentTypeJson:
             return @"application/json";
     }
@@ -27,9 +25,6 @@ GBContentType GBContentTypeFromNSString(NSString *contentTypeString) {
 
     if ([contentTypeString isEqualToString:@"application/x-www-form-urlencoded"]) {
         return GBContentTypeFormUrlEncoded;
-    }
-    if ([contentTypeString isEqualToString:@"multipart/form-data"]) {
-        return GBContentTypeMultipart;
     }
     if ([contentTypeString isEqualToString:@"application/json"]) {
         return GBContentTypeJson;
