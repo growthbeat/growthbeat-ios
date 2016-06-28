@@ -70,6 +70,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(backgroundTouched:)];
+        [singleFingerTap setDelegate:self];
         singleFingerTap.numberOfTapsRequired = 1;
         singleFingerTap.numberOfTouchesRequired = 1;
         backgroundView.userInteractionEnabled = true;
