@@ -119,7 +119,6 @@ static NSInteger const kGPBackgroundTagId = 9999;
                 default:
                     break;
             }
-            [self showCloseButtonWithView:baseView rect:baseRect];
         };
         
         GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:swipeMessage.id];
@@ -174,6 +173,9 @@ static NSInteger const kGPBackgroundTagId = 9999;
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.userInteractionEnabled = YES;
         [view addSubview:imageView];
+        
+        CGRect closeButtonRect = CGRectMake(0, 0, width, height);
+        [self showCloseButtonWithView:imageView rect:closeButtonRect];
         
     }
     
