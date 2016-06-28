@@ -72,4 +72,11 @@
     [aCoder encodeInteger:baseHeight forKey:@"baseHeight"];
 }
 
+# pragma mark --
+# pragma mark GPPictureOwner
+
+- (CGSize) pictureSize {
+    return CGSizeMake(self.baseWidth, self.baseHeight);
+}
+
 @end

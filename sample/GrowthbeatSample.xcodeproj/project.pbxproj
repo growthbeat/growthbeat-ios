@@ -240,6 +240,7 @@
 		C1FC842E1BDE06BA00626543 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		F81D87651D210321007910A2 /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPClient.h; sourceTree = "<group>"; };
 		F81D87661D210321007910A2 /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
+		F85CC4611D222C4D00C83CF9 /* GPPictureOwner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPPictureOwner.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +349,7 @@
 				17BA62BB1D1FF7F400BBFE69 /* GPBackground.m */,
 				17BA62BC1D1FF7F400BBFE69 /* GPButton.h */,
 				17BA62BD1D1FF7F400BBFE69 /* GPButton.m */,
+				F85CC4611D222C4D00C83CF9 /* GPPictureOwner.h */,
 				17BA62BE1D1FF7F400BBFE69 /* GPButtonType.h */,
 				17BA62BF1D1FF7F400BBFE69 /* GPButtonType.m */,
 				17BA62C01D1FF7F400BBFE69 /* GPCardMessage.h */,

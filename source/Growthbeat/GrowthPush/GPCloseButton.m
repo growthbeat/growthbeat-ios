@@ -58,4 +58,20 @@
     [aCoder encodeInteger:baseHeight forKey:@"baseHeight"];
 }
 
+# pragma mark --
+# pragma mark GPPictureOwner
+
+- (CGSize) pictureSize {
+    float scale = 1.0f;
+    float widthScale = self.baseWidth / self.picture.width;
+    float heightScale = self.baseHeight / self.picture.height;
+    if (widthScale < 1.0f || heightScale < 1.0f) {
+        scale = MIN(widthScale, heightScale);
+    }
+    
+    float width = ceilf(self.picture.width * scale);
+    float height = ceilf(self.picture.height * scale);
+    return CGSizeMake(width, height);
+}
+
 @end

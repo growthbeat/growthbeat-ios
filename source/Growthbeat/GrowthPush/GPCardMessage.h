@@ -8,8 +8,9 @@
 
 #import "GPMessage.h"
 #import "GPPicture.h"
+#import "GPPictureOwner.h"
 
-@interface GPCardMessage : GPMessage {
+@interface GPCardMessage : GPMessage<GPPictureOwner> {
     
     GPPicture *picture;
     NSInteger baseWidth;
