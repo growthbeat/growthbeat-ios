@@ -39,7 +39,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @interface GrowthPush () {
 
     GPEnvironment environment;
-    GBClient *growthbeatClient;
     GPClientV4 *client;
     BOOL registeringClient;
     BOOL showingMessage;
@@ -54,7 +53,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 @property (nonatomic, assign) GPEnvironment environment;
-@property (nonatomic, strong) GBClient *growthbeatClient;
 @property (nonatomic, strong) GPClientV4 *client;
 @property (nonatomic, assign) BOOL registeringClient;
 @property (nonatomic, assign) BOOL showingMessage;
@@ -73,7 +71,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize messageHandlers;
 
 @synthesize environment;
-@synthesize growthbeatClient;
 @synthesize client;
 @synthesize registeringClient;
 @synthesize showingMessage;
@@ -123,11 +120,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     [[Growthbeat sharedInstance] initializeWithApplicationId:applicationId credentialId:newCredentialId];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
+        GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
         if (self.client && self.client.id &&
-            ![self.client.id isEqualToString:self.growthbeatClient.id]) {
-            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, self.growthbeatClient.id];
+            ![self.client.id isEqualToString:growthbeatClient.id]) {
+            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, growthbeatClient.id];
             [self clearClient];
         }
         
@@ -137,7 +134,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         [self registerClient:nil];
         [self waitClient];
 
@@ -180,11 +176,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         token = [self convertToHexToken:newDeviceToken];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        self.growthbeatClient = [[Growthbeat sharedInstance] waitClient];
+        GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
         if (self.client && self.client.id &&
-            ![self.client.id isEqualToString:self.growthbeatClient.id]) {
-            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, self.growthbeatClient.id];
+            ![self.client.id isEqualToString:growthbeatClient.id]) {
+            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, growthbeatClient.id];
             [self clearClient];
         }
         
@@ -247,9 +243,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 
-            [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, token, NSStringFromGPEnvironment(self.environment)];
+            GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
+            [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClient.id, token, NSStringFromGPEnvironment(self.environment)];
 
-            GPClientV4 *createdClient = [GPClientV4 createWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
+            GPClientV4 *createdClient = [GPClientV4 createWithClientId:growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
             if (createdClient) {
                 [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
                 self.client = createdClient;
@@ -272,9 +269,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", self.growthbeatClient.id, newToken, NSStringFromGPEnvironment(newEnvironment)];
+        GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
+        [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClient.id, newToken, NSStringFromGPEnvironment(newEnvironment)];
         
-        GPClientV4 *updatedClient = [GPClientV4 updateWithClientId:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:newEnvironment];
+        GPClientV4 *updatedClient = [GPClientV4 updateWithClientId:growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:newEnvironment];
         if (updatedClient) {
             [self.logger info:@"Update client success. (clientId: %@)", updatedClient.id];
             self.client = updatedClient;
@@ -341,8 +339,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
         
-        [self waitClient];
-        GPTag *tag = [GPTag createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
         if (tag) {
             [GPTag save:tag type:type name:name];
@@ -369,8 +366,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
-        [self waitClient];
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        GPClientV4 *clientV4 = [self waitClient];
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:clientV4.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
         
         if (event) {
@@ -393,7 +390,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             
             int count = 0;
             for (GPTask *task in taskArray) {
-                GPMessage *message = [GPMessage receive:task.id applicationId:self.applicationId clientId:self.growthbeatClient.id credentialId:self.credentialId];
+                GPMessage *message = [GPMessage receive:task.id applicationId:self.applicationId clientId:clientV4.id credentialId:self.credentialId];
                 
                 if (!message || [message isKindOfClass:[GPNoContentMessage class]]) {
                     [[self logger] info:@"This message no target client."];
@@ -471,7 +468,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             continue;
         }
         
-        [GPMessage receiveCount:self.growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId taskId:message.task.id messageId:message.id];
+        [GPMessage receiveCount:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId taskId:message.task.id messageId:message.id];
         
         break;
         
