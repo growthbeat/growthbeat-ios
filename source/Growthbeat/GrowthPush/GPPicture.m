@@ -13,6 +13,8 @@
 
 @synthesize id;
 @synthesize applicationId;
+@synthesize width;
+@synthesize height;
 @synthesize created;
 @synthesize url;
 
@@ -25,6 +27,12 @@
         }
         if ([dictionary objectForKey:@"applicationId"] && [dictionary objectForKey:@"applicationId"] != [NSNull null]) {
             self.applicationId = [dictionary objectForKey:@"applicationId"];
+        }
+        if ([dictionary objectForKey:@"width"] && [dictionary objectForKey:@"width"] != [NSNull null]) {
+            self.width = [[dictionary objectForKey:@"width"] floatValue];
+        }
+        if ([dictionary objectForKey:@"height"] && [dictionary objectForKey:@"height"] != [NSNull null]) {
+            self.height = [[dictionary objectForKey:@"height"] floatValue];
         }
         if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
             self.created = [GBDateUtils dateWithDateTimeString:[dictionary objectForKey:@"created"]];
@@ -49,6 +57,12 @@
         if ([aDecoder containsValueForKey:@"applicationId"]) {
             self.applicationId = [aDecoder decodeObjectForKey:@"applicationId"];
         }
+        if ([aDecoder containsValueForKey:@"width"]) {
+            self.width = [aDecoder decodeFloatForKey:@"width"];
+        }
+        if ([aDecoder containsValueForKey:@"height"]) {
+            self.height = [aDecoder decodeFloatForKey:@"height"];
+        }
         if ([aDecoder containsValueForKey:@"created"]) {
             self.created = [aDecoder decodeObjectForKey:@"created"];
         }
@@ -62,6 +76,8 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:id forKey:@"id"];
     [aCoder encodeObject:applicationId forKey:@"applicationId"];
+    [aCoder encodeObject:@(width) forKey:@"width"];
+    [aCoder encodeObject:@(height) forKey:@"height"];
     [aCoder encodeObject:created forKey:@"created"];
     [aCoder encodeObject:url forKey:@"url"];
 }
