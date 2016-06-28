@@ -88,29 +88,28 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    CGFloat baseWidth = self.swipeMessage.baseWidth;
-    CGFloat baseHeight = self.swipeMessage.baseHeight;
+    CGFloat height = self.swipeMessage.baseHeight;
     
-    baseHeight += kPagingHeight + kPagingMargin;
+    height += (kPagingHeight + kPagingMargin);
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
         GPImageButton *imageButton = [imageButtons objectAtIndex:0];
         CGSize imageSize = [GPPictureUtils calculatePictureSize:imageButton.picture baseWidth:imageButton.baseWidth baseHeight:imageButton.baseHeight];
-        baseHeight += imageSize.height;
+        height += imageSize.height;
     }
     
-    CGRect baseRect = CGRectMake((screenWidth - baseWidth) / 2, (screenHeight - baseHeight) / 2, baseWidth, baseHeight);
-    
-    [self showScrollView:baseView rect:CGRectMake(baseRect.origin.x, baseRect.origin.y, baseWidth, baseHeight)];
-    [self showPageControlWithView:baseView rect:CGRectMake(baseRect.origin.x, baseRect.origin.y + baseHeight - kPagingHeight, baseWidth, kPagingHeight)];
+    CGFloat x = (screenWidth - self.swipeMessage.baseWidth) / 2;
+    CGFloat y = (screenHeight - height) / 2;
+    [self showScrollView:baseView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
+    [self showPageControlWithView:baseView rect:CGRectMake(x, y + height - kPagingHeight, self.swipeMessage.baseWidth, kPagingHeight)];
     
     [self cacheImages:^{
         
         void(^renderCallback)() = ^() {
-            [self showImageWithView:scrollView rect:baseRect];
+            [self showImageWithView:scrollView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, height)];
             switch (swipeMessage.swipeType) {
                 case GPSwipeMessageTypeOneButton: {
-                    [self showImageButtonWithView:baseView rect:CGRectMake((screenWidth - baseWidth) / 2, (screenHeight - (baseHeight - self.swipeMessage.baseHeight)) / 2, baseWidth, baseHeight)];
+                    [self showImageButtonWithView:baseView rect:CGRectMake((screenWidth - self.swipeMessage.baseWidth) / 2, (screenHeight - self.swipeMessage.baseHeight - (height - self.swipeMessage.baseHeight)) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
                     break;
                 }
                 case GPSwipeMessageTypeImageOnly:
