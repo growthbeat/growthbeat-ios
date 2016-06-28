@@ -94,7 +94,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
         GPImageButton *imageButton = [imageButtons objectAtIndex:0];
-        additionalHeight += imageButton.baseHeight;
+        additionalHeight += [imageButton pictureSize].height;
     }
     
     CGFloat rootWidth = baseWidth;
@@ -252,7 +252,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     CGFloat width = rect.size.width;
     CGFloat height = kPagingHeight;
     CGFloat left = rect.origin.x;
-    CGFloat top = rect.origin.y + rect.size.height - kPagingHeight;
+    CGFloat top = rect.origin.y + rect.size.height;
     
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
     
