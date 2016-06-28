@@ -162,10 +162,11 @@ static NSInteger const kGPBackgroundTagId = 9999;
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         
         GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
-        CGFloat width = self.swipeMessage.baseWidth;
-        CGFloat height = self.swipeMessage.baseHeight;
-        CGFloat left = rect.size.width * i;
-        CGFloat top = 0;
+        CGSize size = [GPPictureUtils calculatePictureSize:picture baseWidth:self.swipeMessage.baseWidth baseHeight:self.swipeMessage.baseHeight];
+        CGFloat width = size.width;
+        CGFloat height = size.height;
+        CGFloat left = ((rect.size.width - width) / 2) + (rect.size.width * i);
+        CGFloat top = (rect.size.height - height) / 2;
         CGRect imageRect = CGRectMake(left, top, width, height);
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageRect];
