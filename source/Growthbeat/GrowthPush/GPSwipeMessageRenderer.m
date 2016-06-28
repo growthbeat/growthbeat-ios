@@ -12,7 +12,7 @@
 #import "GPImageButton.h"
 #import "GBViewUtils.h"
 #import "GrowthPush.h"
-
+#import "GPPictureUtils.h"
 
 static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGPCloseButtonPadding = 8;
@@ -87,14 +87,15 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    CGFloat baseWidth = [self.swipeMessage pictureSize].width;
-    CGFloat baseHeight = [self.swipeMessage pictureSize].height;
+    CGFloat baseWidth = self.swipeMessage.baseWidth;
+    CGFloat baseHeight = self.swipeMessage.baseHeight;
     
     CGFloat additionalHeight = kPagingHeight;
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
         GPImageButton *imageButton = [imageButtons objectAtIndex:0];
-        additionalHeight += [imageButton pictureSize].height;
+        CGSize imageSize = [GPPictureUtils calculatePictureSize:imageButton.picture baseWidth:imageButton.baseWidth baseHeight:imageButton.baseHeight];
+        additionalHeight += imageSize.height;
     }
     
     CGFloat rootWidth = baseWidth;
@@ -161,8 +162,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
     for (int i = 0; i < [swipeMessage.pictures count]; i++) {
         
         GPPicture *picture = [swipeMessage.pictures objectAtIndex:i];
-        CGFloat width = [self.swipeMessage pictureSize].width;
-        CGFloat height = [self.swipeMessage pictureSize].height;
+        CGFloat width = self.swipeMessage.baseWidth;
+        CGFloat height = self.swipeMessage.baseHeight;
         CGFloat left = rect.size.width * i;
         CGFloat top = 0;
         CGRect imageRect = CGRectMake(left, top, width, height);
@@ -192,8 +193,9 @@ static NSInteger const kGPBackgroundTagId = 9999;
         {
             GPImageButton *imageButton = [imageButtons objectAtIndex:0];
             
-            CGFloat width = [imageButton pictureSize].width;
-            CGFloat height = [imageButton pictureSize].height;
+            CGSize imageSize = [GPPictureUtils calculatePictureSize:imageButton.picture baseWidth:imageButton.baseWidth baseHeight:imageButton.baseHeight];
+            CGFloat width = imageSize.width;
+            CGFloat height = imageSize.height;
             CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
             CGFloat top = rect.origin.y + rect.size.height;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -220,8 +222,9 @@ static NSInteger const kGPBackgroundTagId = 9999;
         return;
     }
     
-    CGFloat width = [closeButton pictureSize].width;
-    CGFloat height = [closeButton pictureSize].height;
+    CGSize imageSize = [GPPictureUtils calculatePictureSize:closeButton.picture baseWidth:closeButton.baseWidth baseHeight:closeButton.baseHeight];
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
     CGFloat left = rect.origin.x + rect.size.width - width - kGPCloseButtonPadding;
     CGFloat top = rect.origin.y + kGPCloseButtonPadding;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

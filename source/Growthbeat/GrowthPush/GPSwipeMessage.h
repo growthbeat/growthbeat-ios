@@ -9,9 +9,8 @@
 #import "GPMessage.h"
 #import "GPSwipeMessageType.h"
 #import "GPSwipeImages.h"
-#import "GPPictureOwner.h"
 
-@interface GPSwipeMessage : GPMessage<GPPictureOwner> {
+@interface GPSwipeMessage : GPMessage {
     
     GPSwipeMessageType swipeType;
     NSArray *pictures;

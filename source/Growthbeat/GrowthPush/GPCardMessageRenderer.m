@@ -14,6 +14,7 @@
 #import "GBViewUtils.h"
 #import "GrowthPush.h"
 #import "GPShowMessageHandler.h"
+#import "GPPictureUtils.h"
 
 static NSTimeInterval const kGPImageMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGPCloseButtonPadding = 8;
@@ -85,8 +86,9 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
-    NSInteger width = [self.cardMessage pictureSize].width;
-    NSInteger height = [self.cardMessage pictureSize].height;
+    CGSize baseSize = [GPPictureUtils calculatePictureSize:self.cardMessage.picture baseWidth:self.cardMessage.baseWidth baseHeight:self.cardMessage.baseHeight];
+    NSInteger width = baseSize.width;
+    NSInteger height = baseSize.height;
     
     CGRect baseRect = CGRectMake((screenWidth - width) / 2, (screenHeight - height) / 2, width, height);
     
@@ -150,8 +152,9 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     for (GPImageButton *imageButton in [imageButtons reverseObjectEnumerator]) {
         
-        CGFloat width = [imageButton pictureSize].width;
-        CGFloat height = [imageButton pictureSize].height;
+        CGSize imageSize = [GPPictureUtils calculatePictureSize:imageButton.picture baseWidth:imageButton.baseWidth baseHeight:imageButton.baseHeight];
+        CGFloat width = imageSize.width;
+        CGFloat height = imageSize.height;
         CGFloat left = rect.origin.x + (rect.size.width - width) / 2;
         top -= height;
         
@@ -177,8 +180,9 @@ static NSInteger const kGPBackgroundTagId = 9999;
         return;
     }
     
-    CGFloat width = [closeButton pictureSize].width;
-    CGFloat height = [closeButton pictureSize].height;
+    CGSize size = [GPPictureUtils calculatePictureSize:closeButton.picture baseWidth:closeButton.baseWidth baseHeight:closeButton.baseHeight];
+    CGFloat width = size.width;
+    CGFloat height = size.height;
     CGFloat left = rect.origin.x + rect.size.width - width - kGPCloseButtonPadding;
     CGFloat top = rect.origin.y + kGPCloseButtonPadding;
     

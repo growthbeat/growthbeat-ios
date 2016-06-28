@@ -8,9 +8,8 @@
 
 #import "GPButton.h"
 #import "GPPicture.h"
-#import "GPPictureOwner.h"
 
-@interface GPCloseButton : GPButton<GPPictureOwner> {
+@interface GPCloseButton : GPButton {
     
     GPPicture *picture;
     NSInteger baseWidth;
