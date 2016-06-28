@@ -106,7 +106,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     [self cacheImages:^{
         
         void(^renderCallback)() = ^() {
-            [self showImageWithView:scrollView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, height)];
+            [self showImageWithView:scrollView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
             switch (swipeMessage.swipeType) {
                 case GPSwipeMessageTypeOneButton: {
                     [self showImageButtonWithView:baseView rect:CGRectMake((screenWidth - self.swipeMessage.baseWidth) / 2, (screenHeight - self.swipeMessage.baseHeight - (height - self.swipeMessage.baseHeight)) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
