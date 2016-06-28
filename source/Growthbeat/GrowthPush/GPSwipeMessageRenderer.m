@@ -16,7 +16,8 @@
 
 static NSTimeInterval const kGPSwipeMessageRendererImageDownloadTimeout = 10;
 static NSInteger const kGPCloseButtonPadding = 8;
-static CGFloat const kPagingHeight = 16.f;
+static CGFloat const kPagingMargin = 16.f;
+static CGFloat const kPagingHeight = 8.f;
 static NSInteger const kGPBackgroundTagId = 9999;
 
 @interface GPSwipeMessageRenderer () {
@@ -90,7 +91,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     CGFloat baseWidth = self.swipeMessage.baseWidth;
     CGFloat baseHeight = self.swipeMessage.baseHeight;
     
-    CGFloat additionalHeight = kPagingHeight;
+    CGFloat additionalHeight = kPagingHeight + kPagingMargin;
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
         GPImageButton *imageButton = [imageButtons objectAtIndex:0];
@@ -102,8 +103,12 @@ static NSInteger const kGPBackgroundTagId = 9999;
     CGFloat rootHeight = baseHeight + additionalHeight;
     
     CGRect baseRect = CGRectMake((screenWidth - rootWidth) / 2, (screenHeight - rootHeight) / 2, rootWidth, rootHeight);
-    [self showScrollView:baseView rect:baseRect];
-    [self showPageControlWithView:baseView rect:baseRect];
+    
+    CGRect screenViewRect = CGRectMake(baseRect.origin.x, baseRect.origin.y, baseWidth, baseHeight);
+    [self showScrollView:baseView rect:screenViewRect];
+    
+    CGRect pageControllRect = CGRectMake(baseRect.origin.x, baseRect.origin.y + rootHeight - kPagingHeight, baseWidth, kPagingHeight);
+    [self showPageControlWithView:baseView rect:pageControllRect];
     
     [self cacheImages:^{
         
@@ -166,7 +171,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         CGFloat width = size.width;
         CGFloat height = size.height;
         CGFloat left = ((rect.size.width - width) / 2) + (rect.size.width * i);
-        CGFloat top = (rect.size.height - height) / 2;
+        CGFloat top = 0;
         CGRect imageRect = CGRectMake(left, top, width, height);
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageRect];
@@ -255,12 +260,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
 
 - (void) showPageControlWithView:(UIView *)view rect:(CGRect)rect {
     
-    CGFloat width = rect.size.width;
-    CGFloat height = kPagingHeight;
-    CGFloat left = rect.origin.x;
-    CGFloat top = rect.origin.y + rect.size.height;
-    
-    pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(left, top, width, height)];
+    pageControl = [[UIPageControl alloc] initWithFrame:rect];
     
     pageControl.numberOfPages = [swipeMessage.pictures count];
     pageControl.currentPage = 0;
