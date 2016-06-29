@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Growthbeat.h"
-#import "GrowthPush.h"
-#import "GBCustomIntentHandler.h"
-#import "GrowthLink.h"
+#import <Growthbeat/Growthbeat.h>
+#import <Growthbeat/GrowthPush.h>
+#import <Growthbeat/GBCustomIntentHandler.h>
+#import <Growthbeat/GrowthLink.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

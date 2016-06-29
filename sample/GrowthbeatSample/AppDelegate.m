@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GBPreference.h"
+#import <Growthbeat/GBPreference.h>
 
 @implementation AppDelegate
 

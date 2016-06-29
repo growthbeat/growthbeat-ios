@@ -13,12 +13,16 @@
     NSString *id;
     NSString *applicationId;
     NSDate *created;
+    float width;
+    float height;
     NSString *url;
     
 }
 
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *applicationId;
+@property (nonatomic, assign) float width;
+@property (nonatomic, assign) float height;
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, strong) NSString *url;
 

@@ -9,7 +9,6 @@
 #import "GPButton.h"
 #import "GPPicture.h"
 
-
 @interface GPCloseButton : GPButton {
     
     GPPicture *picture;

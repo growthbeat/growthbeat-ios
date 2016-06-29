@@ -8,7 +8,6 @@
 
 #import "GPMessage.h"
 #import "GPSwipeMessageType.h"
-#import "GPSwipeImages.h"
 
 @interface GPSwipeMessage : GPMessage {
     

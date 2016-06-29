@@ -27,23 +27,21 @@
     
     NSString *applicationId;
     NSString *credentialId;
-    NSArray *messageHandlers;
 
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-
+    NSMutableDictionary *showMessageHandlers;
+    
 }
 
 @property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *credentialId;
-@property (nonatomic, strong) NSArray *messageHandlers;
 
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
-@property (nonatomic, strong) GPMessageQueue *messageQueue;
-@property (nonatomic, assign) CGFloat messageInterval;
+@property (nonatomic, strong) NSMutableDictionary *showMessageHandlers;
 
 
 /**
@@ -91,20 +89,20 @@
 - (void)setTag:(NSString *)name;
 - (void)setTag:(NSString *)name value:(NSString *)value;
 - (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value;
+
+/**
+ * Set DefaultTags
+ */
+- (void)setDeviceTags;
+
 /**
  * Set Event
  */
 - (void)trackEvent:(NSString *)name;
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
 - (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
-- (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
-/**
- * Set DefaultTags
- */
-- (void)setDeviceTags;
+- (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler;
 
-- (void) openMessageIfExists;
-- (void) openMessage:(GPMessage *)message;
 - (void) selectButton:(GPButton *)button message:(GPMessage *)message;
 - (void) notifyClose;
 

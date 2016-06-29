@@ -11,7 +11,6 @@
 typedef NS_ENUM (NSUInteger, GBContentType) {
     GBContentTypeUnknown = 0,
     GBContentTypeFormUrlEncoded,
-    GBContentTypeMultipart,
     GBContentTypeJson
 };
 

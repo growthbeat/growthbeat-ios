@@ -354,11 +354,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) trackEvent:(NSString *)name value:(NSString *)value {
-    [self trackEvent:name value:value messageHandler:nil failureHandler:nil];
+    [self trackEvent:name value:value showMessage:nil failure:nil];
 }
 
-- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler {
-    [self trackEvent:GPEventTypeCustom name:name value:value showMessage:messageHandler failure:failureHandler];
+- (void)trackEvent:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
+    [self trackEvent:GPEventTypeCustom name:name value:value showMessage:showMessageHandler failure:failureHandler];
 }
 
 - (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
