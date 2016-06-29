@@ -61,7 +61,6 @@
 		17BA63331D1FF7F400BBFE69 /* GPPlainMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62E71D1FF7F400BBFE69 /* GPPlainMessageHandler.m */; };
 		17BA63341D1FF7F400BBFE69 /* GPScreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62E91D1FF7F400BBFE69 /* GPScreenButton.m */; };
 		17BA63351D1FF7F400BBFE69 /* GPShowMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62EB1D1FF7F400BBFE69 /* GPShowMessageHandler.m */; };
-		17BA63361D1FF7F400BBFE69 /* GPSwipeImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62ED1D1FF7F400BBFE69 /* GPSwipeImages.m */; };
 		17BA63371D1FF7F400BBFE69 /* GPSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62EF1D1FF7F400BBFE69 /* GPSwipeMessage.m */; };
 		17BA63381D1FF7F400BBFE69 /* GPSwipeMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62F11D1FF7F400BBFE69 /* GPSwipeMessageHandler.m */; };
 		17BA63391D1FF7F400BBFE69 /* GPSwipeMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BA62F31D1FF7F400BBFE69 /* GPSwipeMessageRenderer.m */; };
@@ -200,8 +199,6 @@
 		17BA62E91D1FF7F400BBFE69 /* GPScreenButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPScreenButton.m; sourceTree = "<group>"; };
 		17BA62EA1D1FF7F400BBFE69 /* GPShowMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPShowMessageHandler.h; sourceTree = "<group>"; };
 		17BA62EB1D1FF7F400BBFE69 /* GPShowMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPShowMessageHandler.m; sourceTree = "<group>"; };
-		17BA62EC1D1FF7F400BBFE69 /* GPSwipeImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSwipeImages.h; sourceTree = "<group>"; };
-		17BA62ED1D1FF7F400BBFE69 /* GPSwipeImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSwipeImages.m; sourceTree = "<group>"; };
 		17BA62EE1D1FF7F400BBFE69 /* GPSwipeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSwipeMessage.h; sourceTree = "<group>"; };
 		17BA62EF1D1FF7F400BBFE69 /* GPSwipeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSwipeMessage.m; sourceTree = "<group>"; };
 		17BA62F01D1FF7F400BBFE69 /* GPSwipeMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSwipeMessageHandler.h; sourceTree = "<group>"; };
@@ -396,8 +393,6 @@
 				17BA62E91D1FF7F400BBFE69 /* GPScreenButton.m */,
 				17BA62EA1D1FF7F400BBFE69 /* GPShowMessageHandler.h */,
 				17BA62EB1D1FF7F400BBFE69 /* GPShowMessageHandler.m */,
-				17BA62EC1D1FF7F400BBFE69 /* GPSwipeImages.h */,
-				17BA62ED1D1FF7F400BBFE69 /* GPSwipeImages.m */,
 				17BA62EE1D1FF7F400BBFE69 /* GPSwipeMessage.h */,
 				17BA62EF1D1FF7F400BBFE69 /* GPSwipeMessage.m */,
 				17BA62F01D1FF7F400BBFE69 /* GPSwipeMessageHandler.h */,
@@ -610,7 +605,6 @@
 				17BA630C1D1FF7F400BBFE69 /* GBIntent.m in Sources */,
 				17BA633A1D1FF7F400BBFE69 /* GPSwipeMessageType.m in Sources */,
 				17BA63131D1FF7F400BBFE69 /* GBRequestMethod.m in Sources */,
-				17BA63361D1FF7F400BBFE69 /* GPSwipeImages.m in Sources */,
 				17BA63241D1FF7F400BBFE69 /* GPClientV4.m in Sources */,
 				17BA63301D1FF7F400BBFE69 /* GPPicture.m in Sources */,
 				17BA63181D1FF7F400BBFE69 /* GLClick.m in Sources */,
