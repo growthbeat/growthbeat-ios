@@ -256,11 +256,12 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             self.registeringClient = NO;
 
         });
-
+        
         return;
 
     }
 
+    self.registeringClient = NO;
     [self.logger info:@"Client already registered."];
 
 }
