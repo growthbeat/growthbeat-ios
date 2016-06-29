@@ -22,39 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		17CC04F31D2396D000AB2667 /* GBAppDelegateWrapper.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D421D1A23D9006B0EFE /* GBAppDelegateWrapper.h */; };
-		17CC04F41D2396D000AB2667 /* GBAppDelegateWrapperDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D441D1A23D9006B0EFE /* GBAppDelegateWrapperDelegate.h */; };
-		17CC04F51D2396D000AB2667 /* GBApplication.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D451D1A23D9006B0EFE /* GBApplication.h */; };
-		17CC04F61D2396D000AB2667 /* GBClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D471D1A23D9006B0EFE /* GBClient.h */; };
-		17CC04F71D2396D000AB2667 /* GBContentType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D491D1A23D9006B0EFE /* GBContentType.h */; };
-		17CC04F81D2396D000AB2667 /* GBCustomIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4B1D1A23D9006B0EFE /* GBCustomIntent.h */; };
-		17CC04F91D2396D000AB2667 /* GBCustomIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4D1D1A23D9006B0EFE /* GBCustomIntentHandler.h */; };
-		17CC04FA1D2396D000AB2667 /* GBDateUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4F1D1A23D9006B0EFE /* GBDateUtils.h */; };
-		17CC04FB1D2396D000AB2667 /* GBDeviceUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D511D1A23D9006B0EFE /* GBDeviceUtils.h */; };
-		17CC04FC1D2396D000AB2667 /* GBDomain.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D531D1A23D9006B0EFE /* GBDomain.h */; };
-		17CC04FD1D2396D000AB2667 /* GBHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D571D1A23D9006B0EFE /* GBHttpClient.h */; };
-		17CC04FE1D2396D000AB2667 /* GBHttpRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D591D1A23D9006B0EFE /* GBHttpRequest.h */; };
-		17CC04FF1D2396D000AB2667 /* GBHttpResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5B1D1A23D9006B0EFE /* GBHttpResponse.h */; };
-		17CC05001D2396D000AB2667 /* GBHttpUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5D1D1A23D9006B0EFE /* GBHttpUtils.h */; };
-		17CC05011D2396D000AB2667 /* GBIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5F1D1A23D9006B0EFE /* GBIntent.h */; };
-		17CC05021D2396D000AB2667 /* GBIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D611D1A23D9006B0EFE /* GBIntentHandler.h */; };
-		17CC05031D2396D000AB2667 /* GBIntentType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D621D1A23D9006B0EFE /* GBIntentType.h */; };
-		17CC05041D2396D000AB2667 /* GBLogger.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D641D1A23D9006B0EFE /* GBLogger.h */; };
-		17CC05051D2396D000AB2667 /* GBNoopIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D681D1A23D9006B0EFE /* GBNoopIntent.h */; };
-		17CC05061D2396D000AB2667 /* GBNoopIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */; };
-		17CC05071D2396D000AB2667 /* GBPreference.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6C1D1A23D9006B0EFE /* GBPreference.h */; };
-		17CC05081D2396D000AB2667 /* GBRequestMethod.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6E1D1A23D9006B0EFE /* GBRequestMethod.h */; };
-		17CC05091D2396D000AB2667 /* GBUrlIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D701D1A23D9006B0EFE /* GBUrlIntent.h */; };
-		17CC050A1D2396D000AB2667 /* GBUrlIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D721D1A23D9006B0EFE /* GBUrlIntentHandler.h */; };
-		17CC050B1D2396D000AB2667 /* GBUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D741D1A23D9006B0EFE /* GBUtils.h */; };
-		17CC050C1D2396D000AB2667 /* GBViewUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D751D1A23D9006B0EFE /* GBViewUtils.h */; };
-		17CC050D1D2396D000AB2667 /* Growthbeat.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D771D1A23D9006B0EFE /* Growthbeat.h */; };
-		17CC050E1D23975800AB2667 /* GLClick.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3B1CFBC3730078D38C /* GLClick.h */; };
-		17CC050F1D23975800AB2667 /* GLLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3D1CFBC3730078D38C /* GLLink.h */; };
-		17CC05101D23975800AB2667 /* GLPattern.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3F1CFBC3730078D38C /* GLPattern.h */; };
-		17CC05111D23975800AB2667 /* GLSynchronization.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE411CFBC3730078D38C /* GLSynchronization.h */; };
-		17CC05121D23975800AB2667 /* GLSynchronizationHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */; };
-		17CC05131D23975800AB2667 /* GrowthLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE451CFBC3730078D38C /* GrowthLink.h */; };
 		17CC05351D23999F00AB2667 /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D431D1A23D9006B0EFE /* GBAppDelegateWrapper.m */; };
 		17CC05361D23999F00AB2667 /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D461D1A23D9006B0EFE /* GBApplication.m */; };
 		17CC05371D23999F00AB2667 /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D481D1A23D9006B0EFE /* GBClient.m */; };
@@ -119,6 +86,75 @@
 		17CC05DB1D2399F300AB2667 /* GPTagType.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05B71D2399F200AB2667 /* GPTagType.m */; };
 		17CC05DC1D2399F300AB2667 /* GPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05B91D2399F200AB2667 /* GPTask.m */; };
 		17CC05DD1D2399F300AB2667 /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05BB1D2399F200AB2667 /* GrowthPush.m */; };
+		17CC05DE1D239E7000AB2667 /* GBAppDelegateWrapper.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D421D1A23D9006B0EFE /* GBAppDelegateWrapper.h */; };
+		17CC05DF1D239E7000AB2667 /* GBAppDelegateWrapperDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D441D1A23D9006B0EFE /* GBAppDelegateWrapperDelegate.h */; };
+		17CC05E01D239E7000AB2667 /* GBApplication.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D451D1A23D9006B0EFE /* GBApplication.h */; };
+		17CC05E11D239E7000AB2667 /* GBClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D471D1A23D9006B0EFE /* GBClient.h */; };
+		17CC05E21D239E7000AB2667 /* GBContentType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D491D1A23D9006B0EFE /* GBContentType.h */; };
+		17CC05E31D239E7000AB2667 /* GBCustomIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4B1D1A23D9006B0EFE /* GBCustomIntent.h */; };
+		17CC05E41D239E7000AB2667 /* GBCustomIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4D1D1A23D9006B0EFE /* GBCustomIntentHandler.h */; };
+		17CC05E51D239E7000AB2667 /* GBDateUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4F1D1A23D9006B0EFE /* GBDateUtils.h */; };
+		17CC05E61D239E7100AB2667 /* GBDeviceUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D511D1A23D9006B0EFE /* GBDeviceUtils.h */; };
+		17CC05E71D239E7100AB2667 /* GBDomain.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D531D1A23D9006B0EFE /* GBDomain.h */; };
+		17CC05E81D239E7100AB2667 /* GBHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D571D1A23D9006B0EFE /* GBHttpClient.h */; };
+		17CC05E91D239E7100AB2667 /* GBHttpRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D591D1A23D9006B0EFE /* GBHttpRequest.h */; };
+		17CC05EA1D239E7100AB2667 /* GBHttpResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5B1D1A23D9006B0EFE /* GBHttpResponse.h */; };
+		17CC05EB1D239E7100AB2667 /* GBHttpUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5D1D1A23D9006B0EFE /* GBHttpUtils.h */; };
+		17CC05EC1D239E7100AB2667 /* GBIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5F1D1A23D9006B0EFE /* GBIntent.h */; };
+		17CC05ED1D239E7100AB2667 /* GBIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D611D1A23D9006B0EFE /* GBIntentHandler.h */; };
+		17CC05EE1D239E7100AB2667 /* GBIntentType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D621D1A23D9006B0EFE /* GBIntentType.h */; };
+		17CC05EF1D239E7100AB2667 /* GBLogger.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D641D1A23D9006B0EFE /* GBLogger.h */; };
+		17CC05F01D239E7100AB2667 /* GBNoopIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D681D1A23D9006B0EFE /* GBNoopIntent.h */; };
+		17CC05F11D239E7100AB2667 /* GBNoopIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */; };
+		17CC05F21D239E7100AB2667 /* GBPreference.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6C1D1A23D9006B0EFE /* GBPreference.h */; };
+		17CC05F31D239E7100AB2667 /* GBRequestMethod.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6E1D1A23D9006B0EFE /* GBRequestMethod.h */; };
+		17CC05F41D239E7100AB2667 /* GBUrlIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D701D1A23D9006B0EFE /* GBUrlIntent.h */; };
+		17CC05F51D239E7100AB2667 /* GBUrlIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D721D1A23D9006B0EFE /* GBUrlIntentHandler.h */; };
+		17CC05F61D239E7100AB2667 /* GBUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D741D1A23D9006B0EFE /* GBUtils.h */; };
+		17CC05F71D239E7100AB2667 /* GBViewUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D751D1A23D9006B0EFE /* GBViewUtils.h */; };
+		17CC05F81D239E7100AB2667 /* Growthbeat.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D771D1A23D9006B0EFE /* Growthbeat.h */; };
+		17CC05F91D239E7100AB2667 /* GLClick.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3B1CFBC3730078D38C /* GLClick.h */; };
+		17CC05FA1D239E7100AB2667 /* GLLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3D1CFBC3730078D38C /* GLLink.h */; };
+		17CC05FB1D239E7100AB2667 /* GLPattern.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3F1CFBC3730078D38C /* GLPattern.h */; };
+		17CC05FC1D239E7100AB2667 /* GLSynchronization.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE411CFBC3730078D38C /* GLSynchronization.h */; };
+		17CC05FD1D239E7100AB2667 /* GLSynchronizationHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */; };
+		17CC05FE1D239E7100AB2667 /* GrowthLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE451CFBC3730078D38C /* GrowthLink.h */; };
+		17CC05FF1D239E7100AB2667 /* GPBackground.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05761D2399F200AB2667 /* GPBackground.h */; };
+		17CC06001D239E7100AB2667 /* GPButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05781D2399F200AB2667 /* GPButton.h */; };
+		17CC06011D239E7100AB2667 /* GPButtonType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC057A1D2399F200AB2667 /* GPButtonType.h */; };
+		17CC06021D239E7100AB2667 /* GPCardMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC057C1D2399F200AB2667 /* GPCardMessage.h */; };
+		17CC06031D239E7100AB2667 /* GPCardMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC057E1D2399F200AB2667 /* GPCardMessageHandler.h */; };
+		17CC06041D239E7100AB2667 /* GPCardMessageRenderer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05801D2399F200AB2667 /* GPCardMessageRenderer.h */; };
+		17CC06051D239E7100AB2667 /* GPClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05821D2399F200AB2667 /* GPClient.h */; };
+		17CC06061D239E7100AB2667 /* GPClientV4.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05841D2399F200AB2667 /* GPClientV4.h */; };
+		17CC06071D239E7100AB2667 /* GPCloseButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05861D2399F200AB2667 /* GPCloseButton.h */; };
+		17CC06081D239E7100AB2667 /* GPEnvironment.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05881D2399F200AB2667 /* GPEnvironment.h */; };
+		17CC06091D239E7100AB2667 /* GPEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC058A1D2399F200AB2667 /* GPEvent.h */; };
+		17CC060A1D239E7100AB2667 /* GPEventType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC058C1D2399F200AB2667 /* GPEventType.h */; };
+		17CC060B1D239E7100AB2667 /* GPImageButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC058E1D2399F200AB2667 /* GPImageButton.h */; };
+		17CC060C1D239E7100AB2667 /* GPMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05901D2399F200AB2667 /* GPMessage.h */; };
+		17CC060D1D239E7100AB2667 /* GPMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05921D2399F200AB2667 /* GPMessageHandler.h */; };
+		17CC060E1D239E7100AB2667 /* GPMessageOrientation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05931D2399F200AB2667 /* GPMessageOrientation.h */; };
+		17CC060F1D239E7100AB2667 /* GPMessageQueue.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05951D2399F200AB2667 /* GPMessageQueue.h */; };
+		17CC06101D239E7100AB2667 /* GPMessageRendererDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05971D2399F200AB2667 /* GPMessageRendererDelegate.h */; };
+		17CC06111D239E7100AB2667 /* GPMessageType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05981D2399F200AB2667 /* GPMessageType.h */; };
+		17CC06121D239E7100AB2667 /* GPNoContentMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC059A1D2399F200AB2667 /* GPNoContentMessage.h */; };
+		17CC06131D239E7100AB2667 /* GPOS.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC059C1D2399F200AB2667 /* GPOS.h */; };
+		17CC06141D239E7100AB2667 /* GPPicture.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC059E1D2399F200AB2667 /* GPPicture.h */; };
+		17CC06151D239E7100AB2667 /* GPPictureUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A01D2399F200AB2667 /* GPPictureUtils.h */; };
+		17CC06161D239E7100AB2667 /* GPPlainButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A21D2399F200AB2667 /* GPPlainButton.h */; };
+		17CC06171D239E7100AB2667 /* GPPlainMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A41D2399F200AB2667 /* GPPlainMessage.h */; };
+		17CC06181D239E7100AB2667 /* GPPlainMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A61D2399F200AB2667 /* GPPlainMessageHandler.h */; };
+		17CC06191D239E7100AB2667 /* GPScreenButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A81D2399F200AB2667 /* GPScreenButton.h */; };
+		17CC061A1D239E7100AB2667 /* GPShowMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05AA1D2399F200AB2667 /* GPShowMessageHandler.h */; };
+		17CC061B1D239E7100AB2667 /* GPSwipeMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05AC1D2399F200AB2667 /* GPSwipeMessage.h */; };
+		17CC061C1D239E7100AB2667 /* GPSwipeMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05AE1D2399F200AB2667 /* GPSwipeMessageHandler.h */; };
+		17CC061D1D239E7100AB2667 /* GPSwipeMessageRenderer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B01D2399F200AB2667 /* GPSwipeMessageRenderer.h */; };
+		17CC061E1D239E7100AB2667 /* GPSwipeMessageType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B21D2399F200AB2667 /* GPSwipeMessageType.h */; };
+		17CC061F1D239E7100AB2667 /* GPTag.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B41D2399F200AB2667 /* GPTag.h */; };
+		17CC06201D239E7100AB2667 /* GPTagType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B61D2399F200AB2667 /* GPTagType.h */; };
+		17CC06211D239E7100AB2667 /* GPTask.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B81D2399F200AB2667 /* GPTask.h */; };
+		17CC06221D239E7100AB2667 /* GrowthPush.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05BA1D2399F200AB2667 /* GrowthPush.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,39 +174,75 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				17CC050E1D23975800AB2667 /* GLClick.h in Copy Files */,
-				17CC050F1D23975800AB2667 /* GLLink.h in Copy Files */,
-				17CC05101D23975800AB2667 /* GLPattern.h in Copy Files */,
-				17CC05111D23975800AB2667 /* GLSynchronization.h in Copy Files */,
-				17CC05121D23975800AB2667 /* GLSynchronizationHandler.h in Copy Files */,
-				17CC05131D23975800AB2667 /* GrowthLink.h in Copy Files */,
-				17CC04F31D2396D000AB2667 /* GBAppDelegateWrapper.h in Copy Files */,
-				17CC04F41D2396D000AB2667 /* GBAppDelegateWrapperDelegate.h in Copy Files */,
-				17CC04F51D2396D000AB2667 /* GBApplication.h in Copy Files */,
-				17CC04F61D2396D000AB2667 /* GBClient.h in Copy Files */,
-				17CC04F71D2396D000AB2667 /* GBContentType.h in Copy Files */,
-				17CC04F81D2396D000AB2667 /* GBCustomIntent.h in Copy Files */,
-				17CC04F91D2396D000AB2667 /* GBCustomIntentHandler.h in Copy Files */,
-				17CC04FA1D2396D000AB2667 /* GBDateUtils.h in Copy Files */,
-				17CC04FB1D2396D000AB2667 /* GBDeviceUtils.h in Copy Files */,
-				17CC04FC1D2396D000AB2667 /* GBDomain.h in Copy Files */,
-				17CC04FD1D2396D000AB2667 /* GBHttpClient.h in Copy Files */,
-				17CC04FE1D2396D000AB2667 /* GBHttpRequest.h in Copy Files */,
-				17CC04FF1D2396D000AB2667 /* GBHttpResponse.h in Copy Files */,
-				17CC05001D2396D000AB2667 /* GBHttpUtils.h in Copy Files */,
-				17CC05011D2396D000AB2667 /* GBIntent.h in Copy Files */,
-				17CC05021D2396D000AB2667 /* GBIntentHandler.h in Copy Files */,
-				17CC05031D2396D000AB2667 /* GBIntentType.h in Copy Files */,
-				17CC05041D2396D000AB2667 /* GBLogger.h in Copy Files */,
-				17CC05051D2396D000AB2667 /* GBNoopIntent.h in Copy Files */,
-				17CC05061D2396D000AB2667 /* GBNoopIntentHandler.h in Copy Files */,
-				17CC05071D2396D000AB2667 /* GBPreference.h in Copy Files */,
-				17CC05081D2396D000AB2667 /* GBRequestMethod.h in Copy Files */,
-				17CC05091D2396D000AB2667 /* GBUrlIntent.h in Copy Files */,
-				17CC050A1D2396D000AB2667 /* GBUrlIntentHandler.h in Copy Files */,
-				17CC050B1D2396D000AB2667 /* GBUtils.h in Copy Files */,
-				17CC050C1D2396D000AB2667 /* GBViewUtils.h in Copy Files */,
-				17CC050D1D2396D000AB2667 /* Growthbeat.h in Copy Files */,
+				17CC05DE1D239E7000AB2667 /* GBAppDelegateWrapper.h in Copy Files */,
+				17CC05DF1D239E7000AB2667 /* GBAppDelegateWrapperDelegate.h in Copy Files */,
+				17CC05E01D239E7000AB2667 /* GBApplication.h in Copy Files */,
+				17CC05E11D239E7000AB2667 /* GBClient.h in Copy Files */,
+				17CC05E21D239E7000AB2667 /* GBContentType.h in Copy Files */,
+				17CC05E31D239E7000AB2667 /* GBCustomIntent.h in Copy Files */,
+				17CC05E41D239E7000AB2667 /* GBCustomIntentHandler.h in Copy Files */,
+				17CC05E51D239E7000AB2667 /* GBDateUtils.h in Copy Files */,
+				17CC05E61D239E7100AB2667 /* GBDeviceUtils.h in Copy Files */,
+				17CC05E71D239E7100AB2667 /* GBDomain.h in Copy Files */,
+				17CC05E81D239E7100AB2667 /* GBHttpClient.h in Copy Files */,
+				17CC05E91D239E7100AB2667 /* GBHttpRequest.h in Copy Files */,
+				17CC05EA1D239E7100AB2667 /* GBHttpResponse.h in Copy Files */,
+				17CC05EB1D239E7100AB2667 /* GBHttpUtils.h in Copy Files */,
+				17CC05EC1D239E7100AB2667 /* GBIntent.h in Copy Files */,
+				17CC05ED1D239E7100AB2667 /* GBIntentHandler.h in Copy Files */,
+				17CC05EE1D239E7100AB2667 /* GBIntentType.h in Copy Files */,
+				17CC05EF1D239E7100AB2667 /* GBLogger.h in Copy Files */,
+				17CC05F01D239E7100AB2667 /* GBNoopIntent.h in Copy Files */,
+				17CC05F11D239E7100AB2667 /* GBNoopIntentHandler.h in Copy Files */,
+				17CC05F21D239E7100AB2667 /* GBPreference.h in Copy Files */,
+				17CC05F31D239E7100AB2667 /* GBRequestMethod.h in Copy Files */,
+				17CC05F41D239E7100AB2667 /* GBUrlIntent.h in Copy Files */,
+				17CC05F51D239E7100AB2667 /* GBUrlIntentHandler.h in Copy Files */,
+				17CC05F61D239E7100AB2667 /* GBUtils.h in Copy Files */,
+				17CC05F71D239E7100AB2667 /* GBViewUtils.h in Copy Files */,
+				17CC05F81D239E7100AB2667 /* Growthbeat.h in Copy Files */,
+				17CC05F91D239E7100AB2667 /* GLClick.h in Copy Files */,
+				17CC05FA1D239E7100AB2667 /* GLLink.h in Copy Files */,
+				17CC05FB1D239E7100AB2667 /* GLPattern.h in Copy Files */,
+				17CC05FC1D239E7100AB2667 /* GLSynchronization.h in Copy Files */,
+				17CC05FD1D239E7100AB2667 /* GLSynchronizationHandler.h in Copy Files */,
+				17CC05FE1D239E7100AB2667 /* GrowthLink.h in Copy Files */,
+				17CC05FF1D239E7100AB2667 /* GPBackground.h in Copy Files */,
+				17CC06001D239E7100AB2667 /* GPButton.h in Copy Files */,
+				17CC06011D239E7100AB2667 /* GPButtonType.h in Copy Files */,
+				17CC06021D239E7100AB2667 /* GPCardMessage.h in Copy Files */,
+				17CC06031D239E7100AB2667 /* GPCardMessageHandler.h in Copy Files */,
+				17CC06041D239E7100AB2667 /* GPCardMessageRenderer.h in Copy Files */,
+				17CC06051D239E7100AB2667 /* GPClient.h in Copy Files */,
+				17CC06061D239E7100AB2667 /* GPClientV4.h in Copy Files */,
+				17CC06071D239E7100AB2667 /* GPCloseButton.h in Copy Files */,
+				17CC06081D239E7100AB2667 /* GPEnvironment.h in Copy Files */,
+				17CC06091D239E7100AB2667 /* GPEvent.h in Copy Files */,
+				17CC060A1D239E7100AB2667 /* GPEventType.h in Copy Files */,
+				17CC060B1D239E7100AB2667 /* GPImageButton.h in Copy Files */,
+				17CC060C1D239E7100AB2667 /* GPMessage.h in Copy Files */,
+				17CC060D1D239E7100AB2667 /* GPMessageHandler.h in Copy Files */,
+				17CC060E1D239E7100AB2667 /* GPMessageOrientation.h in Copy Files */,
+				17CC060F1D239E7100AB2667 /* GPMessageQueue.h in Copy Files */,
+				17CC06101D239E7100AB2667 /* GPMessageRendererDelegate.h in Copy Files */,
+				17CC06111D239E7100AB2667 /* GPMessageType.h in Copy Files */,
+				17CC06121D239E7100AB2667 /* GPNoContentMessage.h in Copy Files */,
+				17CC06131D239E7100AB2667 /* GPOS.h in Copy Files */,
+				17CC06141D239E7100AB2667 /* GPPicture.h in Copy Files */,
+				17CC06151D239E7100AB2667 /* GPPictureUtils.h in Copy Files */,
+				17CC06161D239E7100AB2667 /* GPPlainButton.h in Copy Files */,
+				17CC06171D239E7100AB2667 /* GPPlainMessage.h in Copy Files */,
+				17CC06181D239E7100AB2667 /* GPPlainMessageHandler.h in Copy Files */,
+				17CC06191D239E7100AB2667 /* GPScreenButton.h in Copy Files */,
+				17CC061A1D239E7100AB2667 /* GPShowMessageHandler.h in Copy Files */,
+				17CC061B1D239E7100AB2667 /* GPSwipeMessage.h in Copy Files */,
+				17CC061C1D239E7100AB2667 /* GPSwipeMessageHandler.h in Copy Files */,
+				17CC061D1D239E7100AB2667 /* GPSwipeMessageRenderer.h in Copy Files */,
+				17CC061E1D239E7100AB2667 /* GPSwipeMessageType.h in Copy Files */,
+				17CC061F1D239E7100AB2667 /* GPTag.h in Copy Files */,
+				17CC06201D239E7100AB2667 /* GPTagType.h in Copy Files */,
+				17CC06211D239E7100AB2667 /* GPTask.h in Copy Files */,
+				17CC06221D239E7100AB2667 /* GrowthPush.h in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
