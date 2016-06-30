@@ -8,24 +8,29 @@
 
 #import "AppDelegate.h"
 #import <Growthbeat/GBPreference.h>
-#import <Growthbeat/GPClient.h>
 
 @implementation AppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[Growthbeat sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
-    [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+    [[[GrowthPush sharedInstance] httpClient] setBaseUrl:[NSURL URLWithString:@"https://api.stg.growthpush.com/"]];
+    [[GrowthPush sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"RtYOQo4QaSaFHNYdZSddSeoeEiJ2kboW" environment:kGrowthPushEnvironment];
+    [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary *extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
+        if([extra objectForKey:@"type"]) {
+            [[GrowthPush sharedInstance] requestDeviceToken];
+        }
         return YES;
     }]];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
 
-    [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
-    [[Growthbeat sharedInstance] getClient:^(GBClient *client) {
-        NSLog(@"clientId is %@",client.id);
-    }];
+    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
+        renderMessage();
+    } failure:nil];
+    
+    [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
+    
     return YES;
 }
 
@@ -38,11 +43,9 @@
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] start];
 }
 
 - (void) applicationWillResignActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] stop];
 }
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {

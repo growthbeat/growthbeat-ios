@@ -7,77 +7,58 @@
 //
 
 #import "GPClient.h"
-#import "GBUtils.h"
-#import "GBHttpClient.h"
+#import "GBDateUtils.h"
 #import "GrowthPush.h"
 
 @implementation GPClient
 
 @synthesize id;
-@synthesize growthbeatClientId;
 @synthesize applicationId;
 @synthesize code;
+@synthesize growthbeatClientId;
+@synthesize growthbeatApplicationId;
 @synthesize token;
 @synthesize os;
 @synthesize environment;
 @synthesize created;
 
-+ (GPClient *) createWithClientId:(NSString *)clientId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment {
+static NSString *const kGPPreferenceClientKey = @"client";
+static NSString *const kGBGPPreferenceClientKey = @"growthpush-client";
 
-    NSString *path = @"/3/clients";
-    NSMutableDictionary *body = [NSMutableDictionary dictionary];
-
-    if (clientId) {
-        [body setObject:clientId forKey:@"clientId"];
-    }
-    if (credentialId) {
-        [body setObject:credentialId forKey:@"credentialId"];
-    }
-    if (token) {
-        [body setObject:token forKey:@"token"];
-    }
-    if (NSStringFromGPOS(GPOSIos)) {
-        [body setObject:NSStringFromGPOS(GPOSIos) forKey:@"os"];
-    }
-    if (NSStringFromGPEnvironment(environment)) {
-        [body setObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];
-    }
-
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
-    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
-    if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to create client. %@", httpResponse.error];
-        return nil;
-    }
-
-    return [GPClient domainWithDictionary:httpResponse.body];
-
++ (GPClient *) loadGPClient {
+    return [[[GrowthPush sharedInstance] preference] objectForKey:kGPPreferenceClientKey];
 }
 
-+ (GPClient *) updateWithClientId:(NSString *)clientId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment {
++ (GPClient *) loadGBGPClient {
+    return [[[GrowthPush sharedInstance] preference] objectForKey:kGBGPPreferenceClientKey];
+}
 
-    NSString *path = [NSString stringWithFormat:@"/3/clients/%@", clientId];
-    NSMutableDictionary *body = [NSMutableDictionary dictionary];
++ (void) removeGPClientPreference {
+    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGPPreferenceClientKey];
+}
 
-    if (credentialId) {
-        [body setObject:credentialId forKey:@"credentialId"];
-    }
-    if (token) {
-        [body setObject:token forKey:@"token"];
-    }
-    if (NSStringFromGPEnvironment(environment)) {
-        [body setObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];
-    }
++ (void) removeGBGPClientPreference {
+    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceClientKey];
+}
 
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPut path:path query:nil body:body];
++ (GPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {
+    NSString *path = [NSString stringWithFormat:@"/1/clients/%lld", clientId];
+    NSMutableDictionary *query = [NSMutableDictionary dictionary];
+    
+    if (code) {
+        [query setObject:code forKey:@"code"];
+    }
+    
+    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query body:nil];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
+
     if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to update client. %@", httpResponse.error];
+        [[[Growthbeat sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;
     }
-
+    
     return [GPClient domainWithDictionary:httpResponse.body];
-
+    
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
@@ -87,14 +68,17 @@
         if ([dictionary objectForKey:@"id"] && [dictionary objectForKey:@"id"] != [NSNull null]) {
             self.id = [[dictionary objectForKey:@"id"] longLongValue];
         }
-        if ([dictionary objectForKey:@"growthbeatClientId"] && [dictionary objectForKey:@"growthbeatClientId"] != [NSNull null]) {
-            self.growthbeatClientId = [dictionary objectForKey:@"growthbeatClientId"];
-        }
         if ([dictionary objectForKey:@"applicationId"] && [dictionary objectForKey:@"applicationId"] != [NSNull null]) {
             self.applicationId = [[dictionary objectForKey:@"applicationId"] integerValue];
         }
         if ([dictionary objectForKey:@"code"] && [dictionary objectForKey:@"code"] != [NSNull null]) {
             self.code = [dictionary objectForKey:@"code"];
+        }
+        if ([dictionary objectForKey:@"growthbeatApplicationId"] && [dictionary objectForKey:@"growthbeatApplicationId"] != [NSNull null]) {
+            self.growthbeatApplicationId = [dictionary objectForKey:@"growthbeatApplicationId"];
+        }
+        if ([dictionary objectForKey:@"growthbeatClientId"] && [dictionary objectForKey:@"growthbeatClientId"] != [NSNull null]) {
+            self.growthbeatClientId = [dictionary objectForKey:@"growthbeatClientId"];
         }
         if ([dictionary objectForKey:@"token"] && [dictionary objectForKey:@"token"] != [NSNull null]) {
             self.token = [dictionary objectForKey:@"token"];
@@ -106,7 +90,6 @@
             self.environment = GPEnvironmentFromNSString([dictionary objectForKey:@"environment"]);
         }
         if ([dictionary objectForKey:@"created"] && [dictionary objectForKey:@"created"] != [NSNull null]) {
-            // TODO fix time difference
             self.created = [GBDateUtils dateWithString:[dictionary objectForKey:@"created"] format:@"yyyy-MM-dd HH:mm:ss"];
         }
     }
@@ -121,14 +104,17 @@
         if ([aDecoder containsValueForKey:@"id"]) {
             self.id = [[aDecoder decodeObjectForKey:@"id"] longLongValue];
         }
-        if ([aDecoder containsValueForKey:@"growthbeatClientId"]) {
-            self.growthbeatClientId = [aDecoder decodeObjectForKey:@"growthbeatClientId"];
-        }
         if ([aDecoder containsValueForKey:@"applicationId"]) {
             self.applicationId = [aDecoder decodeIntegerForKey:@"applicationId"];
         }
         if ([aDecoder containsValueForKey:@"code"]) {
             self.code = [aDecoder decodeObjectForKey:@"code"];
+        }
+        if ([aDecoder containsValueForKey:@"growthbeatApplicationId"]) {
+            self.growthbeatApplicationId = [aDecoder decodeObjectForKey:@"growthbeatApplicationId"];
+        }
+        if ([aDecoder containsValueForKey:@"growthbeatClientId"]) {
+            self.growthbeatClientId = [aDecoder decodeObjectForKey:@"growthbeatClientId"];
         }
         if ([aDecoder containsValueForKey:@"token"]) {
             self.token = [aDecoder decodeObjectForKey:@"token"];
@@ -147,13 +133,13 @@
 
 }
 
-
 - (void) encodeWithCoder:(NSCoder *)aCoder {
 
     [aCoder encodeObject:@(id) forKey:@"id"];
-    [aCoder encodeObject:growthbeatClientId forKey:@"growthbeatClientId"];
     [aCoder encodeInteger:applicationId forKey:@"applicationId"];
     [aCoder encodeObject:code forKey:@"code"];
+    [aCoder encodeObject:growthbeatApplicationId forKey:@"growthbeatApplicationId"];
+    [aCoder encodeObject:growthbeatClientId forKey:@"growthbeatClientId"];
     [aCoder encodeObject:token forKey:@"token"];
     [aCoder encodeObject:NSStringFromGPOS(os) forKey:@"os"];
     [aCoder encodeObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];

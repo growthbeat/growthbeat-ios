@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17CC04711D2395CC00AB2667 /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CC04701D2395CC00AB2667 /* Growthbeat.framework */; };
 		B2421EDE1997952D00E91C23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421EDD1997952D00E91C23 /* Foundation.framework */; };
 		B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421EDF1997952D00E91C23 /* CoreGraphics.framework */; };
 		B2421EE21997952D00E91C23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421EE11997952D00E91C23 /* UIKit.framework */; };
@@ -16,13 +17,13 @@
 		B2421EF11997952D00E91C23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2421EEF1997952D00E91C23 /* Main.storyboard */; };
 		B2421EF41997952D00E91C23 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2421EF31997952D00E91C23 /* ViewController.m */; };
 		B2421EF61997952D00E91C23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2421EF51997952D00E91C23 /* Images.xcassets */; };
-		B2421F131997954800E91C23 /* Growthbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421F121997954800E91C23 /* Growthbeat.framework */; };
 		B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25341811997B301004C8EDB /* SystemConfiguration.framework */; };
 		C15C2DD81CFBE263006E48D7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15C2DD71CFBE263006E48D7 /* AdSupport.framework */; };
 		C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC842E1BDE06BA00626543 /* SafariServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17CC04701D2395CC00AB2667 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../Growthbeat.framework; sourceTree = "<group>"; };
 		69BDE4131C55FD8E006DF256 /* GrowthbeatSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GrowthbeatSample.entitlements; sourceTree = "<group>"; };
 		B2421EDA1997952D00E91C23 /* GrowthbeatSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrowthbeatSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2421EDD1997952D00E91C23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,7 +39,6 @@
 		B2421EF21997952D00E91C23 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B2421EF31997952D00E91C23 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B2421EF51997952D00E91C23 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B2421F121997954800E91C23 /* Growthbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growthbeat.framework; path = ../Growthbeat.framework; sourceTree = "<group>"; };
 		B25341811997B301004C8EDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C15C2DD71CFBE263006E48D7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C1FC842E1BDE06BA00626543 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
@@ -53,9 +53,9 @@
 				C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */,
 				B25341821997B301004C8EDB /* SystemConfiguration.framework in Frameworks */,
 				B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */,
+				17CC04711D2395CC00AB2667 /* Growthbeat.framework in Frameworks */,
 				B2421EE21997952D00E91C23 /* UIKit.framework in Frameworks */,
 				B2421EDE1997952D00E91C23 /* Foundation.framework in Frameworks */,
-				B2421F131997954800E91C23 /* Growthbeat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,11 +82,11 @@
 		B2421EDC1997952D00E91C23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17CC04701D2395CC00AB2667 /* Growthbeat.framework */,
 				C15C2DD71CFBE263006E48D7 /* AdSupport.framework */,
 				C1FC842E1BDE06BA00626543 /* SafariServices.framework */,
 				B2421EDF1997952D00E91C23 /* CoreGraphics.framework */,
 				B2421EDD1997952D00E91C23 /* Foundation.framework */,
-				B2421F121997954800E91C23 /* Growthbeat.framework */,
 				B25341811997B301004C8EDB /* SystemConfiguration.framework */,
 				B2421EE11997952D00E91C23 /* UIKit.framework */,
 			);
@@ -309,7 +309,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
-					"$(SRCROOT)/../source/GrowthLink",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowthbeatSample/GrowthbeatSample-Prefix.pch";
@@ -334,7 +333,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
-					"$(SRCROOT)/../source/GrowthLink",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GrowthbeatSample/GrowthbeatSample-Prefix.pch";

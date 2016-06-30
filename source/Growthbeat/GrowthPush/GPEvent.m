@@ -17,16 +17,22 @@
 @synthesize clientId;
 @synthesize value;
 
-+ (GPEvent *) createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
++ (GPEvent *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId type:(GPEventType)eventType name:(NSString *)name value:(NSString *)value {
 
-    NSString *path = @"/3/events";
+    NSString *path = @"/4/events";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
 
     if (clientId) {
         [body setObject:clientId forKey:@"clientId"];
     }
+    if (applicationId) {
+        [body setObject:applicationId forKey:@"applicationId"];
+    }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (NSStringFromGPEventType(eventType)) {
+        [body setObject:NSStringFromGPEventType(eventType) forKey:@"type"];
     }
     if (name) {
         [body setObject:name forKey:@"name"];
@@ -57,7 +63,7 @@
             self.timestamp = [[dictionary objectForKey:@"timestamp"] longLongValue];
         }
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
-            self.clientId = [[dictionary objectForKey:@"clientId"] longLongValue];
+            self.clientId = [dictionary objectForKey:@"clientId"];
         }
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
@@ -82,7 +88,7 @@
             self.timestamp = [[aDecoder decodeObjectForKey:@"timestamp"] longLongValue];
         }
         if ([aDecoder containsValueForKey:@"clientId"]) {
-            self.clientId = [[aDecoder decodeObjectForKey:@"clientId"] longLongValue];
+            self.clientId = [aDecoder decodeObjectForKey:@"clientId"];
         }
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
@@ -97,7 +103,7 @@
 
     [aCoder encodeInteger:goalId forKey:@"goalId"];
     [aCoder encodeObject:@(timestamp) forKey:@"timestamp"];
-    [aCoder encodeObject:@(clientId) forKey:@"clientId"];
+    [aCoder encodeObject:clientId forKey:@"clientId"];
     [aCoder encodeObject:value forKey:@"value"];
 
 }
