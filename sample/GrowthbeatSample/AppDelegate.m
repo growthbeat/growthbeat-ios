@@ -13,8 +13,7 @@
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[[GrowthPush sharedInstance] httpClient] setBaseUrl:[NSURL URLWithString:@"https://api.stg.growthpush.com/"]];
-    [[GrowthPush sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"RtYOQo4QaSaFHNYdZSddSeoeEiJ2kboW" environment:kGrowthPushEnvironment];
+    [[GrowthPush sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"7gpJ51ZQPJhNzrk0p0ThnNwh9jVcDlRS" environment:kGrowthPushEnvironment];
     [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary *extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
@@ -23,7 +22,7 @@
         }
         return YES;
     }]];
-    [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"FD2w93wXcWlb68ILOObsKz5P3af9oVMo"];
+    [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"7gpJ51ZQPJhNzrk0p0ThnNwh9jVcDlRS"];
 
     [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
         renderMessage();
