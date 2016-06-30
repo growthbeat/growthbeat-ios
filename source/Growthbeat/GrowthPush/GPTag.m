@@ -16,18 +16,24 @@
 @synthesize clientId;
 @synthesize value;
 
-static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
+static NSString *const kGPPreferenceTagKeyFormatV4 = @"tags:%@:%@";
 
-+ (GPTag *) createWithGrowthbeatClient:(NSString *)clientId credentialId:(NSString *)credentialId name:(NSString *)name value:(NSString *)value {
++ (GPTag *)createWithGrowthbeatClient:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId type:(GPTagType)tagType name:(NSString *)name value:(NSString *)value {
 
-    NSString *path = @"/3/tags";
+    NSString *path = @"/4/tag_clients";
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
 
     if (clientId) {
         [body setObject:clientId forKey:@"clientId"];
     }
+    if (applicationId) {
+        [body setObject:applicationId forKey:@"applicationId"];
+    }
     if (credentialId) {
         [body setObject:credentialId forKey:@"credentialId"];
+    }
+    if (NSStringFromGPTagType(tagType) ) {
+        [body setObject:NSStringFromGPTagType(tagType) forKey:@"type"];
     }
     if (name) {
         [body setObject:name forKey:@"name"];
@@ -47,20 +53,30 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 
 }
 
-+ (void) save:(GPTag *)tag name:(NSString *)name {
-    if (tag && name) {
-        [[[GrowthPush sharedInstance] preference] setObject:tag forKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
++ (void)save:(GPTag *)tag type:(GPTagType)tagType name:(NSString *)name {
+    if (tag && name && NSStringFromGPTagType(tagType)) {
+        [[[GrowthPush sharedInstance] preference] setObject:tag forKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormatV4, NSStringFromGPTagType(tagType), name]];
     }
 }
 
-+ (GPTag *) load:(NSString *)name {
++ (GPTag *)load:(GPTagType)tagType name:(NSString *)name {
 
-    if (!name) {
+    if (!name || !NSStringFromGPTagType(tagType)) {
         return nil;
     }
 
-    return [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormat, name]];
-
+    GPTag *tag = [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:kGPPreferenceTagKeyFormatV4, NSStringFromGPTagType(tagType), name]];
+    if (tag)
+        return tag;
+    
+    NSString *oldKeyFrommat = @"tags:%@";
+    tag = [[[GrowthPush sharedInstance] preference] objectForKey:[NSString stringWithFormat:oldKeyFrommat, name]];
+    if (!tag)
+        return nil;
+    
+    [GPTag save:tag type:tagType name:name];
+    return tag;
+    
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
@@ -71,7 +87,7 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
             self.tagId = [[dictionary objectForKey:@"tagId"] integerValue];
         }
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
-            self.clientId = [[dictionary objectForKey:@"clientId"] longLongValue];
+            self.clientId = [dictionary objectForKey:@"clientId"];
         }
         if ([dictionary objectForKey:@"value"] && [dictionary objectForKey:@"value"] != [NSNull null]) {
             self.value = [dictionary objectForKey:@"value"];
@@ -93,7 +109,7 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
             self.tagId = [aDecoder decodeIntegerForKey:@"tagId"];
         }
         if ([aDecoder containsValueForKey:@"clientId"]) {
-            self.clientId = [[aDecoder decodeObjectForKey:@"clientId"] longLongValue];
+            self.clientId = [aDecoder decodeObjectForKey:@"clientId"];
         }
         if ([aDecoder containsValueForKey:@"value"]) {
             self.value = [aDecoder decodeObjectForKey:@"value"];
@@ -107,7 +123,7 @@ static NSString *const kGPPreferenceTagKeyFormat = @"tags:%@";
 - (void) encodeWithCoder:(NSCoder *)aCoder {
 
     [aCoder encodeInteger:tagId forKey:@"tagId"];
-    [aCoder encodeObject:@(clientId) forKey:@"clientId"];
+    [aCoder encodeObject:clientId forKey:@"clientId"];
     [aCoder encodeObject:value forKey:@"value"];
 
 }

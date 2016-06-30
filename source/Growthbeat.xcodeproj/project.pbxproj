@@ -22,154 +22,139 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		178DDC261BB2A88E008A859F /* GMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBEC1BB2A88E008A859F /* GMAnimationType.m */; };
-		178DDC271BB2A88E008A859F /* GMBannerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBEE1BB2A88E008A859F /* GMBannerMessage.m */; };
-		178DDC281BB2A88E008A859F /* GMBannerMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBF01BB2A88E008A859F /* GMBannerMessageHandler.m */; };
-		178DDC291BB2A88E008A859F /* GMBannerMessagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBF21BB2A88E008A859F /* GMBannerMessagePosition.m */; };
-		178DDC2A1BB2A88E008A859F /* GMBannerMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBF41BB2A88E008A859F /* GMBannerMessageRenderer.m */; };
-		178DDC2B1BB2A88E008A859F /* GMBannerMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBF61BB2A88E008A859F /* GMBannerMessageType.m */; };
-		178DDC2C1BB2A88E008A859F /* GMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBF81BB2A88E008A859F /* GMButton.m */; };
-		178DDC2D1BB2A88E008A859F /* GMButtonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBFA1BB2A88E008A859F /* GMButtonType.m */; };
-		178DDC2E1BB2A88E008A859F /* GMCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBFC1BB2A88E008A859F /* GMCloseButton.m */; };
-		178DDC2F1BB2A88E008A859F /* GMImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDBFE1BB2A88E008A859F /* GMImageButton.m */; };
-		178DDC301BB2A88E008A859F /* GMImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC001BB2A88E008A859F /* GMImageMessage.m */; };
-		178DDC311BB2A88E008A859F /* GMImageMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC021BB2A88E008A859F /* GMImageMessageHandler.m */; };
-		178DDC321BB2A88E008A859F /* GMImageMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC041BB2A88E008A859F /* GMImageMessageRenderer.m */; };
-		178DDC331BB2A88E008A859F /* GMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC061BB2A88E008A859F /* GMMessage.m */; };
-		178DDC341BB2A88E008A859F /* GMMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC0A1BB2A88E008A859F /* GMMessageType.m */; };
-		178DDC351BB2A88E008A859F /* GMPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC0C1BB2A88E008A859F /* GMPicture.m */; };
-		178DDC361BB2A88E008A859F /* GMPictureExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC0E1BB2A88E008A859F /* GMPictureExtension.m */; };
-		178DDC371BB2A88E008A859F /* GMPlainButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC101BB2A88E008A859F /* GMPlainButton.m */; };
-		178DDC381BB2A88E008A859F /* GMPlainMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC121BB2A88E008A859F /* GMPlainMessage.m */; };
-		178DDC391BB2A88E008A859F /* GMPlainMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC141BB2A88E008A859F /* GMPlainMessageHandler.m */; };
-		178DDC3A1BB2A88E008A859F /* GMScreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC161BB2A88E008A859F /* GMScreenButton.m */; };
-		178DDC3B1BB2A88E008A859F /* GMSwipeImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC181BB2A88E008A859F /* GMSwipeImages.m */; };
-		178DDC3C1BB2A88E008A859F /* GMSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC1A1BB2A88E008A859F /* GMSwipeMessage.m */; };
-		178DDC3D1BB2A88E008A859F /* GMSwipeMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC1C1BB2A88E008A859F /* GMSwipeMessageHandler.m */; };
-		178DDC3E1BB2A88E008A859F /* GMSwipeMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC1E1BB2A88E008A859F /* GMSwipeMessageRenderer.m */; };
-		178DDC3F1BB2A88E008A859F /* GMSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC211BB2A88E008A859F /* GMSwipeMessageType.m */; };
-		178DDC401BB2A88E008A859F /* GMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC231BB2A88E008A859F /* GMTask.m */; };
-		178DDC411BB2A88E008A859F /* GrowthMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 178DDC251BB2A88E008A859F /* GrowthMessage.m */; };
-		17E0AE561BF7145E00AD380C /* GMAnimationType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBEB1BB2A88E008A859F /* GMAnimationType.h */; };
-		17E0AE571BF7145E00AD380C /* GMBannerMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBED1BB2A88E008A859F /* GMBannerMessage.h */; };
-		17E0AE581BF7145E00AD380C /* GMBannerMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBEF1BB2A88E008A859F /* GMBannerMessageHandler.h */; };
-		17E0AE591BF7145E00AD380C /* GMBannerMessagePosition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBF11BB2A88E008A859F /* GMBannerMessagePosition.h */; };
-		17E0AE5A1BF7145E00AD380C /* GMBannerMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBF31BB2A88E008A859F /* GMBannerMessageRenderer.h */; };
-		17E0AE5B1BF7145E00AD380C /* GMBannerMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBF51BB2A88E008A859F /* GMBannerMessageType.h */; };
-		17E0AE5C1BF7145E00AD380C /* GMButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBF71BB2A88E008A859F /* GMButton.h */; };
-		17E0AE5D1BF7145E00AD380C /* GMButtonType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBF91BB2A88E008A859F /* GMButtonType.h */; };
-		17E0AE5E1BF7145E00AD380C /* GMCloseButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBFB1BB2A88E008A859F /* GMCloseButton.h */; };
-		17E0AE5F1BF7145E00AD380C /* GMImageButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBFD1BB2A88E008A859F /* GMImageButton.h */; };
-		17E0AE601BF7145E00AD380C /* GMImageMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDBFF1BB2A88E008A859F /* GMImageMessage.h */; };
-		17E0AE611BF7145E00AD380C /* GMImageMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC011BB2A88E008A859F /* GMImageMessageHandler.h */; };
-		17E0AE621BF7145E00AD380C /* GMImageMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC031BB2A88E008A859F /* GMImageMessageRenderer.h */; };
-		17E0AE631BF7145E00AD380C /* GMMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC051BB2A88E008A859F /* GMMessage.h */; };
-		17E0AE641BF7145E00AD380C /* GMMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC071BB2A88E008A859F /* GMMessageHandler.h */; };
-		17E0AE651BF7145E00AD380C /* GMMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC081BB2A88E008A859F /* GMMessageRendererDelegate.h */; };
-		17E0AE661BF7145E00AD380C /* GMMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC091BB2A88E008A859F /* GMMessageType.h */; };
-		17E0AE671BF7147A00AD380C /* GMPicture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC0B1BB2A88E008A859F /* GMPicture.h */; };
-		17E0AE681BF7147A00AD380C /* GMPictureExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC0D1BB2A88E008A859F /* GMPictureExtension.h */; };
-		17E0AE691BF7147A00AD380C /* GMPlainButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC0F1BB2A88E008A859F /* GMPlainButton.h */; };
-		17E0AE6A1BF7147A00AD380C /* GMPlainMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC111BB2A88E008A859F /* GMPlainMessage.h */; };
-		17E0AE6B1BF7147A00AD380C /* GMPlainMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC131BB2A88E008A859F /* GMPlainMessageHandler.h */; };
-		17E0AE6C1BF7147A00AD380C /* GMScreenButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC151BB2A88E008A859F /* GMScreenButton.h */; };
-		17E0AE6D1BF7147A00AD380C /* GMSwipeImages.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC171BB2A88E008A859F /* GMSwipeImages.h */; };
-		17E0AE6E1BF7147A00AD380C /* GMSwipeMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC191BB2A88E008A859F /* GMSwipeMessage.h */; };
-		17E0AE6F1BF7147A00AD380C /* GMSwipeMessageHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC1B1BB2A88E008A859F /* GMSwipeMessageHandler.h */; };
-		17E0AE701BF7147A00AD380C /* GMSwipeMessageRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC1D1BB2A88E008A859F /* GMSwipeMessageRenderer.h */; };
-		17E0AE711BF7147A00AD380C /* GMSwipeMessageRendererDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC1F1BB2A88E008A859F /* GMSwipeMessageRendererDelegate.h */; };
-		17E0AE721BF7147A00AD380C /* GMSwipeMessageType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC201BB2A88E008A859F /* GMSwipeMessageType.h */; };
-		17E0AE731BF7147A00AD380C /* GMTask.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC221BB2A88E008A859F /* GMTask.h */; };
-		17E0AE741BF7147A00AD380C /* GrowthMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 178DDC241BB2A88E008A859F /* GrowthMessage.h */; };
-		B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B229828F1BA1577D0015C9A5 /* GBViewUtils.m */; };
-		B22982911BA157E50015C9A5 /* GBViewUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B229828E1BA1577D0015C9A5 /* GBViewUtils.h */; };
-		B275A7001A0C455D0050510A /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = B275A6FF1A0C455D0050510A /* Growthbeat.m */; };
-		B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B275A6FE1A0C455D0050510A /* Growthbeat.h */; };
-		C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */; };
-		C12497CE1BABBE67000AFEE0 /* GBCustomIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */; };
-		C165AE471CFBC3940078D38C /* GLClick.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE3B1CFBC3730078D38C /* GLClick.h */; };
-		C165AE481CFBC3940078D38C /* GLLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE3D1CFBC3730078D38C /* GLLink.h */; };
-		C165AE491CFBC3940078D38C /* GLPattern.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE3F1CFBC3730078D38C /* GLPattern.h */; };
-		C165AE4A1CFBC3940078D38C /* GLSynchronization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE411CFBC3730078D38C /* GLSynchronization.h */; };
-		C165AE4B1CFBC3940078D38C /* GLSynchronizationHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */; };
-		C165AE4C1CFBC3940078D38C /* GrowthLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C165AE451CFBC3730078D38C /* GrowthLink.h */; };
-		C165AE4D1CFBC3A20078D38C /* GLClick.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3C1CFBC3730078D38C /* GLClick.m */; };
-		C165AE4E1CFBC3A20078D38C /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3E1CFBC3730078D38C /* GLLink.m */; };
-		C165AE4F1CFBC3A20078D38C /* GLPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE401CFBC3730078D38C /* GLPattern.m */; };
-		C165AE501CFBC3A20078D38C /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE421CFBC3730078D38C /* GLSynchronization.m */; };
-		C165AE511CFBC3A20078D38C /* GLSynchronizationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */; };
-		C165AE521CFBC3A20078D38C /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE461CFBC3730078D38C /* GrowthLink.m */; };
-		CE06283C1B16F1A1009263FA /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282A1B15B6BF009263FA /* GPClient.m */; };
-		CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */; };
-		CE06283E1B16F1A1009263FA /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = CE06282E1B15B6BF009263FA /* GPOS.m */; };
-		CE06283F1B16F1A1009263FA /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0628301B15B6BF009263FA /* GrowthPush.m */; };
-		CE0628521B16F1E2009263FA /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627D41B15B6A1009263FA /* GBApplication.m */; };
-		CE0628531B16F1E2009263FA /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627D61B15B6A1009263FA /* GBClient.m */; };
-		CE0628541B16F1E2009263FA /* GBContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627D81B15B6A1009263FA /* GBContentType.m */; };
-		CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627DA1B15B6A1009263FA /* GBCustomIntent.m */; };
-		CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627DC1B15B6A1009263FA /* GBDateUtils.m */; };
-		CE0628571B16F1E2009263FA /* GBDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627DE1B15B6A1009263FA /* GBDeviceUtils.m */; };
-		CE0628581B16F1E2009263FA /* GBDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627E01B15B6A1009263FA /* GBDomain.m */; };
-		CE0628591B16F1E2009263FA /* GBGPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627E21B15B6A1009263FA /* GBGPClient.m */; };
-		CE06285A1B16F1E2009263FA /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627E41B15B6A1009263FA /* GBHttpClient.m */; };
-		CE06285B1B16F1E2009263FA /* GBHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627E61B15B6A1009263FA /* GBHttpRequest.m */; };
-		CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627E81B15B6A1009263FA /* GBHttpResponse.m */; };
-		CE06285D1B16F1E2009263FA /* GBHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627EA1B15B6A1009263FA /* GBHttpUtils.m */; };
-		CE06285E1B16F1E2009263FA /* GBIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627EC1B15B6A1009263FA /* GBIntent.m */; };
-		CE06285F1B16F1E2009263FA /* GBIntentType.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627EF1B15B6A1009263FA /* GBIntentType.m */; };
-		CE0628601B16F1E2009263FA /* GBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627F11B15B6A1009263FA /* GBLogger.m */; };
-		CE0628611B16F1E2009263FA /* GBMultipartFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627F31B15B6A1009263FA /* GBMultipartFile.m */; };
-		CE0628621B16F1E2009263FA /* GBNoopIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627F51B15B6A1009263FA /* GBNoopIntent.m */; };
-		CE0628631B16F1E2009263FA /* GBNoopIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627F71B15B6A1009263FA /* GBNoopIntentHandler.m */; };
-		CE0628641B16F1E2009263FA /* GBPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627F91B15B6A1009263FA /* GBPreference.m */; };
-		CE0628651B16F1E2009263FA /* GBRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627FB1B15B6A1009263FA /* GBRequestMethod.m */; };
-		CE0628661B16F1E2009263FA /* GBUrlIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627FD1B15B6A1009263FA /* GBUrlIntent.m */; };
-		CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627FF1B15B6A1009263FA /* GBUrlIntentHandler.m */; };
-		CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0628021B15B6A1009263FA /* GrowthbeatCore.m */; };
-		CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627D11B15B6A1009263FA /* GBAppDelegateWrapper.m */; };
-		CE06286E1B16F1EC009263FA /* GAClientEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627C81B15B692009263FA /* GAClientEvent.m */; };
-		CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627CA1B15B692009263FA /* GAClientTag.m */; };
-		CE0628701B16F1EC009263FA /* GAEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627CC1B15B692009263FA /* GAEventHandler.m */; };
-		CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0627CE1B15B692009263FA /* GrowthAnalytics.m */; };
-		CE0628721B16F216009263FA /* GAClientEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627C71B15B692009263FA /* GAClientEvent.h */; };
-		CE0628731B16F216009263FA /* GAClientTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627C91B15B692009263FA /* GAClientTag.h */; };
-		CE0628741B16F216009263FA /* GAEventHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627CB1B15B692009263FA /* GAEventHandler.h */; };
-		CE0628751B16F216009263FA /* GrowthAnalytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627CD1B15B692009263FA /* GrowthAnalytics.h */; };
-		CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628291B15B6BF009263FA /* GPClient.h */; };
-		CE0628771B16F22E009263FA /* GPEnvironment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE06282B1B15B6BF009263FA /* GPEnvironment.h */; };
-		CE0628781B16F22E009263FA /* GPOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE06282D1B15B6BF009263FA /* GPOS.h */; };
-		CE0628791B16F22E009263FA /* GrowthPush.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE06282F1B15B6BF009263FA /* GrowthPush.h */; };
-		CE06288D1B16F22E009263FA /* GBAppDelegateWrapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D01B15B6A1009263FA /* GBAppDelegateWrapper.h */; };
-		CE06288E1B16F22E009263FA /* GBAppDelegateWrapperDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D21B15B6A1009263FA /* GBAppDelegateWrapperDelegate.h */; };
-		CE06288F1B16F22E009263FA /* GBApplication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D31B15B6A1009263FA /* GBApplication.h */; };
-		CE0628901B16F22E009263FA /* GBClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D51B15B6A1009263FA /* GBClient.h */; };
-		CE0628911B16F22E009263FA /* GBContentType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D71B15B6A1009263FA /* GBContentType.h */; };
-		CE0628921B16F22E009263FA /* GBCustomIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627D91B15B6A1009263FA /* GBCustomIntent.h */; };
-		CE0628931B16F22E009263FA /* GBDateUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627DB1B15B6A1009263FA /* GBDateUtils.h */; };
-		CE0628941B16F22E009263FA /* GBDeviceUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627DD1B15B6A1009263FA /* GBDeviceUtils.h */; };
-		CE0628951B16F22E009263FA /* GBDomain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627DF1B15B6A1009263FA /* GBDomain.h */; };
-		CE0628961B16F22E009263FA /* GBGPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627E11B15B6A1009263FA /* GBGPClient.h */; };
-		CE0628971B16F22E009263FA /* GBHttpClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627E31B15B6A1009263FA /* GBHttpClient.h */; };
-		CE0628981B16F22E009263FA /* GBHttpRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627E51B15B6A1009263FA /* GBHttpRequest.h */; };
-		CE0628991B16F22E009263FA /* GBHttpResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627E71B15B6A1009263FA /* GBHttpResponse.h */; };
-		CE06289A1B16F22E009263FA /* GBHttpUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627E91B15B6A1009263FA /* GBHttpUtils.h */; };
-		CE06289B1B16F22E009263FA /* GBIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627EB1B15B6A1009263FA /* GBIntent.h */; };
-		CE06289C1B16F22E009263FA /* GBIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627ED1B15B6A1009263FA /* GBIntentHandler.h */; };
-		CE06289D1B16F22E009263FA /* GBIntentType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627EE1B15B6A1009263FA /* GBIntentType.h */; };
-		CE06289E1B16F22E009263FA /* GBLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627F01B15B6A1009263FA /* GBLogger.h */; };
-		CE06289F1B16F22E009263FA /* GBMultipartFile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627F21B15B6A1009263FA /* GBMultipartFile.h */; };
-		CE0628A01B16F22E009263FA /* GBNoopIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627F41B15B6A1009263FA /* GBNoopIntent.h */; };
-		CE0628A11B16F22E009263FA /* GBNoopIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627F61B15B6A1009263FA /* GBNoopIntentHandler.h */; };
-		CE0628A21B16F22E009263FA /* GBPreference.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627F81B15B6A1009263FA /* GBPreference.h */; };
-		CE0628A31B16F22E009263FA /* GBRequestMethod.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627FA1B15B6A1009263FA /* GBRequestMethod.h */; };
-		CE0628A41B16F22E009263FA /* GBUrlIntent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627FC1B15B6A1009263FA /* GBUrlIntent.h */; };
-		CE0628A51B16F22E009263FA /* GBUrlIntentHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0627FE1B15B6A1009263FA /* GBUrlIntentHandler.h */; };
-		CE0628A61B16F22E009263FA /* GBUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628001B15B6A1009263FA /* GBUtils.h */; };
-		CE0628A71B16F22E009263FA /* GrowthbeatCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE0628011B15B6A1009263FA /* GrowthbeatCore.h */; };
-		CEDBE8C01B3A468000083D32 /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBE8BD1B3A468000083D32 /* GPEvent.m */; };
-		CEDBE8C11B3A468000083D32 /* GPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBE8BF1B3A468000083D32 /* GPTag.m */; };
-		CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BC1B3A468000083D32 /* GPEvent.h */; };
-		CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEDBE8BE1B3A468000083D32 /* GPTag.h */; };
+		17CC05351D23999F00AB2667 /* GBAppDelegateWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D431D1A23D9006B0EFE /* GBAppDelegateWrapper.m */; };
+		17CC05361D23999F00AB2667 /* GBApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D461D1A23D9006B0EFE /* GBApplication.m */; };
+		17CC05371D23999F00AB2667 /* GBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D481D1A23D9006B0EFE /* GBClient.m */; };
+		17CC05381D23999F00AB2667 /* GBContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D4A1D1A23D9006B0EFE /* GBContentType.m */; };
+		17CC05391D23999F00AB2667 /* GBCustomIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D4C1D1A23D9006B0EFE /* GBCustomIntent.m */; };
+		17CC053A1D23999F00AB2667 /* GBCustomIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D4E1D1A23D9006B0EFE /* GBCustomIntentHandler.m */; };
+		17CC053B1D23999F00AB2667 /* GBDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D501D1A23D9006B0EFE /* GBDateUtils.m */; };
+		17CC053C1D23999F00AB2667 /* GBDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D521D1A23D9006B0EFE /* GBDeviceUtils.m */; };
+		17CC053D1D23999F00AB2667 /* GBDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D541D1A23D9006B0EFE /* GBDomain.m */; };
+		17CC053E1D23999F00AB2667 /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D581D1A23D9006B0EFE /* GBHttpClient.m */; };
+		17CC053F1D23999F00AB2667 /* GBHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D5A1D1A23D9006B0EFE /* GBHttpRequest.m */; };
+		17CC05401D23999F00AB2667 /* GBHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D5C1D1A23D9006B0EFE /* GBHttpResponse.m */; };
+		17CC05411D23999F00AB2667 /* GBHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D5E1D1A23D9006B0EFE /* GBHttpUtils.m */; };
+		17CC05421D23999F00AB2667 /* GBIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D601D1A23D9006B0EFE /* GBIntent.m */; };
+		17CC05431D23999F00AB2667 /* GBIntentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D631D1A23D9006B0EFE /* GBIntentType.m */; };
+		17CC05441D23999F00AB2667 /* GBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D651D1A23D9006B0EFE /* GBLogger.m */; };
+		17CC05451D23999F00AB2667 /* GBNoopIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D691D1A23D9006B0EFE /* GBNoopIntent.m */; };
+		17CC05461D23999F00AB2667 /* GBNoopIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D6B1D1A23D9006B0EFE /* GBNoopIntentHandler.m */; };
+		17CC05471D23999F00AB2667 /* GBPreference.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D6D1D1A23D9006B0EFE /* GBPreference.m */; };
+		17CC05481D23999F00AB2667 /* GBRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D6F1D1A23D9006B0EFE /* GBRequestMethod.m */; };
+		17CC05491D23999F00AB2667 /* GBUrlIntent.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D711D1A23D9006B0EFE /* GBUrlIntent.m */; };
+		17CC054A1D23999F00AB2667 /* GBUrlIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D731D1A23D9006B0EFE /* GBUrlIntentHandler.m */; };
+		17CC054B1D23999F00AB2667 /* GBViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D761D1A23D9006B0EFE /* GBViewUtils.m */; };
+		17CC054C1D23999F00AB2667 /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D781D1A23D9006B0EFE /* Growthbeat.m */; };
+		17CC054D1D23999F00AB2667 /* GLClick.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3C1CFBC3730078D38C /* GLClick.m */; };
+		17CC054E1D23999F00AB2667 /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3E1CFBC3730078D38C /* GLLink.m */; };
+		17CC054F1D23999F00AB2667 /* GLPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE401CFBC3730078D38C /* GLPattern.m */; };
+		17CC05501D23999F00AB2667 /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE421CFBC3730078D38C /* GLSynchronization.m */; };
+		17CC05511D23999F00AB2667 /* GLSynchronizationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */; };
+		17CC05521D23999F00AB2667 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE461CFBC3730078D38C /* GrowthLink.m */; };
+		17CC05BC1D2399F200AB2667 /* GPBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05771D2399F200AB2667 /* GPBackground.m */; };
+		17CC05BD1D2399F200AB2667 /* GPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05791D2399F200AB2667 /* GPButton.m */; };
+		17CC05BE1D2399F200AB2667 /* GPButtonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC057B1D2399F200AB2667 /* GPButtonType.m */; };
+		17CC05BF1D2399F200AB2667 /* GPCardMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC057D1D2399F200AB2667 /* GPCardMessage.m */; };
+		17CC05C01D2399F200AB2667 /* GPCardMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC057F1D2399F200AB2667 /* GPCardMessageHandler.m */; };
+		17CC05C11D2399F200AB2667 /* GPCardMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05811D2399F200AB2667 /* GPCardMessageRenderer.m */; };
+		17CC05C21D2399F200AB2667 /* GPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05831D2399F200AB2667 /* GPClient.m */; };
+		17CC05C31D2399F200AB2667 /* GPClientV4.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05851D2399F200AB2667 /* GPClientV4.m */; };
+		17CC05C41D2399F200AB2667 /* GPCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05871D2399F200AB2667 /* GPCloseButton.m */; };
+		17CC05C51D2399F200AB2667 /* GPEnvironmentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05891D2399F200AB2667 /* GPEnvironmentUtils.m */; };
+		17CC05C61D2399F200AB2667 /* GPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC058B1D2399F200AB2667 /* GPEvent.m */; };
+		17CC05C71D2399F200AB2667 /* GPEventType.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC058D1D2399F200AB2667 /* GPEventType.m */; };
+		17CC05C81D2399F200AB2667 /* GPImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC058F1D2399F200AB2667 /* GPImageButton.m */; };
+		17CC05C91D2399F200AB2667 /* GPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05911D2399F200AB2667 /* GPMessage.m */; };
+		17CC05CA1D2399F200AB2667 /* GPMessageOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05941D2399F200AB2667 /* GPMessageOrientation.m */; };
+		17CC05CB1D2399F200AB2667 /* GPMessageQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05961D2399F200AB2667 /* GPMessageQueue.m */; };
+		17CC05CC1D2399F200AB2667 /* GPMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05991D2399F200AB2667 /* GPMessageType.m */; };
+		17CC05CD1D2399F200AB2667 /* GPNoContentMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC059B1D2399F200AB2667 /* GPNoContentMessage.m */; };
+		17CC05CE1D2399F200AB2667 /* GPOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC059D1D2399F200AB2667 /* GPOS.m */; };
+		17CC05CF1D2399F200AB2667 /* GPPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC059F1D2399F200AB2667 /* GPPicture.m */; };
+		17CC05D01D2399F200AB2667 /* GPPictureUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05A11D2399F200AB2667 /* GPPictureUtils.m */; };
+		17CC05D11D2399F200AB2667 /* GPPlainButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05A31D2399F200AB2667 /* GPPlainButton.m */; };
+		17CC05D21D2399F200AB2667 /* GPPlainMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05A51D2399F200AB2667 /* GPPlainMessage.m */; };
+		17CC05D31D2399F200AB2667 /* GPPlainMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05A71D2399F200AB2667 /* GPPlainMessageHandler.m */; };
+		17CC05D41D2399F200AB2667 /* GPScreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05A91D2399F200AB2667 /* GPScreenButton.m */; };
+		17CC05D51D2399F300AB2667 /* GPShowMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05AB1D2399F200AB2667 /* GPShowMessageHandler.m */; };
+		17CC05D61D2399F300AB2667 /* GPSwipeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05AD1D2399F200AB2667 /* GPSwipeMessage.m */; };
+		17CC05D71D2399F300AB2667 /* GPSwipeMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05AF1D2399F200AB2667 /* GPSwipeMessageHandler.m */; };
+		17CC05D81D2399F300AB2667 /* GPSwipeMessageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05B11D2399F200AB2667 /* GPSwipeMessageRenderer.m */; };
+		17CC05D91D2399F300AB2667 /* GPSwipeMessageType.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05B31D2399F200AB2667 /* GPSwipeMessageType.m */; };
+		17CC05DA1D2399F300AB2667 /* GPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05B51D2399F200AB2667 /* GPTag.m */; };
+		17CC05DB1D2399F300AB2667 /* GPTagType.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05B71D2399F200AB2667 /* GPTagType.m */; };
+		17CC05DC1D2399F300AB2667 /* GPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05B91D2399F200AB2667 /* GPTask.m */; };
+		17CC05DD1D2399F300AB2667 /* GrowthPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05BB1D2399F200AB2667 /* GrowthPush.m */; };
+		17CC05DE1D239E7000AB2667 /* GBAppDelegateWrapper.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D421D1A23D9006B0EFE /* GBAppDelegateWrapper.h */; };
+		17CC05DF1D239E7000AB2667 /* GBAppDelegateWrapperDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D441D1A23D9006B0EFE /* GBAppDelegateWrapperDelegate.h */; };
+		17CC05E01D239E7000AB2667 /* GBApplication.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D451D1A23D9006B0EFE /* GBApplication.h */; };
+		17CC05E11D239E7000AB2667 /* GBClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D471D1A23D9006B0EFE /* GBClient.h */; };
+		17CC05E21D239E7000AB2667 /* GBContentType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D491D1A23D9006B0EFE /* GBContentType.h */; };
+		17CC05E31D239E7000AB2667 /* GBCustomIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4B1D1A23D9006B0EFE /* GBCustomIntent.h */; };
+		17CC05E41D239E7000AB2667 /* GBCustomIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4D1D1A23D9006B0EFE /* GBCustomIntentHandler.h */; };
+		17CC05E51D239E7000AB2667 /* GBDateUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D4F1D1A23D9006B0EFE /* GBDateUtils.h */; };
+		17CC05E61D239E7100AB2667 /* GBDeviceUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D511D1A23D9006B0EFE /* GBDeviceUtils.h */; };
+		17CC05E71D239E7100AB2667 /* GBDomain.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D531D1A23D9006B0EFE /* GBDomain.h */; };
+		17CC05E81D239E7100AB2667 /* GBHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D571D1A23D9006B0EFE /* GBHttpClient.h */; };
+		17CC05E91D239E7100AB2667 /* GBHttpRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D591D1A23D9006B0EFE /* GBHttpRequest.h */; };
+		17CC05EA1D239E7100AB2667 /* GBHttpResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5B1D1A23D9006B0EFE /* GBHttpResponse.h */; };
+		17CC05EB1D239E7100AB2667 /* GBHttpUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5D1D1A23D9006B0EFE /* GBHttpUtils.h */; };
+		17CC05EC1D239E7100AB2667 /* GBIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D5F1D1A23D9006B0EFE /* GBIntent.h */; };
+		17CC05ED1D239E7100AB2667 /* GBIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D611D1A23D9006B0EFE /* GBIntentHandler.h */; };
+		17CC05EE1D239E7100AB2667 /* GBIntentType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D621D1A23D9006B0EFE /* GBIntentType.h */; };
+		17CC05EF1D239E7100AB2667 /* GBLogger.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D641D1A23D9006B0EFE /* GBLogger.h */; };
+		17CC05F01D239E7100AB2667 /* GBNoopIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D681D1A23D9006B0EFE /* GBNoopIntent.h */; };
+		17CC05F11D239E7100AB2667 /* GBNoopIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */; };
+		17CC05F21D239E7100AB2667 /* GBPreference.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6C1D1A23D9006B0EFE /* GBPreference.h */; };
+		17CC05F31D239E7100AB2667 /* GBRequestMethod.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D6E1D1A23D9006B0EFE /* GBRequestMethod.h */; };
+		17CC05F41D239E7100AB2667 /* GBUrlIntent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D701D1A23D9006B0EFE /* GBUrlIntent.h */; };
+		17CC05F51D239E7100AB2667 /* GBUrlIntentHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D721D1A23D9006B0EFE /* GBUrlIntentHandler.h */; };
+		17CC05F61D239E7100AB2667 /* GBUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D741D1A23D9006B0EFE /* GBUtils.h */; };
+		17CC05F71D239E7100AB2667 /* GBViewUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D751D1A23D9006B0EFE /* GBViewUtils.h */; };
+		17CC05F81D239E7100AB2667 /* Growthbeat.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D771D1A23D9006B0EFE /* Growthbeat.h */; };
+		17CC05F91D239E7100AB2667 /* GLClick.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3B1CFBC3730078D38C /* GLClick.h */; };
+		17CC05FA1D239E7100AB2667 /* GLLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3D1CFBC3730078D38C /* GLLink.h */; };
+		17CC05FB1D239E7100AB2667 /* GLPattern.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3F1CFBC3730078D38C /* GLPattern.h */; };
+		17CC05FC1D239E7100AB2667 /* GLSynchronization.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE411CFBC3730078D38C /* GLSynchronization.h */; };
+		17CC05FD1D239E7100AB2667 /* GLSynchronizationHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */; };
+		17CC05FE1D239E7100AB2667 /* GrowthLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE451CFBC3730078D38C /* GrowthLink.h */; };
+		17CC05FF1D239E7100AB2667 /* GPBackground.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05761D2399F200AB2667 /* GPBackground.h */; };
+		17CC06001D239E7100AB2667 /* GPButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05781D2399F200AB2667 /* GPButton.h */; };
+		17CC06011D239E7100AB2667 /* GPButtonType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC057A1D2399F200AB2667 /* GPButtonType.h */; };
+		17CC06021D239E7100AB2667 /* GPCardMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC057C1D2399F200AB2667 /* GPCardMessage.h */; };
+		17CC06031D239E7100AB2667 /* GPCardMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC057E1D2399F200AB2667 /* GPCardMessageHandler.h */; };
+		17CC06041D239E7100AB2667 /* GPCardMessageRenderer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05801D2399F200AB2667 /* GPCardMessageRenderer.h */; };
+		17CC06051D239E7100AB2667 /* GPClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05821D2399F200AB2667 /* GPClient.h */; };
+		17CC06061D239E7100AB2667 /* GPClientV4.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05841D2399F200AB2667 /* GPClientV4.h */; };
+		17CC06071D239E7100AB2667 /* GPCloseButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05861D2399F200AB2667 /* GPCloseButton.h */; };
+		17CC06081D239E7100AB2667 /* GPEnvironment.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05881D2399F200AB2667 /* GPEnvironment.h */; };
+		17CC06091D239E7100AB2667 /* GPEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC058A1D2399F200AB2667 /* GPEvent.h */; };
+		17CC060A1D239E7100AB2667 /* GPEventType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC058C1D2399F200AB2667 /* GPEventType.h */; };
+		17CC060B1D239E7100AB2667 /* GPImageButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC058E1D2399F200AB2667 /* GPImageButton.h */; };
+		17CC060C1D239E7100AB2667 /* GPMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05901D2399F200AB2667 /* GPMessage.h */; };
+		17CC060D1D239E7100AB2667 /* GPMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05921D2399F200AB2667 /* GPMessageHandler.h */; };
+		17CC060E1D239E7100AB2667 /* GPMessageOrientation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05931D2399F200AB2667 /* GPMessageOrientation.h */; };
+		17CC060F1D239E7100AB2667 /* GPMessageQueue.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05951D2399F200AB2667 /* GPMessageQueue.h */; };
+		17CC06101D239E7100AB2667 /* GPMessageRendererDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05971D2399F200AB2667 /* GPMessageRendererDelegate.h */; };
+		17CC06111D239E7100AB2667 /* GPMessageType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05981D2399F200AB2667 /* GPMessageType.h */; };
+		17CC06121D239E7100AB2667 /* GPNoContentMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC059A1D2399F200AB2667 /* GPNoContentMessage.h */; };
+		17CC06131D239E7100AB2667 /* GPOS.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC059C1D2399F200AB2667 /* GPOS.h */; };
+		17CC06141D239E7100AB2667 /* GPPicture.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC059E1D2399F200AB2667 /* GPPicture.h */; };
+		17CC06151D239E7100AB2667 /* GPPictureUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A01D2399F200AB2667 /* GPPictureUtils.h */; };
+		17CC06161D239E7100AB2667 /* GPPlainButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A21D2399F200AB2667 /* GPPlainButton.h */; };
+		17CC06171D239E7100AB2667 /* GPPlainMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A41D2399F200AB2667 /* GPPlainMessage.h */; };
+		17CC06181D239E7100AB2667 /* GPPlainMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A61D2399F200AB2667 /* GPPlainMessageHandler.h */; };
+		17CC06191D239E7100AB2667 /* GPScreenButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05A81D2399F200AB2667 /* GPScreenButton.h */; };
+		17CC061A1D239E7100AB2667 /* GPShowMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05AA1D2399F200AB2667 /* GPShowMessageHandler.h */; };
+		17CC061B1D239E7100AB2667 /* GPSwipeMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05AC1D2399F200AB2667 /* GPSwipeMessage.h */; };
+		17CC061C1D239E7100AB2667 /* GPSwipeMessageHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05AE1D2399F200AB2667 /* GPSwipeMessageHandler.h */; };
+		17CC061D1D239E7100AB2667 /* GPSwipeMessageRenderer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B01D2399F200AB2667 /* GPSwipeMessageRenderer.h */; };
+		17CC061E1D239E7100AB2667 /* GPSwipeMessageType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B21D2399F200AB2667 /* GPSwipeMessageType.h */; };
+		17CC061F1D239E7100AB2667 /* GPTag.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B41D2399F200AB2667 /* GPTag.h */; };
+		17CC06201D239E7100AB2667 /* GPTagType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B61D2399F200AB2667 /* GPTagType.h */; };
+		17CC06211D239E7100AB2667 /* GPTask.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B81D2399F200AB2667 /* GPTask.h */; };
+		17CC06221D239E7100AB2667 /* GrowthPush.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05BA1D2399F200AB2667 /* GrowthPush.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,161 +168,210 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B2ED14151A0C451E0078F6BC /* CopyFiles */ = {
+		B2ED14151A0C451E0078F6BC /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				C165AE471CFBC3940078D38C /* GLClick.h in CopyFiles */,
-				C165AE481CFBC3940078D38C /* GLLink.h in CopyFiles */,
-				C165AE491CFBC3940078D38C /* GLPattern.h in CopyFiles */,
-				C165AE4A1CFBC3940078D38C /* GLSynchronization.h in CopyFiles */,
-				C165AE4B1CFBC3940078D38C /* GLSynchronizationHandler.h in CopyFiles */,
-				C165AE4C1CFBC3940078D38C /* GrowthLink.h in CopyFiles */,
-				17E0AE671BF7147A00AD380C /* GMPicture.h in CopyFiles */,
-				17E0AE681BF7147A00AD380C /* GMPictureExtension.h in CopyFiles */,
-				17E0AE691BF7147A00AD380C /* GMPlainButton.h in CopyFiles */,
-				17E0AE6A1BF7147A00AD380C /* GMPlainMessage.h in CopyFiles */,
-				17E0AE6B1BF7147A00AD380C /* GMPlainMessageHandler.h in CopyFiles */,
-				17E0AE6C1BF7147A00AD380C /* GMScreenButton.h in CopyFiles */,
-				17E0AE6D1BF7147A00AD380C /* GMSwipeImages.h in CopyFiles */,
-				17E0AE6E1BF7147A00AD380C /* GMSwipeMessage.h in CopyFiles */,
-				17E0AE6F1BF7147A00AD380C /* GMSwipeMessageHandler.h in CopyFiles */,
-				17E0AE701BF7147A00AD380C /* GMSwipeMessageRenderer.h in CopyFiles */,
-				17E0AE711BF7147A00AD380C /* GMSwipeMessageRendererDelegate.h in CopyFiles */,
-				17E0AE721BF7147A00AD380C /* GMSwipeMessageType.h in CopyFiles */,
-				17E0AE731BF7147A00AD380C /* GMTask.h in CopyFiles */,
-				17E0AE741BF7147A00AD380C /* GrowthMessage.h in CopyFiles */,
-				17E0AE561BF7145E00AD380C /* GMAnimationType.h in CopyFiles */,
-				17E0AE571BF7145E00AD380C /* GMBannerMessage.h in CopyFiles */,
-				17E0AE581BF7145E00AD380C /* GMBannerMessageHandler.h in CopyFiles */,
-				17E0AE591BF7145E00AD380C /* GMBannerMessagePosition.h in CopyFiles */,
-				17E0AE5A1BF7145E00AD380C /* GMBannerMessageRenderer.h in CopyFiles */,
-				17E0AE5B1BF7145E00AD380C /* GMBannerMessageType.h in CopyFiles */,
-				17E0AE5C1BF7145E00AD380C /* GMButton.h in CopyFiles */,
-				17E0AE5D1BF7145E00AD380C /* GMButtonType.h in CopyFiles */,
-				17E0AE5E1BF7145E00AD380C /* GMCloseButton.h in CopyFiles */,
-				17E0AE5F1BF7145E00AD380C /* GMImageButton.h in CopyFiles */,
-				17E0AE601BF7145E00AD380C /* GMImageMessage.h in CopyFiles */,
-				17E0AE611BF7145E00AD380C /* GMImageMessageHandler.h in CopyFiles */,
-				17E0AE621BF7145E00AD380C /* GMImageMessageRenderer.h in CopyFiles */,
-				17E0AE631BF7145E00AD380C /* GMMessage.h in CopyFiles */,
-				17E0AE641BF7145E00AD380C /* GMMessageHandler.h in CopyFiles */,
-				17E0AE651BF7145E00AD380C /* GMMessageRendererDelegate.h in CopyFiles */,
-				17E0AE661BF7145E00AD380C /* GMMessageType.h in CopyFiles */,
-				C12497CE1BABBE67000AFEE0 /* GBCustomIntentHandler.h in CopyFiles */,
-				B22982911BA157E50015C9A5 /* GBViewUtils.h in CopyFiles */,
-				CEDBE8C21B3A46AF00083D32 /* GPEvent.h in CopyFiles */,
-				CEDBE8C31B3A46AF00083D32 /* GPTag.h in CopyFiles */,
-				CE0628761B16F22E009263FA /* GPClient.h in CopyFiles */,
-				CE0628771B16F22E009263FA /* GPEnvironment.h in CopyFiles */,
-				CE0628781B16F22E009263FA /* GPOS.h in CopyFiles */,
-				CE0628791B16F22E009263FA /* GrowthPush.h in CopyFiles */,
-				CE06288D1B16F22E009263FA /* GBAppDelegateWrapper.h in CopyFiles */,
-				CE06288E1B16F22E009263FA /* GBAppDelegateWrapperDelegate.h in CopyFiles */,
-				CE06288F1B16F22E009263FA /* GBApplication.h in CopyFiles */,
-				CE0628901B16F22E009263FA /* GBClient.h in CopyFiles */,
-				CE0628911B16F22E009263FA /* GBContentType.h in CopyFiles */,
-				CE0628921B16F22E009263FA /* GBCustomIntent.h in CopyFiles */,
-				CE0628931B16F22E009263FA /* GBDateUtils.h in CopyFiles */,
-				CE0628941B16F22E009263FA /* GBDeviceUtils.h in CopyFiles */,
-				CE0628951B16F22E009263FA /* GBDomain.h in CopyFiles */,
-				CE0628961B16F22E009263FA /* GBGPClient.h in CopyFiles */,
-				CE0628971B16F22E009263FA /* GBHttpClient.h in CopyFiles */,
-				CE0628981B16F22E009263FA /* GBHttpRequest.h in CopyFiles */,
-				CE0628991B16F22E009263FA /* GBHttpResponse.h in CopyFiles */,
-				CE06289A1B16F22E009263FA /* GBHttpUtils.h in CopyFiles */,
-				CE06289B1B16F22E009263FA /* GBIntent.h in CopyFiles */,
-				CE06289C1B16F22E009263FA /* GBIntentHandler.h in CopyFiles */,
-				CE06289D1B16F22E009263FA /* GBIntentType.h in CopyFiles */,
-				CE06289E1B16F22E009263FA /* GBLogger.h in CopyFiles */,
-				CE06289F1B16F22E009263FA /* GBMultipartFile.h in CopyFiles */,
-				CE0628A01B16F22E009263FA /* GBNoopIntent.h in CopyFiles */,
-				CE0628A11B16F22E009263FA /* GBNoopIntentHandler.h in CopyFiles */,
-				CE0628A21B16F22E009263FA /* GBPreference.h in CopyFiles */,
-				CE0628A31B16F22E009263FA /* GBRequestMethod.h in CopyFiles */,
-				CE0628A41B16F22E009263FA /* GBUrlIntent.h in CopyFiles */,
-				CE0628A51B16F22E009263FA /* GBUrlIntentHandler.h in CopyFiles */,
-				CE0628A61B16F22E009263FA /* GBUtils.h in CopyFiles */,
-				CE0628A71B16F22E009263FA /* GrowthbeatCore.h in CopyFiles */,
-				CE0628721B16F216009263FA /* GAClientEvent.h in CopyFiles */,
-				CE0628731B16F216009263FA /* GAClientTag.h in CopyFiles */,
-				CE0628741B16F216009263FA /* GAEventHandler.h in CopyFiles */,
-				CE0628751B16F216009263FA /* GrowthAnalytics.h in CopyFiles */,
-				B275A7011A0C45720050510A /* Growthbeat.h in CopyFiles */,
+				17CC05DE1D239E7000AB2667 /* GBAppDelegateWrapper.h in Copy Files */,
+				17CC05DF1D239E7000AB2667 /* GBAppDelegateWrapperDelegate.h in Copy Files */,
+				17CC05E01D239E7000AB2667 /* GBApplication.h in Copy Files */,
+				17CC05E11D239E7000AB2667 /* GBClient.h in Copy Files */,
+				17CC05E21D239E7000AB2667 /* GBContentType.h in Copy Files */,
+				17CC05E31D239E7000AB2667 /* GBCustomIntent.h in Copy Files */,
+				17CC05E41D239E7000AB2667 /* GBCustomIntentHandler.h in Copy Files */,
+				17CC05E51D239E7000AB2667 /* GBDateUtils.h in Copy Files */,
+				17CC05E61D239E7100AB2667 /* GBDeviceUtils.h in Copy Files */,
+				17CC05E71D239E7100AB2667 /* GBDomain.h in Copy Files */,
+				17CC05E81D239E7100AB2667 /* GBHttpClient.h in Copy Files */,
+				17CC05E91D239E7100AB2667 /* GBHttpRequest.h in Copy Files */,
+				17CC05EA1D239E7100AB2667 /* GBHttpResponse.h in Copy Files */,
+				17CC05EB1D239E7100AB2667 /* GBHttpUtils.h in Copy Files */,
+				17CC05EC1D239E7100AB2667 /* GBIntent.h in Copy Files */,
+				17CC05ED1D239E7100AB2667 /* GBIntentHandler.h in Copy Files */,
+				17CC05EE1D239E7100AB2667 /* GBIntentType.h in Copy Files */,
+				17CC05EF1D239E7100AB2667 /* GBLogger.h in Copy Files */,
+				17CC05F01D239E7100AB2667 /* GBNoopIntent.h in Copy Files */,
+				17CC05F11D239E7100AB2667 /* GBNoopIntentHandler.h in Copy Files */,
+				17CC05F21D239E7100AB2667 /* GBPreference.h in Copy Files */,
+				17CC05F31D239E7100AB2667 /* GBRequestMethod.h in Copy Files */,
+				17CC05F41D239E7100AB2667 /* GBUrlIntent.h in Copy Files */,
+				17CC05F51D239E7100AB2667 /* GBUrlIntentHandler.h in Copy Files */,
+				17CC05F61D239E7100AB2667 /* GBUtils.h in Copy Files */,
+				17CC05F71D239E7100AB2667 /* GBViewUtils.h in Copy Files */,
+				17CC05F81D239E7100AB2667 /* Growthbeat.h in Copy Files */,
+				17CC05F91D239E7100AB2667 /* GLClick.h in Copy Files */,
+				17CC05FA1D239E7100AB2667 /* GLLink.h in Copy Files */,
+				17CC05FB1D239E7100AB2667 /* GLPattern.h in Copy Files */,
+				17CC05FC1D239E7100AB2667 /* GLSynchronization.h in Copy Files */,
+				17CC05FD1D239E7100AB2667 /* GLSynchronizationHandler.h in Copy Files */,
+				17CC05FE1D239E7100AB2667 /* GrowthLink.h in Copy Files */,
+				17CC05FF1D239E7100AB2667 /* GPBackground.h in Copy Files */,
+				17CC06001D239E7100AB2667 /* GPButton.h in Copy Files */,
+				17CC06011D239E7100AB2667 /* GPButtonType.h in Copy Files */,
+				17CC06021D239E7100AB2667 /* GPCardMessage.h in Copy Files */,
+				17CC06031D239E7100AB2667 /* GPCardMessageHandler.h in Copy Files */,
+				17CC06041D239E7100AB2667 /* GPCardMessageRenderer.h in Copy Files */,
+				17CC06051D239E7100AB2667 /* GPClient.h in Copy Files */,
+				17CC06061D239E7100AB2667 /* GPClientV4.h in Copy Files */,
+				17CC06071D239E7100AB2667 /* GPCloseButton.h in Copy Files */,
+				17CC06081D239E7100AB2667 /* GPEnvironment.h in Copy Files */,
+				17CC06091D239E7100AB2667 /* GPEvent.h in Copy Files */,
+				17CC060A1D239E7100AB2667 /* GPEventType.h in Copy Files */,
+				17CC060B1D239E7100AB2667 /* GPImageButton.h in Copy Files */,
+				17CC060C1D239E7100AB2667 /* GPMessage.h in Copy Files */,
+				17CC060D1D239E7100AB2667 /* GPMessageHandler.h in Copy Files */,
+				17CC060E1D239E7100AB2667 /* GPMessageOrientation.h in Copy Files */,
+				17CC060F1D239E7100AB2667 /* GPMessageQueue.h in Copy Files */,
+				17CC06101D239E7100AB2667 /* GPMessageRendererDelegate.h in Copy Files */,
+				17CC06111D239E7100AB2667 /* GPMessageType.h in Copy Files */,
+				17CC06121D239E7100AB2667 /* GPNoContentMessage.h in Copy Files */,
+				17CC06131D239E7100AB2667 /* GPOS.h in Copy Files */,
+				17CC06141D239E7100AB2667 /* GPPicture.h in Copy Files */,
+				17CC06151D239E7100AB2667 /* GPPictureUtils.h in Copy Files */,
+				17CC06161D239E7100AB2667 /* GPPlainButton.h in Copy Files */,
+				17CC06171D239E7100AB2667 /* GPPlainMessage.h in Copy Files */,
+				17CC06181D239E7100AB2667 /* GPPlainMessageHandler.h in Copy Files */,
+				17CC06191D239E7100AB2667 /* GPScreenButton.h in Copy Files */,
+				17CC061A1D239E7100AB2667 /* GPShowMessageHandler.h in Copy Files */,
+				17CC061B1D239E7100AB2667 /* GPSwipeMessage.h in Copy Files */,
+				17CC061C1D239E7100AB2667 /* GPSwipeMessageHandler.h in Copy Files */,
+				17CC061D1D239E7100AB2667 /* GPSwipeMessageRenderer.h in Copy Files */,
+				17CC061E1D239E7100AB2667 /* GPSwipeMessageType.h in Copy Files */,
+				17CC061F1D239E7100AB2667 /* GPTag.h in Copy Files */,
+				17CC06201D239E7100AB2667 /* GPTagType.h in Copy Files */,
+				17CC06211D239E7100AB2667 /* GPTask.h in Copy Files */,
+				17CC06221D239E7100AB2667 /* GrowthPush.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		178DDBEB1BB2A88E008A859F /* GMAnimationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAnimationType.h; sourceTree = "<group>"; };
-		178DDBEC1BB2A88E008A859F /* GMAnimationType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAnimationType.m; sourceTree = "<group>"; };
-		178DDBED1BB2A88E008A859F /* GMBannerMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessage.h; sourceTree = "<group>"; };
-		178DDBEE1BB2A88E008A859F /* GMBannerMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessage.m; sourceTree = "<group>"; };
-		178DDBEF1BB2A88E008A859F /* GMBannerMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessageHandler.h; sourceTree = "<group>"; };
-		178DDBF01BB2A88E008A859F /* GMBannerMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessageHandler.m; sourceTree = "<group>"; };
-		178DDBF11BB2A88E008A859F /* GMBannerMessagePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessagePosition.h; sourceTree = "<group>"; };
-		178DDBF21BB2A88E008A859F /* GMBannerMessagePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessagePosition.m; sourceTree = "<group>"; };
-		178DDBF31BB2A88E008A859F /* GMBannerMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessageRenderer.h; sourceTree = "<group>"; };
-		178DDBF41BB2A88E008A859F /* GMBannerMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessageRenderer.m; sourceTree = "<group>"; };
-		178DDBF51BB2A88E008A859F /* GMBannerMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMBannerMessageType.h; sourceTree = "<group>"; };
-		178DDBF61BB2A88E008A859F /* GMBannerMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMBannerMessageType.m; sourceTree = "<group>"; };
-		178DDBF71BB2A88E008A859F /* GMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMButton.h; sourceTree = "<group>"; };
-		178DDBF81BB2A88E008A859F /* GMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMButton.m; sourceTree = "<group>"; };
-		178DDBF91BB2A88E008A859F /* GMButtonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMButtonType.h; sourceTree = "<group>"; };
-		178DDBFA1BB2A88E008A859F /* GMButtonType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMButtonType.m; sourceTree = "<group>"; };
-		178DDBFB1BB2A88E008A859F /* GMCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMCloseButton.h; sourceTree = "<group>"; };
-		178DDBFC1BB2A88E008A859F /* GMCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMCloseButton.m; sourceTree = "<group>"; };
-		178DDBFD1BB2A88E008A859F /* GMImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageButton.h; sourceTree = "<group>"; };
-		178DDBFE1BB2A88E008A859F /* GMImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageButton.m; sourceTree = "<group>"; };
-		178DDBFF1BB2A88E008A859F /* GMImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessage.h; sourceTree = "<group>"; };
-		178DDC001BB2A88E008A859F /* GMImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessage.m; sourceTree = "<group>"; };
-		178DDC011BB2A88E008A859F /* GMImageMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageHandler.h; sourceTree = "<group>"; };
-		178DDC021BB2A88E008A859F /* GMImageMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageHandler.m; sourceTree = "<group>"; };
-		178DDC031BB2A88E008A859F /* GMImageMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMImageMessageRenderer.h; sourceTree = "<group>"; };
-		178DDC041BB2A88E008A859F /* GMImageMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMImageMessageRenderer.m; sourceTree = "<group>"; };
-		178DDC051BB2A88E008A859F /* GMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMessage.h; sourceTree = "<group>"; };
-		178DDC061BB2A88E008A859F /* GMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMMessage.m; sourceTree = "<group>"; };
-		178DDC071BB2A88E008A859F /* GMMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMessageHandler.h; sourceTree = "<group>"; };
-		178DDC081BB2A88E008A859F /* GMMessageRendererDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMessageRendererDelegate.h; sourceTree = "<group>"; };
-		178DDC091BB2A88E008A859F /* GMMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMMessageType.h; sourceTree = "<group>"; };
-		178DDC0A1BB2A88E008A859F /* GMMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMMessageType.m; sourceTree = "<group>"; };
-		178DDC0B1BB2A88E008A859F /* GMPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPicture.h; sourceTree = "<group>"; };
-		178DDC0C1BB2A88E008A859F /* GMPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPicture.m; sourceTree = "<group>"; };
-		178DDC0D1BB2A88E008A859F /* GMPictureExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPictureExtension.h; sourceTree = "<group>"; };
-		178DDC0E1BB2A88E008A859F /* GMPictureExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPictureExtension.m; sourceTree = "<group>"; };
-		178DDC0F1BB2A88E008A859F /* GMPlainButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlainButton.h; sourceTree = "<group>"; };
-		178DDC101BB2A88E008A859F /* GMPlainButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlainButton.m; sourceTree = "<group>"; };
-		178DDC111BB2A88E008A859F /* GMPlainMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlainMessage.h; sourceTree = "<group>"; };
-		178DDC121BB2A88E008A859F /* GMPlainMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlainMessage.m; sourceTree = "<group>"; };
-		178DDC131BB2A88E008A859F /* GMPlainMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMPlainMessageHandler.h; sourceTree = "<group>"; };
-		178DDC141BB2A88E008A859F /* GMPlainMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMPlainMessageHandler.m; sourceTree = "<group>"; };
-		178DDC151BB2A88E008A859F /* GMScreenButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMScreenButton.h; sourceTree = "<group>"; };
-		178DDC161BB2A88E008A859F /* GMScreenButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMScreenButton.m; sourceTree = "<group>"; };
-		178DDC171BB2A88E008A859F /* GMSwipeImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeImages.h; sourceTree = "<group>"; };
-		178DDC181BB2A88E008A859F /* GMSwipeImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeImages.m; sourceTree = "<group>"; };
-		178DDC191BB2A88E008A859F /* GMSwipeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessage.h; sourceTree = "<group>"; };
-		178DDC1A1BB2A88E008A859F /* GMSwipeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessage.m; sourceTree = "<group>"; };
-		178DDC1B1BB2A88E008A859F /* GMSwipeMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageHandler.h; sourceTree = "<group>"; };
-		178DDC1C1BB2A88E008A859F /* GMSwipeMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageHandler.m; sourceTree = "<group>"; };
-		178DDC1D1BB2A88E008A859F /* GMSwipeMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRenderer.h; sourceTree = "<group>"; };
-		178DDC1E1BB2A88E008A859F /* GMSwipeMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageRenderer.m; sourceTree = "<group>"; };
-		178DDC1F1BB2A88E008A859F /* GMSwipeMessageRendererDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageRendererDelegate.h; sourceTree = "<group>"; };
-		178DDC201BB2A88E008A859F /* GMSwipeMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSwipeMessageType.h; sourceTree = "<group>"; };
-		178DDC211BB2A88E008A859F /* GMSwipeMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSwipeMessageType.m; sourceTree = "<group>"; };
-		178DDC221BB2A88E008A859F /* GMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMTask.h; sourceTree = "<group>"; };
-		178DDC231BB2A88E008A859F /* GMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMTask.m; sourceTree = "<group>"; };
-		178DDC241BB2A88E008A859F /* GrowthMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowthMessage.h; sourceTree = "<group>"; };
-		178DDC251BB2A88E008A859F /* GrowthMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthMessage.m; sourceTree = "<group>"; };
-		B229828E1BA1577D0015C9A5 /* GBViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBViewUtils.h; sourceTree = "<group>"; };
-		B229828F1BA1577D0015C9A5 /* GBViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBViewUtils.m; sourceTree = "<group>"; };
-		B275A6FE1A0C455D0050510A /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growthbeat.h; sourceTree = "<group>"; };
-		B275A6FF1A0C455D0050510A /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Growthbeat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		17CC05761D2399F200AB2667 /* GPBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBackground.h; sourceTree = "<group>"; };
+		17CC05771D2399F200AB2667 /* GPBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBackground.m; sourceTree = "<group>"; };
+		17CC05781D2399F200AB2667 /* GPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPButton.h; sourceTree = "<group>"; };
+		17CC05791D2399F200AB2667 /* GPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPButton.m; sourceTree = "<group>"; };
+		17CC057A1D2399F200AB2667 /* GPButtonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPButtonType.h; sourceTree = "<group>"; };
+		17CC057B1D2399F200AB2667 /* GPButtonType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPButtonType.m; sourceTree = "<group>"; };
+		17CC057C1D2399F200AB2667 /* GPCardMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCardMessage.h; sourceTree = "<group>"; };
+		17CC057D1D2399F200AB2667 /* GPCardMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessage.m; sourceTree = "<group>"; };
+		17CC057E1D2399F200AB2667 /* GPCardMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCardMessageHandler.h; sourceTree = "<group>"; };
+		17CC057F1D2399F200AB2667 /* GPCardMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessageHandler.m; sourceTree = "<group>"; };
+		17CC05801D2399F200AB2667 /* GPCardMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCardMessageRenderer.h; sourceTree = "<group>"; };
+		17CC05811D2399F200AB2667 /* GPCardMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCardMessageRenderer.m; sourceTree = "<group>"; };
+		17CC05821D2399F200AB2667 /* GPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPClient.h; sourceTree = "<group>"; };
+		17CC05831D2399F200AB2667 /* GPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
+		17CC05841D2399F200AB2667 /* GPClientV4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPClientV4.h; sourceTree = "<group>"; };
+		17CC05851D2399F200AB2667 /* GPClientV4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPClientV4.m; sourceTree = "<group>"; };
+		17CC05861D2399F200AB2667 /* GPCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCloseButton.h; sourceTree = "<group>"; };
+		17CC05871D2399F200AB2667 /* GPCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCloseButton.m; sourceTree = "<group>"; };
+		17CC05881D2399F200AB2667 /* GPEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEnvironment.h; sourceTree = "<group>"; };
+		17CC05891D2399F200AB2667 /* GPEnvironmentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEnvironmentUtils.m; sourceTree = "<group>"; };
+		17CC058A1D2399F200AB2667 /* GPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEvent.h; sourceTree = "<group>"; };
+		17CC058B1D2399F200AB2667 /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEvent.m; sourceTree = "<group>"; };
+		17CC058C1D2399F200AB2667 /* GPEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEventType.h; sourceTree = "<group>"; };
+		17CC058D1D2399F200AB2667 /* GPEventType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEventType.m; sourceTree = "<group>"; };
+		17CC058E1D2399F200AB2667 /* GPImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPImageButton.h; sourceTree = "<group>"; };
+		17CC058F1D2399F200AB2667 /* GPImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPImageButton.m; sourceTree = "<group>"; };
+		17CC05901D2399F200AB2667 /* GPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessage.h; sourceTree = "<group>"; };
+		17CC05911D2399F200AB2667 /* GPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPMessage.m; sourceTree = "<group>"; };
+		17CC05921D2399F200AB2667 /* GPMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessageHandler.h; sourceTree = "<group>"; };
+		17CC05931D2399F200AB2667 /* GPMessageOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessageOrientation.h; sourceTree = "<group>"; };
+		17CC05941D2399F200AB2667 /* GPMessageOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPMessageOrientation.m; sourceTree = "<group>"; };
+		17CC05951D2399F200AB2667 /* GPMessageQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessageQueue.h; sourceTree = "<group>"; };
+		17CC05961D2399F200AB2667 /* GPMessageQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPMessageQueue.m; sourceTree = "<group>"; };
+		17CC05971D2399F200AB2667 /* GPMessageRendererDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessageRendererDelegate.h; sourceTree = "<group>"; };
+		17CC05981D2399F200AB2667 /* GPMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMessageType.h; sourceTree = "<group>"; };
+		17CC05991D2399F200AB2667 /* GPMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPMessageType.m; sourceTree = "<group>"; };
+		17CC059A1D2399F200AB2667 /* GPNoContentMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPNoContentMessage.h; sourceTree = "<group>"; };
+		17CC059B1D2399F200AB2667 /* GPNoContentMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPNoContentMessage.m; sourceTree = "<group>"; };
+		17CC059C1D2399F200AB2667 /* GPOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPOS.h; sourceTree = "<group>"; };
+		17CC059D1D2399F200AB2667 /* GPOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
+		17CC059E1D2399F200AB2667 /* GPPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPPicture.h; sourceTree = "<group>"; };
+		17CC059F1D2399F200AB2667 /* GPPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPPicture.m; sourceTree = "<group>"; };
+		17CC05A01D2399F200AB2667 /* GPPictureUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPPictureUtils.h; sourceTree = "<group>"; };
+		17CC05A11D2399F200AB2667 /* GPPictureUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPPictureUtils.m; sourceTree = "<group>"; };
+		17CC05A21D2399F200AB2667 /* GPPlainButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPPlainButton.h; sourceTree = "<group>"; };
+		17CC05A31D2399F200AB2667 /* GPPlainButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPPlainButton.m; sourceTree = "<group>"; };
+		17CC05A41D2399F200AB2667 /* GPPlainMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPPlainMessage.h; sourceTree = "<group>"; };
+		17CC05A51D2399F200AB2667 /* GPPlainMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPPlainMessage.m; sourceTree = "<group>"; };
+		17CC05A61D2399F200AB2667 /* GPPlainMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPPlainMessageHandler.h; sourceTree = "<group>"; };
+		17CC05A71D2399F200AB2667 /* GPPlainMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPPlainMessageHandler.m; sourceTree = "<group>"; };
+		17CC05A81D2399F200AB2667 /* GPScreenButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPScreenButton.h; sourceTree = "<group>"; };
+		17CC05A91D2399F200AB2667 /* GPScreenButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPScreenButton.m; sourceTree = "<group>"; };
+		17CC05AA1D2399F200AB2667 /* GPShowMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPShowMessageHandler.h; sourceTree = "<group>"; };
+		17CC05AB1D2399F200AB2667 /* GPShowMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPShowMessageHandler.m; sourceTree = "<group>"; };
+		17CC05AC1D2399F200AB2667 /* GPSwipeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSwipeMessage.h; sourceTree = "<group>"; };
+		17CC05AD1D2399F200AB2667 /* GPSwipeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSwipeMessage.m; sourceTree = "<group>"; };
+		17CC05AE1D2399F200AB2667 /* GPSwipeMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSwipeMessageHandler.h; sourceTree = "<group>"; };
+		17CC05AF1D2399F200AB2667 /* GPSwipeMessageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSwipeMessageHandler.m; sourceTree = "<group>"; };
+		17CC05B01D2399F200AB2667 /* GPSwipeMessageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSwipeMessageRenderer.h; sourceTree = "<group>"; };
+		17CC05B11D2399F200AB2667 /* GPSwipeMessageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSwipeMessageRenderer.m; sourceTree = "<group>"; };
+		17CC05B21D2399F200AB2667 /* GPSwipeMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSwipeMessageType.h; sourceTree = "<group>"; };
+		17CC05B31D2399F200AB2667 /* GPSwipeMessageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSwipeMessageType.m; sourceTree = "<group>"; };
+		17CC05B41D2399F200AB2667 /* GPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTag.h; sourceTree = "<group>"; };
+		17CC05B51D2399F200AB2667 /* GPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTag.m; sourceTree = "<group>"; };
+		17CC05B61D2399F200AB2667 /* GPTagType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTagType.h; sourceTree = "<group>"; };
+		17CC05B71D2399F200AB2667 /* GPTagType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTagType.m; sourceTree = "<group>"; };
+		17CC05B81D2399F200AB2667 /* GPTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTask.h; sourceTree = "<group>"; };
+		17CC05B91D2399F200AB2667 /* GPTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTask.m; sourceTree = "<group>"; };
+		17CC05BA1D2399F200AB2667 /* GrowthPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowthPush.h; sourceTree = "<group>"; };
+		17CC05BB1D2399F200AB2667 /* GrowthPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
+		69989D421D1A23D9006B0EFE /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapper.h; path = Growthbeat/GBAppDelegateWrapper.h; sourceTree = "<group>"; };
+		69989D431D1A23D9006B0EFE /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBAppDelegateWrapper.m; path = Growthbeat/GBAppDelegateWrapper.m; sourceTree = "<group>"; };
+		69989D441D1A23D9006B0EFE /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAppDelegateWrapperDelegate.h; path = Growthbeat/GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
+		69989D451D1A23D9006B0EFE /* GBApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBApplication.h; path = Growthbeat/GBApplication.h; sourceTree = "<group>"; };
+		69989D461D1A23D9006B0EFE /* GBApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBApplication.m; path = Growthbeat/GBApplication.m; sourceTree = "<group>"; };
+		69989D471D1A23D9006B0EFE /* GBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBClient.h; path = Growthbeat/GBClient.h; sourceTree = "<group>"; };
+		69989D481D1A23D9006B0EFE /* GBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBClient.m; path = Growthbeat/GBClient.m; sourceTree = "<group>"; };
+		69989D491D1A23D9006B0EFE /* GBContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBContentType.h; path = Growthbeat/GBContentType.h; sourceTree = "<group>"; };
+		69989D4A1D1A23D9006B0EFE /* GBContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBContentType.m; path = Growthbeat/GBContentType.m; sourceTree = "<group>"; };
+		69989D4B1D1A23D9006B0EFE /* GBCustomIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBCustomIntent.h; path = Growthbeat/GBCustomIntent.h; sourceTree = "<group>"; };
+		69989D4C1D1A23D9006B0EFE /* GBCustomIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBCustomIntent.m; path = Growthbeat/GBCustomIntent.m; sourceTree = "<group>"; };
+		69989D4D1D1A23D9006B0EFE /* GBCustomIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBCustomIntentHandler.h; path = Growthbeat/GBCustomIntentHandler.h; sourceTree = "<group>"; };
+		69989D4E1D1A23D9006B0EFE /* GBCustomIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBCustomIntentHandler.m; path = Growthbeat/GBCustomIntentHandler.m; sourceTree = "<group>"; };
+		69989D4F1D1A23D9006B0EFE /* GBDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDateUtils.h; path = Growthbeat/GBDateUtils.h; sourceTree = "<group>"; };
+		69989D501D1A23D9006B0EFE /* GBDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDateUtils.m; path = Growthbeat/GBDateUtils.m; sourceTree = "<group>"; };
+		69989D511D1A23D9006B0EFE /* GBDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDeviceUtils.h; path = Growthbeat/GBDeviceUtils.h; sourceTree = "<group>"; };
+		69989D521D1A23D9006B0EFE /* GBDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDeviceUtils.m; path = Growthbeat/GBDeviceUtils.m; sourceTree = "<group>"; };
+		69989D531D1A23D9006B0EFE /* GBDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBDomain.h; path = Growthbeat/GBDomain.h; sourceTree = "<group>"; };
+		69989D541D1A23D9006B0EFE /* GBDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBDomain.m; path = Growthbeat/GBDomain.m; sourceTree = "<group>"; };
+		69989D571D1A23D9006B0EFE /* GBHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpClient.h; path = Growthbeat/GBHttpClient.h; sourceTree = "<group>"; };
+		69989D581D1A23D9006B0EFE /* GBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpClient.m; path = Growthbeat/GBHttpClient.m; sourceTree = "<group>"; };
+		69989D591D1A23D9006B0EFE /* GBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpRequest.h; path = Growthbeat/GBHttpRequest.h; sourceTree = "<group>"; };
+		69989D5A1D1A23D9006B0EFE /* GBHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpRequest.m; path = Growthbeat/GBHttpRequest.m; sourceTree = "<group>"; };
+		69989D5B1D1A23D9006B0EFE /* GBHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpResponse.h; path = Growthbeat/GBHttpResponse.h; sourceTree = "<group>"; };
+		69989D5C1D1A23D9006B0EFE /* GBHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpResponse.m; path = Growthbeat/GBHttpResponse.m; sourceTree = "<group>"; };
+		69989D5D1D1A23D9006B0EFE /* GBHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHttpUtils.h; path = Growthbeat/GBHttpUtils.h; sourceTree = "<group>"; };
+		69989D5E1D1A23D9006B0EFE /* GBHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHttpUtils.m; path = Growthbeat/GBHttpUtils.m; sourceTree = "<group>"; };
+		69989D5F1D1A23D9006B0EFE /* GBIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBIntent.h; path = Growthbeat/GBIntent.h; sourceTree = "<group>"; };
+		69989D601D1A23D9006B0EFE /* GBIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBIntent.m; path = Growthbeat/GBIntent.m; sourceTree = "<group>"; };
+		69989D611D1A23D9006B0EFE /* GBIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBIntentHandler.h; path = Growthbeat/GBIntentHandler.h; sourceTree = "<group>"; };
+		69989D621D1A23D9006B0EFE /* GBIntentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBIntentType.h; path = Growthbeat/GBIntentType.h; sourceTree = "<group>"; };
+		69989D631D1A23D9006B0EFE /* GBIntentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBIntentType.m; path = Growthbeat/GBIntentType.m; sourceTree = "<group>"; };
+		69989D641D1A23D9006B0EFE /* GBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBLogger.h; path = Growthbeat/GBLogger.h; sourceTree = "<group>"; };
+		69989D651D1A23D9006B0EFE /* GBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBLogger.m; path = Growthbeat/GBLogger.m; sourceTree = "<group>"; };
+		69989D681D1A23D9006B0EFE /* GBNoopIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBNoopIntent.h; path = Growthbeat/GBNoopIntent.h; sourceTree = "<group>"; };
+		69989D691D1A23D9006B0EFE /* GBNoopIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBNoopIntent.m; path = Growthbeat/GBNoopIntent.m; sourceTree = "<group>"; };
+		69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBNoopIntentHandler.h; path = Growthbeat/GBNoopIntentHandler.h; sourceTree = "<group>"; };
+		69989D6B1D1A23D9006B0EFE /* GBNoopIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBNoopIntentHandler.m; path = Growthbeat/GBNoopIntentHandler.m; sourceTree = "<group>"; };
+		69989D6C1D1A23D9006B0EFE /* GBPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBPreference.h; path = Growthbeat/GBPreference.h; sourceTree = "<group>"; };
+		69989D6D1D1A23D9006B0EFE /* GBPreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBPreference.m; path = Growthbeat/GBPreference.m; sourceTree = "<group>"; };
+		69989D6E1D1A23D9006B0EFE /* GBRequestMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBRequestMethod.h; path = Growthbeat/GBRequestMethod.h; sourceTree = "<group>"; };
+		69989D6F1D1A23D9006B0EFE /* GBRequestMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBRequestMethod.m; path = Growthbeat/GBRequestMethod.m; sourceTree = "<group>"; };
+		69989D701D1A23D9006B0EFE /* GBUrlIntent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBUrlIntent.h; path = Growthbeat/GBUrlIntent.h; sourceTree = "<group>"; };
+		69989D711D1A23D9006B0EFE /* GBUrlIntent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBUrlIntent.m; path = Growthbeat/GBUrlIntent.m; sourceTree = "<group>"; };
+		69989D721D1A23D9006B0EFE /* GBUrlIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBUrlIntentHandler.h; path = Growthbeat/GBUrlIntentHandler.h; sourceTree = "<group>"; };
+		69989D731D1A23D9006B0EFE /* GBUrlIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBUrlIntentHandler.m; path = Growthbeat/GBUrlIntentHandler.m; sourceTree = "<group>"; };
+		69989D741D1A23D9006B0EFE /* GBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBUtils.h; path = Growthbeat/GBUtils.h; sourceTree = "<group>"; };
+		69989D751D1A23D9006B0EFE /* GBViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBViewUtils.h; path = Growthbeat/GBViewUtils.h; sourceTree = "<group>"; };
+		69989D761D1A23D9006B0EFE /* GBViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBViewUtils.m; path = Growthbeat/GBViewUtils.m; sourceTree = "<group>"; };
+		69989D771D1A23D9006B0EFE /* Growthbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Growthbeat.h; path = Growthbeat/Growthbeat.h; sourceTree = "<group>"; };
+		69989D781D1A23D9006B0EFE /* Growthbeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Growthbeat.m; path = Growthbeat/Growthbeat.m; sourceTree = "<group>"; };
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCustomIntentHandler.h; sourceTree = "<group>"; };
-		C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCustomIntentHandler.m; sourceTree = "<group>"; };
 		C165AE3B1CFBC3730078D38C /* GLClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLClick.h; sourceTree = "<group>"; };
 		C165AE3C1CFBC3730078D38C /* GLClick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLClick.m; sourceTree = "<group>"; };
 		C165AE3D1CFBC3730078D38C /* GLLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLLink.h; sourceTree = "<group>"; };
@@ -350,77 +384,6 @@
 		C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSynchronizationHandler.m; sourceTree = "<group>"; };
 		C165AE451CFBC3730078D38C /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
 		C165AE461CFBC3730078D38C /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
-		CE0627C71B15B692009263FA /* GAClientEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientEvent.h; sourceTree = "<group>"; };
-		CE0627C81B15B692009263FA /* GAClientEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientEvent.m; sourceTree = "<group>"; };
-		CE0627C91B15B692009263FA /* GAClientTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAClientTag.h; sourceTree = "<group>"; };
-		CE0627CA1B15B692009263FA /* GAClientTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAClientTag.m; sourceTree = "<group>"; };
-		CE0627CB1B15B692009263FA /* GAEventHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAEventHandler.h; sourceTree = "<group>"; };
-		CE0627CC1B15B692009263FA /* GAEventHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAEventHandler.m; sourceTree = "<group>"; };
-		CE0627CD1B15B692009263FA /* GrowthAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthAnalytics.h; sourceTree = "<group>"; };
-		CE0627CE1B15B692009263FA /* GrowthAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GrowthAnalytics.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CE0627D01B15B6A1009263FA /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
-		CE0627D11B15B6A1009263FA /* GBAppDelegateWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAppDelegateWrapper.m; sourceTree = "<group>"; };
-		CE0627D21B15B6A1009263FA /* GBAppDelegateWrapperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapperDelegate.h; sourceTree = "<group>"; };
-		CE0627D31B15B6A1009263FA /* GBApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBApplication.h; sourceTree = "<group>"; };
-		CE0627D41B15B6A1009263FA /* GBApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBApplication.m; sourceTree = "<group>"; };
-		CE0627D51B15B6A1009263FA /* GBClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBClient.h; sourceTree = "<group>"; };
-		CE0627D61B15B6A1009263FA /* GBClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBClient.m; sourceTree = "<group>"; };
-		CE0627D71B15B6A1009263FA /* GBContentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBContentType.h; sourceTree = "<group>"; };
-		CE0627D81B15B6A1009263FA /* GBContentType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBContentType.m; sourceTree = "<group>"; };
-		CE0627D91B15B6A1009263FA /* GBCustomIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBCustomIntent.h; sourceTree = "<group>"; };
-		CE0627DA1B15B6A1009263FA /* GBCustomIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBCustomIntent.m; sourceTree = "<group>"; };
-		CE0627DB1B15B6A1009263FA /* GBDateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDateUtils.h; sourceTree = "<group>"; };
-		CE0627DC1B15B6A1009263FA /* GBDateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBDateUtils.m; sourceTree = "<group>"; };
-		CE0627DD1B15B6A1009263FA /* GBDeviceUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDeviceUtils.h; sourceTree = "<group>"; };
-		CE0627DE1B15B6A1009263FA /* GBDeviceUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBDeviceUtils.m; sourceTree = "<group>"; };
-		CE0627DF1B15B6A1009263FA /* GBDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBDomain.h; sourceTree = "<group>"; };
-		CE0627E01B15B6A1009263FA /* GBDomain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBDomain.m; sourceTree = "<group>"; };
-		CE0627E11B15B6A1009263FA /* GBGPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBGPClient.h; sourceTree = "<group>"; };
-		CE0627E21B15B6A1009263FA /* GBGPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GBGPClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CE0627E31B15B6A1009263FA /* GBHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpClient.h; sourceTree = "<group>"; };
-		CE0627E41B15B6A1009263FA /* GBHttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpClient.m; sourceTree = "<group>"; };
-		CE0627E51B15B6A1009263FA /* GBHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpRequest.h; sourceTree = "<group>"; };
-		CE0627E61B15B6A1009263FA /* GBHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpRequest.m; sourceTree = "<group>"; };
-		CE0627E71B15B6A1009263FA /* GBHttpResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpResponse.h; sourceTree = "<group>"; };
-		CE0627E81B15B6A1009263FA /* GBHttpResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpResponse.m; sourceTree = "<group>"; };
-		CE0627E91B15B6A1009263FA /* GBHttpUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBHttpUtils.h; sourceTree = "<group>"; };
-		CE0627EA1B15B6A1009263FA /* GBHttpUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBHttpUtils.m; sourceTree = "<group>"; };
-		CE0627EB1B15B6A1009263FA /* GBIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntent.h; sourceTree = "<group>"; };
-		CE0627EC1B15B6A1009263FA /* GBIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBIntent.m; sourceTree = "<group>"; };
-		CE0627ED1B15B6A1009263FA /* GBIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntentHandler.h; sourceTree = "<group>"; };
-		CE0627EE1B15B6A1009263FA /* GBIntentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBIntentType.h; sourceTree = "<group>"; };
-		CE0627EF1B15B6A1009263FA /* GBIntentType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBIntentType.m; sourceTree = "<group>"; };
-		CE0627F01B15B6A1009263FA /* GBLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBLogger.h; sourceTree = "<group>"; };
-		CE0627F11B15B6A1009263FA /* GBLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBLogger.m; sourceTree = "<group>"; };
-		CE0627F21B15B6A1009263FA /* GBMultipartFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBMultipartFile.h; sourceTree = "<group>"; };
-		CE0627F31B15B6A1009263FA /* GBMultipartFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBMultipartFile.m; sourceTree = "<group>"; };
-		CE0627F41B15B6A1009263FA /* GBNoopIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBNoopIntent.h; sourceTree = "<group>"; };
-		CE0627F51B15B6A1009263FA /* GBNoopIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBNoopIntent.m; sourceTree = "<group>"; };
-		CE0627F61B15B6A1009263FA /* GBNoopIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBNoopIntentHandler.h; sourceTree = "<group>"; };
-		CE0627F71B15B6A1009263FA /* GBNoopIntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBNoopIntentHandler.m; sourceTree = "<group>"; };
-		CE0627F81B15B6A1009263FA /* GBPreference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBPreference.h; sourceTree = "<group>"; };
-		CE0627F91B15B6A1009263FA /* GBPreference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBPreference.m; sourceTree = "<group>"; };
-		CE0627FA1B15B6A1009263FA /* GBRequestMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBRequestMethod.h; sourceTree = "<group>"; };
-		CE0627FB1B15B6A1009263FA /* GBRequestMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBRequestMethod.m; sourceTree = "<group>"; };
-		CE0627FC1B15B6A1009263FA /* GBUrlIntent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUrlIntent.h; sourceTree = "<group>"; };
-		CE0627FD1B15B6A1009263FA /* GBUrlIntent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBUrlIntent.m; sourceTree = "<group>"; };
-		CE0627FE1B15B6A1009263FA /* GBUrlIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUrlIntentHandler.h; sourceTree = "<group>"; };
-		CE0627FF1B15B6A1009263FA /* GBUrlIntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBUrlIntentHandler.m; sourceTree = "<group>"; };
-		CE0628001B15B6A1009263FA /* GBUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBUtils.h; sourceTree = "<group>"; };
-		CE0628011B15B6A1009263FA /* GrowthbeatCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthbeatCore.h; sourceTree = "<group>"; };
-		CE0628021B15B6A1009263FA /* GrowthbeatCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GrowthbeatCore.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CE0628291B15B6BF009263FA /* GPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPClient.h; sourceTree = "<group>"; };
-		CE06282A1B15B6BF009263FA /* GPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPClient.m; sourceTree = "<group>"; };
-		CE06282B1B15B6BF009263FA /* GPEnvironment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPEnvironment.h; sourceTree = "<group>"; };
-		CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPEnvironmentUtils.m; sourceTree = "<group>"; };
-		CE06282D1B15B6BF009263FA /* GPOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPOS.h; sourceTree = "<group>"; };
-		CE06282E1B15B6BF009263FA /* GPOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPOS.m; sourceTree = "<group>"; };
-		CE06282F1B15B6BF009263FA /* GrowthPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthPush.h; sourceTree = "<group>"; };
-		CE0628301B15B6BF009263FA /* GrowthPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthPush.m; sourceTree = "<group>"; };
-		CEDBE8BC1B3A468000083D32 /* GPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEvent.h; sourceTree = "<group>"; };
-		CEDBE8BD1B3A468000083D32 /* GPEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEvent.m; sourceTree = "<group>"; };
-		CEDBE8BE1B3A468000083D32 /* GPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTag.h; sourceTree = "<group>"; };
-		CEDBE8BF1B3A468000083D32 /* GPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTag.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,12 +400,59 @@
 		B2ED140E1A0C451E0078F6BC = {
 			isa = PBXGroup;
 			children = (
+				69989D421D1A23D9006B0EFE /* GBAppDelegateWrapper.h */,
+				69989D431D1A23D9006B0EFE /* GBAppDelegateWrapper.m */,
+				69989D441D1A23D9006B0EFE /* GBAppDelegateWrapperDelegate.h */,
+				69989D451D1A23D9006B0EFE /* GBApplication.h */,
+				69989D461D1A23D9006B0EFE /* GBApplication.m */,
+				69989D471D1A23D9006B0EFE /* GBClient.h */,
+				69989D481D1A23D9006B0EFE /* GBClient.m */,
+				69989D491D1A23D9006B0EFE /* GBContentType.h */,
+				69989D4A1D1A23D9006B0EFE /* GBContentType.m */,
+				69989D4B1D1A23D9006B0EFE /* GBCustomIntent.h */,
+				69989D4C1D1A23D9006B0EFE /* GBCustomIntent.m */,
+				69989D4D1D1A23D9006B0EFE /* GBCustomIntentHandler.h */,
+				69989D4E1D1A23D9006B0EFE /* GBCustomIntentHandler.m */,
+				69989D4F1D1A23D9006B0EFE /* GBDateUtils.h */,
+				69989D501D1A23D9006B0EFE /* GBDateUtils.m */,
+				69989D511D1A23D9006B0EFE /* GBDeviceUtils.h */,
+				69989D521D1A23D9006B0EFE /* GBDeviceUtils.m */,
+				69989D531D1A23D9006B0EFE /* GBDomain.h */,
+				69989D541D1A23D9006B0EFE /* GBDomain.m */,
+				69989D571D1A23D9006B0EFE /* GBHttpClient.h */,
+				69989D581D1A23D9006B0EFE /* GBHttpClient.m */,
+				69989D591D1A23D9006B0EFE /* GBHttpRequest.h */,
+				69989D5A1D1A23D9006B0EFE /* GBHttpRequest.m */,
+				69989D5B1D1A23D9006B0EFE /* GBHttpResponse.h */,
+				69989D5C1D1A23D9006B0EFE /* GBHttpResponse.m */,
+				69989D5D1D1A23D9006B0EFE /* GBHttpUtils.h */,
+				69989D5E1D1A23D9006B0EFE /* GBHttpUtils.m */,
+				69989D5F1D1A23D9006B0EFE /* GBIntent.h */,
+				69989D601D1A23D9006B0EFE /* GBIntent.m */,
+				69989D611D1A23D9006B0EFE /* GBIntentHandler.h */,
+				69989D621D1A23D9006B0EFE /* GBIntentType.h */,
+				69989D631D1A23D9006B0EFE /* GBIntentType.m */,
+				69989D641D1A23D9006B0EFE /* GBLogger.h */,
+				69989D651D1A23D9006B0EFE /* GBLogger.m */,
+				69989D681D1A23D9006B0EFE /* GBNoopIntent.h */,
+				69989D691D1A23D9006B0EFE /* GBNoopIntent.m */,
+				69989D6A1D1A23D9006B0EFE /* GBNoopIntentHandler.h */,
+				69989D6B1D1A23D9006B0EFE /* GBNoopIntentHandler.m */,
+				69989D6C1D1A23D9006B0EFE /* GBPreference.h */,
+				69989D6D1D1A23D9006B0EFE /* GBPreference.m */,
+				69989D6E1D1A23D9006B0EFE /* GBRequestMethod.h */,
+				69989D6F1D1A23D9006B0EFE /* GBRequestMethod.m */,
+				69989D701D1A23D9006B0EFE /* GBUrlIntent.h */,
+				69989D711D1A23D9006B0EFE /* GBUrlIntent.m */,
+				69989D721D1A23D9006B0EFE /* GBUrlIntentHandler.h */,
+				69989D731D1A23D9006B0EFE /* GBUrlIntentHandler.m */,
+				69989D741D1A23D9006B0EFE /* GBUtils.h */,
+				69989D751D1A23D9006B0EFE /* GBViewUtils.h */,
+				69989D761D1A23D9006B0EFE /* GBViewUtils.m */,
+				69989D771D1A23D9006B0EFE /* Growthbeat.h */,
+				69989D781D1A23D9006B0EFE /* Growthbeat.m */,
 				C165AE3A1CFBC3730078D38C /* GrowthLink */,
 				CE0628281B15B6BF009263FA /* GrowthPush */,
-				CE0628031B15B6B8009263FA /* GrowthMessage */,
-				CE0627CF1B15B6A1009263FA /* GrowthbeatCore */,
-				CE0627C61B15B692009263FA /* GrowthAnalytics */,
-				B2ED14191A0C451E0078F6BC /* Growthbeat */,
 				B2ED14181A0C451E0078F6BC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -453,15 +463,6 @@
 				B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B2ED14191A0C451E0078F6BC /* Growthbeat */ = {
-			isa = PBXGroup;
-			children = (
-				B275A6FE1A0C455D0050510A /* Growthbeat.h */,
-				B275A6FF1A0C455D0050510A /* Growthbeat.m */,
-			);
-			path = Growthbeat;
 			sourceTree = "<group>";
 		};
 		C165AE3A1CFBC3730078D38C /* GrowthLink */ = {
@@ -484,167 +485,79 @@
 			path = Growthbeat/GrowthLink;
 			sourceTree = "<group>";
 		};
-		CE0627C61B15B692009263FA /* GrowthAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				CE0627C71B15B692009263FA /* GAClientEvent.h */,
-				CE0627C81B15B692009263FA /* GAClientEvent.m */,
-				CE0627C91B15B692009263FA /* GAClientTag.h */,
-				CE0627CA1B15B692009263FA /* GAClientTag.m */,
-				CE0627CB1B15B692009263FA /* GAEventHandler.h */,
-				CE0627CC1B15B692009263FA /* GAEventHandler.m */,
-				CE0627CD1B15B692009263FA /* GrowthAnalytics.h */,
-				CE0627CE1B15B692009263FA /* GrowthAnalytics.m */,
-			);
-			name = GrowthAnalytics;
-			path = Growthbeat/GrowthAnalytics;
-			sourceTree = "<group>";
-		};
-		CE0627CF1B15B6A1009263FA /* GrowthbeatCore */ = {
-			isa = PBXGroup;
-			children = (
-				CE0627D01B15B6A1009263FA /* GBAppDelegateWrapper.h */,
-				CE0627D11B15B6A1009263FA /* GBAppDelegateWrapper.m */,
-				CE0627D21B15B6A1009263FA /* GBAppDelegateWrapperDelegate.h */,
-				CE0627D31B15B6A1009263FA /* GBApplication.h */,
-				CE0627D41B15B6A1009263FA /* GBApplication.m */,
-				CE0627D51B15B6A1009263FA /* GBClient.h */,
-				CE0627D61B15B6A1009263FA /* GBClient.m */,
-				CE0627D71B15B6A1009263FA /* GBContentType.h */,
-				CE0627D81B15B6A1009263FA /* GBContentType.m */,
-				CE0627D91B15B6A1009263FA /* GBCustomIntent.h */,
-				CE0627DA1B15B6A1009263FA /* GBCustomIntent.m */,
-				C12497AB1BAA5B65000AFEE0 /* GBCustomIntentHandler.h */,
-				C12497AC1BAA5B65000AFEE0 /* GBCustomIntentHandler.m */,
-				CE0627DB1B15B6A1009263FA /* GBDateUtils.h */,
-				CE0627DC1B15B6A1009263FA /* GBDateUtils.m */,
-				CE0627DD1B15B6A1009263FA /* GBDeviceUtils.h */,
-				CE0627DE1B15B6A1009263FA /* GBDeviceUtils.m */,
-				CE0627DF1B15B6A1009263FA /* GBDomain.h */,
-				CE0627E01B15B6A1009263FA /* GBDomain.m */,
-				CE0627E11B15B6A1009263FA /* GBGPClient.h */,
-				CE0627E21B15B6A1009263FA /* GBGPClient.m */,
-				CE0627E31B15B6A1009263FA /* GBHttpClient.h */,
-				CE0627E41B15B6A1009263FA /* GBHttpClient.m */,
-				CE0627E51B15B6A1009263FA /* GBHttpRequest.h */,
-				CE0627E61B15B6A1009263FA /* GBHttpRequest.m */,
-				CE0627E71B15B6A1009263FA /* GBHttpResponse.h */,
-				CE0627E81B15B6A1009263FA /* GBHttpResponse.m */,
-				CE0627E91B15B6A1009263FA /* GBHttpUtils.h */,
-				CE0627EA1B15B6A1009263FA /* GBHttpUtils.m */,
-				CE0627EB1B15B6A1009263FA /* GBIntent.h */,
-				CE0627EC1B15B6A1009263FA /* GBIntent.m */,
-				CE0627ED1B15B6A1009263FA /* GBIntentHandler.h */,
-				CE0627EE1B15B6A1009263FA /* GBIntentType.h */,
-				CE0627EF1B15B6A1009263FA /* GBIntentType.m */,
-				CE0627F01B15B6A1009263FA /* GBLogger.h */,
-				CE0627F11B15B6A1009263FA /* GBLogger.m */,
-				CE0627F21B15B6A1009263FA /* GBMultipartFile.h */,
-				CE0627F31B15B6A1009263FA /* GBMultipartFile.m */,
-				CE0627F41B15B6A1009263FA /* GBNoopIntent.h */,
-				CE0627F51B15B6A1009263FA /* GBNoopIntent.m */,
-				CE0627F61B15B6A1009263FA /* GBNoopIntentHandler.h */,
-				CE0627F71B15B6A1009263FA /* GBNoopIntentHandler.m */,
-				CE0627F81B15B6A1009263FA /* GBPreference.h */,
-				CE0627F91B15B6A1009263FA /* GBPreference.m */,
-				CE0627FA1B15B6A1009263FA /* GBRequestMethod.h */,
-				CE0627FB1B15B6A1009263FA /* GBRequestMethod.m */,
-				CE0627FC1B15B6A1009263FA /* GBUrlIntent.h */,
-				CE0627FD1B15B6A1009263FA /* GBUrlIntent.m */,
-				CE0627FE1B15B6A1009263FA /* GBUrlIntentHandler.h */,
-				CE0627FF1B15B6A1009263FA /* GBUrlIntentHandler.m */,
-				CE0628001B15B6A1009263FA /* GBUtils.h */,
-				B229828E1BA1577D0015C9A5 /* GBViewUtils.h */,
-				B229828F1BA1577D0015C9A5 /* GBViewUtils.m */,
-				CE0628011B15B6A1009263FA /* GrowthbeatCore.h */,
-				CE0628021B15B6A1009263FA /* GrowthbeatCore.m */,
-			);
-			name = GrowthbeatCore;
-			path = Growthbeat/GrowthbeatCore;
-			sourceTree = SOURCE_ROOT;
-		};
-		CE0628031B15B6B8009263FA /* GrowthMessage */ = {
-			isa = PBXGroup;
-			children = (
-				178DDBEB1BB2A88E008A859F /* GMAnimationType.h */,
-				178DDBEC1BB2A88E008A859F /* GMAnimationType.m */,
-				178DDBED1BB2A88E008A859F /* GMBannerMessage.h */,
-				178DDBEE1BB2A88E008A859F /* GMBannerMessage.m */,
-				178DDBEF1BB2A88E008A859F /* GMBannerMessageHandler.h */,
-				178DDBF01BB2A88E008A859F /* GMBannerMessageHandler.m */,
-				178DDBF11BB2A88E008A859F /* GMBannerMessagePosition.h */,
-				178DDBF21BB2A88E008A859F /* GMBannerMessagePosition.m */,
-				178DDBF31BB2A88E008A859F /* GMBannerMessageRenderer.h */,
-				178DDBF41BB2A88E008A859F /* GMBannerMessageRenderer.m */,
-				178DDBF51BB2A88E008A859F /* GMBannerMessageType.h */,
-				178DDBF61BB2A88E008A859F /* GMBannerMessageType.m */,
-				178DDBF71BB2A88E008A859F /* GMButton.h */,
-				178DDBF81BB2A88E008A859F /* GMButton.m */,
-				178DDBF91BB2A88E008A859F /* GMButtonType.h */,
-				178DDBFA1BB2A88E008A859F /* GMButtonType.m */,
-				178DDBFB1BB2A88E008A859F /* GMCloseButton.h */,
-				178DDBFC1BB2A88E008A859F /* GMCloseButton.m */,
-				178DDBFD1BB2A88E008A859F /* GMImageButton.h */,
-				178DDBFE1BB2A88E008A859F /* GMImageButton.m */,
-				178DDBFF1BB2A88E008A859F /* GMImageMessage.h */,
-				178DDC001BB2A88E008A859F /* GMImageMessage.m */,
-				178DDC011BB2A88E008A859F /* GMImageMessageHandler.h */,
-				178DDC021BB2A88E008A859F /* GMImageMessageHandler.m */,
-				178DDC031BB2A88E008A859F /* GMImageMessageRenderer.h */,
-				178DDC041BB2A88E008A859F /* GMImageMessageRenderer.m */,
-				178DDC051BB2A88E008A859F /* GMMessage.h */,
-				178DDC061BB2A88E008A859F /* GMMessage.m */,
-				178DDC071BB2A88E008A859F /* GMMessageHandler.h */,
-				178DDC081BB2A88E008A859F /* GMMessageRendererDelegate.h */,
-				178DDC091BB2A88E008A859F /* GMMessageType.h */,
-				178DDC0A1BB2A88E008A859F /* GMMessageType.m */,
-				178DDC0B1BB2A88E008A859F /* GMPicture.h */,
-				178DDC0C1BB2A88E008A859F /* GMPicture.m */,
-				178DDC0D1BB2A88E008A859F /* GMPictureExtension.h */,
-				178DDC0E1BB2A88E008A859F /* GMPictureExtension.m */,
-				178DDC0F1BB2A88E008A859F /* GMPlainButton.h */,
-				178DDC101BB2A88E008A859F /* GMPlainButton.m */,
-				178DDC111BB2A88E008A859F /* GMPlainMessage.h */,
-				178DDC121BB2A88E008A859F /* GMPlainMessage.m */,
-				178DDC131BB2A88E008A859F /* GMPlainMessageHandler.h */,
-				178DDC141BB2A88E008A859F /* GMPlainMessageHandler.m */,
-				178DDC151BB2A88E008A859F /* GMScreenButton.h */,
-				178DDC161BB2A88E008A859F /* GMScreenButton.m */,
-				178DDC171BB2A88E008A859F /* GMSwipeImages.h */,
-				178DDC181BB2A88E008A859F /* GMSwipeImages.m */,
-				178DDC191BB2A88E008A859F /* GMSwipeMessage.h */,
-				178DDC1A1BB2A88E008A859F /* GMSwipeMessage.m */,
-				178DDC1B1BB2A88E008A859F /* GMSwipeMessageHandler.h */,
-				178DDC1C1BB2A88E008A859F /* GMSwipeMessageHandler.m */,
-				178DDC1D1BB2A88E008A859F /* GMSwipeMessageRenderer.h */,
-				178DDC1E1BB2A88E008A859F /* GMSwipeMessageRenderer.m */,
-				178DDC1F1BB2A88E008A859F /* GMSwipeMessageRendererDelegate.h */,
-				178DDC201BB2A88E008A859F /* GMSwipeMessageType.h */,
-				178DDC211BB2A88E008A859F /* GMSwipeMessageType.m */,
-				178DDC221BB2A88E008A859F /* GMTask.h */,
-				178DDC231BB2A88E008A859F /* GMTask.m */,
-				178DDC241BB2A88E008A859F /* GrowthMessage.h */,
-				178DDC251BB2A88E008A859F /* GrowthMessage.m */,
-			);
-			name = GrowthMessage;
-			path = Growthbeat/GrowthMessage;
-			sourceTree = "<group>";
-		};
 		CE0628281B15B6BF009263FA /* GrowthPush */ = {
 			isa = PBXGroup;
 			children = (
-				CEDBE8BC1B3A468000083D32 /* GPEvent.h */,
-				CEDBE8BD1B3A468000083D32 /* GPEvent.m */,
-				CEDBE8BE1B3A468000083D32 /* GPTag.h */,
-				CEDBE8BF1B3A468000083D32 /* GPTag.m */,
-				CE0628291B15B6BF009263FA /* GPClient.h */,
-				CE06282A1B15B6BF009263FA /* GPClient.m */,
-				CE06282B1B15B6BF009263FA /* GPEnvironment.h */,
-				CE06282C1B15B6BF009263FA /* GPEnvironmentUtils.m */,
-				CE06282D1B15B6BF009263FA /* GPOS.h */,
-				CE06282E1B15B6BF009263FA /* GPOS.m */,
-				CE06282F1B15B6BF009263FA /* GrowthPush.h */,
-				CE0628301B15B6BF009263FA /* GrowthPush.m */,
+				17CC05761D2399F200AB2667 /* GPBackground.h */,
+				17CC05771D2399F200AB2667 /* GPBackground.m */,
+				17CC05781D2399F200AB2667 /* GPButton.h */,
+				17CC05791D2399F200AB2667 /* GPButton.m */,
+				17CC057A1D2399F200AB2667 /* GPButtonType.h */,
+				17CC057B1D2399F200AB2667 /* GPButtonType.m */,
+				17CC057C1D2399F200AB2667 /* GPCardMessage.h */,
+				17CC057D1D2399F200AB2667 /* GPCardMessage.m */,
+				17CC057E1D2399F200AB2667 /* GPCardMessageHandler.h */,
+				17CC057F1D2399F200AB2667 /* GPCardMessageHandler.m */,
+				17CC05801D2399F200AB2667 /* GPCardMessageRenderer.h */,
+				17CC05811D2399F200AB2667 /* GPCardMessageRenderer.m */,
+				17CC05821D2399F200AB2667 /* GPClient.h */,
+				17CC05831D2399F200AB2667 /* GPClient.m */,
+				17CC05841D2399F200AB2667 /* GPClientV4.h */,
+				17CC05851D2399F200AB2667 /* GPClientV4.m */,
+				17CC05861D2399F200AB2667 /* GPCloseButton.h */,
+				17CC05871D2399F200AB2667 /* GPCloseButton.m */,
+				17CC05881D2399F200AB2667 /* GPEnvironment.h */,
+				17CC05891D2399F200AB2667 /* GPEnvironmentUtils.m */,
+				17CC058A1D2399F200AB2667 /* GPEvent.h */,
+				17CC058B1D2399F200AB2667 /* GPEvent.m */,
+				17CC058C1D2399F200AB2667 /* GPEventType.h */,
+				17CC058D1D2399F200AB2667 /* GPEventType.m */,
+				17CC058E1D2399F200AB2667 /* GPImageButton.h */,
+				17CC058F1D2399F200AB2667 /* GPImageButton.m */,
+				17CC05901D2399F200AB2667 /* GPMessage.h */,
+				17CC05911D2399F200AB2667 /* GPMessage.m */,
+				17CC05921D2399F200AB2667 /* GPMessageHandler.h */,
+				17CC05931D2399F200AB2667 /* GPMessageOrientation.h */,
+				17CC05941D2399F200AB2667 /* GPMessageOrientation.m */,
+				17CC05951D2399F200AB2667 /* GPMessageQueue.h */,
+				17CC05961D2399F200AB2667 /* GPMessageQueue.m */,
+				17CC05971D2399F200AB2667 /* GPMessageRendererDelegate.h */,
+				17CC05981D2399F200AB2667 /* GPMessageType.h */,
+				17CC05991D2399F200AB2667 /* GPMessageType.m */,
+				17CC059A1D2399F200AB2667 /* GPNoContentMessage.h */,
+				17CC059B1D2399F200AB2667 /* GPNoContentMessage.m */,
+				17CC059C1D2399F200AB2667 /* GPOS.h */,
+				17CC059D1D2399F200AB2667 /* GPOS.m */,
+				17CC059E1D2399F200AB2667 /* GPPicture.h */,
+				17CC059F1D2399F200AB2667 /* GPPicture.m */,
+				17CC05A01D2399F200AB2667 /* GPPictureUtils.h */,
+				17CC05A11D2399F200AB2667 /* GPPictureUtils.m */,
+				17CC05A21D2399F200AB2667 /* GPPlainButton.h */,
+				17CC05A31D2399F200AB2667 /* GPPlainButton.m */,
+				17CC05A41D2399F200AB2667 /* GPPlainMessage.h */,
+				17CC05A51D2399F200AB2667 /* GPPlainMessage.m */,
+				17CC05A61D2399F200AB2667 /* GPPlainMessageHandler.h */,
+				17CC05A71D2399F200AB2667 /* GPPlainMessageHandler.m */,
+				17CC05A81D2399F200AB2667 /* GPScreenButton.h */,
+				17CC05A91D2399F200AB2667 /* GPScreenButton.m */,
+				17CC05AA1D2399F200AB2667 /* GPShowMessageHandler.h */,
+				17CC05AB1D2399F200AB2667 /* GPShowMessageHandler.m */,
+				17CC05AC1D2399F200AB2667 /* GPSwipeMessage.h */,
+				17CC05AD1D2399F200AB2667 /* GPSwipeMessage.m */,
+				17CC05AE1D2399F200AB2667 /* GPSwipeMessageHandler.h */,
+				17CC05AF1D2399F200AB2667 /* GPSwipeMessageHandler.m */,
+				17CC05B01D2399F200AB2667 /* GPSwipeMessageRenderer.h */,
+				17CC05B11D2399F200AB2667 /* GPSwipeMessageRenderer.m */,
+				17CC05B21D2399F200AB2667 /* GPSwipeMessageType.h */,
+				17CC05B31D2399F200AB2667 /* GPSwipeMessageType.m */,
+				17CC05B41D2399F200AB2667 /* GPTag.h */,
+				17CC05B51D2399F200AB2667 /* GPTag.m */,
+				17CC05B61D2399F200AB2667 /* GPTagType.h */,
+				17CC05B71D2399F200AB2667 /* GPTagType.m */,
+				17CC05B81D2399F200AB2667 /* GPTask.h */,
+				17CC05B91D2399F200AB2667 /* GPTask.m */,
+				17CC05BA1D2399F200AB2667 /* GrowthPush.h */,
+				17CC05BB1D2399F200AB2667 /* GrowthPush.m */,
 			);
 			name = GrowthPush;
 			path = Growthbeat/GrowthPush;
@@ -659,7 +572,7 @@
 			buildPhases = (
 				B2ED14131A0C451E0078F6BC /* Sources */,
 				B2ED14141A0C451E0078F6BC /* Frameworks */,
-				B2ED14151A0C451E0078F6BC /* CopyFiles */,
+				B2ED14151A0C451E0078F6BC /* Copy Files */,
 				B275A7021A0C45870050510A /* ShellScript */,
 			);
 			buildRules = (
@@ -740,77 +653,70 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C165AE4D1CFBC3A20078D38C /* GLClick.m in Sources */,
-				C165AE4E1CFBC3A20078D38C /* GLLink.m in Sources */,
-				C165AE4F1CFBC3A20078D38C /* GLPattern.m in Sources */,
-				C165AE501CFBC3A20078D38C /* GLSynchronization.m in Sources */,
-				C165AE511CFBC3A20078D38C /* GLSynchronizationHandler.m in Sources */,
-				C165AE521CFBC3A20078D38C /* GrowthLink.m in Sources */,
-				CE0628531B16F1E2009263FA /* GBClient.m in Sources */,
-				B22982901BA1577D0015C9A5 /* GBViewUtils.m in Sources */,
-				178DDC361BB2A88E008A859F /* GMPictureExtension.m in Sources */,
-				CE0628681B16F1E2009263FA /* GrowthbeatCore.m in Sources */,
-				CE06283F1B16F1A1009263FA /* GrowthPush.m in Sources */,
-				178DDC3B1BB2A88E008A859F /* GMSwipeImages.m in Sources */,
-				178DDC291BB2A88E008A859F /* GMBannerMessagePosition.m in Sources */,
-				CEDBE8C11B3A468000083D32 /* GPTag.m in Sources */,
-				178DDC3C1BB2A88E008A859F /* GMSwipeMessage.m in Sources */,
-				178DDC3F1BB2A88E008A859F /* GMSwipeMessageType.m in Sources */,
-				178DDC401BB2A88E008A859F /* GMTask.m in Sources */,
-				C12497AD1BAA5B65000AFEE0 /* GBCustomIntentHandler.m in Sources */,
-				178DDC301BB2A88E008A859F /* GMImageMessage.m in Sources */,
-				CE0628591B16F1E2009263FA /* GBGPClient.m in Sources */,
-				CE06285D1B16F1E2009263FA /* GBHttpUtils.m in Sources */,
-				178DDC281BB2A88E008A859F /* GMBannerMessageHandler.m in Sources */,
-				CE0628541B16F1E2009263FA /* GBContentType.m in Sources */,
-				B275A7001A0C455D0050510A /* Growthbeat.m in Sources */,
-				178DDC2E1BB2A88E008A859F /* GMCloseButton.m in Sources */,
-				178DDC3A1BB2A88E008A859F /* GMScreenButton.m in Sources */,
-				178DDC2A1BB2A88E008A859F /* GMBannerMessageRenderer.m in Sources */,
-				CE06283D1B16F1A1009263FA /* GPEnvironmentUtils.m in Sources */,
-				CE0628641B16F1E2009263FA /* GBPreference.m in Sources */,
-				178DDC341BB2A88E008A859F /* GMMessageType.m in Sources */,
-				178DDC411BB2A88E008A859F /* GrowthMessage.m in Sources */,
-				178DDC331BB2A88E008A859F /* GMMessage.m in Sources */,
-				CE0628701B16F1EC009263FA /* GAEventHandler.m in Sources */,
-				178DDC391BB2A88E008A859F /* GMPlainMessageHandler.m in Sources */,
-				CE06285E1B16F1E2009263FA /* GBIntent.m in Sources */,
-				CE06286E1B16F1EC009263FA /* GAClientEvent.m in Sources */,
-				CE06285F1B16F1E2009263FA /* GBIntentType.m in Sources */,
-				178DDC381BB2A88E008A859F /* GMPlainMessage.m in Sources */,
-				178DDC2F1BB2A88E008A859F /* GMImageButton.m in Sources */,
-				CE0628631B16F1E2009263FA /* GBNoopIntentHandler.m in Sources */,
-				CE0628611B16F1E2009263FA /* GBMultipartFile.m in Sources */,
-				CE06283E1B16F1A1009263FA /* GPOS.m in Sources */,
-				178DDC3E1BB2A88E008A859F /* GMSwipeMessageRenderer.m in Sources */,
-				178DDC311BB2A88E008A859F /* GMImageMessageHandler.m in Sources */,
-				CE06285A1B16F1E2009263FA /* GBHttpClient.m in Sources */,
-				CE0628561B16F1E2009263FA /* GBDateUtils.m in Sources */,
-				CE06285C1B16F1E2009263FA /* GBHttpResponse.m in Sources */,
-				CE06286F1B16F1EC009263FA /* GAClientTag.m in Sources */,
-				178DDC321BB2A88E008A859F /* GMImageMessageRenderer.m in Sources */,
-				CE0628551B16F1E2009263FA /* GBCustomIntent.m in Sources */,
-				CE0628711B16F1EC009263FA /* GrowthAnalytics.m in Sources */,
-				178DDC2D1BB2A88E008A859F /* GMButtonType.m in Sources */,
-				178DDC351BB2A88E008A859F /* GMPicture.m in Sources */,
-				178DDC3D1BB2A88E008A859F /* GMSwipeMessageHandler.m in Sources */,
-				CE06283C1B16F1A1009263FA /* GPClient.m in Sources */,
-				CE0628621B16F1E2009263FA /* GBNoopIntent.m in Sources */,
-				CE06286D1B16F1EC009263FA /* GBAppDelegateWrapper.m in Sources */,
-				CEDBE8C01B3A468000083D32 /* GPEvent.m in Sources */,
-				CE0628671B16F1E2009263FA /* GBUrlIntentHandler.m in Sources */,
-				178DDC2C1BB2A88E008A859F /* GMButton.m in Sources */,
-				CE06285B1B16F1E2009263FA /* GBHttpRequest.m in Sources */,
-				CE0628581B16F1E2009263FA /* GBDomain.m in Sources */,
-				178DDC261BB2A88E008A859F /* GMAnimationType.m in Sources */,
-				CE0628601B16F1E2009263FA /* GBLogger.m in Sources */,
-				178DDC2B1BB2A88E008A859F /* GMBannerMessageType.m in Sources */,
-				CE0628651B16F1E2009263FA /* GBRequestMethod.m in Sources */,
-				178DDC371BB2A88E008A859F /* GMPlainButton.m in Sources */,
-				CE0628571B16F1E2009263FA /* GBDeviceUtils.m in Sources */,
-				178DDC271BB2A88E008A859F /* GMBannerMessage.m in Sources */,
-				CE0628661B16F1E2009263FA /* GBUrlIntent.m in Sources */,
-				CE0628521B16F1E2009263FA /* GBApplication.m in Sources */,
+				17CC05351D23999F00AB2667 /* GBAppDelegateWrapper.m in Sources */,
+				17CC05D91D2399F300AB2667 /* GPSwipeMessageType.m in Sources */,
+				17CC05DD1D2399F300AB2667 /* GrowthPush.m in Sources */,
+				17CC05361D23999F00AB2667 /* GBApplication.m in Sources */,
+				17CC05CB1D2399F200AB2667 /* GPMessageQueue.m in Sources */,
+				17CC05371D23999F00AB2667 /* GBClient.m in Sources */,
+				17CC05381D23999F00AB2667 /* GBContentType.m in Sources */,
+				17CC05391D23999F00AB2667 /* GBCustomIntent.m in Sources */,
+				17CC05DC1D2399F300AB2667 /* GPTask.m in Sources */,
+				17CC05D61D2399F300AB2667 /* GPSwipeMessage.m in Sources */,
+				17CC053A1D23999F00AB2667 /* GBCustomIntentHandler.m in Sources */,
+				17CC05CE1D2399F200AB2667 /* GPOS.m in Sources */,
+				17CC05CC1D2399F200AB2667 /* GPMessageType.m in Sources */,
+				17CC053B1D23999F00AB2667 /* GBDateUtils.m in Sources */,
+				17CC05D81D2399F300AB2667 /* GPSwipeMessageRenderer.m in Sources */,
+				17CC05C11D2399F200AB2667 /* GPCardMessageRenderer.m in Sources */,
+				17CC053C1D23999F00AB2667 /* GBDeviceUtils.m in Sources */,
+				17CC053D1D23999F00AB2667 /* GBDomain.m in Sources */,
+				17CC053E1D23999F00AB2667 /* GBHttpClient.m in Sources */,
+				17CC053F1D23999F00AB2667 /* GBHttpRequest.m in Sources */,
+				17CC05401D23999F00AB2667 /* GBHttpResponse.m in Sources */,
+				17CC05BF1D2399F200AB2667 /* GPCardMessage.m in Sources */,
+				17CC05411D23999F00AB2667 /* GBHttpUtils.m in Sources */,
+				17CC05421D23999F00AB2667 /* GBIntent.m in Sources */,
+				17CC05431D23999F00AB2667 /* GBIntentType.m in Sources */,
+				17CC05DA1D2399F300AB2667 /* GPTag.m in Sources */,
+				17CC05C71D2399F200AB2667 /* GPEventType.m in Sources */,
+				17CC05441D23999F00AB2667 /* GBLogger.m in Sources */,
+				17CC05451D23999F00AB2667 /* GBNoopIntent.m in Sources */,
+				17CC05DB1D2399F300AB2667 /* GPTagType.m in Sources */,
+				17CC05461D23999F00AB2667 /* GBNoopIntentHandler.m in Sources */,
+				17CC05471D23999F00AB2667 /* GBPreference.m in Sources */,
+				17CC05D21D2399F200AB2667 /* GPPlainMessage.m in Sources */,
+				17CC05481D23999F00AB2667 /* GBRequestMethod.m in Sources */,
+				17CC05C01D2399F200AB2667 /* GPCardMessageHandler.m in Sources */,
+				17CC05CA1D2399F200AB2667 /* GPMessageOrientation.m in Sources */,
+				17CC05491D23999F00AB2667 /* GBUrlIntent.m in Sources */,
+				17CC05C41D2399F200AB2667 /* GPCloseButton.m in Sources */,
+				17CC05D01D2399F200AB2667 /* GPPictureUtils.m in Sources */,
+				17CC054A1D23999F00AB2667 /* GBUrlIntentHandler.m in Sources */,
+				17CC05C21D2399F200AB2667 /* GPClient.m in Sources */,
+				17CC054B1D23999F00AB2667 /* GBViewUtils.m in Sources */,
+				17CC05C31D2399F200AB2667 /* GPClientV4.m in Sources */,
+				17CC05D41D2399F200AB2667 /* GPScreenButton.m in Sources */,
+				17CC054C1D23999F00AB2667 /* Growthbeat.m in Sources */,
+				17CC05BD1D2399F200AB2667 /* GPButton.m in Sources */,
+				17CC05CD1D2399F200AB2667 /* GPNoContentMessage.m in Sources */,
+				17CC054D1D23999F00AB2667 /* GLClick.m in Sources */,
+				17CC05C61D2399F200AB2667 /* GPEvent.m in Sources */,
+				17CC05C91D2399F200AB2667 /* GPMessage.m in Sources */,
+				17CC05D71D2399F300AB2667 /* GPSwipeMessageHandler.m in Sources */,
+				17CC05D11D2399F200AB2667 /* GPPlainButton.m in Sources */,
+				17CC05D51D2399F300AB2667 /* GPShowMessageHandler.m in Sources */,
+				17CC05BE1D2399F200AB2667 /* GPButtonType.m in Sources */,
+				17CC05C81D2399F200AB2667 /* GPImageButton.m in Sources */,
+				17CC054E1D23999F00AB2667 /* GLLink.m in Sources */,
+				17CC05CF1D2399F200AB2667 /* GPPicture.m in Sources */,
+				17CC054F1D23999F00AB2667 /* GLPattern.m in Sources */,
+				17CC05BC1D2399F200AB2667 /* GPBackground.m in Sources */,
+				17CC05C51D2399F200AB2667 /* GPEnvironmentUtils.m in Sources */,
+				17CC05501D23999F00AB2667 /* GLSynchronization.m in Sources */,
+				17CC05511D23999F00AB2667 /* GLSynchronizationHandler.m in Sources */,
+				17CC05D31D2399F200AB2667 /* GPPlainMessageHandler.m in Sources */,
+				17CC05521D23999F00AB2667 /* GrowthLink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,7 +769,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.7;
+				FRAMEWORK_VERSION = 2.0.0;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -910,7 +816,7 @@
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1.2.7;
+				FRAMEWORK_VERSION = 2.0.0;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -933,7 +839,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_VERSION = 1.2.7;
+				FRAMEWORK_VERSION = 2.0.0;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -946,7 +852,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_VERSION = 1.2.7;
+				FRAMEWORK_VERSION = 2.0.0;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
