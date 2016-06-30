@@ -13,7 +13,7 @@
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[GrowthPush sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"7gpJ51ZQPJhNzrk0p0ThnNwh9jVcDlRS" environment:kGrowthPushEnvironment];
+    [[GrowthPush sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO" environment:kGrowthPushEnvironment];
     [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary *extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
@@ -22,7 +22,7 @@
         }
         return YES;
     }]];
-    [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"7gpJ51ZQPJhNzrk0p0ThnNwh9jVcDlRS"];
+    [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO"];
 
     [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
         renderMessage();
