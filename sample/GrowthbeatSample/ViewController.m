@@ -8,28 +8,28 @@
 
 #import "ViewController.h"
 #import <Growthbeat/Growthbeat.h>
+#import <Growthbeat/GrowthPush.h>
 
 @implementation ViewController
 
-@synthesize developmentTagSwitch;
-@synthesize levelTextField;
-@synthesize itemTextField;
-@synthesize priceTextField;
+@synthesize tagNameTextField;
+@synthesize tagValueTextField;
+@synthesize eventNameTextField;
+@synthesize eventValueTextField;
 
-- (IBAction) tapRandomTagButton:(id)sender {
-    //[[GrowthAnalytics sharedInstance] setRandom];
+- (IBAction)tapSetTagButton:(id)sender {
+    [[GrowthPush sharedInstance] setTag:tagNameTextField.text value:tagValueTextField.text];
 }
 
-- (IBAction) changeDevelopmentTagSwitch:(id)sender {
-    //[[GrowthAnalytics sharedInstance] setDevelopment:developmentTagSwitch.on];
+- (IBAction)tapTrackEvent:(id)sender {
+    [[GrowthPush sharedInstance] trackEvent:eventNameTextField.text value:eventValueTextField.text];
 }
 
-- (IBAction) tapLevelTagButton:(id)sender {
-    //[[GrowthAnalytics sharedInstance] setLevel:[levelTextField.text intValue]];
+- (IBAction)didEndOnExit:(id)sender {
 }
 
-- (IBAction) tapPurchaseEventButton:(id)sender {
-    //[[GrowthAnalytics sharedInstance] purchase:[priceTextField.text intValue] setCategory:@"item" setProduct:itemTextField.text];
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:YES];
 }
 
 @end
