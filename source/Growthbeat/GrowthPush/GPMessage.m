@@ -113,16 +113,9 @@
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to get message. %@", httpResponse.error];
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to count up show message. %@", httpResponse.error];
         return nil;
     }
-    
-    if (!httpResponse.body) {
-        [[[GrowthPush sharedInstance] logger] info:@"No message is received."];
-        return nil;
-    }
-    
-    [[[GrowthPush sharedInstance] logger] info:@"A message is received."];
     
     return [GPTag domainWithDictionary:httpResponse.body];
     
