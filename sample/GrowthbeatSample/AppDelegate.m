@@ -26,7 +26,9 @@
 
     [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
         renderMessage();
-    } failure:nil];
+    } failure:^(NSString *error) {
+        
+    }];
     
     [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
     
