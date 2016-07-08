@@ -40,6 +40,7 @@
 - (GBClient *)waitClient;
 - (GPClient *)gpClient;
 
+- (void)setLoggerSilent:(BOOL) silent;
 - (BOOL)handleIntent:(GBIntent *)intent;
 - (void)addIntentHandler:(NSObject *)intentHandler;
 - (void)addCustomIntentHandlerWithBlock:(BOOL(^)(GBCustomIntent *customIntent))block;

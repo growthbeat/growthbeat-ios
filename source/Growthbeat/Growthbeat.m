@@ -11,6 +11,8 @@
 #import "GBUrlIntentHandler.h"
 #import "GBNoopIntentHandler.h"
 #import "GBCustomIntentHandler.h"
+#import "GrowthPush.h"
+#import "GrowthLink.h"
 
 static Growthbeat *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthbeatCore";
@@ -142,6 +144,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
         usleep(100 * 1000);
     }
 
+}
+
+- (void)setLoggerSilent:(BOOL) silent {
+    [[self logger] setSilent:silent];
+    [[[GrowthPush sharedInstance] logger] setSilent:silent];
+    [[[GrowthLink sharedInstance] logger] setSilent:silent];
 }
 
 - (BOOL) handleIntent:(GBIntent *)intent {
