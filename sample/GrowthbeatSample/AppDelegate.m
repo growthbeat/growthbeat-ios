@@ -24,11 +24,7 @@
     }]];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO"];
 
-    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
-        renderMessage();
-    } failure:^(NSString *error) {
-        
-    }];
+    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil];
     
     [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
     

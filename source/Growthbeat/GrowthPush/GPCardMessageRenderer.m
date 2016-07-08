@@ -25,12 +25,14 @@ static NSInteger const kGPBackgroundTagId = 9999;
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
+    BOOL alreadyRender;
     
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
 @property (nonatomic, strong) NSMutableDictionary *cachedImages;
 @property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, assign) BOOL alreadyRender;
 
 @end
 
@@ -41,6 +43,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
 @synthesize boundButtons;
 @synthesize cachedImages;
 @synthesize backgroundView;
+@synthesize alreadyRender;
 
 - (instancetype) initWithCardMessage:(GPCardMessage *)newCardMessage {
     self = [super init];
@@ -48,6 +51,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         self.cardMessage = newCardMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
+        self.alreadyRender = NO;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -81,6 +85,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     }
     
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
+    [backgroundView addSubview:baseView];
     baseView.tag = 1;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -95,18 +100,19 @@ static NSInteger const kGPBackgroundTagId = 9999;
     [self cacheImages:^{
         
         void(^renderCallback)(void) = ^() {
-            
-            [window addSubview:backgroundView];
-            [backgroundView addSubview:baseView];
-            
-            [self showImageWithView:baseView rect:baseRect];
-            [self showScreenButtonWithView:baseView rect:baseRect];
-            [self showImageButtonsWithView:baseView rect:baseRect];
-            [self showCloseButtonWithView:baseView rect:baseRect];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                alreadyRender = YES;
+                [window addSubview:backgroundView];
+                
+                [self showImageWithView:baseView rect:baseRect];
+                [self showScreenButtonWithView:baseView rect:baseRect];
+                [self showImageButtonsWithView:baseView rect:baseRect];
+                [self showCloseButtonWithView:baseView rect:baseRect];
+            });
         };
         
         GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:cardMessage.id];
-        if(showMessageHandler) {
+        if(!alreadyRender && showMessageHandler) {
             showMessageHandler.handleMessage(^{
                 renderCallback();
             });
