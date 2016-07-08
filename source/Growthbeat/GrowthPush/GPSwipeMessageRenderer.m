@@ -75,7 +75,6 @@ static NSInteger const kGPBackgroundTagId = 9999;
         singleFingerTap.numberOfTouchesRequired = 1;
         backgroundView.userInteractionEnabled = true;
         [backgroundView addGestureRecognizer:singleFingerTap];
-        [window addSubview:backgroundView];
     }
     
     for (UIView *subview in backgroundView.subviews) {
@@ -85,7 +84,6 @@ static NSInteger const kGPBackgroundTagId = 9999;
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
     baseView.tag = 1;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [backgroundView addSubview:baseView];
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
@@ -99,14 +97,18 @@ static NSInteger const kGPBackgroundTagId = 9999;
         height += imageSize.height;
     }
     
-    CGFloat x = (screenWidth - self.swipeMessage.baseWidth) / 2;
-    CGFloat y = (screenHeight - height) / 2;
-    [self showScrollView:baseView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
-    [self showPageControlWithView:baseView rect:CGRectMake(x, y + height - kPagingHeight, self.swipeMessage.baseWidth, kPagingHeight)];
-    
     [self cacheImages:^{
         
         void(^renderCallback)() = ^() {
+            
+            [window addSubview:backgroundView];
+            [backgroundView addSubview:baseView];
+            
+            CGFloat x = (screenWidth - self.swipeMessage.baseWidth) / 2;
+            CGFloat y = (screenHeight - height) / 2;
+            [self showScrollView:baseView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
+            [self showPageControlWithView:baseView rect:CGRectMake(x, y + height - kPagingHeight, self.swipeMessage.baseWidth, kPagingHeight)];
+            
             [self showImageWithView:scrollView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
             switch (swipeMessage.swipeType) {
                 case GPSwipeMessageTypeOneButton: {

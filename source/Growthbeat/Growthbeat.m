@@ -15,7 +15,7 @@
 #import "GrowthLink.h"
 
 static Growthbeat *sharedInstance = nil;
-static NSString *const kGBLoggerDefaultTag = @"GrowthbeatCore";
+static NSString *const kGBLoggerDefaultTag = @"Growthbeat";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
