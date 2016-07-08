@@ -46,13 +46,6 @@
         return nil;
     }
     
-    if (!httpResponse.body) {
-        [[[GrowthPush sharedInstance] logger] info:@"No message is received."];
-        return nil;
-    }
-    
-    [[[GrowthPush sharedInstance] logger] info:@"A message is received."];
-    
     return [GPMessage domainWithDictionary:httpResponse.body];
 
 
