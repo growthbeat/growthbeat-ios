@@ -25,12 +25,13 @@ static NSInteger const kGPBackgroundTagId = 9999;
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
-    
+    BOOL alreadyRender;
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
 @property (nonatomic, strong) NSMutableDictionary *cachedImages;
 @property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, assign) BOOL alreadyRender;
 
 @end
 
@@ -43,6 +44,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
 @synthesize backgroundView;
 @synthesize scrollView;
 @synthesize pageControl;
+@synthesize alreadyRender;
 
 - (instancetype) initWithSwipeMessage:(GPSwipeMessage *)newSwipeMessage {
     self = [super init];
@@ -50,6 +52,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         self.swipeMessage = newSwipeMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
+        self.alreadyRender = NO;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(show) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -75,7 +78,6 @@ static NSInteger const kGPBackgroundTagId = 9999;
         singleFingerTap.numberOfTouchesRequired = 1;
         backgroundView.userInteractionEnabled = true;
         [backgroundView addGestureRecognizer:singleFingerTap];
-        [window addSubview:backgroundView];
     }
     
     for (UIView *subview in backgroundView.subviews) {
@@ -83,9 +85,9 @@ static NSInteger const kGPBackgroundTagId = 9999;
     }
     
     UIView *baseView = [[UIView alloc] initWithFrame:backgroundView.frame];
+    [backgroundView addSubview:baseView];
     baseView.tag = 1;
     baseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [backgroundView addSubview:baseView];
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
@@ -107,21 +109,25 @@ static NSInteger const kGPBackgroundTagId = 9999;
     [self cacheImages:^{
         
         void(^renderCallback)() = ^() {
-            [self showImageWithView:scrollView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
-            switch (swipeMessage.swipeType) {
-                case GPSwipeMessageTypeOneButton: {
-                    [self showImageButtonWithView:baseView rect:CGRectMake((screenWidth - self.swipeMessage.baseWidth) / 2, (screenHeight - self.swipeMessage.baseHeight - (height - self.swipeMessage.baseHeight)) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
-                    break;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                alreadyRender = YES;
+                [window addSubview:backgroundView];
+                [self showImageWithView:scrollView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
+                switch (swipeMessage.swipeType) {
+                    case GPSwipeMessageTypeOneButton: {
+                        [self showImageButtonWithView:baseView rect:CGRectMake((screenWidth - self.swipeMessage.baseWidth) / 2, (screenHeight - self.swipeMessage.baseHeight - (height - self.swipeMessage.baseHeight)) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
+                        break;
+                    }
+                    case GPSwipeMessageTypeImageOnly:
+                        break;
+                    default:
+                        break;
                 }
-                case GPSwipeMessageTypeImageOnly:
-                    break;
-                default:
-                    break;
-            }
+            });
         };
         
         GPShowMessageHandler *showMessageHandler = [[[GrowthPush sharedInstance] showMessageHandlers] objectForKey:swipeMessage.id];
-        if(showMessageHandler) {
+        if(!alreadyRender && showMessageHandler) {
             showMessageHandler.handleMessage(^{
                 renderCallback();
             });

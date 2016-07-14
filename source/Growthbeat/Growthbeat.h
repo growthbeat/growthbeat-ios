@@ -13,8 +13,13 @@
 #import "GBUtils.h"
 #import "GBClient.h"
 #import "GBAppDelegateWrapper.h"
+#import "GrowthPush.h"
+#import "GrowthLink.h"
 #import "GBIntent.h"
 #import "GBIntentHandler.h"
+#import "GBUrlIntentHandler.h"
+#import "GBNoopIntentHandler.h"
+#import "GBCustomIntentHandler.h"
 #import "GBCustomIntent.h"
 #import "GPClient.h"
 
@@ -40,6 +45,7 @@
 - (GBClient *)waitClient;
 - (GPClient *)gpClient;
 
+- (void)setLoggerSilent:(BOOL) silent;
 - (BOOL)handleIntent:(GBIntent *)intent;
 - (void)addIntentHandler:(NSObject *)intentHandler;
 - (void)addCustomIntentHandlerWithBlock:(BOOL(^)(GBCustomIntent *customIntent))block;

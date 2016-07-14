@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <Growthbeat/GBPreference.h>
 
 @implementation AppDelegate
 
@@ -24,9 +23,7 @@
     }]];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO"];
 
-    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
-        renderMessage();
-    } failure:nil];
+    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil];
     
     [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
     

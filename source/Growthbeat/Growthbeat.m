@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Growthbeat.h"
-#import "GBUrlIntentHandler.h"
-#import "GBNoopIntentHandler.h"
-#import "GBCustomIntentHandler.h"
 
 static Growthbeat *sharedInstance = nil;
-static NSString *const kGBLoggerDefaultTag = @"GrowthbeatCore";
+static NSString *const kGBLoggerDefaultTag = @"Growthbeat";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthbeat.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
@@ -142,6 +139,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
         usleep(100 * 1000);
     }
 
+}
+
+- (void)setLoggerSilent:(BOOL) silent {
+    [[self logger] setSilent:silent];
+    [[[GrowthPush sharedInstance] logger] setSilent:silent];
+    [[[GrowthLink sharedInstance] logger] setSilent:silent];
 }
 
 - (BOOL) handleIntent:(GBIntent *)intent {
