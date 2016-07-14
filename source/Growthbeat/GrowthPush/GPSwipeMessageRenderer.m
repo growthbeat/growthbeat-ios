@@ -173,16 +173,13 @@ static NSInteger const kGPBackgroundTagId = 9999;
 }
 
 - (void) showScrollView:view rect:(CGRect)rect {
-    
     scrollView = [[UIScrollView alloc] initWithFrame:rect];
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
     scrollView.userInteractionEnabled = YES;
     [scrollView setContentSize:CGSizeMake(([swipeMessage.pictures count] * rect.size.width), rect.size.height)];
-
     [view addSubview:scrollView];
-    
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)_scrollView {
@@ -193,7 +190,6 @@ static NSInteger const kGPBackgroundTagId = 9999;
     }
     
     self.currentPage = self.pageControl.currentPage;
-    
 }
 
 - (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
