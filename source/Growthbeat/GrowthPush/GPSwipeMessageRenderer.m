@@ -25,12 +25,14 @@ static NSInteger const kGPBackgroundTagId = 9999;
     NSMutableDictionary *boundButtons;
     NSMutableDictionary *cachedImages;
     UIView *backgroundView;
+    NSInteger currentPage;
     BOOL alreadyRender;
 }
 
 @property (nonatomic, strong) NSMutableDictionary *boundButtons;
 @property (nonatomic, strong) NSMutableDictionary *cachedImages;
 @property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) BOOL alreadyRender;
 
 @end
@@ -44,6 +46,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
 @synthesize backgroundView;
 @synthesize scrollView;
 @synthesize pageControl;
+@synthesize currentPage;
 @synthesize alreadyRender;
 
 - (instancetype) initWithSwipeMessage:(GPSwipeMessage *)newSwipeMessage {
@@ -52,6 +55,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         self.swipeMessage = newSwipeMessage;
         self.boundButtons = [NSMutableDictionary dictionary];
         self.cachedImages = [NSMutableDictionary dictionary];
+        self.currentPage = 0;
         self.alreadyRender = NO;
     }
     
@@ -93,6 +97,32 @@ static NSInteger const kGPBackgroundTagId = 9999;
     CGFloat screenHeight = window.frame.size.height;
     CGFloat height = self.swipeMessage.baseHeight;
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
+        ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
+            
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationLandscapeLeft:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                    break;
+                case UIDeviceOrientationPortraitUpsideDown:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
+                    break;
+                default:
+                    break;
+            }
+
+            screenHeight = window.frame.size.width;
+            screenWidth = window.frame.size.height;
+            baseView.bounds = CGRectMake(0, 0, screenWidth, screenHeight);
+            
+        }
+    
+    
     height += (kPagingHeight + kPagingMargin);
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
@@ -113,6 +143,8 @@ static NSInteger const kGPBackgroundTagId = 9999;
                 alreadyRender = YES;
                 [window addSubview:backgroundView];
                 [self showImageWithView:scrollView rect:CGRectMake(x, y, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
+                [scrollView setContentOffset:CGPointMake(self.currentPage * self.swipeMessage.baseWidth, 0) animated:NO];
+                
                 switch (swipeMessage.swipeType) {
                     case GPSwipeMessageTypeOneButton: {
                         [self showImageButtonWithView:baseView rect:CGRectMake((screenWidth - self.swipeMessage.baseWidth) / 2, (screenHeight - self.swipeMessage.baseHeight - (height - self.swipeMessage.baseHeight)) / 2, self.swipeMessage.baseWidth, self.swipeMessage.baseHeight)];
@@ -123,6 +155,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
                     default:
                         break;
                 }
+                
             });
         };
         
@@ -140,17 +173,13 @@ static NSInteger const kGPBackgroundTagId = 9999;
 }
 
 - (void) showScrollView:view rect:(CGRect)rect {
-    
     scrollView = [[UIScrollView alloc] initWithFrame:rect];
-    
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
     scrollView.userInteractionEnabled = YES;
     [scrollView setContentSize:CGSizeMake(([swipeMessage.pictures count] * rect.size.width), rect.size.height)];
-    
     [view addSubview:scrollView];
-    
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)_scrollView {
@@ -160,6 +189,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
         pageControl.currentPage = scrollView.contentOffset.x / pageWidth;
     }
     
+    self.currentPage = self.pageControl.currentPage;
 }
 
 - (void) showImageWithView:(UIView *)view rect:(CGRect)rect {
@@ -263,7 +293,7 @@ static NSInteger const kGPBackgroundTagId = 9999;
     pageControl = [[UIPageControl alloc] initWithFrame:rect];
     
     pageControl.numberOfPages = [swipeMessage.pictures count];
-    pageControl.currentPage = 0;
+    pageControl.currentPage = self.currentPage;
     pageControl.userInteractionEnabled = NO;
     [view addSubview:pageControl];
     
