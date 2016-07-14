@@ -91,6 +91,31 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
     CGFloat screenWidth = window.frame.size.width;
     CGFloat screenHeight = window.frame.size.height;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
+        ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
+            
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationLandscapeLeft:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                    break;
+                case UIDeviceOrientationPortraitUpsideDown:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
+                    break;
+                default:
+                    break;
+            }
+            
+            screenHeight = window.frame.size.width;
+            screenWidth = window.frame.size.height;
+            baseView.bounds = CGRectMake(0, 0, screenWidth, screenHeight);
+            
+        }
+    
     CGSize baseSize = [GPPictureUtils calculatePictureSize:self.cardMessage.picture baseWidth:self.cardMessage.baseWidth baseHeight:self.cardMessage.baseHeight];
     NSInteger width = baseSize.width;
     NSInteger height = baseSize.height;

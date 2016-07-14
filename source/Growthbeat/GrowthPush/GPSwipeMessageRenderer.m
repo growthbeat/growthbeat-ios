@@ -97,6 +97,32 @@ static NSInteger const kGPBackgroundTagId = 9999;
     CGFloat screenHeight = window.frame.size.height;
     CGFloat height = self.swipeMessage.baseHeight;
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f &&
+        ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight ||
+         [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationPortraitUpsideDown)) {
+            
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIDeviceOrientationLandscapeLeft:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * -0.5);
+                    break;
+                case UIDeviceOrientationPortraitUpsideDown:
+                    baseView.transform = CGAffineTransformMakeRotation(M_PI * 1);
+                    break;
+                default:
+                    break;
+            }
+
+            screenHeight = window.frame.size.width;
+            screenWidth = window.frame.size.height;
+            baseView.bounds = CGRectMake(0, 0, screenWidth, screenHeight);
+            
+        }
+    
+    
     height += (kPagingHeight + kPagingMargin);
     if (swipeMessage.swipeType == GPSwipeMessageTypeOneButton) {
         NSArray *imageButtons = [self extractButtonsWithType:GPButtonTypeImage];
