@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import <Growthbeat/Growthbeat.h>
-#import <Growthbeat/GrowthPush.h>
 
 @implementation ViewController
 

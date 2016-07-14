@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Growthbeat.h"
-#import "GBUrlIntentHandler.h"
-#import "GBNoopIntentHandler.h"
-#import "GBCustomIntentHandler.h"
-#import "GrowthPush.h"
-#import "GrowthLink.h"
 
 static Growthbeat *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"Growthbeat";

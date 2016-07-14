@@ -13,8 +13,13 @@
 #import "GBUtils.h"
 #import "GBClient.h"
 #import "GBAppDelegateWrapper.h"
+#import "GrowthPush.h"
+#import "GrowthLink.h"
 #import "GBIntent.h"
 #import "GBIntentHandler.h"
+#import "GBUrlIntentHandler.h"
+#import "GBNoopIntentHandler.h"
+#import "GBCustomIntentHandler.h"
 #import "GBCustomIntent.h"
 #import "GPClient.h"
 
