@@ -185,10 +185,6 @@ static NSInteger const kGPBackgroundTagId = 9999;
     
 }
 
-- (void) scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    NSLog(@"animated");
-}
-
 - (void) scrollViewDidScroll:(UIScrollView *)_scrollView {
     CGFloat pageWidth = scrollView.frame.size.width;
     
