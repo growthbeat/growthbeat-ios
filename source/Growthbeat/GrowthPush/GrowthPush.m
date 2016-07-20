@@ -212,25 +212,14 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     self.registeringClient = YES;
     
     
-    if (self.client && ((token && ![token isEqualToString:self.client.token]) || self.environment != self.client.environment)) {
-        [self updateClient:token environment:self.environment];
-        return;
-    }
-    
-    GPClient *gbgpClient = [GPClient loadGBGPClient];
-    if (gbgpClient) {
-        [self updateClient:gbgpClient.token environment:gbgpClient.environment];
+    if ((self.client && ((token && ![token isEqualToString:self.client.token]) || self.environment != self.client.environment))
+        || [GPClient loadGBGPClient] || [GPClient loadGPClient]) {
+        [self updateClient:token];
         [GPClient removeGBGPClientPreference];
-        return;
-    }
-    
-    GPClient *gpClient = [GPClient loadGPClient];
-    if (gpClient) {
-        [self updateClient:gpClient.token environment:gpClient.environment];
         [GPClient removeGPClientPreference];
         return;
     }
-    
+        
     if (!self.client) {
 
         GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
@@ -251,13 +240,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
-- (void) updateClient:(NSString *)newToken environment:(GPEnvironment) newEnvironment {
+- (void) updateClient:(NSString *)newToken {
     
     
     GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
-    [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClient.id, newToken, NSStringFromGPEnvironment(newEnvironment)];
+    [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClient.id, newToken, NSStringFromGPEnvironment(self.environment)];
     
-    GPClientV4 *updatedClient = [GPClientV4 updateWithClientId:growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:newEnvironment];
+    GPClientV4 *updatedClient = [GPClientV4 updateWithClientId:growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:self.environment];
     if (updatedClient) {
         [self.logger info:@"Update client success. (clientId: %@)", updatedClient.id];
         self.client = updatedClient;

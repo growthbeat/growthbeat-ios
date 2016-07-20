@@ -24,7 +24,7 @@
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO"];
 
     [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil];
-    
+    [[GrowthPush sharedInstance] requestDeviceToken];
     [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
     
     return YES;

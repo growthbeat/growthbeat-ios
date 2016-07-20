@@ -1,6 +1,6 @@
 //
-//  GrowthbeatCore.h
-//  GrowthbeatCore
+//  Growthbeat.h
+//  Growthbeat
 //
 //  Created by Kataoka Naoyuki on 2014/06/13.
 //  Copyright (c) 2014年 SIROK, Inc. All rights reserved.
@@ -21,17 +21,14 @@
 #import "GBNoopIntentHandler.h"
 #import "GBCustomIntentHandler.h"
 #import "GBCustomIntent.h"
-#import "GPClient.h"
 
 @interface Growthbeat : NSObject {
 
     NSMutableArray *intentHandlers;
-    GPClient *gpClient;
 
 }
 
 @property (nonatomic, strong) NSArray *intentHandlers;
-@property (nonatomic, strong) GPClient *gpClient;
 
 + (Growthbeat *)sharedInstance;
 
@@ -43,7 +40,6 @@
 
 - (GBClient *)client;
 - (GBClient *)waitClient;
-- (GPClient *)gpClient;
 
 - (void)setLoggerSilent:(BOOL) silent;
 - (BOOL)handleIntent:(GBIntent *)intent;
