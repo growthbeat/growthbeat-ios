@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Growthbeat.h"
+#import "GPClient.h"
 
 static Growthbeat *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"Growthbeat";
@@ -21,7 +22,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
-    GPClient *gpClient;
     BOOL initialized;
 
 }
@@ -30,7 +30,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
-@property (nonatomic, strong) GPClient *gpClient;
 
 @end
 
@@ -42,7 +41,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 @synthesize preference;
 
 @synthesize intentHandlers;
-@synthesize gpClient;
 
 + (Growthbeat *) sharedInstance {
     @synchronized(self) {
@@ -60,7 +58,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     self = [super init];
     if (self) {
         self.client = nil;
-        self.gpClient = nil;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
@@ -106,7 +103,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
             }
 
             self.client = existingClient;
-            self.gpClient = existingGpClient;
             [GBClient save:existingClient];
             [GPClient removeGPClientPreference];
             [self.logger info:@"Client converted. (id:%@)", existingClient.id];

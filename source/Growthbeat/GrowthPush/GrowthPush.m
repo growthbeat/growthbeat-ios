@@ -20,6 +20,7 @@
 #import "GPShowMessageHandler.h"
 #import "GPMessage.h"
 #import "GPNoContentMessage.h"
+#import "GPClient.h"
 
 static GrowthPush *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
@@ -231,7 +232,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
     }
     
-    GPClient *gpClient = [[Growthbeat sharedInstance] gpClient];
+    GPClient *gpClient = [GPClient loadGPClient];
     if (gpClient && (!self.client || !self.client.token || ![self.client.token isEqualToString:gpClient.token] || self.client.environment != gpClient.environment)) {
         
         [self updateClient:gpClient.token environment:gpClient.environment];

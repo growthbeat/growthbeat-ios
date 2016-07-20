@@ -21,7 +21,6 @@
 #import "GBNoopIntentHandler.h"
 #import "GBCustomIntentHandler.h"
 #import "GBCustomIntent.h"
-#import "GPClient.h"
 
 @interface Growthbeat : NSObject {
 
@@ -41,7 +40,6 @@
 
 - (GBClient *)client;
 - (GBClient *)waitClient;
-- (GPClient *)gpClient;
 
 - (void)setLoggerSilent:(BOOL) silent;
 - (BOOL)handleIntent:(GBIntent *)intent;
