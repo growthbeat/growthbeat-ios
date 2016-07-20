@@ -45,7 +45,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
     BOOL registeringClient;
     GPMessageQueue *messageQueue;
-    dispatch_queue_t _internalQueue;
+    dispatch_queue_t messageDispatchQueue;
     CGFloat messageInterval;
     NSDate *lastMessageOpened;
     
@@ -97,7 +97,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.showMessageHandlers = [NSMutableDictionary dictionary];
         
         initialized = NO;
-        _internalQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
+        messageDispatchQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
         messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
         messageInterval = kDefaultMessageInterval;
     }
@@ -430,7 +430,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) openMessageIfExists {
-    dispatch_async(_internalQueue, ^{
+    dispatch_async(messageDispatchQueue, ^{
         NSTimeInterval diff = [[NSDate date] timeIntervalSinceDate:lastMessageOpened];
         if (self.showingMessage && diff < kMinWaitingTimeForOverrideMessage) {
             return;
