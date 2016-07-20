@@ -121,7 +121,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
     [[Growthbeat sharedInstance] initializeWithApplicationId:applicationId credentialId:newCredentialId];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
         if (self.client && self.client.id && ![self.client.id isEqualToString:growthbeatClient.id]) {
@@ -134,7 +134,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     self.messageHandlers = [NSArray arrayWithObjects:[[GPPlainMessageHandler alloc] init],[[GPCardMessageHandler alloc] init], [[GPSwipeMessageHandler alloc] init], nil];
 
    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self registerClient:nil];
         [self waitClient];
 
@@ -204,7 +204,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
 
     if (self.registeringClient) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             [self registerClient:token];
         });
         return;
@@ -213,31 +213,22 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
     
     if (self.client && ((token && ![token isEqualToString:self.client.token]) || self.environment != self.client.environment)) {
-        
         [self updateClient:token environment:self.environment];
-        
         return;
-        
     }
     
     GPClient *gbgpClient = [GPClient loadGBGPClient];
     if (gbgpClient) {
-        
         [self updateClient:gbgpClient.token environment:gbgpClient.environment];
         [GPClient removeGBGPClientPreference];
-        
         return;
-        
     }
     
     GPClient *gpClient = [GPClient loadGPClient];
     if (gpClient) {
-        
         [self updateClient:gpClient.token environment:gpClient.environment];
         [GPClient removeGPClientPreference];
-        
         return;
-        
     }
     
     if (!self.client) {
@@ -409,9 +400,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         if(showMessageHandler) {
             GPShowMessageHandler *handler = [[GPShowMessageHandler alloc] initWithBlock:showMessageHandler];
-            
-            @synchronized (self.showMessageHandlers)
-            {
+            @synchronized (self.showMessageHandlers) {
                 [self.showMessageHandlers setObject:handler forKey:message.id];
             }
         }
