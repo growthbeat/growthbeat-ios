@@ -1,6 +1,6 @@
 //
-//  GrowthbeatCore.h
-//  GrowthbeatCore
+//  Growthbeat.h
+//  Growthbeat
 //
 //  Created by Kataoka Naoyuki on 2014/06/13.
 //  Copyright (c) 2014年 SIROK, Inc. All rights reserved.
@@ -26,12 +26,10 @@
 @interface Growthbeat : NSObject {
 
     NSMutableArray *intentHandlers;
-    GPClient *gpClient;
 
 }
 
 @property (nonatomic, strong) NSArray *intentHandlers;
-@property (nonatomic, strong) GPClient *gpClient;
 
 + (Growthbeat *)sharedInstance;
 

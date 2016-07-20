@@ -21,6 +21,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
+    GPClient *gpClient;
     BOOL initialized;
 
 }
@@ -29,7 +30,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
-@property (nonatomic, assign) BOOL initialized;
+@property (nonatomic, strong) GPClient *gpClient;
 
 @end
 
@@ -39,7 +40,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
-@synthesize initialized;
 
 @synthesize intentHandlers;
 @synthesize gpClient;
@@ -64,18 +64,18 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
-        self.initialized = NO;
         self.intentHandlers = [NSMutableArray arrayWithObjects:[[GBUrlIntentHandler alloc] init], [[GBNoopIntentHandler alloc] init], nil];
+        initialized = NO;
     }
     return self;
 }
 
 - (void) initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId {
 
-    if (self.initialized) {
+    if (initialized) {
         return;
     }
-    self.initialized = YES;
+    initialized = YES;
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 

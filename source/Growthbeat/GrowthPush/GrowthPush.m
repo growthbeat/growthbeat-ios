@@ -39,13 +39,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     GPEnvironment environment;
     GPClientV4 *client;
     NSArray *messageHandlers;
-    BOOL registeringClient;
+    BOOL initialized;
     BOOL showingMessage;
-    
-    dispatch_queue_t _internalQueue;
+
+    BOOL registeringClient;
     GPMessageQueue *messageQueue;
+    dispatch_queue_t _internalQueue;
     CGFloat messageInterval;
-    
     NSDate *lastMessageOpened;
     
 }
@@ -55,28 +55,23 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @property (nonatomic, strong) NSArray *messageHandlers;
 @property (nonatomic, assign) BOOL registeringClient;
 @property (nonatomic, assign) BOOL showingMessage;
-@property (nonatomic, assign) CGFloat messageInterval;
-@property (nonatomic, strong) GPMessageQueue *messageQueue;
 
 @end
 
 @implementation GrowthPush
 
+@synthesize applicationId;
+@synthesize credentialId;
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
-
-@synthesize applicationId;
-@synthesize credentialId;
-@synthesize messageHandlers;
+@synthesize showMessageHandlers;
 
 @synthesize environment;
 @synthesize client;
+@synthesize messageHandlers;
 @synthesize registeringClient;
 @synthesize showingMessage;
-@synthesize messageQueue;
-@synthesize messageInterval;
-@synthesize showMessageHandlers;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -97,18 +92,24 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.environment = GPEnvironmentUnknown;
-        self.messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
-        self.messageInterval = kDefaultMessageInterval;
         self.showingMessage = NO;
-        
         self.showMessageHandlers = [NSMutableDictionary dictionary];
         
+        initialized = NO;
         _internalQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
+        messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
+        messageInterval = kDefaultMessageInterval;
     }
     return self;
 }
 
 - (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment{
+    
+    if(initialized) {
+        return;
+    }
+    
+    initialized = YES;
 
     self.client = [self loadClient];
     self.applicationId = newApplicationId;
@@ -414,7 +415,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             continue;
         }
         
-        [self.messageQueue enqueue:message];
+        [messageQueue enqueue:message];
         
         if(showMessageHandler) {
             GPShowMessageHandler *handler = [[GPShowMessageHandler alloc] initWithBlock:showMessageHandler];
@@ -444,7 +445,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         if (self.showingMessage && diff < kMinWaitingTimeForOverrideMessage) {
             return;
         }
-        GPMessage *message = [self.messageQueue dequeue];
+        GPMessage *message = [messageQueue dequeue];
         if (message) {
             self.showingMessage = YES;
             dispatch_queue_t mainQueue = dispatch_get_main_queue();
@@ -458,7 +459,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 
 - (void) notifyClose {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, [GrowthPush sharedInstance].messageInterval * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, messageInterval * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         self.showingMessage = NO;
         [self openMessageIfExists];
     });
