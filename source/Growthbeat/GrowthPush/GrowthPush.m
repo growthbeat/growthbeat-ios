@@ -27,7 +27,6 @@ static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthpush.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthpush-preferences";
-static const NSTimeInterval kGPRegisterPollingInterval = 5.0f;
 static const NSTimeInterval kMinWaitingTimeForOverrideMessage = 30.0f;
 static const char * const kInternalQueueName = "com.growthpush.Queue";
 const NSInteger kMaxQueueSize = 100;
