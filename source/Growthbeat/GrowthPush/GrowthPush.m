@@ -141,14 +141,15 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         } else {
             
             GPClientV4 *clientV4 = [GPClientV4 loadClient];
-            if(!self.client) {
+            if(!clientV4) {
                 [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (![clientV4.id isEqualToString:growthbeatClient.id]) {
-                [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id:%s¥@)", growthbeatClient.id];
+                [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id: %@)", growthbeatClient.id];
                 [self clearClient];
+                [self createClient:growthbeatClient.id token:nil];
             } else if (!clientV4.environment != environment) {
-                [self.logger info:@"ClientV4 found. Update environment. (environment:%@)", NSStringFromGPEnvironment(environment)];
+                [self.logger info:@"ClientV4 found. Update environment. (environment: %@)", NSStringFromGPEnvironment(environment)];
                 [self updateClient:clientV4.token];
             } else {
                 [self.logger info:@"ClientV4 found. (id: %@)", clientV4.id];
