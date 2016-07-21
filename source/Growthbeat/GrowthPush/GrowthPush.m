@@ -42,7 +42,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     BOOL initialized;
     BOOL showingMessage;
 
-    BOOL registeringClient;
     GPMessageQueue *messageQueue;
     dispatch_queue_t messageDispatchQueue;
     CGFloat messageInterval;
@@ -53,7 +52,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @property (nonatomic, assign) GPEnvironment environment;
 @property (nonatomic, strong) GPClientV4 *client;
 @property (nonatomic, strong) NSArray *messageHandlers;
-@property (nonatomic, assign) BOOL registeringClient;
 @property (nonatomic, assign) BOOL showingMessage;
 
 @end
@@ -70,7 +68,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize environment;
 @synthesize client;
 @synthesize messageHandlers;
-@synthesize registeringClient;
 @synthesize showingMessage;
 
 + (instancetype) sharedInstance {
@@ -111,7 +108,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
     initialized = YES;
 
-    self.client = [GPClientV4 loadClient];
     self.applicationId = newApplicationId;
     self.credentialId = newCredentialId;
     self.environment = newEnvironment;
@@ -145,17 +141,19 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             
         } else {
             
+            GPClientV4 *clientV4 = [GPClientV4 loadClient];
             if(!self.client) {
                 [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
                 [self createClient:growthbeatClient.id token:nil];
-            } else if (![self.client.id isEqualToString:growthbeatClient.id]) {
+            } else if (![clientV4.id isEqualToString:growthbeatClient.id]) {
                 [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id:%s¥@)", growthbeatClient.id];
                 [self clearClient];
-            } else if (!self.client.environment != environment) {
+            } else if (!clientV4.environment != environment) {
                 [self.logger info:@"ClientV4 found. Update environment. (environment:%@)", NSStringFromGPEnvironment(environment)];
-                [self updateClient:self.client.token];
+                [self updateClient:clientV4.token];
             } else {
-                [self.logger info:@"ClientV4 found. (id: %@)", self.client.id];
+                [self.logger info:@"ClientV4 found. (id: %@)", clientV4.id];
+                self.client = clientV4;
             }
             
         }
@@ -202,14 +200,18 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         token = [self convertToHexToken:newDeviceToken];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         
-        if (self.client && self.client.id && ![self.client.id isEqualToString:growthbeatClient.id]) {
-            [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, growthbeatClient.id];
-            [self clearClient];
+        if (self.environment == GPEnvironmentUnknown) {
+            [self.logger info:@"Environment is not specified. Client has not registred."];
+            return;
         }
         
-        [self registerClient:token];
+        [self waitClient];
+        
+        if ((self.client && ((token && ![token isEqualToString:self.client.token])))) {
+            [self updateClient:token];
+        }
+
     });
 
 }
@@ -238,46 +240,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
 }
 
-- (void) registerClient:(NSString *)token {
-
-
-    if (self.environment == GPEnvironmentUnknown) {
-        [self.logger info:@"Environment is not specified. Client has not registred."];
-        return;
-    }
-
-    if (self.registeringClient) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kGPRegisterPollingInterval * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            [self registerClient:token];
-        });
-        return;
-    }
-    self.registeringClient = YES;
-    
-    if ((self.client && ((token && ![token isEqualToString:self.client.token]) || self.environment != self.client.environment))) {
-        [self updateClient:token];
-    }
-    
-    if (!self.client) {
-
-        GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
-        [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClient.id, token, NSStringFromGPEnvironment(self.environment)];
-        
-        GPClientV4 *createdClient = [GPClientV4 createWithClientId:growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
-        if (createdClient) {
-            [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
-            self.client = createdClient;
-            [GPClientV4 saveClient:createdClient];
-        }
-
-    } else {
-        [self.logger info:@"Client already registered."];
-    }
-
-    self.registeringClient = NO;
-
-}
-
 - (void) updateClient:(NSString *)newToken {
     
     
@@ -290,8 +252,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.client = updatedClient;
         [GPClientV4 saveClient:updatedClient];
     }
-
-    self.registeringClient = NO;
     
 }
 
