@@ -157,8 +157,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             }
             
         }
-        
-        [self waitClient];
 
         [self setAdvertisingId];
         [self setTrackingEnabled];
@@ -226,7 +224,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
  
     GPClientV4 *clientV4 = [GPClientV4 loadClient];
     if(clientV4) {
-        [self.logger info:[NSString stringWithFormat:@"Client already created. (growthbeatClientId: %@, token: %@, environment: %@)", clientV4.id, clientV4.token, NSStringFromGPEnvironment(clientV4.environment)]];
+        [self.logger info:[NSString stringWithFormat:@"ClientV4 already created. (growthbeatClientId: %@, token: %@, environment: %@)", clientV4.id, clientV4.token, NSStringFromGPEnvironment(clientV4.environment)]];
         return;
     }
     

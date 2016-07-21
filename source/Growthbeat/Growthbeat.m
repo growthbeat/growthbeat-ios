@@ -93,7 +93,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
         if (existingGpClient) {
             existingGpClient = [GPClient findWithGPClientId:existingGpClient.id code:existingGpClient.code];
-            [self.logger info:@"convert client... (GrowthPushClientId:%d, GrowthbeatClientId:%@)", existingGpClient.id, existingGpClient.growthbeatClientId];
+            [self.logger info:@"Growth Push Client found. Convert GrowthPush Client into Growthbeat Client. (GrowthPushClientId:%d, GrowthbeatClientId:%@)", existingGpClient.id, existingGpClient.growthbeatClientId];
 
             existingClient = [GBClient findWithId:existingGpClient.growthbeatClientId credentialId:credentialId];
             if (!existingClient && ![existingClient.application.id isEqualToString:applicationId]) {
