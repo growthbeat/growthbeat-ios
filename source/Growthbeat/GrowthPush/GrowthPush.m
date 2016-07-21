@@ -148,7 +148,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id: %@)", growthbeatClient.id];
                 [self clearClient];
                 [self createClient:growthbeatClient.id token:nil];
-            } else if (!clientV4.environment != environment) {
+            } else if (clientV4.environment != environment) {
                 [self.logger info:@"ClientV4 found. Update environment. (environment: %@)", NSStringFromGPEnvironment(environment)];
                 [self updateClient:clientV4.token];
             } else {
