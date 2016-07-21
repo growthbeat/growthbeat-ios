@@ -142,15 +142,22 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             
             [GPClient removeGBGPClientPreference];
             [GPClient removeGPClientPreference];
-            return;
+            
         } else {
             
-            if (self.client && self.client.id && ![self.client.id isEqualToString:growthbeatClient.id]) {
-                [self.logger info:@"GrowthbeatClientId different.Clear cache.\n%@ , %@", self.client.id, growthbeatClient.id];
+            if(!self.client) {
+                [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
+                [self createClient:growthbeatClient.id token:nil];
+            } else if (![self.client.id isEqualToString:growthbeatClient.id]) {
+                [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id:%s¥@)", growthbeatClient.id];
                 [self clearClient];
+            } else if (!self.client.environment != environment) {
+                [self.logger info:@"ClientV4 found. Update environment. (environment:%@)", NSStringFromGPEnvironment(environment)];
+                [self updateClient:self.client.token];
+            } else {
+                [self.logger info:@"ClientV4 found. (id: %@)", self.client.id];
             }
             
-            [self registerClient:nil];
         }
         
         [self waitClient];
