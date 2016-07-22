@@ -125,10 +125,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
-        
-        GPClient *gpClient = [GPClient loadGBGPClient];
-        if(!gpClient)
-            gpClient = [GPClient loadGPClient];
+        GPClient *gpClient = [GPClient loadGPClient];
         
         if (gpClient) {
             if (gpClient.growthbeatClientId && [gpClient.growthbeatClientId isEqualToString:growthbeatClient.id]) {
