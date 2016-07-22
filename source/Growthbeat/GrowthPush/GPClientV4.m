@@ -22,11 +22,11 @@ static NSString *const kGPPreferenceClientV4Key = @"growthpush-client-v4";
 @synthesize environment;
 @synthesize created;
 
-+ (GPClientV4 *) loadClient {
++ (GPClientV4 *) load {
     return [[[GrowthPush sharedInstance] preference] objectForKey:kGPPreferenceClientV4Key];
 }
 
-+ (void) saveClient:(GPClientV4 *)newClient {
++ (void) save:(GPClientV4 *)newClient {
     [[[GrowthPush sharedInstance] preference] setObject:newClient forKey:kGPPreferenceClientV4Key];
 }
 

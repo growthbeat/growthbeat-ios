@@ -9,13 +9,9 @@
 #import "GBPreference.h"
 #import "GBHttpClient.h"
 #import "Growthbeat.h"
+#import "GRowthPush.h"
 
-static NSString *const kGBGPPreferenceFileName = @"growthpush-preferences";
 static NSString *const kGBGPPreferenceClientKey = @"client";
-static NSTimeInterval const kGBGPHttpClientDefaultTimeout = 60;
-
-static GBPreference *preference = nil;
-static GBHttpClient *httpClient = nil;
 
 @implementation GBGPClient
 
@@ -29,30 +25,12 @@ static GBHttpClient *httpClient = nil;
 @synthesize environment;
 @synthesize created;
 
-+ (GBPreference *) preference {
-    @synchronized(self) {
-        if (!preference) {
-            preference = [[GBPreference alloc] initWithFileName:kGBGPPreferenceFileName];
-        }
-        return preference;
-    }
-}
-
-+ (GBHttpClient *) httpClient {
-    @synchronized(self) {
-        if (!httpClient) {
-            httpClient = [[GBHttpClient alloc] initWithBaseUrl:[[[GrowthPush sharedInstance] httpClient] baseUrl] timeout:kGBGPHttpClientDefaultTimeout];
-        }
-        return httpClient;
-    }
-}
-
 + (GBGPClient *) load {
-    return [[GBGPClient preference] objectForKey:kGBGPPreferenceClientKey];
+    return [[[GrowthPush sharedInstance] preference] objectForKey:kGBGPPreferenceClientKey];
 }
 
 + (void) removePreference {
-    [[GBGPClient preference] removeAll];
+    [[[GrowthPush sharedInstance] preference] removeAll];
 }
 
 + (GBGPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {
@@ -64,7 +42,7 @@ static GBHttpClient *httpClient = nil;
     }
     
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query body:nil];
-    GBHttpResponse *httpResponse = [[GBGPClient httpClient] httpRequest:httpRequest];
+    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[Growthbeat sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
         return nil;

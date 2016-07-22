@@ -28,8 +28,8 @@
 @property (nonatomic, assign) GPEnvironment environment;
 @property (nonatomic, strong) NSDate *created;
 
-+ (GPClientV4 *) loadClient;
-+ (void) saveClient:(GPClientV4 *)newClient;
++ (GPClientV4 *) load;
++ (void) save:(GPClientV4 *)newClient;
 + (GPClientV4 *)createWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
 + (GPClientV4 *)updateWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
 

@@ -32,7 +32,7 @@
 @property (nonatomic, assign) GPEnvironment environment;
 @property (nonatomic, retain) NSDate *created;
 
-+ (GPClient *) loadGPClient;
-+ (void) removeGPClientPreference;
++ (GPClient *) load;
++ (void) removePreference;
 
 @end

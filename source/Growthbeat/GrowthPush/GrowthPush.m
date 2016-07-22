@@ -125,7 +125,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
-        GPClient *gpClient = [GPClient loadGPClient];
+        GPClient *gpClient = [GPClient load];
         
         if (gpClient) {
             if (gpClient.growthbeatClientId && [gpClient.growthbeatClientId isEqualToString:growthbeatClient.id]) {
@@ -136,12 +136,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self createClient:growthbeatClient.id token:nil];
             }
             
-            [GPClient removeGBGPClientPreference];
-            [GPClient removeGPClientPreference];
+            [GPClient removePreference];
             
         } else {
             
-            GPClientV4 *clientV4 = [GPClientV4 loadClient];
+            GPClientV4 *clientV4 = [GPClientV4 load];
             if(!clientV4) {
                 [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
                 [self createClient:growthbeatClient.id token:nil];
@@ -225,7 +224,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void) createClient:(NSString *)growthbeatClientId token:(NSString *)token {
  
-    GPClientV4 *clientV4 = [GPClientV4 loadClient];
+    GPClientV4 *clientV4 = [GPClientV4 load];
     if(clientV4) {
         [self.logger info:[NSString stringWithFormat:@"ClientV4 already created. (growthbeatClientId: %@, token: %@, environment: %@)", clientV4.id, clientV4.token, NSStringFromGPEnvironment(clientV4.environment)]];
         return;
@@ -236,7 +235,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     if (createdClient) {
         [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
         self.client = createdClient;
-        [GPClientV4 saveClient:createdClient];
+        [GPClientV4 save:createdClient];
     }
     
 }
@@ -251,7 +250,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     if (updatedClient) {
         [self.logger info:@"Update client success. (clientId: %@)", updatedClient.id];
         self.client = updatedClient;
-        [GPClientV4 saveClient:updatedClient];
+        [GPClientV4 save:updatedClient];
     }
     
 }

@@ -24,11 +24,11 @@
 
 static NSString *const kGPPreferenceClientKey = @"growthpush-client";
 
-+ (GPClient *) loadGPClient {
++ (GPClient *) load {
     return [[[GrowthPush sharedInstance] preference] objectForKey:kGPPreferenceClientKey];
 }
 
-+ (void) removeGPClientPreference {
++ (void) removePreference {
     [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGPPreferenceClientKey];
 }
 
