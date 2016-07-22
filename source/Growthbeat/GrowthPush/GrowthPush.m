@@ -99,7 +99,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     return self;
 }
 
-- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment{
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment {
+    [self initializeWithApplicationId:newApplicationId credentialId:newCredentialId environment:newEnvironment adInfoEnable:YES];
+}
+
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment adInfoEnable:(BOOL)adInfoEnable {
     
     if(initialized) {
         return;
@@ -158,9 +162,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             
         }
 
-        [self setAdvertisingId];
-        [self setTrackingEnabled];
         [self setDeviceTags];
+        if(adInfoEnable) {
+            [self setAdvertisingId];
+            [self setTrackingEnabled];
+        }
         
     });
 

@@ -55,8 +55,19 @@
  *
  * @param applicationId Application ID
  * @param credentialId Credential ID for application
+ * @param environment Environment
  */
 - (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment;
+
+/**
+ * Initialize GrowthPush instance and register the client device if not yet been registered
+ *
+ * @param applicationId Application ID
+ * @param credentialId Credential ID for application
+ * @param environment Environment
+ * @param adInfoEnable allow to send IDFA info to Growth Push
+ */
+- (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment adInfoEnable:(BOOL)adInfoEnable;
 
 /**
  * Request APNS device token.
