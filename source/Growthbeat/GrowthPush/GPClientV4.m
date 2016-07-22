@@ -30,14 +30,11 @@ static NSString *const kGPPreferenceClientV4Key = @"growthpush-client-v4";
     [[[GrowthPush sharedInstance] preference] setObject:newClient forKey:kGPPreferenceClientV4Key];
 }
 
-+ (GPClientV4 *) createWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment {
-
-    NSString *path = @"/4/clients";
++ (GPClientV4 *) attachClient:(NSString *)id applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment {
+    
+    NSString *path = [NSString stringWithFormat:@"/4/clients/%@/attach", id];
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
-
-    if (clientId) {
-        [body setObject:clientId forKey:@"clientId"];
-    }
+    
     if (applicationId) {
         [body setObject:applicationId forKey:@"applicationId"];
     }
@@ -53,45 +50,17 @@ static NSString *const kGPPreferenceClientV4Key = @"growthpush-client-v4";
     if (NSStringFromGPEnvironment(environment)) {
         [body setObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];
     }
-
+    
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
         [[[GrowthPush sharedInstance] logger] error:@"Failed to create client. %@", httpResponse.error];
         return nil;
     }
-
+    
     return [GPClientV4 domainWithDictionary:httpResponse.body];
 
-}
-
-+ (GPClientV4 *) updateWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment {
-
-    NSString *path = [NSString stringWithFormat:@"/4/clients/%@", clientId];
-    NSMutableDictionary *body = [NSMutableDictionary dictionary];
-
-    if (credentialId) {
-        [body setObject:credentialId forKey:@"credentialId"];
-    }
-    if(applicationId) {
-        [body setObject:applicationId forKey:@"applicationId"];
-    }
-    if (token) {
-        [body setObject:token forKey:@"token"];
-    }
-    if (NSStringFromGPEnvironment(environment)) {
-        [body setObject:NSStringFromGPEnvironment(environment) forKey:@"environment"];
-    }
-
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPut path:path query:nil body:body];
-    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
-    if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to update client. %@", httpResponse.error];
-        return nil;
-    }
-
-    return [GPClientV4 domainWithDictionary:httpResponse.body];
-
+    
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {

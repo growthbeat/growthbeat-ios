@@ -30,7 +30,6 @@
 
 + (GPClientV4 *) load;
 + (void) save:(GPClientV4 *)newClient;
-+ (GPClientV4 *)createWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
-+ (GPClientV4 *)updateWithClientId:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
++ (GPClientV4 *) attachClient:(NSString *)id applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId token:(NSString *)token environment:(GPEnvironment)environment;
 
 @end

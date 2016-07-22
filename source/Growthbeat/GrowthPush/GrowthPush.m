@@ -150,7 +150,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self createClient:growthbeatClient.id token:nil];
             } else if (clientV4.environment != environment) {
                 [self.logger info:@"ClientV4 found. Update environment. (environment: %@)", NSStringFromGPEnvironment(environment)];
-                [self updateClient:clientV4.token];
+                [self updateClient:growthbeatClient.id token:clientV4.token];
             } else {
                 [self.logger info:@"ClientV4 found. (id: %@)", clientV4.id];
                 self.client = clientV4;
@@ -208,8 +208,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         [self waitClient];
         
+        GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         if ((self.client && ((token && ![token isEqualToString:self.client.token])))) {
-            [self updateClient:token];
+            [self updateClient:growthbeatClient.id token:token];
         }
 
     });
@@ -231,7 +232,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
     
     [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClientId, token, NSStringFromGPEnvironment(self.environment)];
-    GPClientV4 *createdClient = [GPClientV4 createWithClientId:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
+    GPClientV4 *createdClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
     if (createdClient) {
         [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
         self.client = createdClient;
@@ -240,13 +241,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
 }
 
-- (void) updateClient:(NSString *)newToken {
+- (void) updateClient:(NSString *)growthbeatClientId token:(NSString *)newToken {
     
+    [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClientId, newToken, NSStringFromGPEnvironment(self.environment)];
     
-    GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
-    [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClient.id, newToken, NSStringFromGPEnvironment(self.environment)];
-    
-    GPClientV4 *updatedClient = [GPClientV4 updateWithClientId:growthbeatClient.id applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:self.environment];
+    GPClientV4 *updatedClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:self.environment];
     if (updatedClient) {
         [self.logger info:@"Update client success. (clientId: %@)", updatedClient.id];
         self.client = updatedClient;
@@ -326,7 +325,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         GPClientV4 *clientV4 = [self waitClient];
         GPEvent *event = [GPEvent createWithGrowthbeatClient:clientV4.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
-        
         
         if (event) {
             [self.logger info:@"Setting event success. (name: %@)", name];
