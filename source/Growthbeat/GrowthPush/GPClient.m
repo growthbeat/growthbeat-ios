@@ -22,43 +22,14 @@
 @synthesize environment;
 @synthesize created;
 
-static NSString *const kGPPreferenceClientKey = @"client";
-static NSString *const kGBGPPreferenceClientKey = @"growthpush-client";
+static NSString *const kGPPreferenceClientKey = @"growthpush-client";
 
-+ (GPClient *) loadGPClient {
++ (GPClient *) load {
     return [[[GrowthPush sharedInstance] preference] objectForKey:kGPPreferenceClientKey];
 }
 
-+ (GPClient *) loadGBGPClient {
-    return [[[GrowthPush sharedInstance] preference] objectForKey:kGBGPPreferenceClientKey];
-}
-
-+ (void) removeGPClientPreference {
++ (void) removePreference {
     [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGPPreferenceClientKey];
-}
-
-+ (void) removeGBGPClientPreference {
-    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceClientKey];
-}
-
-+ (GPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {
-    NSString *path = [NSString stringWithFormat:@"/1/clients/%lld", clientId];
-    NSMutableDictionary *query = [NSMutableDictionary dictionary];
-    
-    if (code) {
-        [query setObject:code forKey:@"code"];
-    }
-    
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:query body:nil];
-    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
-
-    if (!httpResponse.success) {
-        [[[Growthbeat sharedInstance] logger] error:@"Failed to find client. %@", httpResponse.error ? httpResponse.error : [httpResponse.body objectForKey:@"message"]];
-        return nil;
-    }
-    
-    return [GPClient domainWithDictionary:httpResponse.body];
-    
 }
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
