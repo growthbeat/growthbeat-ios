@@ -327,7 +327,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         GPEvent *event = [GPEvent createWithGrowthbeatClient:clientV4.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
         
         if (event) {
-            [self.logger info:@"Setting event success. (name: %@)", name];
+            [self.logger info:@"Setting event success. (name: %@, value: %@)", name, value];
             if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
                 return;
             }

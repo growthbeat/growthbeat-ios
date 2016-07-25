@@ -29,7 +29,7 @@
         NSLog(@"clientId is %@", client.id);
     });
 
-    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil];
+    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:@"1"];
     [[GrowthPush sharedInstance] requestDeviceToken];
     [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
     
