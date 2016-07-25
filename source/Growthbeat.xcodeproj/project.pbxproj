@@ -155,6 +155,7 @@
 		17CC06201D239E7100AB2667 /* GPTagType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B61D2399F200AB2667 /* GPTagType.h */; };
 		17CC06211D239E7100AB2667 /* GPTask.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B81D2399F200AB2667 /* GPTask.h */; };
 		17CC06221D239E7100AB2667 /* GrowthPush.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05BA1D2399F200AB2667 /* GrowthPush.h */; };
+		C182557F1D41EBE90070F606 /* GBGPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C182557E1D41EBE90070F606 /* GBGPClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -384,6 +385,8 @@
 		C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSynchronizationHandler.m; sourceTree = "<group>"; };
 		C165AE451CFBC3730078D38C /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
 		C165AE461CFBC3730078D38C /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
+		C182557D1D41EBE90070F606 /* GBGPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBGPClient.h; path = Growthbeat/GBGPClient.h; sourceTree = "<group>"; };
+		C182557E1D41EBE90070F606 /* GBGPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBGPClient.m; path = Growthbeat/GBGPClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,6 +422,8 @@
 				69989D521D1A23D9006B0EFE /* GBDeviceUtils.m */,
 				69989D531D1A23D9006B0EFE /* GBDomain.h */,
 				69989D541D1A23D9006B0EFE /* GBDomain.m */,
+				C182557D1D41EBE90070F606 /* GBGPClient.h */,
+				C182557E1D41EBE90070F606 /* GBGPClient.m */,
 				69989D571D1A23D9006B0EFE /* GBHttpClient.h */,
 				69989D581D1A23D9006B0EFE /* GBHttpClient.m */,
 				69989D591D1A23D9006B0EFE /* GBHttpRequest.h */,
@@ -674,6 +679,7 @@
 				17CC053E1D23999F00AB2667 /* GBHttpClient.m in Sources */,
 				17CC053F1D23999F00AB2667 /* GBHttpRequest.m in Sources */,
 				17CC05401D23999F00AB2667 /* GBHttpResponse.m in Sources */,
+				C182557F1D41EBE90070F606 /* GBGPClient.m in Sources */,
 				17CC05BF1D2399F200AB2667 /* GPCardMessage.m in Sources */,
 				17CC05411D23999F00AB2667 /* GBHttpUtils.m in Sources */,
 				17CC05421D23999F00AB2667 /* GBIntent.m in Sources */,
