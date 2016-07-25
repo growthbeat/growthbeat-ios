@@ -79,7 +79,16 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     GBGPClient __block *gbGPClient = [GBGPClient load];
     GBClient __block *existingClient = [GBClient load];
     
-    if (!gbGPClient) {
+    if (gbGPClient) {
+        if(existingClient && [existingClient.id isEqualToString:gbGPClient.growthbeatClientId]
+           && [existingClient.application.id isEqualToString:gbGPClient.growthbeatApplicationId]
+           && [existingClient.application.id isEqualToString:applicationId]) {
+            [self.logger info:@"Client already exists. (id:%@)", existingClient.id];
+            self.client = existingClient;
+            [GBGPClient removePreference];
+            return;
+        }
+    } else {
         if (existingClient && [existingClient.application.id isEqualToString:applicationId]) {
             [self.logger info:@"Client already exists. (id:%@)", existingClient.id];
             self.client = existingClient;
@@ -88,37 +97,38 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
     }
 
     [self.preference removeAll];
+    self.client = nil;
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
         if (gbGPClient) {
             gbGPClient = [GBGPClient findWithGPClientId:gbGPClient.id code:gbGPClient.code];
             [self.logger info:@"Growth Push Client found. Convert GrowthPush Client into Growthbeat Client. (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gbGPClient.id, gbGPClient.growthbeatClientId];
 
-            existingClient = [GBClient findWithId:gbGPClient.growthbeatClientId credentialId:credentialId];
-            if (!existingClient && ![existingClient.application.id isEqualToString:applicationId]) {
+            GBClient *convertedClient = [GBClient findWithId:gbGPClient.growthbeatClientId credentialId:credentialId];
+            if (!convertedClient && ![convertedClient.application.id isEqualToString:applicationId]) {
                 [self.logger error:@"Failed to convert client."];
                 [GBGPClient removePreference];
                 return;
             }
 
-            self.client = existingClient;
-            [GBClient save:existingClient];
+            self.client = convertedClient;
+            [GBClient save:convertedClient];
             [GBGPClient removePreference];
-            [self.logger info:@"Client converted. (id:%@)", existingClient.id];
+            [self.logger info:@"Client converted. (id:%@)", convertedClient.id];
 
         } else {
 
             [self.logger info:@"Creating client... (applicationId:%@)", applicationId];
-            existingClient = [GBClient createWithApplicationId:applicationId credentialId:credentialId];
-            if (!existingClient) {
+            GBClient *newClient = [GBClient createWithApplicationId:applicationId credentialId:credentialId];
+            if (!newClient) {
                 [self.logger info:@"Failed to create client."];
                 return;
             }
 
-            self.client = existingClient;
-            [GBClient save:existingClient];
-            [self.logger info:@"Client created. (id:%@)", existingClient.id];
+            self.client = newClient;
+            [GBClient save:newClient];
+            [self.logger info:@"Client created. (id:%@)", newClient.id];
 
         }
 
