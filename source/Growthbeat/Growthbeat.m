@@ -76,24 +76,11 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
     [self.logger info:@"Initializing... (applicationId:%@)", applicationId];
 
-    GBGPClient __block *gbGPClient = [GBGPClient load];
     GBClient __block *existingClient = [GBClient load];
-    
-    if (gbGPClient) {
-        if(existingClient && [existingClient.id isEqualToString:gbGPClient.growthbeatClientId]
-           && [existingClient.application.id isEqualToString:gbGPClient.growthbeatApplicationId]
-           && [existingClient.application.id isEqualToString:applicationId]) {
-            [self.logger info:@"Client already exists. (id:%@)", existingClient.id];
-            self.client = existingClient;
-            [GBGPClient removePreference];
-            return;
-        }
-    } else {
-        if (existingClient && [existingClient.application.id isEqualToString:applicationId]) {
-            [self.logger info:@"Client already exists. (id:%@)", existingClient.id];
-            self.client = existingClient;
-            return;
-        }
+    if (existingClient && [existingClient.application.id isEqualToString:applicationId]) {
+        [self.logger info:@"Client already exists. (id:%@)", existingClient.id];
+        self.client = existingClient;
+        return;
     }
 
     [self.preference removeAll];
@@ -101,6 +88,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
+        GBGPClient *gbGPClient = [GBGPClient load];
         if (gbGPClient) {
             gbGPClient = [GBGPClient findWithGPClientId:gbGPClient.id code:gbGPClient.code];
             [self.logger info:@"Growth Push Client found. Convert GrowthPush Client into Growthbeat Client. (GrowthPushClientId:%d, GrowthbeatClientId:%@)", gbGPClient.id, gbGPClient.growthbeatClientId];
