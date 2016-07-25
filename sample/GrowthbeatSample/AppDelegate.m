@@ -24,6 +24,11 @@
     }]];
     [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO"];
 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        GBClient* client = [[Growthbeat sharedInstance] waitClient];
+        NSLog(@"clientId is %@", client.id);
+    });
+
     [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil];
     [[GrowthPush sharedInstance] requestDeviceToken];
     [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
