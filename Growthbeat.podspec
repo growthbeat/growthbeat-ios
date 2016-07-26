@@ -12,10 +12,10 @@ Pod::Spec.new do |s|
 
   s.source = {:git => "https://github.com/growthbeat/growthbeat-ios.git", :tag => "#{s.version}"}
   s.source_files = [
-      "source/**/*.h"
+      "Growthbeat/**/*.h",
+      "Growthbeat/**/*.m"
   ]
   s.frameworks = [
-      "Growthbeat",
       "AdSupport",
       "SafariServices",
       "SystemConfiguration",
