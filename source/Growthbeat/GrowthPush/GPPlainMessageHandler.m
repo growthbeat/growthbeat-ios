@@ -15,6 +15,7 @@
 #import "GPPlainButton.h"
 #import "GPButton.h"
 #import "GrowthPush.h"
+#import "GBViewUtils.h"
 
 @interface GPPlainMessageHandler () {
     
@@ -89,7 +90,7 @@
             [alertController addAction: action];
         }
         
-        self.alertWindow = [[UIWindow alloc] initWithFrame:[[[[UIApplication sharedApplication] delegate] window] bounds]];
+        self.alertWindow = [[UIWindow alloc] initWithFrame:[[GBViewUtils getWindow] bounds]];
         
         UIViewController *windowRootController = [[UIViewController alloc] init];
         self.alertWindow .rootViewController = windowRootController;
