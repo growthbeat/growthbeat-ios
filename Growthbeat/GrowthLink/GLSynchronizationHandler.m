@@ -8,6 +8,7 @@
 
 #import "GLSynchronizationHandler.h"
 #import "GrowthLink.h"
+#import "GBViewUtils.h"
 
 @implementation GLSynchronizationHandler {
     UIViewController * safariViewController;
@@ -30,7 +31,7 @@
     if (SFSafariViewControllerClass) {
         safariViewController = [[SFSafariViewControllerClass alloc] initWithURL:[NSURL URLWithString:urlString]];
         
-        self.window = [[UIWindow alloc] initWithFrame:[[[[UIApplication sharedApplication] delegate] window] bounds]];
+        self.window = [[UIWindow alloc] initWithFrame:[[GBViewUtils getWindow] bounds]];
         UIViewController *windowRootController = [[UIViewController alloc] init];
         self.window.rootViewController = windowRootController;
         self.window.windowLevel = UIWindowLevelNormal - 1;
