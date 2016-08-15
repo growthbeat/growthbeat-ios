@@ -29,7 +29,6 @@
         NSLog(@"clientId is %@", client.id);
     });
 
-    [[GrowthPush sharedInstance] trackEvent:@"Launch" value:@"1"];
     [[GrowthPush sharedInstance] requestDeviceToken];
     [[GrowthPush sharedInstance] trackEvent:@"AllowPushPermission"];
     
@@ -45,6 +44,7 @@
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
+    [[GrowthPush sharedInstance] trackEvent:@"Launch"];
 }
 
 - (void) applicationWillResignActive:(UIApplication *)application {
