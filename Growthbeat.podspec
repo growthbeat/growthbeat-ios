@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Growthbeat"
-  s.version = "2.0.3"
+  s.version = "2.0.4"
   s.summary = "Growthbeat SDK for iOS"
   s.description = <<-DESC
   Growthbeat is growth hack platform for smart devices.
@@ -24,9 +24,8 @@ Pod::Spec.new do |s|
       "UIKit",
       "Foundation"
   ]
-  s.vendored_frameworks = "Growthbeat.framework"
   s.preserve_paths = "README.*"
 
-  s.platform = :ios, "8.0"
+  s.platform = :ios, "7.0"
   s.requires_arc = true
 end
