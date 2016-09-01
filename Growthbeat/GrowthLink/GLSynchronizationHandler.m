@@ -65,7 +65,7 @@
 
 - (BOOL)synchronizeWithFingerprint:(GLSynchronization *)synchronization {
     if (synchronization.clickId) {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@", synchronization.clickId ]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@", synchronization.clickId]];
         [[GrowthLink sharedInstance] handleOpenUrl:url];
         return YES;
     }

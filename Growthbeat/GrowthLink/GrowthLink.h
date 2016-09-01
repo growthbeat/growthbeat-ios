@@ -17,15 +17,10 @@
     NSString *applicationId;
     NSString *credentialId;
 
-    NSString *synchronizationUrl;
-
 }
 
 @property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *credentialId;
-
-@property (nonatomic, strong) NSString *synchronizationUrl;
-@property (nonatomic, strong) NSString *host;
 @property (nonatomic, strong) GLSynchronizationHandler *synchronizationHandler;
 
 + (instancetype)sharedInstance;

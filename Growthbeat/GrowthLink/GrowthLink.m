@@ -12,10 +12,9 @@
 #import "GLClick.h"
 
 static GrowthLink *sharedInstance = nil;
-static NSString *const kDefaultSynchronizationUrlTmplete = @"https://%@/l/synchronize";
-static NSString *const kDefaultHost = @"gbt.io";
 static NSString *const kGBLoggerDefaultTag = @"GrowthLink";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.link.growthbeat.com/";
+static NSString *const kDefaultHost = @"gbt.io";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
@@ -42,13 +41,10 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @implementation GrowthLink
 
-@synthesize synchronizationUrl;
-
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
 @synthesize synchronizationHandler;
-@synthesize host;
 
 @synthesize applicationId;
 @synthesize credentialId;
@@ -71,8 +67,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 - (id) init {
     self = [super init];
     if (self) {
-        self.host = kDefaultHost;
-        self.synchronizationUrl = [NSString stringWithFormat:kDefaultSynchronizationUrlTmplete,self.host];
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
@@ -149,10 +143,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 }
 
 - (BOOL) canHandleUniversalLinks:(NSURLComponents*) component{
-    if (!component || !component.host) return false;
-    if ([self.host isEqualToString:component.host] ) {
+    if (!component || !component.host)
+        return false;
+    
+    if ([kDefaultHost isEqualToString:component.host])
         return true;
-    }
+    
     return false;
 }
 

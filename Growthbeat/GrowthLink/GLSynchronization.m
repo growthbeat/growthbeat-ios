@@ -38,6 +38,7 @@ static NSString *const kGLPreferenceSynchronizationKey = @"synchronization";
     if (deviceModel) {
         [body setObject:deviceModel forKey:@"deviceModel"];
     }
+    
     [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];;
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body userAgent:userAgent];
     GBHttpResponse *httpResponse = [[[GrowthLink sharedInstance] httpClient] httpRequest:httpRequest];
