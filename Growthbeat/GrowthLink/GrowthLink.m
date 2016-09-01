@@ -41,13 +41,13 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @implementation GrowthLink
 
+@synthesize applicationId;
+@synthesize credentialId;
+
 @synthesize logger;
 @synthesize httpClient;
 @synthesize preference;
 @synthesize synchronizationHandler;
-
-@synthesize applicationId;
-@synthesize credentialId;
 
 @synthesize initialized;
 @synthesize isFirstSession;
@@ -210,7 +210,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
         [logger info:@"Deeplinking..."];
 
-        GLClick *click = [GLClick deeplinkWithClientId:[[[Growthbeat sharedInstance] waitClient] id] clickId:clickId install:isFirstSession credentialId:credentialId];
+        GLClick *click = [GLClick deeplinkWithClientId:[Growthbeat sharedInstance].waitClient.id clickId:clickId install:isFirstSession credentialId:credentialId];
         [self handleClick:click];
         
     });
