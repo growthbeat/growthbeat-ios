@@ -56,8 +56,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @synthesize initialized;
 @synthesize isFirstSession;
 
-@synthesize synchronizationCallback;
-
 + (instancetype) sharedInstance {
     @synchronized(self) {
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 5.0f) {
@@ -81,16 +79,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         self.synchronizationHandler = [[GLSynchronizationHandler alloc] init];
         self.initialized = NO;
         self.isFirstSession = NO;
-        self.synchronizationCallback = ^(GLSynchronization *synchronization) {
-            if (synchronization.cookieTracking) {
-                [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithCookie:synchronization];
-                return;
-            }
-
-            if (synchronization.deviceFingerprint && synchronization.clickId) {
-                [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithFingerprint:synchronization];
-            }
-        };
     }
     return self;
 }
@@ -116,7 +104,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 - (void)handleUniversalLinks:(NSURL *)url {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
-        if ( [self canHandleUniversalLinks:component]){
+        if ([self canHandleUniversalLinks:component]) {
             NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
             BOOL hasClickId = NO;
             for (NSURLQueryItem *queryItem in component.queryItems) {
@@ -245,9 +233,12 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking ? @"YES" : @"NO", synchronization.deviceFingerprint ? @"YES" : @"NO", synchronization.clickId];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (synchronizationCallback) {
-                synchronizationCallback(synchronization);
-            }
+            
+            if (synchronization.cookieTracking)
+                [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithCookie:synchronization];
+            else if (synchronization.deviceFingerprint && synchronization.clickId)
+                [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithFingerprint:synchronization];
+            
         });
     });
 }
