@@ -33,6 +33,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 @property (nonatomic, strong) GBLogger *logger;
 @property (nonatomic, strong) GBHttpClient *httpClient;
 @property (nonatomic, strong) GBPreference *preference;
+@property (nonatomic, strong) GLSynchronizationHandler *synchronizationHandler;
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL isFirstSession;
@@ -231,9 +232,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (synchronization.cookieTracking)
-                [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithCookie:synchronization];
+                [self.synchronizationHandler synchronizeWithCookie:synchronization];
             else if (synchronization.deviceFingerprint && synchronization.clickId)
-                [[GrowthLink sharedInstance].synchronizationHandler synchronizeWithFingerprint:synchronization];
+                [self.synchronizationHandler synchronizeWithFingerprint:synchronization];
             
         });
     });

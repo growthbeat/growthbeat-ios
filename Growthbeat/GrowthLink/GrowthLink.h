@@ -21,7 +21,6 @@
 
 @property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *credentialId;
-@property (nonatomic, strong) GLSynchronizationHandler *synchronizationHandler;
 
 + (instancetype)sharedInstance;
 
