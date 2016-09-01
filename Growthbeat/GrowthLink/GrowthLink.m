@@ -87,11 +87,47 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     self.credentialId = newCredentialId;
 
     [[Growthbeat sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
-    if (![[Growthbeat sharedInstance] client] || ![[[[[Growthbeat sharedInstance] client] application] id] isEqualToString:applicationId]) {
-        [preference removeAll];
-    }
-
-    [self synchronize];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+        GBClient *client = [Growthbeat sharedInstance].waitClient;
+        if (!client || ![client.application.id isEqualToString:applicationId]) {
+            [preference removeAll];
+        }
+        
+        [logger info:@"Check initialization..."];
+        if ([GLSynchronization load]) {
+            [logger info:@"Already initialized."];
+            return;
+        }
+        
+        isFirstSession = YES;
+        
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+        NSString *userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+        
+        [logger info:@"Synchronizing..."];
+        
+        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  userAgent:userAgent credentialId:credentialId];
+        if (!synchronization) {
+            [logger error:@"Failed to Synchronize."];
+            return;
+        }
+        
+        [GLSynchronization save:synchronization];
+        [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking ? @"YES" : @"NO", synchronization.deviceFingerprint ? @"YES" : @"NO", synchronization.clickId];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (synchronization.cookieTracking)
+                [self.synchronizationHandler synchronizeWithCookie:synchronization];
+            else if (synchronization.deviceFingerprint && synchronization.clickId)
+                [self.synchronizationHandler synchronizeWithFingerprint:synchronization];
+            
+        });
+        
+    });
+    
 }
 
 
@@ -200,43 +236,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         });
     }
 
-}
-
-- (void) synchronize {
-
-    [logger info:@"Check initialization..."];
-    if ([GLSynchronization load]) {
-        [logger info:@"Already initialized."];
-        return;
-    }
-
-    isFirstSession = YES;
-
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectZero];
-    NSString *userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-
-        [logger info:@"Synchronizing..."];
-
-        GLSynchronization *synchronization = [GLSynchronization synchronizeWithApplicationId:applicationId version:[GBDeviceUtils version]  userAgent:userAgent credentialId:credentialId];
-        if (!synchronization) {
-            [logger error:@"Failed to Synchronize."];
-            return;
-        }
-
-        [GLSynchronization save:synchronization];
-        [logger info:@"Synchronize success. (cookieTracking: %@, deviceFingerprint: %@, clickId: %@)", synchronization.cookieTracking ? @"YES" : @"NO", synchronization.deviceFingerprint ? @"YES" : @"NO", synchronization.clickId];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if (synchronization.cookieTracking)
-                [self.synchronizationHandler synchronizeWithCookie:synchronization];
-            else if (synchronization.deviceFingerprint && synchronization.clickId)
-                [self.synchronizationHandler synchronizeWithFingerprint:synchronization];
-            
-        });
-    });
 }
 
 
