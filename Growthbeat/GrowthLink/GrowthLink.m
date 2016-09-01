@@ -226,17 +226,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     
     [logger info:@"Deeplink success. (clickId: %@)", click.id];
     
-    NSMutableDictionary *properties = [NSMutableDictionary dictionary];
-    if (click.pattern.link.id) {
-        [properties setObject:click.pattern.link.id forKey:@"linkId"];
-    }
-    if (click.pattern.id) {
-        [properties setObject:click.pattern.id forKey:@"patternId"];
-    }
-    if (click.pattern.intent.id) {
-        [properties setObject:click.pattern.intent.id forKey:@"intentId"];
-    }
-    
     if (click.pattern.intent) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[Growthbeat sharedInstance] handleIntent:click.pattern.intent];
