@@ -25,7 +25,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     GBPreference *preference;
 
     BOOL initialized;
-    BOOL fingerPrintSuccess;
     BOOL isFirstSession;
 
 }
