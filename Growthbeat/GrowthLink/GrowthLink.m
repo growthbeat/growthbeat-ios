@@ -43,6 +43,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @synthesize applicationId;
 @synthesize credentialId;
+@synthesize deeplinkDomain;
 
 @synthesize logger;
 @synthesize httpClient;
@@ -67,6 +68,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 - (id) init {
     self = [super init];
     if (self) {
+        self.deeplinkDomain = kDefaultHost;
         self.logger = [[GBLogger alloc] initWithTag:kGBLoggerDefaultTag];
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
@@ -120,9 +122,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (synchronization.cookieTracking)
-                [self.synchronizationHandler synchronizeWithCookie:synchronization];
+                [self.synchronizationHandler synchronizeByCookie:synchronization synchronizationUrl:[NSString stringWithFormat:@"https://%@/l/synchronize", self.deeplinkDomain]];
             else if (synchronization.deviceFingerprint && synchronization.clickId)
-                [self.synchronizationHandler synchronizeWithFingerprint:synchronization];
+                [self.synchronizationHandler synchronizeByFingerprint:synchronization];
             
         });
         
@@ -188,7 +190,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     if (!component || !component.host)
         return false;
     
-    if ([kDefaultHost isEqualToString:component.host])
+    if ([self.deeplinkDomain isEqualToString:component.host])
         return true;
     
     return false;

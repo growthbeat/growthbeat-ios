@@ -14,9 +14,11 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void)synchronizeWithCookie:(GLSynchronization *)synchronization;
+- (id)initilizeWithSynchronizationUrl:(NSString *)synchronizationUrl;
 
-- (BOOL)synchronizeWithFingerprint:(GLSynchronization *)synchronization;
+- (void)synchronizeByCookie:(GLSynchronization *)synchronization synchronizationUrl:(NSString *)synchronizationUrl;
+
+- (BOOL)synchronizeByFingerprint:(GLSynchronization *)synchronization;
 
 - (void)removeWindowIfExists;
 

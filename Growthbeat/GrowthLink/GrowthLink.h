@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSString *applicationId;
 @property (nonatomic, strong) NSString *credentialId;
+@property (nonatomic, strong) NSString *deeplinkDomain;
 
 + (instancetype)sharedInstance;
 

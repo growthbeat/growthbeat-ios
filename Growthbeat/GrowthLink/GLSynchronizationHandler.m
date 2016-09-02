@@ -25,8 +25,8 @@
     return self;
 }
 
-- (void)synchronizeWithCookie:(GLSynchronization *)synchronization {
-    NSString *urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@", [[GrowthLink sharedInstance] synchronizationUrl], [[GrowthLink sharedInstance] applicationId], [GBDeviceUtils getAdvertisingId]];
+- (void)synchronizeByCookie:(GLSynchronization *)synchronization synchronizationUrl:(NSString *)synchronizationUrl {
+    NSString *urlString = [NSString stringWithFormat:@"%@?applicationId=%@&advertisingId=%@",synchronizationUrl, [[GrowthLink sharedInstance] applicationId], [GBDeviceUtils getAdvertisingId]];
     Class SFSafariViewControllerClass = NSClassFromString(@"SFSafariViewController");
     if (SFSafariViewControllerClass) {
         safariViewController = [[SFSafariViewControllerClass alloc] initWithURL:[NSURL URLWithString:urlString]];
@@ -63,7 +63,7 @@
     
 }
 
-- (BOOL)synchronizeWithFingerprint:(GLSynchronization *)synchronization {
+- (BOOL)synchronizeByFingerprint:(GLSynchronization *)synchronization {
     if (synchronization.clickId) {
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"?clickId=%@", synchronization.clickId]];
         [[GrowthLink sharedInstance] handleOpenUrl:url];
