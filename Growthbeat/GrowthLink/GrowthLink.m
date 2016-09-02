@@ -20,6 +20,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @interface GrowthLink () {
 
+    NSString *applicationId;
+    NSString *credentialId;
     GBLogger *logger;
     GBHttpClient *httpClient;
     GBPreference *preference;
@@ -41,8 +43,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
 
 @implementation GrowthLink
 
-@synthesize applicationId;
-@synthesize credentialId;
 @synthesize deeplinkDomain;
 
 @synthesize logger;
@@ -85,8 +85,8 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
     }
     initialized = YES;
 
-    self.applicationId = newApplicationId;
-    self.credentialId = newCredentialId;
+    applicationId = newApplicationId;
+    credentialId = newCredentialId;
 
     [[Growthbeat sharedInstance] initializeWithApplicationId:applicationId credentialId:credentialId];
     
@@ -176,7 +176,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthlink-preferences";
             [universalLinkUrlParameters addObject:queryItem];
         
         NSURLComponents *universalLinkUrlComponents = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"%@://%@%@", clickPatternUrlComponent.scheme, clickPatternUrlComponent.host , clickPatternUrlComponent.path]];
-        [universalLinkUrlParameters addObject:[NSURLQueryItem queryItemWithName:@"universalLink" value:[NSString stringWithFormat:@"https://%@/l/universallink/%@?clickId=%@",component.host, self.applicationId, click.id]]];
+        [universalLinkUrlParameters addObject:[NSURLQueryItem queryItemWithName:@"universalLink" value:[NSString stringWithFormat:@"https://%@/l/universallink/%@?clickId=%@",component.host, applicationId, click.id]]];
         [universalLinkUrlParameters addObject:[NSURLQueryItem queryItemWithName:@"deepLinkUrl" value:[NSString stringWithFormat:@"https://%@/l/%@", component.host, alias]]];
         universalLinkUrlComponents.queryItems = universalLinkUrlParameters;
         

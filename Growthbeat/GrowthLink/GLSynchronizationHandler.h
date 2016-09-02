@@ -12,10 +12,6 @@
 
 @interface GLSynchronizationHandler : NSObject
 
-@property (strong, nonatomic) UIWindow *window;
-
-- (id)initilizeWithSynchronizationUrl:(NSString *)synchronizationUrl;
-
 - (void)synchronizeByCookie:(GLSynchronization *)synchronization synchronizationUrl:(NSString *)synchronizationUrl;
 
 - (BOOL)synchronizeByFingerprint:(GLSynchronization *)synchronization;
