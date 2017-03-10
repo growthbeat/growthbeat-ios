@@ -19,6 +19,7 @@
 #import "GPSwipeMessageHandler.h"
 #import "GPShowMessageHandler.h"
 #import "GPMessage.h"
+#import "GPShowMessageCount.h"
 #import "GPNoContentMessage.h"
 #import "GPClient.h"
 
@@ -428,7 +429,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             continue;
         }
         
-        [GPMessage receiveCount:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId taskId:message.task.id messageId:message.id];
+        GPShowMessageCount *showMessageCount = [GPShowMessageCount receiveCount:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId taskId:message.task.id messageId:message.id];
+        [[self logger] info:[NSString stringWithFormat:@"Success show message (count: %ld, messageId: %@, taskId: %@)", showMessageCount.count, showMessageCount.messageId, showMessageCount.taskId]];
         
         break;
         

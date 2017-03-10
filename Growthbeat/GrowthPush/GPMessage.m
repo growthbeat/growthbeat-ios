@@ -83,37 +83,6 @@
     
 }
 
-+ (GPTag *)receiveCount:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId taskId:(NSString *)taskId messageId:(NSString *)messageId {
-    
-    NSString *path = @"/4/receive/count";
-    NSMutableDictionary *body = [NSMutableDictionary dictionary];
-    if(clientId) {
-        [body setObject:clientId forKey:@"clientId"];
-    }
-    if(applicationId) {
-        [body setObject:applicationId forKey:@"applicationId"];
-    }
-    if(credentialId) {
-        [body setObject:credentialId forKey:@"credentialId"];
-    }
-    if(taskId) {
-        [body setObject:taskId forKey:@"taskId"];
-    }
-    if(messageId) {
-        [body setObject:messageId forKey:@"messageId"];
-    }
-    
-    GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
-    GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
-    if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to count up show message. %@", httpResponse.error];
-        return nil;
-    }
-    
-    return [GPTag domainWithDictionary:httpResponse.body];
-    
-}
-
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     
     self = [super init];
