@@ -39,6 +39,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
     GPEnvironment environment;
     GPClientV4 *client;
+    dispatch_semaphore_t semaphore;
     dispatch_queue_t analyticsDispatchQueue;
     NSArray *messageHandlers;
     BOOL initialized;
@@ -93,6 +94,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.environment = GPEnvironmentUnknown;
+        semaphore = dispatch_semaphore_create(1);
         analyticsDispatchQueue = dispatch_queue_create(kAnalyticsQueueName, DISPATCH_QUEUE_SERIAL);
         self.showingMessage = NO;
         self.showMessageHandlers = [NSMutableDictionary dictionary];
@@ -530,11 +532,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) setAdvertisingId {
-    [self setTag:GPTagTypeCustom name:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
+    [self setTag:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
 }
 
 - (void) setTrackingEnabled {
-    [self setTag:GPTagTypeCustom name:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
+    [self setTag:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
 }
 
 - (GPClientV4 *) waitClient {
