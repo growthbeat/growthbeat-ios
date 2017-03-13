@@ -27,8 +27,10 @@ static NSString *const kGBLoggerDefaultTag = @"GrowthPush";
 static NSString *const kGBHttpClientDefaultBaseUrl = @"https://api.growthpush.com/";
 static NSTimeInterval const kGBHttpClientDefaultTimeout = 60;
 static NSString *const kGBPreferenceDefaultFileName = @"growthpush-preferences";
+static const char * const kAnalyticsQueueName = "com.growthpush.queue.analytics";
+
 static const NSTimeInterval kMinWaitingTimeForOverrideMessage = 30.0f;
-static const char * const kInternalQueueName = "com.growthpush.Queue";
+static const char * const kMessageQueueName = "com.growthpush.queue.message";
 const NSInteger kMaxQueueSize = 100;
 const NSInteger kMessageTimeout = 10;
 const CGFloat kDefaultMessageInterval = 1.0f;
@@ -37,6 +39,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
     GPEnvironment environment;
     GPClientV4 *client;
+    dispatch_queue_t analyticsDispatchQueue;
     NSArray *messageHandlers;
     BOOL initialized;
     BOOL showingMessage;
@@ -52,6 +55,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @property (nonatomic, strong) GPClientV4 *client;
 @property (nonatomic, strong) NSArray *messageHandlers;
 @property (nonatomic, assign) BOOL showingMessage;
+@property (nonatomic, strong) NSMutableArray *requestListener;
 
 @end
 
@@ -68,6 +72,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize client;
 @synthesize messageHandlers;
 @synthesize showingMessage;
+@synthesize requestListener;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -88,13 +93,17 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         self.httpClient = [[GBHttpClient alloc] initWithBaseUrl:[NSURL URLWithString:kGBHttpClientDefaultBaseUrl] timeout:kGBHttpClientDefaultTimeout];
         self.preference = [[GBPreference alloc] initWithFileName:kGBPreferenceDefaultFileName];
         self.environment = GPEnvironmentUnknown;
+        analyticsDispatchQueue = dispatch_queue_create(kAnalyticsQueueName, DISPATCH_QUEUE_SERIAL);
         self.showingMessage = NO;
         self.showMessageHandlers = [NSMutableDictionary dictionary];
         
         initialized = NO;
-        messageDispatchQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
+        messageDispatchQueue = dispatch_queue_create(kMessageQueueName, DISPATCH_QUEUE_SERIAL);
         messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
         messageInterval = kDefaultMessageInterval;
+        self.requestListener = [NSMutableArray array];
+        [self addObserver:self forKeyPath:@"client" options:NSKeyValueObservingOptionNew context:nil];
+
     }
     return self;
 }
@@ -126,7 +135,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         
         GBClient *growthbeatClient = [[Growthbeat sharedInstance] waitClient];
         GPClient *gpClient = [GPClient load];
-        
+
         if (gpClient) {
             if (gpClient.growthbeatClientId && [gpClient.growthbeatClientId isEqualToString:growthbeatClient.id]) {
                 [[self logger] info:[NSString stringWithFormat:@"Client found. To Convert the Client to ClientV4. (id:%@)", gpClient.growthbeatClientId]];
@@ -274,6 +283,15 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"client"] && self.client != nil) {
+        for (void (^listener)() in self.requestListener) {
+            listener();
+        }
+        [self.requestListener removeAllObjects];
+    }
+}
+
 - (void) setTag:(NSString *)name {
     [self setTag:name value:nil];
 }
@@ -283,7 +301,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    
+    dispatch_async(analyticsDispatchQueue, ^{
         
         [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
         
@@ -296,11 +315,18 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
         
-        GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        void (^request)() = ^{
+            GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+            if (tag) {
+                [GPTag save:tag type:type name:name];
+                [self.logger info:@"Setting tag success. (name: %@)", name];
+            }
+        };
         
-        if (tag) {
-            [GPTag save:tag type:type name:name];
-            [self.logger info:@"Setting tag success. (name: %@)", name];
+        if(self.client) {
+            request();
+        } else{
+            [self.requestListener addObject:request];
         }
         
     });
@@ -319,26 +345,39 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void)trackEvent:(GPEventType)type name:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    
+    if(!name) {
+        [logger warn:@"Event name cannot be empty."];
+        return;
+    }
+    
+    dispatch_async(analyticsDispatchQueue, ^{
         
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
-        GPClientV4 *clientV4 = [self waitClient];
-        GPEvent *event = [GPEvent createWithGrowthbeatClient:clientV4.id applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
-        
-        if (event) {
-            [self.logger info:@"Setting event success. (name: %@, value: %@)", name, value];
-            if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
+        void (^request)() = ^{
+            GPEvent *event = [GPEvent createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+            
+            if (event) {
+                [self.logger info:@"Setting event success. (name: %@, value: %@)", name, value];
+                if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
+                    return;
+                }
+                
+                [self receiveMessage:event showMessage:showMessageHandler failure:failureHandler];
+                
+            } else {
+                if (failureHandler) {
+                    failureHandler(@"event not found");
+                }
                 return;
             }
-            
-            [self receiveMessage:event showMessage:showMessageHandler failure:failureHandler];
-            
-        } else {
-            if (failureHandler) {
-                failureHandler(@"event not found");
-            }
-            return;
+        };
+        
+        if(self.client) {
+            request();
+        } else{
+            [self.requestListener addObject:request];
         }
         
         
