@@ -460,7 +460,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
 
-    [self trackEvent:@"SelectButton" value:value];
+    [self trackEvent:GPEventTypeMessage name:@"SelectButton" value:value showMessage:nil failure:nil];
     
 }
 
