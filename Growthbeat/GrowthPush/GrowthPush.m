@@ -133,6 +133,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self createClient:gpClient.growthbeatClientId token:gpClient.token];
             } else {
                 [[self logger] info:[NSString stringWithFormat:@"Disabled Client found. Create a new ClientV4. (id:%@)", growthbeatClient.id]];
+                [self.preference removeAll];
                 [self createClient:growthbeatClient.id token:nil];
             }
             
@@ -143,9 +144,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             GPClientV4 *clientV4 = [GPClientV4 load];
             if(!clientV4) {
                 [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
+                [self.preference removeAll];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (![clientV4.id isEqualToString:growthbeatClient.id]) {
                 [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id: %@)", growthbeatClient.id];
+                [self.preference removeAll];
                 [self clearClient];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (clientV4.environment != environment) {
@@ -158,11 +161,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             
         }
 
-        [self setDeviceTags];
         if(adInfoEnable) {
             [self setAdvertisingId];
             [self setTrackingEnabled];
         }
+        [self setDeviceTags];
         
     });
 
