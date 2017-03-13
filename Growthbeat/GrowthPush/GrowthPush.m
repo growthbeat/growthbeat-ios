@@ -301,35 +301,29 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
-    
     dispatch_async(analyticsDispatchQueue, ^{
-        
-        [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
-        
-        GPTag *existingTag = [GPTag load:type name:name];
-        if (existingTag) {
-            if ((value == nil && existingTag.value == nil ) || (value && [value isEqualToString:existingTag.value])) {
-                [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
-                return;
-            }
-            [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
-        }
-        
-        void (^request)() = ^{
-            GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
-            if (tag) {
-                [GPTag save:tag type:type name:name];
-                [self.logger info:@"Setting tag success. (name: %@)", name];
-            }
-        };
-        
-        if(self.client) {
-            request();
-        } else{
-            [self.requestListener addObject:request];
-        }
-        
+        [self synchronizeSetTag:type name:name value:value];
     });
+}
+
+- (void)synchronizeSetTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
+    [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
+    
+    GPTag *existingTag = [GPTag load:type name:name];
+    if (existingTag) {
+        if ((value == nil && existingTag.value == nil ) || (value && [value isEqualToString:existingTag.value])) {
+            [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
+            return;
+        }
+        [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
+    }
+    
+    GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+    
+    if (tag) {
+        [GPTag save:tag type:type name:name];
+        [self.logger info:@"Setting tag success. (name: %@, value: %@)", name, value];
+    }
 }
 
 - (void) trackEvent:(NSString *)name {
@@ -379,7 +373,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         } else{
             [self.requestListener addObject:request];
         }
-        
         
     });
 
@@ -503,25 +496,37 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void) setDeviceTags {
 
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if ([GBDeviceUtils model]) {
-        [self setTag:@"Device" value:[GBDeviceUtils model]];
+        [params setObject:[GBDeviceUtils model] forKey:@"Device"];
     }
     if ([GBDeviceUtils os]) {
-        [self setTag:@"OS" value:[GBDeviceUtils os]];
+        [params setObject:[GBDeviceUtils os] forKey:@"OS"];
     }
     if ([GBDeviceUtils language]) {
-        [self setTag:@"Language" value:[GBDeviceUtils language]];
+        [params setObject:[GBDeviceUtils language] forKey:@"Language"];
     }
     if ([GBDeviceUtils timeZone]) {
-        [self setTag:@"Time Zone" value:[GBDeviceUtils timeZone]];
+        [params setObject:[GBDeviceUtils timeZone] forKey:@"Time Zone"];
     }
     if ([GBDeviceUtils version]) {
-        [self setTag:@"Version" value:[GBDeviceUtils version]];
+        [params setObject:[GBDeviceUtils version] forKey:@"Version"];
     }
     if ([GBDeviceUtils build]) {
-        [self setTag:@"Build" value:[GBDeviceUtils build]];
+        [params setObject:[GBDeviceUtils build] forKey:@"Build"];
     }
-
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [self waitClient];
+        
+        for(id key in [params keyEnumerator]) {
+            id value = [params objectForKey:key];
+            [self synchronizeSetTag:GPTagTypeCustom name:key value:value];
+            usleep(500 * 1000);
+        }
+    });
+    
 }
 
 - (void) setAdvertisingId {
