@@ -303,9 +303,16 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
-    dispatch_async(analyticsDispatchQueue, ^{
-        [self synchronizeSetTag:type name:name value:value];
-    });
+    
+     void (^request)() = ^{
+         [self synchronizeSetTag:type name:name value:value];
+     };
+    
+    if(self.client) {
+        dispatch_async(analyticsDispatchQueue, request);
+    } else{
+        [self.requestListener addObject:request];
+    }
 }
 
 - (void)synchronizeSetTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
@@ -347,36 +354,32 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         return;
     }
     
-    dispatch_async(analyticsDispatchQueue, ^{
-        
+    void (^request)() = ^{
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
-        void (^request)() = ^{
-            GPEvent *event = [GPEvent createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
-            
-            if (event) {
-                [self.logger info:@"Setting event success. (name: %@, value: %@)", name, value];
-                if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
-                    return;
-                }
-                
-                [self receiveMessage:event showMessage:showMessageHandler failure:failureHandler];
-                
-            } else {
-                if (failureHandler) {
-                    failureHandler(@"event not found");
-                }
+        GPEvent *event = [GPEvent createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        
+        if (event) {
+            [self.logger info:@"Setting event success. (name: %@, value: %@)", name, value];
+            if (type == GPEventTypeMessage || type == GPEventTypeUnknown) {
                 return;
             }
-        };
-        
-        if(self.client) {
-            request();
-        } else{
-            [self.requestListener addObject:request];
+            
+            [self receiveMessage:event showMessage:showMessageHandler failure:failureHandler];
+            
+        } else {
+            if (failureHandler) {
+                failureHandler(@"event not found");
+            }
+            return;
         }
-        
-    });
+    };
+    
+    if(self.client) {
+        dispatch_async(analyticsDispatchQueue, request);
+    } else{
+        [self.requestListener addObject:request];
+    }
 
 }
 

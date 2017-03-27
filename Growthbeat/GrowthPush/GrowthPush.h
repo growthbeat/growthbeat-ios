@@ -100,10 +100,6 @@
 - (void)setTag:(NSString *)name;
 - (void)setTag:(NSString *)name value:(NSString *)value;
 
-/**
- * Set DefaultTags
- */
-- (void)setDeviceTags;
 
 /**
  * Set Event
