@@ -179,9 +179,12 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         return;
     }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     UIUserNotificationSettings *userNotificationSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:userNotificationSettings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+#pragma clang diagnostic pop
     
 }
 
