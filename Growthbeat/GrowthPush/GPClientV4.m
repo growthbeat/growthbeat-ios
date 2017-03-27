@@ -54,7 +54,7 @@ static NSString *const kGPPreferenceClientV4Key = @"growthpush-client-v4";
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPut path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to create client. %@", httpResponse.error];
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to create client. %@", httpResponse.error ? httpResponse.error : [NSString stringWithFormat:@"code:%@, %@", [httpResponse.body objectForKey:@"code"], [httpResponse.body objectForKey:@"message"]]];
         return nil;
     }
     
