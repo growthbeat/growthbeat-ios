@@ -42,7 +42,7 @@
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodGet path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to get message. %@", httpResponse.error];
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to get message. %@", httpResponse.error ? httpResponse.error : [NSString stringWithFormat:@"code:%@, %@", [httpResponse.body objectForKey:@"code"], [httpResponse.body objectForKey:@"message"]]];
         return nil;
     }
     
