@@ -52,10 +52,6 @@
     
     self = [super init];
     if (self) {
-        
-        if (![dictionary objectForKey:@"type"])
-            return nil;
-        
         if ([dictionary objectForKey:@"clientId"] && [dictionary objectForKey:@"clientId"] != [NSNull null]) {
             self.clientId = [dictionary objectForKey:@"clientId"];
         }
@@ -63,10 +59,10 @@
             self.messageId = [dictionary objectForKey:@"messageId"];
         }
         if ([dictionary objectForKey:@"taskId"] && [dictionary objectForKey:@"taskId"] != [NSNull null]) {
-            self.taskId = [dictionary objectForKey:@"tagId"];
+            self.taskId = [dictionary objectForKey:@"taskId"];
         }
         if ([dictionary objectForKey:@"count"] && [dictionary objectForKey:@"count"] != [NSNull null]) {
-            self.count = [[dictionary objectForKey:@"clientId"] integerValue];
+            self.count = [[dictionary objectForKey:@"count"] integerValue];
         }
     }
     return self;
