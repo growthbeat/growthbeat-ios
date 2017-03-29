@@ -308,9 +308,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
     
-     void (^request)() = ^{
-         [self synchronizeSetTag:type name:name value:value];
-     };
+    void (^request)() = ^{
+        [self synchronizeSetTag:type name:name value:value];
+    };
     
     if(self.client) {
         dispatch_async(analyticsDispatchQueue, request);
