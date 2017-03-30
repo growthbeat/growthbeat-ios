@@ -31,7 +31,7 @@ static NSString *const kGBGPPreferenceClientKey = @"client";
 }
 
 + (void) removePreference {
-    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceClientKey];
+    [[[GrowthPush sharedInstance] preference] removeAll];
 }
 
 + (GBGPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {
