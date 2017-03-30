@@ -145,7 +145,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self createClient:gpClient.growthbeatClientId token:gpClient.token];
             } else {
                 [[self logger] info:[NSString stringWithFormat:@"Disabled Client found. Create a new ClientV4. (id:%@)", growthbeatClient.id]];
-                [self.preference removeAll];
+                [self clearPreference];
                 [self createClient:growthbeatClient.id token:nil];
             }
             
@@ -156,12 +156,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             GPClientV4 *clientV4 = [GPClientV4 load];
             if(!clientV4) {
                 [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
-                [self.preference removeAll];
+                [self clearPreference];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (![clientV4.id isEqualToString:growthbeatClient.id]) {
                 [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id: %@)", growthbeatClient.id];
-                [self.preference removeAll];
-                [self clearClient];
+                [self clearPreference];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (clientV4.environment != environment) {
                 [self.logger info:@"ClientV4 found. Update environment. (environment: %@)", NSStringFromGPEnvironment(environment)];
@@ -232,6 +231,19 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
+- (NSString *) convertToHexToken:(NSData *)targetDeviceToken {
+    
+    if (!targetDeviceToken) {
+        return nil;
+    }
+    
+    return [[[[targetDeviceToken description]
+              stringByReplacingOccurrencesOfString:@"<" withString:@""]
+             stringByReplacingOccurrencesOfString:@">" withString:@""]
+            stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+}
+
 - (void) clearBadge {
 
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -269,34 +281,16 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
 }
 
-- (void) clearClient {
-
-    self.client = nil;
-    [preference removeAll];
-
-}
-
-- (NSString *) convertToHexToken:(NSData *)targetDeviceToken {
-
-    if (!targetDeviceToken) {
-        return nil;
-    }
-
-    return [[[[targetDeviceToken description]
-              stringByReplacingOccurrencesOfString:@"<" withString:@""]
-             stringByReplacingOccurrencesOfString:@">" withString:@""]
-            stringByReplacingOccurrencesOfString:@" " withString:@""];
-
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"client"] && self.client != nil) {
-        for (void (^listener)() in self.requestListener) {
+        for (void (^listener)() in [self.requestListener reverseObjectEnumerator]) {
             listener();
         }
         [self.requestListener removeAllObjects];
     }
 }
+
+#pragma send_tag
 
 - (void) setTag:(NSString *)name {
     [self setTag:name value:nil];
@@ -338,6 +332,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [self.logger info:@"Setting tag success. (name: %@, value: %@)", name, value];
     }
 }
+
+#pragma send_event
 
 - (void) trackEvent:(NSString *)name {
     [self trackEvent:name value:nil];
@@ -386,6 +382,53 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
 
 }
+
+#pragma tag_alias
+
+- (void) setDeviceTags {
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([GBDeviceUtils model]) {
+        [params setObject:[GBDeviceUtils model] forKey:@"Device"];
+    }
+    if ([GBDeviceUtils os]) {
+        [params setObject:[GBDeviceUtils os] forKey:@"OS"];
+    }
+    if ([GBDeviceUtils language]) {
+        [params setObject:[GBDeviceUtils language] forKey:@"Language"];
+    }
+    if ([GBDeviceUtils timeZone]) {
+        [params setObject:[GBDeviceUtils timeZone] forKey:@"Time Zone"];
+    }
+    if ([GBDeviceUtils version]) {
+        [params setObject:[GBDeviceUtils version] forKey:@"Version"];
+    }
+    if ([GBDeviceUtils build]) {
+        [params setObject:[GBDeviceUtils build] forKey:@"Build"];
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        [self waitClient];
+        
+        for(id key in [params keyEnumerator]) {
+            id value = [params objectForKey:key];
+            [self synchronizeSetTag:GPTagTypeCustom name:key value:value];
+            sleep(1);
+        }
+    });
+    
+}
+
+- (void) setAdvertisingId {
+    [self setTag:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
+}
+
+- (void) setTrackingEnabled {
+    [self setTag:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
+}
+
+#pragma growthmessage
 
 - (void) receiveMessage:(GPEvent *)event showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
     
@@ -459,8 +502,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 
-
-
 - (void) openMessage:(GPMessage *)message {
     
     for (id<GPMessageHandler> handler in self.messageHandlers) {
@@ -499,53 +540,12 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         NSData *data = [NSJSONSerialization dataWithJSONObject:properties options:NSJSONWritingPrettyPrinted error:&error];
         value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
-
+    
     [self trackEvent:GPEventTypeMessage name:@"SelectButton" value:value showMessage:nil failure:nil];
     
 }
 
-- (void) setDeviceTags {
-
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    if ([GBDeviceUtils model]) {
-        [params setObject:[GBDeviceUtils model] forKey:@"Device"];
-    }
-    if ([GBDeviceUtils os]) {
-        [params setObject:[GBDeviceUtils os] forKey:@"OS"];
-    }
-    if ([GBDeviceUtils language]) {
-        [params setObject:[GBDeviceUtils language] forKey:@"Language"];
-    }
-    if ([GBDeviceUtils timeZone]) {
-        [params setObject:[GBDeviceUtils timeZone] forKey:@"Time Zone"];
-    }
-    if ([GBDeviceUtils version]) {
-        [params setObject:[GBDeviceUtils version] forKey:@"Version"];
-    }
-    if ([GBDeviceUtils build]) {
-        [params setObject:[GBDeviceUtils build] forKey:@"Build"];
-    }
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        [self waitClient];
-        
-        for(id key in [params keyEnumerator]) {
-            id value = [params objectForKey:key];
-            [self synchronizeSetTag:GPTagTypeCustom name:key value:value];
-            usleep(500 * 1000);
-        }
-    });
-    
-}
-
-- (void) setAdvertisingId {
-    [self setTag:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
-}
-
-- (void) setTrackingEnabled {
-    [self setTag:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
-}
+#pragma client_wait
 
 - (GPClientV4 *) waitClient {
 
@@ -557,5 +557,13 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
 
 }
+
+- (void) clearPreference {
+    
+    self.client = nil;
+    [preference removeAll];
+    
+}
+
 
 @end
