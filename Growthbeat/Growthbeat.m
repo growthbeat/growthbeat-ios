@@ -100,9 +100,9 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
                 return;
             }
 
+            [GBGPClient removePreference];
             self.client = convertedClient;
             [GBClient save:convertedClient];
-            [GBGPClient removePreference];
             [self.logger info:@"Client converted. (id:%@)", convertedClient.id];
 
         } else {

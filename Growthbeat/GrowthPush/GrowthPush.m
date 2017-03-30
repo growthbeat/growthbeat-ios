@@ -145,7 +145,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self createClient:gpClient.growthbeatClientId token:gpClient.token];
             } else {
                 [[self logger] info:[NSString stringWithFormat:@"Disabled Client found. Create a new ClientV4. (id:%@)", growthbeatClient.id]];
-                [self.preference removeAll];
+                [self clearClient];
                 [self createClient:growthbeatClient.id token:nil];
             }
             
@@ -156,11 +156,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             GPClientV4 *clientV4 = [GPClientV4 load];
             if(!clientV4) {
                 [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
-                [self.preference removeAll];
+                [self clearClient];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (![clientV4.id isEqualToString:growthbeatClient.id]) {
                 [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id: %@)", growthbeatClient.id];
-                [self.preference removeAll];
                 [self clearClient];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (clientV4.environment != environment) {
@@ -291,7 +290,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"client"] && self.client != nil) {
-        for (void (^listener)() in self.requestListener) {
+        for (void (^listener)() in [self.requestListener reverseObjectEnumerator]) {
             listener();
         }
         [self.requestListener removeAllObjects];
@@ -535,6 +534,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             [self synchronizeSetTag:GPTagTypeCustom name:key value:value];
             usleep(500 * 1000);
         }
+        
+        [params removeAllObjects];
     });
     
 }

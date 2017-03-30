@@ -33,13 +33,17 @@
 
     NSDictionary *prefrences = [self preferences];
 
-    NSData *data = [prefrences objectForKey:key];
+    id object = [prefrences objectForKey:key];
 
-    if (!data) {
+    if (!object) {
         return nil;
     }
-
-    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if([object isKindOfClass:[NSDictionary class]]) {
+        return [NSDictionary dictionaryWithDictionary:object];
+    }
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithData:object];
 
 }
 

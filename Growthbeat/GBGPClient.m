@@ -13,6 +13,7 @@
 #import "GPTag.h"
 
 static NSString *const kGBGPPreferenceClientKey = @"client";
+static NSString *const kGBGPPreferenceTagsKey = @"tags";
 
 @implementation GBGPClient
 
@@ -33,14 +34,16 @@ static NSString *const kGBGPPreferenceClientKey = @"client";
 + (void) removePreference {
     
     // copy tags
-    NSDictionary *loadedTags = [[[GrowthPush sharedInstance] preference] objectForKey:@"tags"];
-    if (loadedTags && [loadedTags isKindOfClass:[NSDictionary class]]) {
-        for (NSString *key in [loadedTags allKeys]) {
+    NSDictionary *loadedTags = [[[GrowthPush sharedInstance] preference] objectForKey:kGBGPPreferenceTagsKey];
+    if (loadedTags) {
+        for (id key in [loadedTags keyEnumerator]) {
             [GPTag save:[loadedTags objectForKey:key] type:GPTagTypeCustom name:key];
         }
     }
     
-    [[[GrowthPush sharedInstance] preference] removeAll];
+    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceClientKey];
+    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceTagsKey];
+    
 }
 
 + (GBGPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {
