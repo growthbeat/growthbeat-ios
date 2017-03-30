@@ -251,32 +251,44 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void) createClient:(NSString *)growthbeatClientId token:(NSString *)token {
- 
-    GPClientV4 *clientV4 = [GPClientV4 load];
-    if(clientV4) {
-        [self.logger info:[NSString stringWithFormat:@"ClientV4 already created. (growthbeatClientId: %@, token: %@, environment: %@)", clientV4.id, clientV4.token, NSStringFromGPEnvironment(clientV4.environment)]];
-        return;
-    }
     
-    [self.logger info:@"Create client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClientId, token, NSStringFromGPEnvironment(self.environment)];
-    GPClientV4 *createdClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
-    if (createdClient) {
-        [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
-        self.client = createdClient;
-        [GPClientV4 save:createdClient];
+    @synchronized(self) {
+        
+        GPClientV4 *clientV4 = [GPClientV4 load];
+        if(clientV4) {
+            [self.logger info:[NSString stringWithFormat:@"ClientV4 already created. (growthbeatClientId: %@, token: %@, environment: %@)", clientV4.id, clientV4.token, NSStringFromGPEnvironment(clientV4.environment)]];
+            return;
+        }
+        
+        [self.logger info:@"Create client... (id: %@, token: %@, environment: %@)", growthbeatClientId, token, NSStringFromGPEnvironment(self.environment)];
+        GPClientV4 *createdClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
+        if (createdClient) {
+            [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
+            self.client = createdClient;
+            [GPClientV4 save:createdClient];
+        }
+        
     }
     
 }
 
 - (void) updateClient:(NSString *)growthbeatClientId token:(NSString *)newToken {
     
-    [self.logger info:@"Update client... (growthbeatClientId: %@, token: %@, environment: %@)", growthbeatClientId, newToken, NSStringFromGPEnvironment(self.environment)];
-    
-    GPClientV4 *updatedClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:self.environment];
-    if (updatedClient) {
-        [self.logger info:@"Update client success. (clientId: %@)", updatedClient.id];
-        self.client = updatedClient;
-        [GPClientV4 save:updatedClient];
+    @synchronized(self) {
+        GPClientV4 *clientV4 = [GPClientV4 load];
+        if(clientV4 && clientV4.environment == self.environment && [newToken isEqualToString:clientV4.token]) {
+            [self.logger info:@"Already updated client. (id: %@, token: %@, environment: %@)", growthbeatClientId, newToken, NSStringFromGPEnvironment(self.environment)];
+            return;
+        }
+        
+        [self.logger info:@"Update client... (id: %@, token: %@, environment: %@)", growthbeatClientId, newToken, NSStringFromGPEnvironment(self.environment)];
+        
+        GPClientV4 *updatedClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:self.environment];
+        if (updatedClient) {
+            [self.logger info:@"Update client success. (id: %@)", updatedClient.id];
+            self.client = updatedClient;
+            [GPClientV4 save:updatedClient];
+        }
     }
     
 }
