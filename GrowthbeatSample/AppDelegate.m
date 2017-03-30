@@ -22,7 +22,6 @@
         }
         return YES;
     }]];
-    [[GrowthLink sharedInstance] initializeWithApplicationId:@"PIaD6TaVt7wvKwao" credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO"];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         GBClient* client = [[Growthbeat sharedInstance] waitClient];
@@ -35,24 +34,11 @@
     return YES;
 }
 
-- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
-    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        NSURL *webpageURL = userActivity.webpageURL;
-        [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
-    }
-    return true;
-}
-
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     [[GrowthPush sharedInstance] trackEvent:@"Launch"];
 }
 
 - (void) applicationWillResignActive:(UIApplication *)application {
-}
-
-- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [[GrowthLink sharedInstance] handleOpenUrl:url];
-    return YES;
 }
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
