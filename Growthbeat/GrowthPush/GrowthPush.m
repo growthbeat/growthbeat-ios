@@ -165,7 +165,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self updateClient:growthbeatClient.id token:clientV4.token];
             } else {
                 [self.logger info:@"ClientV4 found. (id: %@)", clientV4.id];
-                [self setClient:clientV4];
+                self.client = clientV4;
             }
             
         }
@@ -262,7 +262,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         GPClientV4 *createdClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
         if (createdClient) {
             [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
-            [self setClient:clientV4];
+            self.client = createdClient;
             [GPClientV4 save:createdClient];
         }
         
@@ -284,7 +284,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         GPClientV4 *updatedClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:self.environment];
         if (updatedClient) {
             [self.logger info:@"Update client success. (id: %@)", updatedClient.id];
-            [self setClient:updatedClient];
+            self.client = updatedClient;
             [GPClientV4 save:updatedClient];
         }
     }
@@ -315,22 +315,25 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 }
 
 - (void)synchronizeSetTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
-    [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
     
-    GPTag *existingTag = [GPTag load:type name:name];
-    if (existingTag) {
-        if ((value == nil && existingTag.value == nil ) || (value && [value isEqualToString:existingTag.value])) {
-            [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
-            return;
+    @synchronized(self) {
+        [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
+        
+        GPTag *existingTag = [GPTag load:type name:name];
+        if (existingTag) {
+            if ((value == nil && existingTag.value == nil ) || (value && [value isEqualToString:existingTag.value])) {
+                [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
+                return;
+            }
+            [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
-        [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
-    }
-    
-    GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
-    
-    if (tag) {
-        [GPTag save:tag type:type name:name];
-        [self.logger info:@"Setting tag success. (name: %@, value: %@)", name, value];
+        
+        GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        
+        if (tag) {
+            [GPTag save:tag type:type name:name];
+            [self.logger info:@"Setting tag success. (name: %@, value: %@)", name, value];
+        }
     }
 }
 
@@ -387,37 +390,25 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 #pragma tag_alias
 
 - (void) setDeviceTags {
-
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
     if ([GBDeviceUtils model]) {
-        [params setObject:[GBDeviceUtils model] forKey:@"Device"];
+        [self setTag:@"Device" value:[GBDeviceUtils model]];
     }
     if ([GBDeviceUtils os]) {
-        [params setObject:[GBDeviceUtils os] forKey:@"OS"];
+        [self setTag:@"OS" value:[GBDeviceUtils os]];
     }
     if ([GBDeviceUtils language]) {
-        [params setObject:[GBDeviceUtils language] forKey:@"Language"];
+        [self setTag:@"Language" value:[GBDeviceUtils language]];
     }
     if ([GBDeviceUtils timeZone]) {
-        [params setObject:[GBDeviceUtils timeZone] forKey:@"Time Zone"];
+        [self setTag:@"Time Zone" value:[GBDeviceUtils timeZone]];
     }
     if ([GBDeviceUtils version]) {
-        [params setObject:[GBDeviceUtils version] forKey:@"Version"];
+        [self setTag:@"Version" value:[GBDeviceUtils version]];
     }
     if ([GBDeviceUtils build]) {
-        [params setObject:[GBDeviceUtils build] forKey:@"Build"];
+        [self setTag:@"Build" value:[GBDeviceUtils build]];
     }
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        [self waitClient];
-        
-        for(id key in [params keyEnumerator]) {
-            id value = [params objectForKey:key];
-            [self synchronizeSetTag:GPTagTypeCustom name:key value:value];
-            sleep(1);
-        }
-    });
     
 }
 
@@ -559,8 +550,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
-- (void) setClient:(GPClientV4 *)clientV4 {
-    self.client = clientV4;
+- (void) setClient:(GPClientV4 *)_clientV4 {
+    client = _clientV4;
     for (void (^listener)() in [pendingRequests reverseObjectEnumerator]) {
         listener();
         [pendingRequests removeObject:listener];
