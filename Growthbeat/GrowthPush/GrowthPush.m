@@ -105,7 +105,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
         messageInterval = kDefaultMessageInterval;
         self.requestListener = [NSMutableArray array];
-        [self addObserver:self forKeyPath:@"client" options:NSKeyValueObservingOptionNew context:nil];
 
     }
     return self;
@@ -167,7 +166,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self updateClient:growthbeatClient.id token:clientV4.token];
             } else {
                 [self.logger info:@"ClientV4 found. (id: %@)", clientV4.id];
-                self.client = clientV4;
+                [self setClient:clientV4];
             }
             
         }
@@ -264,7 +263,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         GPClientV4 *createdClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:token environment:self.environment];
         if (createdClient) {
             [self.logger info:@"Create client success. (clientId: %@)", createdClient.id];
-            self.client = createdClient;
+            [self setClient:clientV4];
             [GPClientV4 save:createdClient];
         }
         
@@ -286,20 +285,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         GPClientV4 *updatedClient = [GPClientV4 attachClient:growthbeatClientId applicationId:self.applicationId credentialId:self.credentialId token:newToken environment:self.environment];
         if (updatedClient) {
             [self.logger info:@"Update client success. (id: %@)", updatedClient.id];
-            self.client = updatedClient;
+            [self setClient:updatedClient];
             [GPClientV4 save:updatedClient];
         }
     }
     
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"client"] && self.client != nil) {
-        for (void (^listener)() in [self.requestListener reverseObjectEnumerator]) {
-            listener();
-        }
-        [self.requestListener removeAllObjects];
-    }
 }
 
 #pragma send_tag
@@ -568,6 +558,14 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         usleep(100 * 1000);
     }
 
+}
+
+- (void) setClient:(GPClientV4 *)clientV4 {
+    self.client = clientV4;
+    for (void (^listener)() in [self.requestListener reverseObjectEnumerator]) {
+        listener();
+    }
+    [self.requestListener removeAllObjects];
 }
 
 
