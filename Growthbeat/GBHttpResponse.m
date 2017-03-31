@@ -30,7 +30,7 @@
 
 + (NSString *) convertErrorMessage:(id)body {
     
-    if (body && ![body isKindOfClass:[NSDictionary class]])
+    if (!body && ![body isKindOfClass:[NSDictionary class]])
         return @"";
     
     return [NSString stringWithFormat:@"code:%@, %@", [body objectForKey:@"code"], [body objectForKey:@"message"]];
