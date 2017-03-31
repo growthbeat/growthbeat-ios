@@ -45,7 +45,7 @@ static NSString *const kGPPreferenceTagKeyFormatV4 = @"tags:%@:%@";
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to create tag. %@", httpResponse.error ? httpResponse.error : [NSString stringWithFormat:@"code:%@, %@", [httpResponse.body objectForKey:@"code"], [httpResponse.body objectForKey:@"message"]]];
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to create tag. %@", httpResponse.error];
         return nil;
     }
 
