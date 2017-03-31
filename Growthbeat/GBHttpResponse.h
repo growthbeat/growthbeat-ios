@@ -24,5 +24,6 @@
 @property (nonatomic, readonly, assign) BOOL success;
 
 + (id)instanceWithUrlRequest:(NSURLRequest *)urlRequest httpUrlResponse:(NSHTTPURLResponse *)httpUrlResponse error:(NSError *)error body:(id)body;
++ (NSString *) convertErrorMessage:(id)body;
 
 @end
