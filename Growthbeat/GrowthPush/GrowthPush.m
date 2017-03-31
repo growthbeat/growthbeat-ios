@@ -50,6 +50,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     dispatch_queue_t messageDispatchQueue;
     CGFloat messageInterval;
     NSDate *lastMessageOpened;
+    NSMutableArray *pendingRequests;
     
 }
 
@@ -57,7 +58,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @property (nonatomic, strong) GPClientV4 *client;
 @property (nonatomic, strong) NSArray *messageHandlers;
 @property (nonatomic, assign) BOOL showingMessage;
-@property (nonatomic, strong) NSMutableArray *requestListener;
 
 @end
 
@@ -74,7 +74,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize client;
 @synthesize messageHandlers;
 @synthesize showingMessage;
-@synthesize requestListener;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -104,7 +103,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         messageDispatchQueue = dispatch_queue_create(kMessageQueueName, DISPATCH_QUEUE_SERIAL);
         messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
         messageInterval = kDefaultMessageInterval;
-        self.requestListener = [NSMutableArray array];
+        pendingRequests = [NSMutableArray array];
 
     }
     return self;
@@ -311,7 +310,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     if(self.client) {
         dispatch_async(analyticsDispatchQueue, request);
     } else{
-        [self.requestListener addObject:request];
+        [pendingRequests addObject:request];
     }
 }
 
@@ -380,7 +379,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     if(self.client) {
         dispatch_async(analyticsDispatchQueue, request);
     } else{
-        [self.requestListener addObject:request];
+        [pendingRequests addObject:request];
     }
 
 }
@@ -562,10 +561,10 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void) setClient:(GPClientV4 *)clientV4 {
     self.client = clientV4;
-    for (void (^listener)() in [self.requestListener reverseObjectEnumerator]) {
+    for (void (^listener)() in [pendingRequests reverseObjectEnumerator]) {
         listener();
+        [pendingRequests removeObject:listener];
     }
-    [self.requestListener removeAllObjects];
 }
 
 
