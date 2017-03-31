@@ -304,7 +304,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 - (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
     
     void (^request)() = ^{
-        [self synchronizeSetTag:type name:name value:value];
+        [self setTagSynchronously:type name:name value:value];
     };
     
     if(self.client) {
@@ -314,7 +314,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
 }
 
-- (void)synchronizeSetTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
+- (void)setTagSynchronously:(GPTagType)type name:(NSString *)name value:(NSString *)value {
     
     @synchronized(self) {
         [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
@@ -359,6 +359,20 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
     
     void (^request)() = ^{
+        [self trackEventSynchronously:type name:name value:value showMessage:showMessageHandler failure:failureHandler];
+    };
+    
+    if(self.client) {
+        dispatch_async(analyticsDispatchQueue, request);
+    } else{
+        [pendingRequests addObject:request];
+    }
+
+}
+
+- (void) trackEventSynchronously:(GPEventType)type name:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
+    
+    @synchronized(self) {
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
         GPEvent *event = [GPEvent createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
@@ -377,14 +391,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             }
             return;
         }
-    };
-    
-    if(self.client) {
-        dispatch_async(analyticsDispatchQueue, request);
-    } else{
-        [pendingRequests addObject:request];
     }
-
+    
 }
 
 #pragma tag_alias
