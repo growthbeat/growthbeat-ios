@@ -35,6 +35,7 @@
 
 + (GBGPClient *)load;
 + (void)removePreference;
++ (void) removeGPClient;
 + (GBGPClient *)findWithGPClientId:(long long)clientId code:(NSString *)code;
 
 @end

@@ -33,6 +33,10 @@ static NSString *const kGBGPPreferenceClientKey = @"client";
     [[[GrowthPush sharedInstance] preference] removeAll];
 }
 
++ (void) removeGPClient {
+    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceClientKey];
+}
+
 + (GBGPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {
     NSString *path = [NSString stringWithFormat:@"/1/clients/%lld", clientId];
     NSMutableDictionary *query = [NSMutableDictionary dictionary];

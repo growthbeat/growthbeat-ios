@@ -12,7 +12,7 @@
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    NSString *applicationId = @"PIaD6TaVt7wvKwao";
+    NSString *applicationId = @"P5C3vzoLOEijnlVj";
     [[GrowthPush sharedInstance] initializeWithApplicationId:applicationId credentialId:@"oGlWkVPDWghnvU2qwscqvZqWMbB2kUpO" environment:kGrowthPushEnvironment];
     [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary *extra = customIntent.extra;
