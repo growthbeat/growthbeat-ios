@@ -50,6 +50,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     dispatch_queue_t messageDispatchQueue;
     CGFloat messageInterval;
     NSDate *lastMessageOpened;
+    NSMutableArray *pendingRequests;
     
 }
 
@@ -57,7 +58,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @property (nonatomic, strong) GPClientV4 *client;
 @property (nonatomic, strong) NSArray *messageHandlers;
 @property (nonatomic, assign) BOOL showingMessage;
-@property (nonatomic, strong) NSMutableArray *requestListener;
 
 @end
 
@@ -74,7 +74,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 @synthesize client;
 @synthesize messageHandlers;
 @synthesize showingMessage;
-@synthesize requestListener;
 
 + (instancetype) sharedInstance {
     @synchronized(self) {
@@ -104,8 +103,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         messageDispatchQueue = dispatch_queue_create(kMessageQueueName, DISPATCH_QUEUE_SERIAL);
         messageQueue = [[GPMessageQueue alloc] initWithSize:kMaxQueueSize];
         messageInterval = kDefaultMessageInterval;
-        self.requestListener = [NSMutableArray array];
-        [self addObserver:self forKeyPath:@"client" options:NSKeyValueObservingOptionNew context:nil];
+        pendingRequests = [NSMutableArray array];
 
     }
     return self;
@@ -145,7 +143,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
                 [self createClient:gpClient.growthbeatClientId token:gpClient.token];
             } else {
                 [[self logger] info:[NSString stringWithFormat:@"Disabled Client found. Create a new ClientV4. (id:%@)", growthbeatClient.id]];
-                [self clearPreference];
+                [preference removeAll];
                 [self createClient:growthbeatClient.id token:nil];
             }
             
@@ -156,11 +154,11 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             GPClientV4 *clientV4 = [GPClientV4 load];
             if(!clientV4) {
                 [[self logger] info:[NSString stringWithFormat:@"Create new ClientV4. (id: %@)", growthbeatClient.id]];
-                [self clearPreference];
+                [preference removeAll];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (![clientV4.id isEqualToString:growthbeatClient.id]) {
                 [self.logger info:@"Disabled ClientV4 found. Create a new ClientV4. (id: %@)", growthbeatClient.id];
-                [self clearPreference];
+                [preference removeAll];
                 [self createClient:growthbeatClient.id token:nil];
             } else if (clientV4.environment != environment) {
                 [self.logger info:@"ClientV4 found. Update environment. (environment: %@)", NSStringFromGPEnvironment(environment)];
@@ -293,15 +291,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"client"] && self.client != nil) {
-        for (void (^listener)() in [self.requestListener reverseObjectEnumerator]) {
-            listener();
-        }
-        [self.requestListener removeAllObjects];
-    }
-}
-
 #pragma send_tag
 
 - (void) setTag:(NSString *)name {
@@ -315,33 +304,36 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 - (void)setTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
     
     void (^request)() = ^{
-        [self synchronizeSetTag:type name:name value:value];
+        [self setTagSynchronously:type name:name value:value];
     };
     
     if(self.client) {
         dispatch_async(analyticsDispatchQueue, request);
     } else{
-        [self.requestListener addObject:request];
+        [pendingRequests addObject:request];
     }
 }
 
-- (void)synchronizeSetTag:(GPTagType)type name:(NSString *)name value:(NSString *)value {
-    [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
+- (void)setTagSynchronously:(GPTagType)type name:(NSString *)name value:(NSString *)value {
     
-    GPTag *existingTag = [GPTag load:type name:name];
-    if (existingTag) {
-        if ((value == nil && existingTag.value == nil ) || (value && [value isEqualToString:existingTag.value])) {
-            [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
-            return;
+    @synchronized(self) {
+        [self.logger info:@"Set Tag... (name: %@, value: %@)", name, value];
+        
+        GPTag *existingTag = [GPTag load:type name:name];
+        if (existingTag) {
+            if ((value == nil && existingTag.value == nil ) || (value && [value isEqualToString:existingTag.value])) {
+                [self.logger info:@"Tag exists with the same value. (name: %@, value: %@)", name, value];
+                return;
+            }
+            [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
         }
-        [self.logger info:@"Tag exists with the other value. (name: %@, value: %@)", name, value];
-    }
-    
-    GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
-    
-    if (tag) {
-        [GPTag save:tag type:type name:name];
-        [self.logger info:@"Setting tag success. (name: %@, value: %@)", name, value];
+        
+        GPTag *tag = [GPTag createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
+        
+        if (tag) {
+            [GPTag save:tag type:type name:name];
+            [self.logger info:@"Setting tag success. (name: %@, value: %@)", name, value];
+        }
     }
 }
 
@@ -367,6 +359,20 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     }
     
     void (^request)() = ^{
+        [self trackEventSynchronously:type name:name value:value showMessage:showMessageHandler failure:failureHandler];
+    };
+    
+    if(self.client) {
+        dispatch_async(analyticsDispatchQueue, request);
+    } else{
+        [pendingRequests addObject:request];
+    }
+
+}
+
+- (void) trackEventSynchronously:(GPEventType)type name:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
+    
+    @synchronized(self) {
         [self.logger info:@"Set Event... (name: %@, value: %@)", name, value];
         
         GPEvent *event = [GPEvent createWithGrowthbeatClient:[[self waitClient] id] applicationId:self.applicationId credentialId:self.credentialId type:type name:name value:value];
@@ -385,50 +391,32 @@ const CGFloat kDefaultMessageInterval = 1.0f;
             }
             return;
         }
-    };
-    
-    if(self.client) {
-        dispatch_async(analyticsDispatchQueue, request);
-    } else{
-        [self.requestListener addObject:request];
     }
-
+    
 }
 
 #pragma tag_alias
 
 - (void) setDeviceTags {
-
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
     if ([GBDeviceUtils model]) {
-        [params setObject:[GBDeviceUtils model] forKey:@"Device"];
+        [self setTag:@"Device" value:[GBDeviceUtils model]];
     }
     if ([GBDeviceUtils os]) {
-        [params setObject:[GBDeviceUtils os] forKey:@"OS"];
+        [self setTag:@"OS" value:[GBDeviceUtils os]];
     }
     if ([GBDeviceUtils language]) {
-        [params setObject:[GBDeviceUtils language] forKey:@"Language"];
+        [self setTag:@"Language" value:[GBDeviceUtils language]];
     }
     if ([GBDeviceUtils timeZone]) {
-        [params setObject:[GBDeviceUtils timeZone] forKey:@"Time Zone"];
+        [self setTag:@"Time Zone" value:[GBDeviceUtils timeZone]];
     }
     if ([GBDeviceUtils version]) {
-        [params setObject:[GBDeviceUtils version] forKey:@"Version"];
+        [self setTag:@"Version" value:[GBDeviceUtils version]];
     }
     if ([GBDeviceUtils build]) {
-        [params setObject:[GBDeviceUtils build] forKey:@"Build"];
+        [self setTag:@"Build" value:[GBDeviceUtils build]];
     }
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        [self waitClient];
-        
-        for(id key in [params keyEnumerator]) {
-            id value = [params objectForKey:key];
-            [self synchronizeSetTag:GPTagTypeCustom name:key value:value];
-            sleep(1);
-        }
-    });
     
 }
 
@@ -570,11 +558,12 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
-- (void) clearPreference {
-    
-    self.client = nil;
-    [preference removeAll];
-    
+- (void) setClient:(GPClientV4 *)_clientV4 {
+    client = _clientV4;
+    for (void (^pendingRequest)() in [pendingRequests reverseObjectEnumerator]) {
+        pendingRequest();
+        [pendingRequests removeObject:pendingRequest];
+    }
 }
 
 

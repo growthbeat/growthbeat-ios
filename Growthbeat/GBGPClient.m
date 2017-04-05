@@ -10,7 +10,6 @@
 #import "GBHttpClient.h"
 #import "Growthbeat.h"
 #import "GRowthPush.h"
-#import "GPTag.h"
 
 static NSString *const kGBGPPreferenceClientKey = @"client";
 
