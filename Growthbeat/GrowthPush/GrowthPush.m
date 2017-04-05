@@ -560,9 +560,9 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 - (void) setClient:(GPClientV4 *)_clientV4 {
     client = _clientV4;
-    for (void (^listener)() in [pendingRequests reverseObjectEnumerator]) {
-        listener();
-        [pendingRequests removeObject:listener];
+    for (void (^pendingRequest)() in [pendingRequests reverseObjectEnumerator]) {
+        pendingRequest();
+        [pendingRequests removeObject:pendingRequest];
     }
 }
 
