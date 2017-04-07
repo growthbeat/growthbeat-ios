@@ -10,7 +10,6 @@
 #import "GBHttpClient.h"
 #import "Growthbeat.h"
 #import "GRowthPush.h"
-#import "GPTag.h"
 
 static NSString *const kGBGPPreferenceClientKey = @"client";
 
@@ -31,16 +30,11 @@ static NSString *const kGBGPPreferenceClientKey = @"client";
 }
 
 + (void) removePreference {
-    
-    // copy tags
-    NSDictionary *loadedTags = [[[GrowthPush sharedInstance] preference] objectForKey:@"tags"];
-    if (loadedTags && [loadedTags isKindOfClass:[NSDictionary class]]) {
-        for (NSString *key in [loadedTags allKeys]) {
-            [GPTag save:[loadedTags objectForKey:key] type:GPTagTypeCustom name:key];
-        }
-    }
-    
     [[[GrowthPush sharedInstance] preference] removeAll];
+}
+
++ (void) removeGPClient {
+    [[[GrowthPush sharedInstance] preference] removeObjectForKey:kGBGPPreferenceClientKey];
 }
 
 + (GBGPClient *) findWithGPClientId:(long long)clientId code:(NSString *)code {

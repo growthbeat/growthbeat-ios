@@ -151,6 +151,9 @@
 					B2421ED91997952D00E91C23 = {
 						DevelopmentTeam = KXJAKTLCBX;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.SafariKeychain = {
 								enabled = 1;
 							};

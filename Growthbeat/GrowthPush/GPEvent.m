@@ -44,7 +44,7 @@
     GBHttpRequest *httpRequest = [GBHttpRequest instanceWithMethod:GBRequestMethodPost path:path query:nil body:body];
     GBHttpResponse *httpResponse = [[[GrowthPush sharedInstance] httpClient] httpRequest:httpRequest];
     if (!httpResponse.success) {
-        [[[GrowthPush sharedInstance] logger] error:@"Failed to create event. %@", httpResponse.error];
+        [[[GrowthPush sharedInstance] logger] error:@"Failed to create event. %@", httpResponse.error ? httpResponse.error : [GBHttpResponse convertErrorMessage:httpResponse.body]];
         return nil;
     }
 

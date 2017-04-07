@@ -156,6 +156,7 @@
 		17CC06211D239E7100AB2667 /* GPTask.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05B81D2399F200AB2667 /* GPTask.h */; };
 		17CC06221D239E7100AB2667 /* GrowthPush.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05BA1D2399F200AB2667 /* GrowthPush.h */; };
 		C10441381D472B6C004BCFE0 /* GBGPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C10441371D472B6C004BCFE0 /* GBGPClient.m */; };
+		C13454D41E729844004E4306 /* GPShowMessageCount.m in Sources */ = {isa = PBXBuildFile; fileRef = C13454D31E729844004E4306 /* GPShowMessageCount.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -375,6 +376,8 @@
 		B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGrowthbeat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10441361D472B2A004BCFE0 /* GBGPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBGPClient.h; path = Growthbeat/GBGPClient.h; sourceTree = "<group>"; };
 		C10441371D472B6C004BCFE0 /* GBGPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBGPClient.m; path = Growthbeat/GBGPClient.m; sourceTree = "<group>"; };
+		C13454D21E729844004E4306 /* GPShowMessageCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPShowMessageCount.h; sourceTree = "<group>"; };
+		C13454D31E729844004E4306 /* GPShowMessageCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPShowMessageCount.m; sourceTree = "<group>"; };
 		C165AE3B1CFBC3730078D38C /* GLClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLClick.h; sourceTree = "<group>"; };
 		C165AE3C1CFBC3730078D38C /* GLClick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLClick.m; sourceTree = "<group>"; };
 		C165AE3D1CFBC3730078D38C /* GLLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLLink.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				17CC05A71D2399F200AB2667 /* GPPlainMessageHandler.m */,
 				17CC05A81D2399F200AB2667 /* GPScreenButton.h */,
 				17CC05A91D2399F200AB2667 /* GPScreenButton.m */,
+				C13454D21E729844004E4306 /* GPShowMessageCount.h */,
+				C13454D31E729844004E4306 /* GPShowMessageCount.m */,
 				17CC05AA1D2399F200AB2667 /* GPShowMessageHandler.h */,
 				17CC05AB1D2399F200AB2667 /* GPShowMessageHandler.m */,
 				17CC05AC1D2399F200AB2667 /* GPSwipeMessage.h */,
@@ -721,6 +726,7 @@
 				17CC05C51D2399F200AB2667 /* GPEnvironmentUtils.m in Sources */,
 				17CC05501D23999F00AB2667 /* GLSynchronization.m in Sources */,
 				17CC05511D23999F00AB2667 /* GLSynchronizationHandler.m in Sources */,
+				C13454D41E729844004E4306 /* GPShowMessageCount.m in Sources */,
 				17CC05D31D2399F200AB2667 /* GPPlainMessageHandler.m in Sources */,
 				17CC05521D23999F00AB2667 /* GrowthLink.m in Sources */,
 			);
@@ -740,6 +746,7 @@
 		B275A7051A0C45A50050510A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DEPLOYMENT_POSTPROCESSING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -748,6 +755,7 @@
 		B275A7061A0C45A50050510A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DEPLOYMENT_POSTPROCESSING = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -775,7 +783,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 2.0.4;
+				FRAMEWORK_VERSION = 2.0.5;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -822,7 +830,7 @@
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 2.0.4;
+				FRAMEWORK_VERSION = 2.0.5;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -844,8 +852,9 @@
 		B2ED142C1A0C451E0078F6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_VERSION = 2.0.4;
+				FRAMEWORK_VERSION = 2.0.5;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -857,8 +866,9 @@
 		B2ED142D1A0C451E0078F6BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_VERSION = 2.0.4;
+				FRAMEWORK_VERSION = 2.0.5;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

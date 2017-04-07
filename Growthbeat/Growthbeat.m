@@ -78,6 +78,7 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 
     GBClient __block *existingClient = [GBClient load];
     if (existingClient && [existingClient.application.id isEqualToString:applicationId]) {
+        [GBGPClient removeGPClient];
         [self.logger info:@"Client already exists. (id:%@)", existingClient.id];
         self.client = existingClient;
         return;

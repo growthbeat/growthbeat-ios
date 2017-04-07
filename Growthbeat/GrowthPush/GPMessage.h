@@ -30,6 +30,5 @@
 @property (nonatomic, strong) NSArray *buttons;
 
 + (GPMessage *)receive:(NSString *)taskId applicationId:(NSString *)applicationId clientId:(NSString *)clientId credentialId:(NSString *)credentialId;
-+ (GPTag *)receiveCount:(NSString *)clientId applicationId:(NSString *)applicationId credentialId:(NSString *)credentialId taskId:(NSString *)taskId messageId:(NSString *)messageId;
 
 @end
