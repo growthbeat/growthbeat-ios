@@ -52,20 +52,11 @@
 
 /**
  * Initialize GrowthPush instance and register the client device if not yet been registered
- *
- * @param newApplicationId Application ID
- * @param newCredentialId Credential ID for application
- * @param newEnvironment Environment
  */
 - (void)initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment;
 
 /**
  * Initialize GrowthPush instance and register the client device if not yet been registered
- *
- * @param newApplicationId Application ID
- * @param newCredentialId Credential ID for application
- * @param newEnvironment Environment
- * @param adInfoEnable allow to send IDFA info to Growth Push
  */
 - (void) initializeWithApplicationId:(NSString *)newApplicationId credentialId:(NSString *)newCredentialId environment:(GPEnvironment)newEnvironment adInfoEnable:(BOOL)adInfoEnable;
 
@@ -77,8 +68,6 @@
 
 /**
  * Set device token obtained in AppDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:
- *
- * @param deviceToken Device token
  */
 - (void)setDeviceToken:(id)deviceToken;
 
