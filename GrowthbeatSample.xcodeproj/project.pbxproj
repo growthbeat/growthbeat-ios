@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17B6951B1E9B5DF60000C3B8 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B6951A1E9B5DF60000C3B8 /* NotificationService.m */; };
+		17B6951F1E9B5DF60000C3B8 /* ImageNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 17B695171E9B5DF60000C3B8 /* ImageNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B2421EDE1997952D00E91C23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421EDD1997952D00E91C23 /* Foundation.framework */; };
 		B2421EE01997952D00E91C23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421EDF1997952D00E91C23 /* CoreGraphics.framework */; };
 		B2421EE21997952D00E91C23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2421EE11997952D00E91C23 /* UIKit.framework */; };
@@ -22,7 +24,36 @@
 		C1FC842F1BDE06BA00626543 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC842E1BDE06BA00626543 /* SafariServices.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		17B6951D1E9B5DF60000C3B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2421ED21997952D00E91C23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17B695161E9B5DF60000C3B8;
+			remoteInfo = ImageNotification;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		17B695231E9B5DF60000C3B8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				17B6951F1E9B5DF60000C3B8 /* ImageNotification.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		17B695171E9B5DF60000C3B8 /* ImageNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ImageNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B695191E9B5DF60000C3B8 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		17B6951A1E9B5DF60000C3B8 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		17B6951C1E9B5DF60000C3B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B695241E9B5EF30000C3B8 /* ImageNotification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImageNotification.entitlements; sourceTree = "<group>"; };
 		69BDE4131C55FD8E006DF256 /* GrowthbeatSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GrowthbeatSample.entitlements; sourceTree = "<group>"; };
 		B2421EDA1997952D00E91C23 /* GrowthbeatSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrowthbeatSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2421EDD1997952D00E91C23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -45,6 +76,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		17B695141E9B5DF60000C3B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2421ED71997952D00E91C23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,10 +100,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17B695181E9B5DF60000C3B8 /* ImageNotification */ = {
+			isa = PBXGroup;
+			children = (
+				17B695241E9B5EF30000C3B8 /* ImageNotification.entitlements */,
+				17B695191E9B5DF60000C3B8 /* NotificationService.h */,
+				17B6951A1E9B5DF60000C3B8 /* NotificationService.m */,
+				17B6951C1E9B5DF60000C3B8 /* Info.plist */,
+			);
+			path = ImageNotification;
+			sourceTree = "<group>";
+		};
 		B2421ED11997952D00E91C23 = {
 			isa = PBXGroup;
 			children = (
 				B2421EE31997952D00E91C23 /* GrowthbeatSample */,
+				17B695181E9B5DF60000C3B8 /* ImageNotification */,
 				B2421EDC1997952D00E91C23 /* Frameworks */,
 				B2421EDB1997952D00E91C23 /* Products */,
 			);
@@ -75,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B2421EDA1997952D00E91C23 /* GrowthbeatSample.app */,
+				17B695171E9B5DF60000C3B8 /* ImageNotification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +173,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		17B695161E9B5DF60000C3B8 /* ImageNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17B695221E9B5DF60000C3B8 /* Build configuration list for PBXNativeTarget "ImageNotification" */;
+			buildPhases = (
+				17B695131E9B5DF60000C3B8 /* Sources */,
+				17B695141E9B5DF60000C3B8 /* Frameworks */,
+				17B695151E9B5DF60000C3B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImageNotification;
+			productName = ImageNotification;
+			productReference = 17B695171E9B5DF60000C3B8 /* ImageNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B2421ED91997952D00E91C23 /* GrowthbeatSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2421F0C1997952D00E91C23 /* Build configuration list for PBXNativeTarget "GrowthbeatSample" */;
@@ -129,10 +197,12 @@
 				B2421ED61997952D00E91C23 /* Sources */,
 				B2421ED71997952D00E91C23 /* Frameworks */,
 				B2421ED81997952D00E91C23 /* Resources */,
+				17B695231E9B5DF60000C3B8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				17B6951E1E9B5DF60000C3B8 /* PBXTargetDependency */,
 			);
 			name = GrowthbeatSample;
 			productName = GrowthbeatSample;
@@ -148,6 +218,16 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "SIROK, Inc.";
 				TargetAttributes = {
+					17B695161E9B5DF60000C3B8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = KXJAKTLCBX;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
 					B2421ED91997952D00E91C23 = {
 						DevelopmentTeam = KXJAKTLCBX;
 						SystemCapabilities = {
@@ -175,11 +255,19 @@
 			projectRoot = "";
 			targets = (
 				B2421ED91997952D00E91C23 /* GrowthbeatSample */,
+				17B695161E9B5DF60000C3B8 /* ImageNotification */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		17B695151E9B5DF60000C3B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2421ED81997952D00E91C23 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +281,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		17B695131E9B5DF60000C3B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B6951B1E9B5DF60000C3B8 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2421ED61997952D00E91C23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +300,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17B6951E1E9B5DF60000C3B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17B695161E9B5DF60000C3B8 /* ImageNotification */;
+			targetProxy = 17B6951D1E9B5DF60000C3B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B2421EE61997952D00E91C23 /* InfoPlist.strings */ = {
@@ -225,6 +329,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		17B695201E9B5DF60000C3B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = ImageNotification/ImageNotification.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuto Mukoyama (S4DY4ST4FA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = KXJAKTLCBX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = ImageNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growthbeat.GrowthbeatSample.ImageNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		17B695211E9B5DF60000C3B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = ImageNotification/ImageNotification.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SIROK, Inc. (KXJAKTLCBX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = KXJAKTLCBX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = ImageNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growthbeat.GrowthbeatSample.ImageNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		B2421F0A1997952D00E91C23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -353,6 +509,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		17B695221E9B5DF60000C3B8 /* Build configuration list for PBXNativeTarget "ImageNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B695201E9B5DF60000C3B8 /* Debug */,
+				17B695211E9B5DF60000C3B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B2421ED51997952D00E91C23 /* Build configuration list for PBXProject "GrowthbeatSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
