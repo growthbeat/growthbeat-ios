@@ -248,14 +248,8 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     if (!targetDeviceToken) {
         return nil;
     }
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+
     return [self hexadecimalStringFromData:targetDeviceToken];
-#else
-    return [[[[targetDeviceToken description]
-              stringByReplacingOccurrencesOfString:@"<" withString:@""]
-             stringByReplacingOccurrencesOfString:@">" withString:@""]
-            stringByReplacingOccurrencesOfString:@" " withString:@""];
-#endif
 }
 
 
