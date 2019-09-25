@@ -229,18 +229,29 @@ const CGFloat kDefaultMessageInterval = 1.0f;
 
 }
 
+- (NSString *) hexadecimalStringFromData:(NSData *)data {
+    NSUInteger dataLength = data.length;
+    if (dataLength == 0) {
+        return nil;
+    }
+
+    const unsigned char *dataBuffer = data.bytes;
+    NSMutableString *hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
+    for (int i = 0; i < dataLength; ++i) {
+        [hexString appendFormat:@"%02x", dataBuffer[i]];
+    }
+    return [hexString copy];
+}
+
 - (NSString *) convertToHexToken:(NSData *)targetDeviceToken {
     
     if (!targetDeviceToken) {
         return nil;
     }
-    
-    return [[[[targetDeviceToken description]
-              stringByReplacingOccurrencesOfString:@"<" withString:@""]
-             stringByReplacingOccurrencesOfString:@">" withString:@""]
-            stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
+
+    return [self hexadecimalStringFromData:targetDeviceToken];
 }
+
 
 - (void) clearBadge {
 
