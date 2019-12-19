@@ -139,7 +139,6 @@ static NSString *const kGBPreferenceDefaultFileName = @"growthbeat-preferences";
 - (void)setLoggerSilent:(BOOL) silent {
     [[self logger] setSilent:silent];
     [[[GrowthPush sharedInstance] logger] setSilent:silent];
-    [[[GrowthLink sharedInstance] logger] setSilent:silent];
 }
 
 - (BOOL) handleIntent:(GBIntent *)intent {
