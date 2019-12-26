@@ -46,12 +46,6 @@
 		17CC054A1D23999F00AB2667 /* GBUrlIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D731D1A23D9006B0EFE /* GBUrlIntentHandler.m */; };
 		17CC054B1D23999F00AB2667 /* GBViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D761D1A23D9006B0EFE /* GBViewUtils.m */; };
 		17CC054C1D23999F00AB2667 /* Growthbeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 69989D781D1A23D9006B0EFE /* Growthbeat.m */; };
-		17CC054D1D23999F00AB2667 /* GLClick.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3C1CFBC3730078D38C /* GLClick.m */; };
-		17CC054E1D23999F00AB2667 /* GLLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE3E1CFBC3730078D38C /* GLLink.m */; };
-		17CC054F1D23999F00AB2667 /* GLPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE401CFBC3730078D38C /* GLPattern.m */; };
-		17CC05501D23999F00AB2667 /* GLSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE421CFBC3730078D38C /* GLSynchronization.m */; };
-		17CC05511D23999F00AB2667 /* GLSynchronizationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */; };
-		17CC05521D23999F00AB2667 /* GrowthLink.m in Sources */ = {isa = PBXBuildFile; fileRef = C165AE461CFBC3730078D38C /* GrowthLink.m */; };
 		17CC05BC1D2399F200AB2667 /* GPBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05771D2399F200AB2667 /* GPBackground.m */; };
 		17CC05BD1D2399F200AB2667 /* GPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC05791D2399F200AB2667 /* GPButton.m */; };
 		17CC05BE1D2399F200AB2667 /* GPButtonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CC057B1D2399F200AB2667 /* GPButtonType.m */; };
@@ -113,12 +107,6 @@
 		17CC05F61D239E7100AB2667 /* GBUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D741D1A23D9006B0EFE /* GBUtils.h */; };
 		17CC05F71D239E7100AB2667 /* GBViewUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D751D1A23D9006B0EFE /* GBViewUtils.h */; };
 		17CC05F81D239E7100AB2667 /* Growthbeat.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 69989D771D1A23D9006B0EFE /* Growthbeat.h */; };
-		17CC05F91D239E7100AB2667 /* GLClick.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3B1CFBC3730078D38C /* GLClick.h */; };
-		17CC05FA1D239E7100AB2667 /* GLLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3D1CFBC3730078D38C /* GLLink.h */; };
-		17CC05FB1D239E7100AB2667 /* GLPattern.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE3F1CFBC3730078D38C /* GLPattern.h */; };
-		17CC05FC1D239E7100AB2667 /* GLSynchronization.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE411CFBC3730078D38C /* GLSynchronization.h */; };
-		17CC05FD1D239E7100AB2667 /* GLSynchronizationHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */; };
-		17CC05FE1D239E7100AB2667 /* GrowthLink.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C165AE451CFBC3730078D38C /* GrowthLink.h */; };
 		17CC05FF1D239E7100AB2667 /* GPBackground.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05761D2399F200AB2667 /* GPBackground.h */; };
 		17CC06001D239E7100AB2667 /* GPButton.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC05781D2399F200AB2667 /* GPButton.h */; };
 		17CC06011D239E7100AB2667 /* GPButtonType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 17CC057A1D2399F200AB2667 /* GPButtonType.h */; };
@@ -203,12 +191,6 @@
 				17CC05F61D239E7100AB2667 /* GBUtils.h in Copy Files */,
 				17CC05F71D239E7100AB2667 /* GBViewUtils.h in Copy Files */,
 				17CC05F81D239E7100AB2667 /* Growthbeat.h in Copy Files */,
-				17CC05F91D239E7100AB2667 /* GLClick.h in Copy Files */,
-				17CC05FA1D239E7100AB2667 /* GLLink.h in Copy Files */,
-				17CC05FB1D239E7100AB2667 /* GLPattern.h in Copy Files */,
-				17CC05FC1D239E7100AB2667 /* GLSynchronization.h in Copy Files */,
-				17CC05FD1D239E7100AB2667 /* GLSynchronizationHandler.h in Copy Files */,
-				17CC05FE1D239E7100AB2667 /* GrowthLink.h in Copy Files */,
 				17CC05FF1D239E7100AB2667 /* GPBackground.h in Copy Files */,
 				17CC06001D239E7100AB2667 /* GPButton.h in Copy Files */,
 				17CC06011D239E7100AB2667 /* GPButtonType.h in Copy Files */,
@@ -378,18 +360,6 @@
 		C10441371D472B6C004BCFE0 /* GBGPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBGPClient.m; path = Growthbeat/GBGPClient.m; sourceTree = "<group>"; };
 		C13454D21E729844004E4306 /* GPShowMessageCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPShowMessageCount.h; sourceTree = "<group>"; };
 		C13454D31E729844004E4306 /* GPShowMessageCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPShowMessageCount.m; sourceTree = "<group>"; };
-		C165AE3B1CFBC3730078D38C /* GLClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLClick.h; sourceTree = "<group>"; };
-		C165AE3C1CFBC3730078D38C /* GLClick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLClick.m; sourceTree = "<group>"; };
-		C165AE3D1CFBC3730078D38C /* GLLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLLink.h; sourceTree = "<group>"; };
-		C165AE3E1CFBC3730078D38C /* GLLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLLink.m; sourceTree = "<group>"; };
-		C165AE3F1CFBC3730078D38C /* GLPattern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLPattern.h; sourceTree = "<group>"; };
-		C165AE401CFBC3730078D38C /* GLPattern.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLPattern.m; sourceTree = "<group>"; };
-		C165AE411CFBC3730078D38C /* GLSynchronization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSynchronization.h; sourceTree = "<group>"; };
-		C165AE421CFBC3730078D38C /* GLSynchronization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSynchronization.m; sourceTree = "<group>"; };
-		C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSynchronizationHandler.h; sourceTree = "<group>"; };
-		C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSynchronizationHandler.m; sourceTree = "<group>"; };
-		C165AE451CFBC3730078D38C /* GrowthLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowthLink.h; sourceTree = "<group>"; };
-		C165AE461CFBC3730078D38C /* GrowthLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowthLink.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,7 +429,6 @@
 				69989D761D1A23D9006B0EFE /* GBViewUtils.m */,
 				69989D771D1A23D9006B0EFE /* Growthbeat.h */,
 				69989D781D1A23D9006B0EFE /* Growthbeat.m */,
-				C165AE3A1CFBC3730078D38C /* GrowthLink */,
 				CE0628281B15B6BF009263FA /* GrowthPush */,
 				B2ED14181A0C451E0078F6BC /* Products */,
 			);
@@ -471,26 +440,6 @@
 				B2ED14171A0C451E0078F6BC /* libGrowthbeat.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C165AE3A1CFBC3730078D38C /* GrowthLink */ = {
-			isa = PBXGroup;
-			children = (
-				C165AE3B1CFBC3730078D38C /* GLClick.h */,
-				C165AE3C1CFBC3730078D38C /* GLClick.m */,
-				C165AE3D1CFBC3730078D38C /* GLLink.h */,
-				C165AE3E1CFBC3730078D38C /* GLLink.m */,
-				C165AE3F1CFBC3730078D38C /* GLPattern.h */,
-				C165AE401CFBC3730078D38C /* GLPattern.m */,
-				C165AE411CFBC3730078D38C /* GLSynchronization.h */,
-				C165AE421CFBC3730078D38C /* GLSynchronization.m */,
-				C165AE431CFBC3730078D38C /* GLSynchronizationHandler.h */,
-				C165AE441CFBC3730078D38C /* GLSynchronizationHandler.m */,
-				C165AE451CFBC3730078D38C /* GrowthLink.h */,
-				C165AE461CFBC3730078D38C /* GrowthLink.m */,
-			);
-			name = GrowthLink;
-			path = Growthbeat/GrowthLink;
 			sourceTree = "<group>";
 		};
 		CE0628281B15B6BF009263FA /* GrowthPush */ = {
@@ -616,6 +565,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = B2ED140E1A0C451E0078F6BC;
@@ -711,7 +661,6 @@
 				17CC054C1D23999F00AB2667 /* Growthbeat.m in Sources */,
 				17CC05BD1D2399F200AB2667 /* GPButton.m in Sources */,
 				17CC05CD1D2399F200AB2667 /* GPNoContentMessage.m in Sources */,
-				17CC054D1D23999F00AB2667 /* GLClick.m in Sources */,
 				17CC05C61D2399F200AB2667 /* GPEvent.m in Sources */,
 				17CC05C91D2399F200AB2667 /* GPMessage.m in Sources */,
 				17CC05D71D2399F300AB2667 /* GPSwipeMessageHandler.m in Sources */,
@@ -719,16 +668,11 @@
 				17CC05D51D2399F300AB2667 /* GPShowMessageHandler.m in Sources */,
 				17CC05BE1D2399F200AB2667 /* GPButtonType.m in Sources */,
 				17CC05C81D2399F200AB2667 /* GPImageButton.m in Sources */,
-				17CC054E1D23999F00AB2667 /* GLLink.m in Sources */,
 				17CC05CF1D2399F200AB2667 /* GPPicture.m in Sources */,
-				17CC054F1D23999F00AB2667 /* GLPattern.m in Sources */,
 				17CC05BC1D2399F200AB2667 /* GPBackground.m in Sources */,
 				17CC05C51D2399F200AB2667 /* GPEnvironmentUtils.m in Sources */,
-				17CC05501D23999F00AB2667 /* GLSynchronization.m in Sources */,
-				17CC05511D23999F00AB2667 /* GLSynchronizationHandler.m in Sources */,
 				C13454D41E729844004E4306 /* GPShowMessageCount.m in Sources */,
 				17CC05D31D2399F200AB2667 /* GPPlainMessageHandler.m in Sources */,
-				17CC05521D23999F00AB2667 /* GrowthLink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,7 +727,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 2.0.6;
+				FRAMEWORK_VERSION = 2.0.7;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -830,7 +774,7 @@
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 2.0.6;
+				FRAMEWORK_VERSION = 2.0.7;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -854,7 +798,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_VERSION = 2.0.6;
+				FRAMEWORK_VERSION = 2.0.7;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -868,7 +812,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_VERSION = 2.0.6;
+				FRAMEWORK_VERSION = 2.0.7;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -14,7 +14,6 @@
 #import "GBClient.h"
 #import "GBAppDelegateWrapper.h"
 #import "GrowthPush.h"
-#import "GrowthLink.h"
 #import "GBIntent.h"
 #import "GBIntentHandler.h"
 #import "GBUrlIntentHandler.h"
