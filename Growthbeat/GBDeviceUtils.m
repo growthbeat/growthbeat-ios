@@ -195,6 +195,8 @@
                     return YES;
                 }
             }
+            
+            return NO;
         } else {
             SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
             id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
