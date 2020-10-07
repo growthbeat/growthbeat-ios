@@ -187,10 +187,21 @@
 + (BOOL) getTrackingEnabled {
     Class ASIdentifierManagerClass = NSClassFromString(@"ASIdentifierManager");
     if (ASIdentifierManagerClass) {
-        SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
-        id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
-        SEL advertisingEnabledSelector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
-        return ((BOOL (*)(id, SEL))[sharedManager methodForSelector:advertisingEnabledSelector])(sharedManager, advertisingEnabledSelector);
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 14.0f) {
+            Class ATTrackingManagerClass = NSClassFromString(@"ATTrackingManager");
+            if (ATTrackingManagerClass) {
+                NSUInteger value = [[ATTrackingManagerClass valueForKey:@"trackingAuthorizationStatus"] unsignedIntegerValue];
+                if (value == GBAttStatusAuthorized || value == GBAttStatusNotDetermined) {
+                    return YES;
+                }
+            }
+        } else {
+            SEL sharedManagerSelector = NSSelectorFromString(@"sharedManager");
+            id sharedManager = ((id (*)(id, SEL))[ASIdentifierManagerClass methodForSelector:sharedManagerSelector])(ASIdentifierManagerClass, sharedManagerSelector);
+        
+            SEL advertisingEnabledSelector = NSSelectorFromString(@"isAdvertisingTrackingEnabled");
+            return ((BOOL (*)(id, SEL))[sharedManager methodForSelector:advertisingEnabledSelector])(sharedManager, advertisingEnabledSelector);
+        }
     }
     return NO;
 }

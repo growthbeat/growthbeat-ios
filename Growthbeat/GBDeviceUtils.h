@@ -27,4 +27,11 @@
 + (NSString *)getAdvertisingId;
 + (BOOL)getTrackingEnabled;
 
+typedef NS_ENUM(NSUInteger, GBAttStatus){
+    GBAttStatusNotDetermined = 0,
+    GBAttStatusRestricted,
+    GBAttStatusDenied,
+    GBAttStatusAuthorized
+};
+
 @end
