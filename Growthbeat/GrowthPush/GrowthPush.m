@@ -171,8 +171,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         }
 
         if(adInfoEnable) {
-            [self setAdvertisingId];
-            [self setTrackingEnabled];
+            [self.logger info:@"AdvertisingId and TrackingEnabled not supported."];
         }
         [self setDeviceTags];
         
