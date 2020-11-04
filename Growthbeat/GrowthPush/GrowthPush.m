@@ -430,14 +430,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
     
 }
 
-- (void) setAdvertisingId {
-    [self setTag:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
-}
-
-- (void) setTrackingEnabled {
-    [self setTag:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
-}
-
 #pragma growthmessage
 
 - (void) receiveMessage:(GPEvent *)event showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler {
