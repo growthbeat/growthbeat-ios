@@ -171,8 +171,7 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         }
 
         if(adInfoEnable) {
-            [self setAdvertisingId];
-            [self setTrackingEnabled];
+            [self.logger info:@"AdvertisingId and TrackingEnabled not supported."];
         }
         [self setDeviceTags];
         
@@ -429,14 +428,6 @@ const CGFloat kDefaultMessageInterval = 1.0f;
         [self setTag:@"Build" value:[GBDeviceUtils build]];
     }
     
-}
-
-- (void) setAdvertisingId {
-    [self setTag:@"AdvertisingID" value:[GBDeviceUtils getAdvertisingId]];
-}
-
-- (void) setTrackingEnabled {
-    [self setTag:@"TrackingEnabled" value:[GBDeviceUtils getTrackingEnabled] ? @"true" : @"false"];
 }
 
 #pragma growthmessage
