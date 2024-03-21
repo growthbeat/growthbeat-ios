@@ -146,6 +146,9 @@
 		0B035B9A2BABFD2F00B90BAE /* GPButtonType.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B035B1D2BABFD2F00B90BAE /* GPButtonType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B035B9B2BABFD2F00B90BAE /* GBAppDelegateWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B035B1E2BABFD2F00B90BAE /* GBAppDelegateWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B035B9C2BABFD2F00B90BAE /* GBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B035B1F2BABFD2F00B90BAE /* GBHttpClient.m */; };
+		0B035BA42BAC023700B90BAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B035BA32BAC023700B90BAE /* Foundation.framework */; };
+		0B035BA62BAC023D00B90BAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B035BA52BAC023D00B90BAE /* UIKit.framework */; };
+		0B035BA82BAC024400B90BAE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B035BA72BAC024400B90BAE /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -275,6 +278,9 @@
 		0B035B1D2BABFD2F00B90BAE /* GPButtonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPButtonType.h; sourceTree = "<group>"; };
 		0B035B1E2BABFD2F00B90BAE /* GBAppDelegateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAppDelegateWrapper.h; sourceTree = "<group>"; };
 		0B035B1F2BABFD2F00B90BAE /* GBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBHttpClient.m; sourceTree = "<group>"; };
+		0B035BA32BAC023700B90BAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		0B035BA52BAC023D00B90BAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		0B035BA72BAC024400B90BAE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +288,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B035BA42BAC023700B90BAE /* Foundation.framework in Frameworks */,
+				0B035BA82BAC024400B90BAE /* SystemConfiguration.framework in Frameworks */,
+				0B035BA62BAC023D00B90BAE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +302,7 @@
 			children = (
 				0B035AA22BABFD2F00B90BAE /* Growthbeat */,
 				0B0358A42BABF4C500B90BAE /* Products */,
+				0B035BA22BAC023700B90BAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -434,6 +444,16 @@
 				0B035AF42BABFD2F00B90BAE /* GrowthPush.m */,
 			);
 			path = Growthbeat;
+			sourceTree = "<group>";
+		};
+		0B035BA22BAC023700B90BAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B035BA72BAC024400B90BAE /* SystemConfiguration.framework */,
+				0B035BA52BAC023D00B90BAE /* UIKit.framework */,
+				0B035BA32BAC023700B90BAE /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
