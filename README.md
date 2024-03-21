@@ -25,11 +25,7 @@ pod install
 
 - Foundation.framework
 - UIKit.framework
-- CoreGraphics.framework
 - SystemConfiguration.framework
-- AdSupport.framework
-- SafariServices.framework
-- CFNetwork.framework
 
 ## Usage
 
@@ -37,7 +33,7 @@ See the [support page](http://support.growthbeat.com/).
 
 ## Supported Environment
 
-* iOS8 and later.
+* iOS12 and later.
 * support bitcode.
 
 ## License
