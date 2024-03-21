@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDomain.h"
-#import "GBIntentType.h"
+#import <Growthbeat/GBDomain.h>
+#import <Growthbeat/GBIntentType.h>
 
 @interface GBIntent : GBDomain <NSCoding> {
 

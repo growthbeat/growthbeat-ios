@@ -9,9 +9,9 @@
 #ifndef GrowthbeatCore_GBUtils_h
 #define GrowthbeatCore_GBUtils_h
 
-#import "GBDateUtils.h"
-#import "GBDeviceUtils.h"
-#import "GBHttpUtils.h"
-#import "GBViewUtils.h"
+#import <Growthbeat/GBDateUtils.h>
+#import <Growthbeat/GBDeviceUtils.h>
+#import <Growthbeat/GBHttpUtils.h>
+#import <Growthbeat/GBViewUtils.h>
 
 #endif

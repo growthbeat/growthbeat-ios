@@ -7,7 +7,7 @@
 //  Copyright © 2016年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDomain.h"
+#import <Growthbeat/GBDomain.h>
 
 @interface GBGPClient : GBDomain<NSCoding> {
     

@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBUrlIntentHandler.h"
+#import <Growthbeat/GBUrlIntentHandler.h>
 #import <UIKit/UIKit.h>
-#import "Growthbeat.h"
-#import "GBUrlIntent.h"
+#import <Growthbeat/Growthbeat.h>
+#import <Growthbeat/GBUrlIntent.h>
 
 @implementation GBUrlIntentHandler
 

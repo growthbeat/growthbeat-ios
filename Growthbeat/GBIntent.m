@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBIntent.h"
-#import "GBDateUtils.h"
-#import "GBCustomIntent.h"
-#import "GBNoopIntent.h"
-#import "GBUrlIntent.h"
+#import <Growthbeat/GBIntent.h>
+#import <Growthbeat/GBDateUtils.h>
+#import <Growthbeat/GBCustomIntent.h>
+#import <Growthbeat/GBNoopIntent.h>
+#import <Growthbeat/GBUrlIntent.h>
 
 @implementation GBIntent
 

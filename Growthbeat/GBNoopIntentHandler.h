@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GBIntentHandler.h"
+#import <Growthbeat/GBIntentHandler.h>
 
 @interface GBNoopIntentHandler : NSObject <GBIntentHandler>
 

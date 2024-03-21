@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBCustomIntent.h"
+#import <Growthbeat/GBCustomIntent.h>
 
 @implementation GBCustomIntent
 

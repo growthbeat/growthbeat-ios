@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBRequestMethod.h"
+#import <Growthbeat/GBRequestMethod.h>
 
 NSString *NSStringFromGBRequestMethod(GBRequestMethod requestMethod) {
 

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GBIntentHandler.h"
-#import "GBIntent.h"
-#import "GBCustomIntent.h"
+#import <Growthbeat/GBIntentHandler.h>
+#import <Growthbeat/GBIntent.h>
+#import <Growthbeat/GBCustomIntent.h>
 
 @interface GBCustomIntentHandler : NSObject <GBIntentHandler> {
     

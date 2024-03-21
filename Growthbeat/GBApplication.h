@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDomain.h"
+#import <Growthbeat/GBDomain.h>
 
 @interface GBApplication : GBDomain <NSCoding> {
 

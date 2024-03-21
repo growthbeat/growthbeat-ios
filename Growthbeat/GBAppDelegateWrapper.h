@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GBAppDelegateWrapperDelegate.h"
+#import <Growthbeat/GBAppDelegateWrapperDelegate.h>
 
 @interface GBAppDelegateWrapper : UIResponder <UIApplicationDelegate>
 

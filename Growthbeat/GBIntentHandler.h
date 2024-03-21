@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBIntent.h"
+#import <Growthbeat/GBIntent.h>
 
 @protocol GBIntentHandler <NSObject>
 

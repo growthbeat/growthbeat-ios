@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBClient.h"
-#import "GBUtils.h"
-#import "GBHttpClient.h"
-#import "Growthbeat.h"
+#import <Growthbeat/GBClient.h>
+#import <Growthbeat/GBUtils.h>
+#import <Growthbeat/GBHttpClient.h>
+#import <Growthbeat/Growthbeat.h>
 
 static NSString *const kGBPreferenceClientKey = @"client";
 

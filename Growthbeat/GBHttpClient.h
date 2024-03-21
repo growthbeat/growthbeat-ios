@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GBHttpRequest.h"
-#import "GBHttpResponse.h"
+#import <Growthbeat/GBHttpRequest.h>
+#import <Growthbeat/GBHttpResponse.h>
 
 @interface GBHttpClient : NSObject {
 

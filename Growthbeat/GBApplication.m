@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBApplication.h"
-#import "GBUtils.h"
+#import <Growthbeat/GBApplication.h>
+#import <Growthbeat/GBUtils.h>
 
 @implementation GBApplication
 

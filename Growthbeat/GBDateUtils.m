@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDateUtils.h"
+#import <Growthbeat/GBDateUtils.h>
 
 @implementation GBDateUtils
 

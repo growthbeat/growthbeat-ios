@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDomain.h"
-#import "GBApplication.h"
+#import <Growthbeat/GBDomain.h>
+#import <Growthbeat/GBApplication.h>
 
 @interface GBClient : GBDomain <NSCoding> {
 

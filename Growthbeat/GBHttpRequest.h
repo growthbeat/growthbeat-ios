@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GBRequestMethod.h"
-#import "GBContentType.h"
+#import <Growthbeat/GBRequestMethod.h>
+#import <Growthbeat/GBContentType.h>
 
 @interface GBHttpRequest : NSObject {
 

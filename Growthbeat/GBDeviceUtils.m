@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDeviceUtils.h"
+#import <Growthbeat/GBDeviceUtils.h>
 #import <UIKit/UIKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <mach/mach.h>

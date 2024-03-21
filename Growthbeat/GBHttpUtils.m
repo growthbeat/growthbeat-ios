@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBHttpUtils.h"
+#import <Growthbeat/GBHttpUtils.h>
 
 @implementation GBHttpUtils
 
