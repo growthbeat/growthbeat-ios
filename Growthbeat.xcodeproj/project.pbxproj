@@ -149,6 +149,7 @@
 		0B035BA42BAC023700B90BAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B035BA32BAC023700B90BAE /* Foundation.framework */; };
 		0B035BA62BAC023D00B90BAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B035BA52BAC023D00B90BAE /* UIKit.framework */; };
 		0B035BA82BAC024400B90BAE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B035BA72BAC024400B90BAE /* SystemConfiguration.framework */; };
+		0B035BAA2BAC0C4700B90BAE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0B035BA92BAC0C4700B90BAE /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,6 +282,7 @@
 		0B035BA32BAC023700B90BAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		0B035BA52BAC023D00B90BAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		0B035BA72BAC024400B90BAE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		0B035BA92BAC0C4700B90BAE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +444,7 @@
 				0B035AED2BABFD2F00B90BAE /* Growthbeat.m */,
 				0B035ABC2BABFD2F00B90BAE /* GrowthPush.h */,
 				0B035AF42BABFD2F00B90BAE /* GrowthPush.m */,
+				0B035BA92BAC0C4700B90BAE /* PrivacyInfo.xcprivacy */,
 			);
 			path = Growthbeat;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B035BAA2BAC0C4700B90BAE /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,7 +618,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild 'BUILD_LIBRARY_FOR_DISTRIBUTION=YES' build -project \"${PROJECT_NAME}.xcodeproj\" -scheme \"${PROJECT_NAME}\" -destination 'generic/platform=iOS Simulator' -configuration Release -derivedDataPath build\nxcodebuild 'BUILD_LIBRARY_FOR_DISTRIBUTION=YES' build -project \"${PROJECT_NAME}.xcodeproj\" -scheme \"${PROJECT_NAME}\" -destination 'generic/platform=iOS' -configuration Release -derivedDataPath build\n xcodebuild -create-xcframework -framework \"build/Build/Products/Release-iphoneos/${PROJECT_NAME}.framework\" -framework \"build/Build/Products/Release-iphonesimulator/${PROJECT_NAME}.framework\" -output \"./${PROJECT_NAME}.xcframework\"\n";
+			shellScript = "rm -rf \"./${PROJECT_NAME}.xcframework\"\nxcodebuild 'BUILD_LIBRARY_FOR_DISTRIBUTION=YES' build -project \"${PROJECT_NAME}.xcodeproj\" -scheme \"${PROJECT_NAME}\" -destination 'generic/platform=iOS Simulator' -configuration Release -derivedDataPath build\nxcodebuild 'BUILD_LIBRARY_FOR_DISTRIBUTION=YES' build -project \"${PROJECT_NAME}.xcodeproj\" -scheme \"${PROJECT_NAME}\" -destination 'generic/platform=iOS' -configuration Release -derivedDataPath build\n xcodebuild -create-xcframework -framework \"build/Build/Products/Release-iphoneos/${PROJECT_NAME}.framework\" -framework \"build/Build/Products/Release-iphonesimulator/${PROJECT_NAME}.framework\" -output \"./${PROJECT_NAME}.xcframework\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
