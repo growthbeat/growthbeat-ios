@@ -6,6 +6,20 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		0B035B9D2BABFED300B90BAE /* Aggregate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0B035BA02BABFED300B90BAE /* Build configuration list for PBXAggregateTarget "Aggregate" */;
+			buildPhases = (
+				0B035BA12BABFEE100B90BAE /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Aggregate;
+			productName = Aggregate;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0B035B202BABFD2F00B90BAE /* GPMessageOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B035AA32BABFD2F00B90BAE /* GPMessageOrientation.m */; };
 		0B035B212BABFD2F00B90BAE /* GBIntentHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B035AA42BABFD2F00B90BAE /* GBIntentHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -530,6 +544,9 @@
 					0B0358A22BABF4C500B90BAE = {
 						CreatedOnToolsVersion = 15.2;
 					};
+					0B035B9D2BABFED300B90BAE = {
+						CreatedOnToolsVersion = 15.2;
+					};
 				};
 			};
 			buildConfigurationList = 0B03589D2BABF4C500B90BAE /* Build configuration list for PBXProject "Growthbeat" */;
@@ -546,6 +563,7 @@
 			projectRoot = "";
 			targets = (
 				0B0358A22BABF4C500B90BAE /* Growthbeat */,
+				0B035B9D2BABFED300B90BAE /* Aggregate */,
 			);
 		};
 /* End PBXProject section */
@@ -559,6 +577,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B035BA12BABFEE100B90BAE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcodebuild 'BUILD_LIBRARY_FOR_DISTRIBUTION=YES' build -project \"${PROJECT_NAME}.xcodeproj\" -scheme \"${PROJECT_NAME}\" -destination 'generic/platform=iOS Simulator' -configuration Release -derivedDataPath build\nxcodebuild 'BUILD_LIBRARY_FOR_DISTRIBUTION=YES' build -project \"${PROJECT_NAME}.xcodeproj\" -scheme \"${PROJECT_NAME}\" -destination 'generic/platform=iOS' -configuration Release -derivedDataPath build\n xcodebuild -create-xcframework -framework \"build/Build/Products/Release-iphoneos/${PROJECT_NAME}.framework\" -framework \"build/Build/Products/Release-iphonesimulator/${PROJECT_NAME}.framework\" -output \"./${PROJECT_NAME}.xcframework\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0B03589F2BABF4C500B90BAE /* Sources */ = {
@@ -670,7 +708,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -685,7 +723,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -735,7 +773,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -744,7 +782,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -813,6 +851,22 @@
 			};
 			name = Release;
 		};
+		0B035B9E2BABFED300B90BAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0B035B9F2BABFED300B90BAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -830,6 +884,15 @@
 			buildConfigurations = (
 				0B0358AB2BABF4C500B90BAE /* Debug */,
 				0B0358AC2BABF4C500B90BAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B035BA02BABFED300B90BAE /* Build configuration list for PBXAggregateTarget "Aggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B035B9E2BABFED300B90BAE /* Debug */,
+				0B035B9F2BABFED300B90BAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
