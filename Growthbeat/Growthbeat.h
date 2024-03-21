@@ -2,8 +2,7 @@
 //  Growthbeat.h
 //  Growthbeat
 //
-//  Created by Kataoka Naoyuki on 2014/06/13.
-//  Copyright (c) 2014年 SIROK, Inc. All rights reserved.
+//  Created by 片岡 直之 on 2024/03/21.
 //
 
 #import <Foundation/Foundation.h>
@@ -20,6 +19,12 @@
 #import "GBNoopIntentHandler.h"
 #import "GBCustomIntentHandler.h"
 #import "GBCustomIntent.h"
+
+//! Project version number for Growthbeat.
+FOUNDATION_EXPORT double GrowthbeatVersionNumber;
+
+//! Project version string for Growthbeat.
+FOUNDATION_EXPORT const unsigned char GrowthbeatVersionString[];
 
 @interface Growthbeat : NSObject {
 
