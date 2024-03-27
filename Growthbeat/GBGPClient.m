@@ -5,11 +5,11 @@
 //  Created by 尾川 茂 on 2016/07/22.
 //  Copyright © 2016年 SIROK, Inc. All rights reserved.
 //
-#import "GBGPClient.h"
-#import "GBPreference.h"
-#import "GBHttpClient.h"
-#import "Growthbeat.h"
-#import "GRowthPush.h"
+#import <Growthbeat/GBGPClient.h>
+#import <Growthbeat/GBPreference.h>
+#import <Growthbeat/GBHttpClient.h>
+#import <Growthbeat/Growthbeat.h>
+#import <Growthbeat/GRowthPush.h>
 
 static NSString *const kGBGPPreferenceClientKey = @"client";
 

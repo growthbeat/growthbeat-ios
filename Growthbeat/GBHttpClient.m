@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBHttpClient.h"
-#import "Growthbeat.h"
+#import <Growthbeat/GBHttpClient.h>
+#import <Growthbeat/Growthbeat.h>
 
 @implementation GBHttpClient
 

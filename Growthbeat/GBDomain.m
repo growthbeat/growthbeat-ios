@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBDomain.h"
-#import "GBHttpClient.h"
+#import <Growthbeat/GBDomain.h>
+#import <Growthbeat/GBHttpClient.h>
 
 @implementation GBDomain
 

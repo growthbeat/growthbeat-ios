@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBCustomIntentHandler.h"
-#import "Growthbeat.h"
-#import "GBLogger.h"
+#import <Growthbeat/GBCustomIntentHandler.h>
+#import <Growthbeat/Growthbeat.h>
+#import <Growthbeat/GBLogger.h>
 
 @implementation GBCustomIntentHandler
 

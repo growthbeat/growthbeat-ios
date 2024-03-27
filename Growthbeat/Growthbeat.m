@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Growthbeat.h"
-#import "GBGPClient.h"
+#import <Growthbeat/Growthbeat.h>
+#import <Growthbeat/GBGPClient.h>
 
 static Growthbeat *sharedInstance = nil;
 static NSString *const kGBLoggerDefaultTag = @"Growthbeat";

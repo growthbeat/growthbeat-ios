@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBPreference.h"
-#import "Growthbeat.h"
+#import <Growthbeat/GBPreference.h>
+#import <Growthbeat/Growthbeat.h>
 
 @implementation GBPreference
 

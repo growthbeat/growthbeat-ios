@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBNoopIntentHandler.h"
+#import <Growthbeat/GBNoopIntentHandler.h>
 
 @implementation GBNoopIntentHandler
 

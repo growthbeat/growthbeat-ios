@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBHttpRequest.h"
-#import "GBUtils.h"
+#import <Growthbeat/GBHttpRequest.h>
+#import <Growthbeat/GBUtils.h>
 
 @implementation GBHttpRequest
 

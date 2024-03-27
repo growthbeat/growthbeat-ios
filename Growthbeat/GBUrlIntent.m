@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBUrlIntent.h"
+#import <Growthbeat/GBUrlIntent.h>
 
 @implementation GBUrlIntent
 

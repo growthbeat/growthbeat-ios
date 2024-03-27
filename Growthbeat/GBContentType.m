@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 SIROK. All rights reserved.
 //
 
-#import "GBContentType.h"
+#import <Growthbeat/GBContentType.h>
 
 NSString *NSStringFromGBContentType(GBContentType contentType) {
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBLogger.h"
+#import <Growthbeat/GBLogger.h>
 
 @implementation GBLogger
 

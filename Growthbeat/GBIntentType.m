@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBIntentType.h"
+#import <Growthbeat/GBIntentType.h>
 
 NSString *NSStringFromContnetType(GBIntentType intentType) {
 

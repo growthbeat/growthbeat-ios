@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SIROK, Inc. All rights reserved.
 //
 
-#import "GBHttpResponse.h"
+#import <Growthbeat/GBHttpResponse.h>
 
 @implementation GBHttpResponse
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 SIROK, Inc. All rights reserved.
 //
 
-#import "GBAppDelegateWrapper.h"
+#import <Growthbeat/GBAppDelegateWrapper.h>
 
 @interface GBAppDelegateWrapper () {
 
