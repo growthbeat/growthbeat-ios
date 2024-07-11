@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Growthbeat"
-  s.version = "2.1.1"
+  s.version = "2.1.1-rc1"
   s.summary = "Growthbeat SDK for iOS"
   s.description = <<-DESC
   Growthbeat is growth hack platform for smart devices.
