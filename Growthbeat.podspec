@@ -13,9 +13,13 @@ Pod::Spec.new do |s|
   s.source = {:git => "https://github.com/growthbeat/growthbeat-ios.git", :tag => "#{s.version}"}
   s.source_files = [
       "Growthbeat/**/*.h",
-      "Growthbeat/**/*.m",
-      "Growthbeat/**/*.xcprivacy" 
+      "Growthbeat/**/*.m"
   ]
+  s.resource_bundles = {
+    "Growthbeat" => [
+      "Growthbeat/**/*.xcprivacy"
+    ]
+  }
   s.frameworks = [
       "SystemConfiguration",
       "UIKit",
