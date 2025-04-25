@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B035BAB2BAC2AF200B90BAE /* Growthbeat.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Growthbeat.xcframework; sourceTree = "<group>"; };
+		0B035BAB2BAC2AF200B90BAE /* Growthbeat.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:KXJAKTLCBX:SIROK, Inc."; lastKnownFileType = wrapper.xcframework; path = Growthbeat.xcframework; sourceTree = "<group>"; };
 		0B035BAD2BAC2DA300B90BAE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		69BDE4131C55FD8E006DF256 /* GrowthbeatSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GrowthbeatSample.entitlements; sourceTree = "<group>"; };
 		B2421EDA1997952D00E91C23 /* GrowthbeatSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrowthbeatSample.app; sourceTree = BUILT_PRODUCTS_DIR; };

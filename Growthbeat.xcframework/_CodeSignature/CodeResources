@@ -6,7 +6,7 @@
 	<dict>
 		<key>ios-arm64/Growthbeat.framework/Growthbeat</key>
 		<data>
-		tOQ6RaHMhBnEEHeC3938QFPmy28=
+		wKmABFYRpxeIUwkzx/HXpr3RPXo=
 		</data>
 		<key>ios-arm64/Growthbeat.framework/Headers/GBAppDelegateWrapper.h</key>
 		<data>
@@ -280,9 +280,13 @@
 		<data>
 		QrtpjFFX1H6Eiza/MGj4vDDxaeo=
 		</data>
+		<key>ios-arm64/Growthbeat.framework/_CodeSignature/CodeResources</key>
+		<data>
+		arnxhyaJ09Yo02huYLQWKZaHO0Y=
+		</data>
 		<key>ios-arm64_x86_64-simulator/Growthbeat.framework/Growthbeat</key>
 		<data>
-		sIa5hWMTUy0dyMy3YYQq+aSyxBk=
+		TjcXi4ea6tIiH/oX490vlhmkJSU=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Growthbeat.framework/Headers/GBAppDelegateWrapper.h</key>
 		<data>
@@ -567,11 +571,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tOQ6RaHMhBnEEHeC3938QFPmy28=
+			wKmABFYRpxeIUwkzx/HXpr3RPXo=
 			</data>
 			<key>hash2</key>
 			<data>
-			/ts8bsvtrWPs9r9VZWKVf0LA5BCdGP1HxaEUrUyJ6V4=
+			7dcWHb0s/oXbOM8ZXpvZ4je0KPj58tQYSxlzX1tPIJE=
 			</data>
 		</dict>
 		<key>ios-arm64/Growthbeat.framework/Headers/GBAppDelegateWrapper.h</key>
@@ -1322,15 +1326,26 @@
 			6GW0dFwRvUT0zljZVVhXLnHjJfw7ica+y9YPYAe4Pv0=
 			</data>
 		</dict>
+		<key>ios-arm64/Growthbeat.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			arnxhyaJ09Yo02huYLQWKZaHO0Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			b/KQZuYxh4vCzIwbyQuKKbujSGtcT9bLsZEXP6UljnU=
+			</data>
+		</dict>
 		<key>ios-arm64_x86_64-simulator/Growthbeat.framework/Growthbeat</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sIa5hWMTUy0dyMy3YYQq+aSyxBk=
+			TjcXi4ea6tIiH/oX490vlhmkJSU=
 			</data>
 			<key>hash2</key>
 			<data>
-			jTkirTUdmF0YeGRGkSI62CPXuBXgDApvwmtpBCNxSFE=
+			AM8fMOV8lnWYXO675sxTQooKdg75tqfG8Iq81BAu3gY=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Growthbeat.framework/Headers/GBAppDelegateWrapper.h</key>
