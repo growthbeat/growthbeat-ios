@@ -26,7 +26,9 @@
     GBUrlIntent *urlIntent = (GBUrlIntent *)intent;
 
     NSURL *url = [NSURL URLWithString:urlIntent.url];
-    return [[UIApplication sharedApplication] openURL:url];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+    }];
+    return YES;
 
 }
 
